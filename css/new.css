@@ -1,13 +1,18 @@
 :root {
     --font-color: black;
     --bg-color: snow;
-    --svg-highlight-color: rgb(0, 219, 84)
+    --svg-highlight-color: rgb(0, 219, 84);
+    --svg-logo-color-1: #c6c8c5;
+    --svg-logo-color-2: #d6d9d5;
+
 }
 
 [data-theme=dark] {
     --font-color: snow;
     --bg-color: #020014;
-    --svg-highlight-color: silver
+    --svg-highlight-color: silver;
+    --svg-logo-color-1: #fff;
+    --svg-logo-color-2: #020014;
 }
 
 html {
@@ -24,6 +29,10 @@ html {
 [data-theme=dark] {
     --font-color: snow;
     --bg-color: #020014
+}
+
+.svglogo {
+    max-width:200px;
 }
 
 html {
@@ -254,12 +263,12 @@ h1 {
 }
 
 h3 a {
-    font-family: Montserrat;
+    font-family: Lato;
     font-size: 1rem;
     line-height: 1;
     text-decoration: none;
     color: var(--font-color);
-    font-weight: 700
+    font-weight: 400
 }
 
 h3 a:hover {
@@ -628,7 +637,7 @@ h1 {
 }
 
 h3 a {
-    font-family: Montserrat;
+    font-family: Lora;
     font-size: 1.4rem;
     line-height: 1;
     text-decoration: none;
