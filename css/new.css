@@ -828,6 +828,10 @@ hr {
     padding-left: 1.3125rem;
 }
 
+.footer-container {
+    padding: 0 1.3125rem;
+}
+
     img.twist {
         max-width: 100%;
         margin-left: 0;
