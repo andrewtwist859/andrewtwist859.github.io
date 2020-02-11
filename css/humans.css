@@ -1,0 +1,21 @@
+span.number {
+    font-family: 'Montserrat';
+    font-weight: 900;
+}
+
+.green-highlight, .pink-highlight, .yellow-highlight {
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    padding-left: 3px;
+ }
+
+.green-highlight {
+    background: #99FFCC; /* Default color, all browsers */
+}
+
+h1 {
+    text-transform: uppercase;
+    font-size: 1.8rem;
+    letter-spacing: 0.5rem;
+}
