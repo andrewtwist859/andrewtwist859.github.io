@@ -1,16 +1,11 @@
 @font-face {
     font-family:National;
-    font-display:swap;
-    src:url(fonts/national-test-book.woff) format("woff")
+    src:url(https://andrewtwist859.github.io/fonts/national-test-book.woff) format("woff")
    }
 
 span.number {
     font-family: 'Montserrat';
     font-weight: 900;
-}
-
-p {
-    font-family: 'National';
 }
 
 .green-highlight, .pink-highlight, .yellow-highlight {
