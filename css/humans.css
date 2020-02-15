@@ -3,6 +3,12 @@
     src:url(https://andrewtwist859.github.io/fonts/national-test-book.woff) format("woff")
    }
 
+   @font-face {
+    font-family:NationalExtrabold;
+    src:url(https://andrewtwist859.github.io/fonts/national-extrabold.woff) format("woff")
+   }
+
+
 span.number {
     font-family: 'Montserrat';
     font-weight: 900;
@@ -21,7 +27,7 @@ span.number {
 }
 
 h1 {
-    font-family: National, Helvetica, sans-serif;
+    font-family: NationalExtrabold, Helvetica, sans-serif;
 }
 
 @media only screen and (min-width : 375px) and (max-width : 812px)
