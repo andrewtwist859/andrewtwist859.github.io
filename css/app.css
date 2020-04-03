@@ -609,8 +609,8 @@ background-image: radial-gradient(0deg, #00825b 0%, #00a175 100%);
 @media only screen and (max-width:812px) {
 
 div#white-player {
-max-width: 350px;
-margin-top: 10px;
+max-width: 350px !important;
+margin-top: 10px !important;
 }
 
 
