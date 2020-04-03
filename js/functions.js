@@ -35,6 +35,13 @@ Amplitude.init({
       "album": "The Lockdown Arms",
       "url": "media/Question5.mp3",
       "cover_art_url": "artwork/album.png"
+    },
+    {
+      "name": "Hope for the Future",
+      "artist": "Hannah Postles",
+      "album": "The Lockdown Arms",
+      "url": "media/Question6.mp3",
+      "cover_art_url": "artwork/album.png"
     }
   ],
   "continue_next": false
