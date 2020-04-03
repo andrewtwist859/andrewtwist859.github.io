@@ -605,3 +605,13 @@ background-image: radial-gradient(0deg, #00825b 0%, #00a175 100%);
     opacity: 0; } }
 
 /*# sourceMappingURL=app.css.map */
+
+@media only screen and (max-width:812px) {
+
+div#white-player {
+max-width: 350px;
+margin-top: 10px;
+}
+
+
+}
