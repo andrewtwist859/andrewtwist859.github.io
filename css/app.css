@@ -93,23 +93,23 @@ div#white-player-center div.time-progress {
       /* Needed for Firefox */ }
     @media all and (-ms-high-contrast: none) {
       div#white-player-center div.time-progress div#progress-container *::-ms-backdrop, div#white-player-center div.time-progress div#progress-container progress#song-played-progress {
-        color: #ffce00;
+        color: #ff008c;
         border: none;
         background-color: #E1E1E1; } }
     @supports (-ms-ime-align: auto) {
       div#white-player-center div.time-progress div#progress-container progress#song-played-progress {
-        color: #ffce00;
+        color: #ff008c;
         border: none; } }
     div#white-player-center div.time-progress div#progress-container progress#song-played-progress[value]::-webkit-progress-bar {
       background: none;
       border-radius: 5px; }
     div#white-player-center div.time-progress div#progress-container progress#song-played-progress[value]::-webkit-progress-value {
-      background-color: #ffce00;
+      background-color: #ff008c;
       border-radius: 5px; }
     div#white-player-center div.time-progress div#progress-container progress#song-played-progress::-moz-progress-bar {
       background: none;
       border-radius: 5px;
-      background-color: #ffce00;
+      background-color: #ff008c;
       height: 5px;
       margin-top: -2px; }
     div#white-player-center div.time-progress div#progress-container progress#song-buffered-progress {
@@ -171,36 +171,36 @@ div#white-player-center div.time-progress {
       height: 0px;
       cursor: pointer;
       box-shadow: 0px 0px 0px rgba(0, 0, 0, 0), 0px 0px 0px rgba(13, 13, 13, 0);
-      background: #ffce00;
+      background: #ff008c;
       border-radius: 0px;
       border: 0px solid #010101; }
     div#white-player-center div.time-progress div#progress-container input[type=range]::-webkit-slider-thumb {
       box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
-      border: 1px solid #ffce00;
+      border: 1px solid #ff008c;
       height: 15px;
       width: 15px;
       border-radius: 16px;
-      background: #ffce00;
+      background: #ff008c;
       cursor: pointer;
       -webkit-appearance: none;
       margin-top: -7.5px; }
     div#white-player-center div.time-progress div#progress-container input[type=range]:focus::-webkit-slider-runnable-track {
-      background: #ffce00; }
+      background: #ff008c; }
     div#white-player-center div.time-progress div#progress-container input[type=range]::-moz-range-track {
       width: 100%;
       height: 0px;
       cursor: pointer;
       box-shadow: 0px 0px 0px rgba(0, 0, 0, 0), 0px 0px 0px rgba(13, 13, 13, 0);
-      background: #ffce00;
+      background: #ff008c;
       border-radius: 0px;
       border: 0px solid #010101; }
     div#white-player-center div.time-progress div#progress-container input[type=range]::-moz-range-thumb {
       box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
-      border: 1px solid #ffce00;
+      border: 1px solid #ff008c;
       height: 15px;
       width: 15px;
       border-radius: 16px;
-      background: #ffce00;
+      background: #ff008c;
       cursor: pointer; }
     div#white-player-center div.time-progress div#progress-container input[type=range]::-ms-track {
       width: 100%;
@@ -215,17 +215,17 @@ div#white-player-center div.time-progress {
       border-radius: 0px;
       box-shadow: 0px 0px 0px rgba(0, 0, 0, 0), 0px 0px 0px rgba(13, 13, 13, 0); }
     div#white-player-center div.time-progress div#progress-container input[type=range]::-ms-fill-upper {
-      background: #ffce00;
+      background: #ff008c;
       border: 0px solid #010101;
       border-radius: 0px;
       box-shadow: 0px 0px 0px rgba(0, 0, 0, 0), 0px 0px 0px rgba(13, 13, 13, 0); }
     div#white-player-center div.time-progress div#progress-container input[type=range]::-ms-thumb {
       box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
-      border: 1px solid #ffce00;
+      border: 1px solid #ff008c;
       height: 15px;
       width: 15px;
       border-radius: 16px;
-      background: #ffce00;
+      background: #ff008c;
       cursor: pointer;
       height: 0px;
       display: none; }
@@ -253,9 +253,9 @@ div#white-player-center div.time-progress {
         width: 15px;
         margin-top: 3px; } }
     div#white-player-center div.time-progress div#progress-container input[type=range]:focus::-ms-fill-lower {
-      background: #ffce00; }
+      background: #ff008c; }
     div#white-player-center div.time-progress div#progress-container input[type=range]:focus::-ms-fill-upper {
-      background: #ffce00; }
+      background: #ff008c; }
   div#white-player-center div.time-progress span.duration {
     color: #AAAFB3;
     font-size: 12px;
@@ -362,7 +362,7 @@ div.white-player-playlist-song {
   div.white-player-playlist-song:hover {
     background-color: rgba(51, 51, 51, 0.1); }
   div.white-player-playlist-song.amplitude-active-song-container {
-    background-color: rgba(255, 206, 0, 0.3); }
+    background-color: rgba(255, 0, 140, 0.3); }
   div.white-player-playlist-song img {
     width: 48px;
     height: 48px;
@@ -500,7 +500,7 @@ div.song-to-add {
 */
 body {
   background-color:#151731;
-background-image: radial-gradient(0deg, #00825b 0%, #ffce00 100%);
+background-image: radial-gradient(0deg, #00825b 0%, #ff008c 100%);
 
   -webkit-font-smoothing: antialiased;
   font-family: "Helvetica Neue",Helvetica,Roboto,Arial,sans-serif;
