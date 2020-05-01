@@ -42,34 +42,6 @@ Amplitude.init({
       "album": "The Lockdown Arms",
       "url": "media/Question6.mp3",
       "cover_art_url": "artwork/album.png"
-    },
-    {
-      "name": "Question 7",
-      "artist": "Virtual Pub Quiz",
-      "album": "The Lockdown Arms",
-      "url": "media/Question7.mp3",
-      "cover_art_url": "artwork/album.png"
-    },
-    {
-      "name": "Question 8",
-      "artist": "Virtual Pub Quiz",
-      "album": "The Lockdown Arms",
-      "url": "media/Question8.mp3",
-      "cover_art_url": "artwork/album.png"
-    },
-    {
-      "name": "Question 9",
-      "artist": "Virtual Pub Quiz",
-      "album": "The Lockdown Arms",
-      "url": "media/Question9.mp3",
-      "cover_art_url": "artwork/album.png"
-    },
-    {
-      "name": "Question 10",
-      "artist": "Virtual Pub Quiz",
-      "album": "The Lockdown Arms",
-      "url": "media/Question10.mp3",
-      "cover_art_url": "artwork/album.png"
     }
   ],
   "continue_next": false
