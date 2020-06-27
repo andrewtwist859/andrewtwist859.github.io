@@ -41,7 +41,7 @@
 
 <p>I've always been prone to worrying about my health.</p>
 
-<p>It has never been in a logical way though. It's never practical concerns based on diet, or drinking or smoking.</p>
+<p>It has never been in a logical way though. It's never practical concerns based on diet, or drinking or stuff like that.</p>
 
 <p>That stuff isn't dramatic enough to catch my imagination.</p>
 
@@ -174,30 +174,6 @@
 <footer><i class="fas fa-infinity icon fa-rotate-45"></i>
 </footer>
 </div>
-<script>
-    const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
-const currentTheme = localStorage.getItem('theme');
-
-if (currentTheme) {
-    document.documentElement.setAttribute('data-theme', currentTheme);
-  
-    if (currentTheme === 'dark') {
-        toggleSwitch.checked = true;
-    }
-}
-
-function switchTheme(e) {
-    if (e.target.checked) {
-        document.documentElement.setAttribute('data-theme', 'dark');
-        localStorage.setItem('theme', 'dark');
-    }
-    else {        document.documentElement.setAttribute('data-theme', 'light');
-          localStorage.setItem('theme', 'light');
-    }    
-}
-
-toggleSwitch.addEventListener('change', switchTheme, false);
-    </script>
 </body>
 <style>
 </style></html>
