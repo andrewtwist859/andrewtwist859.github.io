@@ -54,7 +54,7 @@
 </div>
 <h2>Research</h2>
 <div class="featured-news">
-    <div class="featured-image">
+    <div class="featured-image-research">
         <img src="https://www.sheffield.ac.uk/sites/default/files/styles/desktop_full_width_2x/public/2021-04/reactor%20in%202016%20before%20new%20safe%20confinement.jpg.jpeg">
     </div>
         <div class="featured-text">
@@ -86,6 +86,9 @@
         </div>
         <h2>News</h2>
         <div class="featured-news">
+            <div class="featured-image-mobile">
+                <img src="https://www.sheffield.ac.uk/sites/default/files/styles/desktop_full_width_2x/public/2021-04/reactor%20in%202016%20before%20new%20safe%20confinement.jpg.jpeg">
+            </div>
                 <div class="featured-text">
                     <div class="featured-text-content">
                     <h3 class="card-title"><a href="/">Northern universities launch new investment company
@@ -170,6 +173,21 @@
 
     .featured-image {
         max-width: 66.666%;
+        background-color:#14153C;
+    }
+
+    .featured-image-research {
+        max-width: 66.666%;
+        background-color:#14153C;
+    }
+
+    .featured-image-research img {
+        max-width: 100%;
+        background-color:#14153C;
+    }
+
+    .featured-image-mobile img {
+        max-width: 100%;
         background-color:#14153C;
     }
 
@@ -585,6 +603,10 @@ a.card-tel {
   }
 }
 
+@media only screen and (min-width: 767px) {
+    .featured-image-mobile {display: none;}
+}
+
 @media only screen and (max-width: 767px) {
   .card {
     width: 100%;
@@ -609,6 +631,35 @@ a.card-tel {
     .hero-content {
         padding: 1rem;
     }
+
+    .featured-news {
+display: block;
+  }
+
+    .featured-image {
+   display: none;
+  }
+
+  .featured-image-mobile {
+    max-width: 100%;
+    margin-right: 0rem;
+  }
+
+  .featured-image-research {
+    max-width: 100%;
+    margin-right: 0rem;
+  }
+
+  .featured-text {
+    max-width: 100%;
+    margin-right: 0rem;
+  }
+
+  .featured-text-content {
+      margin-top: -1rem;
+  }
+
+
 }
 
 
