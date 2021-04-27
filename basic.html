@@ -8,7 +8,18 @@
 <title>Title of the document</title>
 </head>
 
-<div class="header"></div>
+<div class="header">
+    <div class="header-container"><img src="img/tuos.svg"><h2 class="logo">The University of Sheffield</h2>
+        <div class="global-navigation">
+            <ul>
+                <li>Undergraduate</li>
+                <li>Postgraduate</li>
+                <li>Research</li>
+                <li>About</li>
+            </ul>
+        </div>
+    </div>
+</div>
 <div class="sub-header">
     <div class="container">
     <h2 class="group-name">Study in Sheffield</h2>
@@ -100,6 +111,46 @@
 </div>
 </body>
 <style>
+
+.global-navigation ul {
+    list-style: none;
+    padding-inline-start: 0;
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+
+.global-navigation ul li{
+    display: inline;
+    margin-right: 2rem;
+    color: white;
+}
+
+.global-navigation {
+    margin-left: auto;
+    margin-right: 3rem;
+}
+
+.header-container  {
+     max-width: 1180px;
+     margin: auto;
+     padding: 1rem;
+     display: flex;
+     align-items: center;
+
+ }
+
+h2.logo {
+        color:white;
+        font-size: 1.25rem;
+        font-family: Lora;
+        max-width: 12ch;
+        margin: 0;
+    }
+
+.header img {
+    width:60px;
+    margin-right: 1rem;
+}
 
 a:focus {
     outline: 3px solid transparent;
@@ -504,6 +555,10 @@ a.card-tel {
   }
 
   .navigation {
+      display: none;
+  }
+
+  .global-navigation {
       display: none;
   }
 }
