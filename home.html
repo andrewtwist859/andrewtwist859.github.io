@@ -19,6 +19,9 @@
                 <li>About</li>
             </ul>
         </div>
+        <div class="global-navigation-mobile">
+            Menu<i class="fas fa-bars"></i>
+        </div>
     </div>
 </div>
 <div class="sub-header">
@@ -186,6 +189,16 @@
 </div>
 </body>
 <style>
+
+.global-navigation-mobile {
+    font-size: 1.25rem;
+    color: white;
+    font-weight: 800;
+}
+
+.global-navigation-mobile i {
+    margin-left: 1rem;
+}
 
     h2.logo {
         color:white;
@@ -721,6 +734,11 @@ a.card-tel {
 
 @media only screen and (min-width: 767px) {
     .featured-image-mobile {display: none;}
+
+
+.global-navigation-mobile {
+    display: none;
+}
 }
 
 @media only screen and (max-width: 767px) {
@@ -740,6 +758,10 @@ a.card-tel {
 
   .global-navigation {
       display: none;
+  }
+
+  .global-navigation-mobile {
+      margin-left: auto;
   }
 
   h1.pgt {
@@ -803,13 +825,6 @@ display: block;
     padding-right: 1rem;
 }
 
-h2.logo {
-        color:white;
-        font-size: 1.25rem;
-        font-family: Lora;
-        max-width: 50ch;
-        margin: 0;
-    }
 
     .hero {margin-top: 0;}
 
