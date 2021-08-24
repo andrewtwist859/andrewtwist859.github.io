@@ -816,9 +816,10 @@ p.more {
 
 hr {
     margin-bottom: calc(1.75rem - 1px);
+    margin-left: 0;
     background: #d1d1d1;
     border: none;
-    height: 1px
+    height: 2px
 }
 
 .container {
