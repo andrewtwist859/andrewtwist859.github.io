@@ -275,7 +275,8 @@ html {
 
 body {
     font-size: 20px;
-    background-color: var(--bg-color)
+    background-color: var(--bg-color);
+    overscroll-behavior-y: none;
 }
 
 ::selection {
