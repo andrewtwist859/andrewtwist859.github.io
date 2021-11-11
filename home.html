@@ -22,7 +22,7 @@
     </div>
     </div></div>
     <div class="container">
-        <div class="breadcrumbs"><h5>Home<i class="fas fa-angle-right" aria-hidden="true"></i>Journal</h5></div>
+        <div class="breadcrumbs"><h5><a href="/">Home</a> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 224 384"><path d="M72,448a40,40,0,0,1-29-67.49L160.91,256,43,131.53a40,40,0,1,1,58.06-55l144,152a40,40,0,0,1,0,55l-144,152A39.84,39.84,0,0,1,72,448Z" transform="translate(-32 -64)" style="fill:#636363"/></svg> <a href="/journal">Journal</a></h5></div>
         <h1 class="page-title">From landfill to the lightness of being</h1>
         <hr />
         <p>In my desk I have an old iPod.</p>
@@ -109,12 +109,11 @@ html {
 
 .breadcrumbs {
     margin-bottom: 2rem;
-    color:#636363
+
 }
 
-.breadcrumbs i.fas {
-    margin-left: 0.5rem;
-    margin-right: 0.5rem;
+.breadcrumbs a {
+    color: #636363;
 }
 
 a:focus {
@@ -289,6 +288,12 @@ footer {
 
 footer svg {
     max-width: 20px;
+}
+
+.breadcrumbs svg {
+    max-width: 6px;
+    padding-left:0.25rem;
+    padding-right: 0.25rem;
 }
 
 footer a {
