@@ -16,20 +16,7 @@
     <ul>
     <li><a class="nav-active" href="/"><span>Home</span></a></li>
     <li><a class="" href="/articles/"><span>Journal</span></a></li>
-    <li><a class="" href="/contact/"><span>Contact</span></a></li>  
-    <div class="theme-switch-wrapper">
-        <label class="theme-switch" for="checkbox">
-            <input type="checkbox" id="checkbox">
-            <div class="slider round">
-                <span class="crater crater--1"></span>
-                <span class="crater crater--2"></span>
-                <span class="crater crater--3"></span>
-                <span class="stars stars--1"></span>
-                <span class="stars stars--2"></span>
-                <span class="stars stars--3"></span>
-            </div>
-      </label>
-    </div>    
+    <li><a class="" href="/contact/"><span>Contact</span></a></li>     
 </ul>
     </nav>
     </div>
@@ -90,6 +77,20 @@
     <div class="footer-container">
   
         <footer>
+            <span>Light vs Dark</span>
+            <div class="theme-switch-wrapper">
+                <label class="theme-switch" for="checkbox">
+                    <input type="checkbox" id="checkbox">
+                    <div class="slider round">
+                        <span class="crater crater--1"></span>
+                        <span class="crater crater--2"></span>
+                        <span class="crater crater--3"></span>
+                        <span class="stars stars--1"></span>
+                        <span class="stars stars--2"></span>
+                        <span class="stars stars--3"></span>
+                    </div>
+              </label>
+            </div> 
         </footer>
         </div>
 <script>
@@ -131,12 +132,8 @@ toggleSwitch.addEventListener('change', switchTheme, false);
         }
 
 .theme-switch-wrapper {
-            display: flex;
-            align-items: center;
-            float: right;
-            padding-top: .5rem;
-            padding-left: .75rem;
-        }
+    padding-top: 0.5rem;
+            }
 
         .theme-switch-wrapper em {
             margin-left: 10px;
@@ -479,6 +476,11 @@ footer {
     margin-left: auto;
     margin-right: auto;
     max-width: 1080px;
+}
+
+footer span {
+    font-size: .75rem;
+    margin-bottom: 2rem;
 }
 
 footer svg {
