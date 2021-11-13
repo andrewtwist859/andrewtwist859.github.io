@@ -79,6 +79,17 @@ li {
     margin-bottom: 1rem;
 }
 
+span.date {
+    color: var(--bc-color);
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+p.summary {
+    margin-bottom: 0.5rem;
+    margin-top: 1rem;
+}
+
 hr {
     margin-bottom: calc(1.75rem - 1px);
     margin-top:1rem;
@@ -318,6 +329,10 @@ transition: width .3s;
     margin-left: 20px;
     padding-bottom: 1rem;
 }
+
+.footer-container {
+    padding-left: 1.5rem !important;
+    }
 }
 
 /* Theme Switcher */
