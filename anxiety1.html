@@ -6,12 +6,12 @@
     <meta name="theme-color" content="#99FFCC" />
     <title>Anxiety, insecurity and getting sacked from my first proper job | Twist</title>
     <link rel="stylesheet" href="https://use.typekit.net/vkl3uwb.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.1/css/all.css">
+    <link rel="stylesheet" href="css/main.css">
     <link rel="icon" type="image/png" href="images/twistico.png">
 </head>
 <body>
 <div class="header-container">
-    <div class="header-content"><a href="/"><img src="images/twist.png" height="100"></a>
+    <div class="header-content"><a href="/" aria-label="Home"><img src="images/twist.png" alt="Andrew Twist" height="100"></a>
       <div class="header-nav">
       <nav class="nav">
     <ul>
@@ -23,7 +23,7 @@
     </div>
     </div></div>
     <div class="container">
-        <div class="breadcrumbs"><h5>Home<i class="fas fa-angle-right" aria-hidden="true"></i>Journal</h5></div>
+        <div class="breadcrumbs"><h5><a href="/">Home</a> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 224 384"><path d="M72,448a40,40,0,0,1-29-67.49L160.91,256,43,131.53a40,40,0,1,1,58.06-55l144,152a40,40,0,0,1,0,55l-144,152A39.84,39.84,0,0,1,72,448Z" transform="translate(-32 -64)" style="fill:#636363"/></svg> <a href="/journal">Journal</a></h5></div>
         <h1 class="page-title">Anxiety, insecurity and getting sacked from my first proper job</h1>
         <hr />
         <p>My first proper job ended with a brief phone call. Unlike most calls, it wasn’t actually a conversation. It was a professional dressing down punctuated by awkward sobbing and sighs of acceptance.</p>
@@ -65,209 +65,46 @@
     </body>
     <div class="footer-container">
   
-        <footer><a href="https://open.spotify.com/track/4YWituEPTLy2KZgDTXZUut?si=28a6da727de24db5"><i class="fas fa-infinity icon fa-rotate-45"></i></a>
+        <footer>
+            <span>Light vs Dark</span>
+            <div class="theme-switch-wrapper">
+                <label class="theme-switch" for="checkbox">
+                    <input type="checkbox" id="checkbox">
+                    <div class="slider round">
+                        <span class="crater crater--1"></span>
+                        <span class="crater crater--2"></span>
+                        <span class="crater crater--3"></span>
+                        <span class="stars stars--1"></span>
+                        <span class="stars stars--2"></span>
+                        <span class="stars stars--3"></span>
+                    </div>
+              </label>
+            </div> 
         </footer>
         </div>
-    <style>
-
-@import url('https://rsms.me/inter/inter.css');
-html { font-family: 'Inter', sans-serif; }
-@supports (font-variation-settings: normal) {
-  html { font-family: 'Inter var', sans-serif; }
-}
-* {
-    margin: 0;
-    padding: 0;
-}
-
-body,
-html {
-    height: 100%;
-    margin: 0;
-    font: 100%/1.75 Inter, Georgia, serif;
-    font-feature-settings: 'cv11', 'cv05', 'kern';
-}
-
- body {
-    font-size: 18px;
-    background-color: var(--bg-color);
-    overscroll-behavior-y: none;
-    background-color: #F5F5F5;
-}
-
-.breadcrumbs {
-    margin-bottom: 2rem;
-    color:#636363
-}
-
-.breadcrumbs i.fas {
-    margin-left: 0.5rem;
-    margin-right: 0.5rem;
-}
-
-a:focus {
-    outline: 3px solid transparent;
-    color: #0b0c0c !important;
-    background-color: #fd0;
-    box-shadow: 0 -2px #fd0, 0 4px #0b0c0c;
-    text-decoration: none;
-}
-
-a {
-    text-decoration: underline;
-    text-underline-offset: 0.1em;
-    font-weight: 600;
-    text-decoration-thickness: 2px;
-
-}
-
-a:hover {
-text-decoration-thickness: max(3px, 0.1875rem, 0.12em);
-}
-
-h1,h2,h3 {
-    font-family: bree-serif;
-    font-weight: bold;
-}
-
-h1 {
-    font-size: 2.5rem;
-    line-height: 125%;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-}
-
-.page-title {
-    position: relative;
-}
-
-.page-title:before {
-    content: "";
-    position: absolute;
-    display: inline-block;
-    top: -0.5rem;
-    left: 0;
-    width: 3rem;
-    height: 0.5rem;
-    background-color: #c70000;
-}
-
-
-.header-container {
-    background-color: #020014;
-    padding-top: 1rem;
-    padding-bottom:0.5rem;}
-
-.header-content {
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 1080px;
-
-}
-
-.header-content a {
-    text-decoration: none;
-    color: snow;
-    font-size: 1.4rem;
-    text-decoration: none;
-}
-
-.header-content img  {
-    margin-bottom: -26px;
-}
-
-.header-nav {
-    padding-left: 5px;
-    padding-right: 5px;
-}
-
-@media (min-width: 37.5em){
-.header-nav {
-    float: right;
-    border-top: none;
-    border-bottom: none;
-    padding-top: 1.25rem;
-}
-}
-
-.nav a:link, .nav a:visited {
-    text-decoration: none;
-    display: block;
-    padding: 15px 15px 15px;
-    font-size: 18px;
-}
-
-.nav span:hover {
-color: #fefefe;
-border-bottom: 3px solid #c70000;
-transition: width .3s;
-}
-
-.nav ul {
-    white-space: normal;
-    overflow-x: initial;
-}
-
-.nav ul {
-    list-style: none;
-    overflow-x: scroll;
-    white-space: nowrap;
-    font-size: 0px;
-}
-
-.nav li {
-    display: inline-block;
-    line-height: 20px;
-    font-size: 16px;
-    color: white;
-}
-
-.container {
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 1080px;
-    padding: 1.5rem 1.5rem
-}
-
-.container ul {
-    margin-bottom: 1.5rem;
-}
-
-.container h1, p, li {
-    max-width: 700px;
-}
-
-p {
-    margin-bottom: 1.75rem;
-    margin-top: 0.5rem;
-}
-
-hr {
-    margin-bottom: calc(1.75rem - 1px);
-    margin-top:1rem;
-    margin-left: 0;
-    background: #d1d1d1;
-    border: none;
-    height: 2px;
-    max-width: 700px;
-}
-
-.footer-container {
-    background-color: #020014;
-    color: white;
-    font-size: 1rem;
-    padding: 1rem 0rem;
-}
-
-footer {
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 1080px;
-}
-
-footer a {
-    color: #fff !important;
-}
-
-    </style>
+        <script>
+            const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
+        const currentTheme = localStorage.getItem('theme');
+        
+        if (currentTheme) {
+            document.documentElement.setAttribute('data-theme', currentTheme);
+          
+            if (currentTheme === 'dark') {
+                toggleSwitch.checked = true;
+            }
+        }
+        
+        function switchTheme(e) {
+            if (e.target.checked) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+            }
+            else {        document.documentElement.setAttribute('data-theme', 'light');
+                  localStorage.setItem('theme', 'light');
+            }    
+        }
+        
+        toggleSwitch.addEventListener('change', switchTheme, false);
+            </script>
+    
     </html>
