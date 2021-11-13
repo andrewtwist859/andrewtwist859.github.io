@@ -61,9 +61,6 @@ h2 {
     line-height: 150%;  
 }
 
-h2 a {
-    color: var(--accent-color);
-}
 
 p {
     margin-bottom: 1.75rem;
