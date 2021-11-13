@@ -9,7 +9,7 @@
 
 [data-theme=dark] {
     --font-color: snow;
-    --bg-color: #020014;
+    --bg-color: #0e111b;
     --bc-color: snow;
     --accent-color: snow;
 }
@@ -68,6 +68,15 @@ h2 a {
 p {
     margin-bottom: 1.75rem;
     margin-top: 0.5rem;
+}
+
+ul {
+    padding-bottom: 0.5rem;
+}
+
+li {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 
 hr {
