@@ -215,6 +215,12 @@ transition: width .3s;
     }
     }
 
+@media (max-width: 37.5em){
+    .header-content img {
+    margin-left: 20px;
+    padding-bottom: 1rem;
+}
+}
 /* Container */
 
 .container {
