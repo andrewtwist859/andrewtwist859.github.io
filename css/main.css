@@ -69,11 +69,14 @@ p {
 
 ul {
     padding-bottom: 0.5rem;
+    padding-left: 3rem;
+    
 }
 
 li {
     margin-top: 1rem;
     margin-bottom: 1rem;
+    margin-right: 3rem;
 }
 
 span.date {
