@@ -118,6 +118,11 @@ hr {
     max-width: 700px;
 }
 
+.onthispage ul {
+    list-style: none;
+    padding-left: 1rem;
+}
+
 svg.twitter {
     max-width: 15px;
     fill: var(--link-color);
