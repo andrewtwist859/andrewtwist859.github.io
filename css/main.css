@@ -76,6 +76,10 @@ ul {
 li {
     margin-top: 1rem;
     margin-bottom: 1rem;
+    
+}
+
+.container li {
     margin-right: 3rem;
 }
 
