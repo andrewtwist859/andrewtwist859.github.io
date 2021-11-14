@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="A blog by Andrew Twist">
+    <meta name="theme-color" content="#000" />
+    <title>Test | Twist</title>
+    <link rel="stylesheet" href="https://use.typekit.net/vkl3uwb.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="icon" type="image/png" href="images/twistico.png">
+</head>
+<body>
+<div class="header-container">
+    <div class="header-content"><a href="/" aria-label="Home"><img src="images/twist.png" alt="Andrew Twist" height="100"></a>
+      <div class="header-nav">
+      <nav class="nav">
+    <ul>
+    <li><a class="nav-active" href="/"><span>Home</span></a></li>
+    <li><a class="" href="/notes"><span>Notes</span></a></li>
+    <li><a class="" href="/contact"><span>Contact</span></a></li>     
+</ul>
+    </nav>
+    </div>
+    </div></div>
+    <div class="container">
+        <div class="breadcrumbs"><h5><a href="/">Home</a> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 224 384"><path d="M72,448a40,40,0,0,1-29-67.49L160.91,256,43,131.53a40,40,0,1,1,58.06-55l144,152a40,40,0,0,1,0,55l-144,152A39.84,39.84,0,0,1,72,448Z" transform="translate(-32 -64)" style="fill:#636363"/></svg> <a href="/notes">Notes</a></h5></div>
+        <h1 class="page-title">Basic twitch</h1>
+        <hr />
+        <p>It started with a twitch.</p>
+        <p><div class="VideoContainer"><div class="videoWrapper">><iframe width="560" height="315" src="https://www.youtube.com/embed/8VUz5bmUVPw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></div></p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut a suscipit ligula, a placerat erat. Nam ullamcorper rhoncus augue, facilisis imperdiet metus tincidunt non. Nulla lobortis eu felis vel vulputate. Donec rhoncus varius ante, vel condimentum ligula eleifend non.</p>
+        <p>Donec placerat eu arcu vel tristique.</p>
+
+</div>
+    </body>
+    <div class="footer-container">
+  
+        <footer>
+            <ul>
+                <li><a href="/">Home</a</li>
+                <li><a href="/notes">Notes</a></li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
+            <span>Light vs Dark</span>
+            <div class="theme-switch-wrapper">
+                <label class="theme-switch" for="checkbox">
+                    <input type="checkbox" id="checkbox">
+                    <div class="slider round">
+                        <span class="crater crater--1"></span>
+                        <span class="crater crater--2"></span>
+                        <span class="crater crater--3"></span>
+                        <span class="stars stars--1"></span>
+                        <span class="stars stars--2"></span>
+                        <span class="stars stars--3"></span>
+                    </div>
+              </label>
+            </div> 
+        </footer>
+        </div>
+<script>
+    const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
+const currentTheme = localStorage.getItem('theme');
+
+if (currentTheme) {
+    document.documentElement.setAttribute('data-theme', currentTheme);
+  
+    if (currentTheme === 'dark') {
+        toggleSwitch.checked = true;
+    }
+}
+
+function switchTheme(e) {
+    if (e.target.checked) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        localStorage.setItem('theme', 'dark');
+    }
+    else {        document.documentElement.setAttribute('data-theme', 'light');
+          localStorage.setItem('theme', 'light');
+    }    
+}
+
+toggleSwitch.addEventListener('change', switchTheme, false);
+    </script>
+    
+    </html>
