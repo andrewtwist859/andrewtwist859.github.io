@@ -2,7 +2,7 @@
 
 :root {
     --font-color: black;
-    --bg-color: snow;
+    --bg-color: white;
     --bc-color: #636363;
     --accent-color: black;
     --link-color: #1200ee;
@@ -327,6 +327,16 @@ transition: width .3s;
     padding-right: 0.25rem;
 }
 
+/* Caption */
+
+.caption {
+    font-size: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    color: var(--bc-color);
+    max-width: 700px;
+}
+
 /* Page title */
 
 .page-title {
@@ -381,7 +391,7 @@ transition: width .3s;
         padding-bottom: 1rem;
     }
     
-    hr {
+    hr, .caption {
         max-width: 900px;
     }
     
