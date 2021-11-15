@@ -103,6 +103,11 @@ span.date {
     font-size: 1rem;
 }
 
+span.date a {
+    color: var(--bc-color);
+    font-weight: 700;
+}
+
 p.summary {
     margin-bottom: 0.5rem;
     margin-top: 1rem;
