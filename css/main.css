@@ -386,6 +386,10 @@ transition: width .3s;
     .VideoContainer {
         max-width: 900px;
     }
+
+    .ImageContainer {
+        max-width: 900px;
+    }
     
     .header-content {
         margin-left: auto;
