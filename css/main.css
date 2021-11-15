@@ -161,6 +161,15 @@ a:hover {
     max-width: 700px;
 }
 
+.ImageContainer {
+    max-width: 700px;
+}
+
+.ImageContainer img {
+    width: 100%;
+}
+
+
 .videoWrapper {
     position: relative;
     padding-bottom: 56.25%; /* 16:9 */
@@ -428,6 +437,12 @@ transition: width .3s;
 .footer-container {
     padding-left: 1.5rem !important;
     }
+
+    .ImageContainer {
+        margin-left: -20px;
+        margin-right: -20px;
+    }
+    
 }
 
 /* Theme Switcher */
