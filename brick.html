@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="A blog by Andrew Twist">
+    <meta name="theme-color" content="#000" />
+    <title>Andrew Twist</title>
+    <link rel="stylesheet" href="https://use.typekit.net/vkl3uwb.css">
+    <link rel="stylesheet" href="css/brick.css">
+    <link rel="stylesheet" href="fonts/inter.css">
+    <link rel="icon" type="image/png" href="images/twistico.png">
+</head>
+<body>
+<div class="header-container">
+    <div class="header-content"><a href="/" aria-label="Home"><img src="images/brick2.png" alt="Andrew Twist" height="45"></a>
+      <div class="header-nav">
+      <nav class="nav">
+    <ul>
+    <li><a href="/"><span>Home</span></a></li>
+    <li><a href="/work"><span>Episodes</span></a></li>
+    <li><a href="/journal"><span>About</span></a></li>
+    <li><a href="/journal"><span>Contact</span></a></li>
+    </ul>
+    </nav>
+    </div>
+    </div></div>
+    <div class="container">
+        <div class="breadcrumbs"><h5></h5></div>
+        <div class="ep-teaser">
+        <div class="ep-art"><img src="images/brickbybrick.png"></div>
+        <div class="ep-text">
+<h2><a href="/landfill">S01E01: The View From The Afternoon</a></h2>
+<p class="summary">In my desk I have an old iPod. It's covered in scratches and scuffs from its noble years of service and my lack of care. For a long time I wouldn't dream of leaving the house without it. Keys. Wallet. Phone. iPod. Headphones.</p>
+<span class="date">10 November 2021 in <a href="/journal">Journal</a></span></div></div>
+<hr />
+<div class="ep-teaser">
+    <div class="ep-art"><img src="images/brickbybrick.png"></div>
+    <div class="ep-text">
+<h2><a href="/landfill">S01E02: I Bet That You Look Good On The Dancefloor</a></h2>
+<p class="summary">In my desk I have an old iPod. It's covered in scratches and scuffs from its noble years of service and my lack of care. For a long time I wouldn't dream of leaving the house without it. Keys. Wallet. Phone. iPod. Headphones.</p>
+<span class="date">10 November 2021 in <a href="/journal">Journal</a></span></div></div>
+<hr />
+<div class="ep-teaser">
+    <div class="ep-art"><img src="images/brickbybrick.png"></div>
+    <div class="ep-text">
+<h2><a href="/landfill">S01E03: Fake Tales of San Francisco</a></h2>
+<p class="summary">In my desk I have an old iPod. It's covered in scratches and scuffs from its noble years of service and my lack of care. For a long time I wouldn't dream of leaving the house without it. Keys. Wallet. Phone. iPod. Headphones.</p>
+<span class="date">10 November 2021 in <a href="/journal">Journal</a></span></div></div>
+<hr />
+
+</div>
+    </body>
+    <div class="footer-container">
+  
+        <footer>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/work">Episodes</a></li>
+                <li><a href="/journal">About</a></li>
+                <li><a href="/journal">Contact</a></li>
+            </ul>
+            <span>Light vs Dark</span>
+            <div class="theme-switch-wrapper">
+                <label class="theme-switch" for="checkbox">
+                    <input type="checkbox" id="checkbox">
+                    <div class="slider round">
+                        <span class="crater crater--1"></span>
+                        <span class="crater crater--2"></span>
+                        <span class="crater crater--3"></span>
+                        <span class="stars stars--1"></span>
+                        <span class="stars stars--2"></span>
+                        <span class="stars stars--3"></span>
+                    </div>
+              </label>
+            </div> 
+        </footer>
+        </div>
+        <script>
+            const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
+        const currentTheme = localStorage.getItem('theme');
+        
+        if (currentTheme) {
+            document.documentElement.setAttribute('data-theme', currentTheme);
+          
+            if (currentTheme === 'dark') {
+                toggleSwitch.checked = true;
+            }
+        }
+        
+        function switchTheme(e) {
+            if (e.target.checked) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+            }
+            else {        document.documentElement.setAttribute('data-theme', 'light');
+                  localStorage.setItem('theme', 'light');
+            }    
+        }
+        
+        toggleSwitch.addEventListener('change', switchTheme, false);
+            </script>
+    
+    </html>
