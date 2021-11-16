@@ -144,6 +144,12 @@ a:focus {
     text-decoration: none;
 }
 
+a:focus img {
+    background-color: #fd0;
+
+}
+
+
 a {
     text-decoration: underline;
     text-underline-offset: 0.1em;
@@ -208,7 +214,7 @@ a:hover {
 }
 
 .header-content img  {
-    margin-bottom: -26px;
+    margin-bottom: -20px;
 }
 
 .header-nav {
