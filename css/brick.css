@@ -86,7 +86,7 @@ h2 {
 h2 a {
     font-weight: 900;
     text-transform: uppercase;
-    color: black;
+    color: var(--font-color);
     text-decoration: none;
 
 }
