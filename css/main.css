@@ -270,7 +270,6 @@ footer ul {
 
 footer ul {
     list-style: none;
-    overflow-x: scroll;
     white-space: nowrap;
     font-size: 0px;
 }
