@@ -446,7 +446,7 @@ transition: width .3s;
 html {
     height: 100%;
     margin: 0;
-    font: 100%/1.75 "San Francisco", Roboto, Inter,  "Helvetica Neue", Helvetica, "Noto Sans", "Segoe UI", Arial, sans-serif;;
+    font: 100%/1.75 "San Francisco", Roboto, Inter, "Helvetica Neue", Helvetica, "Noto Sans", "Segoe UI", Arial, sans-serif;
     font-feature-settings: 'cv11', 'cv05', 'kern';
 }
 
