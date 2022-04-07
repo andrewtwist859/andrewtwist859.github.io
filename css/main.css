@@ -39,7 +39,7 @@ body,
 html {
     height: 100%;
     margin: 0;
-    font: 100%/1.75 Inter, Helvetica, sans-serif;
+    font: 100%/1.75 Inter, "San Francisco", Roboto, "Helvetica Neue", Helvetica, "Noto Sans", "Segoe UI", Arial, sans-serif;;
     font-feature-settings: 'cv11', 'cv05', 'kern';
 }
 
@@ -441,6 +441,13 @@ transition: width .3s;
     .header-content img {
     margin-left: 20px;
     padding-bottom: 1rem;
+}
+
+html {
+    height: 100%;
+    margin: 0;
+    font: 100%/1.75 "San Francisco", Roboto, Inter,  "Helvetica Neue", Helvetica, "Noto Sans", "Segoe UI", Arial, sans-serif;;
+    font-feature-settings: 'cv11', 'cv05', 'kern';
 }
 
 .footer-container {
