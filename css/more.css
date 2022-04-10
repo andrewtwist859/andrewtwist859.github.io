@@ -143,11 +143,7 @@ html, body {
 }
 
 
-.container {
-    margin: 1rem;
-    max-width: 1440px;
-    margin: auto;
-}
+
 
 .section__purple{
     background-image: url('http://andrewtwist859.github.io/images/purple.png');
@@ -329,6 +325,7 @@ html, body {
 
     }
 
+    
     @media (max-width: 48em){
 
         .cards__card__text {
@@ -336,7 +333,8 @@ html, body {
         }
 
         .container {
-            margin: 1rem;
+            margin-right: 1rem;
+            margin-left: 1rem;
         }
 
         .cards__cardpod {
@@ -475,3 +473,23 @@ html, body {
     }
 }
 
+@media (max-width: 1920px) {
+    .container, .header-content {
+        max-width: 1280px;
+        margin:auto
+    }}
+
+    @media (min-width: 1920px) {
+
+    .container, .header-content {
+        margin: 1rem;
+        max-width: 1440px;
+        margin: auto;
+    }}
+
+    @media (max-width: 48em) {
+    .container {
+        margin-right: 1rem;
+        margin-left: 1rem;
+    }
+    }
