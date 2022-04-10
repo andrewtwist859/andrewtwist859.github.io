@@ -97,11 +97,29 @@ html, body {
     font-size: 18px;
 }
 
-.nav span:hover {
-color: #fefefe;
-border-bottom: 3px solid #c70000;
-transition: width .3s;
+.nav span {
+        display: inline-block;
+        position: relative;
+        padding-bottom: 0.25rem;
 }
+
+.nav span:after {
+    content: '';
+    position: absolute;
+    bottom:0;
+    left: 0;
+    width: 100%;
+    transform: scaleX(0);
+    height: 3px;
+    background:linear-gradient(90deg, rgba(255,0,97,1) 0%, rgba(0,140,255,1) 100%); 
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+  }
+
+  .nav span:hover:after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
 
 .nav ul {
     white-space: normal;
@@ -132,8 +150,7 @@ transition: width .3s;
 }
 
 .section__purple{
-    background-image: url('http://andrewtwist859.github.io/images/banner-01.jpg');
-    background-position: right center;
+    background-image: url('http://andrewtwist859.github.io/images/purple.png');
         background-color: #471278;
         padding: 85px 0;
         color: #ffffff;
@@ -248,7 +265,7 @@ transition: width .3s;
         height: 5px;
         bottom: 0;
         left: 0;
-        background-color: #c70000;
+        background:linear-gradient(90deg, rgba(255,0,97,1) 0%, rgba(0,140,255,1) 100%); 
         transform-origin: bottom right;
         transition: transform 0.5s ease-out;
       }
@@ -313,6 +330,10 @@ transition: width .3s;
     }
 
     @media (max-width: 48em){
+
+        .cards__card__text {
+            font: 100%/1.75 "San Francisco", Roboto, "Helvetica Neue", Helvetica, "Noto Sans", "Segoe UI", Arial, sans-serif;
+        }
 
         .container {
             margin: 1rem;
