@@ -50,7 +50,7 @@ html, body {
 .header-content {
     margin-left: auto;
     margin-right: auto;
-    max-width: 1080px;
+    max-width: 1440px;
 
 }
 
@@ -132,6 +132,8 @@ transition: width .3s;
 }
 
 .section__purple{
+    background-image: url('http://andrewtwist859.github.io/images/banner-01.jpg');
+    background-position: right center;
         background-color: #471278;
         padding: 85px 0;
         color: #ffffff;
