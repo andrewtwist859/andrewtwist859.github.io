@@ -504,3 +504,75 @@ html, body {
         margin-left: 1rem;
     }
     }
+
+    /* Page title */
+
+.page-title {
+    position: relative;
+}
+
+.page-title:before {
+    content: "";
+    position: absolute;
+    display: inline-block;
+    top: -0.5rem;
+    left: 0;
+    width: 3rem;
+    height: 0.5rem;
+    background-color: #c70000;
+}
+
+h1, h2, h3 {
+    font-family: Bree-Serif, Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+h1 {
+    font-size: 2.5rem;
+    line-height: 125%;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+/* Links */
+
+a:focus {
+    outline: 3px solid transparent;
+    color: #0b0c0c !important;
+    background-color: #fd0;
+    box-shadow: 0 -2px #fd0, 0 4px #0b0c0c;
+    text-decoration: none;
+}
+
+a:focus img {
+    background-color: #fd0;
+
+}
+
+
+a {
+    text-decoration: underline;
+    text-underline-offset: 0.1em;
+    font-weight: 600;
+    text-decoration-thickness: 2px;
+
+}
+
+a:hover {
+    text-decoration-thickness: max(3px, 0.1875rem, 0.12em);
+}
+
+p {
+    margin-bottom: 1.75rem;
+    margin-top: 0.5rem;
+    font-feature-settings: 'cv11', 'cv05', 'kern';
+}
+
+hr {
+    margin-bottom: calc(1.75rem - 1px);
+    margin-top: 1rem;
+    margin-left: 0;
+    background: #d1d1d1;
+    border: none;
+    height: 2px;
+}
