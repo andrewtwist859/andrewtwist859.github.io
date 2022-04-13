@@ -111,9 +111,20 @@ html, body {
     width: 100%;
     transform: scaleX(0);
     height: 3px;
-    background:linear-gradient(90deg, rgba(255,0,97,1) 0%, rgba(0,140,255,1) 100%); 
     transform-origin: bottom right;
     transition: transform 0.25s ease-out;
+  }
+
+.nav .first:after {
+    background:#71EEB8; 
+  }
+
+  .nav .second:after {
+    background:#FE036A; 
+  }
+
+  .nav .third:after {
+      background: #B19Cd8;
   }
 
   .nav span:hover:after {
