@@ -687,7 +687,7 @@ hr {
   }
   .module-hero .content .content-wrapper button {
     background-color: transparent;
-    border: 1px solid white;
+    border: 1px solid rgba(254,4,146,1);
     border-radius: 0.5em;
     color: white;
     cursor: pointer;
@@ -707,7 +707,7 @@ hr {
         background: linear-gradient(90deg, rgba(0,148,255,1) 0%, rgba(254,4,146,1) 40%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        margin-top:-1rem;
+        margin-top:-2rem;
     }
 
     h1.header-big1 {
@@ -731,7 +731,7 @@ hr {
         width: calc(100% + 4px);
         height: 60%;
         left: -2px;
-        bottom: 8px;
+        bottom: 20%;
         z-index: -1;
         transform: rotate(-0.25deg);
       }
@@ -757,5 +757,16 @@ hr {
         color: #040332 !important;
         text-decoration: none;
     }
-
+    .footer-container {
+        background-color: #020014;
+        color: white;
+        font-size: 1rem;
+        padding: 1rem 0rem;
+    }
+    
+    footer {
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 1440px;
+    }
     
