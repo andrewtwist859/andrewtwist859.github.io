@@ -338,6 +338,38 @@ html, body {
 
     }
 
+    @media only screen 
+    and (device-width: 390px) 
+    and (device-height: 844px) 
+    and (-webkit-device-pixel-ratio: 3) {
+        h1.header-big {
+            font-size: 50px !important;
+          }
+    
+          h1.header-big1 {
+            font-size: 28px !important;
+          }
+    
+    
+          h1.header-small {
+            font-size: 12px !important;
+            letter-spacing: 1rem !important;
+          }
+    
+          h1.header-small1 {
+            font-size: 12px !important;
+            letter-spacing: 1rem !important;
+          }
+    
+          a.sus {
+            font-size: 14px;
+            font-weight: 900 !important;
+            color: #040332 !important;
+            text-decoration: none;
+        }
+
+    }
+
     @media (max-width:60em){
     h1.header-big {
         font-size: 50px !important;
