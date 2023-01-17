@@ -679,7 +679,7 @@ hr {
   .module-hero .content .content-wrapper h1 {
     font-weight: bolder;
     text-transform: uppercase;
-    margin: 0;
+    
   }
   .module-hero .content .content-wrapper p {
     font-size: calc(10pt + 0.15vw);
@@ -707,6 +707,7 @@ hr {
         background: linear-gradient(90deg, rgba(0,148,255,1) 0%, rgba(254,4,146,1) 40%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
+        margin-top:-1rem;
     }
 
     h1.header-big1 {
