@@ -344,7 +344,7 @@ html, body {
     and (-webkit-device-pixel-ratio: 3) {
         h1.header-big {
             font-size: 50px !important;
-            margin-top:0rem;
+            margin-top:0rem !important;
           }
     
           h1.header-big1 {
