@@ -774,8 +774,4 @@ hr {
         max-width: 10px;
     }
 
-    @media (min-width: 1920px){
-.container p, h1, h2, h3, ul {
-    max-width: 900px;
-}
-}   
+  
