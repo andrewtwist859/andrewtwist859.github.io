@@ -121,7 +121,7 @@ html, body {
   }
 
 .nav .first:after {
-    background:#f94144; 
+    background:#128AF8; 
   }
 
   .nav .second:after {
@@ -344,6 +344,7 @@ html, body {
     and (-webkit-device-pixel-ratio: 3) {
         h1.header-big {
             font-size: 50px !important;
+            margin-top:0rem;
           }
     
           h1.header-big1 {
@@ -357,8 +358,8 @@ html, body {
           }
     
           h1.header-small1 {
-            font-size: 12px !important;
-            letter-spacing: 1rem !important;
+            font-size: 10px !important;
+            letter-spacing: 0.75rem !important;
           }
     
           a.sus {
