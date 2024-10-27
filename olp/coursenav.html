@@ -1298,51 +1298,81 @@ nav {
     </div>
   </div>  
 <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      // Select all h2 sections with IDs (anchors)
-      const sections = document.querySelectorAll('h2[id]');
-      // Select all navigation links that use anchor links
-      const navLinks = document.querySelectorAll('.nav-menu a, .mobile-menu a');
-  
-      function setActiveLink() {
-  let index = sections.length;
-  const offset = 200; // Adjust to trigger the change slightly earlier
+document.addEventListener('DOMContentLoaded', () => {
+  const sections = document.querySelectorAll('h2[id]');
+  const navLinks = document.querySelectorAll('.nav-menu a');
+  const navMenuContainer = document.querySelector(".nav-menu-container");
 
-  // Loop through sections in reverse order to find the current active section
-  while (--index && window.scrollY + offset < sections[index].offsetTop) {}
+  // Observer for forward scrolling (top of section enters view)
+  const forwardObserverOptions = {
+    root: null,
+    threshold: 0,
+    rootMargin: '-10% 0px -90% 0px' // Triggers when top is near the top of viewport
+  };
 
-  // Remove "active" class from all links
-  navLinks.forEach((link) => link.classList.remove("active"));
+  // Observer for backward scrolling (bottom of previous section enters view)
+  const backwardObserverOptions = {
+    root: null,
+    threshold: 0,
+    rootMargin: '-90% 0px -10% 0px' // Triggers when bottom is near the bottom of viewport
+  };
 
-  // Add "active" class to the corresponding link
-  if (navLinks[index]) {
-    navLinks.forEach((link) => {
-      if (link.getAttribute("href") === `#${sections[index].id}`) {
-        link.classList.add("active");
+  function activateLink(activeSectionId) {
+    // Remove active class from all links
+    navLinks.forEach(link => link.classList.remove("active"));
 
-        // Smooth scroll the nav menu to center the active link
-        const navMenuContainer = document.querySelector(".nav-menu-container");
-        const activeLink = link;
-        const containerWidth = navMenuContainer.offsetWidth;
-        const linkOffsetLeft = activeLink.offsetLeft;
-        const linkWidth = activeLink.offsetWidth;
+    // Add active class to the current link and scroll it to the start position
+    const activeLink = Array.from(navLinks).find(
+      link => link.getAttribute("href") === `#${activeSectionId}`
+    );
 
-        // Calculate the scroll position to center the active link
-        const scrollTo = linkOffsetLeft - (containerWidth / 2) + (linkWidth / 2);
+    if (activeLink) {
+      activeLink.classList.add("active");
 
-        // Smooth scroll
-        navMenuContainer.scrollTo({
-          left: scrollTo,
-          behavior: 'smooth'
-        });
+      // Smoothly scroll the active link to the start of the menu
+      const linkOffsetLeft = activeLink.offsetLeft;
+      navMenuContainer.scrollTo({
+        left: linkOffsetLeft,
+        behavior: 'smooth'
+      });
+    }
+  }
+
+  // Observer callbacks for forward and backward scrolling
+  function forwardIntersect(entries) {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const activeSectionId = entry.target.getAttribute('id');
+        activateLink(activeSectionId);
       }
     });
   }
-}
 
-// Listen for scroll events to activate the appropriate link
-window.addEventListener("scroll", setActiveLink);
+  function backwardIntersect(entries) {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const prevSection = entry.target.previousElementSibling;
+        if (prevSection && prevSection.tagName === 'H2') {
+          const activeSectionId = prevSection.getAttribute('id');
+          activateLink(activeSectionId);
+        }
+      }
     });
+  }
+
+  // Initialize observers
+  const forwardObserver = new IntersectionObserver(forwardIntersect, forwardObserverOptions);
+  const backwardObserver = new IntersectionObserver(backwardIntersect, backwardObserverOptions);
+
+  // Observe each section with both observers
+  sections.forEach(section => {
+    forwardObserver.observe(section);
+    backwardObserver.observe(section);
+  });
+});
+
+
+
   </script>
   
   <script>
