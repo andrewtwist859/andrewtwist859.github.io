@@ -41,6 +41,21 @@
     line-height: 1.6;
   }
 
+  p a {
+    font-weight: bold;
+    color: #440099;
+  }
+
+  p a:hover {
+    color: #7000ff;
+  }
+
+  p a:visited {
+    color:#1f0f4d
+  }
+
+
+
   li {
     padding-bottom: 1rem;
   }
@@ -763,6 +778,28 @@ nav {
     background-color: white;
 }
 }
+
+.button-link {
+    display: inline-flex;
+    align-items: center;
+    background-color: #7000ff; /* Light blue background */
+    color: white; /* Dark text color */
+    padding: 10px 20px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.button-link:hover {
+    background-color: #440099; /* Darker shade of blue on hover */
+}
+
+.button-link svg {
+    width: 16px;
+    height: 16px;
+    margin-left: 10px;
+}
 </style>
 </head>
 <body>
@@ -1148,11 +1185,11 @@ nav {
   <hr />
   <h3>Funding your study</h3>
   <p>Depending on your circumstances, you may qualify for a bursary, scholarship or loan to help fund your study and enhance your learning experience.</p>
-  <p>Use our Student Funding Calculator to work out what you’re eligible for.</p>
+  <p> <a href="/">Use our Student Funding Calculator to work out what you’re eligible for.</a></p>
   <hr />
   <h4>Additional funding</h4>
   <p>Details of funding awards and what the fees cover can be found on the department site.</p>
-  <p>Fees and funding for the School of Journalism, Media and Communication.</p>
+  <p><a href="/">Fees and funding for the School of Journalism, Media and Communication.</a></p>
   <hr class="section">
   <h2 id="learning">Learning and assessment</h2>
   <h3>Learning</h3>
@@ -1172,7 +1209,10 @@ nav {
   <hr />
   <h3>Programme specification</h3>
   <p>This tells you the aims and learning outcomes of this course and how these will be achieved and assessed.</p>
-  <p>Find programme specification for this course</p>
+  <a href="#" class="button-link">
+    Find programme specification for this course
+    <svg xmlns="http://www.w3.org/2000/svg"fill="#fff" viewBox="0 0 448 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg>
+</a>
   <hr class="section">
   <h2 id="facilities">Facilities</h2>
   <p>Brand new Faculty of Social Sciences building The Wave co-locates many of our departments to promote interdisciplinary excellence in research, learning and teaching and help us to lead the way in addressing important societal challenges.</p>
@@ -1213,7 +1253,10 @@ nav {
   <hr />
   <h3>Support and wellbeing</h3>
   <p>We also have a dedicated student support staff and a personal tutor system in place within the department to help you deal with any issues. If you need support regarding your workload, fees and finance, disability services or your mental health and wellbeing, there is always someone on hand to help.</p>
-  <p><a href="/">How we support you</a></p>
+  <a href="#" class="button-link">
+    How we support you
+    <svg xmlns="http://www.w3.org/2000/svg"fill="#fff" viewBox="0 0 448 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg>
+</a>
   <hr class="section">
   <h2 id="careers">Graduate careers</h2>
   <p>Our graduates go on to achieve great things and remain part of our legacy forever. They change the world through the power of storytelling - be they journalists, documentarians, PR experts, novelists, or teachers.</p>
@@ -1258,36 +1301,54 @@ nav {
     <h2 id="visit">Visit</h2>
     <h3>University open days</h3>
     <p>We host five open days each year, usually in June, July, September, October and November. You can talk to staff and students, tour the campus and see inside the accommodation.</p>
-    <p>Open days: book your place</p>
+    <a href="#" class="button-link">
+      Open days: book your place
+      <svg xmlns="http://www.w3.org/2000/svg"fill="#fff" viewBox="0 0 448 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg>
+  </a>
     <hr />
     <h3>Subject tasters</h3>
     <p>If you’re considering your post-16 options, our interactive subject tasters are for you. There are a wide range of subjects to choose from and you can attend sessions online or on campus.</p>
-    <p>Upcoming taster sessions</p>
+    <a href="#" class="button-link">
+      Upcoming taster sessions
+      <svg xmlns="http://www.w3.org/2000/svg"fill="#fff" viewBox="0 0 448 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg>
+  </a>
     <hr />
     <h3>Offer holder days</h3>
     <p>If you've received an offer to study with us, we'll invite you to one of our offer holder days, which take place between February and April. These open days have a strong department focus and give you the chance to really explore student life here, even if you've visited us before.</p>
     <hr />
     <h3>Campus tours</h3>
     <p>Our weekly guided tours show you what Sheffield has to offer - both on campus and beyond. You can extend your visit with tours of our city, accommodation or sport facilities.</p>
-    <p>Campus tour: book your place</p>
+    <a href="#" class="button-link">
+      Campus tour: book your place
+      <svg xmlns="http://www.w3.org/2000/svg"fill="#fff" viewBox="0 0 448 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg>
+  </a>
     <hr class="section">
     <h2 id="apply">Apply</h2>
     <p>Make sure you've done everything you need to do before you apply.</p>
-    <p>How to apply</p>
+    <a href="#" class="button-link">
+      How to apply
+      <svg xmlns="http://www.w3.org/2000/svg"fill="#fff" viewBox="0 0 448 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg>
+  </a>
     <p>When you're ready to apply, see the UCAS website:</p>
-    <p>www.ucas.com</p>
+    <a href="#" class="button-link">
+      www.ucas.com
+      <svg xmlns="http://www.w3.org/2000/svg"fill="#fff" viewBox="0 0 448 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg>
+  </a>
     <p>Not ready to apply yet? You can also register your interest in this course.</p>
     <hr class="section">
     <h2 id="contact">Contact</h2>
     <p>Telephone: +44 114 222 2500</p>
-    <p>Email: journalism-admissions@sheffield.ac.uk</p>
-    <p>School of Journalism, Media and Communication</p>
+    <p>Email: <a href="/">journalism-admissions@sheffield.ac.uk</a></p>
+    <a href="#" class="button-link">
+      School of Journalism, Media and Communication
+      <svg xmlns="http://www.w3.org/2000/svg"fill="#fff" viewBox="0 0 448 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg>
+  </a>
     <hr />
     <p>The awarding body for this course is the University of Sheffield.</p>
     <p>Recognition of professional qualifications: from 1 January 2021, in order to have any UK professional qualifications recognised for work in an EU country across a number of regulated and other professions you need to apply to the host country for recognition. Read information from the UK government and the EU Regulated Professions Database.</p>
     <p>Any supervisors and research areas listed are indicative and may change before the start of the course.</p>
-    <p>Our student protection plan</p>
-    <p>Terms and Conditions upon Acceptance of an Offer</p>
+    <p><a href="/">Our student protection plan</a></p>
+    <p><a href="/"></a>Terms and Conditions upon Acceptance of an Offer</a></p>
 </div>
 </div>
 <!-- Sticky Bottom Footer -->
