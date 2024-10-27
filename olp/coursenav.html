@@ -157,7 +157,7 @@
   /* Sticky Bottom Footer */
   .sticky-footer {
     position: fixed;
-    bottom: 0;
+    bottom: -100px;
     left: 0;
     width: 100%;
     background-color: #1F0F4D; /* Purple background */
@@ -167,7 +167,13 @@
     padding: 1.5rem 0;
     z-index: 10;
     box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    transition: bottom 0.6s cubic-bezier(0.25, 1, 0.5, 1); /* Smoother ease-in-out */
   }
+
+  /* Class to make footer visible */
+.sticky-footer.visible {
+  bottom: 0; /* Slide-up to visible */
+}
 
   .footer-container {
     max-width: 1180px;
@@ -1320,6 +1326,20 @@ window.addEventListener("scroll", setActiveLink);
 
   // Apply offset when navigating directly to a section (e.g., page load with hash)
   window.addEventListener('load', offsetAnchor);
+});
+
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+  const stickyFooter = document.querySelector('.sticky-footer');
+
+  window.addEventListener('scroll', function () {
+    if (window.scrollY > 100) {
+      stickyFooter.classList.add('visible'); // Show the footer
+    } else {
+      stickyFooter.classList.remove('visible'); // Hide the footer
+    }
+  });
 });
 
   </script>
