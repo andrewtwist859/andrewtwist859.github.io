@@ -96,6 +96,7 @@
     text-decoration: none;
     font-weight: bold;
     display: inline-block;
+    
   }
 
   .nav-menu a:hover,
@@ -207,6 +208,10 @@
   @media (max-width: 768px) {
     h1.course-dark, span.award-dark {
       font-size: 1.6rem !important;
+    }
+
+    .olp-banner-dark {
+      padding: 1rem !important;
     }
 
     .sticky-footer {
@@ -692,7 +697,6 @@ hr.section {
                 <div class="info-block-dark">
                     <div class="offer-dark">Typical offer</div>
                     <div class="value">ABB</div>
-                    <div class="subtext"><a href="/">Requirements</a></div>
                 </div>
                 <div class="info-block-dark">
                     <div class="ucas-dark">UCAS Code</div>
@@ -1213,7 +1217,7 @@ hr.section {
   
       function setActiveLink() {
   let index = sections.length;
-  const offset = 150; // Adjust this value to trigger the change earlier
+  const offset = 200; // Adjust to trigger the change slightly earlier
 
   // Loop through sections in reverse order to find the current active section
   while (--index && window.scrollY + offset < sections[index].offsetTop) {}
@@ -1227,15 +1231,21 @@ hr.section {
       if (link.getAttribute("href") === `#${sections[index].id}`) {
         link.classList.add("active");
 
-        // Scroll horizontally to keep the active link visible
+        // Smooth scroll the nav menu to center the active link
         const navMenuContainer = document.querySelector(".nav-menu-container");
         const activeLink = link;
         const containerWidth = navMenuContainer.offsetWidth;
         const linkOffsetLeft = activeLink.offsetLeft;
         const linkWidth = activeLink.offsetWidth;
 
-        // Calculate scroll position to center the active link in view
-        navMenuContainer.scrollLeft = linkOffsetLeft - (containerWidth / 2) + (linkWidth / 2);
+        // Calculate the scroll position to center the active link
+        const scrollTo = linkOffsetLeft - (containerWidth / 2) + (linkWidth / 2);
+
+        // Smooth scroll
+        navMenuContainer.scrollTo({
+          left: scrollTo,
+          behavior: 'smooth'
+        });
       }
     });
   }
