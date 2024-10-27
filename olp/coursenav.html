@@ -1,0 +1,1336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://use.typekit.net/szi0eid.css"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sticky Banner and Horizontal Scroll Navigation Menu</title>
+<style>
+  /* General Styles */
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color:#F3F4F4;
+  }
+
+  h1, h2, h3, h4 {
+    font-family:"source-serif-pro";
+    font-weight: 700;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+  }
+
+  h3 {
+    font-size: 1.6rem;
+    margin: 0.5rem 0rem;
+  }
+
+  h4 {
+    font-size: 1.4rem;
+    margin: 0.5rem 0rem;
+  }
+
+  p, li {
+    line-height: 1.6;
+  }
+
+  li {
+    padding-bottom: 1rem;
+  }
+
+  li:last-child {
+    padding-bottom: 0rem;
+  }
+
+  .banner-text {
+    font-family:"source-serif-pro";
+    font-weight: 700;
+    font-size: 2rem;
+  }
+
+  /* Sticky Container */
+  .sticky-container {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: white;
+  }
+
+  /* Banner Styles */
+  .banner {
+    background-color: #3B0D74;
+    color: #fff;
+    padding: 2rem 0rem;
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  /* Wrapper for Menu and Gradient */
+  .nav-menu-wrapper {
+    position: relative;
+    max-width: 1180px;
+    margin: 0 auto;
+  }
+
+  /* Desktop and Horizontal Scroll Menu Styles */
+  .nav-menu-container {
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .nav-menu {
+    display: flex;
+    justify-content: flex-start;
+    padding: 1rem 0rem;
+    max-width: 1180px;
+    margin: 0 auto;
+  }
+
+  .nav-menu a {
+    color: black;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+  }
+
+  .nav-menu a:hover,
+  .nav-menu .active {
+    background-color: #440099;
+    border-radius: 5px;
+    color: white;
+  }
+
+  /* Gradient overlay for fade effect */
+  .gradient-overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 50px;
+    background: linear-gradient(to left, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+    pointer-events: none;
+    z-index: 5; /* Ensure it appears above menu items */
+  }
+
+  /* Mobile Menu and Toggle Button Styles */
+  .menu-toggle {
+    display: none;
+    color: black;
+    background: none;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 15px;
+    cursor: pointer;
+    text-align: left;
+    background-color: white;
+    width: 100%;
+  }
+
+  .mobile-menu {
+    display: none;
+    background-color: white;
+    padding: 0;
+    width: 100%;
+    z-index: 9;
+  }
+
+  .mobile-menu a {
+    display: block;
+    color: black;
+    padding: 15px;
+    text-decoration: none;
+    border-bottom: 1px solid #440099;
+  }
+
+  .mobile-menu a:hover,
+  .mobile-menu .active {
+    background-color: #440099;
+    color: white;
+  }
+
+  /* Sticky Bottom Footer */
+  .sticky-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #1F0F4D; /* Purple background */
+    color: #fff;
+    display: flex;
+    justify-content: space-around;
+    padding: 1.5rem 0;
+    z-index: 10;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .footer-container {
+    max-width: 1180px;
+    margin: 0 auto;
+  }
+
+  .footer-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+  }
+
+  .footer-item svg {
+    margin-right:0.5rem;
+  }
+
+  .footer-item a {
+    color: white;
+  }
+
+  .footer-item svg {
+    width: 24px;
+    height: 24px;
+    margin-bottom: 5px;
+  }
+
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    .nav-menu-wrapper {
+      display: none; /* Hide horizontal scroll menu on mobile */
+    }
+
+    .menu-toggle {
+      display: block; /* Show the toggle button on mobile */
+    }
+
+    .mobile-menu.show {
+      display: block; /* Show the mobile menu when toggled */
+    }
+
+    .sticky-footer {
+      flex-direction: row;
+      padding: 10px 0;
+    }
+
+    .info-section {
+        flex-direction: column;
+        gap:20px !important;
+    }
+
+    .footer-item {
+      margin: 5px 0;
+      max-width: 12ch;
+      flex-direction: column;
+    }
+  }
+
+  .banner-content {
+    position: relative;
+    max-width: 1180px;
+    margin: 0 auto;
+}
+  
+  .banner-text {
+    padding-left:1rem;
+  }
+
+  .content-container {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding-bottom: 10rem;
+    
+  }
+
+  .content {
+    max-width: 80ch;
+    margin: 0;
+    padding: 0.25rem 0.5rem; 
+  }
+
+  .content img.main {
+    width: 100%;
+
+  }
+
+  .course-banner-dark {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    background-color: #1f0f4d;
+    padding-bottom: 1rem;
+    margin-top: -1rem;
+}
+
+.olp-banner-dark {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    background-color: #1f0f4d;
+    color: white;
+    margin: 0 auto;
+    max-width: 1180px;
+    padding: 2rem;
+}
+
+.olp-content {
+    position: relative;
+    z-index: 2;
+}
+
+h1.course-dark, span.award-dark {
+    font-family: "source-serif-pro", serif;
+    color: white;
+    font-size: 2.2rem;
+    font-weight: 700;
+    line-height:200%;
+    margin: 0;
+    position: relative;
+    display: inline-block;
+}
+
+span.award-dark {
+    color:#D7F1F6;
+    margin-left: 0.5rem;
+}
+
+span.school {
+    display: block;
+    font-size: 1rem;
+    margin-top: -0.5rem;
+}
+
+.summary {
+    max-width:70ch;
+    font-weight: 300;
+    padding-top: 1rem;
+    font-size: 1.2rem;
+}
+
+.info-section {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    flex-wrap: wrap;
+}
+
+.info-block-dark {
+    text-align: left;
+}
+
+.info-block-dark .heading {
+    color: #00b7c4; /* Light blue */
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.info-block-dark {
+    font-size: 1em;
+    font-weight: 600;
+}
+
+.offer-dark, .ucas-dark, .duration-dark, .start-dark {
+    padding-bottom: 0.75rem;
+}
+
+.info-block-dark .offer-dark {
+    color: #64CBE8;
+}
+
+.info-block-dark .ucas-dark {
+    color: #FF6371;
+}
+
+.info-block-dark .duration-dark {
+    color: #3BD4AE;
+}
+
+.info-block-dark .start-dark {
+    color: #DAA8E2;
+}
+
+.info-block-dark .value {
+    font-family: "source-serif-pro",serif;
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-top: -0.5rem;
+}
+
+.info-block-dark .subtext {
+    font-size: 0.9em;
+}
+
+.info-block-dark .subtext a {
+    color: #fff;
+     border-bottom: 2px #fff solid;
+}
+
+.subtext {
+    padding-top: 0.5rem;
+}
+
+.global-nav {
+    height:100px;
+    background-color: white;
+}
+
+.vertical-shelf {
+  display: flex;
+  justify-content: flex-start;
+  gap: 0.5rem;
+}
+
+.vertical-video {
+  width: calc(33.33% - 0.5rem); /* Four items per row */
+  background-color: darkslategrey;
+  border-radius: 5px;
+}
+
+.vertical-thumbnail {
+  position: relative;
+  aspect-ratio: 3 / 4; /* 9:16 aspect ratio */
+  overflow: hidden;
+  border-radius: 5px;
+}
+
+.vertical-thumbnail:hover {
+  cursor: pointer;
+}
+
+.vertical-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.vertical-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 10px;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2) 60%, rgba(0, 0, 0, 0.95) 100%);
+  transition: background 1.2s ease-out; 
+
+}
+
+.vertical-overlay:hover {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 60%, rgba(0, 0, 0, 0.95) 100%);
+
+}
+
+.vertical-duration {
+  font-family: "Source Sans 3", sans-serif !important;
+  color: white;
+  font-size: 0.75rem;
+  font-weight:600;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 4px 6px;
+  border-radius: 4px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+.vertical-title {
+  color: white;
+  font-size: 1rem;
+  line-height: 1.2rem;
+  font-family: "Source Sans 3", sans-serif !important;
+  margin: 0;
+  text-wrap: balance;
+  max-width:20ch;
+}
+
+/* Accordion styles */
+.accordion {
+  cursor: pointer;
+  font-weight: bold;
+  display: flex;
+  align-items: center; /* Align text and icon vertically */
+  text-decoration: underline;
+  font-family:"source-serif-pro";
+font-weight: 700;
+font-size: 1.2rem;
+padding: 0.5rem 0rem;
+}
+
+.accordion:hover {
+color: #7000ff;
+}
+
+.accordion::after {
+  content: '';
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin-right: 10px; /* Space between icon and text */
+  background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" fill="%237000ff" viewBox="0 0 448 512"%3E%3Cpath d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"%2F%3E%3C%2Fsvg%3E');
+  background-size: contain;
+  background-repeat: no-repeat;
+  transition: transform 0.3s ease;
+  margin-left: 0.5rem;
+}
+
+.accordion.active::after {
+  transform: rotate(180deg); /* Rotate to show up arrow */
+}
+
+.panel {
+    background-color: white;
+    padding: 1rem 2rem;
+    display: none;
+}
+
+hr {
+    margin: 1rem 0rem;
+    border: 1px solid #B8BBBF;
+}
+
+hr.space {
+    margin: 0.5rem 0rem;
+    border: none;
+}
+
+hr.section {
+    margin: 2rem 0rem;
+    border: 2px solid #1F0F4D;
+}
+
+.tab-container {
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+      background-color: white;
+    }
+
+    .tabs {
+      display: flex;
+      cursor: pointer;
+    }
+
+    .tab {
+      flex: 1;
+      padding: 10px;
+      text-align: center;
+      font-weight: bold;
+      background-color: #ddd;
+      color: #333;
+      transition: background-color 0.3s;
+    }
+
+    .tab.active {
+      background-color: #333;
+      color: #fff;
+    }
+
+    /* Content Styles */
+    .tab-content {
+        padding: 1rem 2rem;
+      background-color: white;
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    /* Container for the fee boxes */
+    .fee-container {
+      display: flex;
+      gap: 20px;
+    }
+
+    /* Individual fee box styles */
+    .fee-box {
+      background-color: white;
+      padding: 20px;
+      border-radius: 3px;
+      text-align: center;
+      width: 200px;
+    }
+
+    /* Amount style */
+    .fee-box .amount {
+      font-size: 1.8rem;
+      font-family: "source-serif-pro";
+      font-weight: 700;
+      color: #333;
+    }
+
+    /* Label and description styles */
+    .fee-box .label {
+      font-size: 18px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .fee-box .description {
+      font-size: 14px;
+      color: #666;
+      margin-top: 4px;
+    }
+
+    /* Basic styling for the gallery */
+    .gallery-container {
+      max-width: 800px;
+      margin: 20px auto;
+      text-align: center;
+    }
+
+    /* Main image display */
+    .main-image {
+      width: 100%;
+      border-radius: 2px;
+      cursor: pointer;
+    }
+
+    /* Thumbnail container */
+    .thumbnail-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 8px;
+      gap: 10px;
+    }
+
+    /* Thumbnail image styling */
+    .thumbnail {
+      width: 170px;
+      cursor: pointer;
+      border-radius: 2px;
+      transition: transform 0.2s ease;
+    }
+
+    .thumbnail:hover {
+      transform: scale(1.05);
+    }
+
+     /* Modal styling */
+     .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      z-index: 100;
+    }
+
+    .modal-content-container {
+      position: relative;
+      max-width: 90%;
+      max-height: 80%;
+      background-color: #fff;
+      border-radius: 0px;
+      overflow: hidden;
+      text-align: left;
+    }
+
+    .modal-content {
+      width: 100%;
+      max-height: 90%;
+      display: block;
+    }
+
+    /* Close button */
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      font-size: 30px;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    /* Description panel below the image */
+    .description-panel {
+      padding: 15px;
+      background-color: #f2f2f2;
+      text-align: left;
+    }
+
+    .description-panel h3 {
+      margin: 0;
+      font-size: 18px;
+      color: #333;
+    }
+
+    .description-panel p {
+      margin: 5px 0 0;
+      font-size: 14px;
+      color: #666;
+    }
+</style>
+</head>
+<body>
+
+<!-- Sticky Container with Banner and Nav Menu -->
+ <div class="global-nav"></div>
+  <!-- Banner -->
+  <div class="course-banner-dark">
+    <div class="olp-banner-dark">
+        <div class="olp-content-dark">
+            <h1 class="course-dark">Journalism Studies</h1>
+            <span class="award-dark">BA</span>
+            <span class="school">School of Journalism, Media and Communication</span>
+            <div class="info-section">
+                <div class="info-block-dark">
+                    <div class="offer-dark">Typical offer</div>
+                    <div class="value">ABB</div>
+                    <div class="subtext"><a href="/">Requirements</a></div>
+                </div>
+                <div class="info-block-dark">
+                    <div class="ucas-dark">UCAS Code</div>
+                    <div class="value">Q306</div>
+                </div>
+                <div class="info-block-dark">
+                    <div class="duration-dark">Duration</div>
+                    <div class="value">3 years / full-time</div>
+                </div>
+                <div class="info-block-dark">
+                    <div class="start-dark">Start date</div>
+                    <div class="value">September 2025</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="sticky-container">
+  <!-- Toggle Button for Mobile Menu -->
+  <button class="menu-toggle" onclick="toggleMenu()">Course menu &nbsp; ⏷</button>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#overview" class="active">Overview</a>
+    <a href="#modules">Modules</a>
+    <a href="#entry-requirements">Entry requirements</a>
+    <a href="#fees">Fees and funding</a>
+    <a href="#learning">Learning and assessment</a>
+    <a href="#facilities">Facilities</a>
+    <a href="#school">School</a>
+    <a href="#careers">Careers</a>
+    <a href="#visit">Visit</a>
+    <a href="#apply">Apply</a>
+    <a href="#contact">Contact</a>
+  </div>
+
+  <!-- Wrapper for Desktop Menu and Gradient Overlay -->
+  <div class="nav-menu-wrapper">
+    <div class="nav-menu-container">
+      <div class="nav-menu">
+        <a href="#overview" class="active">Overview</a>
+        <a href="#modules">Modules</a>
+        <a href="#entry-requirements">Entry requirements</a>
+        <a href="#fees">Fees and funding</a>
+        <a href="#learning">Learning and assessment</a>
+        <a href="#facilities">Facilities</a>
+        <a href="#school">School</a>
+        <a href="#careers">Careers</a>
+        <a href="#visit">Visit</a>
+        <a href="#apply">Apply</a>
+        <a href="#contact">Contact</a>
+        <a href="#"></a>
+      </div>
+    </div>
+    <!-- Gradient overlay to stay at the right edge -->
+    <div class="gradient-overlay"></div>
+  </div>
+</div>
+<div class="content-container">
+    <div class="content">
+<h2 id="overview">Overview</h2>
+ <img class="main" src="edit.jpg">   
+<p><strong>Our students go on to specialise in areas such as TV news, sports reporting, political journalism or even PR and communications.</strong></p>
+
+<p>Before you find your niche, you’ll learn and perfect the full range of skills you need as a contemporary media professional, including:</p>
+
+<ul>
+	<li>knowing the difference between 'good' and 'bad' journalism;</li>
+	<li>the ability to craft razor-sharp copy for a range of audiences;</li>
+	<li>practising within the bounds of media law and ethics;</li>
+	<li>and how to spot and tell great stories across all platforms, including print, television, radio, web and social media.</li>
+</ul>
+
+<p>You’ll get the chance to make contacts and learn on the job. Our long-standing connections in the media industry open up a huge range of placement opportunities at media organisations like the BBC, Press Association, Bloomberg and the Guardian.</p>
+<p>We also offer you the option to take a placement year to help gain vital experience and get ahead of the competition before graduation day.&nbsp;</p>
+<p>As a hands-on department at a prestigious Russell Group university, we're uniquely placed to offer you the best of both worlds. You’ll be taught by award-winning editors and authors, active journalists and world-leaders in media and communication research.</p>
+<p>If you're interested in understanding as well as doing journalism, this course delivers the perfect balance of practical know-how and theoretical knowledge on the history, theory and key debates of the industry.</p>
+<div class="vertical-shelf">
+    <div class="vertical-video">
+      <a href="https://www.tiktok.com/@sheffielduni/video/7372200575594745121" target="_blank">
+      <div class="vertical-thumbnail">
+        <img src="https://i.imgur.com/aPUaMRh.jpeg" alt="Video 1 Thumbnail">
+        <div class="vertical-overlay">
+          <span class="vertical-duration">1:19</span>
+          <h3 class="vertical-title">Come with us to the largest food hall in Europe</h3>
+        </div>
+      </div>
+    </a>
+    </div>
+    <!-- More video items similarly -->
+    <div class="vertical-video">
+        <a href="https://www.tiktok.com/@sheffielduni/video/7272771344020901153" target="_blank">
+        <div class="vertical-thumbnail">
+          <img src="https://i.imgur.com/jJeiWFJ.jpeg" alt="Video 2 Thumbnail">
+          <div class="vertical-overlay">
+            <span class="vertical-duration">0:25</span>
+            <h3 class="vertical-title">Grocery shopping in the UK</h3>
+          </div>
+        </div>
+    </a>
+      </div>
+    <div class="vertical-video">
+        <a href="https://www.tiktok.com/@sheffielduni/video/7390026014375644449" target="_blank">
+        <div class="vertical-thumbnail">
+          <img src="https://i.imgur.com/h5GHeGd.jpeg" alt="Video 3 Thumbnail">
+          <div class="vertical-overlay">
+            <span class="vertical-duration">1:04</span>
+            <h3 class="vertical-title">9 things to do in Sheffield</h3>
+          </div>
+        </div>
+        </a>
+      </div>
+    </div>
+    <p>As a hands-on department at a prestigious Russell Group university, we're uniquely placed to offer you the best of both worlds. You’ll be taught by award-winning editors and authors, active journalists and world-leaders in media and communication research.</p>
+<p>If you're interested in understanding as well as doing journalism, this course delivers the perfect balance of practical know-how and theoretical knowledge on the history, theory and key debates of the industry.</p>
+
+<hr class="section">
+<h2 id="modules">Modules</h2>
+<p>As a hands-on department at a prestigious Russell Group university, we're uniquely placed to offer you the best of both worlds. You’ll be taught by award-winning editors and authors, active journalists and world-leaders in media and communication research.</p>
+<hr />
+<h3>First year</h3>
+<p>Your first year of study comprises a single, integrated core module.</p>
+<div class="accordion-item">
+    <div class="accordion">Essential Journalism</div>
+    <div class="panel">
+      <p>This module develops news writing, news production and academic skills, combined with theoretical understanding of journalism in both a national and international context. It also provides an introduction to key future themes such as media law, ethics and analysing information. Students will learn how to write and structure news stories, develop interviewing skills, source and use quotes, and journalistic social media skills, amongst others. Themes include; journalism and politics; media freedom; journalism and society; audiences; technology and innovation in journalism; law and ethics; current debates in industry; and analysing news agendas.</p>
+      <p><strong>120 credits</strong></p>
+    </div>
+  </div>
+  <hr />
+  <h3>Second year</h3>
+  <p>In your second year, you take three core modules: for your third core module, you have a choice between two modules. You will choose your fourth module from either those taught by the School of Journalism, Media and Communication or the Guided Module Choice options available from other departments.</p>
+  <p>You also have an option to take Languages For All modules.</p>
+  <p>You must pass the Media Law for Journalists module in order to continue to year 3.</p>
+  <h4>Core modules</h4>
+  <div class="accordion-item">
+    <div class="accordion">Live news production</div>
+    <div class="panel">
+      <p>This module will give students a range of multi-platform production skills to showcase their journalism and to enable them to operate as critically thinking professionals. The module will gradually build up students' real world experience and will enable them to operate as self-motivated individuals as well as within a team. Students will work as Journalists in a variety of ways - ranging from the fast paced Newsday environment to the production of features, documentaries, projects and portfolios over a longer period of time. Students will learn to work as professionals while adhering to industry guidelines and making connections with academic theory.</p>
+      <p><strong>60 credits</strong></p>
+    </div>
+  </div>
+  
+  <div class="accordion-item">
+    <div class="accordion">Media Law for Journalists</div>
+    <div class="panel">
+      <p>This module provides for those wishing to be journalists, or studying journalism, essential knowledge of media law applying in England and Wales, and of regulatory codes which UK journalists should comply with. This law includes that of defamation, privacy and contempt of court, and other law governing court reporting. The codes seek to uphold journalistic standards generally, including protection of people's privacy and of the identities of sources promised confidentiality. The module also demonstrates that UK journalists can assert `human rights' which in law and the codes uphold freedom of expression, including publication of material `in the public interest'.</p>
+      <p><strong>20 credits</strong></p>
+    </div>
+    <hr />
+    <h4>Optional modules A</h4>
+    <p>You must choose your third core module from the the modules on this list.
+    </p>
+    <div class="accordion-item">
+        <div class="accordion">Reporting Justice</div>
+        <div class="panel">
+          <p>This module introduces journalism students to the skills required to write news reports from Crown, magistrates' and coroners' courts cases. Student will visit these courts to makes notes on real cases for these reports. Feedback is given to each student on their draft and finalised reports, and on their notes. Their accuracy in note-taking and speed in writing such a news report is assessed in a formal examination in which they write up a news report of a hypothetical 'prosecution opening' of a trial.</p>
+          <p><strong>20 credits</strong></p>
+        </div>
+      </div>
+      
+      <div class="accordion-item">
+        <div class="accordion">Introduction to PR for Journalists</div>
+        <div class="panel">
+          <p>This module will provide students with knowledge and skills necessary to communicate messages through the media. Case studies and practical workshops will allow students to learn about the practice of media communication. They will learn how the media operates and how to communicate messages through interviews, press conferences, news releases and social media. Topics covered in the module will include the development of communication strategies, the understanding of news values and news cycles and strategies for successful and ethical communication.</p>
+          <p><strong>20 credits</strong></p>
+        </div>
+        <hr />
+        <h4>Optional modules B</h4>
+    <p>You must choose one module from either this list OR the Guided Module Choice list below.</p>
+    <div class="accordion-item">
+        <div class="accordion">Journalism and Political Communication</div>
+        <div class="panel">
+          <p>This module introduces journalism students to the skills required to write news reports from Crown, magistrates' and coroners' courts cases. Student will visit these courts to makes notes on real cases for these reports. Feedback is given to each student on their draft and finalised reports, and on their notes. Their accuracy in note-taking and speed in writing such a news report is assessed in a formal examination in which they write up a news report of a hypothetical 'prosecution opening' of a trial.</p>
+          <p><strong>20 credits</strong></p>
+        </div>
+      </div>
+      
+    <div class="accordion-item">
+        <div class="accordion">Journalism in History</div>
+        <div class="panel">
+          <p>This module will provide students with knowledge and skills necessary to communicate messages through the media. Case studies and practical workshops will allow students to learn about the practice of media communication. They will learn how the media operates and how to communicate messages through interviews, press conferences, news releases and social media. Topics covered in the module will include the development of communication strategies, the understanding of news values and news cycles and strategies for successful and ethical communication.</p>
+          <p><strong>20 credits</strong></p>
+        </div>
+        </div>
+        <div class="accordion-item">
+            <div class="accordion">Sports Journalism</div>
+            <div class="panel">
+              <p>This module will provide students with knowledge and skills necessary to communicate messages through the media. Case studies and practical workshops will allow students to learn about the practice of media communication. They will learn how the media operates and how to communicate messages through interviews, press conferences, news releases and social media. Topics covered in the module will include the development of communication strategies, the understanding of news values and news cycles and strategies for successful and ethical communication.</p>
+              <p><strong>20 credits</strong></p>
+            </div>
+            </div>
+            <div class="accordion-item">
+                <div class="accordion">Introduction to Investigative Journalism</div>
+                <div class="panel">
+                  <p>This module will provide students with knowledge and skills necessary to communicate messages through the media. Case studies and practical workshops will allow students to learn about the practice of media communication. They will learn how the media operates and how to communicate messages through interviews, press conferences, news releases and social media. Topics covered in the module will include the development of communication strategies, the understanding of news values and news cycles and strategies for successful and ethical communication.</p>
+                  <p><strong>20 credits</strong></p>
+                </div>
+                </div>
+<div class="accordion-item">
+    <div class="accordion">Data Driven Storytelling</div>
+    <div class="panel">
+    <p>This module will provide students with knowledge and skills necessary to communicate messages through the media. Case studies and practical workshops will allow students to learn about the practice of media communication. They will learn how the media operates and how to communicate messages through interviews, press conferences, news releases and social media. Topics covered in the module will include the development of communication strategies, the understanding of news values and news cycles and strategies for successful and ethical communication.</p>
+    <p><strong>20 credits</strong></p>
+</div>
+</div>
+<hr />
+<h4>Guided module choice</h4>
+<div class="accordion-item">
+    <div class="accordion">Ethics: Theoretical and Practical</div>
+    <div class="panel">
+      <p>This module will provide students with knowledge and skills necessary to communicate messages through the media. Case studies and practical workshops will allow students to learn about the practice of media communication. They will learn how the media operates and how to communicate messages through interviews, press conferences, news releases and social media. Topics covered in the module will include the development of communication strategies, the understanding of news values and news cycles and strategies for successful and ethical communication.</p>
+      <p><strong>20 credits</strong></p>
+    </div>
+    </div>
+<div class="accordion-item">
+    <div class="accordion">Environmental Justice</div>
+    <div class="panel">
+      <p>This module will provide students with knowledge and skills necessary to communicate messages through the media. Case studies and practical workshops will allow students to learn about the practice of media communication. They will learn how the media operates and how to communicate messages through interviews, press conferences, news releases and social media. Topics covered in the module will include the development of communication strategies, the understanding of news values and news cycles and strategies for successful and ethical communication.</p>
+      <p><strong>20 credits</strong></p>
+    </div>
+    </div>
+<div class="accordion-item">
+    <div class="accordion">Dynamics of Social Change and Policy</div>
+    <div class="panel">
+      <p>This module will provide students with knowledge and skills necessary to communicate messages through the media. Case studies and practical workshops will allow students to learn about the practice of media communication. They will learn how the media operates and how to communicate messages through interviews, press conferences, news releases and social media. Topics covered in the module will include the development of communication strategies, the understanding of news values and news cycles and strategies for successful and ethical communication.</p>
+      <p><strong>20 credits</strong></p>
+    </div>
+    </div>
+<div class="accordion-item">
+    <div class="accordion">Children and Digital Cultures</div>
+    <div class="panel">
+    <p>This module will provide students with knowledge and skills necessary to communicate messages through the media. Case studies and practical workshops will allow students to learn about the practice of media communication. They will learn how the media operates and how to communicate messages through interviews, press conferences, news releases and social media. Topics covered in the module will include the development of communication strategies, the understanding of news values and news cycles and strategies for successful and ethical communication.</p>
+    <p><strong>20 credits</strong></p>
+</div>
+</div>
+<div class="accordion-item">
+    <div class="accordion">Digital Storytelling</div>
+    <div class="panel">
+    <p>This module will provide students with knowledge and skills necessary to communicate messages through the media. Case studies and practical workshops will allow students to learn about the practice of media communication. They will learn how the media operates and how to communicate messages through interviews, press conferences, news releases and social media. Topics covered in the module will include the development of communication strategies, the understanding of news values and news cycles and strategies for successful and ethical communication.</p>
+    <p><strong>20 credits</strong></p>
+</div>
+</div>
+<div class="accordion-item">
+    <div class="accordion">Political Philosophy Today</div>
+    <div class="panel">
+    <p>This module will provide students with knowledge and skills necessary to communicate messages through the media. Case studies and practical workshops will allow students to learn about the practice of media communication. They will learn how the media operates and how to communicate messages through interviews, press conferences, news releases and social media. Topics covered in the module will include the development of communication strategies, the understanding of news values and news cycles and strategies for successful and ethical communication.</p>
+    <p><strong>20 credits</strong></p>
+</div>
+</div>
+<div class="accordion-item">
+    <div class="accordion">Cities, Violence and Security</div>
+    <div class="panel">
+    <p>This module will provide students with knowledge and skills necessary to communicate messages through the media. Case studies and practical workshops will allow students to learn about the practice of media communication. They will learn how the media operates and how to communicate messages through interviews, press conferences, news releases and social media. Topics covered in the module will include the development of communication strategies, the understanding of news values and news cycles and strategies for successful and ethical communication.</p>
+    <p><strong>20 credits</strong></p>
+</div>
+</div>
+<hr />
+<h3>Third year</h3>
+<p>In your third year, you take two core modules, then choose from a range of others taught by the School of Journalism, Media and Communication and the Guided Module Choice options available from other departments.</p>
+<p>You also have an option to take Languages For All modules.</p>
+<h4>Core modules</h4>
+<div class="accordion-item">
+    <div class="accordion">Magazine Journalism and Production</div>
+    <div class="panel">
+    <p>This module will provide students with knowledge and skills necessary to communicate messages through the media. Case studies and practical workshops will allow students to learn about the practice of media communication. They will learn how the media operates and how to communicate messages through interviews, press conferences, news releases and social media. Topics covered in the module will include the development of communication strategies, the understanding of news values and news cycles and strategies for successful and ethical communication.</p>
+    <p><strong>20 credits</strong></p>
+</div>
+</div>
+<div class="accordion-item">
+    <div class="accordion">Final Project</div>
+    <div class="panel">
+    <p>This module will provide students with knowledge and skills necessary to communicate messages through the media. Case studies and practical workshops will allow students to learn about the practice of media communication. They will learn how the media operates and how to communicate messages through interviews, press conferences, news releases and social media. Topics covered in the module will include the development of communication strategies, the understanding of news values and news cycles and strategies for successful and ethical communication.</p>
+    <p><strong>20 credits</strong></p>
+</div>
+</div>
+<hr class="space">
+<p>The content of our courses is reviewed annually to make sure it's up-to-date and relevant. Individual modules are occasionally updated or withdrawn. This is in response to discoveries through our world-leading research; funding changes; professional accreditation requirements; student or employer feedback; outcomes of reviews; and variations in staff or student numbers. In the event of any change we'll consult and inform students in good time and take reasonable steps to minimise disruption.</p>
+<hr class="section">
+<h2 id="entry-requirements">Entry requirements</h2>
+<p>With Access Sheffield, you could qualify for additional consideration or an alternative offer - find out if you're eligible.</p>
+<div class="tab-container">
+    <!-- Tabs -->
+    <div class="tabs">
+      <div class="tab active" onclick="showContent('standard')">Standard offer</div>
+      <div class="tab" onclick="showContent('access')">Access Sheffield offer</div>
+    </div>
+  
+    <!-- Content for Standard Offer -->
+    <div id="standard" class="tab-content active">
+      <p><strong>The A Level entry requirements for this course are:</strong></p>
+      <h2>ABB</h2>
+      <p><strong>A Levels + a fourth Level 3 qualification:</strong> BBB + B in the EPQ</p>
+      <p><strong>International Baccalaureate:</strong> 33</p>
+      <p><strong>BTEC Extended Diploma:</strong> DDD in a relevant subject</p>
+      <p><strong>BTEC Diploma:</strong> DD + B at A Level</p>
+      <p><strong>Scottish Highers:</strong> AAABB</p>
+      <p><strong>Welsh Baccalaureate + 2 A Levels:</strong> B + AB at A Level</p>
+      <p><strong>Access to HE Diploma:</strong> Award of Access to HE Diploma in a relevant subject, with 45 credits at Level 3, including 30 at Distinction and 15 at Merit</p>
+      <p><a href="#">Routes for mature students</a></p>
+    </div>
+  
+    <!-- Content for Access Sheffield Offer -->
+    <div id="access" class="tab-content">
+      <p><strong>The A Level entry requirements for this course are:</strong></p>
+      <h2>BBB</h2>
+      <p><strong>A Levels + a fourth Level 3 qualification:</strong> BBB + B in the EPQ</p>
+      <p><strong>International Baccalaureate:</strong> 32</p>
+      <p><strong>BTEC Extended Diploma:</strong> DDM in a relevant subject</p>
+      <p><strong>BTEC Diploma:</strong> DD + B at A Level</p>
+      <p><strong>Scottish Highers:</strong> AABBB</p>
+      <p><strong>Welsh Baccalaureate + 2 A Levels:</strong> B + BB at A Level</p>
+      <p><strong>Access to HE Diploma:</strong> Award of Access to HE Diploma in a relevant subject, with 45 credits at Level 3, including 24 at Distinction and 21 at Merit</p>
+      <p><a href="#">Routes for mature students</a></p>
+    </div>
+  </div>
+  <hr />
+  <h4>English language requirements</h4>
+  <p> You must demonstrate that your English is good enough for you to successfully complete your course. For this course, we require: GCSE English Language at grade 4/C; IELTS grade of 7.5 with a minimum of 7.0 in each component; or an alternative acceptable English language qualification</p>
+  <div class="accordion-item">
+    <div class="accordion">Pathway programme for international students    </div>
+    <div class="panel">
+    <p>If you're an international student who does not meet the entry requirements for this course, you have the opportunity to apply for an International Foundation Year in Business, Social Sciences and Humanities at the University of Sheffield International College. This course is designed to develop your English language and academic skills. Upon successful completion, you can progress to degree level study at the University of Sheffield.</p>
+</div>
+</div>
+<p>If you have any questions about entry requirements, please contact the school/department.</p>
+<hr class="section">
+<h2 id="fees">Fees and funding</h2>
+<h3>Fees</h3>
+<p>Tuition fees for 2025 entry have not been confirmed. Please use 2024-25 information as a guide.</p>
+<div class="fee-container">
+    <!-- Home students fee box -->
+    <div class="fee-box">
+      <div class="amount">£9,250</div>
+      <div class="label">Home students</div>
+      <div class="description">2024 annual tuition fee</div>
+    </div>
+  
+    <!-- Overseas students fee box -->
+    <div class="fee-box">
+      <div class="amount">£25,540</div>
+      <div class="label">Overseas students</div>
+      <div class="description">2024 annual tuition fee</div>
+    </div>
+  </div>
+  <hr />
+  <h4>Additional costs</h4>
+  <p>The annual fee for your course includes a number of items in addition to your tuition. If an item or activity is classed as a compulsory element for your course, it will normally be included in your tuition fee. There are also other costs which you may need to consider.</p>
+  <p>Examples of what’s included and excluded</p>
+  <p>As part of your degree you have the opportunity to take external exams administered by the National Council for the Training of Journalists (NCTJ). There is no additional charge for your first sitting of these exams this cost is covered by the School of Journalism, Media and Communication.</p>
+  <p>If you resit the exams, however, you will need to pay the fees. (We strongly encourage students to take the NCTJ exams, but they are not compulsory and you don't need to sit or pass them to complete your degree.) If you resit NCTJ exams, you will need to pay the resit fee.</p>
+  <hr />
+  <h3>Funding your study</h3>
+  <p>Depending on your circumstances, you may qualify for a bursary, scholarship or loan to help fund your study and enhance your learning experience.</p>
+  <p>Use our Student Funding Calculator to work out what you’re eligible for.</p>
+  <hr />
+  <h4>Additional funding</h4>
+  <p>Details of funding awards and what the fees cover can be found on the department site.</p>
+  <p>Fees and funding for the School of Journalism, Media and Communication.</p>
+  <hr class="section">
+  <h2 id="learning">Learning and assessment</h2>
+  <h3>Learning</h3>
+  <ul>
+	<li><strong>Practical journalism assignments and workshops:</strong> you'll gather video, audio, interviews and copy from around the city,  preparing the content using our industry standard editing suites, newsrooms and broadcast studios. Regular workshops with our creative media team will also teach you how to best harness our facilities.</li>
+	<li><strong>Seminars and lectures:</strong> learn journalism ethics, law, history and critique through our lecture and seminar programmes.</li>
+	<li><strong>News days:</strong> all your skills will be put to the test on our news days, where you’ll play your part in a simulated newsroom environment to find, write, proof and publish real stories for our live news website.</li>
+</ul>
+  <p>We invest to create the right environment for you. That means outstanding facilities, study spaces and support, including 24/7 access to our online library service.</p>
+  <p>Study spaces and computers are available to offer you choice and flexibility for your study. Our five library sites give you access to over 1.3 million books and periodicals. You can access your library account and our rich digital collections from anywhere on or off campus. Other library services include study skills training to improve your grades, and tailored advice from experts in your subject.</p>
+  <p>Learning support facilities and library opening hours</p>
+  <p>Our staff include professional journalists with many years of experience in radio, TV, newspapers, magazines and digital media. They also include academic researchers with big reputations for their work on journalism safety, freedom of expression, media law and ethics, political communication, and much more.</p>
+  <hr />
+  <h3>Assessment</h3>
+  <p>You'll be assessed in a number of ways, including both exams and coursework you produce in response to theory based modules, and through the news stories and broadcasts you create as part of the practical elements of the degree.</p>
+  <p>The NCTJ diploma qualification will also include exams, which will run concurrently with the modules you study throughout the course.</p>
+  <hr />
+  <h3>Programme specification</h3>
+  <p>This tells you the aims and learning outcomes of this course and how these will be achieved and assessed.</p>
+  <p>Find programme specification for this course</p>
+  <hr class="section">
+  <h2 id="facilities">Facilities</h2>
+  <p>Brand new Faculty of Social Sciences building The Wave co-locates many of our departments to promote interdisciplinary excellence in research, learning and teaching and help us to lead the way in addressing important societal challenges.</p>
+  <p>Our facilities in The Wave include state-of-the-art lecture theatres, broadcast facilities and editing suites.</p>
+  <div class="gallery-container">
+    <!-- Main Image Display -->
+    <img id="mainImage" src="wave.jpg" class="main-image" alt="Main image" onclick="openModal('wave.jpg')">
+  
+    <!-- Thumbnail Container -->
+    <div class="thumbnail-container">
+        <img src="wave.jpg" class="thumbnail" onclick="changeMainImage('wave.jpg', 'Image 1', 'Description for Image 1')" alt="Thumbnail 1">
+        <img src="lecture.jpg" class="thumbnail" onclick="changeMainImage('lecture.jpg', 'Image 2', 'Description for Image 2')" alt="Thumbnail 2">
+        <img src="edit.jpg" class="thumbnail" onclick="changeMainImage('edit.jpg', 'Image 3', 'Description for Image 3')" alt="Thumbnail 3">
+        <img src="radio.jpg" class="thumbnail" onclick="changeMainImage('radio.jpg', 'Image 4', 'Description for Image 4')" alt="Thumbnail 4">
+      </div>
+    </div>
+  </div>
+  
+  <!-- Modal -->
+<div id="imageModal" class="modal" onclick="closeModal()">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <div class="modal-content-container" onclick="event.stopPropagation()">
+      <img id="modalImage" class="modal-content" alt="Modal Image">
+      <div class="description-panel">
+        <h3 id="imageTitle">Image Title</h3>
+        <p id="imageDescription">Image Description</p>
+      </div>
+    </div>
+  </div>
+  <hr class="section">
+  <h2 id="school">School of Journalism, Media and Communication</h2>
+  <img class="main" src="radio.jpg">
+  <p><strong>Here at the School of Journalism, Media and Communication, we’ve been training extraordinary journalists and conducting pioneering research since 1994, when our department was launched by Observer Editor Donald Trelford at our first home in Minalloy House.</strong></p>
+  <p>After 30 years in the industry, we’ve learnt a thing or two about networking. Study with us, and you'll have exclusive access to our unrivalled contacts and alumni network, situated in newsrooms across the world. We’ll also provide you with award-winning employability support in the form of one-to-one support sessions, weekly masterclasses and an array of placement opportunities  to help you get your foot in the door.</p>
+  <p>You’ll learn to ace the basics on our practical courses, including how to spot big stories and make them shine; edit engaging audio, video and podcasts in our state-of-the-art facilities; become an expert in social media; and even ace those shorthand exams.</p>
+  <p>We’re the only Russell Group University to be accredited by the NCTJ, BJTC and PPA, so you know you’re learning from the best of the best.</p>
+  <p>For those with an eye for journalism’s bigger picture, our research-led programmes will help you piece together the epic social narratives of global journalism, mass media and political communication. You’ll be rubbing shoulders with experts in media law, mis/disinformation, propaganda and freedom of the media - taking full advantage of the research excellence we have to offer as a Russell Group institution.</p>
+  <hr />
+  <h3>Support and wellbeing</h3>
+  <p>We also have a dedicated student support staff and a personal tutor system in place within the department to help you deal with any issues. If you need support regarding your workload, fees and finance, disability services or your mental health and wellbeing, there is always someone on hand to help.</p>
+  <p><a href="/">How we support you</a></p>
+  <hr class="section">
+  <h2 id="careers">Graduate careers</h2>
+  <p>Our graduates go on to achieve great things and remain part of our legacy forever. They change the world through the power of storytelling - be they journalists, documentarians, PR experts, novelists, or teachers.</p>
+  <p>Employers have previously included include Reach, the Financial Times, LADbible, National World PLC and Hearst Magazines (publishers of Esquire, Prima, Good Housekeeping and Men’s Health).</p>
+  <div class="vertical-shelf">
+    <div class="vertical-video">
+      <a href="https://www.tiktok.com/@sheffielduni/video/7372200575594745121" target="_blank">
+      <div class="vertical-thumbnail">
+        <img src="https://i.imgur.com/aPUaMRh.jpeg" alt="Video 1 Thumbnail">
+        <div class="vertical-overlay">
+          <span class="vertical-duration">1:19</span>
+          <h3 class="vertical-title">Come with us to the largest food hall in Europe</h3>
+        </div>
+      </div>
+    </a>
+    </div>
+    <!-- More video items similarly -->
+    <div class="vertical-video">
+        <a href="https://www.tiktok.com/@sheffielduni/video/7272771344020901153" target="_blank">
+        <div class="vertical-thumbnail">
+          <img src="https://i.imgur.com/jJeiWFJ.jpeg" alt="Video 2 Thumbnail">
+          <div class="vertical-overlay">
+            <span class="vertical-duration">0:25</span>
+            <h3 class="vertical-title">Grocery shopping in the UK</h3>
+          </div>
+        </div>
+    </a>
+      </div>
+    <div class="vertical-video">
+        <a href="https://www.tiktok.com/@sheffielduni/video/7390026014375644449" target="_blank">
+        <div class="vertical-thumbnail">
+          <img src="https://i.imgur.com/h5GHeGd.jpeg" alt="Video 3 Thumbnail">
+          <div class="vertical-overlay">
+            <span class="vertical-duration">1:04</span>
+            <h3 class="vertical-title">9 things to do in Sheffield</h3>
+          </div>
+        </div>
+        </a>
+      </div>
+    </div>
+    <hr class="section">
+    <h2 id="visit">Visit</h2>
+    <h3>University open days</h3>
+    <p>We host five open days each year, usually in June, July, September, October and November. You can talk to staff and students, tour the campus and see inside the accommodation.</p>
+    <p>Open days: book your place</p>
+    <hr />
+    <h3>Subject tasters</h3>
+    <p>If you’re considering your post-16 options, our interactive subject tasters are for you. There are a wide range of subjects to choose from and you can attend sessions online or on campus.</p>
+    <p>Upcoming taster sessions</p>
+    <hr />
+    <h3>Offer holder days</h3>
+    <p>If you've received an offer to study with us, we'll invite you to one of our offer holder days, which take place between February and April. These open days have a strong department focus and give you the chance to really explore student life here, even if you've visited us before.</p>
+    <hr />
+    <h3>Campus tours</h3>
+    <p>Our weekly guided tours show you what Sheffield has to offer - both on campus and beyond. You can extend your visit with tours of our city, accommodation or sport facilities.</p>
+    <p>Campus tour: book your place</p>
+    <hr class="section">
+    <h2 id="apply">Apply</h2>
+    <p>Make sure you've done everything you need to do before you apply.</p>
+    <p>How to apply</p>
+    <p>When you're ready to apply, see the UCAS website:</p>
+    <p>www.ucas.com</p>
+    <p>Not ready to apply yet? You can also register your interest in this course.</p>
+    <hr class="section">
+    <h2 id="contact">Contact</h2>
+    <p>Telephone: +44 114 222 2500</p>
+    <p>Email: journalism-admissions@sheffield.ac.uk</p>
+    <p>School of Journalism, Media and Communication</p>
+    <hr />
+    <p>The awarding body for this course is the University of Sheffield.</p>
+    <p>Recognition of professional qualifications: from 1 January 2021, in order to have any UK professional qualifications recognised for work in an EU country across a number of regulated and other professions you need to apply to the host country for recognition. Read information from the UK government and the EU Regulated Professions Database.</p>
+    <p>Any supervisors and research areas listed are indicative and may change before the start of the course.</p>
+    <p>Our student protection plan</p>
+    <p>Terms and Conditions upon Acceptance of an Offer</p>
+    <iframe id="unistats-widget-frame" title="Unistats KIS Widget" src="https://discoveruni.gov.uk/widget/10007157/P500/horizontal/small/EN-GB/FullTime" scrolling="no" style="overflow: hidden; border: 0px none transparent; width: 615px; height: 150px;"></iframe>
+</div>
+</div>
+<!-- Sticky Bottom Footer -->
+<div class="sticky-footer">
+    <div class="footer-item">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="#7000ff" viewBox="0 0 384 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"/></svg>      <a href="/open-day">Book an open day</a>
+    </div>
+    <div class="footer-item">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="#7000ff" viewBox="0 0 512 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l82.7 0L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3l0 82.7c0 17.7 14.3 32 32 32s32-14.3 32-32l0-160c0-17.7-14.3-32-32-32L320 0zM80 32C35.8 32 0 67.8 0 112L0 432c0 44.2 35.8 80 80 80l320 0c44.2 0 80-35.8 80-80l0-112c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 112c0 8.8-7.2 16-16 16L80 448c-8.8 0-16-7.2-16-16l0-320c0-8.8 7.2-16 16-16l112 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L80 32z"/></svg>      <a href="https://www.ucas.com">Apply via UCAS</a>
+    </div>
+    <div class="footer-item">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="#7000ff" viewBox="0 0 640 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M208 352c114.9 0 208-78.8 208-176S322.9 0 208 0S0 78.8 0 176c0 38.6 14.7 74.3 39.6 103.4c-3.5 9.4-8.7 17.7-14.2 24.7c-4.8 6.2-9.7 11-13.3 14.3c-1.8 1.6-3.3 2.9-4.3 3.7c-.5 .4-.9 .7-1.1 .8l-.2 .2s0 0 0 0s0 0 0 0C1 327.2-1.4 334.4 .8 340.9S9.1 352 16 352c21.8 0 43.8-5.6 62.1-12.5c9.2-3.5 17.8-7.4 25.2-11.4C134.1 343.3 169.8 352 208 352zM448 176c0 112.3-99.1 196.9-216.5 207C255.8 457.4 336.4 512 432 512c38.2 0 73.9-8.7 104.7-23.9c7.5 4 16 7.9 25.2 11.4c18.3 6.9 40.3 12.5 62.1 12.5c6.9 0 13.1-4.5 15.2-11.1c2.1-6.6-.2-13.8-5.8-17.9c0 0 0 0 0 0s0 0 0 0l-.2-.2c-.2-.2-.6-.4-1.1-.8c-1-.8-2.5-2-4.3-3.7c-3.6-3.3-8.5-8.1-13.3-14.3c-5.5-7-10.7-15.4-14.2-24.7c24.9-29 39.6-64.7 39.6-103.4c0-92.8-84.9-168.9-192.6-175.5c.4 5.1 .6 10.3 .6 15.5z"/></svg>      <a href="/tap">Chat to a student</a>
+    </div>
+    <div class="footer-item">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="#7000ff" viewBox="0 0 640 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M208 352c114.9 0 208-78.8 208-176S322.9 0 208 0S0 78.8 0 176c0 38.6 14.7 74.3 39.6 103.4c-3.5 9.4-8.7 17.7-14.2 24.7c-4.8 6.2-9.7 11-13.3 14.3c-1.8 1.6-3.3 2.9-4.3 3.7c-.5 .4-.9 .7-1.1 .8l-.2 .2s0 0 0 0s0 0 0 0C1 327.2-1.4 334.4 .8 340.9S9.1 352 16 352c21.8 0 43.8-5.6 62.1-12.5c9.2-3.5 17.8-7.4 25.2-11.4C134.1 343.3 169.8 352 208 352zM448 176c0 112.3-99.1 196.9-216.5 207C255.8 457.4 336.4 512 432 512c38.2 0 73.9-8.7 104.7-23.9c7.5 4 16 7.9 25.2 11.4c18.3 6.9 40.3 12.5 62.1 12.5c6.9 0 13.1-4.5 15.2-11.1c2.1-6.6-.2-13.8-5.8-17.9c0 0 0 0 0 0s0 0 0 0l-.2-.2c-.2-.2-.6-.4-1.1-.8c-1-.8-2.5-2-4.3-3.7c-3.6-3.3-8.5-8.1-13.3-14.3c-5.5-7-10.7-15.4-14.2-24.7c24.9-29 39.6-64.7 39.6-103.4c0-92.8-84.9-168.9-192.6-175.5c.4 5.1 .6 10.3 .6 15.5z"/></svg>      <a href="/tap">Search courses</a>
+    </div>
+  </div>  
+<script>
+  function toggleMenu() {
+    const mobileMenu = document.getElementById('mobileMenu');
+    mobileMenu.classList.toggle('show');
+  }
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Select all h2 sections with IDs (anchors)
+      const sections = document.querySelectorAll('h2[id]');
+      // Select all navigation links that use anchor links
+      const navLinks = document.querySelectorAll('.nav-menu a, .mobile-menu a');
+  
+      function setActiveLink() {
+  let index = sections.length;
+  const offset = 150; // Adjust this value to trigger the change earlier
+
+  // Loop through sections in reverse order to find the current active section
+  while (--index && window.scrollY + offset < sections[index].offsetTop) {}
+
+  // Remove "active" class from all links
+  navLinks.forEach((link) => link.classList.remove("active"));
+
+  // Add "active" class to the corresponding link
+  if (navLinks[index]) {
+    navLinks.forEach((link) => {
+      if (link.getAttribute("href") === `#${sections[index].id}`) {
+        link.classList.add("active");
+
+        // Scroll horizontally to keep the active link visible
+        const navMenuContainer = document.querySelector(".nav-menu-container");
+        const activeLink = link;
+        const containerWidth = navMenuContainer.offsetWidth;
+        const linkOffsetLeft = activeLink.offsetLeft;
+        const linkWidth = activeLink.offsetWidth;
+
+        // Calculate scroll position to center the active link in view
+        navMenuContainer.scrollLeft = linkOffsetLeft - (containerWidth / 2) + (linkWidth / 2);
+      }
+    });
+  }
+}
+
+// Listen for scroll events to activate the appropriate link
+window.addEventListener("scroll", setActiveLink);
+    });
+  </script>
+  
+  <script>
+    // Select all accordion elements
+    const accordions = document.querySelectorAll(".accordion");
+  
+    accordions.forEach(accordion => {
+      accordion.addEventListener("click", function() {
+        // Toggle 'active' class on the clicked accordion
+        this.classList.toggle("active");
+  
+        // Toggle the display of the associated panel
+        const panel = this.nextElementSibling;
+        if (panel.style.display === "block") {
+          panel.style.display = "none";
+        } else {
+          panel.style.display = "block";
+        }
+      });
+    });
+  </script>
+  <script>
+    function showContent(contentId) {
+      // Remove active class from all tabs and contents
+      document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+  
+      // Add active class to clicked tab and corresponding content
+      document.querySelector(`[onclick="showContent('${contentId}')"]`).classList.add('active');
+      document.getElementById(contentId).classList.add('active');
+    }
+  </script>
+  <script>
+    // Change the main image on thumbnail click
+    function changeMainImage(imageSrc, title, description) {
+      document.getElementById("mainImage").src = imageSrc;
+      document.getElementById("mainImage").setAttribute("onclick", `openModal('${imageSrc}', '${title}', '${description}')`);
+    }
+  
+    // Open the modal with the clicked image, title, and description
+    function openModal(imageSrc, title, description) {
+      document.getElementById("modalImage").src = imageSrc;
+      document.getElementById("imageTitle").innerText = title;
+      document.getElementById("imageDescription").innerText = description;
+      document.getElementById("imageModal").style.display = "flex";
+    }
+  
+    // Close the modal
+    function closeModal() {
+      document.getElementById("imageModal").style.display = "none";
+    }
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+  // Set your desired offset here (in pixels)
+  const offset = 100;
+
+  // Function to handle offsetting scroll position
+  function offsetAnchor() {
+    if (window.location.hash) {
+      const target = document.querySelector(window.location.hash);
+      if (target) {
+        const targetPosition = target.getBoundingClientRect().top + window.pageYOffset;
+        window.scrollTo({
+          top: targetPosition - offset,
+          behavior: 'smooth'
+        });
+      }
+    }
+  }
+
+  // Apply offset when links are clicked
+  document.querySelectorAll('.nav-menu a, .mobile-menu a').forEach(anchor => {
+    anchor.addEventListener('click', function(event) {
+      event.preventDefault(); // Prevent the default jump to the section
+      history.pushState(null, null, this.getAttribute('href')); // Update the URL hash
+      offsetAnchor(); // Scroll with offset
+    });
+  });
+
+  // Apply offset when navigating directly to a section (e.g., page load with hash)
+  window.addEventListener('load', offsetAnchor);
+});
+
+  </script>
+</body>
+</html>

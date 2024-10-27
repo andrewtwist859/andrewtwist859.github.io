@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Gallery with Modal</title>
+  <style>
+    /* Basic styling for the gallery */
+    .gallery-container {
+      max-width: 800px;
+      margin: 20px auto;
+      text-align: center;
+    }
+
+    /* Main image display */
+    .main-image {
+      width: 100%;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Thumbnail container */
+    .thumbnail-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 15px;
+      gap: 10px;
+    }
+
+    /* Thumbnail image styling */
+    .thumbnail {
+      width: 150px;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: transform 0.2s ease;
+    }
+
+    .thumbnail:hover {
+      transform: scale(1.05);
+    }
+
+    /* Modal styling */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-content {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 8px;
+    }
+
+    /* Close button */
+    .close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 40px;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<div class="gallery-container">
+  <!-- Main Image Display -->
+  <img id="mainImage" src="wave.jpg" class="main-image" alt="Main image" onclick="openModal('wave.jpg')">
+
+  <!-- Thumbnail Container -->
+  <div class="thumbnail-container">
+    <img src="wave.jpg" class="thumbnail" onclick="changeMainImage('wave.jpg')" alt="Thumbnail 1">
+    <img src="lecture.jpg" class="thumbnail" onclick="changeMainImage('lecture.jpg')" alt="Thumbnail 2">
+    <img src="edit.jpg" class="thumbnail" onclick="changeMainImage('edit.jpg')" alt="Thumbnail 3">
+    <img src="radio.jpg" class="thumbnail" onclick="changeMainImage('radio.jpg')" alt="Thumbnail 4">
+  </div>
+</div>
+
+<!-- Modal -->
+<div id="imageModal" class="modal" onclick="closeModal()">
+  <span class="close" onclick="closeModal()">&times;</span>
+  <img id="modalImage" class="modal-content" alt="Modal Image">
+</div>
+
+<script>
+  // Change the main image on thumbnail click
+  function changeMainImage(imageSrc) {
+    document.getElementById("mainImage").src = imageSrc;
+  }
+
+  // Open the modal with the clicked image
+  function openModal(imageSrc) {
+    document.getElementById("modalImage").src = imageSrc;
+    document.getElementById("imageModal").style.display = "flex";
+  }
+
+  // Close the modal
+  function closeModal() {
+    document.getElementById("imageModal").style.display = "none";
+  }
+</script>
+
+</body>
+</html>
