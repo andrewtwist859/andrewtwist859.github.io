@@ -130,43 +130,49 @@
       cursor: pointer;
     }
 
-    /* Mobile menu overlay */
-    .mobile-menu-overlay {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.7);
-      z-index: 200;
-      flex-direction: column;
-      align-items: flex-start;
-      padding-top: 4rem;
-    }
+/* Wrapper to keep all panels within a single overlay, preventing exposure */
+.mobile-menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 1); /* Fully opaque to prevent exposure */
+  overflow: hidden;
+  display: none;
+  z-index: 100; /* Ensure it's above other content */
+}
 
-   /* Only apply transition when navigating between layers */
+/* Panel styling */
 .mobile-menu-panel, .mobile-submenu-panel {
   width: 100%;
-  background-color: #fff;
   padding: 6rem 3rem;
-  display: none; /* Hide all panels by default */
   flex-direction: column;
   position: absolute;
   top: 0;
   height: 100%;
   overflow-y: auto;
-  transition: transform 0.3s ease; /* Smooth layer transition */
+  transform: translateX(100%); /* Start off-screen */
+  opacity: 0; /* Start hidden */
+  transition: transform 0.3s ease, opacity 0.3s ease; /* Smooth transition */
+  z-index: 1; /* Ensure only active panel is visible */
 }
 
+/* Show the active panel */
 .mobile-menu-panel.show, .mobile-submenu-panel.show {
-  display: flex; /* Show only the active panel */
-  transform: translateX(0); /* Start at the center */
+  opacity: 1;
+  transform: translateX(0); /* Slide in fully */
+  z-index: 2; /* Bring active panel to the top */
 }
 
+/* Slide back for "Back" navigation */
 .mobile-submenu-panel.back {
-  transform: translateX(-100%); /* Slide back to the left */
+  transform: translateX(-100%); /* Slide off to the left */
+  opacity: 0;
+  z-index: 1; /* Lower z-index to prevent exposure */
 }
+
+
 
     .mobile-submenu-panel h4,
     .mobile-menu-panel ul li, .mobile-submenu-panel ul li {
@@ -686,76 +692,46 @@ function togglePanel(panelId) {
     document.querySelectorAll('.mega-menu-panel').forEach(p => p.classList.remove('show'));
     if (!isPanelOpen) panel.classList.add('show');
   }
-    // Initialize variables to track current and previous layers
-    let currentPanel = 'main-mobile-panel';
-    const navHistory = [];
-  
-    function toggleMobileMenu() {
-      const overlay = document.getElementById('mobile-menu-overlay');
-  
-      if (overlay.style.display === 'flex') {
-        // Closing the menu: Reset everything
-        overlay.style.display = 'none';
-        navHistory.length = 0;
-        currentPanel = 'main-mobile-panel';
-        document.querySelectorAll('.mobile-submenu-panel').forEach(panel => panel.classList.remove('show', 'back'));
-        document.getElementById('main-mobile-panel').classList.add('show'); // Show main menu only
-      } else {
-        // Opening the menu: Ensure main panel is visible without resetting layers
-        overlay.style.display = 'flex';
-        document.getElementById('main-mobile-panel').classList.add('show');
-      }
+  let currentPanel = 'main-mobile-panel';
+  const navHistory = [];
+
+  function toggleMobileMenu() {
+    const overlay = document.getElementById('mobile-menu-overlay');
+
+    if (overlay.style.display === 'flex') {
+      overlay.style.display = 'none';
+      navHistory.length = 0;
+      currentPanel = 'main-mobile-panel';
+      document.querySelectorAll('.mobile-submenu-panel').forEach(panel => panel.classList.remove('show', 'back'));
+      document.getElementById('main-mobile-panel').classList.add('show');
+    } else {
+      overlay.style.display = 'flex';
+      document.getElementById('main-mobile-panel').classList.add('show');
     }
-  
-    function openSubmenu(panelId) {
-      // Hide the current panel and push it to history
-      if (currentPanel) {
-        navHistory.push(currentPanel);
-        document.getElementById(currentPanel).classList.remove('show', 'back');
-      }
+  }
+
+  function openSubmenu(panelId) {
+    if (currentPanel) {
+      navHistory.push(currentPanel);
+      document.getElementById(currentPanel).classList.remove('show', 'back');
+    }
+    
+    document.getElementById(panelId).classList.add('show');
+    currentPanel = panelId;
+  }
+
+  function closeSubmenu() {
+    if (navHistory.length > 0) {
+      document.getElementById(currentPanel).classList.remove('show');
+      document.getElementById(currentPanel).classList.add('back'); // Slide out to the left
       
-      // Show the new panel
-      document.getElementById(panelId).classList.add('show');
-      currentPanel = panelId; // Update the current panel
+      currentPanel = navHistory.pop();
+      document.getElementById(currentPanel).classList.add('show'); // Show previous panel
+    } else {
+      document.getElementById('main-mobile-panel').style.left = '0';
+      currentPanel = 'main-mobile-panel';
     }
-  
-    function closeSubmenu() {
-      // Remove current panel and show the previous one
-      if (navHistory.length > 0) {
-        document.getElementById(currentPanel).classList.remove('show'); // Hide current panel
-        currentPanel = navHistory.pop(); // Get previous panel
-        document.getElementById(currentPanel).classList.add('show'); // Show previous panel
-      } else {
-        // If no history, reset to the main panel
-        document.getElementById('main-mobile-panel').style.left = '0';
-        currentPanel = 'main-mobile-panel';
-      }
-    }
-  </script>
-  <script>
-    // Function to toggle a specific mega menu panel
-    function togglePanel(panelId) {
-      const panel = document.getElementById(panelId);
-      const isPanelOpen = panel.classList.contains('show');
-  
-      // Close any open panels
-      document.querySelectorAll('.mega-menu-panel').forEach(p => p.classList.remove('show'));
-  
-      // Toggle the clicked panel
-      if (!isPanelOpen) {
-        panel.classList.add('show');
-      }
-    }
-  
-    // Event listener to close mega menu if click is outside
-    document.addEventListener('click', function(event) {
-      const isClickInside = event.target.closest('.navbar') || event.target.closest('.mega-menu-panel');
-  
-      // If click is outside the navbar and mega menu, close all panels
-      if (!isClickInside) {
-        document.querySelectorAll('.mega-menu-panel').forEach(panel => panel.classList.remove('show'));
-      }
-    });
+  }
   </script>  
   
 </body>
