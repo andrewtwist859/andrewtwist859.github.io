@@ -162,8 +162,25 @@
     .mobile-menu-panel h4 {
         font-weight: bold;
         margin-bottom: 0.5rem;
+        display: inline-flex;
+        padding: 0; /* Remove any padding */
     }
 
+    .mobile-menu-panel h4::after, .mobile-submenu-panel h4::after {
+  content: "";
+  display: inline-block;
+  width: 16px; /* Set width and height of the icon */
+  height: 16px;
+  margin-left: 8px; /* Space between text and icon */
+  background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" fill="%237000ff" viewBox="0 0 448 512"%3E%3Cpath d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"%3E%3C/path%3E%3C/svg%3E');
+  background-size: contain;
+  background-repeat: no-repeat;
+  transform: translateY(3px);
+}
+
+h4.plain::after {
+background-image: none;
+}
     .mobile-menu-panel p {
         margin-bottom: 1.5rem;
     }
@@ -342,7 +359,7 @@
     <!-- Study Category Panels (Third-level Panels) -->
     <div class="mobile-submenu-panel" id="mobile-study-undergraduate">
       <div class="back-btn" onclick="closeSubmenu('mobile-study-undergraduate')">← Back</div>
-      <h4>Undergraduate</h4>
+      <h4 class="plain">Undergraduate</h4>
       <ul>
         <li>Undergraduate courses</li>
         <li>Undergraduate open days</li>
@@ -355,7 +372,7 @@
 
     <div class="mobile-submenu-panel" id="mobile-study-postgraduate">
       <div class="back-btn" onclick="closeSubmenu('mobile-study-postgraduate')">← Back</div>
-      <h4>Postgraduate taught</h4>
+      <h4 class="plain">Postgraduate taught</h4>
       <ul>
         <li>Postgraduate taught courses</li>
         <li>Postgraduate open days</li>
@@ -367,7 +384,7 @@
 
     <div class="mobile-submenu-panel" id="mobile-study-phd">
       <div class="back-btn" onclick="closeSubmenu('mobile-study-phd')">← Back</div>
-      <h4>PhD study</h4>
+      <h4 class="plain">PhD study</h4>
       <ul>
         <li>Find a PhD</li>
         <li>How to apply</li>
@@ -378,7 +395,7 @@
 
     <div class="mobile-submenu-panel" id="mobile-study-other">
       <div class="back-btn" onclick="closeSubmenu('mobile-study-other')">← Back</div>
-      <h4>Other ways to study</h4>
+      <h4 class="plain">Other ways to study</h4>
       <ul>
         <li>Apprenticeships</li>
         <li>Mature students</li>
@@ -400,7 +417,7 @@
   <!-- Study Category Panels (Third-level Panels) -->
   <div class="mobile-submenu-panel" id="mobile-research-research">
     <div class="back-btn" onclick="closeSubmenu('mobile-research-research')">← Back</div>
-    <h4>Research at Sheffield</h4>
+    <h4 class="plain">Research at Sheffield</h4>
         <ul>
           <li>Our strategic priorities</li>
           <li>Our people</li>
@@ -412,7 +429,7 @@
   </div>
   <div class="mobile-submenu-panel" id="mobile-research-postgraduate">
     <div class="back-btn" onclick="closeSubmenu('mobile-research-postgraduate')">← Back</div>
-    <h4>Postgraduate research</h4>
+    <h4 class="plain">Postgraduate research</h4>
         <ul>
           <li>Find a PhD</li>
           <li>PhD projects directory</li>
@@ -421,7 +438,7 @@
   </div>
   <div class="mobile-submenu-panel" id="mobile-research-expertise">
     <div class="back-btn" onclick="closeSubmenu('mobile-research-expertise')">← Back</div>
-    <h4>Expertise</h4>
+    <h4 class="plain">Expertise</h4>
         <ul>
           <li>Flagship research institutes</li>
           <li>Research centres</li>
@@ -431,7 +448,7 @@
   </div>
   <div class="mobile-submenu-panel" id="mobile-research-impact">
     <div class="back-btn" onclick="closeSubmenu('mobile-research-impact')">← Back</div>
-    <h4>Our impact</h4>
+    <h4 class="plain">Our impact</h4>
         <ul>
           <li>Research features</li>
           <li>UN sustainable development goals</li>
