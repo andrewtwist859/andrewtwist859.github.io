@@ -679,6 +679,13 @@ background-image: none;
 
 </div>
 <script>
+
+function togglePanel(panelId) {
+    const panel = document.getElementById(panelId);
+    const isPanelOpen = panel.classList.contains('show');
+    document.querySelectorAll('.mega-menu-panel').forEach(p => p.classList.remove('show'));
+    if (!isPanelOpen) panel.classList.add('show');
+  }
     // Initialize variables to track current and previous layers
     let currentPanel = 'main-mobile-panel';
     const navHistory = [];
@@ -725,7 +732,31 @@ background-image: none;
       }
     }
   </script>
+  <script>
+    // Function to toggle a specific mega menu panel
+    function togglePanel(panelId) {
+      const panel = document.getElementById(panelId);
+      const isPanelOpen = panel.classList.contains('show');
   
+      // Close any open panels
+      document.querySelectorAll('.mega-menu-panel').forEach(p => p.classList.remove('show'));
+  
+      // Toggle the clicked panel
+      if (!isPanelOpen) {
+        panel.classList.add('show');
+      }
+    }
+  
+    // Event listener to close mega menu if click is outside
+    document.addEventListener('click', function(event) {
+      const isClickInside = event.target.closest('.navbar') || event.target.closest('.mega-menu-panel');
+  
+      // If click is outside the navbar and mega menu, close all panels
+      if (!isClickInside) {
+        document.querySelectorAll('.mega-menu-panel').forEach(panel => panel.classList.remove('show'));
+      }
+    });
+  </script>  
   
 </body>
 </html>
