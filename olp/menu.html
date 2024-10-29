@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="https://use.typekit.net/szi0eid.css"> 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Responsive Mega Menu with Mobile Version</title>
@@ -14,13 +15,13 @@
     body {
       font-family: Arial, sans-serif;
       overflow-x: hidden;
+      background-color: #F8F8F9;
     }
 
     /* Navbar styling */
     .navbar {
       background-color: #fff;
-      border-bottom: 1px solid #ccc;
-      padding: 1rem 0;
+      padding: 2rem 0;
       width: 100%;
       position: relative;
     }
@@ -40,7 +41,7 @@
     }
 
     .logo {
-      width: 40px;
+      width: 180px;
       margin-right: 10px;
     }
 
@@ -129,7 +130,7 @@
     .mobile-menu-panel, .mobile-submenu-panel {
       width: 100%;
       background-color: #fff;
-      padding: 3rem;
+      padding: 6rem 3rem;
       display: flex;
       flex-direction: column;
       position: absolute;
@@ -147,9 +148,26 @@
 
     .mobile-menu-panel h4, .mobile-submenu-panel h4,
     .mobile-menu-panel ul li, .mobile-submenu-panel ul li {
-      margin-bottom: 1rem;
+      margin-bottom: 1.4rem;
       cursor: pointer;
+      list-style: none;
+      font-size: 1.2rem;
     }
+
+    .mobile-menu-panel h4, .mobile-submenu-panel h4 {
+        font-size: 1.4rem;
+        
+    }
+
+    .mobile-menu-panel h4 {
+        font-weight: 400;
+    }
+
+     .mobile-submenu-panel h4 {
+        font-family:"source-serif-pro";
+        
+    }
+    
 
     .close-btn {
       position: absolute;
@@ -174,6 +192,14 @@
         display: none;
       }
 
+      .navbar {
+        padding: 1.2rem 0rem;
+      }
+
+      .logo {
+        width: 150px;
+      }
+
       .hamburger {
         display: block;
       }
@@ -186,7 +212,6 @@
     <div class="navbar-content">
       <div class="navbar-brand">
         <img src="logo.png" alt="University of Sheffield Logo" class="logo">
-        <span>University of Sheffield</span>
       </div>
       <ul class="nav-links">
         <li class="nav-item" onclick="togglePanel('study-panel')">Study</li>
@@ -197,6 +222,51 @@
       <div class="hamburger" onclick="toggleMobileMenu()">☰</div>
     </div>
   </nav>
+
+  <!-- Mega Menu Panels (Desktop) -->
+  <div class="mega-menu-panel" id="study-panel">
+    <div class="mega-menu-content">
+      <div class="menu-column">
+        <h4>Undergraduate</h4>
+        <ul>
+          <li>Undergraduate courses</li>
+          <li>Undergraduate open days</li>
+          <li>How to apply</li>
+          <li>Fees and funding</li>
+          <li>Accommodation</li>
+          <li>International students</li>
+        </ul>
+      </div>
+      <div class="menu-column">
+        <h4>Postgraduate taught</h4>
+        <ul>
+          <li>Postgraduate taught courses</li>
+          <li>Postgraduate open days</li>
+          <li>How to apply</li>
+          <li>Fees and funding</li>
+          <li>International students</li>
+        </ul>
+      </div>
+      <div class="menu-column">
+        <h4>PhD study</h4>
+        <ul>
+          <li>Find a PhD</li>
+          <li>How to apply</li>
+          <li>PhD fees</li>
+          <li>PhD scholarships</li>
+        </ul>
+      </div>
+      <div class="menu-column">
+        <h4>Other ways to study</h4>
+        <ul>
+          <li>Apprenticeships</li>
+          <li>Mature students</li>
+          <li>Online learning</li>
+          <li>TEFL and English as a second language</li>
+        </ul>
+      </div>
+    </div>
+  </div>
 
   <!-- Mega Menu Panels (Desktop) -->
   <div class="mega-menu-panel" id="study-panel">
@@ -312,6 +382,14 @@
   </div>
 
   <script>
+
+    function togglePanel(panelId) {
+      const panel = document.getElementById(panelId);
+      const isPanelOpen = panel.classList.contains('show');
+      document.querySelectorAll('.mega-menu-panel').forEach(p => p.classList.remove('show'));
+      if (!isPanelOpen) panel.classList.add('show');
+    }
+
     function toggleMobileMenu() {
       const overlay = document.getElementById('mobile-menu-overlay');
       overlay.style.display = overlay.style.display === 'flex' ? 'none' : 'flex';
