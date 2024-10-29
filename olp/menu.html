@@ -269,45 +269,43 @@
   </div>
 
   <!-- Mega Menu Panels (Desktop) -->
-  <div class="mega-menu-panel" id="study-panel">
+  <div class="mega-menu-panel" id="research-panel">
     <div class="mega-menu-content">
       <div class="menu-column">
-        <h4>Undergraduate</h4>
+        <h4>Research at Sheffield</h4>
         <ul>
-          <li>Undergraduate courses</li>
-          <li>Undergraduate open days</li>
-          <li>How to apply</li>
-          <li>Fees and funding</li>
-          <li>Accommodation</li>
-          <li>International students</li>
+          <li>Our strategic priorities</li>
+          <li>Our people</li>
+          <li>Research Excellence Framework 2021</li>
+          <li>Researcher support</li>
+          <li>Research environment and culture</li>
+          <li>Open Research</li>
         </ul>
       </div>
       <div class="menu-column">
-        <h4>Postgraduate taught</h4>
-        <ul>
-          <li>Postgraduate taught courses</li>
-          <li>Postgraduate open days</li>
-          <li>How to apply</li>
-          <li>Fees and funding</li>
-          <li>International students</li>
-        </ul>
-      </div>
-      <div class="menu-column">
-        <h4>PhD study</h4>
+        <h4>Postgraduate research</h4>
         <ul>
           <li>Find a PhD</li>
-          <li>How to apply</li>
-          <li>PhD fees</li>
+          <li>PhD projects directory</li>
           <li>PhD scholarships</li>
         </ul>
       </div>
       <div class="menu-column">
-        <h4>Other ways to study</h4>
+        <h4>Expertise</h4>
         <ul>
-          <li>Apprenticeships</li>
-          <li>Mature students</li>
-          <li>Online learning</li>
-          <li>TEFL and English as a second language</li>
+          <li>Flagship research institutes</li>
+          <li>Research centres</li>
+          <li>Facilities</li>
+          <li>Library</li>
+        </ul>
+      </div>
+      <div class="menu-column">
+        <h4>Our impact</h4>
+        <ul>
+          <li>Research features</li>
+          <li>UN sustainable development goals</li>
+          <li>University Player</li>
+          <li>Queen's Anniversary Prizes</li>
         </ul>
       </div>
     </div>
@@ -379,8 +377,64 @@
         <li>TEFL and English as a second language</li>
       </ul>
     </div>
+  
+
+   <!-- Research Submenu Panel (Showing H4s only) -->
+   <div class="mobile-submenu-panel" id="mobile-research-panel">
+    <div class="back-btn" onclick="closeSubmenu('mobile-research-panel')">← Back</div>
+    <h4 onclick="openSubmenu('mobile-research-research')">Research at Sheffield</h4>
+    <h4 onclick="openSubmenu('mobile-research-postgraduate')">Postgraduate research</h4>
+    <h4 onclick="openSubmenu('mobile-research-expertise')">Expertise</h4>
+    <h4 onclick="openSubmenu('mobile-research-impact')">Our impact</h4>
   </div>
 
+  <!-- Study Category Panels (Third-level Panels) -->
+  <div class="mobile-submenu-panel" id="mobile-research-research">
+    <div class="back-btn" onclick="closeSubmenu('mobile-research-research')">← Back</div>
+    <h4>Research at Sheffield</h4>
+        <ul>
+          <li>Our strategic priorities</li>
+          <li>Our people</li>
+          <li>Research Excellence Framework 2021</li>
+          <li>Researcher support</li>
+          <li>Research environment and culture</li>
+          <li>Open Research</li>
+        </ul>
+  </div>
+  <div class="mobile-submenu-panel" id="mobile-research-postgraduate">
+    <div class="back-btn" onclick="closeSubmenu('mobile-research-postgraduate')">← Back</div>
+    <h4>Postgraduate research</h4>
+        <ul>
+          <li>Find a PhD</li>
+          <li>PhD projects directory</li>
+          <li>PhD scholarships</li>
+        </ul>
+  </div>
+  <div class="mobile-submenu-panel" id="mobile-research-expertise">
+    <div class="back-btn" onclick="closeSubmenu('mobile-research-expertise')">← Back</div>
+    <h4>Expertise</h4>
+        <ul>
+          <li>Flagship research institutes</li>
+          <li>Research centres</li>
+          <li>Facilities</li>
+          <li>Library</li>
+        </ul>
+  </div>
+  <div class="mobile-submenu-panel" id="mobile-research-impact">
+    <div class="back-btn" onclick="closeSubmenu('mobile-research-impact')">← Back</div>
+    <h4>Our impact</h4>
+        <ul>
+          <li>Research features</li>
+          <li>UN sustainable development goals</li>
+          <li>University Player</li>
+          <li>Queen's Anniversary Prizes</li>
+        </ul>
+  </div>
+
+
+
+
+</div>
   <script>
 
     function togglePanel(panelId) {
