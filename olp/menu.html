@@ -70,6 +70,8 @@
   background-size: contain;
   background-repeat: no-repeat;
   transform: translateY(3px);
+    transition: transform 0.3s ease; /* Smooth rotation */
+
     }
 
     /* Mega Menu panel styling */
@@ -687,11 +689,21 @@ background-image: none;
 <script>
 
 function togglePanel(panelId) {
-    const panel = document.getElementById(panelId);
-    const isPanelOpen = panel.classList.contains('show');
-    document.querySelectorAll('.mega-menu-panel').forEach(p => p.classList.remove('show'));
-    if (!isPanelOpen) panel.classList.add('show');
+  const panel = document.getElementById(panelId);
+  const navItem = document.querySelector(`[onclick="togglePanel('${panelId}')"]`); // Find nav-item
+  const isPanelOpen = panel.classList.contains('show');
+
+  // Close any open panels and reset nav-item classes
+  document.querySelectorAll('.mega-menu-panel').forEach(p => p.classList.remove('show'));
+  document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('menu-open'));
+
+  // Toggle the clicked panel and rotate icon if opening
+  if (!isPanelOpen) {
+    panel.classList.add('show');
+    navItem.classList.add('menu-open'); // Add rotation class
   }
+}
+
   let currentPanel = 'main-mobile-panel';
   const navHistory = [];
 
