@@ -146,7 +146,7 @@
       left: 0; /* Slide in */
     }
 
-    .mobile-menu-panel h4, .mobile-submenu-panel h4,
+    .mobile-submenu-panel h4,
     .mobile-menu-panel ul li, .mobile-submenu-panel ul li {
       margin-bottom: 1.4rem;
       cursor: pointer;
@@ -160,7 +160,12 @@
     }
 
     .mobile-menu-panel h4 {
-        font-weight: 400;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+    }
+
+    .mobile-menu-panel p {
+        margin-bottom: 1.5rem;
     }
 
      .mobile-submenu-panel h4 {
@@ -316,9 +321,13 @@
     <div class="close-btn" onclick="toggleMobileMenu()">✖</div>
     <div class="mobile-menu-panel" id="main-mobile-panel">
       <h4 onclick="openSubmenu('mobile-study-panel')">Study</h4>
+      <p>Lorem ipsum et dolor Lorem ipsum et dolor Lorem ipsum et dolor Lorem ipsum et dolor</p>
       <h4 onclick="openSubmenu('mobile-research-panel')">Research</h4>
+      <p>Lorem ipsum et dolor Lorem ipsum et dolor Lorem ipsum et dolor Lorem ipsum et dolor</p>
       <h4 onclick="openSubmenu('mobile-collaborate-panel')">Collaborate</h4>
+      <p>Lorem ipsum et dolor Lorem ipsum et dolor Lorem ipsum et dolor Lorem ipsum et dolor</p>
       <h4 onclick="openSubmenu('mobile-about-panel')">About</h4>
+      <p>Lorem ipsum et dolor Lorem ipsum et dolor Lorem ipsum et dolor Lorem ipsum et dolor</p>
     </div>
 
     <!-- Study Submenu Panel (Showing H4s only) -->
