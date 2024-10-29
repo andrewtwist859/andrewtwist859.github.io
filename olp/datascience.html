@@ -481,7 +481,7 @@ span.school {
 /* Accordion styles */
 
 .accordion {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   cursor: pointer;
   font-weight: bold;
@@ -492,23 +492,18 @@ span.school {
   padding: 0.5rem 0;
 }
 
-.accordion:hover {
-color: #7000ff;
-}
-
-.accordion::after {
-  content: '';
+.accordion-icon {
   width: 16px;
   height: 16px;
-  margin-left: auto; /* Pushes icon to the right */
   background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" fill="%237000ff" viewBox="0 0 448 512"%3E%3Cpath d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"%2F%3E%3C%2Fsvg%3E');
   background-size: contain;
   background-repeat: no-repeat;
+  margin-left: 0.25rem; /* Adjust if needed */
   transition: transform 0.3s ease;
 }
 
-.accordion.active::after {
-  transform: rotate(180deg); /* Rotate to show up arrow */
+.accordion:hover {
+color: #7000ff;
 }
 
 .panel {
@@ -913,21 +908,21 @@ nav {
 <p>You’ll need 180 credits to get a masters degree, with 90 credits from core modules, 30 credits from optional modules and a dissertation (including dissertation preparation) worth 60 credits.</p>
 <h4>Core modules</h4>
 <div class="accordion-item">
-    <div class="accordion">Data Visualisation</div>
+    <div class="accordion">Data Visualisation<span class="accordion-icon"></span></div>
     <div class="panel">
       <p>Visualisation is a crucial technique to summarise data in an intuitive fashion. It can provide insights that are difficult to extract from the raw data. Because of this, visualisation is often used to enhance the delivery of information in the media and in reports. The module will focus on the theoretical frameworks to design visual elements that are able to provide information about a data set. It will cover how to create and critique different visualisations to display data, as well as design considerations and good practices in data visualisation.</p>
       <p><strong>15 credits</strong></p>
     </div>
   </div>
   <div class="accordion-item">
-    <div class="accordion">Introduction to Data Science</div>
+    <div class="accordion">Introduction to Data Science<span class="accordion-icon"></span></div>
     <div class="panel">
       <p>Data science is an emerging field that seeks to discover and explore new ways of exploiting data to support decision-making for a range of domains and problems. With individuals and organisations producing vast amounts of real-time heterogeneous data (i.e. Big Data), there is greater demand than ever to manage and analyse data effectively. This module aims to introduce students to the concepts and theories that underpin data science, provide an understanding of how they are used and impact on organisations, and gain hands-on experience with analysing and presenting data effectively using R and R Studio.</p>
       <p><strong>15 credits</strong></p>
     </div>
   </div>
   <div class="accordion-item">
-    <div class="accordion">Data Mining</div>
+    <div class="accordion">Data Mining<span class="accordion-icon"></span></div>
     <div class="panel">
       <p>As the volume of and types of information collected and stored in databases increases, there is a growing need to gain new insights into the data by identifying important patterns and trends. Data Mining is the process by which this is done. This module will examine the two main goals served by data mining: (i) insight (identifying patterns and trends on which to base actions), and (ii) prediction (modeling future activities or outcomes based on input data) and how algorithms are used to support these. An overview will be provided on the algorithms that underpin the most commonly used machine learning methods for building models and identifying patterns in data. Practical experience will be gained through the use of appropriate software to complete weekly tasks (i.e. KNIME). </p>
       <p>Students will be introduced to key themes in data mining, including types of data mining problem  (e.g. classification, regression, clustering, rule mining, and generative AI), common algorithms used in machine learning (e.g. SVM, decision trees, k-means, neural networks, etc.), feature selection and evaluation issues (e.g. measures and standardised benchmarks). Case studies will be used throughout the module to highlight the use of data mining methods for tackling real-world problems as well as the various ethical, social and legal issues associated with its use.</p>
@@ -935,35 +930,37 @@ nav {
     </div>
   </div>
   <div class="accordion-item">
-    <div class="accordion">Data Analysis</div>
+    <div class="accordion">Data Analysis<span class="accordion-icon"></span></div>
     <div class="panel">
       <p>This module provides an introduction to analysing data using statistical methods, e.g. descriptive, bivariate and multivariate analyses. It demonstrates different ways of analysing data, presenting the results of analyses (for example, graphically and using tables and text) and interpreting their meaning. Students undertaking the module will gain practical experience in using SPSS. By the end of the module students will be able to demonstrate an understanding of the concepts and theories of statistical data analysis, describe and use a variety of statistical methods, present the outputs of data analysis in an appropriate way and be able to use statistical software. The module will involve lectures, practical classes and student-led seminars which, together with self-directed learning, will cover the conceptual, theoretical and practical aspects of data analysis.</p>
       <p><strong>15 credits</strong></p>
     </div>
   </div>
   <div class="accordion-item">
-    <div class="accordion">Data and Society</div>
+    <div class="accordion">Data and Society<span class="accordion-icon"></span></div>
     <div class="panel">
       <p>The module draws upon key concepts and emerging debates from across the social sciences to address how social and political factors interact with (big) data and evolving data science techniques such as data mining, visualisation and analytics. Key issues and debates will be examined in relation to developments in fields such as marketing, political campaigning, and state security. The module complements more technical and management orientated modules, and aims to aid students in becoming more critical and reflective data scientists, decision makers and/or citizens able to successfully navigate the challenging social, political, legal and ethical issues related to data processing and use, and to reflect critically on the ways in which emerging data practices are shaped by and contribute to the development of complex social worlds.</p>
       <p><strong>15 credits</strong></p>
     </div>
   </div>
   <div class="accordion-item">
-    <div class="accordion">Database Design</div>
+    <div class="accordion">Database Design<span class="accordion-icon"></span></div>
     <div class="panel">
       <p>Effective data management is key to any organisation, particularly with the increasing availability of large and heterogeneous datasets (e.g. transactional, multimedia and geo-spatial data). A database is an organised collection of data, typically describing the activities of one or more organisations and a core component of modern information systems. A Database Management System (DBMS) is software designed to assist in maintaining and utilising large collections of data and becoming a necessity for all organisations. This module provides an introduction to the area of databases and database management, relational database design and a flavour of some advanced topics in current database research that deal with different kinds of data often found within an organisational context. Lectures are structured into three main areas: An introduction to databases, The process of designing relational databases, Advanced topics (e.g. data warehouses and non-relational databases) The course includes a series of online tasks with supporting 'drop in' laboratories aimed at providing you with the skills required to implement a database in Oracle and extract information using the Structured Query Language (SQL).</p>
       <p><strong>15 credits</strong></p>
     </div>
   </div>
   <div class="accordion-item">
-    <div class="accordion">Research Methods and Dissertation Preparation</div>
+    <div class="accordion">
+      <span class="accordion-title">Research Methods and Dissertation Preparation</span>
+      <span class="accordion-icon"></span></div>
     <div class="panel">
       <p>This module assists students in the identification of, and preparation of a dissertation proposal. Students will: familiarise themselves with on-going research in the School; identify and prepare a dissertation proposal; carry out a preliminary literature search in the area of the dissertation research topic; and be introduced to the use of social research methods and statistics for information management.</p>
       <p><strong>15 credits</strong></p>
     </div>
   </div>
   <div class="accordion-item">
-    <div class="accordion">Dissertation</div>
+    <div class="accordion">Dissertation<span class="accordion-icon"></span></div>
     <div class="panel">
       <p>This module enables students to carry out an extended piece of work on an Information School approved topic, so that they can explore an area of specialist interest to them in greater depth. Students will be supported through tutorials with a project supervisor, will apply research methods appropriate to their topic, and implement their work-plan to produce an individual project report. Students will already have identified a suitable topic and designed a project plan in the pre-requisite unit Research Methods and Dissertation Preparation.</p>
       <p><strong>45 credits</strong></p>
@@ -972,7 +969,7 @@ nav {
   <hr />
   <h3>Optional modules - two from:</h3>
   <div class="accordion-item">
-    <div class="accordion">Researching Social Media</div>
+    <div class="accordion">Researching Social Media<span class="accordion-icon"></span></div>
     <div class="panel">
       <p>The module will examine the key theoretical frameworks and methods used in social media studies. Students will explore the following questions: 1) What can be learnt about society by studying social media? 2) How should researchers construct ethical stances for researching sites such as Facebook and Twitter? 3) What are the traditional and digital research methods and tools that can be applied to conduct research on social media? 4) What are the strengths and weaknesses of these methods?</p>
       <p>The primary focus of the module is on designing social media research projects rather than conducting them. Nevertheless, there will be opportunities to learn and practice relevant analysis skills. It is not a programming module but some of the topics involve the use of software and there will be the chance to write small programs for related tasks.</p>
@@ -980,21 +977,21 @@ nav {
     </div>
   </div>
   <div class="accordion-item">
-    <div class="accordion">Information Governance and Ethics</div>
+    <div class="accordion">Information Governance and Ethics<span class="accordion-icon"></span></div>
     <div class="panel">
       <p>This module explores a) the emergence of information and data as an economic resource; b) the governance challenges and ethical issues arising from organisations' systematic capture, processing, and use of information and data for organisational goals, e.g. value, risk, accountability, ownership, privacy etc; c) governance, ethical, legal and other frameworks relevant to the capture, processing and use of information and data within organisational and networked contexts; and d) technologies and techniques used in the governing and governance of information and data. Case examples from a number of domains, e.g. business, government, health, law, and social media illustrate the topics investigated.</p>
       <p><strong>15 credits</strong></p>
     </div>
   </div>
   <div class="accordion-item">
-    <div class="accordion">Big Data Analytics</div>
+    <div class="accordion">Big Data Analytics<span class="accordion-icon"></span></div>
     <div class="panel">
       <p>Data Science techniques often need to be applied to large amounts of data to generate insights. To deal with volume, velocity, and variety of data we need to rely on novel computational architectures that focus on scaling-out data processing as compared to the classic scale-up approach. Such systems allow to add computational resources to a distributed system depending on requirements and load which changes over time. This module will give students knowledge about modern scale-out system architectures to perform data analytics queries over very large structured/unstructured datasets as well as to run data mining algorithms at scale.</p>
       <p><strong>15 credits</strong></p>
     </div>
   </div>
   <div class="accordion-item">
-    <div class="accordion">Business Intelligence</div>
+    <div class="accordion">Business Intelligence<span class="accordion-icon"></span></div>
     <div class="panel">
       <p>We will cover the principles and practices of gathering and synthesising business intelligence from the external environment, including organisations' competitive intelligence operations, environmental scanning activities, market intelligence, and strategic intelligence using open-source information. A  secondary focus for the module is the role of BI software in organisations to collect and analyse internal information. This module aims to provide students with an understanding of the ways in which business people use information and of how information is used to support strategic decision-making. Students will learn how to carry out effective searches using both free and fee-based business information resources such as the Mintel market research database, Nexis news database and FAME financial analysis database, and will study key issues concerning the value, cost and availability of information. Students will learn how to apply standard analysis frameworks commonly used in organisational business intelligence. The module will concentrate primarily on external information resources but also covers the ways in which information internal to an organisation can be used strategically to enhance competitive advantage.</p>
       <p>We take a flipped approach on this module: lectures are provided in video format on Blackboard, and students are expected to watch these and engage with any preparation activities before the timetabled sessions.  Timetabled sessions focus on practical exercises where students will have opportunities to develop expertise in using business-focused electronic information services, and will develop skills in analysing and presenting information effectively.</p>
@@ -1003,7 +1000,7 @@ nav {
     </div>
   </div>
   <div class="accordion-item">
-    <div class="accordion">User-Centred Design and Human-Computer Interaction</div>
+    <div class="accordion">User-Centred Design and Human-Computer Interaction<span class="accordion-icon"></span></div>
     <div class="panel">
       <p>Interface design and usability are central to the experience of interacting with computers. The module introduces usability principles and the design process for interactive systems exploring four major themes. Firstly, user psychology and cognitive principles underlying interface design. Secondly, user interface architectures, modes of interaction, metaphors, navigational structures. Thirdly, the user interface design process including task analysis, modelling constructs and prototyping techniques. Fourthly, the evaluation of user interfaces covering concepts of usability, goals and types of evaluation. The module focus is on the underlying principles of HCI and user-centred design approach with practical sessions to demonstrate these principles.</p>
       <p><strong>15 credits</strong></p>
@@ -1026,7 +1023,7 @@ nav {
 <p>IELTS 6.5 (with 6 in each component) or University equivalent</p>
 <p>Other English language qualifications we accept</p>
   <div class="accordion-item">
-    <div class="accordion">Pathway programme for international students    </div>
+    <div class="accordion">Pathway programme for international students <span class="accordion-icon"></span></div>
     <div class="panel">
 <p>If you're an international student who does not meet the entry requirements for this course, you have the opportunity to apply for a pre-masters programme in Business, Social Sciences and Humanities at the University of Sheffield International College. This course is designed to develop your English language and academic skills. Upon successful completion, you can progress to degree level study at the University of Sheffield.</p>
     </div>
@@ -1326,6 +1323,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const menu = document.querySelector('.menu');
     menu.classList.toggle('show');
 }
+  </script>
+  <script>
+    document.querySelectorAll('.accordion-item').forEach(accordion => {
+  accordion.addEventListener('click', function() {
+    this.classList.toggle('active');
+    this.querySelector('.accordion-icon').style.transform = this.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0deg)';
+  });
+});
   </script>
 </body>
 </html>
