@@ -149,7 +149,6 @@
     .mobile-menu-panel ul li, .mobile-submenu-panel ul li {
       margin-bottom: 1rem;
       cursor: pointer;
-      list-style: none;
     }
 
     .close-btn {
@@ -243,49 +242,6 @@
       </div>
     </div>
   </div>
-  <div class="mega-menu-panel" id="research-panel">
-    <div class="mega-menu-content">
-      <div class="menu-column">
-        <h4>Research at Sheffield</h4>
-        <ul>
-          <li>Our strategic priorities</li>
-          <li>Our people</li>
-          <li>Research Excellence Framework 2021</li>
-          <li>Researcher support</li>
-          <li>Research environment and culture</li>
-          <li>Open Research</li>
-        </ul>
-      </div>
-      <div class="menu-column">
-        <h4>Postgraduate research</h4>
-        <ul>
-          <li>Find a PhD</li>
-          <li>PhD projects directory</li>
-          <li>PhD scholarships</li>
-        </ul>
-      </div>
-      <div class="menu-column">
-        <h4>Expertise</h4>
-        <ul>
-          <li>Flagship research institutes</li>
-          <li>Research centres</li>
-          <li>Facilities</li>
-          <li>Library</li>
-        </ul>
-      </div>
-      <div class="menu-column">
-        <h4>Our impact</h4>
-        <ul>
-          <li>Research features</li>
-          <li>UN sustainable development goals</li>
-          <li>PhD study</li>
-          <li>University Player</li>
-          <li>Nobel Prizes</li>
-          <li>Queen's Anniversary Prizes</li>
-        </ul>
-      </div>
-    </div>
-  </div>
 
   <!-- Mobile Menu Overlay -->
   <div class="mobile-menu-overlay" id="mobile-menu-overlay">
@@ -297,9 +253,18 @@
       <h4 onclick="openSubmenu('mobile-about-panel')">About</h4>
     </div>
 
-    <!-- Study Submenu Panel -->
+    <!-- Study Submenu Panel (Showing H4s only) -->
     <div class="mobile-submenu-panel" id="mobile-study-panel">
       <div class="back-btn" onclick="closeSubmenu('mobile-study-panel')">← Back</div>
+      <h4 onclick="openSubmenu('mobile-study-undergraduate')">Undergraduate</h4>
+      <h4 onclick="openSubmenu('mobile-study-postgraduate')">Postgraduate taught</h4>
+      <h4 onclick="openSubmenu('mobile-study-phd')">PhD study</h4>
+      <h4 onclick="openSubmenu('mobile-study-other')">Other ways to study</h4>
+    </div>
+
+    <!-- Study Category Panels (Third-level Panels) -->
+    <div class="mobile-submenu-panel" id="mobile-study-undergraduate">
+      <div class="back-btn" onclick="closeSubmenu('mobile-study-undergraduate')">← Back</div>
       <h4>Undergraduate</h4>
       <ul>
         <li>Undergraduate courses</li>
@@ -309,6 +274,10 @@
         <li>Accommodation</li>
         <li>International students</li>
       </ul>
+    </div>
+
+    <div class="mobile-submenu-panel" id="mobile-study-postgraduate">
+      <div class="back-btn" onclick="closeSubmenu('mobile-study-postgraduate')">← Back</div>
       <h4>Postgraduate taught</h4>
       <ul>
         <li>Postgraduate taught courses</li>
@@ -317,71 +286,44 @@
         <li>Fees and funding</li>
         <li>International students</li>
       </ul>
+    </div>
+
+    <div class="mobile-submenu-panel" id="mobile-study-phd">
+      <div class="back-btn" onclick="closeSubmenu('mobile-study-phd')">← Back</div>
       <h4>PhD study</h4>
-        <ul>
-          <li>Find a PhD</li>
-          <li>How to apply</li>
-          <li>PhD fees</li>
-          <li>PhD scholarships</li>
-        </ul>
-        <h4>Other ways to study</h4>
-        <ul>
-          <li>Apprenticeships</li>
-          <li>Mature students</li>
-          <li>Online learning</li>
-          <li>TEFL and English as a second language</li>
-        </ul>
-    </div>
-
-    <!-- Other Submenu Panels (Research, Collaborate, About) -->
-    <div class="mobile-submenu-panel" id="mobile-research-panel">
-      <div class="back-btn" onclick="closeSubmenu('mobile-research-panel')">← Back</div>
-      <h4>Research Areas</h4>
       <ul>
-        <li>Engineering</li>
-        <li>Medicine</li>
+        <li>Find a PhD</li>
+        <li>How to apply</li>
+        <li>PhD fees</li>
+        <li>PhD scholarships</li>
       </ul>
     </div>
 
-    <div class="mobile-submenu-panel" id="mobile-collaborate-panel">
-      <div class="back-btn" onclick="closeSubmenu('mobile-collaborate-panel')">← Back</div>
-      <h4>Collaboration Opportunities</h4>
+    <div class="mobile-submenu-panel" id="mobile-study-other">
+      <div class="back-btn" onclick="closeSubmenu('mobile-study-other')">← Back</div>
+      <h4>Other ways to study</h4>
       <ul>
-        <li>Industry Partnerships</li>
-      </ul>
-    </div>
-
-    <div class="mobile-submenu-panel" id="mobile-about-panel">
-      <div class="back-btn" onclick="closeSubmenu('mobile-about-panel')">← Back</div>
-      <h4>About Us</h4>
-      <ul>
-        <li>Our History</li>
-        <li>Leadership</li>
+        <li>Apprenticeships</li>
+        <li>Mature students</li>
+        <li>Online learning</li>
+        <li>TEFL and English as a second language</li>
       </ul>
     </div>
   </div>
 
   <script>
-    function togglePanel(panelId) {
-      const panel = document.getElementById(panelId);
-      const isPanelOpen = panel.classList.contains('show');
-      document.querySelectorAll('.mega-menu-panel').forEach(p => p.classList.remove('show'));
-      if (!isPanelOpen) panel.classList.add('show');
-    }
-
     function toggleMobileMenu() {
       const overlay = document.getElementById('mobile-menu-overlay');
       overlay.style.display = overlay.style.display === 'flex' ? 'none' : 'flex';
-      document.getElementById('main-mobile-panel').style.left = '0'; // Reset position of main panel
+      document.getElementById('main-mobile-panel').style.left = '0';
     }
 
     function openSubmenu(panelId) {
-      document.getElementById('main-mobile-panel').style.left = '-100%';
+      document.querySelectorAll('.mobile-submenu-panel').forEach(panel => panel.classList.remove('show'));
       document.getElementById(panelId).classList.add('show');
     }
 
     function closeSubmenu(panelId) {
-      document.getElementById('main-mobile-panel').style.left = '0';
       document.getElementById(panelId).classList.remove('show');
     }
   </script>
