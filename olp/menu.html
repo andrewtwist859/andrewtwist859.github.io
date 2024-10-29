@@ -56,6 +56,10 @@
       position: relative;
     }
 
+    .nav-item:hover {
+      color: #7100FF;
+    }
+
     .nav-item::after {
         content: "";
   display: inline-block;
@@ -141,24 +145,28 @@
       padding-top: 4rem;
     }
 
-    .mobile-menu-panel, .mobile-submenu-panel {
-      width: 100%;
-      background-color: #fff;
-      padding: 6rem 3rem;
-      display: flex;
-      flex-direction: column;
-      position: absolute;
-      top: 0;
-      left: 100%; /* Off-screen initially */
-      height: 100%;
-      overflow-y: auto;
-      transition: left 0.3s ease;
-    }
+   /* Only apply transition when navigating between layers */
+.mobile-menu-panel, .mobile-submenu-panel {
+  width: 100%;
+  background-color: #fff;
+  padding: 6rem 3rem;
+  display: none; /* Hide all panels by default */
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  overflow-y: auto;
+  transition: transform 0.3s ease; /* Smooth layer transition */
+}
 
-    .mobile-menu-panel.show,
-    .mobile-submenu-panel.show {
-      left: 0; /* Slide in */
-    }
+.mobile-menu-panel.show, .mobile-submenu-panel.show {
+  display: flex; /* Show only the active panel */
+  transform: translateX(0); /* Start at the center */
+}
+
+.mobile-submenu-panel.back {
+  transform: translateX(-100%); /* Slide back to the left */
+}
 
     .mobile-submenu-panel h4,
     .mobile-menu-panel ul li, .mobile-submenu-panel ul li {
@@ -375,7 +383,7 @@ background-image: none;
         <ul>
           <li>Our global networks</li>
           <li>We Are International campaign</li>
-          <li>Global opportunities andvexchanges</li>
+          <li>Global opportunities and exchanges</li>
         </ul>
       </div>
       <div class="menu-column">
@@ -457,8 +465,8 @@ background-image: none;
 
     <!-- Study Submenu Panel (Showing H4s only) -->
     <div class="mobile-submenu-panel" id="mobile-study-panel">
-      <div class="back-btn" onclick="closeSubmenu('mobile-study-panel')">← Back</div>
-      <h4 onclick="openSubmenu('mobile-study-undergraduate')">Undergraduate</h4>
+        <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+        <h4 onclick="openSubmenu('mobile-study-undergraduate')">Undergraduate</h4>
       <h4 onclick="openSubmenu('mobile-study-postgraduate')">Postgraduate taught</h4>
       <h4 onclick="openSubmenu('mobile-study-phd')">PhD study</h4>
       <h4 onclick="openSubmenu('mobile-study-other')">Other ways to study</h4>
@@ -466,8 +474,8 @@ background-image: none;
 
     <!-- Study Category Panels (Third-level Panels) -->
     <div class="mobile-submenu-panel" id="mobile-study-undergraduate">
-      <div class="back-btn" onclick="closeSubmenu('mobile-study-undergraduate')">← Back</div>
-      <h4 class="plain">Undergraduate</h4>
+        <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+        <h4 class="plain">Undergraduate</h4>
       <ul>
         <li>Undergraduate courses</li>
         <li>Undergraduate open days</li>
@@ -479,8 +487,8 @@ background-image: none;
     </div>
 
     <div class="mobile-submenu-panel" id="mobile-study-postgraduate">
-      <div class="back-btn" onclick="closeSubmenu('mobile-study-postgraduate')">← Back</div>
-      <h4 class="plain">Postgraduate taught</h4>
+        <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+        <h4 class="plain">Postgraduate taught</h4>
       <ul>
         <li>Postgraduate taught courses</li>
         <li>Postgraduate open days</li>
@@ -491,8 +499,8 @@ background-image: none;
     </div>
 
     <div class="mobile-submenu-panel" id="mobile-study-phd">
-      <div class="back-btn" onclick="closeSubmenu('mobile-study-phd')">← Back</div>
-      <h4 class="plain">PhD study</h4>
+        <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+        <h4 class="plain">PhD study</h4>
       <ul>
         <li>Find a PhD</li>
         <li>How to apply</li>
@@ -502,8 +510,8 @@ background-image: none;
     </div>
 
     <div class="mobile-submenu-panel" id="mobile-study-other">
-      <div class="back-btn" onclick="closeSubmenu('mobile-study-other')">← Back</div>
-      <h4 class="plain">Other ways to study</h4>
+        <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+        <h4 class="plain">Other ways to study</h4>
       <ul>
         <li>Apprenticeships</li>
         <li>Mature students</li>
@@ -515,7 +523,7 @@ background-image: none;
 
    <!-- Research Submenu Panel (Showing H4s only) -->
    <div class="mobile-submenu-panel" id="mobile-research-panel">
-    <div class="back-btn" onclick="closeSubmenu('mobile-research-panel')">← Back</div>
+    <div class="back-btn" onclick="closeSubmenu()">← Back</div>
     <h4 onclick="openSubmenu('mobile-research-research')">Research at Sheffield</h4>
     <h4 onclick="openSubmenu('mobile-research-postgraduate')">Postgraduate research</h4>
     <h4 onclick="openSubmenu('mobile-research-expertise')">Expertise</h4>
@@ -524,7 +532,7 @@ background-image: none;
 
   <!-- Study Category Panels (Third-level Panels) -->
   <div class="mobile-submenu-panel" id="mobile-research-research">
-    <div class="back-btn" onclick="closeSubmenu('mobile-research-research')">← Back</div>
+    <div class="back-btn" onclick="closeSubmenu()">← Back</div>
     <h4 class="plain">Research at Sheffield</h4>
         <ul>
           <li>Our strategic priorities</li>
@@ -536,7 +544,7 @@ background-image: none;
         </ul>
   </div>
   <div class="mobile-submenu-panel" id="mobile-research-postgraduate">
-    <div class="back-btn" onclick="closeSubmenu('mobile-research-postgraduate')">← Back</div>
+    <div class="back-btn" onclick="closeSubmenu()">← Back</div>
     <h4 class="plain">Postgraduate research</h4>
         <ul>
           <li>Find a PhD</li>
@@ -545,7 +553,7 @@ background-image: none;
         </ul>
   </div>
   <div class="mobile-submenu-panel" id="mobile-research-expertise">
-    <div class="back-btn" onclick="closeSubmenu('mobile-research-expertise')">← Back</div>
+    <div class="back-btn" onclick="closeSubmenu()">← Back</div>
     <h4 class="plain">Expertise</h4>
         <ul>
           <li>Flagship research institutes</li>
@@ -555,7 +563,7 @@ background-image: none;
         </ul>
   </div>
   <div class="mobile-submenu-panel" id="mobile-research-impact">
-    <div class="back-btn" onclick="closeSubmenu('mobile-research-impact')">← Back</div>
+    <div class="back-btn" onclick="closeSubmenu()">← Back</div>
     <h4 class="plain">Our impact</h4>
         <ul>
           <li>Research features</li>
@@ -567,7 +575,7 @@ background-image: none;
 
 <!-- Collaborate Submenu Panel (Showing H4s only) -->
 <div class="mobile-submenu-panel" id="mobile-collaborate-panel">
-    <div class="back-btn" onclick="closeSubmenu('mobile-collaborate-panel')">← Back</div>
+    <div class="back-btn" onclick="closeSubmenu()">← Back</div>
     <h4 onclick="openSubmenu('mobile-collaborate-partnerships')">Partnerships</h4>
     <h4 onclick="openSubmenu('mobile-collaborate-international')">International</h4>
     <h4 onclick="openSubmenu('mobile-collaborate-alumni')">Alumni</h4>
@@ -575,8 +583,8 @@ background-image: none;
   </div>
 
   <div class="mobile-submenu-panel" id="mobile-collaborate-partnerships">
-    <div class="back-btn" onclick="closeSubmenu('mobile-collaborate-partnerships')">← Back</div>
-     <h4>Partnerships</h4>
+    <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+    <h4>Partnerships</h4>
         <ul>
           <li>How we support business</li>
           <li>Examples of business partners</li>
@@ -585,17 +593,17 @@ background-image: none;
         </ul>
   </div>
     <div class="mobile-submenu-panel" id="mobile-collaborate-international">
-    <div class="back-btn" onclick="closeSubmenu('mobile-collaborate-international')">← Back</div>
-     <h4>International</h4>
+        <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+        <h4>International</h4>
         <ul>
           <li>Our global networks</li>
-          <li>We Are International campaign</li>
-          <li>Global opportunities andvexchanges</li>
+          <li>We Are International</li>
+          <li>Global opportunities and exchanges</li>
         </ul>
   </div>
   <div class="mobile-submenu-panel" id="mobile-collaborate-alumni">
-    <div class="back-btn" onclick="closeSubmenu('mobile-collaborate-alumni')">← Back</div>
-     <h4>Alumni</h4>
+    <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+    <h4>Alumni</h4>
         <ul>
           <li>Update your details</li>
           <li>Support us</li>
@@ -604,8 +612,8 @@ background-image: none;
         </ul>
   </div>
   <div class="mobile-submenu-panel" id="mobile-collaborate-philanthrophy">
-    <div class="back-btn" onclick="closeSubmenu('mobile-collaborate-philanthropy')">← Back</div>
-     <h4>Philanthropy</h4>
+    <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+    <h4>Philanthropy</h4>
         <ul>
           <li>Forged in Sheffield, Shaping the Future campaign</li>
           <li>Get involved</li>
@@ -616,15 +624,15 @@ background-image: none;
 
   <!-- About Submenu Panel (Showing H4s only) -->
 <div class="mobile-submenu-panel" id="mobile-about-panel">
-    <div class="back-btn" onclick="closeSubmenu('mobile-about-panel')">← Back</div>
+    <div class="back-btn" onclick="closeSubmenu()">← Back</div>
     <h4 onclick="openSubmenu('mobile-about-university')">About the University</h4>
-    <h4 onclick="openSubmenu('mobile-about-departments')">Departments and services</h4>
+    <h4 onclick="openSubmenu('mobile-about-departments')">Departments</h4>
     <h4 onclick="openSubmenu('mobile-about-studying')">Studying at Sheffield</h4>
     <h4 onclick="openSubmenu('mobile-about-hospitality')">Hospitality</h4>
   </div>
   <div class="mobile-submenu-panel" id="mobile-about-university">
-    <div class="back-btn" onclick="closeSubmenu('mobile-about-university')">← Back</div>
-     <h4>About the University</h4>
+    <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+    <h4>About the University</h4>
         <ul>
           <li>News</li>
           <li>Events</li>
@@ -642,7 +650,7 @@ background-image: none;
         </ul>
   </div>
   <div class="mobile-submenu-panel" id="mobile-about-departments">
-    <div class="back-btn" onclick="closeSubmenu('mobile-about-departments')">← Back</div>
+    <div class="back-btn" onclick="closeSubmenu()">← Back</div>
     <h4>Departments and services</h4>
     <ul>
       <li>Academic departments</li>
@@ -651,7 +659,7 @@ background-image: none;
     </ul>
   </div>
   <div class="mobile-submenu-panel" id="mobile-about-studying">
-    <div class="back-btn" onclick="closeSubmenu('mobile-about-studying')">← Back</div>
+    <div class="back-btn" onclick="closeSubmenu()">← Back</div>
     <h4>Studying at Sheffield</h4>
         <ul>
           <li>Guide to Sheffield</li>
@@ -659,7 +667,7 @@ background-image: none;
         </ul>
   </div>
   <div class="mobile-submenu-panel" id="mobile-about-hospitality">
-    <div class="back-btn" onclick="closeSubmenu('mobile-about-hospitality')">← Back</div>
+    <div class="back-btn" onclick="closeSubmenu()">← Back</div>
     <h4>Hospitality</h4>
         <ul>
           <li>Conferences, events, visitor accommodation and weddings</li>
@@ -670,30 +678,54 @@ background-image: none;
 
 
 </div>
-  <script>
-
-    function togglePanel(panelId) {
-      const panel = document.getElementById(panelId);
-      const isPanelOpen = panel.classList.contains('show');
-      document.querySelectorAll('.mega-menu-panel').forEach(p => p.classList.remove('show'));
-      if (!isPanelOpen) panel.classList.add('show');
-    }
-
+<script>
+    // Initialize variables to track current and previous layers
+    let currentPanel = 'main-mobile-panel';
+    const navHistory = [];
+  
     function toggleMobileMenu() {
       const overlay = document.getElementById('mobile-menu-overlay');
-      overlay.style.display = overlay.style.display === 'flex' ? 'none' : 'flex';
-      document.getElementById('main-mobile-panel').style.left = '0';
+  
+      if (overlay.style.display === 'flex') {
+        // Closing the menu: Reset everything
+        overlay.style.display = 'none';
+        navHistory.length = 0;
+        currentPanel = 'main-mobile-panel';
+        document.querySelectorAll('.mobile-submenu-panel').forEach(panel => panel.classList.remove('show', 'back'));
+        document.getElementById('main-mobile-panel').classList.add('show'); // Show main menu only
+      } else {
+        // Opening the menu: Ensure main panel is visible without resetting layers
+        overlay.style.display = 'flex';
+        document.getElementById('main-mobile-panel').classList.add('show');
+      }
     }
-
+  
     function openSubmenu(panelId) {
-      document.querySelectorAll('.mobile-submenu-panel').forEach(panel => panel.classList.remove('show'));
+      // Hide the current panel and push it to history
+      if (currentPanel) {
+        navHistory.push(currentPanel);
+        document.getElementById(currentPanel).classList.remove('show', 'back');
+      }
+      
+      // Show the new panel
       document.getElementById(panelId).classList.add('show');
+      currentPanel = panelId; // Update the current panel
     }
-
-    function closeSubmenu(panelId) {
-      document.getElementById(panelId).classList.remove('show');
+  
+    function closeSubmenu() {
+      // Remove current panel and show the previous one
+      if (navHistory.length > 0) {
+        document.getElementById(currentPanel).classList.remove('show'); // Hide current panel
+        currentPanel = navHistory.pop(); // Get previous panel
+        document.getElementById(currentPanel).classList.add('show'); // Show previous panel
+      } else {
+        // If no history, reset to the main panel
+        document.getElementById('main-mobile-panel').style.left = '0';
+        currentPanel = 'main-mobile-panel';
+      }
     }
   </script>
-
+  
+  
 </body>
 </html>
