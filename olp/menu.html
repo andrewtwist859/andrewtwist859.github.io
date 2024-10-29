@@ -192,8 +192,8 @@
 h4.plain::after {
 background-image: none;
 }
-    .mobile-menu-panel p {
-        margin-bottom: 1.5rem;
+    .mobile-menu-panel h4 {
+        margin-bottom: 1.4rem;
     }
 
      .mobile-submenu-panel h4, .mobile-menu-panel h4 {
@@ -256,7 +256,7 @@ background-image: none;
     </div>
   </nav>
 
-  <!-- Mega Menu Panels (Desktop) -->
+  <!-- Mega Menu Panels (Study) -->
   <div class="mega-menu-panel" id="study-panel">
     <div class="mega-menu-content">
       <div class="menu-column">
@@ -301,7 +301,7 @@ background-image: none;
     </div>
   </div>
 
-  <!-- Mega Menu Panels (Desktop) -->
+  <!-- Mega Menu Panels (Research) -->
   <div class="mega-menu-panel" id="research-panel">
     <div class="mega-menu-content">
       <div class="menu-column">
@@ -344,18 +344,101 @@ background-image: none;
     </div>
   </div>
 
+   <!-- Mega Menu Panels (Collaborate) -->
+   <div class="mega-menu-panel" id="collaborate-panel">
+    <div class="mega-menu-content">
+      <div class="menu-column">
+        <h4>Partnerships</h4>
+        <ul>
+          <li>How we support business</li>
+          <li>Examples of business partners</li>
+          <li>Research centres, institutes and networks</li>
+          <li>Our role in the city and region</li>
+        </ul>
+      </div>
+      <div class="menu-column">
+        <h4>International</h4>
+        <ul>
+          <li>Our global networks</li>
+          <li>We Are International campaign</li>
+          <li>Global opportunities andvexchanges</li>
+        </ul>
+      </div>
+      <div class="menu-column">
+        <h4>Alumni</h4>
+        <ul>
+          <li>Update your details</li>
+          <li>Support us</li>
+          <li>Our alumni</li>
+          <li>Alumni volunteering</li>
+        </ul>
+      </div>
+      <div class="menu-column">
+        <h4>Philanthropy</h4>
+        <ul>
+          <li>Forged in Sheffield, Shaping the Future campaign</li>
+          <li>Get involved</li>
+          <li>Donate now</li>
+          <li>MND appeal</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+ <!-- Mega Menu Panels (About) -->
+ <div class="mega-menu-panel" id="about-panel">
+    <div class="mega-menu-content">
+      <div class="menu-column">
+        <h4>About the University</h4>
+        <ul>
+          <li>News</li>
+          <li>Events</li>
+          <li>Jobs</li>
+          <li>Sustainability at Sheffield</li>
+          <li>Inclusion at Sheffield</li>
+          <li>Support for refugee students and scholars</li>
+          <li>Our vision and strategic plan</li>
+          <li>Our role in the city and region</li>
+          <li>Governance and management</li>
+          <li>Rankings</li>
+          <li>University of the Year</li>
+          <li>Queen's Anniversary Prizes</li>
+          <li>Nobel Prize winners</li>
+        </ul>
+      </div>
+      <div class="menu-column">
+        <h4>Departments and services</h4>
+        <ul>
+          <li>Academic departments</li>
+          <li>Faculties</li>
+          <li>Professional services</li>
+        </ul>
+      </div>
+      <div class="menu-column">
+        <h4>Studying at Sheffield</h4>
+        <ul>
+          <li>Guide to Sheffield</li>
+          <li>Courses</li>
+        </ul>
+      </div>
+      <div class="menu-column">
+        <h4>Hospitality</h4>
+        <ul>
+          <li>Conferences, events, visitor accommodation and weddings</li>
+          <li>Cafes and bars</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
   <!-- Mobile Menu Overlay -->
   <div class="mobile-menu-overlay" id="mobile-menu-overlay">
     <div class="close-btn" onclick="toggleMobileMenu()">✖</div>
     <div class="mobile-menu-panel" id="main-mobile-panel">
       <h4 onclick="openSubmenu('mobile-study-panel')">Study</h4>
-      <p>Lorem ipsum et dolor Lorem ipsum et dolor Lorem ipsum et dolor Lorem ipsum et dolor</p>
       <h4 onclick="openSubmenu('mobile-research-panel')">Research</h4>
-      <p>Lorem ipsum et dolor Lorem ipsum et dolor Lorem ipsum et dolor Lorem ipsum et dolor</p>
       <h4 onclick="openSubmenu('mobile-collaborate-panel')">Collaborate</h4>
-      <p>Lorem ipsum et dolor Lorem ipsum et dolor Lorem ipsum et dolor Lorem ipsum et dolor</p>
       <h4 onclick="openSubmenu('mobile-about-panel')">About</h4>
-      <p>Lorem ipsum et dolor Lorem ipsum et dolor Lorem ipsum et dolor Lorem ipsum et dolor</p>
     </div>
 
     <!-- Study Submenu Panel (Showing H4s only) -->
@@ -468,7 +551,14 @@ background-image: none;
         </ul>
   </div>
 
-
+<!-- Collaborate Submenu Panel (Showing H4s only) -->
+<div class="mobile-submenu-panel" id="mobile-collaborate-panel">
+    <div class="back-btn" onclick="closeSubmenu('mobile-collaborate-panel')">← Back</div>
+    <h4 onclick="openSubmenu('mobile-collaborate-partnerships')">Partnerships</h4>
+    <h4 onclick="openSubmenu('mobile-collaborate-international')">International</h4>
+    <h4 onclick="openSubmenu('mobile-collaborate-alumni')">Alumni</h4>
+    <h4 onclick="openSubmenu('mobile-collaborate-philanthrophy')">Philanthropy</h4>
+  </div>
 
 
 </div>
