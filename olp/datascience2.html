@@ -1,0 +1,2174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://use.typekit.net/szi0eid.css"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#440099">
+<link rel="icon" href="https://www.sheffield.ac.uk/themes/custom/uos_public/favicon.ico" sizes="any">
+<link rel="icon" href="https://www.sheffield.ac.uk/themes/custom/uos_public/favicon.svg" type="image/svg+xml" />
+<title>Data Science | The University of Sheffield</title>
+<style>
+ .navbar {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .menu-column ul {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+
+    /* Navbar styling */
+    .navbar {
+      background-color: #fff;
+      padding: 2rem 0;
+      width: 100%;
+      position: relative;
+    }
+
+    .navbar-content {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .navbar-brand {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo {
+      width: 180px;
+      margin-right: 10px;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+    }
+
+    .nav-item {
+      margin-left: 2rem;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .nav-item:hover {
+      color: #7100FF;
+    }
+
+    .nav-item::after {
+        content: "";
+  display: inline-block;
+  width: 16px; /* Set width and height of the icon */
+  height: 16px;
+  margin-left: 4px; /* Space between text and icon */
+  background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" fill="%237000ff" viewBox="0 0 448 512"%3E%3Cpath d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"%3E%3C/path%3E%3C/svg%3E');
+  background-size: contain;
+  background-repeat: no-repeat;
+  transform: translateY(3px);
+    transition: transform 0.3s ease; /* Smooth rotation */
+
+    }
+
+    /* Mega Menu panel styling */
+    .mega-menu-panel {
+      display: none;
+      position: absolute;
+      left: 0;
+      width: 100%;
+      background-color: #f0f0f0;
+      padding: 2rem 0;
+      z-index: 100;
+    }
+
+    .mega-menu-panel.show {
+      display: block;
+    }
+
+    /* Content wrapper to constrain width */
+    .mega-menu-content {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-around;
+    }
+
+    .menu-column {
+      flex: 1;
+      max-width: 20%;
+    }
+
+    .menu-column h4 {
+      color: #5b2c90;
+      margin-bottom: 1rem;
+      font-family: 'source-serif-pro';
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    .menu-column ul {
+      list-style: none;
+    }
+
+    .menu-column ul li {
+      margin-bottom: 1rem;
+      color: #333;
+      cursor: pointer;
+    }
+
+    .menu-column ul li:hover {
+      text-decoration: underline;
+    }
+
+    /* Hamburger menu and mobile styling */
+    .hamburger {
+      display: none;
+      font-size: 2.5rem;
+      cursor: pointer;
+    }
+
+/* Wrapper to keep all panels within a single overlay, preventing exposure */
+.mobile-menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 1); /* Fully opaque to prevent exposure */
+  overflow: hidden;
+  display: none;
+  z-index: 100; /* Ensure it's above other content */
+}
+
+/* Panel styling */
+.mobile-menu-panel, .mobile-submenu-panel {
+  width: 100%;
+  padding: 4rem 3rem;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  overflow-y: auto;
+  transform: translateX(100%); /* Start off-screen */
+  opacity: 0; /* Start hidden */
+  transition: transform 0.3s ease, opacity 0.3s ease; /* Smooth transition */
+  z-index: 1; /* Ensure only active panel is visible */
+}
+
+/* Show the active panel */
+.mobile-menu-panel.show, .mobile-submenu-panel.show {
+  opacity: 1;
+  transform: translateX(0); /* Slide in fully */
+  z-index: 2; /* Bring active panel to the top */
+}
+
+/* Slide back for "Back" navigation */
+.mobile-submenu-panel.back {
+  transform: translateX(-100%); /* Slide off to the left */
+  opacity: 0;
+  z-index: 1; /* Lower z-index to prevent exposure */
+}
+
+
+
+    .mobile-submenu-panel h4,
+    .mobile-menu-panel ul li, .mobile-submenu-panel ul li {
+      margin-bottom: 1.2rem;
+      cursor: pointer;
+      list-style: none;
+      font-size: 1.2rem;
+    }
+
+    .mobile-menu-panel ul li, .mobile-submenu-panel ul li::after {
+        content: "";
+  display: inline-block;
+  width: 16px; /* Set width and height of the icon */
+  height: 16px;
+  margin-left: 8px; /* Space between text and icon */
+  background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" fill="%237000ff" viewBox="0 0 448 512"%3E%3Cpath d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"%3E%3C/path%3E%3C/svg%3E');
+  background-size: contain;
+  background-repeat: no-repeat;
+  transform: translateY(3px);
+    }
+
+    .mobile-menu-panel h4, .mobile-submenu-panel h4 {
+        font-size: 1.4rem;
+        
+    }
+
+    .mobile-menu-panel h4 {
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+        padding: 0; /* Remove any padding */
+    }
+
+    .mobile-menu-panel h4::after, .mobile-submenu-panel h4::after {
+  content: "";
+  display: inline-block;
+  width: 16px; /* Set width and height of the icon */
+  height: 16px;
+  margin-left: 8px; /* Space between text and icon */
+  background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" fill="%237000ff" viewBox="0 0 448 512"%3E%3Cpath d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"%3E%3C/path%3E%3C/svg%3E');
+  background-size: contain;
+  background-repeat: no-repeat;
+  transform: translateY(2px);
+}
+
+h4.plain::after {
+background-image: none;
+}
+    .mobile-menu-panel h4 {
+        margin-bottom: 1.4rem;
+    }
+
+     .mobile-submenu-panel h4, .mobile-menu-panel h4 {
+        font-family:"source-serif-pro";
+        
+    }
+
+    .mobile-submenu-panel p {
+        line-height: 1.2;
+        font-size: 0.8rem;
+        margin-bottom: 0.25rem;
+    }
+
+    .mobile-submenu-panel img {
+        max-width: 275px;
+        margin: 0.5rem 0rem;
+    }
+    
+
+    .close-btn {
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+      font-size: 2.5rem;
+      color: black;
+      cursor: pointer;
+      z-index: 300; /* Ensures it appears above overlay content */
+    }
+
+    .back-btn {
+      font-size: 1rem;
+      color: #333;
+      margin-bottom: 1rem;
+      cursor: pointer;
+    }
+
+    .section-header-container {
+        padding: 1rem 0rem;
+        background-color: #440099;
+    }
+
+    .section-header {
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 0rem 2rem;
+    }
+
+    .section-header h2 {
+        font-family: 'source-serif-pro';
+        font-weight: 700;
+        color: white;
+    }
+
+    /* Responsive styling */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .navbar {
+        padding: 1.2rem 0rem;
+      }
+
+      .logo {
+        width: 150px;
+      }
+
+      .hamburger {
+        display: block;
+      }
+    }
+
+  /* General Styles */
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color:#F3F4F4;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4 {
+    font-family:"source-serif-pro";
+    font-weight: 700;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+  }
+
+  h3 {
+    font-size: 1.6rem;
+    margin: 0.5rem 0rem;
+  }
+
+  h4 {
+    font-size: 1.4rem;
+    margin: 0.5rem 0rem;
+  }
+
+  p, li {
+    line-height: 1.6;
+  }
+
+  p a {
+    font-weight: bold;
+    color: #440099;
+  }
+
+  p a:hover {
+    color: #7000ff;
+  }
+
+  p a:visited {
+    color:#1f0f4d
+  }
+
+  .content-container li {
+    padding-bottom: 1rem;
+  }
+
+  li:last-child {
+    padding-bottom: 0rem;
+  }
+
+  .banner-text {
+    font-family:"source-serif-pro";
+    font-weight: 700;
+    font-size: 2rem;
+  }
+
+  /* Sticky Container */
+  .sticky-container {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: white;
+  }
+
+  /* Banner Styles */
+  .banner {
+    background-color: #3B0D74;
+    color: #fff;
+    padding: 2rem 0rem;
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  /* Wrapper for Menu and Gradient */
+  .nav-menu-wrapper {
+    position: relative;
+    max-width: 1180px;
+    margin: 0 auto;
+  }
+
+  /* Desktop and Horizontal Scroll Menu Styles */
+  .nav-menu-container {
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .nav-menu {
+    display: flex;
+    justify-content: flex-start;
+    padding: 1rem 0rem;
+    max-width: 1180px;
+    margin: 0 auto;
+  }
+
+  .nav-menu a {
+    color: black;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    
+  }
+
+  .nav-menu a:hover,
+  .nav-menu .active {
+    background-color: #440099;
+    border-radius: 5px;
+    color: white;
+  }
+
+  /* Gradient overlay for fade effect */
+  .gradient-overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 50px;
+    background: linear-gradient(to left, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+    pointer-events: none;
+    z-index: 5; /* Ensure it appears above menu items */
+  }
+
+  /* Mobile Menu and Toggle Button Styles */
+  .menu-toggle {
+    display: none;
+    color: black;
+    background: none;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 15px;
+    cursor: pointer;
+    text-align: left;
+    background-color: white;
+    width: 100%;
+  }
+
+  .mobile-menu {
+    display: none;
+    background-color: white;
+    padding: 0;
+    width: 100%;
+    z-index: 9;
+  }
+
+  .mobile-menu a {
+    display: block;
+    color: black;
+    padding: 15px;
+    text-decoration: none;
+    border-bottom: 1px solid #440099;
+  }
+
+  .mobile-menu a:hover,
+  .mobile-menu .active {
+    background-color: #440099;
+    color: white;
+  }
+
+  /* Sticky Bottom Footer */
+  .sticky-footer {
+    position: fixed;
+    bottom: -100px;
+    left: 0;
+    width: 100%;
+    background-color: #1F0F4D; /* Purple background */
+    color: #fff;
+    display: flex;
+    justify-content: space-around;
+    padding: 1.5rem 0;
+    z-index: 10;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    transition: bottom 0.6s cubic-bezier(0.25, 1, 0.5, 1); /* Smoother ease-in-out */
+  }
+
+  /* Class to make footer visible */
+.sticky-footer.visible {
+  bottom: 0; /* Slide-up to visible */
+}
+
+  .footer-container {
+    max-width: 1180px;
+    margin: 0 auto;
+  }
+
+  .footer-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+  }
+
+  .footer-item svg {
+    margin-right:0.5rem;
+  }
+
+  .footer-item a {
+    color: white;
+  }
+
+  .footer-item svg {
+    width: 24px;
+    height: 24px;
+    margin-bottom: 5px;
+  }
+
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    h1.course-dark, span.award-dark {
+      font-size: 1.6rem !important;
+    }
+
+    .olp-banner-dark {
+      padding: 1rem !important;
+    }
+
+    .sticky-footer {
+      flex-direction: row;
+      padding: 10px 0;
+    }
+
+    .fee-container {
+      flex-direction: column;
+    }
+
+    .info-section {
+        flex-direction: column;
+        gap:10px !important;
+    }
+
+    .footer-item {
+      margin: 5px 0;
+      max-width: 12ch;
+      flex-direction: column;
+      text-wrap:balance;
+    }
+    .footer-item a {
+      text-decoration: none !important;
+    }
+  }
+
+  .banner-content {
+    position: relative;
+    max-width: 1180px;
+    margin: 0 auto;
+}
+  
+  .banner-text {
+    padding-left:1rem;
+  }
+
+  .content-container {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding-bottom: 10rem;
+    margin-top: 2rem;
+    
+  }
+
+  .content {
+    max-width: 80ch;
+    margin: 0;
+    padding: 0.25rem 0.5rem; 
+  }
+
+  .content img.main {
+    width: 100%;
+
+  }
+
+  .course-banner-dark {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    background-color: #1f0f4d;
+    padding-bottom: 1rem;
+
+}
+
+.olp-banner-dark {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    background-color: #1f0f4d;
+    color: white;
+    margin: 0 auto;
+    max-width: 1180px;
+    padding: 2rem;
+}
+
+.olp-content {
+    position: relative;
+    z-index: 2;
+}
+
+h1.course-dark, span.award-dark {
+    font-family: "source-serif-pro", serif;
+    color: white;
+    font-size: 2.2rem;
+    font-weight: 700;
+    line-height:200%;
+    margin: 0;
+    position: relative;
+    display: inline-block;
+}
+
+span.award-dark {
+    color:#D7F1F6;
+    margin-left: 0.5rem;
+}
+
+span.school {
+    display: block;
+    font-size: 1rem;
+    margin-top: -0.5rem;
+}
+
+.summary {
+    max-width:70ch;
+    font-weight: 300;
+    padding-top: 1rem;
+    font-size: 1.2rem;
+}
+
+.info-section {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    flex-wrap: wrap;
+}
+
+.info-block-dark {
+    text-align: left;
+}
+
+.info-block-dark .heading {
+    color: #00b7c4; /* Light blue */
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.info-block-dark {
+    font-size: 1em;
+    font-weight: 600;
+}
+
+.offer-dark, .ucas-dark, .duration-dark, .start-dark {
+    padding-bottom: 0.75rem;
+}
+
+.info-block-dark .offer-dark {
+    color: #64CBE8;
+}
+
+.info-block-dark .ucas-dark {
+    color: #FF6371;
+}
+
+.info-block-dark .duration-dark {
+    color: #3BD4AE;
+}
+
+.info-block-dark .start-dark {
+    color: #DAA8E2;
+}
+
+.info-block-dark .value {
+    font-family: "source-serif-pro",serif;
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-top: -0.5rem;
+}
+
+.info-block-dark .subtext {
+    font-size: 0.9em;
+}
+
+.info-block-dark .subtext a {
+    color: #fff;
+     border-bottom: 2px #fff solid;
+}
+
+.subtext {
+    padding-top: 0.5rem;
+}
+
+.global-nav {
+    height:100px;
+    background-color: white;
+}
+
+.vertical-shelf {
+  display: flex;
+  justify-content: flex-start;
+  gap: 0.5rem;
+}
+
+.vertical-video {
+  width: calc(33.33% - 0.5rem); /* Four items per row */
+  background-color: darkslategrey;
+  border-radius: 5px;
+}
+
+.vertical-thumbnail {
+  position: relative;
+  aspect-ratio: 3 / 4; /* 9:16 aspect ratio */
+  overflow: hidden;
+  border-radius: 5px;
+}
+
+.vertical-thumbnail:hover {
+  cursor: pointer;
+}
+
+.vertical-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.vertical-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 10px;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2) 60%, rgba(0, 0, 0, 0.95) 100%);
+  transition: background 1.2s ease-out; 
+
+}
+
+.vertical-overlay:hover {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 60%, rgba(0, 0, 0, 0.95) 100%);
+
+}
+
+.vertical-duration {
+  font-family: "Source Sans 3", sans-serif !important;
+  color: white;
+  font-size: 0.75rem;
+  font-weight:600;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 4px 6px;
+  border-radius: 4px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+.vertical-title {
+  color: white;
+  font-size: 1rem;
+  line-height: 1.2rem;
+  font-family: "Source Sans 3", sans-serif !important;
+  margin: 0;
+  text-wrap: balance;
+  max-width:20ch;
+}
+
+/* Accordion styles */
+
+.accordion {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  font-weight: bold;
+  text-decoration: underline;
+  font-family: "source-serif-pro";
+  font-weight: 700;
+  font-size: 1.2rem;
+  padding: 0.5rem 0;
+}
+
+.accordion-icon {
+  width: 16px;
+  height: 16px;
+  background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" fill="%237000ff" viewBox="0 0 448 512"%3E%3Cpath d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"%2F%3E%3C%2Fsvg%3E');
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-left: 0.25rem; /* Adjust if needed */
+  transition: transform 0.3s ease;
+}
+
+.accordion:hover {
+color: #7000ff;
+}
+
+.panel {
+    background-color: white;
+    padding: 1rem 2rem;
+    display: none;
+}
+
+hr {
+    margin: 1rem 0rem;
+    border: 1px solid #B8BBBF;
+}
+
+hr.space {
+    margin: 0.5rem 0rem;
+    border: none;
+}
+
+hr.section {
+    margin: 2rem 0rem;
+    border: 2px solid #1F0F4D;
+}
+
+.tab-container {
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+      background-color: white;
+    }
+
+    .tabs {
+      display: flex;
+      cursor: pointer;
+    }
+
+    .tab {
+      flex: 1;
+      padding: 10px;
+      text-align: center;
+      font-weight: bold;
+      background-color: #ddd;
+      color: #333;
+      transition: background-color 0.3s;
+    }
+
+    .tab.active {
+      background-color: #333;
+      color: #fff;
+    }
+
+    /* Content Styles */
+    .tab-content {
+        padding: 1rem 2rem;
+      background-color: white;
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    /* Container for the fee boxes */
+    .fee-container {
+      display: flex;
+      gap: 20px;
+    }
+
+    /* Individual fee box styles */
+    .fee-box {
+      background-color: white;
+      padding: 20px;
+      border-radius: 3px;
+      text-align: center;
+      width: 330px;
+    }
+
+    /* Amount style */
+    .fee-box .amount {
+      font-size: 1.8rem;
+      font-family: "source-serif-pro";
+      font-weight: 700;
+      color: #333;
+    }
+
+    /* Label and description styles */
+    .fee-box .label {
+      font-size: 18px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .fee-box .description {
+      font-size: 14px;
+      color: #666;
+      margin-top: 4px;
+    }
+
+    /* Basic styling for the gallery */
+    .gallery-container {
+      max-width: 800px;
+      margin: 20px auto;
+      text-align: center;
+    }
+
+    /* Main image display */
+    .main-image {
+      width: 100%;
+      border-radius: 2px;
+      cursor: pointer;
+    }
+
+    /* Thumbnail container */
+    .thumbnail-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 8px;
+      gap: 10px;
+    }
+
+    /* Thumbnail image styling */
+    .thumbnail {
+      width: 170px;
+      cursor: pointer;
+      border-radius: 2px;
+      transition: transform 0.2s ease;
+    }
+
+    .thumbnail:hover {
+      transform: scale(1.05);
+    }
+
+     /* Modal styling */
+     .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      z-index: 100;
+    }
+
+    .modal-content-container {
+      position: relative;
+      max-width: 90%;
+      max-height: 80%;
+      background-color: #fff;
+      border-radius: 0px;
+      overflow: hidden;
+      text-align: left;
+    }
+
+    .modal-content {
+      width: 100%;
+      max-height: 90%;
+      display: block;
+    }
+
+    /* Close button */
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      font-size: 30px;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    /* Description panel below the image */
+    .description-panel {
+      padding: 15px;
+      background-color: #f2f2f2;
+      text-align: left;
+    }
+
+    .description-panel h3 {
+      margin: 0;
+      font-size: 18px;
+      color: #333;
+    }
+
+    .description-panel p {
+      margin: 5px 0 0;
+      font-size: 14px;
+      color: #666;
+    }
+
+    header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #fff;
+    max-width: 1180px;
+    margin: 0 auto;
+}
+
+.menu {
+    display: flex;
+    list-style: none;
+}
+
+.menu li {
+    margin: 0 15px;
+}
+
+.menu li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 1em;
+}
+
+.hamburger {
+    display: none;
+    font-size: 1.5em;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #333;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .menu {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        width: 150px;
+    }
+
+    .menu.show {
+        display: flex;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .global-nav {
+    height:90px;
+    background-color: white;
+}
+
+    .fee-box {width: 330px;}
+
+}
+
+.button-link {
+    display: inline-flex;
+    align-items: center;
+    background-color: #7000ff; /* Light blue background */
+    color: white; /* Dark text color */
+    padding: 10px 20px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.button-link:hover {
+    background-color: #440099; /* Darker shade of blue on hover */
+}
+
+.button-link svg {
+    width: 16px;
+    height: 16px;
+    margin-left: 10px;
+}
+</style>
+</head>
+<body>
+
+<!-- Sticky Container with Banner and Nav Menu -->
+<nav class="navbar">
+  <div class="navbar-content">
+    <div class="navbar-brand">
+      <img src="logo.png" alt="University of Sheffield Logo" class="logo">
+    </div>
+    <ul class="nav-links">
+      <li class="nav-item" onclick="togglePanel('study-panel')">Study</li>
+      <li class="nav-item" onclick="togglePanel('research-panel')">Research</li>
+      <li class="nav-item" onclick="togglePanel('collaborate-panel')">Collaborate</li>
+      <li class="nav-item" onclick="togglePanel('about-panel')">About</li>
+    </ul>
+    <div class="hamburger" onclick="toggleMobileMenu()">☰</div>
+  </div>
+</nav>
+
+<!-- Mega Menu Panels (Study) -->
+<div class="mega-menu-panel" id="study-panel">
+  <div class="mega-menu-content">
+    <div class="menu-column">
+      <h4>Undergraduate</h4>
+      <ul>
+        <li>Undergraduate courses</li>
+        <li>Undergraduate open days</li>
+        <li>How to apply</li>
+        <li>Fees and funding</li>
+        <li>Accommodation</li>
+        <li>International students</li>
+      </ul>
+    </div>
+    <div class="menu-column">
+      <h4>Postgraduate taught</h4>
+      <ul>
+        <li>Postgraduate taught courses</li>
+        <li>Postgraduate open days</li>
+        <li>How to apply</li>
+        <li>Fees and funding</li>
+        <li>International students</li>
+      </ul>
+    </div>
+    <div class="menu-column">
+      <h4>PhD study</h4>
+      <ul>
+        <li>Find a PhD</li>
+        <li>How to apply</li>
+        <li>PhD fees</li>
+        <li>PhD scholarships</li>
+      </ul>
+    </div>
+    <div class="menu-column">
+      <h4>Other ways to study</h4>
+      <ul>
+        <li>Apprenticeships</li>
+        <li>Mature students</li>
+        <li>Online learning</li>
+        <li>TEFL and English as a second language</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Mega Menu Panels (Research) -->
+<div class="mega-menu-panel" id="research-panel">
+  <div class="mega-menu-content">
+    <div class="menu-column">
+      <h4>Research at Sheffield</h4>
+      <ul>
+        <li>Our strategic priorities</li>
+        <li>Our people</li>
+        <li>Research Excellence Framework 2021</li>
+        <li>Researcher support</li>
+        <li>Research environment and culture</li>
+        <li>Open Research</li>
+      </ul>
+    </div>
+    <div class="menu-column">
+      <h4>Postgraduate research</h4>
+      <ul>
+        <li>Find a PhD</li>
+        <li>PhD projects directory</li>
+        <li>PhD scholarships</li>
+      </ul>
+    </div>
+    <div class="menu-column">
+      <h4>Expertise</h4>
+      <ul>
+        <li>Flagship research institutes</li>
+        <li>Research centres</li>
+        <li>Facilities</li>
+        <li>Library</li>
+      </ul>
+    </div>
+    <div class="menu-column">
+      <h4>Our impact</h4>
+      <ul>
+        <li>Research features</li>
+        <li>UN sustainable development goals</li>
+        <li>University Player</li>
+        <li>Queen's Anniversary Prizes</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+ <!-- Mega Menu Panels (Collaborate) -->
+ <div class="mega-menu-panel" id="collaborate-panel">
+  <div class="mega-menu-content">
+    <div class="menu-column">
+      <h4>Partnerships</h4>
+      <ul>
+        <li>How we support business</li>
+        <li>Examples of business partners</li>
+        <li>Research centres, institutes and networks</li>
+        <li>Our role in the city and region</li>
+      </ul>
+    </div>
+    <div class="menu-column">
+      <h4>International</h4>
+      <ul>
+        <li>Our global networks</li>
+        <li>We Are International campaign</li>
+        <li>Global opportunities and exchanges</li>
+      </ul>
+    </div>
+    <div class="menu-column">
+      <h4>Alumni</h4>
+      <ul>
+        <li>Update your details</li>
+        <li>Support us</li>
+        <li>Our alumni</li>
+        <li>Alumni volunteering</li>
+      </ul>
+    </div>
+    <div class="menu-column">
+      <h4>Philanthropy</h4>
+      <ul>
+        <li>Forged in Sheffield, Shaping the Future campaign</li>
+        <li>Get involved</li>
+        <li>Donate now</li>
+        <li>MND appeal</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Mega Menu Panels (About) -->
+<div class="mega-menu-panel" id="about-panel">
+  <div class="mega-menu-content">
+    <div class="menu-column">
+      <h4>About the University</h4>
+      <ul>
+        <li>News</li>
+        <li>Events</li>
+        <li>Jobs</li>
+        <li>Sustainability at Sheffield</li>
+        <li>Inclusion at Sheffield</li>
+        <li>Support for refugee students and scholars</li>
+        <li>Our vision and strategic plan</li>
+        <li>Our role in the city and region</li>
+        <li>Governance and management</li>
+        <li>Rankings</li>
+        <li>University of the Year</li>
+        <li>Queen's Anniversary Prizes</li>
+        <li>Nobel Prize winners</li>
+      </ul>
+    </div>
+    <div class="menu-column">
+      <h4>Departments and services</h4>
+      <ul>
+        <li>Academic departments</li>
+        <li>Faculties</li>
+        <li>Professional services</li>
+      </ul>
+    </div>
+    <div class="menu-column">
+      <h4>Studying at Sheffield</h4>
+      <ul>
+        <li>Guide to Sheffield</li>
+        <li>Courses</li>
+      </ul>
+    </div>
+    <div class="menu-column">
+      <h4>Hospitality</h4>
+      <ul>
+        <li>Conferences, events, visitor accommodation and weddings</li>
+        <li>Cafes and bars</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Mobile Menu Overlay -->
+<div class="mobile-menu-overlay" id="mobile-menu-overlay">
+  <div class="close-btn" onclick="toggleMobileMenu()">✕</div>
+  <div class="mobile-menu-panel" id="main-mobile-panel">
+    <h4 onclick="openSubmenu('mobile-study-panel')">Study</h4>
+    <h4 onclick="openSubmenu('mobile-research-panel')">Research</h4>
+    <h4 onclick="openSubmenu('mobile-collaborate-panel')">Collaborate</h4>
+    <h4 onclick="openSubmenu('mobile-about-panel')">About</h4>
+  </div>
+
+  <!-- Study Submenu Panel (Showing H4s only) -->
+  <div class="mobile-submenu-panel" id="mobile-study-panel">
+      <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+      <h4 onclick="openSubmenu('mobile-study-undergraduate')">Undergraduate</h4>
+    <h4 onclick="openSubmenu('mobile-study-postgraduate')">Postgraduate taught</h4>
+    <h4 onclick="openSubmenu('mobile-study-phd')">PhD study</h4>
+    <h4 onclick="openSubmenu('mobile-study-other')">Other ways to study</h4>
+  </div>
+
+  <!-- Study Category Panels (Third-level Panels) -->
+  <div class="mobile-submenu-panel" id="mobile-study-undergraduate">
+      <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+      <h4 class="plain">Undergraduate</h4>
+    <ul>
+      <li>Undergraduate courses</li>
+      <li>Undergraduate open days</li>
+      <li>How to apply</li>
+      <li>Fees and funding</li>
+      <li>Accommodation</li>
+      <li>International students</li>
+    </ul>
+    <img src="open.jpg">
+    <p><strong>Open day: Saturday 23 November 2024.</strong></p>
+    <p><a href="/">Book your place</a></p>
+  </div>
+
+  <div class="mobile-submenu-panel" id="mobile-study-postgraduate">
+      <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+      <h4 class="plain">Postgraduate taught</h4>
+    <ul>
+      <li>Postgraduate taught courses</li>
+      <li>Postgraduate open days</li>
+      <li>How to apply</li>
+      <li>Fees and funding</li>
+      <li>International students</li>
+    </ul>
+  </div>
+
+  <div class="mobile-submenu-panel" id="mobile-study-phd">
+      <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+      <h4 class="plain">PhD study</h4>
+    <ul>
+      <li>Find a PhD</li>
+      <li>How to apply</li>
+      <li>PhD fees</li>
+      <li>PhD scholarships</li>
+    </ul>
+  </div>
+
+  <div class="mobile-submenu-panel" id="mobile-study-other">
+      <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+      <h4 class="plain">Other ways to study</h4>
+    <ul>
+      <li>Apprenticeships</li>
+      <li>Mature students</li>
+      <li>Online learning</li>
+      <li>TEFL and English as a second language</li>
+    </ul>
+  </div>
+
+
+ <!-- Research Submenu Panel (Showing H4s only) -->
+ <div class="mobile-submenu-panel" id="mobile-research-panel">
+  <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+  <h4 onclick="openSubmenu('mobile-research-research')">Research at Sheffield</h4>
+  <h4 onclick="openSubmenu('mobile-research-postgraduate')">Postgraduate research</h4>
+  <h4 onclick="openSubmenu('mobile-research-expertise')">Expertise</h4>
+  <h4 onclick="openSubmenu('mobile-research-impact')">Our impact</h4>
+</div>
+
+<!-- Study Category Panels (Third-level Panels) -->
+<div class="mobile-submenu-panel" id="mobile-research-research">
+  <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+  <h4 class="plain">Research at Sheffield</h4>
+      <ul>
+        <li>Our strategic priorities</li>
+        <li>Our people</li>
+        <li>Research Excellence Framework 2021</li>
+        <li>Researcher support</li>
+        <li>Research environment and culture</li>
+        <li>Open Research</li>
+      </ul>
+</div>
+<div class="mobile-submenu-panel" id="mobile-research-postgraduate">
+  <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+  <h4 class="plain">Postgraduate research</h4>
+      <ul>
+        <li>Find a PhD</li>
+        <li>PhD projects directory</li>
+        <li>PhD scholarships</li>
+      </ul>
+</div>
+<div class="mobile-submenu-panel" id="mobile-research-expertise">
+  <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+  <h4 class="plain">Expertise</h4>
+      <ul>
+        <li>Flagship research institutes</li>
+        <li>Research centres</li>
+        <li>Facilities</li>
+        <li>Library</li>
+      </ul>
+</div>
+<div class="mobile-submenu-panel" id="mobile-research-impact">
+  <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+  <h4 class="plain">Our impact</h4>
+      <ul>
+        <li>Research features</li>
+        <li>UN sustainable development goals</li>
+        <li>University Player</li>
+        <li>Queen's Anniversary Prizes</li>
+      </ul>
+</div>
+
+<!-- Collaborate Submenu Panel (Showing H4s only) -->
+<div class="mobile-submenu-panel" id="mobile-collaborate-panel">
+  <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+  <h4 onclick="openSubmenu('mobile-collaborate-partnerships')">Partnerships</h4>
+  <h4 onclick="openSubmenu('mobile-collaborate-international')">International</h4>
+  <h4 onclick="openSubmenu('mobile-collaborate-alumni')">Alumni</h4>
+  <h4 onclick="openSubmenu('mobile-collaborate-philanthrophy')">Philanthropy</h4>
+</div>
+
+<div class="mobile-submenu-panel" id="mobile-collaborate-partnerships">
+  <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+  <h4>Partnerships</h4>
+      <ul>
+        <li>How we support business</li>
+        <li>Examples of business partners</li>
+        <li>Research centres, institutes and networks</li>
+        <li>Our role in the city and region</li>
+      </ul>
+</div>
+  <div class="mobile-submenu-panel" id="mobile-collaborate-international">
+      <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+      <h4>International</h4>
+      <ul>
+        <li>Our global networks</li>
+        <li>We Are International</li>
+        <li>Global opportunities and exchanges</li>
+      </ul>
+</div>
+<div class="mobile-submenu-panel" id="mobile-collaborate-alumni">
+  <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+  <h4>Alumni</h4>
+      <ul>
+        <li>Update your details</li>
+        <li>Support us</li>
+        <li>Our alumni</li>
+        <li>Alumni volunteering</li>
+      </ul>
+</div>
+<div class="mobile-submenu-panel" id="mobile-collaborate-philanthrophy">
+  <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+  <h4>Philanthropy</h4>
+      <ul>
+        <li>Forged in Sheffield, Shaping the Future campaign</li>
+        <li>Get involved</li>
+        <li>Donate now</li>
+        <li>MND appeal</li>
+      </ul>
+</div>
+
+<!-- About Submenu Panel (Showing H4s only) -->
+<div class="mobile-submenu-panel" id="mobile-about-panel">
+  <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+  <h4 onclick="openSubmenu('mobile-about-university')">About the University</h4>
+  <h4 onclick="openSubmenu('mobile-about-departments')">Departments</h4>
+  <h4 onclick="openSubmenu('mobile-about-studying')">Studying at Sheffield</h4>
+  <h4 onclick="openSubmenu('mobile-about-hospitality')">Hospitality</h4>
+</div>
+<div class="mobile-submenu-panel" id="mobile-about-university">
+  <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+  <h4>About the University</h4>
+      <ul>
+        <li>News</li>
+        <li>Events</li>
+        <li>Jobs</li>
+        <li>Sustainability at Sheffield</li>
+        <li>Inclusion at Sheffield</li>
+        <li>Support for refugee students and scholars</li>
+        <li>Our vision and strategic plan</li>
+        <li>Our role in the city and region</li>
+        <li>Governance and management</li>
+        <li>Rankings</li>
+        <li>University of the Year</li>
+        <li>Queen's Anniversary Prizes</li>
+        <li>Nobel Prize winners</li>
+      </ul>
+</div>
+<div class="mobile-submenu-panel" id="mobile-about-departments">
+  <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+  <h4>Departments and services</h4>
+  <ul>
+    <li>Academic departments</li>
+    <li>Faculties</li>
+    <li>Professional services</li>
+  </ul>
+</div>
+<div class="mobile-submenu-panel" id="mobile-about-studying">
+  <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+  <h4>Studying at Sheffield</h4>
+      <ul>
+        <li>Guide to Sheffield</li>
+        <li>Courses</li>
+      </ul>
+</div>
+<div class="mobile-submenu-panel" id="mobile-about-hospitality">
+  <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+  <h4>Hospitality</h4>
+      <ul>
+        <li>Conferences, events, visitor accommodation and weddings</li>
+        <li>Cafes and bars</li>
+      </ul>
+</div>
+
+
+
+</div>
+
+  <!-- Banner -->
+  <div class="course-banner-dark">
+    <div class="olp-banner-dark">
+        <div class="olp-content-dark">
+            <h1 class="course-dark">Data Science</h1>
+            <span class="award-dark">MSc</span>
+            <span class="school">Information School, Faculty of Social Sciences
+            </span>
+            <div class="info-section">
+                <div class="info-block-dark">
+                    <div class="offer-dark">Start date</div>
+                    <div class="value">September 2025</div>
+                </div>
+                <div class="info-block-dark">
+                    <div class="ucas-dark">Duration</div>
+                    <div class="value">
+                    1 year full-time | 2 years part-time | 3 years part-time
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="sticky-container">
+  <!-- Toggle Button for Mobile Menu -->
+  <button class="menu-toggle" onclick="toggleMenu()">Course menu &nbsp; ⏷</button>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#overview" class="active">Overview</a>
+    <a href="#modules">Modules</a>
+    <a href="#entry-requirements">Entry requirements</a>
+    <a href="#fees">Fees and funding</a>
+    <a href="#learning">Teaching and assessment</a>
+    <a href="#school">School</a>
+    <a href="#careers">Careers</a>
+    <a href="#visit">Visit</a>
+    <a href="#apply">Apply</a>
+    <a href="#contact">Contact</a>
+  </div>
+
+  <!-- Wrapper for Desktop Menu and Gradient Overlay -->
+  <div class="nav-menu-wrapper">
+    <div class="nav-menu-container">
+      <div class="nav-menu">
+        <a href="#overview" class="active">Overview</a>
+        <a href="#modules">Modules</a>
+        <a href="#entry-requirements">Entry requirements</a>
+        <a href="#fees">Fees and funding</a>
+        <a href="#learning">Teaching and assessment</a>
+        <a href="#school">School</a>
+        <a href="#careers">Careers</a>
+        <a href="#visit">Visit</a>
+        <a href="#apply">Apply</a>
+        <a href="#contact">Contact</a>
+        <a href="#"></a>
+      </div>
+    </div>
+    <!-- Gradient overlay to stay at the right edge -->
+    <div class="gradient-overlay"></div>
+  </div>
+</div>
+<div class="content-container">
+    <div class="content">
+<h2 id="overview">Overview</h2>
+ <img class="main" src="datascience.jpg">   
+<p><strong>All organisations face the challenge of how to analyse and use data. On this course, you'll learn data science concepts and how to support data-driven approaches to problem-solving within complex organisational and societal contexts.</strong></p>
+<p>Gain an in-depth understanding of the theory and practice of data science and its application in different organisational contexts. You'll be provided with a set of fundamental principles that support ethical extraction of information and knowledge from data. Case studies will help to show the practical application of these principles to real life problems.</p>
+<p>The programme is centred on three key aspects of data science fundamental data-related principles, supporting infrastructures and organisational context.</p>
+<p>You'll gain practical skills in handling structured and unstructured data, analysing and visualising data, data mining, as well as gaining hands-on experience of software tools used and their use in real-world settings. You'll gain the skills of a data manager who understands what the algorithms (e.g., for data mining or handling ‘big data’) can do and when to use them for the benefit of the organisation.</p>
+<p>Throughout the programme, there will be opportunities to gain hands-on experience using a variety of tools, such as R, Python and SPSS, Weka or Tableau/Spotfire and, although you're not required to have any knowledge of these tools before starting the course, it may be advantageous to read up on them in advance. You'll conduct in-depth research into your particular areas of interest for your dissertation.</p>
+<hr />
+<h3>Applying for this course</h3>
+<p>We use a staged admissions process to assess applications for this course. </p>
+<p>You'll still apply for this course in the usual way, using our Postgraduate Online Application Form.</p>
+<a href="#" class="button-link">
+    Apply now
+    <svg xmlns="http://www.w3.org/2000/svg"fill="#fff" viewBox="0 0 448 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg>
+</a>
+<hr />
+<h3>Accreditation</h3>
+<p>CILIP accredited</p>
+<hr />
+<h3>Duration</h3>
+<ul>
+<li>1 year full-time</li>
+<li>2 years part-time</li>
+<li>3 years part-time</li>
+</ul>
+<hr class="section">
+<h2 id="modules">Modules</h2>
+<p>A selection of modules is available each year - some examples are below. There may be changes before you start your course. From May of the year of entry, formal programme regulations will be available in our Programme Regulations Finder.</p>
+<hr />
+<h3>MSc modules</h3>
+<p>You’ll need 180 credits to get a masters degree, with 90 credits from core modules, 30 credits from optional modules and a dissertation (including dissertation preparation) worth 60 credits.</p>
+<h4>Core modules</h4>
+<div class="accordion-item">
+    <div class="accordion">Data Visualisation<span class="accordion-icon"></span></div>
+    <div class="panel">
+      <p>Visualisation is a crucial technique to summarise data in an intuitive fashion. It can provide insights that are difficult to extract from the raw data. Because of this, visualisation is often used to enhance the delivery of information in the media and in reports. The module will focus on the theoretical frameworks to design visual elements that are able to provide information about a data set. It will cover how to create and critique different visualisations to display data, as well as design considerations and good practices in data visualisation.</p>
+      <p><strong>15 credits</strong></p>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <div class="accordion">Introduction to Data Science<span class="accordion-icon"></span></div>
+    <div class="panel">
+      <p>Data science is an emerging field that seeks to discover and explore new ways of exploiting data to support decision-making for a range of domains and problems. With individuals and organisations producing vast amounts of real-time heterogeneous data (i.e. Big Data), there is greater demand than ever to manage and analyse data effectively. This module aims to introduce students to the concepts and theories that underpin data science, provide an understanding of how they are used and impact on organisations, and gain hands-on experience with analysing and presenting data effectively using R and R Studio.</p>
+      <p><strong>15 credits</strong></p>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <div class="accordion">Data Mining<span class="accordion-icon"></span></div>
+    <div class="panel">
+      <p>As the volume of and types of information collected and stored in databases increases, there is a growing need to gain new insights into the data by identifying important patterns and trends. Data Mining is the process by which this is done. This module will examine the two main goals served by data mining: (i) insight (identifying patterns and trends on which to base actions), and (ii) prediction (modeling future activities or outcomes based on input data) and how algorithms are used to support these. An overview will be provided on the algorithms that underpin the most commonly used machine learning methods for building models and identifying patterns in data. Practical experience will be gained through the use of appropriate software to complete weekly tasks (i.e. KNIME). </p>
+      <p>Students will be introduced to key themes in data mining, including types of data mining problem  (e.g. classification, regression, clustering, rule mining, and generative AI), common algorithms used in machine learning (e.g. SVM, decision trees, k-means, neural networks, etc.), feature selection and evaluation issues (e.g. measures and standardised benchmarks). Case studies will be used throughout the module to highlight the use of data mining methods for tackling real-world problems as well as the various ethical, social and legal issues associated with its use.</p>
+      <p><strong>15 credits</strong></p>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <div class="accordion">Data Analysis<span class="accordion-icon"></span></div>
+    <div class="panel">
+      <p>This module provides an introduction to analysing data using statistical methods, e.g. descriptive, bivariate and multivariate analyses. It demonstrates different ways of analysing data, presenting the results of analyses (for example, graphically and using tables and text) and interpreting their meaning. Students undertaking the module will gain practical experience in using SPSS. By the end of the module students will be able to demonstrate an understanding of the concepts and theories of statistical data analysis, describe and use a variety of statistical methods, present the outputs of data analysis in an appropriate way and be able to use statistical software. The module will involve lectures, practical classes and student-led seminars which, together with self-directed learning, will cover the conceptual, theoretical and practical aspects of data analysis.</p>
+      <p><strong>15 credits</strong></p>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <div class="accordion">Data and Society<span class="accordion-icon"></span></div>
+    <div class="panel">
+      <p>The module draws upon key concepts and emerging debates from across the social sciences to address how social and political factors interact with (big) data and evolving data science techniques such as data mining, visualisation and analytics. Key issues and debates will be examined in relation to developments in fields such as marketing, political campaigning, and state security. The module complements more technical and management orientated modules, and aims to aid students in becoming more critical and reflective data scientists, decision makers and/or citizens able to successfully navigate the challenging social, political, legal and ethical issues related to data processing and use, and to reflect critically on the ways in which emerging data practices are shaped by and contribute to the development of complex social worlds.</p>
+      <p><strong>15 credits</strong></p>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <div class="accordion">Database Design<span class="accordion-icon"></span></div>
+    <div class="panel">
+      <p>Effective data management is key to any organisation, particularly with the increasing availability of large and heterogeneous datasets (e.g. transactional, multimedia and geo-spatial data). A database is an organised collection of data, typically describing the activities of one or more organisations and a core component of modern information systems. A Database Management System (DBMS) is software designed to assist in maintaining and utilising large collections of data and becoming a necessity for all organisations. This module provides an introduction to the area of databases and database management, relational database design and a flavour of some advanced topics in current database research that deal with different kinds of data often found within an organisational context. Lectures are structured into three main areas: An introduction to databases, The process of designing relational databases, Advanced topics (e.g. data warehouses and non-relational databases) The course includes a series of online tasks with supporting 'drop in' laboratories aimed at providing you with the skills required to implement a database in Oracle and extract information using the Structured Query Language (SQL).</p>
+      <p><strong>15 credits</strong></p>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <div class="accordion">
+      <span class="accordion-title">Research Methods and Dissertation Preparation</span>
+      <span class="accordion-icon"></span></div>
+    <div class="panel">
+      <p>This module assists students in the identification of, and preparation of a dissertation proposal. Students will: familiarise themselves with on-going research in the School; identify and prepare a dissertation proposal; carry out a preliminary literature search in the area of the dissertation research topic; and be introduced to the use of social research methods and statistics for information management.</p>
+      <p><strong>15 credits</strong></p>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <div class="accordion">Dissertation<span class="accordion-icon"></span></div>
+    <div class="panel">
+      <p>This module enables students to carry out an extended piece of work on an Information School approved topic, so that they can explore an area of specialist interest to them in greater depth. Students will be supported through tutorials with a project supervisor, will apply research methods appropriate to their topic, and implement their work-plan to produce an individual project report. Students will already have identified a suitable topic and designed a project plan in the pre-requisite unit Research Methods and Dissertation Preparation.</p>
+      <p><strong>45 credits</strong></p>
+    </div>
+  </div>
+  <hr />
+  <h3>Optional modules - two from:</h3>
+  <div class="accordion-item">
+    <div class="accordion">Researching Social Media<span class="accordion-icon"></span></div>
+    <div class="panel">
+      <p>The module will examine the key theoretical frameworks and methods used in social media studies. Students will explore the following questions: 1) What can be learnt about society by studying social media? 2) How should researchers construct ethical stances for researching sites such as Facebook and Twitter? 3) What are the traditional and digital research methods and tools that can be applied to conduct research on social media? 4) What are the strengths and weaknesses of these methods?</p>
+      <p>The primary focus of the module is on designing social media research projects rather than conducting them. Nevertheless, there will be opportunities to learn and practice relevant analysis skills. It is not a programming module but some of the topics involve the use of software and there will be the chance to write small programs for related tasks.</p>
+      <p><strong>15 credits</strong></p>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <div class="accordion">Information Governance and Ethics<span class="accordion-icon"></span></div>
+    <div class="panel">
+      <p>This module explores a) the emergence of information and data as an economic resource; b) the governance challenges and ethical issues arising from organisations' systematic capture, processing, and use of information and data for organisational goals, e.g. value, risk, accountability, ownership, privacy etc; c) governance, ethical, legal and other frameworks relevant to the capture, processing and use of information and data within organisational and networked contexts; and d) technologies and techniques used in the governing and governance of information and data. Case examples from a number of domains, e.g. business, government, health, law, and social media illustrate the topics investigated.</p>
+      <p><strong>15 credits</strong></p>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <div class="accordion">Big Data Analytics<span class="accordion-icon"></span></div>
+    <div class="panel">
+      <p>Data Science techniques often need to be applied to large amounts of data to generate insights. To deal with volume, velocity, and variety of data we need to rely on novel computational architectures that focus on scaling-out data processing as compared to the classic scale-up approach. Such systems allow to add computational resources to a distributed system depending on requirements and load which changes over time. This module will give students knowledge about modern scale-out system architectures to perform data analytics queries over very large structured/unstructured datasets as well as to run data mining algorithms at scale.</p>
+      <p><strong>15 credits</strong></p>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <div class="accordion">Business Intelligence<span class="accordion-icon"></span></div>
+    <div class="panel">
+      <p>We will cover the principles and practices of gathering and synthesising business intelligence from the external environment, including organisations' competitive intelligence operations, environmental scanning activities, market intelligence, and strategic intelligence using open-source information. A  secondary focus for the module is the role of BI software in organisations to collect and analyse internal information. This module aims to provide students with an understanding of the ways in which business people use information and of how information is used to support strategic decision-making. Students will learn how to carry out effective searches using both free and fee-based business information resources such as the Mintel market research database, Nexis news database and FAME financial analysis database, and will study key issues concerning the value, cost and availability of information. Students will learn how to apply standard analysis frameworks commonly used in organisational business intelligence. The module will concentrate primarily on external information resources but also covers the ways in which information internal to an organisation can be used strategically to enhance competitive advantage.</p>
+      <p>We take a flipped approach on this module: lectures are provided in video format on Blackboard, and students are expected to watch these and engage with any preparation activities before the timetabled sessions.  Timetabled sessions focus on practical exercises where students will have opportunities to develop expertise in using business-focused electronic information services, and will develop skills in analysing and presenting information effectively.</p>
+      <p>There are two individual assessments for the module. Assignment 1 (30%)  is to create an infographic from an approved data set, and assignment 2 (70%)  is to write an intelligence report on a company, providing a detailed analysis of the company and its competitive position in the industry it operates in.</p>
+      <p><strong>15 credits</strong></p>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <div class="accordion">User-Centred Design and Human-Computer Interaction<span class="accordion-icon"></span></div>
+    <div class="panel">
+      <p>Interface design and usability are central to the experience of interacting with computers. The module introduces usability principles and the design process for interactive systems exploring four major themes. Firstly, user psychology and cognitive principles underlying interface design. Secondly, user interface architectures, modes of interaction, metaphors, navigational structures. Thirdly, the user interface design process including task analysis, modelling constructs and prototyping techniques. Fourthly, the evaluation of user interfaces covering concepts of usability, goals and types of evaluation. The module focus is on the underlying principles of HCI and user-centred design approach with practical sessions to demonstrate these principles.</p>
+      <p><strong>15 credits</strong></p>
+    </div>
+  </div>
+<hr class="space">
+<p>The content of our courses is reviewed annually to make sure it's up-to-date and relevant. Individual modules are occasionally updated or withdrawn. This is in response to discoveries through our world-leading research; funding changes; professional accreditation requirements; student or employer feedback; outcomes of reviews; and variations in staff or student numbers. In the event of any change we'll consult and inform students in good time and take reasonable steps to minimise disruption.</p>
+<hr class="section">
+<h2 id="entry-requirements">Entry requirements</h2>
+<p><strong>2:1 undergraduate honours degree in any subject.</strong></p>
+<p>We also consider a wide range of international qualifications:</p>
+<a href="#" class="button-link">
+    Entry requirements for international students
+    <svg xmlns="http://www.w3.org/2000/svg"fill="#fff" viewBox="0 0 448 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg>
+</a>
+<p>We assess each application on the basis of the applicant’s preparation and achievement as a whole. We may accept applicants whose qualifications don’t meet the published entry criteria but have other experience relevant to the course.</p>
+<p>The lists of required degree subjects and modules are indicative only.  Sometimes we may accept subjects or modules that aren’t listed, and sometimes we may not accept subjects or modules that are listed, depending on the content studied.</p>  
+<hr />
+  <h4>English language requirements</h4>
+<p>IELTS 6.5 (with 6 in each component) or University equivalent</p>
+<p>Other English language qualifications we accept</p>
+  <div class="accordion-item">
+    <div class="accordion">Pathway programme for international students <span class="accordion-icon"></span></div>
+    <div class="panel">
+<p>If you're an international student who does not meet the entry requirements for this course, you have the opportunity to apply for a pre-masters programme in Business, Social Sciences and Humanities at the University of Sheffield International College. This course is designed to develop your English language and academic skills. Upon successful completion, you can progress to degree level study at the University of Sheffield.</p>
+    </div>
+</div>
+<p>If you have any questions about entry requirements, please contact the school/department.</p>
+<hr class="section">
+<h2 id="fees">Fees and funding</h2>
+<h3>Fees</h3>
+<div class="fee-container">
+    <!-- Home students fee box -->
+    <div class="fee-box">
+      <div class="amount">£11,810</div>
+      <div class="label">Home</div>
+      <div class="description">2025 annual fee</div>
+    </div>
+  
+    <!-- Overseas students fee box -->
+    <div class="fee-box">
+      <div class="amount">£31,190</div>
+      <div class="label">Overseas</div>
+      <div class="description">2025 annual fee</div>
+    </div>
+  </div>
+  <p>The fee listed is for the advertised mode of study. If you're studying for an alternative qualification or via a different mode of study (eg full-time, part-time) then the fee could be different. Due to inflation, the fee for Home students could also increase after your first year of study. Use our fee calculator or contact the Student Fees team to check.</p>
+  <p> <a href="/">Fee status help</a></p>
+  <a href="#" class="button-link">
+    Funding for postgraduate taught courses
+    <svg xmlns="http://www.w3.org/2000/svg"fill="#fff" viewBox="0 0 448 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg>
+</a>
+  <hr class="section">
+  <h2 id="learning">Teaching and assessment</h2>
+  <h3>Teaching</h3>
+<p>A variety of teaching methods are used combining lectures from academic staff and professional practitioners with seminars, tutorials, small-group work, and computer laboratory sessions. There is a strong emphasis on new ways of exploiting data to support decision-making for a range of domains and problems in an organisational context. In addition to the taught components, you will be expected to engage in independent study, reading and research in support of your coursework.</p>
+<p>Teaching consists of two 15-week semesters, after which you'll write your dissertation.</p>  
+<hr />
+  <h3>Assessment</h3>
+  <p>Assessments are designed to test your grasp of the theoretical principles, technologies and frameworks used to collect, store, analyse and exploit data; they may include essays, report writing, oral presentations, in-class tests and group projects.</p>
+  <p>There is a dissertation of 10-15,000 words, which provides you with the opportunity to focus in depth on a topic of your choice with one-to-one supervision. Opportunities exist for both project and dissertation studies to be carried out with our collaborating organisations, which can provide the opportunity to tackle real-life problems.</p>
+  <hr class="section">
+  <h2 id="school">Information School</h2>
+  <p><strong>The University of Sheffield Information School is ranked number one in the world for library and information management in the QS World University Rankings by subject 2024. These rankings are based upon academic reputation, employer reputation and research impact.</strong></p>
+  <p>The school has been at the forefront of developments in the information field for more than fifty years. The subject is characterised by its distinctive, interdisciplinary focus on the interactions between people, information and digital technologies. It has the ultimate goal of enhancing information access, and the management, sharing and use of information, to benefit society.</p>
+  <p>When you come to study with us you'll be an integral part of our research culture. The school is your home and we pride ourselves on the friendliness and helpfulness of our staff.</p>
+  <p>We offer an outstanding academic education through a wide range of taught postgraduate degrees which embed the principles of research-led teaching.</p>
+  <p>When you join any of our degree programmes you'll develop a critical understanding of current issues in library and information management. You'll benefit from being taught by staff who are undertaking leading-edge research and who have many links with industry.</p>
+  <p>As part of our mission to provide world-quality university education in information, we aim to inspire and help you pursue your highest ambitions for your academic and professional careers.</p>
+  <hr class="section">
+  <h2 id="careers">Careers</h2>
+  <p><strong>Examples of organisations that have employed our graduates include:</strong>
+<ul>
+<li>Deloitte LLP</li>
+<li>Huawei Technologies</li>
+<li>National Institute for Health Research</li>
+<li>Financial institutions in the UK and overseas</li>
+<li>HMRC (HM Revenue and Customs)</li>
+<li>Nationwide Building Society</li>
+<li>Santander PLC</li>
+<li>Queen Mary University of London</li>
+</ul>
+<p><strong>Our graduates are employed in roles such as:</strong></p>
+<ul>
+<li>Data Scientist</li>
+<li>Data Analyst</li>
+<li>Development Engineer</li>
+<li>Machine Learning Engineer</li>
+<li>Market Data Analyst</li>
+<li>Optimisation Analyst</li>
+<li>Project Management</li>
+<li>Service Consultant</li>
+</ul>
+  </p>
+    <hr class="section">
+    <h2 id="visit">Visit</h2>
+    <h3>University open days</h3>
+    <p>An open day gives you the best opportunity to hear first-hand from our current students and staff about our courses.</p>
+    <a href="#" class="button-link">
+        Open days and campus tours
+        <svg xmlns="http://www.w3.org/2000/svg"fill="#fff" viewBox="0 0 448 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg>
+    </a>
+    <hr class="section">
+    <h2 id="apply">Apply</h2>
+    <p>We use a staged admissions process to assess applications for this course. You'll still apply for this course in the usual way, using our Postgraduate Online Application Form.</p>
+    <p>The school running this course will change its name before September 2025. On the online application form, please select Faculty of Social Sciences and School of Information, Journalism and Communication when applying for this course.</p>
+    <a href="#" class="button-link">
+        Apply now
+        <svg xmlns="http://www.w3.org/2000/svg"fill="#fff" viewBox="0 0 448 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg>
+    </a>
+    <hr class="section">
+    <h2 id="contact">Contact</h2>
+    <p>Telephone: +44 114 222 2646</p>
+    <p>Email: informationschool-admissions@sheffield.ac.uk</p>
+    <a href="#" class="button-link">
+        Information School
+        <svg xmlns="http://www.w3.org/2000/svg"fill="#fff" viewBox="0 0 448 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg>
+    </a>
+    <hr />
+    <p>Any supervisors and research areas listed are indicative and may change before the start of the course.</p>
+    <p><a href="/">Our student protection plan</a></p>
+    <p>Recognition of professional qualifications: from 1 January 2021, in order to have any UK professional qualifications recognised for work in an EU country across a number of regulated and other professions you need to apply to the host country for recognition. Read information from the UK government and the EU Regulated Professions Database.</p>
+</div>
+</div>
+<!-- Sticky Bottom Footer -->
+<div class="sticky-footer">
+    <div class="footer-item">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="#7000ff" viewBox="0 0 576 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M96 80c0-26.5 21.5-48 48-48l288 0c26.5 0 48 21.5 48 48l0 304L96 384 96 80zm313 47c-9.4-9.4-24.6-9.4-33.9 0l-111 111-47-47c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l64 64c9.4 9.4 24.6 9.4 33.9 0L409 161c9.4-9.4 9.4-24.6 0-33.9zM0 336c0-26.5 21.5-48 48-48l16 0 0 128 448 0 0-128 16 0c26.5 0 48 21.5 48 48l0 96c0 26.5-21.5 48-48 48L48 480c-26.5 0-48-21.5-48-48l0-96z"/></svg>
+        <a href="/open-day">Apply for this course</a>
+    </div>
+    <div class="footer-item">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="#7000ff" viewBox="0 0 384 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"/></svg>      
+        <a href="https://www.ucas.com">Book an open day</a>
+    </div>
+    <div class="footer-item">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="#7000ff" viewBox="0 0 640 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M208 352c114.9 0 208-78.8 208-176S322.9 0 208 0S0 78.8 0 176c0 38.6 14.7 74.3 39.6 103.4c-3.5 9.4-8.7 17.7-14.2 24.7c-4.8 6.2-9.7 11-13.3 14.3c-1.8 1.6-3.3 2.9-4.3 3.7c-.5 .4-.9 .7-1.1 .8l-.2 .2s0 0 0 0s0 0 0 0C1 327.2-1.4 334.4 .8 340.9S9.1 352 16 352c21.8 0 43.8-5.6 62.1-12.5c9.2-3.5 17.8-7.4 25.2-11.4C134.1 343.3 169.8 352 208 352zM448 176c0 112.3-99.1 196.9-216.5 207C255.8 457.4 336.4 512 432 512c38.2 0 73.9-8.7 104.7-23.9c7.5 4 16 7.9 25.2 11.4c18.3 6.9 40.3 12.5 62.1 12.5c6.9 0 13.1-4.5 15.2-11.1c2.1-6.6-.2-13.8-5.8-17.9c0 0 0 0 0 0s0 0 0 0l-.2-.2c-.2-.2-.6-.4-1.1-.8c-1-.8-2.5-2-4.3-3.7c-3.6-3.3-8.5-8.1-13.3-14.3c-5.5-7-10.7-15.4-14.2-24.7c24.9-29 39.6-64.7 39.6-103.4c0-92.8-84.9-168.9-192.6-175.5c.4 5.1 .6 10.3 .6 15.5z"/></svg>      
+        <a href="/tap">Chat to a student</a>
+    </div>
+    <div class="footer-item">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="#7000ff" viewBox="0 0 512 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/></svg>        <a href="/tap">Search courses</a>
+    </div>
+  </div>  
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const sections = document.querySelectorAll('h2[id]');
+  const navLinks = document.querySelectorAll('.nav-menu a');
+  const navMenuContainer = document.querySelector(".nav-menu-container");
+
+  // Observer for forward scrolling (top of section enters view)
+  const forwardObserverOptions = {
+    root: null,
+    threshold: 0,
+    rootMargin: '-10% 0px -90% 0px' // Triggers when top is near the top of viewport
+  };
+
+  // Observer for backward scrolling (bottom of previous section enters view)
+  const backwardObserverOptions = {
+    root: null,
+    threshold: 0,
+    rootMargin: '-90% 0px -10% 0px' // Triggers when bottom is near the bottom of viewport
+  };
+
+  function activateLink(activeSectionId) {
+    // Remove active class from all links
+    navLinks.forEach(link => link.classList.remove("active"));
+
+    // Add active class to the current link and scroll it to the start position
+    const activeLink = Array.from(navLinks).find(
+      link => link.getAttribute("href") === `#${activeSectionId}`
+    );
+
+    if (activeLink) {
+      activeLink.classList.add("active");
+
+      // Smoothly scroll the active link to the start of the menu
+      const linkOffsetLeft = activeLink.offsetLeft;
+      navMenuContainer.scrollTo({
+        left: linkOffsetLeft,
+        behavior: 'smooth'
+      });
+    }
+  }
+
+  // Observer callbacks for forward and backward scrolling
+  function forwardIntersect(entries) {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const activeSectionId = entry.target.getAttribute('id');
+        activateLink(activeSectionId);
+      }
+    });
+  }
+
+  function backwardIntersect(entries) {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const prevSection = entry.target.previousElementSibling;
+        if (prevSection && prevSection.tagName === 'H2') {
+          const activeSectionId = prevSection.getAttribute('id');
+          activateLink(activeSectionId);
+        }
+      }
+    });
+  }
+
+  // Initialize observers
+  const forwardObserver = new IntersectionObserver(forwardIntersect, forwardObserverOptions);
+  const backwardObserver = new IntersectionObserver(backwardIntersect, backwardObserverOptions);
+
+  // Observe each section with both observers
+  sections.forEach(section => {
+    forwardObserver.observe(section);
+    backwardObserver.observe(section);
+  });
+});
+
+
+
+  </script>
+  
+  <script>
+    // Select all accordion elements
+    const accordions = document.querySelectorAll(".accordion");
+  
+    accordions.forEach(accordion => {
+      accordion.addEventListener("click", function() {
+        // Toggle 'active' class on the clicked accordion
+        this.classList.toggle("active");
+  
+        // Toggle the display of the associated panel
+        const panel = this.nextElementSibling;
+        if (panel.style.display === "block") {
+          panel.style.display = "none";
+        } else {
+          panel.style.display = "block";
+        }
+      });
+    });
+  </script>
+  <script>
+    function showContent(contentId) {
+      // Remove active class from all tabs and contents
+      document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+  
+      // Add active class to clicked tab and corresponding content
+      document.querySelector(`[onclick="showContent('${contentId}')"]`).classList.add('active');
+      document.getElementById(contentId).classList.add('active');
+    }
+  </script>
+  <script>
+    // Change the main image on thumbnail click
+    function changeMainImage(imageSrc, title, description) {
+      document.getElementById("mainImage").src = imageSrc;
+      document.getElementById("mainImage").setAttribute("onclick", `openModal('${imageSrc}', '${title}', '${description}')`);
+    }
+  
+    // Open the modal with the clicked image, title, and description
+    function openModal(imageSrc, title, description) {
+      document.getElementById("modalImage").src = imageSrc;
+      document.getElementById("imageTitle").innerText = title;
+      document.getElementById("imageDescription").innerText = description;
+      document.getElementById("imageModal").style.display = "flex";
+    }
+  
+    // Close the modal
+    function closeModal() {
+      document.getElementById("imageModal").style.display = "none";
+    }
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+  // Set your desired offset here (in pixels)
+  const offset = 100;
+
+  // Function to handle offsetting scroll position
+  function offsetAnchor() {
+    if (window.location.hash) {
+      const target = document.querySelector(window.location.hash);
+      if (target) {
+        const targetPosition = target.getBoundingClientRect().top + window.pageYOffset;
+        window.scrollTo({
+          top: targetPosition - offset,
+          behavior: 'smooth'
+        });
+      }
+    }
+  }
+
+  // Apply offset when links are clicked
+  document.querySelectorAll('.nav-menu a, .mobile-menu a').forEach(anchor => {
+    anchor.addEventListener('click', function(event) {
+      event.preventDefault(); // Prevent the default jump to the section
+      history.pushState(null, null, this.getAttribute('href')); // Update the URL hash
+      offsetAnchor(); // Scroll with offset
+    });
+  });
+
+  // Apply offset when navigating directly to a section (e.g., page load with hash)
+  window.addEventListener('load', offsetAnchor);
+});
+
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+  const stickyFooter = document.querySelector('.sticky-footer');
+
+  window.addEventListener('scroll', function () {
+    if (window.scrollY > 100) {
+      stickyFooter.classList.add('visible'); // Show the footer
+    } else {
+      stickyFooter.classList.remove('visible'); // Hide the footer
+    }
+  });
+});
+
+  </script>
+  <script>
+    function toggleMenu() {
+    const menu = document.querySelector('.menu');
+    menu.classList.toggle('show');
+}
+  </script>
+  <script>
+    document.querySelectorAll('.accordion-item').forEach(accordion => {
+  accordion.addEventListener('click', function() {
+    this.classList.toggle('active');
+    this.querySelector('.accordion-icon').style.transform = this.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0deg)';
+  });
+});
+  </script>
+  <script>
+    function togglePanel(panelId) {
+  const panel = document.getElementById(panelId);
+  const navItem = document.querySelector(`[onclick="togglePanel('${panelId}')"]`); // Find nav-item
+  const isPanelOpen = panel.classList.contains('show');
+
+  // Close any open panels and reset nav-item classes
+  document.querySelectorAll('.mega-menu-panel').forEach(p => p.classList.remove('show'));
+  document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('menu-open'));
+
+  // Toggle the clicked panel and rotate icon if opening
+  if (!isPanelOpen) {
+    panel.classList.add('show');
+    navItem.classList.add('menu-open'); // Add rotation class
+  }
+}
+
+  let currentPanel = 'main-mobile-panel';
+  const navHistory = [];
+
+  function toggleMobileMenu() {
+    const overlay = document.getElementById('mobile-menu-overlay');
+
+    if (overlay.style.display === 'flex') {
+      overlay.style.display = 'none';
+      navHistory.length = 0;
+      currentPanel = 'main-mobile-panel';
+      document.querySelectorAll('.mobile-submenu-panel').forEach(panel => panel.classList.remove('show', 'back'));
+      document.getElementById('main-mobile-panel').classList.add('show');
+    } else {
+      overlay.style.display = 'flex';
+      document.getElementById('main-mobile-panel').classList.add('show');
+    }
+  }
+
+  function openSubmenu(panelId) {
+    if (currentPanel) {
+      navHistory.push(currentPanel);
+      document.getElementById(currentPanel).classList.remove('show', 'back');
+    }
+    
+    document.getElementById(panelId).classList.add('show');
+    currentPanel = panelId;
+  }
+
+  function closeSubmenu() {
+    if (navHistory.length > 0) {
+      document.getElementById(currentPanel).classList.remove('show');
+      document.getElementById(currentPanel).classList.add('back'); // Slide out to the left
+      
+      currentPanel = navHistory.pop();
+      document.getElementById(currentPanel).classList.add('show'); // Show previous panel
+    } else {
+      document.getElementById('main-mobile-panel').style.left = '0';
+      currentPanel = 'main-mobile-panel';
+    }
+  };
+  </script>
+  <script>
+    const panelData = {
+      courses: `
+        <div class="section-panel-column">
+          <h4>Undergraduate course search</h4>
+          <a href="#">2025-26 courses</a>
+          <a href="#">Order a prospectus PDF</a>
+          <a href="#">International students</a>
+        </div>
+        <div class="section-panel-column">
+          <h4>Graduate programs</h4>
+          <a href="#">Masters courses</a>
+          <a href="#">Doctoral programs</a>
+          <a href="#">International students</a>
+        </div>
+        <div class="section-panel-column">
+          <h4></h4>
+          <a href="#">Summer programs</a>
+          <a href="#">Online courses</a>
+        </div>
+        <div class="section-panel-column">
+          <h4>Professional development</h4>
+          <a href="#">Executive education</a>
+          <a href="#">Certification courses</a>
+        </div>`,
+      visit: `
+        <div class="section-panel-column">
+          <h4>Plan your visit</h4>
+          <a href="#">Campus tours</a>
+          <a href="#">Virtual tours</a>
+        </div>
+        <div class="section-panel-column">
+          <h4>Open Days</h4>
+          <a href="#">Undergraduate Open Days</a>
+          <a href="#">Postgraduate Open Days</a>
+        </div>`,
+      apply: `
+        <div class="section-panel-column">
+          <h4>Application Process</h4>
+          <a href="#">Undergraduate</a>
+          <a href="#">Postgraduate</a>
+          <a href="#">International students</a>
+        </div>
+        <div class="section-panel-column">
+          <h4>Application Deadlines</h4>
+          <a href="#">Fall intake</a>
+          <a href="#">Spring intake</a>
+        </div>
+        <div class="section-panel-column">
+          <a href="#">How to apply</a>
+          <a href="#">Documents required</a>
+          <a href="#">Contact admissions</a>
+        </div>`,
+      fees: `
+        <div class="section-panel-column">
+          <h4>Fees and financial aid</h4>
+          <a href="#">Tuition fees</a>
+          <a href="#">Scholarships</a>
+          <a href="#">Financial support</a>
+        </div>
+        <div class="section-panel-column">
+          <a href="#">Online payment</a>
+          <a href="#">Installments</a>
+        </div>`
+    };
+  
+    function toggleSectionPanel(event, panelId) {
+      event.preventDefault();
+      const panel = document.getElementById('section-dropdown-panel');
+      const content = document.getElementById('section-panel-content');
+      
+      // If the clicked panel is already active, close it
+      if (panel.classList.contains('active') && content.innerHTML === panelData[panelId]) {
+        panel.classList.remove('active');
+        content.innerHTML = '';
+        return;
+      }
+      
+      // Update the panel content and show the panel
+      content.innerHTML = panelData[panelId];
+      panel.classList.add('active');
+    }
+  
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function(event) {
+      const panel = document.getElementById('section-dropdown-panel');
+      const isClickInsideNavbar = event.target.closest('.section-navbar-container');
+      const isClickInsidePanel = event.target.closest('.section-dropdown-panel');
+      
+      if (!isClickInsideNavbar && !isClickInsidePanel) {
+        panel.classList.remove('active');
+        document.getElementById('section-panel-content').innerHTML = ''; // Clear content
+      }
+    });
+  </script>
+</body>
+</html>
