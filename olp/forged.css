@@ -1,0 +1,76 @@
+.custom-banner {
+width: 100vw;
+margin-left: calc(50% - 50vw);
+margin-right: calc(50% - 50vw);
+padding-top: 1rem;
+}
+
+.forged-banner {
+position: relative;
+background-image: url('https://cdn.sheffield.ac.uk/sites/default/files/2024-08/AdobeStock_113628557v3.jpg');
+background-size: cover;
+background-position: center;
+height: 500px;
+display: flex;
+justify-content: center;
+align-items: center;
+color: #3A1C82;
+margin: 0 auto;
+max-width: 1500px;
+}
+
+.forged-content {
+position: relative;
+text-align: center;
+z-index: 2;
+transform: translateY(-100px); 
+}
+
+.forged-content a {
+font-weight: 700;
+background-color: #440099;
+padding: 0.6rem;
+color: #fff;
+transition: background-color .2s ease-out, color .2s ease-out;
+border-radius: 5px;
+}
+
+.forged-content a:hover, .forged-content a:focus {
+background-color: #7100FF;
+}
+
+h1.forged {
+font-family: "source-serif-pro", serif;
+font-weight: 700;
+line-height:200%;
+font-style: normal;
+margin: 0;
+position: relative;
+display: inline-block;
+padding-bottom: 0.5rem;
+}
+
+span.forged-in {
+font-size: 4rem;
+}
+
+span.sheffield {
+font-size:4.5rem;
+}
+
+h1.forged::after {
+content: '';
+display: block;
+width: 100%; /* Set to 100% to match the text width */
+height: 8px;
+background-color: #3A1C82;
+margin-top: 0.5rem;
+}
+
+p.shaping {
+font-size: 2.35rem;
+margin: 0;
+margin-top: 0.25rem;
+text-align: center;
+max-width: 100%;
+padding-bottom: 1.6rem;}

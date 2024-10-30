@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="https://use.typekit.net/jou7rrz.css">
+    <link rel="stylesheet" href="global-menu.css"> 
+    <link rel="stylesheet" href="section-menu.css"> 
+    <link rel="stylesheet" href="vertical-shelf.css"> 
+    <link rel="stylesheet" href="forged.css"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery</title>
+    <style>
+        /* Basic styling for the gallery */
+.gallery-container {
+    max-width: 800px;
+    text-align: center;
+}
+
+/* Main image display */
+.main-image {
+    width: 100%;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+/* Thumbnail container with horizontal scroll */
+.thumbnail-container {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto; /* Enables horizontal scrolling */
+    gap: 10px;
+    padding: 8px 0;
+    scrollbar-width: thin; /* Firefox scrollbar width */
+}
+
+.thumbnail-container::-webkit-scrollbar {
+    height: 8px; /* Height of horizontal scrollbar */
+}
+
+.thumbnail-container::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 4px;
+}
+
+.thumbnail-container::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+}
+
+/* Thumbnail image styling */
+.thumbnail {
+    width: 200px;
+    flex: 0 0 auto;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: transform 0.2s ease;
+}
+
+.thumbnail:hover {
+    transform: scale(1.05);
+}
+/* Modal styling */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    z-index: 100;
+}
+
+.modal-content-container {
+    position: relative;
+    max-width: 90%;
+    aspect-ratio: 16 / 9; /* Ensures 16:9 aspect ratio */
+    background-color: #fff;
+    overflow: hidden;
+    text-align: left;
+}
+
+
+/* Modal image styling */
+.modal-content {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Keeps the image within the container without stretching */
+    display: block;
+}
+
+/* Close button */
+.close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 30px;
+    color: #fff;
+    cursor: pointer;
+    z-index: 20;
+}
+
+/* Forward and Back buttons */
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    font-size: 30px;
+    color: #fff;
+    cursor: pointer;
+    user-select: none;
+    transform: translateY(-50%);
+    padding: 10px;
+    border-radius: 50%;
+    z-index: 20;
+}
+
+/* Position the arrows closer to the image */
+.prev {
+    left: 10px; /* Reduced from 20px */
+}
+
+.next {
+    right: 10px; /* Reduced from 20px */
+}
+
+/* Description panel below the image */
+.description-panel {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.9); /* 80% transparent black */
+    color: #fff;
+    padding: 1rem 5rem;
+    text-align: left;
+    box-sizing: border-box;
+    
+}
+
+.description-panel h3, .description-panel p {
+    margin: 0;
+    padding: 0;
+    color: #fff;
+}
+
+.description-panel h3{
+    font-family: 'source-serif-pro';
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.description-panel p{
+    font-family: 'source-sans-pro';
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+}
+
+/* Counter overlay in the top right corner */
+.image-counter {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black background */
+    color: #fff;
+    padding: 5px 10px;
+    font-size: 1rem;
+    border-radius: 5px;
+    font-family: 'source-serif-pro';
+    font-weight: 700;
+}
+
+/* Mobile styling for moving description panel below image */
+@media (max-width: 768px) {
+
+    .content-container {
+    padding: 1rem !important;
+}
+
+    .modal-content-container{
+        aspect-ratio: 0;
+    }
+
+    .modal-content-container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .modal-content {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+    }
+
+    .description-panel {
+        position: relative; /* Moves description below image */
+        background-color: #333;
+        color: #333;
+        padding: 15px;
+        box-sizing: border-box;
+    }
+
+    .prev, .next {
+        top: 33%;
+        transform: translateY(-50%);
+    }
+}
+
+/* SVG overlay styling */
+.icon-overlay {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 24px;
+    height: 24px;
+}
+
+.icon-overlay svg {
+    width: 100%;
+    height: 100%;
+    fill: white; /* Set the SVG color to white */
+}
+
+.main-image-container {
+    position: relative;
+    display: inline-block; /* Makes the container the same size as the image */
+}
+
+.content-container {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.content-container h2{
+    font-family: 'source-serif-pro';
+    font-weight: 700;
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+}
+
+.vertical-shelf-container {
+    max-width:800px
+}
+
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-content">
+          <div class="navbar-brand">
+            <img src="logo.png" alt="University of Sheffield Logo" class="logo">
+          </div>
+          <ul class="nav-links">
+            <li class="nav-item" onclick="togglePanel('study-panel')">Study</li>
+            <li class="nav-item" onclick="togglePanel('research-panel')">Research</li>
+            <li class="nav-item" onclick="togglePanel('collaborate-panel')">Collaborate</li>
+            <li class="nav-item" onclick="togglePanel('about-panel')">About</li>
+          </ul>
+          <div class="hamburger" onclick="toggleMobileMenu()">☰</div>
+        </div>
+      </nav>
+    
+      <!-- Mega Menu Panels (Study) -->
+      <div class="mega-menu-panel" id="study-panel">
+        <div class="mega-menu-content">
+          <div class="menu-column">
+            <h4>Undergraduate</h4>
+            <ul>
+              <li>Undergraduate courses</li>
+              <li>Undergraduate open days</li>
+              <li>How to apply</li>
+              <li>Fees and funding</li>
+              <li>Accommodation</li>
+              <li>International students</li>
+            </ul>
+          </div>
+          <div class="menu-column">
+            <h4>Postgraduate taught</h4>
+            <ul>
+              <li>Postgraduate taught courses</li>
+              <li>Postgraduate open days</li>
+              <li>How to apply</li>
+              <li>Fees and funding</li>
+              <li>International students</li>
+            </ul>
+          </div>
+          <div class="menu-column">
+            <h4>PhD study</h4>
+            <ul>
+              <li>Find a PhD</li>
+              <li>How to apply</li>
+              <li>PhD fees</li>
+              <li>PhD scholarships</li>
+            </ul>
+          </div>
+          <div class="menu-column">
+            <h4>Other ways to study</h4>
+            <ul>
+              <li>Apprenticeships</li>
+              <li>Mature students</li>
+              <li>Online learning</li>
+              <li>TEFL and English as a second language</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    
+      <!-- Mega Menu Panels (Research) -->
+      <div class="mega-menu-panel" id="research-panel">
+        <div class="mega-menu-content">
+          <div class="menu-column">
+            <h4>Research at Sheffield</h4>
+            <ul>
+              <li>Our strategic priorities</li>
+              <li>Our people</li>
+              <li>Research Excellence Framework 2021</li>
+              <li>Researcher support</li>
+              <li>Research environment and culture</li>
+              <li>Open Research</li>
+            </ul>
+          </div>
+          <div class="menu-column">
+            <h4>Postgraduate research</h4>
+            <ul>
+              <li>Find a PhD</li>
+              <li>PhD projects directory</li>
+              <li>PhD scholarships</li>
+            </ul>
+          </div>
+          <div class="menu-column">
+            <h4>Expertise</h4>
+            <ul>
+              <li>Flagship research institutes</li>
+              <li>Research centres</li>
+              <li>Facilities</li>
+              <li>Library</li>
+            </ul>
+          </div>
+          <div class="menu-column">
+            <h4>Our impact</h4>
+            <ul>
+              <li>Research features</li>
+              <li>UN sustainable development goals</li>
+              <li>University Player</li>
+              <li>Queen's Anniversary Prizes</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    
+       <!-- Mega Menu Panels (Collaborate) -->
+       <div class="mega-menu-panel" id="collaborate-panel">
+        <div class="mega-menu-content">
+          <div class="menu-column">
+            <h4>Partnerships</h4>
+            <ul>
+              <li>How we support business</li>
+              <li>Examples of business partners</li>
+              <li>Research centres, institutes and networks</li>
+              <li>Our role in the city and region</li>
+            </ul>
+          </div>
+          <div class="menu-column">
+            <h4>International</h4>
+            <ul>
+              <li>Our global networks</li>
+              <li>We Are International campaign</li>
+              <li>Global opportunities and exchanges</li>
+            </ul>
+          </div>
+          <div class="menu-column">
+            <h4>Alumni</h4>
+            <ul>
+              <li>Update your details</li>
+              <li>Support us</li>
+              <li>Our alumni</li>
+              <li>Alumni volunteering</li>
+            </ul>
+          </div>
+          <div class="menu-column">
+            <h4>Philanthropy</h4>
+            <ul>
+              <li>Forged in Sheffield, Shaping the Future campaign</li>
+              <li>Get involved</li>
+              <li>Donate now</li>
+              <li>MND appeal</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    
+     <!-- Mega Menu Panels (About) -->
+     <div class="mega-menu-panel" id="about-panel">
+        <div class="mega-menu-content">
+          <div class="menu-column">
+            <h4>About the University</h4>
+            <ul>
+              <li>News</li>
+              <li>Events</li>
+              <li>Jobs</li>
+              <li>Sustainability at Sheffield</li>
+              <li>Inclusion at Sheffield</li>
+              <li>Support for refugee students and scholars</li>
+              <li>Our vision and strategic plan</li>
+              <li>Our role in the city and region</li>
+              <li>Governance and management</li>
+              <li>Rankings</li>
+              <li>University of the Year</li>
+              <li>Queen's Anniversary Prizes</li>
+              <li>Nobel Prize winners</li>
+            </ul>
+          </div>
+          <div class="menu-column">
+            <h4>Departments and services</h4>
+            <ul>
+              <li>Academic departments</li>
+              <li>Faculties</li>
+              <li>Professional services</li>
+            </ul>
+          </div>
+          <div class="menu-column">
+            <h4>Studying at Sheffield</h4>
+            <ul>
+              <li>Guide to Sheffield</li>
+              <li>Courses</li>
+            </ul>
+          </div>
+          <div class="menu-column">
+            <h4>Hospitality</h4>
+            <ul>
+              <li>Conferences, events, visitor accommodation and weddings</li>
+              <li>Cafes and bars</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    
+      <!-- Mobile Menu Overlay -->
+      <div class="mobile-menu-overlay" id="mobile-menu-overlay">
+        <div class="close-btn" onclick="toggleMobileMenu()">✕</div>
+        <div class="mobile-menu-panel" id="main-mobile-panel">
+          <h4 onclick="openSubmenu('mobile-study-panel')">Study</h4>
+          <h4 onclick="openSubmenu('mobile-research-panel')">Research</h4>
+          <h4 onclick="openSubmenu('mobile-collaborate-panel')">Collaborate</h4>
+          <h4 onclick="openSubmenu('mobile-about-panel')">About</h4>
+        </div>
+    
+        <!-- Study Submenu Panel (Showing H4s only) -->
+        <div class="mobile-submenu-panel" id="mobile-study-panel">
+            <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+            <h4 onclick="openSubmenu('mobile-study-undergraduate')">Undergraduate</h4>
+          <h4 onclick="openSubmenu('mobile-study-postgraduate')">Postgraduate taught</h4>
+          <h4 onclick="openSubmenu('mobile-study-phd')">PhD study</h4>
+          <h4 onclick="openSubmenu('mobile-study-other')">Other ways to study</h4>
+        </div>
+    
+        <!-- Study Category Panels (Third-level Panels) -->
+        <div class="mobile-submenu-panel" id="mobile-study-undergraduate">
+            <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+            <h4 class="plain">Undergraduate</h4>
+          <ul>
+            <li>Undergraduate courses</li>
+            <li>Undergraduate open days</li>
+            <li>How to apply</li>
+            <li>Fees and funding</li>
+            <li>Accommodation</li>
+            <li>International students</li>
+          </ul>
+          <img src="open.jpg">
+          <p><strong>Open day: Saturday 23 November 2024.</strong></p>
+          <p><a href="/">Book your place</a></p>
+        </div>
+    
+        <div class="mobile-submenu-panel" id="mobile-study-postgraduate">
+            <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+            <h4 class="plain">Postgraduate taught</h4>
+          <ul>
+            <li>Postgraduate taught courses</li>
+            <li>Postgraduate open days</li>
+            <li>How to apply</li>
+            <li>Fees and funding</li>
+            <li>International students</li>
+          </ul>
+        </div>
+    
+        <div class="mobile-submenu-panel" id="mobile-study-phd">
+            <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+            <h4 class="plain">PhD study</h4>
+          <ul>
+            <li>Find a PhD</li>
+            <li>How to apply</li>
+            <li>PhD fees</li>
+            <li>PhD scholarships</li>
+          </ul>
+        </div>
+    
+        <div class="mobile-submenu-panel" id="mobile-study-other">
+            <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+            <h4 class="plain">Other ways to study</h4>
+          <ul>
+            <li>Apprenticeships</li>
+            <li>Mature students</li>
+            <li>Online learning</li>
+            <li>TEFL and English as a second language</li>
+          </ul>
+        </div>
+      
+    
+       <!-- Research Submenu Panel (Showing H4s only) -->
+       <div class="mobile-submenu-panel" id="mobile-research-panel">
+        <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+        <h4 onclick="openSubmenu('mobile-research-research')">Research at Sheffield</h4>
+        <h4 onclick="openSubmenu('mobile-research-postgraduate')">Postgraduate research</h4>
+        <h4 onclick="openSubmenu('mobile-research-expertise')">Expertise</h4>
+        <h4 onclick="openSubmenu('mobile-research-impact')">Our impact</h4>
+      </div>
+    
+      <!-- Study Category Panels (Third-level Panels) -->
+      <div class="mobile-submenu-panel" id="mobile-research-research">
+        <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+        <h4 class="plain">Research at Sheffield</h4>
+            <ul>
+              <li>Our strategic priorities</li>
+              <li>Our people</li>
+              <li>Research Excellence Framework 2021</li>
+              <li>Researcher support</li>
+              <li>Research environment and culture</li>
+              <li>Open Research</li>
+            </ul>
+      </div>
+      <div class="mobile-submenu-panel" id="mobile-research-postgraduate">
+        <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+        <h4 class="plain">Postgraduate research</h4>
+            <ul>
+              <li>Find a PhD</li>
+              <li>PhD projects directory</li>
+              <li>PhD scholarships</li>
+            </ul>
+      </div>
+      <div class="mobile-submenu-panel" id="mobile-research-expertise">
+        <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+        <h4 class="plain">Expertise</h4>
+            <ul>
+              <li>Flagship research institutes</li>
+              <li>Research centres</li>
+              <li>Facilities</li>
+              <li>Library</li>
+            </ul>
+      </div>
+      <div class="mobile-submenu-panel" id="mobile-research-impact">
+        <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+        <h4 class="plain">Our impact</h4>
+            <ul>
+              <li>Research features</li>
+              <li>UN sustainable development goals</li>
+              <li>University Player</li>
+              <li>Queen's Anniversary Prizes</li>
+            </ul>
+      </div>
+    
+    <!-- Collaborate Submenu Panel (Showing H4s only) -->
+    <div class="mobile-submenu-panel" id="mobile-collaborate-panel">
+        <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+        <h4 onclick="openSubmenu('mobile-collaborate-partnerships')">Partnerships</h4>
+        <h4 onclick="openSubmenu('mobile-collaborate-international')">International</h4>
+        <h4 onclick="openSubmenu('mobile-collaborate-alumni')">Alumni</h4>
+        <h4 onclick="openSubmenu('mobile-collaborate-philanthrophy')">Philanthropy</h4>
+      </div>
+    
+      <div class="mobile-submenu-panel" id="mobile-collaborate-partnerships">
+        <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+        <h4>Partnerships</h4>
+            <ul>
+              <li>How we support business</li>
+              <li>Examples of business partners</li>
+              <li>Research centres, institutes and networks</li>
+              <li>Our role in the city and region</li>
+            </ul>
+      </div>
+        <div class="mobile-submenu-panel" id="mobile-collaborate-international">
+            <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+            <h4>International</h4>
+            <ul>
+              <li>Our global networks</li>
+              <li>We Are International</li>
+              <li>Global opportunities and exchanges</li>
+            </ul>
+      </div>
+      <div class="mobile-submenu-panel" id="mobile-collaborate-alumni">
+        <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+        <h4>Alumni</h4>
+            <ul>
+              <li>Update your details</li>
+              <li>Support us</li>
+              <li>Our alumni</li>
+              <li>Alumni volunteering</li>
+            </ul>
+      </div>
+      <div class="mobile-submenu-panel" id="mobile-collaborate-philanthrophy">
+        <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+        <h4>Philanthropy</h4>
+            <ul>
+              <li>Forged in Sheffield, Shaping the Future campaign</li>
+              <li>Get involved</li>
+              <li>Donate now</li>
+              <li>MND appeal</li>
+            </ul>
+      </div>
+    
+      <!-- About Submenu Panel (Showing H4s only) -->
+    <div class="mobile-submenu-panel" id="mobile-about-panel">
+        <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+        <h4 onclick="openSubmenu('mobile-about-university')">About the University</h4>
+        <h4 onclick="openSubmenu('mobile-about-departments')">Departments</h4>
+        <h4 onclick="openSubmenu('mobile-about-studying')">Studying at Sheffield</h4>
+        <h4 onclick="openSubmenu('mobile-about-hospitality')">Hospitality</h4>
+      </div>
+      <div class="mobile-submenu-panel" id="mobile-about-university">
+        <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+        <h4>About the University</h4>
+            <ul>
+              <li>News</li>
+              <li>Events</li>
+              <li>Jobs</li>
+              <li>Sustainability at Sheffield</li>
+              <li>Inclusion at Sheffield</li>
+              <li>Support for refugee students and scholars</li>
+              <li>Our vision and strategic plan</li>
+              <li>Our role in the city and region</li>
+              <li>Governance and management</li>
+              <li>Rankings</li>
+              <li>University of the Year</li>
+              <li>Queen's Anniversary Prizes</li>
+              <li>Nobel Prize winners</li>
+            </ul>
+      </div>
+      <div class="mobile-submenu-panel" id="mobile-about-departments">
+        <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+        <h4>Departments and services</h4>
+        <ul>
+          <li>Academic departments</li>
+          <li>Faculties</li>
+          <li>Professional services</li>
+        </ul>
+      </div>
+      <div class="mobile-submenu-panel" id="mobile-about-studying">
+        <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+        <h4>Studying at Sheffield</h4>
+            <ul>
+              <li>Guide to Sheffield</li>
+              <li>Courses</li>
+            </ul>
+      </div>
+      <div class="mobile-submenu-panel" id="mobile-about-hospitality">
+        <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+        <h4>Hospitality</h4>
+            <ul>
+              <li>Conferences, events, visitor accommodation and weddings</li>
+              <li>Cafes and bars</li>
+            </ul>
+      </div>
+    
+      
+    
+    </div>
+    <div class="section-header-container">
+        <div class="section-header">
+            <h2>Website enhancements</h2>
+        </div>
+    </div>
+    <div class="section-navbar-background">
+        <div class="section-navbar-container">
+          <ul class="section-navbar">
+            <li><a href="#" onclick="toggleSectionPanel(event, 'courses')">Courses
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/></svg>
+            </a></li>
+            <li><a href="#" onclick="toggleSectionPanel(event, 'visit')">Visit
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/></svg>
+            </a></li>
+            <li><a href="#" onclick="toggleSectionPanel(event, 'apply')">Apply
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/></svg>
+            </a></li>
+            <li><a href="#" onclick="toggleSectionPanel(event, 'fees')">Fees and funding
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/></svg>
+            </a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <!-- Full-width dropdown panel -->
+      <div class="section-dropdown-panel" id="section-dropdown-panel">
+        <div class="section-panel-content" id="section-panel-content">
+          <!-- Content will be injected here dynamically -->
+        </div>
+      </div>
+
+      <div class="custom-banner">
+        <div class="forged-banner">
+          <div class="forged-content">
+            <h1 class="forged">
+              <span class="forged-in">Forged in</span><br>
+              <span class="sheffield">Sheffield</span>
+            </h1>
+            <p class="shaping">Shaping the Future</p>
+            <a href="/forged">Our new fundraising campaign</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-container">
+        <h2>Gallery V2</h2>
+    <div class="gallery-container">
+        <div class="main-image-container">
+            <img id="mainImage" src="wave.jpg" class="main-image" alt="Main image" onclick="openModal(0)">
+            <!-- SVG Overlay Icon -->
+            <div class="icon-overlay">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                    <path d="M344 0L488 0c13.3 0 24 10.7 24 24l0 144c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-39-39-87 87c-9.4 9.4-24.6 9.4-33.9 0l-32-32c-9.4-9.4-9.4-24.6 0-33.9l87-87L327 41c-6.9-6.9-8.9-17.2-5.2-26.2S334.3 0 344 0zM168 512L24 512c-13.3 0-24-10.7-24-24L0 344c0-9.7 5.8-18.5 14.8-22.2s19.3 1.7 26.2 5.2l39 39 87-87c9.4 9.4 24.6 9.4 33.9 0l32 32c9.4 9.4 9.4 24.6 0 33.9l-87 87 39 39c6.9 6.9 8.9 17.2 5.2 26.2s-12.5 14.8-22.2 14.8z"/>
+                </svg>
+            </div>
+        </div>
+        <!-- Thumbnail Container -->
+        <div class="thumbnail-container">
+            <img src="wave.jpg" class="thumbnail" alt="Thumbnail 1: The Wave" 
+                 tabindex="0" role="button" onclick="changeMainImage(0)"
+                 aria-label="Thumbnail 1" onkeydown="handleKeyChangeMainImage(event, 0)">
+            <img src="lecture.jpg" class="thumbnail" alt="Thumbnail 2: Teaching spaces" 
+                 tabindex="0" role="button" onclick="changeMainImage(1)"
+                 aria-label="Thumbnail 2" onkeydown="handleKeyChangeMainImage(event, 1)">
+            <img src="edit.jpg" class="thumbnail" alt="Thumbnail 3: Edit suites" 
+                 tabindex="0" role="button" onclick="changeMainImage(2)"
+                 aria-label="Thumbnail 3" onkeydown="handleKeyChangeMainImage(event, 2)">
+            <img src="radio.jpg" class="thumbnail" alt="Thumbnail 4: Research" 
+                 tabindex="0" role="button" onclick="changeMainImage(3)"
+                 aria-label="Thumbnail 4" onkeydown="handleKeyChangeMainImage(event, 3)">
+            <img src="teaching.jpg" class="thumbnail" alt="Thumbnail 4: Teaching" 
+                 tabindex="0" role="button" onclick="changeMainImage(4)"
+                 aria-label="Thumbnail 5" onkeydown="handleKeyChangeMainImage(event, 4)">
+            <img src="studio.jpg" class="thumbnail" alt="Thumbnail 5: Studio" 
+                 tabindex="0" role="button" onclick="changeMainImage(5)"
+                 aria-label="Thumbnail 6" onkeydown="handleKeyChangeMainImage(event, 5)">  
+        </div>
+    </div>
+    
+    <!-- Modal -->
+    <div id="imageModal" class="modal" tabindex="-1" role="dialog" aria-modal="true" 
+         aria-labelledby="imageTitle" aria-describedby="imageDescription" onclick="closeModal()">
+         <span class="close" onclick="closeModal()" tabindex="0" role="button" aria-label="Close modal">&times;</span>
+ <div class="modal-content-container">
+            <div class="image-counter" id="imageCounter"></div>
+            <span class="prev" onclick="changeImage(-1)" tabindex="0" role="button" aria-label="Previous image"
+                  onkeydown="handleKeyChangeImage(event, -1)">&#10094;</span>
+            <img id="modalImage" class="modal-content" alt="Modal Image">
+            <span class="next" onclick="changeImage(1)" tabindex="0" role="button" aria-label="Next image"
+                  onkeydown="handleKeyChangeImage(event, 1)">&#10095;</span>
+            <div class="description-panel">
+                <h3 id="imageTitle">Image Title</h3>
+                <p id="imageDescription">Image Description</p>
+            </div>
+        </div>
+    </div> 
+    <h2>Vertical Shelf</h2>
+    <div class="vertical-shelf-container">
+    <div class="vertical-shelf">
+        <div class="vertical-video">
+          <a href="https://www.tiktok.com/@sheffielduni/video/7372200575594745121" target="_blank">
+          <div class="vertical-thumbnail">
+            <img src="https://i.imgur.com/aPUaMRh.jpeg" alt="Video 1 Thumbnail">
+            <div class="vertical-overlay">
+              <span class="vertical-duration">1:19</span>
+              <h3 class="vertical-title">Come with us to the largest food hall in Europe</h3>
+            </div>
+          </div>
+        </a>
+        </div>
+        <!-- More video items similarly -->
+        <div class="vertical-video">
+            <a href="https://www.tiktok.com/@sheffielduni/video/7272771344020901153" target="_blank">
+            <div class="vertical-thumbnail">
+              <img src="https://i.imgur.com/jJeiWFJ.jpeg" alt="Video 2 Thumbnail">
+              <div class="vertical-overlay">
+                <span class="vertical-duration">0:25</span>
+                <h3 class="vertical-title">Grocery shopping in the UK</h3>
+              </div>
+            </div>
+        </a>
+          </div>
+        <div class="vertical-video">
+            <a href="https://www.tiktok.com/@sheffielduni/video/7390026014375644449" target="_blank">
+            <div class="vertical-thumbnail">
+              <img src="https://i.imgur.com/h5GHeGd.jpeg" alt="Video 3 Thumbnail">
+              <div class="vertical-overlay">
+                <span class="vertical-duration">1:04</span>
+                <h3 class="vertical-title">9 things to do in Sheffield</h3>
+              </div>
+            </div>
+            </a>
+          </div>
+        </div>
+      </div>  
+    </div> 
+</div>
+    <script>
+
+        // Modify event listener to avoid unintended closing of the modal on touch
+document.querySelector('.prev').addEventListener('touchstart', (e) => {
+    e.stopPropagation(); // Prevent touch from bubbling and triggering modal close
+    changeImage(-1);
+});
+
+document.querySelector('.next').addEventListener('touchstart', (e) => {
+    e.stopPropagation(); // Prevent touch from bubbling and triggering modal close
+    changeImage(1);
+});
+
+// Prevent modal from closing when touching inside it
+document.querySelector('.modal-content-container').addEventListener('touchstart', (e) => {
+    e.stopPropagation();
+});
+
+
+ // Array of images for the gallery with titles and descriptions
+const images = [
+    {src: 'wave.jpg', title: 'The Wave', description: 'We are very excited to welcome you to The Wave: home to the Faculty of Social Sciences, and the University of Sheffields most sustainable building to date.'},
+    {src: 'lecture.jpg', title: 'Teaching spaces', description: 'Our facilities in The Wave include state-of-the-art lecture theatres, broadcast facilities and editing suites.'},
+    {src: 'edit.jpg', title: 'Edit suites', description: 'We have industry-standard equipment including five newsrooms, TV and radio studios and editing galleries, as well as editing suites and four bookable radio booths.'},
+    {src: 'radio.jpg', title: 'Research', description: 'Our research staff and PGT students will also benefit from the interdisciplinary space, which is shared with other departments from across the social sciences.'},
+    {src: 'teaching.jpg', title: 'Teaching', description: 'Our research staff and PGT students will also benefit from the interdisciplinary space, which is shared with other departments from across the social sciences.'},
+    {src: 'studio.jpg', title: 'Studio', description: 'Our research staff and PGT students will also benefit from the interdisciplinary space, which is shared with other departments from across the social sciences.'}
+
+];
+let currentIndex = 0;
+
+
+// Debounce function to prevent rapid calls
+function debounce(func, delay) {
+    let timeout;
+    return function (...args) {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func.apply(this, args), delay);
+    };
+}
+
+// Debounced changeImage function to avoid double navigation
+const changeImage = debounce((direction) => {
+    currentIndex = (currentIndex + direction + images.length) % images.length;
+    updateModal();
+}, 100); // 100ms debounce delay
+
+// Change the main image on thumbnail click
+function changeMainImage(index) {
+    const image = images[index];
+    document.getElementById("mainImage").src = image.src;
+    document.getElementById("mainImage").setAttribute("onclick", `openModal(${index})`);
+}
+
+// Open the modal with the selected image
+function openModal(index) {
+    currentIndex = index;
+    updateModal();
+    const modal = document.getElementById("imageModal");
+    modal.style.display = "flex";
+    modal.setAttribute("aria-hidden", "false");
+    modal.focus();
+}
+
+// Close the modal and return focus to the main image
+function closeModal() {
+    const modal = document.getElementById("imageModal");
+    modal.style.display = "none";
+    modal.setAttribute("aria-hidden", "true");
+    document.getElementById("mainImage").focus();
+}
+
+// Update modal content based on the current image index
+function updateModal() {
+    const image = images[currentIndex];
+    document.getElementById("modalImage").src = image.src;
+    document.getElementById("imageTitle").innerText = image.title;
+    document.getElementById("imageDescription").innerText = image.description;
+
+    // Update the image counter
+    document.getElementById("imageCounter").innerText = `${currentIndex + 1} of ${images.length}`;
+}
+
+// Handle Enter key to open modal on thumbnails
+function handleKeyOpenModal(event, index) {
+    if (event.key === 'Enter') {
+        openModal(index);
+    }
+}
+
+// Handle Enter key to change main image from thumbnails
+function handleKeyChangeMainImage(event, index) {
+    if (event.key === 'Enter') {
+        changeMainImage(index);
+    }
+}
+
+// Swipe detection for mobile navigation
+let touchStartX = 0;
+let touchEndX = 0;
+
+function handleGesture() {
+    if (touchEndX < touchStartX) {
+        changeImage(1); // Swipe left to move to next image
+    }
+    if (touchEndX > touchStartX) {
+        changeImage(-1); // Swipe right to move to previous image
+    }
+}
+
+document.getElementById("imageModal").addEventListener("touchstart", (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+});
+
+document.getElementById("imageModal").addEventListener("touchend", (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleGesture();
+});
+
+// Prevent modal from closing when clicking inside the content container
+document.querySelector('.modal-content-container').addEventListener('click', (e) => {
+    e.stopPropagation();
+});
+
+// Use pointerdown for reliable navigation button interaction without double events
+document.querySelector('.prev').addEventListener('pointerdown', (e) => {
+    e.stopPropagation();
+    changeImage(-1);
+});
+
+document.querySelector('.next').addEventListener('pointerdown', (e) => {
+    e.stopPropagation();
+    changeImage(1);
+});
+
+// Global function to initialize keyboard accessibility on page load
+function initializeGalleryAccessibility() {
+    // Get all thumbnails and add 'keydown' event listeners for Enter key
+    const thumbnails = document.querySelectorAll('.thumbnail');
+    thumbnails.forEach((thumbnail, index) => {
+        thumbnail.setAttribute('tabindex', '0');
+        thumbnail.addEventListener('keydown', (event) => handleKeyChangeMainImage(event, index));
+        thumbnail.addEventListener('click', () => changeMainImage(index)); // Restore click functionality
+    });
+
+    // Set tabindex and keydown event for the main image to open modal
+    const mainImage = document.getElementById("mainImage");
+    mainImage.setAttribute('tabindex', '0');
+    mainImage.addEventListener('keydown', (event) => handleKeyOpenModal(event, currentIndex));
+}
+
+// Global keyboard event listener for modal navigation
+document.addEventListener('keydown', (event) => {
+    const modal = document.getElementById("imageModal");
+
+    // Only respond to keys if the modal is open
+    if (modal.style.display === "flex") {
+        if (event.key === 'Escape') {
+            closeModal();
+        } else if (event.key === 'ArrowRight') {
+            changeImage(1);
+        } else if (event.key === 'ArrowLeft') {
+            changeImage(-1);
+        }
+    }
+});
+
+// Call initialize function when the page loads
+window.onload = initializeGalleryAccessibility;
+    </script>
+
+<script>
+    function togglePanel(panelId) {
+  const panel = document.getElementById(panelId);
+  const navItem = document.querySelector(`[onclick="togglePanel('${panelId}')"]`); // Find nav-item
+  const isPanelOpen = panel.classList.contains('show');
+
+  // Close any open panels and reset nav-item classes
+  document.querySelectorAll('.mega-menu-panel').forEach(p => p.classList.remove('show'));
+  document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('menu-open'));
+
+  // Toggle the clicked panel and rotate icon if opening
+  if (!isPanelOpen) {
+    panel.classList.add('show');
+    navItem.classList.add('menu-open'); // Add rotation class
+  }
+}
+
+  let currentPanel = 'main-mobile-panel';
+  const navHistory = [];
+
+  function toggleMobileMenu() {
+    const overlay = document.getElementById('mobile-menu-overlay');
+
+    if (overlay.style.display === 'flex') {
+      overlay.style.display = 'none';
+      navHistory.length = 0;
+      currentPanel = 'main-mobile-panel';
+      document.querySelectorAll('.mobile-submenu-panel').forEach(panel => panel.classList.remove('show', 'back'));
+      document.getElementById('main-mobile-panel').classList.add('show');
+    } else {
+      overlay.style.display = 'flex';
+      document.getElementById('main-mobile-panel').classList.add('show');
+    }
+  }
+
+  function openSubmenu(panelId) {
+    if (currentPanel) {
+      navHistory.push(currentPanel);
+      document.getElementById(currentPanel).classList.remove('show', 'back');
+    }
+    
+    document.getElementById(panelId).classList.add('show');
+    currentPanel = panelId;
+  }
+
+  function closeSubmenu() {
+    if (navHistory.length > 0) {
+      document.getElementById(currentPanel).classList.remove('show');
+      document.getElementById(currentPanel).classList.add('back'); // Slide out to the left
+      
+      currentPanel = navHistory.pop();
+      document.getElementById(currentPanel).classList.add('show'); // Show previous panel
+    } else {
+      document.getElementById('main-mobile-panel').style.left = '0';
+      currentPanel = 'main-mobile-panel';
+    }
+  };
+  </script>
+  <script>
+    const panelData = {
+      courses: `
+        <div class="section-panel-column">
+          <h4>Undergraduate course search</h4>
+          <a href="#">2025-26 courses</a>
+          <a href="#">Order a prospectus PDF</a>
+          <a href="#">International students</a>
+        </div>
+        <div class="section-panel-column">
+          <h4>Graduate programs</h4>
+          <a href="#">Masters courses</a>
+          <a href="#">Doctoral programs</a>
+          <a href="#">International students</a>
+        </div>
+        <div class="section-panel-column">
+          <h4></h4>
+          <a href="#">Summer programs</a>
+          <a href="#">Online courses</a>
+        </div>
+        <div class="section-panel-column">
+          <h4>Professional development</h4>
+          <a href="#">Executive education</a>
+          <a href="#">Certification courses</a>
+        </div>`,
+      visit: `
+        <div class="section-panel-column">
+          <h4>Plan your visit</h4>
+          <a href="#">Campus tours</a>
+          <a href="#">Virtual tours</a>
+        </div>
+        <div class="section-panel-column">
+          <h4>Open Days</h4>
+          <a href="#">Undergraduate Open Days</a>
+          <a href="#">Postgraduate Open Days</a>
+        </div>`,
+      apply: `
+        <div class="section-panel-column">
+          <h4>Application Process</h4>
+          <a href="#">Undergraduate</a>
+          <a href="#">Postgraduate</a>
+          <a href="#">International students</a>
+        </div>
+        <div class="section-panel-column">
+          <h4>Application Deadlines</h4>
+          <a href="#">Fall intake</a>
+          <a href="#">Spring intake</a>
+        </div>
+        <div class="section-panel-column">
+          <a href="#">How to apply</a>
+          <a href="#">Documents required</a>
+          <a href="#">Contact admissions</a>
+        </div>`,
+      fees: `
+        <div class="section-panel-column">
+          <h4>Fees and financial aid</h4>
+          <a href="#">Tuition fees</a>
+          <a href="#">Scholarships</a>
+          <a href="#">Financial support</a>
+        </div>
+        <div class="section-panel-column">
+          <a href="#">Online payment</a>
+          <a href="#">Installments</a>
+        </div>`
+    };
+  
+    function toggleSectionPanel(event, panelId) {
+      event.preventDefault();
+      const panel = document.getElementById('section-dropdown-panel');
+      const content = document.getElementById('section-panel-content');
+      
+      // If the clicked panel is already active, close it
+      if (panel.classList.contains('active') && content.innerHTML === panelData[panelId]) {
+        panel.classList.remove('active');
+        content.innerHTML = '';
+        return;
+      }
+      
+      // Update the panel content and show the panel
+      content.innerHTML = panelData[panelId];
+      panel.classList.add('active');
+    }
+  
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function(event) {
+      const panel = document.getElementById('section-dropdown-panel');
+      const isClickInsideNavbar = event.target.closest('.section-navbar-container');
+      const isClickInsidePanel = event.target.closest('.section-dropdown-panel');
+      
+      if (!isClickInsideNavbar && !isClickInsidePanel) {
+        panel.classList.remove('active');
+        document.getElementById('section-panel-content').innerHTML = ''; // Clear content
+      }
+    });
+  </script>
+</body>
+</html>
