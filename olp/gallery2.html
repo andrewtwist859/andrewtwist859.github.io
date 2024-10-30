@@ -79,6 +79,7 @@
     text-align: left;
 }
 
+
 /* Modal image styling */
 .modal-content {
     width: 100%;
@@ -167,28 +168,27 @@
     font-weight: 700;
 }
 
-/* Mobile styling to move description panel below the image */
+/* Mobile styling for moving description panel below image */
 @media (max-width: 768px) {
     .modal-content-container {
         display: flex;
-        flex-direction: column; /* Stack content vertically */
+        flex-direction: column;
     }
 
     .modal-content {
         width: 100%;
         height: auto;
-        object-fit: contain; /* Keeps aspect ratio for mobile */
+        object-fit: contain;
     }
 
     .description-panel {
-        position: relative; /* Moves description below the image */
-        background-color: #f2f2f2; /* Solid background for readability */
+        position: relative; /* Moves description below image */
+        background-color: #f2f2f2;
         color: #333;
         padding: 15px;
         box-sizing: border-box;
     }
 
-    /* Positioning of next and previous buttons on mobile */
     .prev, .next {
         top: 50%;
         transform: translateY(-50%);
@@ -231,9 +231,8 @@
     <!-- Modal -->
     <div id="imageModal" class="modal" tabindex="-1" role="dialog" aria-modal="true" 
          aria-labelledby="imageTitle" aria-describedby="imageDescription" onclick="closeModal()">
-        <span class="close" onclick="closeModal()" tabindex="0" role="button" aria-label="Close modal" 
-              onkeydown="handleKeyCloseModal(event)">&times;</span>
-        <div class="modal-content-container">
+         <span class="close" onclick="closeModal()" tabindex="0" role="button" aria-label="Close modal">&times;</span>
+ <div class="modal-content-container">
             <div class="image-counter" id="imageCounter"></div>
             <span class="prev" onclick="changeImage(-1)" tabindex="0" role="button" aria-label="Previous image"
                   onkeydown="handleKeyChangeImage(event, -1)">&#10094;</span>
@@ -278,21 +277,14 @@ const images = [
 ];
 let currentIndex = 0;
 
-// Change the main image on thumbnail click
-function changeMainImage(index) {
-    const image = images[index];
-    document.getElementById("mainImage").src = image.src;
-    document.getElementById("mainImage").setAttribute("onclick", `openModal(${index})`);
-}
-
-// Open the modal with the clicked image, title, and description
+// Open the modal with the selected image
 function openModal(index) {
     currentIndex = index;
     updateModal();
     const modal = document.getElementById("imageModal");
     modal.style.display = "flex";
     modal.setAttribute("aria-hidden", "false"); // Accessibility enhancement
-    modal.focus(); // Focus on the modal for keyboard accessibility
+    modal.focus();
 }
 
 // Close the modal and return focus to the main image
@@ -300,7 +292,7 @@ function closeModal() {
     const modal = document.getElementById("imageModal");
     modal.style.display = "none";
     modal.setAttribute("aria-hidden", "true"); // Accessibility enhancement
-    document.getElementById("mainImage").focus(); // Return focus to main image
+    document.getElementById("mainImage").focus();
 }
 
 // Update modal content based on the current image index
@@ -311,7 +303,7 @@ function updateModal() {
     document.getElementById("imageDescription").innerText = image.description;
 
     // Update the image counter
-    document.getElementById("imageCounter").innerText = `${currentIndex + 1} / ${images.length}`;
+    document.getElementById("imageCounter").innerText = `${currentIndex + 1} of ${images.length}`;
 }
 
 // Change image in modal based on direction (1 for next, -1 for previous)
@@ -320,19 +312,35 @@ function changeImage(direction) {
     updateModal();
 }
 
-// Open the modal with Enter key on the main image or thumbnails
+// Handle Enter key to open modal on thumbnails
 function handleKeyOpenModal(event, index) {
     if (event.key === 'Enter') {
         openModal(index);
     }
 }
 
-// Navigate main image on Enter key for thumbnails
+// Handle Enter key to change main image from thumbnails
 function handleKeyChangeMainImage(event, index) {
     if (event.key === 'Enter') {
         changeMainImage(index);
     }
 }
+
+// Prevent modal from closing when clicking inside the content container
+document.querySelector('.modal-content-container').addEventListener('click', (e) => {
+    e.stopPropagation(); // Prevents modal close when clicking inside modal
+});
+
+// Ensure navigation buttons work on touch without closing modal
+document.querySelector('.prev').addEventListener('touchstart', (e) => {
+    e.stopPropagation();
+    changeImage(-1);
+});
+
+document.querySelector('.next').addEventListener('touchstart', (e) => {
+    e.stopPropagation();
+    changeImage(1);
+});
 
 // Global function to initialize keyboard accessibility on page load
 function initializeGalleryAccessibility() {
@@ -367,7 +375,6 @@ document.addEventListener('keydown', (event) => {
 
 // Call initialize function when the page loads
 window.onload = initializeGalleryAccessibility;
-
 
     </script>
 </body>
