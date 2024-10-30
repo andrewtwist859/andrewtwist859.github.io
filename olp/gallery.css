@@ -162,7 +162,7 @@
 /* Mobile styling for moving description panel below image */
 @media (max-width: 768px) {
 
-    .content-container {
+    .contents-container {
     padding: 1rem !important;
 }
 
@@ -215,7 +215,7 @@
     display: inline-block; /* Makes the container the same size as the image */
 }
 
-.content-container {
+.contents-container {
     max-width: 1180px;
     margin: 0 auto;
     padding: 2rem;
