@@ -11,7 +11,6 @@
         /* Basic styling for the gallery */
 .gallery-container {
     max-width: 800px;
-    margin: 20px auto;
     text-align: center;
 }
 
@@ -220,6 +219,12 @@
 .main-image-container {
     position: relative;
     display: inline-block; /* Makes the container the same size as the image */
+}
+
+.content-container {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 2rem;
 }
 
     </style>
@@ -673,6 +678,7 @@
           <!-- Content will be injected here dynamically -->
         </div>
       </div>
+      <div class="content-container">
     <div class="gallery-container">
         <div class="main-image-container">
             <img id="mainImage" src="wave.jpg" class="main-image" alt="Main image" onclick="openModal(0)">
@@ -723,7 +729,7 @@
             </div>
         </div>
     </div>    
-    
+</div>
     <script>
 
         // Modify event listener to avoid unintended closing of the modal on touch
