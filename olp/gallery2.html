@@ -282,6 +282,29 @@ const images = [
 ];
 let currentIndex = 0;
 
+
+// Debounce function to prevent rapid calls
+function debounce(func, delay) {
+    let timeout;
+    return function (...args) {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func.apply(this, args), delay);
+    };
+}
+
+// Debounced changeImage function to avoid double navigation
+const changeImage = debounce((direction) => {
+    currentIndex = (currentIndex + direction + images.length) % images.length;
+    updateModal();
+}, 100); // 100ms debounce delay
+
+// Change the main image on thumbnail click
+function changeMainImage(index) {
+    const image = images[index];
+    document.getElementById("mainImage").src = image.src;
+    document.getElementById("mainImage").setAttribute("onclick", `openModal(${index})`);
+}
+
 // Open the modal with the selected image
 function openModal(index) {
     currentIndex = index;
@@ -311,12 +334,6 @@ function updateModal() {
     document.getElementById("imageCounter").innerText = `${currentIndex + 1} of ${images.length}`;
 }
 
-// Change image in modal based on direction (1 for next, -1 for previous)
-function changeImage(direction) {
-    currentIndex = (currentIndex + direction + images.length) % images.length;
-    updateModal();
-}
-
 // Handle Enter key to open modal on thumbnails
 function handleKeyOpenModal(event, index) {
     if (event.key === 'Enter') {
@@ -330,6 +347,28 @@ function handleKeyChangeMainImage(event, index) {
         changeMainImage(index);
     }
 }
+
+// Swipe detection for mobile navigation
+let touchStartX = 0;
+let touchEndX = 0;
+
+function handleGesture() {
+    if (touchEndX < touchStartX) {
+        changeImage(1); // Swipe left to move to next image
+    }
+    if (touchEndX > touchStartX) {
+        changeImage(-1); // Swipe right to move to previous image
+    }
+}
+
+document.getElementById("imageModal").addEventListener("touchstart", (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+});
+
+document.getElementById("imageModal").addEventListener("touchend", (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleGesture();
+});
 
 // Prevent modal from closing when clicking inside the content container
 document.querySelector('.modal-content-container').addEventListener('click', (e) => {
@@ -354,6 +393,7 @@ function initializeGalleryAccessibility() {
     thumbnails.forEach((thumbnail, index) => {
         thumbnail.setAttribute('tabindex', '0');
         thumbnail.addEventListener('keydown', (event) => handleKeyChangeMainImage(event, index));
+        thumbnail.addEventListener('click', () => changeMainImage(index)); // Restore click functionality
     });
 
     // Set tabindex and keydown event for the main image to open modal
@@ -380,7 +420,6 @@ document.addEventListener('keydown', (event) => {
 
 // Call initialize function when the page loads
 window.onload = initializeGalleryAccessibility;
-
     </script>
 </body>
 </html>
