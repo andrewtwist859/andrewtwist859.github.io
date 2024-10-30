@@ -1,0 +1,193 @@
+   /* General Styles */
+    body {
+      font-family: 'source-sans-pro', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .footer {
+      background-color: #1F0F4D;
+      color: #fff;
+      padding: 40px 20px;
+    }
+
+    .footer-content {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .footer-heading h4 {
+      font-family: 'source-serif-pro';
+      font-weight: 700;
+      font-size: 1rem;
+      margin-top: 0;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Desktop five-column layout */
+    .footer-links {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr); /* Five equal columns */
+      gap: 20px; /* Space between columns */
+      width: 100%;
+      margin-bottom: 1rem;
+    }
+
+    .footer-links ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-links ul li {
+      margin-bottom: 10px;
+    }
+
+    .footer-links a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
+
+    /* Address styling */
+    .contact-info {
+      grid-column: span 1;
+    }
+
+    .contact-info p {
+      margin: 5px 0;
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid #564d8e;
+      padding-top: 20px;
+    }
+
+    .footer-awards img {
+      width: 150px;
+    }
+
+    .footer-social svg {
+      width: 30px;
+      height: 30px;
+      margin-right: 1rem;
+    }
+
+    .footer-social a {
+      display: inline-block;
+    }
+
+    /* Subfooter styling */
+    .subfooter {
+      background-color: #000;
+      color: #fff;
+      padding: 15px 20px;
+      font-size: 1rem;
+    }
+
+    .subfooter-content {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .subfooter ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .subfooter a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .subfooter a:hover {
+      text-decoration: underline;
+    }
+
+    /* Mobile-specific styles */
+    @media (max-width: 1024px) {
+      .footer-links {
+        display: block;
+      }
+
+      .footer {
+        padding: 2rem 1.5rem;
+      }
+      
+      .footer-content {
+        padding: 0rem;
+      }
+      .footer {
+        padding-bottom: 0rem;
+      }
+
+      .contact-info {
+        margin-bottom: 1.5rem;
+      }
+
+
+      /* Only show the first two lists by default */
+      .footer-links ul.more-links {
+        display: none;
+      }
+
+      /* Show the "Show More" button */
+      .toggle-label {
+        display: block;
+        cursor: pointer;
+        font-size: 1rem;
+        color: #fff;
+        background: #1F0F4D;
+        margin-top: 1rem;
+        margin-bottom: 2rem;
+        font-weight: bold;
+        text-decoration: underline;
+      }
+
+      /* Class to show hidden links */
+      .footer-links.show-all ul.more-links {
+        display: block;
+      }
+
+        /* Stack awards and social sections as separate blocks, aligned left */
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start; /* Aligns items to the left */
+    text-align: left; /* Sets text alignment to left */
+    width: 100%;
+  }
+
+  .footer-awards,
+  .footer-social {
+    display: flex;
+    justify-content: flex-start; /* Aligns items to the left */
+    flex-wrap: wrap; /* Allows items to wrap if they overflow */
+    gap: 10px; /* Adds space between icons */
+    margin-bottom: 2rem;
+    width: 100%; /* Full-width sections */
+  }
+
+  .footer-social svg {
+    width:30px;
+  }
+    }
+
+    /* Hide "Show More" button on desktop */
+    @media (min-width: 1025px) {
+      .toggle-label {
+        display: none;
+      }
+    }
