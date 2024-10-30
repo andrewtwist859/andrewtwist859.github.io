@@ -170,26 +170,27 @@
 /* Mobile styling to move description panel below the image */
 @media (max-width: 768px) {
     .modal-content-container {
-        display: block; /* Ensure normal flow for children elements */
+        display: flex;
+        flex-direction: column; /* Stack content vertically */
     }
 
     .modal-content {
         width: 100%;
         height: auto;
-        object-fit: contain; /* Maintains aspect ratio on mobile */
+        object-fit: contain; /* Keeps aspect ratio for mobile */
     }
 
     .description-panel {
-        position: relative; /* Moves below the image */
+        position: relative; /* Moves description below the image */
         background-color: #f2f2f2; /* Solid background for readability */
         color: #333;
         padding: 15px;
         box-sizing: border-box;
     }
 
-    /* Ensure prev and next buttons are positioned correctly on mobile */
+    /* Positioning of next and previous buttons on mobile */
     .prev, .next {
-        top: 50%; /* Center vertically */
+        top: 50%;
         transform: translateY(-50%);
     }
 }
@@ -248,9 +249,22 @@
     
     <script>
 
-        // Add touch event listeners for mobile devices
-document.querySelector('.prev').addEventListener('touchstart', () => changeImage(-1));
-document.querySelector('.next').addEventListener('touchstart', () => changeImage(1));
+        // Modify event listener to avoid unintended closing of the modal on touch
+document.querySelector('.prev').addEventListener('touchstart', (e) => {
+    e.stopPropagation(); // Prevent touch from bubbling and triggering modal close
+    changeImage(-1);
+});
+
+document.querySelector('.next').addEventListener('touchstart', (e) => {
+    e.stopPropagation(); // Prevent touch from bubbling and triggering modal close
+    changeImage(1);
+});
+
+// Prevent modal from closing when touching inside it
+document.querySelector('.modal-content-container').addEventListener('touchstart', (e) => {
+    e.stopPropagation();
+});
+
 
  // Array of images for the gallery with titles and descriptions
 const images = [
