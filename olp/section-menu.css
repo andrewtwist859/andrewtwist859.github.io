@@ -1,0 +1,147 @@
+ /* Reset and basic styling */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #F8F8F9;
+      color: #333;
+    }
+
+    /* Navbar full-width background */
+    .section-navbar-background {
+      width: 100%;
+      background-color: #1F0F4D;
+      padding: 0.5rem 0;
+      overflow-x: auto;
+    }
+
+    /* Navbar container for scrolling */
+    .section-navbar-container {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      white-space: nowrap;
+      padding: 0 2rem;
+    }
+
+    /* Hide scrollbar on WebKit browsers for a cleaner look */
+    .section-navbar-background::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* Navbar styling */
+    .section-navbar li {
+      display: inline-block;
+    }
+    .section-navbar a {
+  color: #ccc;
+  text-decoration: none;
+  padding: 0.5rem 0rem;
+  margin-right: 2rem;
+  display: flex;               
+  align-items: center;         
+  gap: 4px;                   
+}
+
+.section-navbar svg {
+  width: 16px;
+  height: 16px;
+  fill: #7000ff;    
+}
+
+
+    .section-navbar a:hover {
+      color: #fff;
+    }
+
+    /* Full-width dropdown panel styling */
+    .section-dropdown-panel {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      background-color: #1F0F4D;
+      padding: 1rem 0;
+      display: none;
+      z-index: 10;
+    }
+
+    .section-dropdown-panel.active {
+      display: block;
+    }
+
+    /* Default panel layout: four columns */
+    .section-panel-content {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      color: #ccc;
+      padding: 0rem 2rem;
+    }
+
+    .section-panel-column h4 {
+      margin-bottom: 1rem;
+      font-family: 'source-serif-pro';
+      color: #fff;
+      font-weight: 700;
+      min-height: 1.5em; /* Ensures alignment even if <h4> is missing */
+
+    }
+
+    .section-panel-column a {
+      color: #ccc;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 1rem;
+    }
+    .section-panel-column a:hover {
+      color: #fff;
+    }
+
+    /* Responsive styling for mobile */
+    @media (max-width: 768px) {
+      /* Horizontal scrolling for the navbar */
+      .section-navbar-container {
+        overflow-x: auto;
+        white-space: nowrap;
+        display: flex;
+        padding: 0rem 1rem;
+      }
+
+      .section-panel-content {
+        padding: 0rem 1rem;
+      }
+
+      /* Single-column layout for dropdown panel */
+      .section-panel-content {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .section-dropdown-panel {
+      padding: 1rem 1rem;
+    }
+
+    .section-navbar a {
+      color: #ccc;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      margin-right: 0rem;
+      display: block;
+    }
+
+    .section-panel-column h4 {
+      min-height: 0em; /* Ensures alignment even if <h4> is missing */
+
+    }
+
+    .section-panel-content {
+        gap: 1rem;
+    }
+    }
