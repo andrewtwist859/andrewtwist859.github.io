@@ -1,0 +1,234 @@
+       /* Basic styling for the gallery */
+.gallery-container {
+    max-width: 800px;
+    text-align: center;
+}
+
+/* Main image display */
+.main-image {
+    width: 100%;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+/* Thumbnail container with horizontal scroll */
+.thumbnail-container {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto; /* Enables horizontal scrolling */
+    gap: 10px;
+    padding: 8px 0;
+    scrollbar-width: thin; /* Firefox scrollbar width */
+}
+
+.thumbnail-container::-webkit-scrollbar {
+    height: 8px; /* Height of horizontal scrollbar */
+}
+
+.thumbnail-container::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 4px;
+}
+
+.thumbnail-container::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+}
+
+/* Thumbnail image styling */
+.thumbnail {
+    width: 200px;
+    flex: 0 0 auto;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: transform 0.2s ease;
+}
+
+.thumbnail:hover {
+    transform: scale(1.05);
+}
+/* Modal styling */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    z-index: 100;
+}
+
+.modal-content-container {
+    position: relative;
+    max-width: 90%;
+    aspect-ratio: 16 / 9; /* Ensures 16:9 aspect ratio */
+    background-color: #fff;
+    overflow: hidden;
+    text-align: left;
+}
+
+
+/* Modal image styling */
+.modal-content {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Keeps the image within the container without stretching */
+    display: block;
+}
+
+/* Close button */
+.close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 30px;
+    color: #fff;
+    cursor: pointer;
+    z-index: 20;
+}
+
+/* Forward and Back buttons */
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    font-size: 30px;
+    color: #fff;
+    cursor: pointer;
+    user-select: none;
+    transform: translateY(-50%);
+    padding: 10px;
+    border-radius: 50%;
+    z-index: 20;
+}
+
+/* Position the arrows closer to the image */
+.prev {
+    left: 10px; /* Reduced from 20px */
+}
+
+.next {
+    right: 10px; /* Reduced from 20px */
+}
+
+/* Description panel below the image */
+.description-panel {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.9); /* 80% transparent black */
+    color: #fff;
+    padding: 1rem 5rem;
+    text-align: left;
+    box-sizing: border-box;
+    
+}
+
+.description-panel h3, .description-panel p {
+    margin: 0;
+    padding: 0;
+    color: #fff;
+}
+
+.description-panel h3{
+    font-family: 'source-serif-pro';
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.description-panel p{
+    font-family: 'source-sans-pro';
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+}
+
+/* Counter overlay in the top right corner */
+.image-counter {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black background */
+    color: #fff;
+    padding: 5px 10px;
+    font-size: 1rem;
+    border-radius: 5px;
+    font-family: 'source-serif-pro';
+    font-weight: 700;
+}
+
+/* Mobile styling for moving description panel below image */
+@media (max-width: 768px) {
+
+    .content-container {
+    padding: 1rem !important;
+}
+
+    .modal-content-container{
+        aspect-ratio: 0;
+    }
+
+    .modal-content-container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .modal-content {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+    }
+
+    .description-panel {
+        position: relative; /* Moves description below image */
+        background-color: #333;
+        color: #333;
+        padding: 15px;
+        box-sizing: border-box;
+    }
+
+    .prev, .next {
+        top: 33%;
+        transform: translateY(-50%);
+    }
+}
+
+/* SVG overlay styling */
+.icon-overlay {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 24px;
+    height: 24px;
+}
+
+.icon-overlay svg {
+    width: 100%;
+    height: 100%;
+    fill: white; /* Set the SVG color to white */
+}
+
+.main-image-container {
+    position: relative;
+    display: inline-block; /* Makes the container the same size as the image */
+}
+
+.content-container {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.content-container h2{
+    font-family: 'source-serif-pro';
+    font-weight: 700;
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+}
+
+.vertical-shelf-container {
+    max-width:800px
+}

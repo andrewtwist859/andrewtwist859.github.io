@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="https://use.typekit.net/szi0eid.css"> 
+<link rel="stylesheet" href="gallery.css">  
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#440099">
 <link rel="icon" href="https://www.sheffield.ac.uk/themes/custom/uos_public/favicon.ico" sizes="any">
@@ -607,100 +608,6 @@ hr.section {
       margin-top: 4px;
     }
 
-    /* Basic styling for the gallery */
-    .gallery-container {
-      max-width: 800px;
-      margin: 20px auto;
-      text-align: center;
-    }
-
-    /* Main image display */
-    .main-image {
-      width: 100%;
-      border-radius: 2px;
-      cursor: pointer;
-    }
-
-    /* Thumbnail container */
-    .thumbnail-container {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-top: 8px;
-      gap: 10px;
-    }
-
-    /* Thumbnail image styling */
-    .thumbnail {
-      width: 170px;
-      cursor: pointer;
-      border-radius: 2px;
-      transition: transform 0.2s ease;
-    }
-
-    .thumbnail:hover {
-      transform: scale(1.05);
-    }
-
-     /* Modal styling */
-     .modal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.9);
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      z-index: 100;
-    }
-
-    .modal-content-container {
-      position: relative;
-      max-width: 90%;
-      max-height: 80%;
-      background-color: #fff;
-      border-radius: 0px;
-      overflow: hidden;
-      text-align: left;
-    }
-
-    .modal-content {
-      width: 100%;
-      max-height: 90%;
-      display: block;
-    }
-
-    /* Close button */
-    .close {
-      position: absolute;
-      top: 10px;
-      right: 20px;
-      font-size: 30px;
-      color: #fff;
-      cursor: pointer;
-    }
-
-    /* Description panel below the image */
-    .description-panel {
-      padding: 15px;
-      background-color: #f2f2f2;
-      text-align: left;
-    }
-
-    .description-panel h3 {
-      margin: 0;
-      font-size: 18px;
-      color: #333;
-    }
-
-    .description-panel p {
-      margin: 5px 0 0;
-      font-size: 14px;
-      color: #666;
-    }
 
     header {
     display: flex;
@@ -1216,30 +1123,55 @@ nav {
   <p>Brand new Faculty of Social Sciences building The Wave co-locates many of our departments to promote interdisciplinary excellence in research, learning and teaching and help us to lead the way in addressing important societal challenges.</p>
   <p>Our facilities in The Wave include state-of-the-art lecture theatres, broadcast facilities and editing suites.</p>
   <div class="gallery-container">
-    <!-- Main Image Display -->
-    <img id="mainImage" src="wave.jpg" class="main-image" alt="Main image" onclick="openModal('wave.jpg', 'The Wave', 'We are very excited to welcome you to The Wave: home to the Faculty of Social Sciences, and the University of Sheffields most sustainable building to date.' )">
-  
+    <div class="main-image-container">
+        <img id="mainImage" src="wave.jpg" class="main-image" alt="Main image" onclick="openModal(0)">
+        <!-- SVG Overlay Icon -->
+        <div class="icon-overlay">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                <path d="M344 0L488 0c13.3 0 24 10.7 24 24l0 144c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-39-39-87 87c-9.4 9.4-24.6 9.4-33.9 0l-32-32c-9.4-9.4-9.4-24.6 0-33.9l87-87L327 41c-6.9-6.9-8.9-17.2-5.2-26.2S334.3 0 344 0zM168 512L24 512c-13.3 0-24-10.7-24-24L0 344c0-9.7 5.8-18.5 14.8-22.2s19.3 1.7 26.2 5.2l39 39 87-87c9.4 9.4 24.6 9.4 33.9 0l32 32c9.4 9.4 9.4 24.6 0 33.9l-87 87 39 39c6.9 6.9 8.9 17.2 5.2 26.2s-12.5 14.8-22.2 14.8z"/>
+            </svg>
+        </div>
+    </div>
     <!-- Thumbnail Container -->
     <div class="thumbnail-container">
-        <img src="wave.jpg" class="thumbnail" onclick="changeMainImage('wave.jpg', 'The Wave', 'We are very excited to welcome you to The Wave: home to the Faculty of Social Sciences, and the University of Sheffields most sustainable building to date.')" alt="Thumbnail 1">
-        <img src="lecture.jpg" class="thumbnail" onclick="changeMainImage('lecture.jpg', 'Teaching spaces', 'Our facilities in The Wave include state-of-the-art lecture theatres, broadcast facilities and editing suites.')" alt="Thumbnail 2">
-        <img src="edit.jpg" class="thumbnail" onclick="changeMainImage('edit.jpg', 'Edit suites', 'We have industry-standard equipment including five newsrooms, TV and radio studios and editing galleries, as well as editing suites and four bookable radio booths.')" alt="Thumbnail 3">
-        <img src="radio.jpg" class="thumbnail" onclick="changeMainImage('radio.jpg', 'Research', 'Our research staff and PGT students will also benefit from the interdisciplinary space, which is shared with other departments from across the social sciences.')" alt="Thumbnail 4">
-      </div>
+        <img src="wave.jpg" class="thumbnail" alt="Thumbnail 1: The Wave" 
+             tabindex="0" role="button" onclick="changeMainImage(0)"
+             aria-label="Thumbnail 1" onkeydown="handleKeyChangeMainImage(event, 0)">
+        <img src="lecture.jpg" class="thumbnail" alt="Thumbnail 2: Teaching spaces" 
+             tabindex="0" role="button" onclick="changeMainImage(1)"
+             aria-label="Thumbnail 2" onkeydown="handleKeyChangeMainImage(event, 1)">
+        <img src="edit.jpg" class="thumbnail" alt="Thumbnail 3: Edit suites" 
+             tabindex="0" role="button" onclick="changeMainImage(2)"
+             aria-label="Thumbnail 3" onkeydown="handleKeyChangeMainImage(event, 2)">
+        <img src="radio.jpg" class="thumbnail" alt="Thumbnail 4: Research" 
+             tabindex="0" role="button" onclick="changeMainImage(3)"
+             aria-label="Thumbnail 4" onkeydown="handleKeyChangeMainImage(event, 3)">
+        <img src="teaching.jpg" class="thumbnail" alt="Thumbnail 4: Teaching" 
+             tabindex="0" role="button" onclick="changeMainImage(4)"
+             aria-label="Thumbnail 5" onkeydown="handleKeyChangeMainImage(event, 4)">
+        <img src="studio.jpg" class="thumbnail" alt="Thumbnail 5: Studio" 
+             tabindex="0" role="button" onclick="changeMainImage(5)"
+             aria-label="Thumbnail 6" onkeydown="handleKeyChangeMainImage(event, 5)">  
     </div>
-  </div>
-  
-  <!-- Modal -->
-<div id="imageModal" class="modal" onclick="closeModal()">
-    <span class="close" onclick="closeModal()">&times;</span>
-    <div class="modal-content-container" onclick="event.stopPropagation()">
-      <img id="modalImage" class="modal-content" alt="Modal Image">
-      <div class="description-panel">
-        <h3 id="imageTitle">Image Title</h3>
-        <p id="imageDescription">Image Description</p>
-      </div>
+</div>
+
+<!-- Modal -->
+<div id="imageModal" class="modal" tabindex="-1" role="dialog" aria-modal="true" 
+     aria-labelledby="imageTitle" aria-describedby="imageDescription" onclick="closeModal()">
+     <span class="close" onclick="closeModal()" tabindex="0" role="button" aria-label="Close modal">&times;</span>
+<div class="modal-content-container">
+        <div class="image-counter" id="imageCounter"></div>
+        <span class="prev" onclick="changeImage(-1)" tabindex="0" role="button" aria-label="Previous image"
+              onkeydown="handleKeyChangeImage(event, -1)">&#10094;</span>
+        <img id="modalImage" class="modal-content" alt="Modal Image">
+        <span class="next" onclick="changeImage(1)" tabindex="0" role="button" aria-label="Next image"
+              onkeydown="handleKeyChangeImage(event, 1)">&#10095;</span>
+        <div class="description-panel">
+            <h3 id="imageTitle">Image Title</h3>
+            <p id="imageDescription">Image Description</p>
+        </div>
     </div>
-  </div>
+</div> 
   <hr class="section">
   <h2 id="school">School of Journalism, Media and Communication</h2>
   <img class="main" src="radio.jpg">
@@ -1546,5 +1478,175 @@ document.addEventListener('DOMContentLoaded', () => {
     menu.classList.toggle('show');
 }
   </script>
+  <script>
+
+    // Modify event listener to avoid unintended closing of the modal on touch
+document.querySelector('.prev').addEventListener('touchstart', (e) => {
+e.stopPropagation(); // Prevent touch from bubbling and triggering modal close
+changeImage(-1);
+});
+
+document.querySelector('.next').addEventListener('touchstart', (e) => {
+e.stopPropagation(); // Prevent touch from bubbling and triggering modal close
+changeImage(1);
+});
+
+// Prevent modal from closing when touching inside it
+document.querySelector('.modal-content-container').addEventListener('touchstart', (e) => {
+e.stopPropagation();
+});
+
+
+// Array of images for the gallery with titles and descriptions
+const images = [
+{src: 'wave.jpg', title: 'The Wave', description: 'We are very excited to welcome you to The Wave: home to the Faculty of Social Sciences, and the University of Sheffields most sustainable building to date.'},
+{src: 'lecture.jpg', title: 'Teaching spaces', description: 'Our facilities in The Wave include state-of-the-art lecture theatres, broadcast facilities and editing suites.'},
+{src: 'edit.jpg', title: 'Edit suites', description: 'We have industry-standard equipment including five newsrooms, TV and radio studios and editing galleries, as well as editing suites and four bookable radio booths.'},
+{src: 'radio.jpg', title: 'Research', description: 'Our research staff and PGT students will also benefit from the interdisciplinary space, which is shared with other departments from across the social sciences.'},
+{src: 'teaching.jpg', title: 'Teaching', description: 'Our research staff and PGT students will also benefit from the interdisciplinary space, which is shared with other departments from across the social sciences.'},
+{src: 'studio.jpg', title: 'Studio', description: 'Our research staff and PGT students will also benefit from the interdisciplinary space, which is shared with other departments from across the social sciences.'}
+
+];
+let currentIndex = 0;
+
+
+// Debounce function to prevent rapid calls
+function debounce(func, delay) {
+let timeout;
+return function (...args) {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => func.apply(this, args), delay);
+};
+}
+
+// Debounced changeImage function to avoid double navigation
+const changeImage = debounce((direction) => {
+currentIndex = (currentIndex + direction + images.length) % images.length;
+updateModal();
+}, 100); // 100ms debounce delay
+
+// Change the main image on thumbnail click
+function changeMainImage(index) {
+const image = images[index];
+document.getElementById("mainImage").src = image.src;
+document.getElementById("mainImage").setAttribute("onclick", `openModal(${index})`);
+}
+
+// Open the modal with the selected image
+function openModal(index) {
+currentIndex = index;
+updateModal();
+const modal = document.getElementById("imageModal");
+modal.style.display = "flex";
+modal.setAttribute("aria-hidden", "false");
+modal.focus();
+}
+
+// Close the modal and return focus to the main image
+function closeModal() {
+const modal = document.getElementById("imageModal");
+modal.style.display = "none";
+modal.setAttribute("aria-hidden", "true");
+document.getElementById("mainImage").focus();
+}
+
+// Update modal content based on the current image index
+function updateModal() {
+const image = images[currentIndex];
+document.getElementById("modalImage").src = image.src;
+document.getElementById("imageTitle").innerText = image.title;
+document.getElementById("imageDescription").innerText = image.description;
+
+// Update the image counter
+document.getElementById("imageCounter").innerText = `${currentIndex + 1} of ${images.length}`;
+}
+
+// Handle Enter key to open modal on thumbnails
+function handleKeyOpenModal(event, index) {
+if (event.key === 'Enter') {
+    openModal(index);
+}
+}
+
+// Handle Enter key to change main image from thumbnails
+function handleKeyChangeMainImage(event, index) {
+if (event.key === 'Enter') {
+    changeMainImage(index);
+}
+}
+
+// Swipe detection for mobile navigation
+let touchStartX = 0;
+let touchEndX = 0;
+
+function handleGesture() {
+if (touchEndX < touchStartX) {
+    changeImage(1); // Swipe left to move to next image
+}
+if (touchEndX > touchStartX) {
+    changeImage(-1); // Swipe right to move to previous image
+}
+}
+
+document.getElementById("imageModal").addEventListener("touchstart", (e) => {
+touchStartX = e.changedTouches[0].screenX;
+});
+
+document.getElementById("imageModal").addEventListener("touchend", (e) => {
+touchEndX = e.changedTouches[0].screenX;
+handleGesture();
+});
+
+// Prevent modal from closing when clicking inside the content container
+document.querySelector('.modal-content-container').addEventListener('click', (e) => {
+e.stopPropagation();
+});
+
+// Use pointerdown for reliable navigation button interaction without double events
+document.querySelector('.prev').addEventListener('pointerdown', (e) => {
+e.stopPropagation();
+changeImage(-1);
+});
+
+document.querySelector('.next').addEventListener('pointerdown', (e) => {
+e.stopPropagation();
+changeImage(1);
+});
+
+// Global function to initialize keyboard accessibility on page load
+function initializeGalleryAccessibility() {
+// Get all thumbnails and add 'keydown' event listeners for Enter key
+const thumbnails = document.querySelectorAll('.thumbnail');
+thumbnails.forEach((thumbnail, index) => {
+    thumbnail.setAttribute('tabindex', '0');
+    thumbnail.addEventListener('keydown', (event) => handleKeyChangeMainImage(event, index));
+    thumbnail.addEventListener('click', () => changeMainImage(index)); // Restore click functionality
+});
+
+// Set tabindex and keydown event for the main image to open modal
+const mainImage = document.getElementById("mainImage");
+mainImage.setAttribute('tabindex', '0');
+mainImage.addEventListener('keydown', (event) => handleKeyOpenModal(event, currentIndex));
+}
+
+// Global keyboard event listener for modal navigation
+document.addEventListener('keydown', (event) => {
+const modal = document.getElementById("imageModal");
+
+// Only respond to keys if the modal is open
+if (modal.style.display === "flex") {
+    if (event.key === 'Escape') {
+        closeModal();
+    } else if (event.key === 'ArrowRight') {
+        changeImage(1);
+    } else if (event.key === 'ArrowLeft') {
+        changeImage(-1);
+    }
+}
+});
+
+// Call initialize function when the page loads
+window.onload = initializeGalleryAccessibility;
+</script>
 </body>
 </html>
