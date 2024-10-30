@@ -10,6 +10,7 @@
       color: #333;
     }
 
+
     /* Navbar full-width background */
     .section-navbar-background {
       width: 100%;
@@ -17,6 +18,11 @@
       padding: 0.5rem 0;
       overflow-x: auto;
     }
+
+    /* For WebKit browsers (like Chrome, Safari), hide scrollbar */
+.section-navbar-container::-webkit-scrollbar {
+    display: none; /* Hides scrollbar for a cleaner look */
+  }
 
     /* Navbar container for scrolling */
     .section-navbar-container {
