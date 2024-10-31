@@ -246,6 +246,115 @@
     max-width:800px
 }
 
+.collection-container {
+    max-width: 800px;
+    padding: 1rem;
+    border: 2px #E7E9EA solid;
+    border-radius: 1px;
+}
+
+.collection-container h2 {
+    margin-bottom: 1rem;
+    margin-top: 0.5rem;
+    font-family: 'source-serif-pro', sans-serif;
+    font-weight: 700;
+
+}
+
+.search-bar {
+    display: flex;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px 0 0 5px;
+    font-size: 16px;
+}
+
+.search-bar button {
+    padding: 10px;
+    background-color: #ccc;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+}
+
+.courses {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.course-card {
+    background-color: white;
+    padding: 1rem;
+}
+
+.course-card h4 {
+    font-size: 14px;
+    color: #7000FF;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 0 0 5px;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-family: 'source-sans-pro', sans-serif;
+    font-weight: 700;
+}
+
+.course-card h2 {
+    font-size: 20px;
+    margin: 0 0 10px;
+    font-family: 'source-serif-pro', sans-serif;
+    font-weight: 700;
+}
+
+.course-card p {
+    margin: 1rem 0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.icon {
+    font-weight: bold;
+}
+
+.honours-filter {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+.honours-filter label {
+    font-size: 16px;
+}
+
+.honours-filter input[type="radio"] {
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #71787F;
+    border-radius: 50%;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+}
+
+.honours-filter input[type="radio"]:checked::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #7000FF;
+}
+
     </style>
 </head>
 <body>
@@ -802,7 +911,66 @@
           </div>
         </div>
       </div>  
+      <h2>Course collection</h2>
+<div class="collection-container">
+    <h2>Explore undergraduate courses in English</h2>
+    <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Filter by keyword or UCAS code" onkeyup="filterCourses()">
+    </div>
+
+    <div class="honours-filter">
+        <label><input type="radio" name="honours" value="all" checked onclick="filterCourses()"> All</label>
+        <label><input type="radio" name="honours" value="single" onclick="filterCourses()"> Single Honours</label>
+        <label><input type="radio" name="honours" value="dual" onclick="filterCourses()"> Dual Honours</label>
+    </div>
+
+    <div class="courses" id="courseList">
+        <div class="course-card" data-keywords="english literature ba" data-ucas="Q306" data-honours="single">
+            <h4>UNDERGRADUATE</h4>
+            <h2>English Literature BA</h2>
+            <p><span class="icon">📅</span> 2025-26 / September start | <span class="icon">🏛️</span> A Levels AAB | <span class="icon">📑</span> UCAS code Q306 | <span class="icon">⌛</span> 3 years / Full-time</p>
+            <p>Explore the full range of literary arts from Old English to the 21st century. You’ll have the opportunity to study modules that encompass film, theatre, creative writing, and more.</p>
+        </div>
+
+        <div class="course-card" data-keywords="english language linguistics ba" data-ucas="Q3Q1" data-honours="single">
+            <h4>UNDERGRADUATE</h4>
+            <h2>English Language and Linguistics BA</h2>
+            <p><span class="icon">📅</span> 2025-26 / September start | <span class="icon">🏛️</span> A Levels AAB | <span class="icon">📑</span> UCAS code Q3Q1 | <span class="icon">⌛</span> 3 years / Full-time</p>
+            <p>The single honours English Language and Linguistics degree gives you a solid foundation in the study of language and linguistics, and trains you in applying key concepts.</p>
+        </div>
+
+        <div class="course-card" data-keywords="english language literature ba" data-ucas="Q304" data-honours="single">
+            <h4>UNDERGRADUATE</h4>
+            <h2>English Language and Literature BA</h2>
+            <p><span class="icon">📅</span> 2025-26 / September start | <span class="icon">🏛️</span> A Levels AAB | <span class="icon">📑</span> UCAS code Q304 | <span class="icon">⌛</span> 3 years / Full-time</p>
+            <p>This unique single honours course focuses specifically on the intersection of language and literature, exploring the relationship between literature and language.</p>
+        </div>
+        <div class="course-card" data-keywords="english history ba" data-ucas="QV31" data-honours="dual">
+            <h4>UNDERGRADUATE</h4>
+            <h2>English and History BA</h2>
+            <p><span class="icon">📅</span> 2025-26 / September start | <span class="icon">🏛️</span> A Levels AAB | <span class="icon">📑</span> UCAS code QV31 | <span class="icon">⌛</span> 3 years / Full-time</p>
+            <p>The combination of English and History uniquely positions you to be able to interrogate a variety of literary texts (including film, theatre, poetry and prose) and place them within their historical, social and political contexts. Both departments offer modules that explore literary and historical cultures from the medieval period up until the contemporary moment. This course is available with either an English Literature or an English Language pathway.</p>
+        </div>
+        
+        <div class="course-card" data-keywords="english modern languages cultures ba" data-ucas="QR50" data-honours="dual">
+            <h4>UNDERGRADUATE</h4>
+            <h2>English and Modern Languages & Cultures BA</h2>
+            <p><span class="icon">📅</span> 2025-26 / September start | <span class="icon">🏛️</span> A Levels ABB | <span class="icon">📑</span> UCAS code QR50 | <span class="icon">⌛</span> 4 years / Full-time</p>
+            <p>This degree will give you a deeper understanding of the crucial relationship between language, culture and society, both within Europe and beyond. Explore the realms of poetry, prose, theatre and film in English and other languages, whilst at the same time learning and applying practical skills in your study of either one or two modern foreign languages.</p>
+        </div>
+        
+        <div class="course-card" data-keywords="english music ba" data-ucas="QW33" data-honours="dual">
+            <h4>UNDERGRADUATE</h4>
+            <h2>English and Music BA</h2>
+            <p><span class="icon">📅</span> 2025-26 / September start | <span class="icon">🏛️</span> A Levels ABB | <span class="icon">📑</span> UCAS code QW33 | <span class="icon">⌛</span> 3 years / Full-time | <span class="icon">🏅</span> Accredited</p>
+            <p>This dual honours English and music degree allows you to pursue your creative and critical passions across the arts. Through English, you’ll study literature, language, theatre, film, creative writing and more. In music, you'll be free to range across our seven subject areas: performance, composition, musicology, ethnomusicology, music psychology, music industries and music technology.</p>
+        </div>            
+        
+    </div>
     </div> 
+    
+</div>
+
 </div>
 <footer class="footer">
     <div class="footer-content">
@@ -1240,5 +1408,29 @@ window.onload = initializeGalleryAccessibility;
        this.textContent = footerLinks.classList.contains("show-all") ? "Close footer" : "Show all links";
      });
        </script>
+        <script>
+            function filterCourses() {
+        const input = document.getElementById('searchInput').value.toLowerCase();
+        const honoursFilter = document.querySelector('input[name="honours"]:checked').value;
+        const courseCards = document.querySelectorAll('.course-card');
+        
+        courseCards.forEach(card => {
+            const keywords = card.getAttribute('data-keywords').toLowerCase();
+            const ucasCode = card.getAttribute('data-ucas').toLowerCase();
+            const honours = card.getAttribute('data-honours').toLowerCase();
+            
+            // Check if input matches keywords or UCAS code, and honours filter matches
+            const matchesKeyword = keywords.includes(input) || ucasCode.includes(input);
+            const matchesHonours = (honoursFilter === 'all') || (honours === honoursFilter);
+            
+            if (matchesKeyword && matchesHonours) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    }
+    
+        </script>
 </body>
 </html>
