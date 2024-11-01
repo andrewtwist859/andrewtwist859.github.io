@@ -496,15 +496,20 @@ background-image: none;
     bottom: 0; /* Slide up into view */
 }
 
-.sticky-footer.docked {
-    bottom: auto;
+.hidden {
+    display: none;
 }
+
 
 .sticky-footer-content {
     max-width: 1180px;
     display: flex;
     justify-content: space-between;
     margin: 0 auto;
+}
+
+.hidden {
+    display: none;
 }
 
 
@@ -2298,6 +2303,20 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   </script>
+  <script>
+    window.addEventListener('scroll', function() {
+    const navbar = document.querySelector('.sticky-footer');
+    const footer = document.querySelector('.footer-links');
+    const footerRect = footer.getBoundingClientRect();
 
+    // Hide sticky footer when it reaches the footer
+    if (footerRect.top <= window.innerHeight) {
+        navbar.classList.add('hidden');
+    } else {
+        navbar.classList.remove('hidden');
+    }
+});
+
+  </script>
 </body>
 </html>
