@@ -5,173 +5,11 @@
     <link rel="stylesheet" href="https://use.typekit.net/jou7rrz.css">
     <link rel="stylesheet" href="global-menu.css"> 
     <link rel="stylesheet" href="section-menu.css"> 
-    <link rel="stylesheet" href="vertical-shelf.css"> 
-    <link rel="stylesheet" href="footer.css"> 
-    <link rel="stylesheet" href="forged.css"> 
+    <link rel="stylesheet" href="footer.css">  
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gallery</title>
     <style>
-        /* Basic styling for the gallery */
-.gallery-container {
-    max-width: 800px;
-    text-align: center;
-    margin-top: 1rem;
-}
-
-/* Main image display */
-.main-image {
-    width: 100%;
-    border-radius: 2px;
-    cursor: pointer;
-}
-
-/* Thumbnail container with horizontal scroll */
-.thumbnail-container {
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto; /* Enables horizontal scrolling */
-    gap: 10px;
-    padding: 8px 0;
-    scrollbar-width: thin; /* Firefox scrollbar width */
-}
-
-.thumbnail-container::-webkit-scrollbar {
-    height: 8px; /* Height of horizontal scrollbar */
-}
-
-.thumbnail-container::-webkit-scrollbar-thumb {
-    background-color: #888;
-    border-radius: 4px;
-}
-
-.thumbnail-container::-webkit-scrollbar-thumb:hover {
-    background-color: #555;
-}
-
-/* Thumbnail image styling */
-.thumbnail {
-    width: 200px;
-    flex: 0 0 auto;
-    cursor: pointer;
-    border-radius: 2px;
-    transition: transform 0.2s ease;
-}
-
-.thumbnail:hover {
-    transform: scale(1.05);
-}
-/* Modal styling */
-.modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.9);
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    z-index: 100;
-}
-
-.modal-content-container {
-    position: relative;
-    max-width: 90%;
-    aspect-ratio: 16 / 9; /* Ensures 16:9 aspect ratio */
-    background-color: #fff;
-    overflow: hidden;
-    text-align: left;
-}
-
-
-/* Modal image styling */
-.modal-content {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Keeps the image within the container without stretching */
-    display: block;
-}
-
-/* Close button */
-.close {
-    position: absolute;
-    top: 10px;
-    right: 20px;
-    font-size: 30px;
-    color: #fff;
-    cursor: pointer;
-    z-index: 20;
-}
-
-/* Forward and Back buttons */
-.prev, .next {
-    position: absolute;
-    top: 50%;
-    font-size: 30px;
-    color: #fff;
-    cursor: pointer;
-    user-select: none;
-    transform: translateY(-50%);
-    padding: 10px;
-    border-radius: 50%;
-    z-index: 20;
-}
-
-/* Position the arrows closer to the image */
-.prev {
-    left: 10px; /* Reduced from 20px */
-}
-
-.next {
-    right: 10px; /* Reduced from 20px */
-}
-
-/* Description panel below the image */
-.description-panel {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.9); /* 80% transparent black */
-    color: #fff;
-    padding: 1rem 5rem;
-    text-align: left;
-    box-sizing: border-box;
-    
-}
-
-.description-panel h3, .description-panel p {
-    margin: 0;
-    padding: 0;
-    color: #fff;
-}
-
-.description-panel h3{
-    font-family: 'source-serif-pro';
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-}
-
-.description-panel p{
-    font-family: 'source-sans-pro';
-    font-weight: 400;
-    margin-bottom: 0.5rem;
-    line-height: 1.4;
-}
-
-/* Counter overlay in the top right corner */
-.image-counter {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black background */
-    color: #fff;
-    padding: 5px 10px;
-    font-size: 1rem;
-    border-radius: 5px;
-    font-family: 'source-serif-pro';
-    font-weight: 700;
-}
+       
 
 /* Mobile styling for moving description panel below image */
 @media (max-width: 768px) {
@@ -180,54 +18,8 @@
     padding: 1rem !important;
 }
 
-    .modal-content-container{
-        aspect-ratio: 0;
-    }
-
-    .modal-content-container {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .modal-content {
-        width: 100%;
-        height: auto;
-        object-fit: contain;
-    }
-
-    .description-panel {
-        position: relative; /* Moves description below image */
-        background-color: #333;
-        color: #333;
-        padding: 15px;
-        box-sizing: border-box;
-    }
-
-    .prev, .next {
-        top: 33%;
-        transform: translateY(-50%);
-    }
 }
 
-/* SVG overlay styling */
-.icon-overlay {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    width: 24px;
-    height: 24px;
-}
-
-.icon-overlay svg {
-    width: 100%;
-    height: 100%;
-    fill: white; /* Set the SVG color to white */
-}
-
-.main-image-container {
-    position: relative;
-    display: inline-block; /* Makes the container the same size as the image */
-}
 
 .contents-container {
     max-width: 1180px;
@@ -246,11 +38,6 @@
     font-weight: 700;
     font-size: 1.6rem;
     margin-bottom: 1rem;
-    margin-top: 2rem;
-}
-
-.vertical-shelf-container {
-    max-width:800px
 }
 
 .collection-container {
@@ -814,114 +601,8 @@
         </div>
       </div>
 
-      <div class="custom-banner">
-        <div class="forged-banner">
-          <div class="forged-content">
-            <h1 class="forged">
-              <span class="forged-in">Forged in</span><br>
-              <span class="sheffield">Sheffield</span>
-            </h1>
-            <p class="shaping">Shaping the Future</p>
-            <a href="/forged">Our new fundraising campaign</a>
-          </div>
-        </div>
-      </div>
-
       <div class="contents-container">
-        <h2>Gallery V2</h2>
-        <p>The current version of our gallery only allows users to view media within the confines on the page content area. This updated version adds an additional modal overlay to improve the experience and to allow users to see images at larger sizes.</p>
-        <p>The modal allows people to navigate through the gallery easily and creates space for image titles and descriptions that add useful context.</p>
-        <p>This component could be used to replace a number of 360 embeds currently delivered via WandaVR.</p>
-        <div class="gallery-container">
-        <div class="main-image-container">
-            <img id="mainImage" src="wave.jpg" class="main-image" alt="Main image" onclick="openModal(0)">
-            <!-- SVG Overlay Icon -->
-            <div class="icon-overlay">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                    <path d="M344 0L488 0c13.3 0 24 10.7 24 24l0 144c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-39-39-87 87c-9.4 9.4-24.6 9.4-33.9 0l-32-32c-9.4-9.4-9.4-24.6 0-33.9l87-87L327 41c-6.9-6.9-8.9-17.2-5.2-26.2S334.3 0 344 0zM168 512L24 512c-13.3 0-24-10.7-24-24L0 344c0-9.7 5.8-18.5 14.8-22.2s19.3 1.7 26.2 5.2l39 39 87-87c9.4 9.4 24.6 9.4 33.9 0l32 32c9.4 9.4 9.4 24.6 0 33.9l-87 87 39 39c6.9 6.9 8.9 17.2 5.2 26.2s-12.5 14.8-22.2 14.8z"/>
-                </svg>
-            </div>
-        </div>
-        <!-- Thumbnail Container -->
-        <div class="thumbnail-container">
-            <img src="wave.jpg" class="thumbnail" alt="Thumbnail 1: The Wave" 
-                 tabindex="0" role="button" onclick="changeMainImage(0)"
-                 aria-label="Thumbnail 1" onkeydown="handleKeyChangeMainImage(event, 0)">
-            <img src="lecture.jpg" class="thumbnail" alt="Thumbnail 2: Teaching spaces" 
-                 tabindex="0" role="button" onclick="changeMainImage(1)"
-                 aria-label="Thumbnail 2" onkeydown="handleKeyChangeMainImage(event, 1)">
-            <img src="edit.jpg" class="thumbnail" alt="Thumbnail 3: Edit suites" 
-                 tabindex="0" role="button" onclick="changeMainImage(2)"
-                 aria-label="Thumbnail 3" onkeydown="handleKeyChangeMainImage(event, 2)">
-            <img src="radio.jpg" class="thumbnail" alt="Thumbnail 4: Research" 
-                 tabindex="0" role="button" onclick="changeMainImage(3)"
-                 aria-label="Thumbnail 4" onkeydown="handleKeyChangeMainImage(event, 3)">
-            <img src="teaching.jpg" class="thumbnail" alt="Thumbnail 4: Teaching" 
-                 tabindex="0" role="button" onclick="changeMainImage(4)"
-                 aria-label="Thumbnail 5" onkeydown="handleKeyChangeMainImage(event, 4)">
-            <img src="studio.jpg" class="thumbnail" alt="Thumbnail 5: Studio" 
-                 tabindex="0" role="button" onclick="changeMainImage(5)"
-                 aria-label="Thumbnail 6" onkeydown="handleKeyChangeMainImage(event, 5)">  
-        </div>
-    </div>
-    
-    <!-- Modal -->
-    <div id="imageModal" class="modal" tabindex="-1" role="dialog" aria-modal="true" 
-         aria-labelledby="imageTitle" aria-describedby="imageDescription" onclick="closeModal()">
-         <span class="close" onclick="closeModal()" tabindex="0" role="button" aria-label="Close modal">&times;</span>
- <div class="modal-content-container">
-            <div class="image-counter" id="imageCounter"></div>
-            <span class="prev" onclick="changeImage(-1)" tabindex="0" role="button" aria-label="Previous image"
-                  onkeydown="handleKeyChangeImage(event, -1)">&#10094;</span>
-            <img id="modalImage" class="modal-content" alt="Modal Image">
-            <span class="next" onclick="changeImage(1)" tabindex="0" role="button" aria-label="Next image"
-                  onkeydown="handleKeyChangeImage(event, 1)">&#10095;</span>
-            <div class="description-panel">
-                <h3 id="imageTitle">Image Title</h3>
-                <p id="imageDescription">Image Description</p>
-            </div>
-        </div>
-    </div> 
-    <h2>Vertical Shelf</h2>
-    <div class="vertical-shelf-container">
-    <div class="vertical-shelf">
-        <div class="vertical-video">
-          <a href="https://www.tiktok.com/@sheffielduni/video/7372200575594745121" target="_blank">
-          <div class="vertical-thumbnail">
-            <img src="https://i.imgur.com/aPUaMRh.jpeg" alt="Video 1 Thumbnail">
-            <div class="vertical-overlay">
-              <span class="vertical-duration">1:19</span>
-              <h3 class="vertical-title">Come with us to the largest food hall in Europe</h3>
-            </div>
-          </div>
-        </a>
-        </div>
-        <!-- More video items similarly -->
-        <div class="vertical-video">
-            <a href="https://www.tiktok.com/@sheffielduni/video/7272771344020901153" target="_blank">
-            <div class="vertical-thumbnail">
-              <img src="https://i.imgur.com/jJeiWFJ.jpeg" alt="Video 2 Thumbnail">
-              <div class="vertical-overlay">
-                <span class="vertical-duration">0:25</span>
-                <h3 class="vertical-title">Grocery shopping in the UK</h3>
-              </div>
-            </div>
-        </a>
-          </div>
-        <div class="vertical-video">
-            <a href="https://www.tiktok.com/@sheffielduni/video/7390026014375644449" target="_blank">
-            <div class="vertical-thumbnail">
-              <img src="https://i.imgur.com/h5GHeGd.jpeg" alt="Video 3 Thumbnail">
-              <div class="vertical-overlay">
-                <span class="vertical-duration">1:04</span>
-                <h3 class="vertical-title">9 things to do in Sheffield</h3>
-              </div>
-            </div>
-            </a>
-          </div>
-        </div>
-      </div>  
-      <h2>Course collection</h2>
+       <h2>Course collection</h2>
 <div class="collection-container">
     <h2>Explore undergraduate courses in English</h2>
     <div class="search-bar">
