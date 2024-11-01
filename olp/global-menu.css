@@ -303,4 +303,10 @@ background-image: none;
     .navbar-content a {
         height: 45.47px;
     }
+
+    .mobile-submenu-panel ul {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
     }
