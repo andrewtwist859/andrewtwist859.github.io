@@ -1,8 +1,4 @@
- * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+
 
     body {
       font-family: 'source-sans-pro', sans-serif;
@@ -272,6 +268,7 @@ background-image: none;
         font-family: 'source-serif-pro';
         font-weight: 700;
         color: white;
+        margin: 0;
     }
 
     /* Responsive styling */
