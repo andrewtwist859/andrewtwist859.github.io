@@ -1967,18 +1967,17 @@ document.addEventListener('DOMContentLoaded', () => {
   const navLinks = document.querySelectorAll('.nav-menu a');
   const navMenuContainer = document.querySelector(".nav-menu-container");
 
-  // Observer for forward scrolling (top of section enters view)
+  // Updated observer options with broader root margins
   const forwardObserverOptions = {
     root: null,
     threshold: 0,
-    rootMargin: '-10% 0px -90% 0px' // Triggers when top is near the top of viewport
+    rootMargin: '-25% 0px -75% 0px' // Triggers earlier when the section is near the top of viewport
   };
 
-  // Observer for backward scrolling (bottom of previous section enters view)
   const backwardObserverOptions = {
     root: null,
     threshold: 0,
-    rootMargin: '-90% 0px -10% 0px' // Triggers when bottom is near the bottom of viewport
+    rootMargin: '-75% 0px -25% 0px' // Triggers earlier when bottom of previous section enters the viewport
   };
 
   function activateLink(activeSectionId) {
@@ -1996,15 +1995,15 @@ document.addEventListener('DOMContentLoaded', () => {
       // Smoothly scroll the active link to the start of the menu
       const linkOffsetLeft = activeLink.offsetLeft;
       navMenuContainer.scrollTo({
-        left: linkOffsetLeft,
-        behavior: 'smooth'
+        left: linkOffsetLeft
       });
     }
   }
 
-  // Observer callbacks for forward and backward scrolling
+  // Observer callbacks with debug logging
   function forwardIntersect(entries) {
     entries.forEach(entry => {
+      console.log('Forward intersecting:', entry.target.getAttribute('id'), entry.isIntersecting);
       if (entry.isIntersecting) {
         const activeSectionId = entry.target.getAttribute('id');
         activateLink(activeSectionId);
@@ -2014,6 +2013,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function backwardIntersect(entries) {
     entries.forEach(entry => {
+      console.log('Backward intersecting:', entry.target.getAttribute('id'), entry.isIntersecting);
       if (entry.isIntersecting) {
         const prevSection = entry.target.previousElementSibling;
         if (prevSection && prevSection.tagName === 'H2') {
@@ -2034,6 +2034,7 @@ document.addEventListener('DOMContentLoaded', () => {
     backwardObserver.observe(section);
   });
 });
+
 
 
 
