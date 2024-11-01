@@ -27,6 +27,10 @@
       justify-content: space-between;
     }
 
+    .navbar-content a {
+        height: 54.56px;
+    }
+
     .navbar-brand {
       display: flex;
       align-items: center;
@@ -294,5 +298,9 @@ background-image: none;
 
     .navbar-content {
         padding: 0 1rem;
+    }
+
+    .navbar-content a {
+        height: 45.47px;
     }
     }
