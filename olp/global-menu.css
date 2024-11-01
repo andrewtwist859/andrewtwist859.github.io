@@ -105,8 +105,11 @@
     }
 
     .menu-column ul {
-      list-style: none;
-    }
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
     .menu-column ul li {
       margin-bottom: 1rem;
