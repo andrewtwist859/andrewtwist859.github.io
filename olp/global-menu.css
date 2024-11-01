@@ -291,4 +291,8 @@ background-image: none;
       .section-header {
         padding: 0rem 1rem;
     }
+
+    .navbar-content {
+        padding: 0 1rem;
+    }
     }
