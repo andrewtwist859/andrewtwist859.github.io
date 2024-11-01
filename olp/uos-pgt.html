@@ -318,7 +318,7 @@ background-image: none;
 
   /* General Styles */
   body {
-    font-family: Arial, sans-serif;
+    font-family: 'source-sans-pro', sans-serif;
     margin: 0;
     padding: 0;
     background-color:#F3F4F4;
@@ -851,7 +851,7 @@ hr.section {
 
 .tab-container {
       overflow: hidden;
-      font-family: Arial, sans-serif;
+      font-family: 'source-sans-pro', sans-serif;
       background-color: white;
     }
 
@@ -2319,5 +2319,13 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
   </script>
+  <script>
+    document.getElementById("showMoreLink").addEventListener("click", function(event) {
+   event.preventDefault(); // Prevents the link from navigating
+   const footerLinks = document.querySelector(".footer-links");
+   footerLinks.classList.toggle("show-all");
+   this.textContent = footerLinks.classList.contains("show-all") ? "Close footer links" : "Show all footer links";
+ });
+   </script>
 </body>
 </html>
