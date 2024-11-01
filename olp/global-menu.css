@@ -287,4 +287,8 @@ background-image: none;
       .hamburger {
         display: block;
       }
+      
+      .section-header {
+        padding: 0rem 1rem;
+    }
     }
