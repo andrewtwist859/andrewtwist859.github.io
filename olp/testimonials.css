@@ -138,6 +138,10 @@
         flex: 1 1 100%; /* Full width for mobile view */
         max-width: 100%;
     }
+
+.testimonial-slider-container {
+    width: 100%;
+}
 }
 
 .hidden {
