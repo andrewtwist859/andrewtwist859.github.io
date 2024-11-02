@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testimonials</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #F3F4F4;
+        }
+
+        .contents-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        #toggleViewButton {
+            display: inline-block;
+            margin-bottom: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+        }
+
+        /* Slider View Styles */
+        .testimonial-slider-container {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            gap: 20px;
+            padding-bottom: 10px;
+        }
+
+        .testimonial {
+            flex: 0 0 300px;
+            scroll-snap-align: start;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 300px;
+            box-sizing: border-box;
+        }
+
+        .testimonial img {
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            margin-bottom: 10px;
+        }
+
+        .testimonial-content {
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .testimonial-name {
+            font-weight: bold;
+            color: #007bff;
+        }
+
+        /* Grid View Styles */
+        .testimonial-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: space-between;
+        }
+
+        .testimonial-grid .testimonial {
+            flex: 1 1 calc(50% - 20px); /* Two columns */
+            max-width: calc(50% - 20px);
+            box-sizing: border-box;
+        }
+
+        /* Single column for mobile view */
+        @media (max-width: 768px) {
+            .testimonial-grid .testimonial {
+                flex: 1 1 100%;
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="contents-container">
+    <!-- Toggle Button -->
+    <button id="toggleViewButton" onclick="toggleView()">View All Testimonials</button>
+
+    <!-- Testimonials Container -->
+    <div class="testimonial-slider-container" id="testimonialContainer">
+        <div class="testimonial">
+            <img src="kelner.jpg" alt="Martha Kelner">
+            <div class="testimonial-content">"The practical elements of the course were the most useful for me."</div>
+            <div class="testimonial-name">Martha Kelner</div>
+        </div>
+        <div class="testimonial">
+            <img src="moir.jpg" alt="Sam Moir">
+            <div class="testimonial-content">"The single best thing would be the variety within it."</div>
+            <div class="testimonial-name">Sam Moir</div>
+        </div>
+        <div class="testimonial">
+            <img src="sheridan.jpg" alt="Daniel Sheridan">
+            <div class="testimonial-content">"The degree was brilliant in preparing me for both roles I have taken."</div>
+            <div class="testimonial-name">Daniel Sheridan</div>
+        </div>
+        <div class="testimonial">
+            <img src="ellie.jpg" alt="Ellie Lambert">
+            <div class="testimonial-content">"It set me on a great path to a career in corporate communications."</div>
+            <div class="testimonial-name">Ellie Lambert</div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function toggleView() {
+    const sliderContainer = document.getElementById('sliderContainer');
+    const toggleButton = document.getElementById('toggleViewButton');
+
+    if (sliderContainer.classList.contains('testimonial-grid')) {
+        // Switch to slider view
+        sliderContainer.classList.remove('testimonial-grid');
+        sliderContainer.classList.add('testimonial-slider-container'); // Optional: ensure slider styling applies
+        toggleButton.textContent = "View All Testimonials";
+    } else {
+        // Switch to grid view
+        sliderContainer.classList.remove('testimonial-slider-container');
+        sliderContainer.classList.add('testimonial-grid');
+        toggleButton.textContent = "View as Slider";
+    }
+}
+</script>
+
+</body>
+</html>

@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.typekit.net/jou7rrz.css">
     <title>Responsive Testimonial Slider</title>
     
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'source-sans-pro', sans-serif;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -42,7 +43,7 @@
             flex: 0 0 49%; /* Display two testimonials per view with a slight gap */
             width: 49%;
             box-sizing: border-box;
-            padding: 20px;
+            padding: 1rem;
             margin-right: 2%; /* Add a 2% gap between testimonials */
             background: #fff;
             text-align: center;
@@ -54,21 +55,38 @@
         }
 
         .testimonial-content {
-            font-size: 15px;
+            font-size: 1rem;
             color: #666;
             line-height: 1.6;
             margin: 15px 0;
+            text-wrap: balance;
         }
 
         .testimonial-name {
             font-weight: bold;
-            font-size: 16px;
+            font-size: 1.2rem;
             color: #333;
-            margin-top: 10px;
+            margin: 0.5rem 0rem;
+            font-family: 'source-serif-pro';
+            font-weight: 700;
+        }
+
+        .testimonial-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            background-color: #ddd;
+            display: block;
         }
 
         .testimonial-title {
-            font-size: 13px;
+            font-size: 1rem;
+            color: #999;
+        }
+
+        .testimonial-class {
+            font-size: 0.9rem;
             color: #999;
             margin-bottom: 10px;
         }
@@ -112,39 +130,51 @@
         <div class="testimonial-slider">
             <!-- Testimonial 1 -->
             <div class="testimonial">
-                <div class="testimonial-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-                <div class="testimonial-name">Jane Doe</div>
-                <div class="testimonial-title">CEO</div>
+                <img src="https://via.placeholder.com/100" alt="Person" class="testimonial-img">
+                <div class="testimonial-content">I think the practical elements of the course were the most useful for me. Being allocated a patch of the city to cover allowed me to experience real reporting for the first time, building up a contacts base and learning to recognise good news stories.</div>
+                <div class="testimonial-name">Martha Kelner</div>
+                <div class="testimonial-title">US Correspondent, Sky News</div>
+                <div class="testimonial-class">BA Journalism Studies</div>
             </div>
             <!-- Testimonial 2 -->
             <div class="testimonial">
-                <div class="testimonial-content">Nunc in ligula faucibus urna hendrerit volutpat.</div>
-                <div class="testimonial-name">John Smith</div>
-                <div class="testimonial-title">CTO</div>
+                <img src="https://via.placeholder.com/100" alt="Person" class="testimonial-img">
+                <div class="testimonial-content">The single best thing would be the variety within it. It’s a great course for someone who’s keen to get a solid understanding of print, radio, TV, online and magazines and then go out and actually practise it during the degree.</div>
+                <div class="testimonial-name">Sam Moir</div>
+                <div class="testimonial-title">Senior Content Producer, Puma</div>
+                <div class="testimonial-class">BA Journalism Studies</div>
             </div>
             <!-- Testimonial 3 -->
             <div class="testimonial">
-                <div class="testimonial-content">Sed ac massa at lorem mollis ornare.</div>
-                <div class="testimonial-name">Emily Stone</div>
-                <div class="testimonial-title">COO</div>
+                <img src="https://via.placeholder.com/100" alt="Person" class="testimonial-img">
+                <div class="testimonial-content">I think the practical elements of the course were the most useful for me. Being allocated a patch of the city to cover allowed me to experience real reporting for the first time, building up a contacts base and learning to recognise good news stories.</div>
+                <div class="testimonial-name">Martha Kelner</div>
+                <div class="testimonial-title">US Correspondent, Sky News</div>
+                <div class="testimonial-class">BA Journalism Studies</div>
             </div>
             <!-- Testimonial 4 -->
             <div class="testimonial">
-                <div class="testimonial-content">Integer facilisis massa ut est.</div>
-                <div class="testimonial-name">Michael Brown</div>
-                <div class="testimonial-title">CMO</div>
+                <img src="https://via.placeholder.com/100" alt="Person" class="testimonial-img">
+                <div class="testimonial-content">The single best thing would be the variety within it. It’s a great course for someone who’s keen to get a solid understanding of print, radio, TV, online and magazines and then go out and actually practise it during the degree.</div>
+                <div class="testimonial-name">Sam Moir</div>
+                <div class="testimonial-title">Senior Content Producer, Puma</div>
+                <div class="testimonial-class">BA Journalism Studies</div>
             </div>
             <!-- Testimonial 5 -->
             <div class="testimonial">
-                <div class="testimonial-content">Morbi pulvinar sapien non turpis venenatis.</div>
-                <div class="testimonial-name">Sarah Lee</div>
-                <div class="testimonial-title">CFO</div>
+                <img src="https://via.placeholder.com/100" alt="Person" class="testimonial-img">
+                <div class="testimonial-content">I think the practical elements of the course were the most useful for me. Being allocated a patch of the city to cover allowed me to experience real reporting for the first time, building up a contacts base and learning to recognise good news stories.</div>
+                <div class="testimonial-name">Martha Kelner</div>
+                <div class="testimonial-title">US Correspondent, Sky News</div>
+                <div class="testimonial-class">BA Journalism Studies</div>
             </div>
             <!-- Testimonial 6 -->
             <div class="testimonial">
-                <div class="testimonial-content">Pellentesque blandit urna id turpis pellentesque.</div>
-                <div class="testimonial-name">David Clark</div>
-                <div class="testimonial-title">COO</div>
+                <img src="https://via.placeholder.com/100" alt="Person" class="testimonial-img">
+                <div class="testimonial-content">The single best thing would be the variety within it. It’s a great course for someone who’s keen to get a solid understanding of print, radio, TV, online and magazines and then go out and actually practise it during the degree.</div>
+                <div class="testimonial-name">Sam Moir</div>
+                <div class="testimonial-title">Senior Content Producer, Puma</div>
+                <div class="testimonial-class">BA Journalism Studies</div>
             </div>
         </div>
     </div>
