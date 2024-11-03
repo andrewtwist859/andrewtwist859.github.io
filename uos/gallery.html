@@ -5,18 +5,172 @@
     <link rel="stylesheet" href="https://use.typekit.net/jou7rrz.css">
     <link rel="stylesheet" href="global-menu.css"> 
     <link rel="stylesheet" href="section-menu.css"> 
-    <link rel="stylesheet" href="footer.css">  
+    <link rel="stylesheet" href="footer.css"> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Website enhancements</title>
+    <link rel="icon" href="https://www.sheffield.ac.uk/themes/custom/uos_public/favicon.ico" sizes="any">
+    <link rel="icon" href="https://www.sheffield.ac.uk/themes/custom/uos_public/favicon.svg" type="image/svg+xml" />
+    <title>Gallery v2</title>
     <style>
-       
+        /* Basic styling for the gallery */
+.gallery-container {
+    max-width: 800px;
+    text-align: center;
+    margin: 1rem 0rem;
+}
 
-body {
-    font-family: 'source-sans-pro', sans-serif;
+/* Main image display */
+.main-image {
+    width: 100%;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+/* Thumbnail container with horizontal scroll */
+.thumbnail-container {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto; /* Enables horizontal scrolling */
+    gap: 10px;
+    padding: 8px 0;
+    scrollbar-width: thin; /* Firefox scrollbar width */
+}
+
+.thumbnail-container::-webkit-scrollbar {
+    height: 8px; /* Height of horizontal scrollbar */
+}
+
+.thumbnail-container::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 4px;
+}
+
+.thumbnail-container::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+}
+
+/* Thumbnail image styling */
+.thumbnail {
+    width: 200px;
+    flex: 0 0 auto;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: transform 0.2s ease;
+}
+
+.thumbnail:hover {
+    transform: scale(1.05);
+}
+/* Modal styling */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    z-index: 100;
+}
+
+.modal-content-container {
+    position: relative;
+    max-width: 90%;
+    aspect-ratio: 16 / 9; /* Ensures 16:9 aspect ratio */
+    background-color: #fff;
+    overflow: hidden;
+    text-align: left;
+}
+
+
+/* Modal image styling */
+.modal-content {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Keeps the image within the container without stretching */
+    display: block;
+}
+
+/* Close button */
+.close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 30px;
+    color: #fff;
+    cursor: pointer;
+    z-index: 20;
+}
+
+/* Forward and Back buttons */
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    font-size: 30px;
+    color: #fff;
+    cursor: pointer;
+    user-select: none;
+    transform: translateY(-50%);
+    padding: 10px;
+    border-radius: 50%;
+    z-index: 20;
+}
+
+/* Position the arrows closer to the image */
+.prev {
+    left: 10px; /* Reduced from 20px */
+}
+
+.next {
+    right: 10px; /* Reduced from 20px */
+}
+
+/* Description panel below the image */
+.description-panel {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.9); /* 80% transparent black */
+    color: #fff;
+    padding: 1rem 5rem;
+    text-align: left;
+    box-sizing: border-box;
+    
+}
+
+.description-panel h3, .description-panel p {
     margin: 0;
     padding: 0;
-    background-color: #F3F4F4;
-    overflow-x: hidden;
+    color: #fff;
+}
+
+.description-panel h3{
+    font-family: 'source-serif-pro';
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.description-panel p{
+    font-family: 'source-sans-pro';
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+}
+
+/* Counter overlay in the top right corner */
+.image-counter {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black background */
+    color: #fff;
+    padding: 5px 10px;
+    font-size: 1rem;
+    border-radius: 5px;
+    font-family: 'source-serif-pro';
+    font-weight: 700;
 }
 
 /* Mobile styling for moving description panel below image */
@@ -26,8 +180,54 @@ body {
     padding: 1rem !important;
 }
 
+    .modal-content-container{
+        aspect-ratio: 0;
+    }
+
+    .modal-content-container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .modal-content {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+    }
+
+    .description-panel {
+        position: relative; /* Moves description below image */
+        background-color: #333;
+        color: #333;
+        padding: 15px;
+        box-sizing: border-box;
+    }
+
+    .prev, .next {
+        top: 33%;
+        transform: translateY(-50%);
+    }
 }
 
+/* SVG overlay styling */
+.icon-overlay {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 24px;
+    height: 24px;
+}
+
+.icon-overlay svg {
+    width: 100%;
+    height: 100%;
+    fill: white; /* Set the SVG color to white */
+}
+
+.main-image-container {
+    position: relative;
+    display: inline-block; /* Makes the container the same size as the image */
+}
 
 .contents-container {
     max-width: 1180px;
@@ -48,122 +248,13 @@ body {
     margin-bottom: 1rem;
 }
 
-.collection-container {
-    max-width: 800px;
-    padding: 1rem;
-    border: 2px #E7E9EA solid;
-}
-
-.collection-container h2 {
-    margin-bottom: 1rem;
-    margin-top: 0.5rem;
-    font-family: 'source-serif-pro', sans-serif;
-    font-weight: 700;
-
-}
-
-.search-bar {
-    display: flex;
-    margin-bottom: 20px;
-    align-items: center;
-}
-
-.search-bar input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px 0 0 5px;
-    font-size: 16px;
-}
-
-.search-bar button {
-    padding: 10px;
-    background-color: #ccc;
-    border: none;
-    border-radius: 0 5px 5px 0;
-    cursor: pointer;
-}
-
-.courses {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.course-card {
-    background-color: white;
-    padding: 1rem;
-    border-top: 8px solid #440099;
-}
-
-.course-card h4 {
-    font-size: 14px;
-    color: #7000FF;
-    font-weight: bold;
-    text-transform: uppercase;
-    margin: 0 0 5px;
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
-    font-family: 'source-sans-pro', sans-serif;
-    font-weight: 700;
-}
-
-.course-card h2 {
-    font-size: 20px;
-    margin: 0 0 10px;
-    font-family: 'source-serif-pro', sans-serif;
-    font-weight: 700;
-}
-
-.course-card p {
-    margin: 1rem 0;
-    font-size: 0.95rem;
-    line-height: 1.6;
-}
-
-.icon {
-    font-weight: bold;
-}
-
-.honours-filter {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
-}
-.honours-filter label {
-    font-size: 16px;
-}
-
-.honours-filter input[type="radio"] {
-    appearance: none;
-    width: 16px;
-    height: 16px;
-    border: 2px solid #71787F;
-    border-radius: 50%;
-    outline: none;
-    cursor: pointer;
-    position: relative;
-}
-
-.honours-filter input[type="radio"]:checked::before {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background-color: #7000FF;
-}
-
     </style>
 </head>
 <body>
     <nav class="navbar">
         <div class="navbar-content">
           <div class="navbar-brand">
-            <a href="uos-changes"><img src="logo.png" alt="University of Sheffield Logo" class="logo"></a>
+            <a href="changes"><img src="logo.png" alt="University of Sheffield Logo" class="logo"></a>
           </div>
           <ul class="nav-links">
             <li class="nav-item" onclick="togglePanel('study-panel')">Study</li>
@@ -609,22 +700,63 @@ body {
         </div>
       </div>
 
-      <div class="contents-container">
-        <h2>Navigation</h2>
-       <p><a href="uos-navigation">Navigation menus</a></p>
-       <h2>Courses</h2>
-       <p><a href="uos-ug">Undergraduate course</a></p>
-       <p><a href="uos-pgt">Postgraduate course</a></p>
-       <h2>Components</h2>
-       <p><a href="uos-banner">Campaign banner</a></p>
-       <p><a href="uos-gallery">Gallery</a></p>
-       <p><a href="uos-testimonial">Testimonial</a></p>
-       <p><a href="uos-coursecollection">Course collection</a></p>
-       
- </div> 
-    
-</div>
 
+      <div class="contents-container">
+        <h2>Gallery V2</h2>
+        <p>The current version of our gallery only allows users to view media within the confines on the page content area. This updated version adds an additional modal overlay to improve the experience and to allow users to see images at larger sizes.</p>
+        <p>The modal allows people to navigate through the gallery easily and creates space for image titles and descriptions that add useful context.</p>
+        <div class="gallery-container">
+        <div class="main-image-container">
+            <img id="mainImage" src="wave.jpg" class="main-image" alt="Main image" onclick="openModal(0)">
+            <!-- SVG Overlay Icon -->
+            <div class="icon-overlay">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                    <path d="M344 0L488 0c13.3 0 24 10.7 24 24l0 144c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-39-39-87 87c-9.4 9.4-24.6 9.4-33.9 0l-32-32c-9.4-9.4-9.4-24.6 0-33.9l87-87L327 41c-6.9-6.9-8.9-17.2-5.2-26.2S334.3 0 344 0zM168 512L24 512c-13.3 0-24-10.7-24-24L0 344c0-9.7 5.8-18.5 14.8-22.2s19.3 1.7 26.2 5.2l39 39 87-87c9.4 9.4 24.6 9.4 33.9 0l32 32c9.4 9.4 9.4 24.6 0 33.9l-87 87 39 39c6.9 6.9 8.9 17.2 5.2 26.2s-12.5 14.8-22.2 14.8z"/>
+                </svg>
+            </div>
+        </div>
+        <!-- Thumbnail Container -->
+        <div class="thumbnail-container">
+            <img src="wave.jpg" class="thumbnail" alt="Thumbnail 1: The Wave" 
+                 tabindex="0" role="button" onclick="changeMainImage(0)"
+                 aria-label="Thumbnail 1" onkeydown="handleKeyChangeMainImage(event, 0)">
+            <img src="lecture.jpg" class="thumbnail" alt="Thumbnail 2: Teaching spaces" 
+                 tabindex="0" role="button" onclick="changeMainImage(1)"
+                 aria-label="Thumbnail 2" onkeydown="handleKeyChangeMainImage(event, 1)">
+            <img src="edit.jpg" class="thumbnail" alt="Thumbnail 3: Edit suites" 
+                 tabindex="0" role="button" onclick="changeMainImage(2)"
+                 aria-label="Thumbnail 3" onkeydown="handleKeyChangeMainImage(event, 2)">
+            <img src="radio.jpg" class="thumbnail" alt="Thumbnail 4: Research" 
+                 tabindex="0" role="button" onclick="changeMainImage(3)"
+                 aria-label="Thumbnail 4" onkeydown="handleKeyChangeMainImage(event, 3)">
+            <img src="teaching.jpg" class="thumbnail" alt="Thumbnail 4: Teaching" 
+                 tabindex="0" role="button" onclick="changeMainImage(4)"
+                 aria-label="Thumbnail 5" onkeydown="handleKeyChangeMainImage(event, 4)">
+            <img src="studio.jpg" class="thumbnail" alt="Thumbnail 5: Studio" 
+                 tabindex="0" role="button" onclick="changeMainImage(5)"
+                 aria-label="Thumbnail 6" onkeydown="handleKeyChangeMainImage(event, 5)">  
+        </div>
+    </div>
+    <p>This component could be used to replace a number of 360 embeds currently delivered via WandaVR.</p>
+
+    <!-- Modal -->
+    <div id="imageModal" class="modal" tabindex="-1" role="dialog" aria-modal="true" 
+         aria-labelledby="imageTitle" aria-describedby="imageDescription" onclick="closeModal()">
+         <span class="close" onclick="closeModal()" tabindex="0" role="button" aria-label="Close modal">&times;</span>
+ <div class="modal-content-container">
+            <div class="image-counter" id="imageCounter"></div>
+            <span class="prev" onclick="changeImage(-1)" tabindex="0" role="button" aria-label="Previous image"
+                  onkeydown="handleKeyChangeImage(event, -1)">&#10094;</span>
+            <img id="modalImage" class="modal-content" alt="Modal Image">
+            <span class="next" onclick="changeImage(1)" tabindex="0" role="button" aria-label="Next image"
+                  onkeydown="handleKeyChangeImage(event, 1)">&#10095;</span>
+            <div class="description-panel">
+                <h3 id="imageTitle">Image Title</h3>
+                <p id="imageDescription">Image Description</p>
+            </div>
+        </div>
+    </div> 
+    </div>
 </div>
 <footer class="footer">
     <div class="footer-content">
@@ -730,6 +862,176 @@ body {
       <p>© 2024 The University of Sheffield</p>
     </div>
   </div>
+    <script>
+
+        // Modify event listener to avoid unintended closing of the modal on touch
+document.querySelector('.prev').addEventListener('touchstart', (e) => {
+    e.stopPropagation(); // Prevent touch from bubbling and triggering modal close
+    changeImage(-1);
+});
+
+document.querySelector('.next').addEventListener('touchstart', (e) => {
+    e.stopPropagation(); // Prevent touch from bubbling and triggering modal close
+    changeImage(1);
+});
+
+// Prevent modal from closing when touching inside it
+document.querySelector('.modal-content-container').addEventListener('touchstart', (e) => {
+    e.stopPropagation();
+});
+
+
+ // Array of images for the gallery with titles and descriptions
+const images = [
+    {src: 'wave.jpg', title: 'The Wave', description: 'We are very excited to welcome you to The Wave: home to the Faculty of Social Sciences, and the University of Sheffields most sustainable building to date.'},
+    {src: 'lecture.jpg', title: 'Teaching spaces', description: 'Our facilities in The Wave include state-of-the-art lecture theatres, broadcast facilities and editing suites.'},
+    {src: 'edit.jpg', title: 'Edit suites', description: 'We have industry-standard equipment including five newsrooms, TV and radio studios and editing galleries, as well as editing suites and four bookable radio booths.'},
+    {src: 'radio.jpg', title: 'Research', description: 'Our research staff and PGT students will also benefit from the interdisciplinary space, which is shared with other departments from across the social sciences.'},
+    {src: 'teaching.jpg', title: 'Teaching', description: 'Our research staff and PGT students will also benefit from the interdisciplinary space, which is shared with other departments from across the social sciences.'},
+    {src: 'studio.jpg', title: 'Studio', description: 'Our research staff and PGT students will also benefit from the interdisciplinary space, which is shared with other departments from across the social sciences.'}
+
+];
+let currentIndex = 0;
+
+
+// Debounce function to prevent rapid calls
+function debounce(func, delay) {
+    let timeout;
+    return function (...args) {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func.apply(this, args), delay);
+    };
+}
+
+// Debounced changeImage function to avoid double navigation
+const changeImage = debounce((direction) => {
+    currentIndex = (currentIndex + direction + images.length) % images.length;
+    updateModal();
+}, 100); // 100ms debounce delay
+
+// Change the main image on thumbnail click
+function changeMainImage(index) {
+    const image = images[index];
+    document.getElementById("mainImage").src = image.src;
+    document.getElementById("mainImage").setAttribute("onclick", `openModal(${index})`);
+}
+
+// Open the modal with the selected image
+function openModal(index) {
+    currentIndex = index;
+    updateModal();
+    const modal = document.getElementById("imageModal");
+    modal.style.display = "flex";
+    modal.setAttribute("aria-hidden", "false");
+    modal.focus();
+}
+
+// Close the modal and return focus to the main image
+function closeModal() {
+    const modal = document.getElementById("imageModal");
+    modal.style.display = "none";
+    modal.setAttribute("aria-hidden", "true");
+    document.getElementById("mainImage").focus();
+}
+
+// Update modal content based on the current image index
+function updateModal() {
+    const image = images[currentIndex];
+    document.getElementById("modalImage").src = image.src;
+    document.getElementById("imageTitle").innerText = image.title;
+    document.getElementById("imageDescription").innerText = image.description;
+
+    // Update the image counter
+    document.getElementById("imageCounter").innerText = `${currentIndex + 1} of ${images.length}`;
+}
+
+// Handle Enter key to open modal on thumbnails
+function handleKeyOpenModal(event, index) {
+    if (event.key === 'Enter') {
+        openModal(index);
+    }
+}
+
+// Handle Enter key to change main image from thumbnails
+function handleKeyChangeMainImage(event, index) {
+    if (event.key === 'Enter') {
+        changeMainImage(index);
+    }
+}
+
+// Swipe detection for mobile navigation
+let touchStartX = 0;
+let touchEndX = 0;
+
+function handleGesture() {
+    if (touchEndX < touchStartX) {
+        changeImage(1); // Swipe left to move to next image
+    }
+    if (touchEndX > touchStartX) {
+        changeImage(-1); // Swipe right to move to previous image
+    }
+}
+
+document.getElementById("imageModal").addEventListener("touchstart", (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+});
+
+document.getElementById("imageModal").addEventListener("touchend", (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleGesture();
+});
+
+// Prevent modal from closing when clicking inside the content container
+document.querySelector('.modal-content-container').addEventListener('click', (e) => {
+    e.stopPropagation();
+});
+
+// Use pointerdown for reliable navigation button interaction without double events
+document.querySelector('.prev').addEventListener('pointerdown', (e) => {
+    e.stopPropagation();
+    changeImage(-1);
+});
+
+document.querySelector('.next').addEventListener('pointerdown', (e) => {
+    e.stopPropagation();
+    changeImage(1);
+});
+
+// Global function to initialize keyboard accessibility on page load
+function initializeGalleryAccessibility() {
+    // Get all thumbnails and add 'keydown' event listeners for Enter key
+    const thumbnails = document.querySelectorAll('.thumbnail');
+    thumbnails.forEach((thumbnail, index) => {
+        thumbnail.setAttribute('tabindex', '0');
+        thumbnail.addEventListener('keydown', (event) => handleKeyChangeMainImage(event, index));
+        thumbnail.addEventListener('click', () => changeMainImage(index)); // Restore click functionality
+    });
+
+    // Set tabindex and keydown event for the main image to open modal
+    const mainImage = document.getElementById("mainImage");
+    mainImage.setAttribute('tabindex', '0');
+    mainImage.addEventListener('keydown', (event) => handleKeyOpenModal(event, currentIndex));
+}
+
+// Global keyboard event listener for modal navigation
+document.addEventListener('keydown', (event) => {
+    const modal = document.getElementById("imageModal");
+
+    // Only respond to keys if the modal is open
+    if (modal.style.display === "flex") {
+        if (event.key === 'Escape') {
+            closeModal();
+        } else if (event.key === 'ArrowRight') {
+            changeImage(1);
+        } else if (event.key === 'ArrowLeft') {
+            changeImage(-1);
+        }
+    }
+});
+
+// Call initialize function when the page loads
+window.onload = initializeGalleryAccessibility;
+    </script>
 
 <script>
     function togglePanel(panelId) {
@@ -892,5 +1194,29 @@ body {
        this.textContent = footerLinks.classList.contains("show-all") ? "Close footer" : "Show all links";
      });
        </script>
+        <script>
+            function filterCourses() {
+        const input = document.getElementById('searchInput').value.toLowerCase();
+        const honoursFilter = document.querySelector('input[name="honours"]:checked').value;
+        const courseCards = document.querySelectorAll('.course-card');
+        
+        courseCards.forEach(card => {
+            const keywords = card.getAttribute('data-keywords').toLowerCase();
+            const ucasCode = card.getAttribute('data-ucas').toLowerCase();
+            const honours = card.getAttribute('data-honours').toLowerCase();
+            
+            // Check if input matches keywords or UCAS code, and honours filter matches
+            const matchesKeyword = keywords.includes(input) || ucasCode.includes(input);
+            const matchesHonours = (honoursFilter === 'all') || (honours === honoursFilter);
+            
+            if (matchesKeyword && matchesHonours) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    }
+    
+        </script>
 </body>
 </html>
