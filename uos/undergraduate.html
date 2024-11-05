@@ -2276,40 +2276,40 @@ function closeSubmenu() {
      this.textContent = footerLinks.classList.contains("show-all") ? "Close footer links" : "Show all footer links";
    });
      </script>
-     <script>
-      const sliderContainer = document.getElementById('sliderContainer');
-      const testimonials = document.querySelectorAll('.testimonial');
-      let testimonialWidth = testimonials[0].offsetWidth + parseInt(window.getComputedStyle(testimonials[0]).marginRight); // Exact width including gap
-      let currentIndex = 0;
+   <script>
+    const sliderContainer = document.getElementById('sliderContainer');
+    const testimonials = document.querySelectorAll('.testimonial');
+    let testimonialWidth = testimonials[0].offsetWidth + parseInt(window.getComputedStyle(testimonials[0]).marginRight); // Exact width including gap
+    let testimonialIndex = 0;
 
-      function updateTestimonialWidth() {
-          testimonialWidth = testimonials[0].offsetWidth + parseInt(window.getComputedStyle(testimonials[0]).marginRight);
-      }
+    function updateTestimonialWidth() {
+        testimonialWidth = testimonials[0].offsetWidth + parseInt(window.getComputedStyle(testimonials[0]).marginRight);
+    }
 
-      function moveSlide(direction) {
-          // Update maxIndex based on the screen size (1 testimonial or 2 testimonials per view)
-          const maxIndex = window.innerWidth <= 768 ? testimonials.length - 1 : testimonials.length - 2;
-          currentIndex = Math.max(0, Math.min(currentIndex + direction, maxIndex));
+    function moveSlide(direction) {
+        // Update maxIndex based on the screen size (1 testimonial or 2 testimonials per view)
+        const maxIndex = window.innerWidth <= 768 ? testimonials.length - 1 : testimonials.length - 2;
+        testimonialIndex = Math.max(0, Math.min(testimonialIndex + direction, maxIndex));
 
-          // Scroll the container to the appropriate position
-          sliderContainer.scrollTo({
-              left: currentIndex * testimonialWidth,
-              behavior: 'smooth'
-          });
-      }
+        // Scroll the container to the appropriate position
+        sliderContainer.scrollTo({
+            left: testimonialIndex * testimonialWidth,
+            behavior: 'smooth'
+        });
+    }
 
-      // Update width and scroll settings on window resize
-      window.addEventListener('resize', () => {
-          updateTestimonialWidth();
-      });
+    // Update width and scroll settings on window resize
+    window.addEventListener('resize', () => {
+        updateTestimonialWidth();
+    });
 
-      // Sync `currentIndex` with manual scrolling for smooth behavior with arrows
-      sliderContainer.addEventListener('scroll', () => {
-          currentIndex = Math.round(sliderContainer.scrollLeft / testimonialWidth);
-      });
+    // Sync `testimonialIndex` with manual scrolling for smooth behavior with arrows
+    sliderContainer.addEventListener('scroll', () => {
+        testimonialIndex = Math.round(sliderContainer.scrollLeft / testimonialWidth);
+    });
 
-      // Initialize testimonial width for responsive layout
-      updateTestimonialWidth();
-  </script>
+    // Initialize testimonial width for responsive layout
+    updateTestimonialWidth();
+</script>
 </body>
 </html>

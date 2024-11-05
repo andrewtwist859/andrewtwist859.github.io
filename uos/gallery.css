@@ -215,12 +215,6 @@
     display: inline-block; /* Makes the container the same size as the image */
 }
 
-.contents-container {
-    max-width: 1180px;
-    margin: 0 auto;
-    padding: 2rem;
-}
-
 .content-container h2{
     font-family: 'source-serif-pro';
     font-weight: 700;

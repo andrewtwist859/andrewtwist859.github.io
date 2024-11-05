@@ -20,7 +20,7 @@
 @media (max-width: 768px) {
 
 .contents-container {
-padding: 1rem !important;
+padding-top: 1rem !important;
 }
 
 }
@@ -29,7 +29,7 @@ padding: 1rem !important;
 .contents-container {
 max-width: 1180px;
 margin: 0 auto;
-padding: 2rem;
+padding-top: 1rem;
 }
 
 .contents-container p {
@@ -503,7 +503,16 @@ margin-bottom: 1rem;
   </div>
 
   <div class="contents-container">
+    <div class="contents-container">
+        <div class="breadcrumbs">
+          <a href="#">Home</a>
+          <span class="separator">›</span>
+          <a href="#">Website enhancements</a>
+          <span class="separator">›</span>
+          <a href="#" class="active">Student voice</a>
+      </div>
 <h2>Enhanced video embeds</h2>
+<p>An enhanced video embed component would allow us to better signpost to specific sections of a longer form video and improve the navigation and user experience of this content. This could be useful for "student guide to..." videos at a course or subject level.</p>
     <div class="video-container">
         <!-- Responsive YouTube Video Embed -->
         <div class="responsive-iframe-container">
@@ -542,6 +551,7 @@ margin-bottom: 1rem;
         </div>
     </div>
     <h2>Vertical shelf</h2>
+    <p>The new vertical shelf component will be a way to bring through student voice content in the form of short form TikTok/Reels videos.</p>
     <div class="vertical-shelf-container">
         <div class="vertical-shelf">
             <div class="vertical-video">
@@ -581,6 +591,7 @@ margin-bottom: 1rem;
             </div>
           </div> 
           <h2>Testimonials</h2>
+          <p>A new testimonials component would give us a way of featuring key quotes from a wider pool of current students and graduates without needing to create a student profile page for them all.</p>
           <div class="testimonial-slider-container" id="sliderContainer">
           
             <!-- Testimonial Slider Wrapper -->
@@ -643,6 +654,7 @@ margin-bottom: 1rem;
         </div>  
 
         <h2>Gallery</h2>
+        <p>An updated gallery component with modal overlay could be used to show current students/graduates in interesting locations with small snippets of text to provide context.</p>
         <div class="gallery-container">
             <div class="main-image-container">
                 <img id="mainImage" src="wave.jpg" class="main-image" alt="Main image" onclick="openModal(0)">
