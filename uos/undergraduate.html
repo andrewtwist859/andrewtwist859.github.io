@@ -5,6 +5,7 @@
 <link rel="stylesheet" href="https://use.typekit.net/jou7rrz.css">
 <link rel="stylesheet" href="gallery.css">
 <link rel="stylesheet" href="footer.css"> 
+<link rel="stylesheet" href="video.css"> 
 <link rel="stylesheet" href="global-menu.css"> 
 <link rel="stylesheet" href="testimonials.css"> 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -1222,7 +1223,44 @@ hr.section {
 <div class="content-container">
     <div class="content">
 <h2 id="overview">Overview</h2>
- <img class="main" src="edit.jpg">   
+<p><strong>Watch our student guide to BA Journalism Studies to hear from our students about the programme, how you'll learn, the facilities you'll have access to and where a degree in journalism could take you. </strong></p>
+<div class="video-container">
+  <!-- Responsive YouTube Video Embed -->
+  <div class="responsive-iframe-container">
+      <iframe id="videoPlayer" 
+          src="https://www.youtube.com/embed/BoIZJjrKW-4?enablejsapi=1"
+          title="YouTube video player" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+      </iframe>
+  </div>
+
+  <!-- Navigation Panel Anchored Directly Below the Video -->
+  <div class="chapter-links" id="chapterLinks">
+      <h3 onclick="toggleChapters()">Explore this video
+          <!-- SVG Icon for dropdown toggle -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="#7000FF"><path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/></svg>
+      </h3>
+      <div class="chapters">
+          <div class="chapter"><span class="time" onclick="navigateToTime(0)">00:00</span> - Introduction</div>
+          <div class="chapter"><span class="time" onclick="navigateToTime(25)">00:25</span> - Firth Court</div>
+          <div class="chapter"><span class="time" onclick="navigateToTime(42)">00:42</span> - Weston Park</div>
+          <div class="chapter"><span class="time" onclick="navigateToTime(58)">00:58</span> - The Arts Tower</div>
+          <div class="chapter"><span class="time" onclick="navigateToTime(84)">01:24</span> - Alfred Denny Building</div>
+          <div class="chapter"><span class="time" onclick="navigateToTime(100)">01:40</span> - Goodwin Sports Centre</div>
+          <div class="chapter"><span class="time" onclick="navigateToTime(117)">01:57</span> - Social Sciences Building</div>
+          <div class="chapter"><span class="time" onclick="navigateToTime(128)">02:08</span> - The Medical School</div>
+          <div class="chapter"><span class="time" onclick="navigateToTime(145)">02:25</span> - Concourse</div>
+          <div class="chapter"><span class="time" onclick="navigateToTime(164)">02:44</span> - Students' Union</div>
+          <div class="chapter"><span class="time" onclick="navigateToTime(209)">03:29</span> - The Octagon Centre</div>
+          <div class="chapter"><span class="time" onclick="navigateToTime(224)">03:44</span> - The University Arms</div>
+          <div class="chapter"><span class="time" onclick="navigateToTime(238)">03:58</span> - Information Commons</div>
+          <div class="chapter"><span class="time" onclick="navigateToTime(255)">04:15</span> - Jessop West</div>
+          <div class="chapter"><span class="time" onclick="navigateToTime(267)">04:27</span> - The Diamond</div>
+          <div class="chapter"><span class="time" onclick="navigateToTime(290)">04:50</span> - Sir Frederick Mappin Building</div>
+      </div>
+  </div>
+</div>
 <p><strong>Our students go on to specialise in areas such as TV news, sports reporting, political journalism or even PR and communications.</strong></p>
 
 <p>Before you find your niche, you’ll learn and perfect the full range of skills you need as a contemporary media professional, including:</p>
@@ -1238,6 +1276,9 @@ hr.section {
 <p>We also offer you the option to take a placement year to help gain vital experience and get ahead of the competition before graduation day.&nbsp;</p>
 <p>As a hands-on department at a prestigious Russell Group university, we're uniquely placed to offer you the best of both worlds. You’ll be taught by award-winning editors and authors, active journalists and world-leaders in media and communication research.</p>
 <p>If you're interested in understanding as well as doing journalism, this course delivers the perfect balance of practical know-how and theoretical knowledge on the history, theory and key debates of the industry.</p>
+<hr />
+<h3>Made from every experience</h3>
+<p>Explore TikToks and Reels made by student content creators studying journalism at the University of Sheffield.</p>
 <div class="vertical-shelf">
     <div class="vertical-video">
       <a href="https://www.tiktok.com/@sheffielduni/video/7372200575594745121" target="_blank">
@@ -1274,6 +1315,7 @@ hr.section {
         </a>
       </div>
     </div>
+    <hr />
     <p>As a hands-on department at a prestigious Russell Group university, we're uniquely placed to offer you the best of both worlds. You’ll be taught by award-winning editors and authors, active journalists and world-leaders in media and communication research.</p>
 <p>If you're interested in understanding as well as doing journalism, this course delivers the perfect balance of practical know-how and theoretical knowledge on the history, theory and key debates of the industry.</p>
 
@@ -1549,6 +1591,7 @@ hr.section {
   <h2 id="facilities">Facilities</h2>
   <p>Brand new Faculty of Social Sciences building The Wave co-locates many of our departments to promote interdisciplinary excellence in research, learning and teaching and help us to lead the way in addressing important societal challenges.</p>
   <p>Our facilities in The Wave include state-of-the-art lecture theatres, broadcast facilities and editing suites.</p>
+  <p><strong>Browse our facilities gallery to learn more about where you'll study and the resources you'll have available to you while studying journalism at Sheffield.</strong></p>
   <div class="gallery-container">
     <div class="main-image-container">
         <img id="mainImage" src="wave.jpg" class="main-image" alt="Main image" onclick="openModal(0)">
@@ -1618,7 +1661,23 @@ hr.section {
   <h2 id="careers">Graduate careers</h2>
   <p>Our graduates go on to achieve great things and remain part of our legacy forever. They change the world through the power of storytelling - be they journalists, documentarians, PR experts, novelists, or teachers.</p>
   <p>Employers have previously included include Reach, the Financial Times, LADbible, National World PLC and Hearst Magazines (publishers of Esquire, Prima, Good Housekeeping and Men’s Health).</p>
-  </div>
+  <p><strong>Browser our gallery of graduate testimonials to learn more about how studying journalism at Sheffield can set you up for your career.</strong></p>
+  
+</div>
+
+  <div class="test-controls">
+    <button id="gridViewButton" onclick="setGridView()" title="Grid View" style="background: none; border: none; cursor: pointer;">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="16" height="16">
+          <path d="M64 32C28.7 32 0 60.7 0 96L0 416c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-320c0-35.3-28.7-64-64-64L64 32zm88 64l0 64-88 0 0-64 88 0zm56 0l88 0 0 64-88 0 0-64zm240 0l0 64-88 0 0-64 88 0zM64 224l88 0 0 64-88 0 0-64zm232 0l0 64-88 0 0-64 88 0zm64 0l88 0 0 64-88 0 0-64zM152 352l0 64-88 0 0-64 88 0zm56 0l88 0 0 64-88 0 0-64zm240 0l0 64-88 0 0-64 88 0z"/>
+      </svg>
+  </button>
+  <div style="text-align: right; margin-bottom: 10px;">View as:
+    <button id="sliderViewButton" onclick="setSliderView()" title="Slider View" style="background: none; border: none; cursor: pointer;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="16" height="16">
+            <path d="M406.6 374.6l96-96c12.5-12.5 12.5-32.8 0-45.3l-96-96c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224l-293.5 0 41.4-41.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-96 96c-12.5 12.5-12.5 32.8 0 45.3l96 96c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 288l293.5 0-41.4 41.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0z"/>
+        </svg>
+    </button> 
+</div></div>
   <div class="testimonial-slider-container" id="sliderContainer">
           
     <!-- Testimonial Slider Wrapper -->
@@ -2313,5 +2372,57 @@ function closeSubmenu() {
     // Initialize testimonial width for responsive layout
     updateTestimonialWidth();
 </script>
+<script>
+  // Load the YouTube API
+  let player;
+  function onYouTubeIframeAPIReady() {
+      player = new YT.Player('videoPlayer', {
+          events: {
+              'onReady': onPlayerReady
+          }
+      });
+  }
+
+  function onPlayerReady(event) {
+      console.log("Player is ready");
+  }
+
+  function navigateToTime(seconds) {
+      if (player && typeof player.seekTo === 'function') {
+          player.seekTo(seconds, true);  // Seek to the specified time and autoplay
+      }
+  }
+
+  // Toggle the visibility of the chapters on mobile
+  function toggleChapters() {
+      const chapterLinks = document.getElementById('chapterLinks');
+      chapterLinks.classList.toggle('open');
+  }
+
+  // Add YouTube IFrame API script
+  var tag = document.createElement('script');
+  tag.src = "https://www.youtube.com/iframe_api";
+  var firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+</script>
+<script>
+  function setSliderView() {
+      const container = document.getElementById('sliderContainer');
+      const navContainer = document.querySelector('.slider-nav-container');
+  
+      container.classList.remove('testimonial-grid');
+      navContainer.classList.remove('hidden'); // Show nav container in slider view
+  }
+  
+  function setGridView() {
+      const container = document.getElementById('sliderContainer');
+      const navContainer = document.querySelector('.slider-nav-container');
+  
+      container.classList.add('testimonial-grid');
+      navContainer.classList.add('hidden'); // Hide nav container in grid view
+  }
+  
+  
+      </script>
 </body>
 </html>
