@@ -1,0 +1,91 @@
+     .video-container {
+            max-width: 800px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .responsive-iframe-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+        }
+        .responsive-iframe-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            background-color: #e0e0e0; /* Light grey placeholder */
+        }
+        .chapter-links {
+            width: 100%; /* Match the width of the video */
+            background-color: #fff; /* Light background color for the chapter section */
+            font-family: Arial, sans-serif;
+            text-align: left;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .chapter-links h3 {
+            font-family: 'source-serif-pro';
+            font-weight: 700;
+            margin-bottom: 1rem;
+            margin-top: 0rem; /* Remove top margin */
+            font-size: 1.2rem;
+            cursor: pointer; /* Make the heading look clickable */
+            display: flex;
+            align-items: center;
+        }
+        .chapter-links h3 svg {
+            width: 16px;
+            height: 16px;
+            margin-left: 8px;
+            transition: transform 0.3s; /* Smooth rotation */
+        }
+        .chapter-links.open h3 svg {
+            transform: rotate(180deg); /* Rotate arrow when open */
+        }
+        .chapters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+        .chapter {
+            flex: 1 1 45%; /* Two columns */
+            color: black;
+        }
+        .chapter span.time {
+            cursor: pointer;
+            font-weight: bold;
+            color: #440099;
+            text-decoration: underline;
+        }
+
+        /* Responsive styling */
+        @media (max-width: 768px) {
+            .chapters {
+                display: none; /* Hide chapters by default on mobile */
+                flex-direction: column; /* Switch to single column */
+                gap: 10px; /* Reduce gap for smaller screens */
+            }
+            .chapter {
+                flex: 1 1 100%; /* Full width for each item in single column */
+            }
+            .chapter-links.open .chapters {
+                display: flex; /* Show chapters when .open class is applied */
+            }
+            .chapter-links h3 {
+            margin-bottom: 0rem;
+            margin-top: 0rem; /* Remove top margin */
+        }
+        }
+
+        /* Hide SVG on desktop view */
+        @media (min-width: 769px) {
+            .chapter-links h3 svg {
+                display: none;
+            }
+        }

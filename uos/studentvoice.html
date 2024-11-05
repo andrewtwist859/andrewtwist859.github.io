@@ -4,41 +4,50 @@
     <link rel="stylesheet" href="https://use.typekit.net/jou7rrz.css">
     <link rel="stylesheet" href="global-menu.css"> 
     <link rel="stylesheet" href="section-menu.css"> 
-    <link rel="stylesheet" href="footer.css"> 
+    <link rel="stylesheet" href="video.css"> 
     <link rel="stylesheet" href="vertical-shelf.css"> 
-<link rel="icon" href="https://www.sheffield.ac.uk/themes/custom/uos_public/favicon.ico" sizes="any">
-<link rel="icon" href="https://www.sheffield.ac.uk/themes/custom/uos_public/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="testimonials.css"> 
+    <link rel="stylesheet" href="gallery.css"> 
+    <link rel="stylesheet" href="footer.css"> 
+    <link rel="icon" href="https://www.sheffield.ac.uk/themes/custom/uos_public/favicon.ico" sizes="any">
+    <link rel="icon" href="https://www.sheffield.ac.uk/themes/custom/uos_public/favicon.svg" type="image/svg+xml" />
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Responsive Mega Menu with Mobile Version</title>
   <style>
-    footer {
-        margin-top: 20rem;
-    }
 
-    .contents-container {
-    max-width: 1180px;
-    margin: 0 auto;
-    padding: 2rem;
+/* Mobile styling for moving description panel below image */
+@media (max-width: 768px) {
+
+.contents-container {
+padding: 1rem !important;
+}
+
+}
+
+
+.contents-container {
+max-width: 1180px;
+margin: 0 auto;
+padding: 2rem;
 }
 
 .contents-container p {
-    max-width: 80ch;
-    margin-bottom: 1rem;
-    font-size: 1.2rem;
+max-width: 80ch;
+margin-bottom: 1rem;
+font-size: 1.2rem;
 }
 
 .contents-container h2{
-    font-family: 'source-serif-pro';
-    font-weight: 700;
-    font-size: 1.6rem;
-    margin-bottom: 1rem;
-    margin-top: 2rem;
+font-family: 'source-serif-pro';
+font-weight: 700;
+font-size: 1.6rem;
+margin-bottom: 1rem;
 }
 
-.vertical-shelf-container {
-    max-width:800px
-}
+    footer {
+        margin-top: 2rem;
+    }
   </style>
 </head>
 <body>
@@ -463,7 +472,7 @@
 </div>
 <div class="section-header-container">
     <div class="section-header">
-        <h2>Website enhancements</h2>
+        <h2>Student voice</h2>
     </div>
 </div>
 <div class="section-navbar-background">
@@ -492,54 +501,200 @@
       <!-- Content will be injected here dynamically -->
     </div>
   </div>
+
   <div class="contents-container">
-    <div class="breadcrumbs">
-      <a href="#">Home</a>
-      <span class="separator">›</span>
-      <a href="#">Website enhancements</a>
-      <span class="separator">›</span>
-      <a href="#" class="active">Vertical shelf</a>
-  </div>
-  <h2>Vertical Shelf</h2>
+<h2>Enhanced video embeds</h2>
+    <div class="video-container">
+        <!-- Responsive YouTube Video Embed -->
+        <div class="responsive-iframe-container">
+            <iframe id="videoPlayer" 
+                src="https://www.youtube.com/embed/BoIZJjrKW-4?enablejsapi=1"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+            </iframe>
+        </div>
+    
+        <!-- Navigation Panel Anchored Directly Below the Video -->
+        <div class="chapter-links" id="chapterLinks">
+            <h3 onclick="toggleChapters()">Explore this video
+                <!-- SVG Icon for dropdown toggle -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/></svg>
+            </h3>
+            <div class="chapters">
+                <div class="chapter"><span class="time" onclick="navigateToTime(0)">00:00</span> - Introduction</div>
+                <div class="chapter"><span class="time" onclick="navigateToTime(25)">00:25</span> - Firth Court</div>
+                <div class="chapter"><span class="time" onclick="navigateToTime(42)">00:42</span> - Weston Park</div>
+                <div class="chapter"><span class="time" onclick="navigateToTime(58)">00:58</span> - The Arts Tower</div>
+                <div class="chapter"><span class="time" onclick="navigateToTime(84)">01:24</span> - Alfred Denny Building</div>
+                <div class="chapter"><span class="time" onclick="navigateToTime(100)">01:40</span> - Goodwin Sports Centre</div>
+                <div class="chapter"><span class="time" onclick="navigateToTime(117)">01:57</span> - Social Sciences Building</div>
+                <div class="chapter"><span class="time" onclick="navigateToTime(128)">02:08</span> - The Medical School</div>
+                <div class="chapter"><span class="time" onclick="navigateToTime(145)">02:25</span> - Concourse</div>
+                <div class="chapter"><span class="time" onclick="navigateToTime(164)">02:44</span> - Students' Union</div>
+                <div class="chapter"><span class="time" onclick="navigateToTime(209)">03:29</span> - The Octagon Centre</div>
+                <div class="chapter"><span class="time" onclick="navigateToTime(224)">03:44</span> - The University Arms</div>
+                <div class="chapter"><span class="time" onclick="navigateToTime(238)">03:58</span> - Information Commons</div>
+                <div class="chapter"><span class="time" onclick="navigateToTime(255)">04:15</span> - Jessop West</div>
+                <div class="chapter"><span class="time" onclick="navigateToTime(267)">04:27</span> - The Diamond</div>
+                <div class="chapter"><span class="time" onclick="navigateToTime(290)">04:50</span> - Sir Frederick Mappin Building</div>
+            </div>
+        </div>
+    </div>
+    <h2>Vertical shelf</h2>
     <div class="vertical-shelf-container">
-    <div class="vertical-shelf">
-        <div class="vertical-video">
-          <a href="https://www.tiktok.com/@sheffielduni/video/7372200575594745121" target="_blank">
-          <div class="vertical-thumbnail">
-            <img src="https://i.imgur.com/aPUaMRh.jpeg" alt="Video 1 Thumbnail">
-            <div class="vertical-overlay">
-              <span class="vertical-duration">1:19</span>
-              <h3 class="vertical-title">Come with us to the largest food hall in Europe</h3>
-            </div>
-          </div>
-        </a>
-        </div>
-        <!-- More video items similarly -->
-        <div class="vertical-video">
-            <a href="https://www.tiktok.com/@sheffielduni/video/7272771344020901153" target="_blank">
-            <div class="vertical-thumbnail">
-              <img src="https://i.imgur.com/jJeiWFJ.jpeg" alt="Video 2 Thumbnail">
-              <div class="vertical-overlay">
-                <span class="vertical-duration">0:25</span>
-                <h3 class="vertical-title">Grocery shopping in the UK</h3>
+        <div class="vertical-shelf">
+            <div class="vertical-video">
+              <a href="https://www.tiktok.com/@sheffielduni/video/7372200575594745121" target="_blank">
+              <div class="vertical-thumbnail">
+                <img src="https://i.imgur.com/aPUaMRh.jpeg" alt="Video 1 Thumbnail">
+                <div class="vertical-overlay">
+                  <span class="vertical-duration">1:19</span>
+                  <h3 class="vertical-title">Come with us to the largest food hall in Europe</h3>
+                </div>
               </div>
-            </div>
-        </a>
-          </div>
-        <div class="vertical-video">
-            <a href="https://www.tiktok.com/@sheffielduni/video/7390026014375644449" target="_blank">
-            <div class="vertical-thumbnail">
-              <img src="https://i.imgur.com/h5GHeGd.jpeg" alt="Video 3 Thumbnail">
-              <div class="vertical-overlay">
-                <span class="vertical-duration">1:04</span>
-                <h3 class="vertical-title">9 things to do in Sheffield</h3>
-              </div>
-            </div>
             </a>
-          </div>
+            </div>
+            <!-- More video items similarly -->
+            <div class="vertical-video">
+                <a href="https://www.tiktok.com/@sheffielduni/video/7272771344020901153" target="_blank">
+                <div class="vertical-thumbnail">
+                  <img src="https://i.imgur.com/jJeiWFJ.jpeg" alt="Video 2 Thumbnail">
+                  <div class="vertical-overlay">
+                    <span class="vertical-duration">0:25</span>
+                    <h3 class="vertical-title">Grocery shopping in the UK</h3>
+                  </div>
+                </div>
+            </a>
+              </div>
+            <div class="vertical-video">
+                <a href="https://www.tiktok.com/@sheffielduni/video/7390026014375644449" target="_blank">
+                <div class="vertical-thumbnail">
+                  <img src="https://i.imgur.com/h5GHeGd.jpeg" alt="Video 3 Thumbnail">
+                  <div class="vertical-overlay">
+                    <span class="vertical-duration">1:04</span>
+                    <h3 class="vertical-title">9 things to do in Sheffield</h3>
+                  </div>
+                </div>
+                </a>
+              </div>
+            </div>
+          </div> 
+          <h2>Testimonials</h2>
+          <div class="testimonial-slider-container" id="sliderContainer">
+          
+            <!-- Testimonial Slider Wrapper -->
+            <div class="testimonial-slider">
+                <!-- Testimonial 1 -->
+                <div class="testimonial">
+                    <img src="kelner.jpg" alt="Martha Kelner" class="testimonial-img">
+                    <div class="testimonial-content">"I think the practical elements of the course were the most useful for me. Being allocated a patch of the city to cover allowed me to experience real reporting for the first time, building up a contacts base and learning to recognise good news stories."</div>
+                    <div class="testimonial-name"><a href="/">Martha Kelner</a></div>
+                    <div class="testimonial-title">US Correspondent, Sky News</div>
+                    <div class="testimonial-class">BA Journalism Studies</div>
+                </div>
+                <!-- Testimonial 2 -->
+                <div class="testimonial">
+                    <img src="moir.jpg" alt="Sam Moir" class="testimonial-img">
+                    <div class="testimonial-content">"The single best thing would be the variety within it. It’s a great course for someone who’s keen to get a solid understanding of print, radio, TV, online and magazines and then go out and actually practise it during the degree."</div>
+                    <div class="testimonial-name"><a href="/">Sam Moir</a></div>                  
+                    <div class="testimonial-title">Senior Content Producer, Puma</div>
+                    <div class="testimonial-class">BA Journalism Studies</div>
+                </div>
+                <!-- Testimonial 3 -->
+                <div class="testimonial">
+                    <img src="sheridan.jpg" alt="Daniel Sheridan" class="testimonial-img">
+                    <div class="testimonial-content">"The degree was brilliant in preparing me for both roles I have taken. The course is designed to cover all aspects of journalism and gave me a very rounded perspective of all the different skills I would need for my career."</div>
+                    <div class="testimonial-name"><a href="/">Daniel Sheridan</a></div>                  
+                    <div class="testimonial-title">Reporter, Yorkshire Evening Post</div>
+                    <div class="testimonial-class">BA Journalism Studies</div>
+                </div>
+                <!-- Testimonial 4 -->
+                <div class="testimonial">
+                    <img src="ellie.jpg" alt="Person" class="testimonial-img">
+                    <div class="testimonial-content">"It set me on a great path to a career in corporate communications within charity and government in organisations. I don't think I would have landed the roles I have, or progressed my career, without the degree and the things I learned during it."</div>
+                    <div class="testimonial-name"><a href="/">Ellie Lambert</a></div>                  
+                    <div class="testimonial-title">Senior Media Manager, Trussell Trust</div>
+                    <div class="testimonial-class">BA Journalism Studies</div>
+                </div>
+                <!-- Testimonial 5 -->
+                <div class="testimonial">
+                    <img src="sarah.jpg" alt="Person" class="testimonial-img">
+                    <div class="testimonial-content">"The course also gave me a good understanding of how a newsroom works and media law, which has been incredibly useful. As a reporter, shorthand was essential!"</div>
+                    <div class="testimonial-name"><a href="/">Sarah Whittle</a></div>
+                    <div class="testimonial-title">Senior Communications Manager, NHS North West Ambulance Service</div>
+                    <div class="testimonial-class">BA Journalism Studies</div>
+                </div>
+                <!-- Testimonial 6 -->
+                <div class="testimonial">
+                    <img src="adam.png" alt="Person" class="testimonial-img">
+                    <div class="testimonial-content">"The news gathering techniques and ability to write concise copy assists me in my current role of keeping parents/carers updated on school activities by producing e-newsletters and updating websites and on social media platforms."</div>
+                    <div class="testimonial-name"><a href="/">Adam Hodges</a></div>                  
+                    <div class="testimonial-title">Communications Officer, Life Multi Academy Leicestershire</div>
+                    <div class="testimonial-class">BA Journalism Studies</div>
+                </div>
+            </div>
         </div>
-      </div>  
-</div>
+    
+        <!-- Centered Navigation Arrows Below the Scroll Container -->
+        <div class="slider-nav-container">
+            <div class="slider-nav left" onclick="moveSlide(-1)">&#10094;</div>
+            <div class="slider-nav right" onclick="moveSlide(1)">&#10095;</div>
+        </div>  
+
+        <h2>Gallery</h2>
+        <div class="gallery-container">
+            <div class="main-image-container">
+                <img id="mainImage" src="wave.jpg" class="main-image" alt="Main image" onclick="openModal(0)">
+                <!-- SVG Overlay Icon -->
+                <div class="icon-overlay">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                        <path d="M344 0L488 0c13.3 0 24 10.7 24 24l0 144c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-39-39-87 87c-9.4 9.4-24.6 9.4-33.9 0l-32-32c-9.4-9.4-9.4-24.6 0-33.9l87-87L327 41c-6.9-6.9-8.9-17.2-5.2-26.2S334.3 0 344 0zM168 512L24 512c-13.3 0-24-10.7-24-24L0 344c0-9.7 5.8-18.5 14.8-22.2s19.3 1.7 26.2 5.2l39 39 87-87c9.4 9.4 24.6 9.4 33.9 0l32 32c9.4 9.4 9.4 24.6 0 33.9l-87 87 39 39c6.9 6.9 8.9 17.2 5.2 26.2s-12.5 14.8-22.2 14.8z"/>
+                    </svg>
+                </div>
+            </div>
+            <!-- Thumbnail Container -->
+            <div class="thumbnail-container">
+                <img src="wave.jpg" class="thumbnail" alt="Thumbnail 1: The Wave" 
+                     tabindex="0" role="button" onclick="changeMainImage(0)"
+                     aria-label="Thumbnail 1" onkeydown="handleKeyChangeMainImage(event, 0)">
+                <img src="lecture.jpg" class="thumbnail" alt="Thumbnail 2: Teaching spaces" 
+                     tabindex="0" role="button" onclick="changeMainImage(1)"
+                     aria-label="Thumbnail 2" onkeydown="handleKeyChangeMainImage(event, 1)">
+                <img src="edit.jpg" class="thumbnail" alt="Thumbnail 3: Edit suites" 
+                     tabindex="0" role="button" onclick="changeMainImage(2)"
+                     aria-label="Thumbnail 3" onkeydown="handleKeyChangeMainImage(event, 2)">
+                <img src="radio.jpg" class="thumbnail" alt="Thumbnail 4: Research" 
+                     tabindex="0" role="button" onclick="changeMainImage(3)"
+                     aria-label="Thumbnail 4" onkeydown="handleKeyChangeMainImage(event, 3)">
+                <img src="teaching.jpg" class="thumbnail" alt="Thumbnail 4: Teaching" 
+                     tabindex="0" role="button" onclick="changeMainImage(4)"
+                     aria-label="Thumbnail 5" onkeydown="handleKeyChangeMainImage(event, 4)">
+                <img src="studio.jpg" class="thumbnail" alt="Thumbnail 5: Studio" 
+                     tabindex="0" role="button" onclick="changeMainImage(5)"
+                     aria-label="Thumbnail 6" onkeydown="handleKeyChangeMainImage(event, 5)">  
+            </div>
+        </div>    
+        <!-- Modal -->
+        <div id="imageModal" class="modal" tabindex="-1" role="dialog" aria-modal="true" 
+             aria-labelledby="imageTitle" aria-describedby="imageDescription" onclick="closeModal()">
+             <span class="close" onclick="closeModal()" tabindex="0" role="button" aria-label="Close modal">&times;</span>
+     <div class="modal-content-container">
+                <div class="image-counter" id="imageCounter"></div>
+                <span class="prev" onclick="changeImage(-1)" tabindex="0" role="button" aria-label="Previous image"
+                      onkeydown="handleKeyChangeImage(event, -1)">&#10094;</span>
+                <img id="modalImage" class="modal-content" alt="Modal Image">
+                <span class="next" onclick="changeImage(1)" tabindex="0" role="button" aria-label="Next image"
+                      onkeydown="handleKeyChangeImage(event, 1)">&#10095;</span>
+                <div class="description-panel">
+                    <h3 id="imageTitle">Image Title</h3>
+                    <p id="imageDescription">Image Description</p>
+                </div>
+            </div>
+        </div> 
+        </div>
+    </div>
+
   <footer class="footer">
     <div class="footer-content">
       <div class="footer-heading">
@@ -589,9 +744,8 @@
           <p>S10 2TN</p>
           <p>+44 114 222 2000</p>
         </div>
-      </div>
-      
-     
+    </div>
+    
    
     <div class="footer-bottom">
         <div class="footer-awards">
@@ -792,5 +946,243 @@
        this.textContent = footerLinks.classList.contains("show-all") ? "Close footer" : "Show all links";
      });
        </script>
+       <script>
+        // Load the YouTube API
+        let player;
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('videoPlayer', {
+                events: {
+                    'onReady': onPlayerReady
+                }
+            });
+        }
+    
+        function onPlayerReady(event) {
+            console.log("Player is ready");
+        }
+    
+        function navigateToTime(seconds) {
+            if (player && typeof player.seekTo === 'function') {
+                player.seekTo(seconds, true);  // Seek to the specified time and autoplay
+            }
+        }
+    
+        // Toggle the visibility of the chapters on mobile
+        function toggleChapters() {
+            const chapterLinks = document.getElementById('chapterLinks');
+            chapterLinks.classList.toggle('open');
+        }
+    
+        // Add YouTube IFrame API script
+        var tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    </script>
+    <script>
+        const sliderContainer = document.getElementById('sliderContainer');
+        const testimonials = document.querySelectorAll('.testimonial');
+        let testimonialWidth = testimonials[0].offsetWidth + parseInt(window.getComputedStyle(testimonials[0]).marginRight); // Exact width including gap
+        let testimonialIndex = 0;
+
+        function updateTestimonialWidth() {
+            testimonialWidth = testimonials[0].offsetWidth + parseInt(window.getComputedStyle(testimonials[0]).marginRight);
+        }
+
+        function moveSlide(direction) {
+            // Update maxIndex based on the screen size (1 testimonial or 2 testimonials per view)
+            const maxIndex = window.innerWidth <= 768 ? testimonials.length - 1 : testimonials.length - 2;
+            testimonialIndex = Math.max(0, Math.min(testimonialIndex + direction, maxIndex));
+
+            // Scroll the container to the appropriate position
+            sliderContainer.scrollTo({
+                left: testimonialIndex * testimonialWidth,
+                behavior: 'smooth'
+            });
+        }
+
+        // Update width and scroll settings on window resize
+        window.addEventListener('resize', () => {
+            updateTestimonialWidth();
+        });
+
+        // Sync `testimonialIndex` with manual scrolling for smooth behavior with arrows
+        sliderContainer.addEventListener('scroll', () => {
+            testimonialIndex = Math.round(sliderContainer.scrollLeft / testimonialWidth);
+        });
+
+        // Initialize testimonial width for responsive layout
+        updateTestimonialWidth();
+    </script>
+    <script>
+
+        // Modify event listener to avoid unintended closing of the modal on touch
+document.querySelector('.prev').addEventListener('touchstart', (e) => {
+    e.stopPropagation(); // Prevent touch from bubbling and triggering modal close
+    changeImage(-1);
+});
+
+document.querySelector('.next').addEventListener('touchstart', (e) => {
+    e.stopPropagation(); // Prevent touch from bubbling and triggering modal close
+    changeImage(1);
+});
+
+// Prevent modal from closing when touching inside it
+document.querySelector('.modal-content-container').addEventListener('touchstart', (e) => {
+    e.stopPropagation();
+});
+
+
+ // Array of images for the gallery with titles and descriptions
+const images = [
+    {src: 'wave.jpg', title: 'The Wave', description: 'We are very excited to welcome you to The Wave: home to the Faculty of Social Sciences, and the University of Sheffields most sustainable building to date.'},
+    {src: 'lecture.jpg', title: 'Teaching spaces', description: 'Our facilities in The Wave include state-of-the-art lecture theatres, broadcast facilities and editing suites.'},
+    {src: 'edit.jpg', title: 'Edit suites', description: 'We have industry-standard equipment including five newsrooms, TV and radio studios and editing galleries, as well as editing suites and four bookable radio booths.'},
+    {src: 'radio.jpg', title: 'Research', description: 'Our research staff and PGT students will also benefit from the interdisciplinary space, which is shared with other departments from across the social sciences.'},
+    {src: 'teaching.jpg', title: 'Teaching', description: 'Our research staff and PGT students will also benefit from the interdisciplinary space, which is shared with other departments from across the social sciences.'},
+    {src: 'studio.jpg', title: 'Studio', description: 'Our research staff and PGT students will also benefit from the interdisciplinary space, which is shared with other departments from across the social sciences.'}
+
+];
+let currentIndex = 0;
+
+
+// Debounce function to prevent rapid calls
+function debounce(func, delay) {
+    let timeout;
+    return function (...args) {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func.apply(this, args), delay);
+    };
+}
+
+// Debounced changeImage function to avoid double navigation
+const changeImage = debounce((direction) => {
+    currentIndex = (currentIndex + direction + images.length) % images.length;
+    updateModal();
+}, 100); // 100ms debounce delay
+
+// Change the main image on thumbnail click
+function changeMainImage(index) {
+    const image = images[index];
+    document.getElementById("mainImage").src = image.src;
+    document.getElementById("mainImage").setAttribute("onclick", `openModal(${index})`);
+}
+
+// Open the modal with the selected image
+function openModal(index) {
+    currentIndex = index;
+    updateModal();
+    const modal = document.getElementById("imageModal");
+    modal.style.display = "flex";
+    modal.setAttribute("aria-hidden", "false");
+    modal.focus();
+}
+
+// Close the modal and return focus to the main image
+function closeModal() {
+    const modal = document.getElementById("imageModal");
+    modal.style.display = "none";
+    modal.setAttribute("aria-hidden", "true");
+    document.getElementById("mainImage").focus();
+}
+
+// Update modal content based on the current image index
+function updateModal() {
+    const image = images[currentIndex];
+    document.getElementById("modalImage").src = image.src;
+    document.getElementById("imageTitle").innerText = image.title;
+    document.getElementById("imageDescription").innerText = image.description;
+
+    // Update the image counter
+    document.getElementById("imageCounter").innerText = `${currentIndex + 1} of ${images.length}`;
+}
+
+// Handle Enter key to open modal on thumbnails
+function handleKeyOpenModal(event, index) {
+    if (event.key === 'Enter') {
+        openModal(index);
+    }
+}
+
+// Handle Enter key to change main image from thumbnails
+function handleKeyChangeMainImage(event, index) {
+    if (event.key === 'Enter') {
+        changeMainImage(index);
+    }
+}
+
+// Swipe detection for mobile navigation
+let touchStartX = 0;
+let touchEndX = 0;
+
+function handleGesture() {
+    if (touchEndX < touchStartX) {
+        changeImage(1); // Swipe left to move to next image
+    }
+    if (touchEndX > touchStartX) {
+        changeImage(-1); // Swipe right to move to previous image
+    }
+}
+
+document.getElementById("imageModal").addEventListener("touchstart", (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+});
+
+document.getElementById("imageModal").addEventListener("touchend", (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleGesture();
+});
+
+// Prevent modal from closing when clicking inside the content container
+document.querySelector('.modal-content-container').addEventListener('click', (e) => {
+    e.stopPropagation();
+});
+
+// Use pointerdown for reliable navigation button interaction without double events
+document.querySelector('.prev').addEventListener('pointerdown', (e) => {
+    e.stopPropagation();
+    changeImage(-1);
+});
+
+document.querySelector('.next').addEventListener('pointerdown', (e) => {
+    e.stopPropagation();
+    changeImage(1);
+});
+
+// Global function to initialize keyboard accessibility on page load
+function initializeGalleryAccessibility() {
+    // Get all thumbnails and add 'keydown' event listeners for Enter key
+    const thumbnails = document.querySelectorAll('.thumbnail');
+    thumbnails.forEach((thumbnail, index) => {
+        thumbnail.setAttribute('tabindex', '0');
+        thumbnail.addEventListener('keydown', (event) => handleKeyChangeMainImage(event, index));
+        thumbnail.addEventListener('click', () => changeMainImage(index)); // Restore click functionality
+    });
+
+    // Set tabindex and keydown event for the main image to open modal
+    const mainImage = document.getElementById("mainImage");
+    mainImage.setAttribute('tabindex', '0');
+    mainImage.addEventListener('keydown', (event) => handleKeyOpenModal(event, currentIndex));
+}
+
+// Global keyboard event listener for modal navigation
+document.addEventListener('keydown', (event) => {
+    const modal = document.getElementById("imageModal");
+
+    // Only respond to keys if the modal is open
+    if (modal.style.display === "flex") {
+        if (event.key === 'Escape') {
+            closeModal();
+        } else if (event.key === 'ArrowRight') {
+            changeImage(1);
+        } else if (event.key === 'ArrowLeft') {
+            changeImage(-1);
+        }
+    }
+});
+
+// Call initialize function when the page loads
+window.onload = initializeGalleryAccessibility;
+    </script>
 </body>
 </html>

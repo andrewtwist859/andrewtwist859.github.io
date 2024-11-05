@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.typekit.net/jou7rrz.css">
+    <title>Video Embed with Chapters</title>
+    <style>
+        .video-container {
+            max-width: 700px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .responsive-iframe-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+        }
+        .responsive-iframe-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            background-color: #e0e0e0; /* Light grey placeholder */
+        }
+        .chapter-links {
+            width: 100%; /* Match the width of the video */
+            background-color: #f6f6f6; /* Light background color for the chapter section */
+            font-family: Arial, sans-serif;
+            text-align: left;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .chapter-links h3 {
+            font-family: 'source-serif-pro';
+            font-weight: 700;
+            margin-bottom: 1rem;
+            margin-top: 0rem; /* Remove top margin */
+            font-size: 1.2rem;
+            cursor: pointer; /* Make the heading look clickable */
+            display: flex;
+            align-items: center;
+        }
+        .chapter-links h3 svg {
+            width: 16px;
+            height: 16px;
+            margin-left: 8px;
+            transition: transform 0.3s; /* Smooth rotation */
+        }
+        .chapter-links.open h3 svg {
+            transform: rotate(180deg); /* Rotate arrow when open */
+        }
+        .chapters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+        .chapter {
+            flex: 1 1 45%; /* Two columns */
+            color: black;
+        }
+        .chapter span.time {
+            cursor: pointer;
+            font-weight: bold;
+            color: #440099;
+            text-decoration: underline;
+        }
+
+        /* Responsive styling */
+        @media (max-width: 768px) {
+            .chapters {
+                display: none; /* Hide chapters by default on mobile */
+                flex-direction: column; /* Switch to single column */
+                gap: 10px; /* Reduce gap for smaller screens */
+            }
+            .chapter {
+                flex: 1 1 100%; /* Full width for each item in single column */
+            }
+            .chapter-links.open .chapters {
+                display: flex; /* Show chapters when .open class is applied */
+            }
+            .chapter-links h3 {
+            margin-bottom: 0rem;
+            margin-top: 0rem; /* Remove top margin */
+        }
+        }
+
+        /* Hide SVG on desktop view */
+        @media (min-width: 769px) {
+            .chapter-links h3 svg {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="video-container">
+    <!-- Responsive YouTube Video Embed -->
+    <div class="responsive-iframe-container">
+        <iframe id="videoPlayer" 
+            src="https://www.youtube.com/embed/BoIZJjrKW-4?enablejsapi=1"
+            title="YouTube video player" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+        </iframe>
+    </div>
+
+    <!-- Navigation Panel Anchored Directly Below the Video -->
+    <div class="chapter-links" id="chapterLinks">
+        <h3 onclick="toggleChapters()">Explore this video
+            <!-- SVG Icon for dropdown toggle -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/></svg>
+        </h3>
+        <div class="chapters">
+            <div class="chapter"><span class="time" onclick="navigateToTime(0)">00:00</span> - Introduction</div>
+            <div class="chapter"><span class="time" onclick="navigateToTime(25)">00:25</span> - Firth Court</div>
+            <div class="chapter"><span class="time" onclick="navigateToTime(42)">00:42</span> - Weston Park</div>
+            <div class="chapter"><span class="time" onclick="navigateToTime(58)">00:58</span> - The Arts Tower</div>
+            <div class="chapter"><span class="time" onclick="navigateToTime(84)">01:24</span> - Alfred Denny Building</div>
+            <div class="chapter"><span class="time" onclick="navigateToTime(100)">01:40</span> - Goodwin Sports Centre</div>
+            <div class="chapter"><span class="time" onclick="navigateToTime(117)">01:57</span> - Social Sciences Building</div>
+            <div class="chapter"><span class="time" onclick="navigateToTime(128)">02:08</span> - The Medical School</div>
+            <div class="chapter"><span class="time" onclick="navigateToTime(145)">02:25</span> - Concourse</div>
+            <div class="chapter"><span class="time" onclick="navigateToTime(164)">02:44</span> - Students' Union</div>
+            <div class="chapter"><span class="time" onclick="navigateToTime(209)">03:29</span> - The Octagon Centre</div>
+            <div class="chapter"><span class="time" onclick="navigateToTime(224)">03:44</span> - The University Arms</div>
+            <div class="chapter"><span class="time" onclick="navigateToTime(238)">03:58</span> - Information Commons</div>
+            <div class="chapter"><span class="time" onclick="navigateToTime(255)">04:15</span> - Jessop West</div>
+            <div class="chapter"><span class="time" onclick="navigateToTime(267)">04:27</span> - The Diamond</div>
+            <div class="chapter"><span class="time" onclick="navigateToTime(290)">04:50</span> - Sir Frederick Mappin Building</div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Load the YouTube API
+    let player;
+    function onYouTubeIframeAPIReady() {
+        player = new YT.Player('videoPlayer', {
+            events: {
+                'onReady': onPlayerReady
+            }
+        });
+    }
+
+    function onPlayerReady(event) {
+        console.log("Player is ready");
+    }
+
+    function navigateToTime(seconds) {
+        if (player && typeof player.seekTo === 'function') {
+            player.seekTo(seconds, true);  // Seek to the specified time and autoplay
+        }
+    }
+
+    // Toggle the visibility of the chapters on mobile
+    function toggleChapters() {
+        const chapterLinks = document.getElementById('chapterLinks');
+        chapterLinks.classList.toggle('open');
+    }
+
+    // Add YouTube IFrame API script
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+</script>
+
+</body>
+</html>

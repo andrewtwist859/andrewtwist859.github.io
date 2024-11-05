@@ -1,3 +1,7 @@
+.vertical-shelf-container {
+  max-width: 800px;
+}
+
 .vertical-shelf {
   display: flex;
   justify-content: flex-start;
