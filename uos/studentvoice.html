@@ -591,6 +591,19 @@ margin-bottom: 1rem;
           </div> 
           <h2>Testimonials</h2>
           <p>A new testimonials component would give us a way of featuring key quotes from a wider pool of current students and graduates without needing to create a student profile page for them all.</p>
+          <div class="test-controls">
+            <button id="gridViewButton" onclick="setGridView()" title="Grid View" style="background: none; border: none; cursor: pointer;">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="16" height="16">
+                  <path d="M64 32C28.7 32 0 60.7 0 96L0 416c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-320c0-35.3-28.7-64-64-64L64 32zm88 64l0 64-88 0 0-64 88 0zm56 0l88 0 0 64-88 0 0-64zm240 0l0 64-88 0 0-64 88 0zM64 224l88 0 0 64-88 0 0-64zm232 0l0 64-88 0 0-64 88 0zm64 0l88 0 0 64-88 0 0-64zM152 352l0 64-88 0 0-64 88 0zm56 0l88 0 0 64-88 0 0-64zm240 0l0 64-88 0 0-64 88 0z"/>
+              </svg>
+          </button>
+          <div style="text-align: right; margin-bottom: 10px;">View as:
+            <button id="sliderViewButton" onclick="setSliderView()" title="Slider View" style="background: none; border: none; cursor: pointer;">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="16" height="16">
+                    <path d="M406.6 374.6l96-96c12.5-12.5 12.5-32.8 0-45.3l-96-96c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224l-293.5 0 41.4-41.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-96 96c-12.5 12.5-12.5 32.8 0 45.3l96 96c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 288l293.5 0-41.4 41.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0z"/>
+                </svg>
+            </button> 
+        </div></div>
           <div class="testimonial-slider-container" id="sliderContainer">
           
             <!-- Testimonial Slider Wrapper -->
@@ -1195,5 +1208,24 @@ document.addEventListener('keydown', (event) => {
 // Call initialize function when the page loads
 window.onload = initializeGalleryAccessibility;
     </script>
+    <script>
+        function setSliderView() {
+            const container = document.getElementById('sliderContainer');
+            const navContainer = document.querySelector('.slider-nav-container');
+        
+            container.classList.remove('testimonial-grid');
+            navContainer.classList.remove('hidden'); // Show nav container in slider view
+        }
+        
+        function setGridView() {
+            const container = document.getElementById('sliderContainer');
+            const navContainer = document.querySelector('.slider-nav-container');
+        
+            container.classList.add('testimonial-grid');
+            navContainer.classList.add('hidden'); // Hide nav container in grid view
+        }
+        
+        
+            </script>
 </body>
 </html>
