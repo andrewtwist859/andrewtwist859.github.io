@@ -77,8 +77,8 @@
 }
 
 @media (max-width: 768px) {
-
-.vertical-video {
-    max-width: 150px; /* Optional: Set a maximum width for videos */
-  }
-}
+        .vertical-video {
+          flex: 0 0 150px; /* Ensure consistent width within flexbox */
+          max-width: 150px;
+        }
+      }
