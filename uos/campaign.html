@@ -308,18 +308,20 @@ hr.grey {
   }
 
   .search-bar {
-    flex-direction: column;
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    gap: 10px; /* Space between stacked elements */
   }
 
   .search-bar input,
   .search-bar select,
   .search-bar button {
-    width: 100%;
-    margin-bottom: 10px;
+    width: 100%; /* Make all elements full width */
+    box-sizing: border-box; /* Ensure padding and borders are included in the width */
   }
 
   .search-bar button {
-    margin-bottom: 0; /* No extra space after the button */
+    margin-left: 0;
   }
 
   .course-links {
