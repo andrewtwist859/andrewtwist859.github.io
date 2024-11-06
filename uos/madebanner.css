@@ -1,0 +1,68 @@
+.custom-banner {
+width: 100vw;
+margin-left: calc(50% - 50vw);
+margin-right: calc(50% - 50vw);
+}
+
+.forged-banner {
+position: relative;
+background-image: url('headerph.png');
+background-size: cover;
+background-position: center;
+height: 500px;
+display: flex;
+justify-content: center;
+align-items: center;
+color: #fff;
+margin: 0 auto;
+max-width: 1500px;
+}
+
+.forged-content {
+position: relative;
+text-align: center;
+z-index: 2;
+}
+
+.forged-content a {
+font-weight: 700;
+background-color: #fff;
+padding: 0.6rem;
+color: #fff;
+transition: background-color .2s ease-out, color .2s ease-out;
+border-radius: 5px;
+}
+
+.forged-content a:hover, .forged-content a:focus {
+background-color: #7100FF;
+}
+
+h1.forged {
+font-family: "source-serif-pro", serif;
+font-weight: 700;
+line-height:200%;
+font-style: normal;
+margin: 0;
+position: relative;
+display: inline-block;
+padding-bottom: 0.5rem;
+}
+
+span.forged-in {
+font-size: 4rem;
+}
+
+span.sheffield {
+font-size:4.5rem;
+}
+
+
+.custom-banner p {
+font-size: 1.2rem;
+margin: 0;
+margin-top: 0.5rem;
+text-align: center;
+max-width: 80ch;
+padding-bottom: 1.6rem;
+text-wrap: balance;
+}
