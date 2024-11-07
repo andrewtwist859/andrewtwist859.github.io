@@ -47,6 +47,100 @@ margin-bottom: 1rem;
     .lookup-container {
         max-width: 800px;
     }
+
+    #imd-widget {
+        background-color: #fff;
+        padding: 2rem;
+        width: 100%; /* Ensures it uses full width of the container */
+        max-width: 100%; /* Prevent overflow if parent has constraints */
+        box-sizing: border-box; /* Includes padding in width calculation */
+    }
+
+    #imd-widget h3 {
+        color: #333;
+        font-family: 'source-serif-pro';
+        font-size: 1.6rem;
+        margin: 0;
+        margin-bottom: 0.5rem;
+    }
+
+    #imd-widget textarea, #imd-widget button {
+        width: 100%; /* Fully responsive inside the container */
+        padding: 10px;
+        margin-top: 10px;
+        font-size: 1rem;
+        font-family: 'source-sans-pro';
+        box-sizing: border-box;
+    }
+
+    #imd-widget button {
+        background-color: #440099;
+        color: white;
+        cursor: pointer;
+    }
+
+    #imd-widget button:hover {
+        background-color: #0056b3;
+    }
+
+    .result {
+        font-family: 'source-sans-pro';
+        font-size: 1.2rem;
+    }
+
+    #imd-form {
+        font-family: 'source-sans-pro';
+    }
+
+    .result.success {
+        background-color: #d4edda;
+        color: #155724;
+        padding: 10px;
+        margin-top: 10px;
+        border-radius: 5px;
+    }
+
+    .result.error {
+        background-color: #f8d7da;
+        color: #721c24;
+        padding: 10px;
+        margin-top: 10px;
+        border-radius: 5px;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        #imd-widget {
+            padding: 1rem;
+        }
+
+        #imd-widget h3 {
+            font-size: 1.4rem;
+        }
+
+        #imd-widget textarea, #imd-widget button {
+            font-size: 0.9rem;
+        }
+
+        .result {
+            font-size: 1rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        #imd-widget h3 {
+            font-size: 1.2rem;
+        }
+
+        #imd-widget textarea, #imd-widget button {
+            font-size: 0.8rem;
+        }
+
+        .result {
+            font-size: 0.9rem;
+        }
+    }
+
   </style>
 </head>
 <body>
