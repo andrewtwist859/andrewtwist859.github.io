@@ -229,8 +229,9 @@ background-image: none;
 
     .mobile-submenu-panel p {
         line-height: 1.2;
-        font-size: 0.8rem;
+        font-size: 1rem;
         margin-bottom: 0.25rem;
+        margin-top: 0;
     }
 
     .mobile-submenu-panel img {
