@@ -70,7 +70,7 @@
         }
 
         #imd-widget textarea, #imd-widget button {
-            font-size: 0.9rem;
+            font-size: 1rem !important;
         }
 
         .result {
@@ -84,10 +84,10 @@
         }
 
         #imd-widget textarea, #imd-widget button {
-            font-size: 0.8rem;
+            font-size: 1rem !important;
         }
 
         .result {
-            font-size: 0.9rem;
+            font-size: 1rem !important;
         }
     }
