@@ -43,93 +43,6 @@ margin-bottom: 1rem;
     footer {
         margin-top: 30rem;
     }
-
-    #imd-widget {
-            background-color: #ffffff;
-            padding: 2rem;
-            width: 100%;
-            max-width: 600px;
-        }
-
-        #imd-widget h3 {
-            margin: 0;
-            margin-bottom: 0.5rem;
-            font-size: 1.5rem;
-            font-family: 'source-serif-pro';
-            color: #333;
-            
-        }
-
-        form {
-            margin-bottom: 20px;
-            max-width: 90%;
-        }
-
-        textarea, button {
-            width: 100%;
-            padding: 10px;
-            margin-top: 10px;
-            font-size: 1rem;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-
-        textarea {
-            resize: none;
-            height: 80px;
-            font-family: 'source-sans-pro';
-        }
-
-        button {
-            background-color: #440099;
-            color: white;
-            border: none;
-            cursor: pointer;
-            margin-top: 15px;
-        }
-
-        button:hover {
-            background-color: #7000FF;
-        }
-
-        #imd-result {
-            margin-top: 20px;
-        }
-
-        .result {
-            padding: 15px;
-            border-radius: 5px;
-            margin-bottom: 10px;
-            font-size: 1.2rem;
-
-        }
-
-        .result.success {
-            background-color: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
-        }
-
-        .result.error {
-            background-color: #f8d7da;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
-        }
-
-        .result strong {
-            display: block;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-
-        .result a {
-            color: #007bff;
-            text-decoration: underline;
-        }
-
-        .result a:hover {
-            text-decoration: none;
-        }
   </style>
 </head>
 <body>
@@ -584,15 +497,7 @@ margin-bottom: 1rem;
     </div>
   </div>
 <div class="contents-container">
-  <div id="imd-widget">
-    <h3>Postcode lookup tool</h3>
-    <form id="imd-form">
-        <label for="postcodes">Enter your postcode or multiple postcodes separated by commas</label>
-        <textarea id="postcodes" name="postcodes" placeholder="e.g. S10 2TN"></textarea>
-        <button type="submit">Check</button>
-    </form>
-    <div id="imd-result"></div>
-</div>
+    <script src="https://pni.cmh.mybluehost.me/website_e0879ab5/postcodes.js"></script>
 </div>
   <footer class="footer">
     <div class="footer-content">
