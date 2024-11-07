@@ -751,36 +751,5 @@ margin-bottom: 1rem;
        this.textContent = footerLinks.classList.contains("show-all") ? "Close footer" : "Show all links";
      });
        </script>
-       <script>
-        document.getElementById('imd-form').addEventListener('submit', async function(e) {
-            e.preventDefault();
-
-            const postcodes = document.getElementById('postcodes').value.trim();
-            const resultDiv = document.getElementById('imd-result');
-            resultDiv.innerHTML = ''; // Clear previous results
-
-            try {
-                const response = await fetch(`http://localhost:8000/postcodejs.php?postcodes=${encodeURIComponent(postcodes)}`);
-                const data = await response.json();
-
-                if (Array.isArray(data)) {
-                    data.forEach(item => {
-                        const resultClass = item.IMD_Quintile <= 2 ? 'success' : 'error';
-                        resultDiv.innerHTML += `
-                            <div class="result ${resultClass}">
-                                <strong>Postcode: ${item.Postcode} | IMD quintile: ${item.IMD_Quintile}</strong>
-                                <p>${item.Message}</p>
-                                ${item.Message.includes('Access+') ? '<a href="https://your-access-page.com" target="_blank">Access+ webpage</a>' : ''}
-                            </div>
-                        `;
-                    });
-                } else {
-                    resultDiv.innerHTML = `<div class="result error"><p>${data.error}</p></div>`;
-                }
-            } catch (error) {
-                resultDiv.innerHTML = `<div class="result error"><p>Error fetching data. Please try again later.</p></div>`;
-            }
-        });
-    </script>
 </body>
 </html>
