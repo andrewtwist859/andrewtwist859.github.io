@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="footer.css"> 
 <link rel="stylesheet" href="video.css"> 
 <link rel="stylesheet" href="imd.css"> 
+<link rel="stylesheet" href="vertical-shelf.css"> 
 <link rel="stylesheet" href="global-menu.css"> 
 <link rel="stylesheet" href="testimonials.css"> 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -422,78 +423,6 @@ span.school {
     background-color: white;
 }
 
-.vertical-shelf {
-  display: flex;
-  justify-content: flex-start;
-  gap: 0.5rem;
-  max-width: 800px;
-}
-
-.vertical-video {
-  width: calc(33.33% - 0.5rem); /* Four items per row */
-  background-color: darkslategrey;
-  border-radius: 5px;
-}
-
-.vertical-thumbnail {
-  position: relative;
-  aspect-ratio: 3 / 4; /* 9:16 aspect ratio */
-  overflow: hidden;
-  border-radius: 5px;
-}
-
-.vertical-thumbnail:hover {
-  cursor: pointer;
-}
-
-.vertical-thumbnail img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.vertical-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 10px;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2) 60%, rgba(0, 0, 0, 0.95) 100%);
-  transition: background 1.2s ease-out; 
-
-}
-
-.vertical-overlay:hover {
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 60%, rgba(0, 0, 0, 0.95) 100%);
-
-}
-
-.vertical-duration {
-  font-family: "Source Sans 3", sans-serif !important;
-  color: white;
-  font-size: 0.75rem;
-  font-weight:600;
-  background: rgba(0, 0, 0, 0.7);
-  padding: 4px 6px;
-  border-radius: 4px;
-  position: absolute;
-  top: 10px;
-  left: 10px;
-}
-
-.vertical-title {
-  color: white;
-  font-size: 1rem;
-  line-height: 1.2rem;
-  font-family: "Source Sans 3", sans-serif !important;
-  margin: 0;
-  text-wrap: balance;
-  max-width:20ch;
-}
 
 /* Accordion styles */
 .accordion {
@@ -1294,7 +1223,8 @@ hr.section {
 <hr />
 <h3>Made from every experience</h3>
 <p>Explore TikToks and Reels made by student content creators studying journalism at the University of Sheffield.</p>
-<div class="vertical-shelf">
+<div class="vertical-shelf-container">
+  <div class="vertical-shelf">
     <div class="vertical-video">
       <a href="https://www.tiktok.com/@sheffielduni/video/7372200575594745121" target="_blank">
       <div class="vertical-thumbnail">
@@ -1330,6 +1260,7 @@ hr.section {
         </a>
       </div>
     </div>
+    </div> 
     <hr />
     <p>As a hands-on department at a prestigious Russell Group university, we're uniquely placed to offer you the best of both worlds. You’ll be taught by award-winning editors and authors, active journalists and world-leaders in media and communication research.</p>
 <p>If you're interested in understanding as well as doing journalism, this course delivers the perfect balance of practical know-how and theoretical knowledge on the history, theory and key debates of the industry.</p>
