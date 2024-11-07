@@ -62,7 +62,7 @@
     /* Responsive Design */
     @media (max-width: 768px) {
         #imd-widget {
-            padding: 0.25rem !important;
+            padding: 1rem;
         }
 
         #imd-widget h3 {
