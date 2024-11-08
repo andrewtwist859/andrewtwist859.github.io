@@ -11,9 +11,52 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Navigation</title>
   <style>
-    footer {
-        margin-top: 30rem;
-    }
+
+.contents-container h3 {
+  font-family: 'source-serif-pro';
+  font-size: 1.4rem;
+}
+
+    /* Mobile styling for moving description panel below image */
+@media (max-width: 768px) {
+
+.contents-container {
+padding: 1rem !important;
+}
+
+}
+
+
+.contents-container {
+max-width: 1180px;
+margin: 0 auto;
+padding: 2rem;
+}
+
+.contents-container p {
+max-width: 80ch;
+margin-bottom: 1rem;
+font-size: 1.2rem;
+}
+
+h1 {
+  font-family: 'source-serif-pro';
+  font-weight: 700;  
+}
+
+.contents-container h2{
+font-family: 'source-serif-pro';
+font-weight: 700;
+font-size: 1.6rem;
+margin-bottom: 1rem;
+}
+
+hr {
+    margin: 1rem 0rem;
+    border: 1px solid #B8BBBF;
+    max-width: 800px;
+}
+
   </style>
 </head>
 <body>
@@ -467,6 +510,36 @@
       <!-- Content will be injected here dynamically -->
     </div>
   </div>
+  <div class="contents-container">
+    <div class="breadcrumbs">
+      <a href="#">Home</a>
+      <span class="separator">›</span>
+      <a href="#">Website enhancements</a>
+      <span class="separator">›</span>
+      <a href="#" class="active">Navigation</a>
+  </div>
+    <h1>Navigation</h1>
+    <p>As part of this work we have reviewed the sitewide global navigation menu, the section-by-section local navigation and use of the site footer as a supplementary navigation system.</p>
+  <hr />
+    <h2>Global navigation</h2>
+  <p>The as-is global navigation system is based on four top-level menu items: Study, Research, Collaborate and About. Each of these menu items can be toggled open to provide users with lists of clickable links to take their next step on the journey. </p>
+  <p>For the purposes of this paper we have focused primarily on the Study menu as this is the top-level menu item with the most relevance to our prospective student audience.</p>
+  <p>Currently this menu item contains 45 potential navigation clicks across 8 columns: Courses, Studying at Sheffield, Student life, Accommodation, Visit, Apply, International students and fees and funding.</p>
+  <p>The as-is approach means we have links relating to the same study level (e.g. UG or PGT) spread across the different columns as opposed to us using study level as the primary categorisation.</p>
+  <p>Based on our top-level navigation insights dashboard we can see that 41% of all clicks within the global navigation menu over the last 6 months have been to the Undergraduate and Postgraduate Taught home pages. This suggests that a large number of users are navigating straight into information at a study level and then continuing their journeys from there. With this in mind we may want to test an alternative approach to categorising the Study menu based on grouping links under the relevant study level.</p>
+<hr />
+  <h2>Navigation menu behaviour across devices</h2> 
+  <p>The current execution of our main menu systems on www.sheffield.ac.uk has a considerable amount of user experience difference between larger breakpoints (e.g. desktop) and smaller breakpoints (e.g. mobile).</p> 
+<p>We feel there is an opportunity to make the menus more consistent across all breakpoints and refactor it so that section menus have greater visibility and prominence on mobile with the global menu using the full-screen canvas menu instead.</p>
+<p>Currently on mobile the global menu has more prominence and visibility than the section navigation even though it is more likely that users will be wanting to explore related information in a particular section (e.g. /undergraduate) as opposed to going back into the global menu.</p>
+<p>Taking this approach would give us a cleaner and more consistent user experience across all devices and screen sizes - and also hopefully make it easier for users to browse content within specific website sections.</p>
+<hr />
+<h2>Footer</h2>
+<p>The as-is execution of our footer looks ungainly and unrefined on mobile due to the significant number of links collapsing into a single long column. We also have some inconsistency in alignment when it comes to the award icons and footer icons being centred despite everything else being set to the left. </p>
+<p>We feel there are some simple, lightweight enhancements that could be made to the footer to make it appear more streamlined on mobile without preventing users from being able to access all the links available.</p>
+<p>This can be achieved by adding a simple toggle menu to the footer that allows us to have the top 5-6 most frequently used footer links always visible with the rest hidden behind a “show all footer links.”</p>
+<p>This simple iteration will help us have a cleaner, more professional looking footer without compromising on user experience. </p>
+</div>
 
   <footer class="footer">
     <div class="footer-content">
