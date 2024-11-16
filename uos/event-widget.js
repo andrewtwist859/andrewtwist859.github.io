@@ -189,10 +189,6 @@
     align-items: center; /* Center-align content */
   }
 
-  .event-embed-container {
-      margin: 0.5rem 0.5rem;
-    }
-
   .event img {
     width: 100%; /* Make image take full width */
     height: auto; /* Maintain aspect ratio */
