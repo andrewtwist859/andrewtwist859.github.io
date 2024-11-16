@@ -230,8 +230,8 @@
 
     // Inject HTML Structure
     function injectHTML() {
-        const container = document.createElement('div');
-        container.className = 'event-embed-container';
+        const container = document.currentScript.parentElement; // Use the parent element of the script
+        container.classList.add('event-embed-container'); // Apply necessary class
         container.innerHTML = `
             <h1>Event Listings</h1>
 
@@ -266,7 +266,6 @@
     <div id="events-container"></div>
     <button id="show-more-button" onclick="showMoreEvents()" style="display: none;">Show more events</button>
         `;
-        document.body.appendChild(container);
     }
 
   // Load PapaParse and Execute Main Logic
