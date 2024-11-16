@@ -229,50 +229,72 @@
         document.head.appendChild(style);
     }
 
-    // Inject HTML Structure
-    function injectHTML() {
-        const parentContainer = document.currentScript.parentElement; // Get the parent of the script
-        const eventContainer = document.createElement('div'); // Create a new div
-        eventContainer.className = 'event-embed-container'; // Add your event tool's container class
-        
-        // Inject the HTML structure inside the new div
-        eventContainer.innerHTML = `
-            <h1>Event Listings</h1>
+// Inject HTML Structure
+function injectHTML() {
+    const parentContainer = document.currentScript.parentElement; // Get the parent of the script
+    const eventContainer = document.createElement('div'); // Create a new div
+    eventContainer.className = 'event-embed-container'; // Add your event tool's container class
 
-    <!-- Search Box -->
-    <input type="search" id="search-input" placeholder="Search by title..." oninput="filterAndRenderEvents()" enterkeyhint="search">
+    // Inject the HTML structure inside the new div
+    eventContainer.innerHTML = `
+        <h1>Event Listings</h1>
 
-    <!-- Filter Toggle -->
-    <div class="filter-toggle">
-      <button id="filter-toggle-button" onclick="toggleFilters()">Filter Events</button>
-      <button id="clear-filters-button" onclick="clearAllFilters()">Clear All Filters</button>
-    </div>
+        <!-- Search Box -->
+        <input type="search" id="search-input" placeholder="Search by title..." enterkeyhint="search">
 
-    <!-- Filters -->
-    <div id="filters-container" class="hidden">
-      <div class="filters-container">
-        <div class="filter-section">
-          <div class="filter-header">Filter by Tags:</div>
-          <div id="tags-filter" class="filter-options"></div>
+        <!-- Filter Toggle -->
+        <div class="filter-toggle">
+            <button id="filter-toggle-button">Filter Events</button>
+            <button id="clear-filters-button" style="display: none;">Clear All Filters</button>
         </div>
-        <div class="filter-section">
-          <div class="filter-header">Filter by Event Type:</div>
-          <div id="event-type-filter" class="filter-options"></div>
-        </div>
-        <div class="filter-section">
-          <div class="filter-header">Filter by Location:</div>
-          <div id="location-filter" class="filter-options"></div>
-        </div>
-      </div>
-    </div>
 
-    <!-- Events Container -->
-    <div id="events-container"></div>
-    <button id="show-more-button" onclick="showMoreEvents()" style="display: none;">Show more events</button>
-        `;
-            // Append the new event container to the parent
+        <!-- Filters -->
+        <div id="filters-container" class="hidden">
+            <div class="filters-container">
+                <div class="filter-section">
+                    <div class="filter-header">Filter by Tags:</div>
+                    <div id="tags-filter" class="filter-options"></div>
+                </div>
+                <div class="filter-section">
+                    <div class="filter-header">Filter by Event Type:</div>
+                    <div id="event-type-filter" class="filter-options"></div>
+                </div>
+                <div class="filter-section">
+                    <div class="filter-header">Filter by Location:</div>
+                    <div id="location-filter" class="filter-options"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Events Container -->
+        <div id="events-container"></div>
+        <button id="show-more-button" style="display: none;">Show more events</button>
+    `;
+
+    // Append the new event container to the parent
     parentContainer.appendChild(eventContainer);
-    }
+
+    // Programmatically attach event listeners
+    attachEventListeners();
+}
+
+// Attach event listeners after HTML injection
+function attachEventListeners() {
+    document.getElementById('search-input').addEventListener('input', filterAndRenderEvents);
+    document.getElementById('search-input').addEventListener('keydown', function(event) {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            filterAndRenderEvents();
+            this.blur(); // Dismiss keyboard on mobile
+        }
+    });
+
+    document.getElementById('filter-toggle-button').addEventListener('click', toggleFilters);
+    document.getElementById('clear-filters-button').addEventListener('click', clearAllFilters);
+
+    document.getElementById('show-more-button').addEventListener('click', showMoreEvents);
+}
+
 
   // Load PapaParse and Execute Main Logic
 function loadPapaParse(callback) {
