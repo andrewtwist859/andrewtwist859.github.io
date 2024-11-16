@@ -86,6 +86,20 @@
   margin-bottom: 5px; /* Add spacing between header and options */
 }
 
+#clear-filters-button {
+  background-color: #d9534f; /* Red button for clear action */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 10px; /* Add some space between the buttons */
+}
+
+#clear-filters-button:hover {
+  background-color: #c9302c;
+}
+
     .event {
       font-family: 'source-sans-pro';
       display: flex;
@@ -112,6 +126,7 @@
 
     .event h3 {
       font-family: 'source-serif-pro';
+      color: #000;
       font-weight: 700;
       margin: 0;
       font-size: 1.2em;
@@ -225,6 +240,7 @@
     <!-- Filter Toggle -->
     <div class="filter-toggle">
       <button id="filter-toggle-button" onclick="toggleFilters()">Filter Events</button>
+      <button id="clear-filters-button" onclick="clearAllFilters()">Clear All Filters</button>
     </div>
 
     <!-- Filters -->
@@ -337,43 +353,64 @@
     }
 
     function renderEvents(eventList) {
-      const container = document.getElementById('events-container');
-      container.innerHTML = '';
-      eventList.forEach(event => {
-        const { Name, Description, Location, "Event type": EventType, Date, "Start time": StartTime, "End time": EndTime, Tags, Thumbnail, URL } = event;
+  const container = document.getElementById('events-container');
+  container.innerHTML = '';
+  eventList.forEach(event => {
+    const { Name, Description, Location, "Event type": EventType, Date, "Start time": StartTime, "End time": EndTime, Tags, Thumbnail, URL } = event;
 
-        container.innerHTML += `
-          <div class="event">
-            <img src="${Thumbnail || 'https://via.placeholder.com/150'}" alt="${Name} Thumbnail">
-            <div class="event-content">
-              <h3>${Name}</h3>
-              <div class="event-details">
-                <p>Date: <span>${Date}</span></p>
-                <p>Time: <span>${StartTime || ''} - ${EndTime || ''}</span></p>
-                <p>Location: <span>${Location}</span></p>
-              </div>
-              <p>${Description}</p>
-              <div class="link">
-              <a href="${URL}" target="_blank">${URL ? 'Book your place' : ''}</a>
-              <span class="link-icon">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-      <path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/>
-    </svg>
-              </div>
-              <div class="flags">
-                <span class="flag">${EventType}</span>
-                ${Tags ? Tags.split(',').map(tag => `<span class="flag">${tag.trim()}</span>`).join('') : ''}
-              </div>
-            </div>
+    container.innerHTML += `
+      <div class="event">
+        <a href="${URL}" target="_blank">
+          <img src="${Thumbnail || 'https://via.placeholder.com/150'}" alt="${Name} Thumbnail">
+        </a>
+        <div class="event-content">
+          <a href="${URL}" target="_blank">
+            <h3>${Name}</h3>
+          </a>
+          <div class="event-details">
+            <p>Date: <span>${Date}</span></p>
+            <p>Time: <span>${StartTime || ''} - ${EndTime || ''}</span></p>
+            <p>Location: <span>${Location}</span></p>
           </div>
-        `;
-      });
-    }
+          <p>${Description}</p>
+          <div class="link">
+            <a href="${URL}" target="_blank">
+              ${URL ? 'Book your place' : ''}
+              <span class="link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                  <path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/>
+                </svg>
+              </span>
+            </a>
+          </div>
+          <div class="flags">
+            <span class="flag">${EventType}</span>
+            ${Tags ? Tags.split(',').map(tag => `<span class="flag">${tag.trim()}</span>`).join('') : ''}
+          </div>
+        </div>
+      </div>
+    `;
+  });
+}
 
     function toggleFilters() {
       const filtersContainer = document.getElementById('filters-container');
       filtersContainer.classList.toggle('hidden');
     }
+
+    function clearAllFilters() {
+  // Clear all checkboxes
+  document.querySelectorAll('.filter-options input[type="checkbox"]').forEach(checkbox => {
+    checkbox.checked = false;
+  });
+
+  // Clear search input
+  document.getElementById('search-input').value = '';
+
+  // Re-render events without any filters
+  filterAndRenderEvents();
+}
+
   </script>
 </body>
 </html>
