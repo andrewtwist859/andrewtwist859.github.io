@@ -249,12 +249,10 @@ function initializeEventTool() {
     fetch(sheetURL)
         .then(response => response.text())
         .then(csvText => {
-            console.log('CSV Data Fetched'); // Debugging line
             Papa.parse(csvText, {
                 header: true,
                 skipEmptyLines: true,
                 complete: function(results) {
-                    console.log('Parsed Events:', results.data); // Debugging line
                     events = results.data;
                     filterAndRenderEvents(); // Start with all events
                     renderFilters();
@@ -272,17 +270,14 @@ function filterAndRenderEvents() {
     const today = new Date();
     today.setHours(0, 0, 0, 0);
 
-    // Filter future events
     filteredEvents = events.filter(event => {
         const [day, month, year] = event.Date.split('/');
         const eventDate = new Date(`${year}-${month}-${day}`);
         return eventDate >= today;
     });
 
-    // Apply search and filters
     filteredEvents = filterEventsList(filteredEvents);
 
-    // Sort events by date
     filteredEvents.sort((a, b) => {
         const [dayA, monthA, yearA] = a.Date.split('/');
         const [dayB, monthB, yearB] = b.Date.split('/');
@@ -334,7 +329,6 @@ function renderFilters() {
             </label>`;
     });
 
-    // Dynamically bind filter change events
     document.querySelectorAll('#tags-filter input, #event-type-filter input, #location-filter input')
         .forEach(input => input.addEventListener('change', filterAndRenderEvents));
 }
@@ -396,6 +390,7 @@ function filterEventsList(eventsToFilter) {
     });
 }
 
+// Event listeners for interaction
 function attachEventListeners() {
     document.getElementById('search-input').addEventListener('input', filterAndRenderEvents);
     document.getElementById('filter-toggle-button').addEventListener('click', toggleFilters);
@@ -404,7 +399,7 @@ function attachEventListeners() {
 }
 
 function injectHTML() {
-    const parentContainer = document.currentScript ? document.currentScript.parentElement : document.body;
+    const parentContainer = document.currentScript.parentElement; 
     const eventContainer = document.createElement('div'); 
     eventContainer.className = 'event-embed-container'; 
     eventContainer.innerHTML = `
@@ -422,9 +417,11 @@ function injectHTML() {
     attachEventListeners();
 }
 
+// Initialize after DOMContentLoaded
 document.addEventListener('DOMContentLoaded', () => {
     injectHTML();
     loadPapaParse(initializeEventTool);
 });
+
 
 })();
