@@ -228,7 +228,6 @@
     `;
   
     const html = `
-        <div class="event-embed-container">
     <h1>Event Listings</h1>
     <input type="search" id="search-input" placeholder="Search by title..." oninput="filterAndRenderEvents()">
     
@@ -258,7 +257,6 @@
 
     <div id="events-container"></div>
     <button id="show-more-button" style="display: none;" onclick="showMoreEvents()">Show More Events</button>
-  </div>
     `;
   
     const js = `
