@@ -365,11 +365,14 @@ window.renderFilters = function() {
 
 window.renderEvents = function(eventList) {
     const container = document.getElementById('events-container');
-    container.innerHTML = '';
-
+    
+    // Append the next batch of events without clearing previous ones
     const eventsToShow = eventList.slice(displayedEventCount, displayedEventCount + eventsPerPage);
+    
     eventsToShow.forEach(event => {
         const { Name, Description, Location, "Event type": EventType, Date, "Start time": StartTime, "End time": EndTime, Tags, Thumbnail, URL } = event;
+        
+        // Append each event to the container
         container.innerHTML += `
             <div class="event">
                 <a href="${URL}" target="_blank">
@@ -392,9 +395,12 @@ window.renderEvents = function(eventList) {
         `;
     });
 
+    // Update the number of displayed events
     displayedEventCount += eventsToShow.length;
 
-    document.getElementById('show-more-button').style.display = (displayedEventCount < eventList.length) ? 'block' : 'none';
+    // Show or hide the "Show More" button
+    const showMoreButton = document.getElementById('show-more-button');
+    showMoreButton.style.display = (displayedEventCount < eventList.length) ? 'block' : 'none';
 };
 
 window.showMoreEvents = function() {
