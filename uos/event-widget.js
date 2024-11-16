@@ -225,7 +225,7 @@
   
     const html = `
     <h1>Event Listings</h1>
-    <input type="search" id="search-input" placeholder="Search by title..." oninput="filterAndRenderEvents()">
+    <input type="search" id="search-input" placeholder="Search by title..." enterkeyhint="search" oninput="filterAndRenderEvents()">
     
     <!-- Filter Toggle -->
     <div class="filter-toggle">
