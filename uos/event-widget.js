@@ -437,6 +437,13 @@
     document.getElementById('filter-toggle-button').addEventListener('click', toggleFilters);
     document.getElementById('clear-filters-button').addEventListener('click', clearAllFilters);
     document.getElementById('search-input').addEventListener('input', filterAndRenderEvents);
+    document.getElementById('search-input').addEventListener('keydown', function(event) {
+      if (event.key === 'Enter') {
+        event.preventDefault(); // Prevent default submission
+        filterAndRenderEvents(); // Trigger search
+        this.blur(); // Dismiss mobile keyboard
+      }
+    });
     document.getElementById('show-more-button').addEventListener('click', showMoreEvents);
   });
 `;
