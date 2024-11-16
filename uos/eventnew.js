@@ -230,9 +230,12 @@
 
     // Inject HTML Structure
     function injectHTML() {
-        const container = document.currentScript.parentElement; // Use the parent element of the script
-        container.classList.add('event-embed-container'); // Apply necessary class
-        container.innerHTML = `
+        const parentContainer = document.currentScript.parentElement; // Get the parent of the script
+        const eventContainer = document.createElement('div'); // Create a new div
+        eventContainer.className = 'event-embed-container'; // Add your event tool's container class
+        
+        // Inject the HTML structure inside the new div
+        eventContainer.innerHTML = `
             <h1>Event Listings</h1>
 
     <!-- Search Box -->
@@ -266,6 +269,8 @@
     <div id="events-container"></div>
     <button id="show-more-button" onclick="showMoreEvents()" style="display: none;">Show more events</button>
         `;
+            // Append the new event container to the parent
+    parentContainer.appendChild(eventContainer);
     }
 
   // Load PapaParse and Execute Main Logic
