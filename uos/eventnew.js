@@ -308,23 +308,28 @@ function initializeEventTool() {
 
 // Filtering, Rendering, and Event Handling
 window.filterAndRenderEvents = function() {
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
+    const query = document.getElementById('search-input').value.toLowerCase();
+    const checkedTags = Array.from(document.querySelectorAll('#tags-filter input:checked')).map(input => input.value);
+    const checkedEventTypes = Array.from(document.querySelectorAll('#event-type-filter input:checked')).map(input => input.value);
+    const checkedLocations = Array.from(document.querySelectorAll('#location-filter input:checked')).map(input => input.value);
 
-    // Filter and sort events
     filteredEvents = events.filter(event => {
         const [day, month, year] = event.Date.split('/');
         const eventDate = new Date(`${year}-${month}-${day}`);
-        return eventDate >= today;
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+
+        const tags = event.Tags ? event.Tags.split(',').map(tag => tag.trim()) : [];
+        const matchesTags = checkedTags.length === 0 || tags.some(tag => checkedTags.includes(tag));
+        const matchesEventType = checkedEventTypes.length === 0 || checkedEventTypes.includes(event["Event type"]);
+        const matchesLocation = checkedLocations.length === 0 || checkedLocations.includes(event.Location);
+        const matchesSearch = event.Name.toLowerCase().includes(query);
+
+        return eventDate >= today && matchesTags && matchesEventType && matchesLocation && matchesSearch;
     });
 
-    filteredEvents.sort((a, b) => {
-        const [dayA, monthA, yearA] = a.Date.split('/');
-        const [dayB, monthB, yearB] = b.Date.split('/');
-        return new Date(`${yearA}-${monthA}-${dayA}`) - new Date(`${yearB}-${monthB}-${dayB}`);
-    });
-
-    displayedEventCount = 0; // Reset event count
+    // Reset event count and render filtered events
+    displayedEventCount = 0;
     renderEvents(filteredEvents);
     toggleClearFiltersButton();
 };
