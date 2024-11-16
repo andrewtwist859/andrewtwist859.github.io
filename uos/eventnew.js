@@ -4,6 +4,7 @@
         const css = `
             .event-embed-container {
               padding: 20px;
+              max-width: 800px;
               border: 1px solid #ddd;
               border-radius: 5px;
               background-color: #f9f9f9;
@@ -307,23 +308,38 @@ function initializeEventTool() {
 
 // Filtering, Rendering, and Event Handling
 window.filterAndRenderEvents = function() {
+    const query = document.getElementById('search-input').value.toLowerCase();
+    const checkedTags = Array.from(document.querySelectorAll('#tags-filter input:checked')).map(input => input.value);
+    const checkedEventTypes = Array.from(document.querySelectorAll('#event-type-filter input:checked')).map(input => input.value);
+    const checkedLocations = Array.from(document.querySelectorAll('#location-filter input:checked')).map(input => input.value);
+
     const today = new Date();
     today.setHours(0, 0, 0, 0);
 
-    // Filter and sort events
+    // Apply all filters
     filteredEvents = events.filter(event => {
         const [day, month, year] = event.Date.split('/');
         const eventDate = new Date(`${year}-${month}-${day}`);
-        return eventDate >= today;
+        const matchesDate = eventDate >= today;
+
+        const tags = event.Tags ? event.Tags.split(',').map(tag => tag.trim()) : [];
+        const matchesTags = checkedTags.length === 0 || tags.some(tag => checkedTags.includes(tag));
+        const matchesEventType = checkedEventTypes.length === 0 || checkedEventTypes.includes(event["Event type"]);
+        const matchesLocation = checkedLocations.length === 0 || checkedLocations.includes(event.Location);
+        const matchesSearch = event.Name.toLowerCase().includes(query);
+
+        return matchesDate && matchesTags && matchesEventType && matchesLocation && matchesSearch;
     });
 
+    // Sort events by date
     filteredEvents.sort((a, b) => {
         const [dayA, monthA, yearA] = a.Date.split('/');
         const [dayB, monthB, yearB] = b.Date.split('/');
         return new Date(`${yearA}-${monthA}-${dayA}`) - new Date(`${yearB}-${monthB}-${dayB}`);
     });
 
-    displayedEventCount = 0; // Reset event count
+    // Reset event count and render filtered events
+    displayedEventCount = 0;
     renderEvents(filteredEvents);
     toggleClearFiltersButton();
 };
@@ -364,11 +380,14 @@ window.renderFilters = function() {
 
 window.renderEvents = function(eventList) {
     const container = document.getElementById('events-container');
-    container.innerHTML = '';
-
+    
+    // Append the next batch of events without clearing previous ones
     const eventsToShow = eventList.slice(displayedEventCount, displayedEventCount + eventsPerPage);
+    
     eventsToShow.forEach(event => {
         const { Name, Description, Location, "Event type": EventType, Date, "Start time": StartTime, "End time": EndTime, Tags, Thumbnail, URL } = event;
+        
+        // Append each event to the container
         container.innerHTML += `
             <div class="event">
                 <a href="${URL}" target="_blank">
@@ -391,9 +410,12 @@ window.renderEvents = function(eventList) {
         `;
     });
 
+    // Update the number of displayed events
     displayedEventCount += eventsToShow.length;
 
-    document.getElementById('show-more-button').style.display = (displayedEventCount < eventList.length) ? 'block' : 'none';
+    // Show or hide the "Show More" button
+    const showMoreButton = document.getElementById('show-more-button');
+    showMoreButton.style.display = (displayedEventCount < eventList.length) ? 'block' : 'none';
 };
 
 window.showMoreEvents = function() {
