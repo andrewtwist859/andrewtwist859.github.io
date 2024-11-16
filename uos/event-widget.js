@@ -1,8 +1,7 @@
 (function() {
     const css = `
-    .container {
+    .event-embed-container {
       max-width: 800px;
-      margin: 0 auto;
       padding: 20px;
       border: 1px solid #ddd;
       border-radius: 5px;
@@ -190,6 +189,10 @@
     align-items: center; /* Center-align content */
   }
 
+  .event-embed-container {
+      margin: 0.5rem 0.5rem;
+    }
+
   .event img {
     width: 100%; /* Make image take full width */
     height: auto; /* Maintain aspect ratio */
@@ -225,7 +228,7 @@
     `;
   
     const html = `
-        <div class="container">
+        <div class="event-embed-container">
     <h1>Event Listings</h1>
     <input type="search" id="search-input" placeholder="Search by title..." oninput="filterAndRenderEvents()">
     
