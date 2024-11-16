@@ -130,8 +130,27 @@ function injectStyles() {
     document.head.appendChild(style);
 }
 
-// Call the function to inject styles
-injectStyles();
+// Inject HTML Structure
+function injectHTML() {
+    const container = document.createElement('div');
+    container.className = 'container';
+    container.innerHTML = `
+        <h1>Event Listings</h1>
+        <input type="search" id="search-input" placeholder="Search by title..." />
+        <div class="filter-toggle">
+            <button id="filter-toggle-button" onclick="toggleFilters()">Filter Events</button>
+            <button id="clear-filters-button" onclick="clearAllFilters()" style="display:none;">Clear Filters</button>
+        </div>
+        <div id="filters-container" class="hidden">
+            <div id="tags-filter" class="filter-options"></div>
+            <div id="event-type-filter" class="filter-options"></div>
+            <div id="location-filter" class="filter-options"></div>
+        </div>
+        <div id="events-container"></div>
+        <button id="show-more-button" onclick="showMoreEvents()" style="display:none;">Show More Events</button>
+    `;
+    document.body.appendChild(container);
+}
 
 // Main Script Logic
 const sheetURL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSuGS5R5uLLYkcmqRBmslKVHL3UanEYQN6xmluJcUkFU_kMliZLVWxZb9iBGXh3t8KXXsy--fAAAgsG/pub?output=csv';
@@ -313,3 +332,7 @@ function clearAllFilters() {
     document.getElementById('search-input').value = '';
     filterAndRenderEvents();
 }
+
+// Call the initial functions to inject styles and HTML
+injectStyles();
+injectHTML();
