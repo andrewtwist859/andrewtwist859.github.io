@@ -1,7 +1,7 @@
 (function() {
     const css = `
     .event-embed-container {
-      max-width: 800px;
+      max-width: 750px;
       padding: 20px;
       border: 1px solid #ddd;
       border-radius: 5px;
