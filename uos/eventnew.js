@@ -229,54 +229,31 @@
         document.head.appendChild(style);
     }
 
-    // Inject HTML Structure
-    function injectHTML() {
-        const parentContainer = document.currentScript.parentElement; // Get the parent of the script
-        const eventContainer = document.createElement('div'); // Create a new div
-        eventContainer.className = 'event-embed-container'; // Add container class
-    
-        eventContainer.innerHTML = `
-            <h1>Event Listings</h1>
-    
-            <!-- Search Box -->
-            <input type="search" id="search-input" placeholder="Search by title..." oninput="filterAndRenderEvents()" enterkeyhint="search">
-    
-            <!-- Filter Toggle -->
-            <div class="filter-toggle">
-                <button id="filter-toggle-button" onclick="toggleFilters()">Filter Events</button>
-                <button id="clear-filters-button" onclick="clearAllFilters()" style="display: none;">Clear All Filters</button>
-            </div>
-    
-            <!-- Filters -->
-            <div id="filters-container" class="hidden">
-                <div class="filters-container">
-                    <div class="filter-section">
-                        <div class="filter-header">Filter by Tags:</div>
-                        <div id="tags-filter" class="filter-options"></div>
-                    </div>
-                    <div class="filter-section">
-                        <div class="filter-header">Filter by Event Type:</div>
-                        <div id="event-type-filter" class="filter-options"></div>
-                    </div>
-                    <div class="filter-section">
-                        <div class="filter-header">Filter by Location:</div>
-                        <div id="location-filter" class="filter-options"></div>
-                    </div>
-                </div>
-            </div>
-    
-            <!-- Events Container -->
-            <div id="events-container"></div>
-            <button id="show-more-button" onclick="showMoreEvents()" style="display: none;">Show More Events</button>
-        `;
-    
-        parentContainer.appendChild(eventContainer); // Append the new container to the parent
-    }
-  // Load PapaParse and Execute Main Logic
+  // Attach key functions to the global window object
+window.filterAndRenderEvents = filterAndRenderEvents;
+window.toggleFilters = function() {
+    document.getElementById('filters-container').classList.toggle('hidden');
+};
+window.clearAllFilters = function() {
+    document.querySelectorAll('.filter-options input[type="checkbox"]').forEach(checkbox => checkbox.checked = false);
+    document.getElementById('search-input').value = '';
+    filterAndRenderEvents();
+};
+window.showMoreEvents = function() {
+    renderEvents(filteredEvents);
+};
+window.toggleClearFiltersButton = function() {
+    const searchQuery = document.getElementById('search-input').value.trim();
+    const activeFilters = document.querySelectorAll('.filter-options input:checked').length > 0;
+    document.getElementById('clear-filters-button').style.display = (searchQuery || activeFilters) ? 'inline-block' : 'none';
+};
+
+// Load PapaParse and Execute Main Logic
 function loadPapaParse(callback) {
     const script = document.createElement('script');
     script.src = 'https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js';
     script.onload = callback;
+    script.onerror = () => console.error('Failed to load PapaParse.');
     document.head.appendChild(script);
 }
 
@@ -298,101 +275,145 @@ function initializeEventTool() {
                     events = results.data;
                     filterAndRenderEvents(); // Start with all events
                     renderFilters();
+                },
+                error: function(error) {
+                    console.error('PapaParse Error:', error);
                 }
             });
         })
         .catch(error => console.error('Error fetching data:', error));
 }
 
-// Filtering, Rendering, and Event Handling
-window.filterAndRenderEvents = function() {
-    const query = document.getElementById('search-input').value.toLowerCase();
-    const checkedTags = Array.from(document.querySelectorAll('#tags-filter input:checked')).map(input => input.value);
-    const checkedEventTypes = Array.from(document.querySelectorAll('#event-type-filter input:checked')).map(input => input.value);
-    const checkedLocations = Array.from(document.querySelectorAll('#location-filter input:checked')).map(input => input.value);
+// Inject HTML with inline event handlers
+function injectHTML() {
+    const parentContainer = document.currentScript.parentElement;
+    const eventContainer = document.createElement('div');
+    eventContainer.className = 'event-embed-container';
 
+    eventContainer.innerHTML = `
+        <h1>Event Listings</h1>
+
+        <!-- Search Box -->
+        <input type="search" id="search-input" placeholder="Search by title..." oninput="filterAndRenderEvents()" enterkeyhint="search">
+
+        <!-- Filter Toggle -->
+        <div class="filter-toggle">
+            <button id="filter-toggle-button" onclick="toggleFilters()">Filter Events</button>
+            <button id="clear-filters-button" onclick="clearAllFilters()" style="display: none;">Clear All Filters</button>
+        </div>
+
+        <!-- Filters -->
+        <div id="filters-container" class="hidden">
+            <div class="filters-container">
+                <div class="filter-section">
+                    <div class="filter-header">Filter by Tags:</div>
+                    <div id="tags-filter" class="filter-options"></div>
+                </div>
+                <div class="filter-section">
+                    <div class="filter-header">Filter by Event Type:</div>
+                    <div id="event-type-filter" class="filter-options"></div>
+                </div>
+                <div class="filter-section">
+                    <div class="filter-header">Filter by Location:</div>
+                    <div id="location-filter" class="filter-options"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Events Container -->
+        <div id="events-container"></div>
+        <button id="show-more-button" onclick="showMoreEvents()" style="display: none;">Show More Events</button>
+    `;
+
+    parentContainer.appendChild(eventContainer);
+}
+
+// Filtering, Rendering, and Event Handling
+function filterAndRenderEvents() {
     const today = new Date();
     today.setHours(0, 0, 0, 0);
 
-    // Apply all filters
     filteredEvents = events.filter(event => {
         const [day, month, year] = event.Date.split('/');
         const eventDate = new Date(`${year}-${month}-${day}`);
-        const matchesDate = eventDate >= today;
-
-        const tags = event.Tags ? event.Tags.split(',').map(tag => tag.trim()) : [];
-        const matchesTags = checkedTags.length === 0 || tags.some(tag => checkedTags.includes(tag));
-        const matchesEventType = checkedEventTypes.length === 0 || checkedEventTypes.includes(event["Event type"]);
-        const matchesLocation = checkedLocations.length === 0 || checkedLocations.includes(event.Location);
-        const matchesSearch = event.Name.toLowerCase().includes(query);
-
-        return matchesDate && matchesTags && matchesEventType && matchesLocation && matchesSearch;
+        return eventDate >= today;
     });
 
-    // Sort events by date
+    filteredEvents = filterEventsList(filteredEvents);
+
     filteredEvents.sort((a, b) => {
         const [dayA, monthA, yearA] = a.Date.split('/');
         const [dayB, monthB, yearB] = b.Date.split('/');
         return new Date(`${yearA}-${monthA}-${dayA}`) - new Date(`${yearB}-${monthB}-${dayB}`);
     });
 
-    // Reset event count and render filtered events
-    displayedEventCount = 0;
-    renderEvents(filteredEvents);
-    toggleClearFiltersButton();
-};
+    displayedEventCount = 0; // Reset count
+    renderEvents(filteredEvents); // Re-render events
+    toggleClearFiltersButton(); // Update clear filters button visibility
+}
 
-window.renderFilters = function() {
-    document.getElementById('tags-filter').innerHTML = '';
-    document.getElementById('event-type-filter').innerHTML = '';
-    document.getElementById('location-filter').innerHTML = '';
+function renderFilters() {
+    const tagsContainer = document.getElementById('tags-filter');
+    const eventTypeContainer = document.getElementById('event-type-filter');
+    const locationContainer = document.getElementById('location-filter');
+
+    tagsContainer.innerHTML = '';
+    eventTypeContainer.innerHTML = '';
+    locationContainer.innerHTML = '';
 
     const allTags = new Set();
     const allEventTypes = new Set();
     const allLocations = new Set();
 
     events.forEach(event => {
-        if (event.Tags) event.Tags.split(',').map(tag => allTags.add(tag.trim()));
+        if (event.Tags) event.Tags.split(',').forEach(tag => allTags.add(tag.trim()));
         if (event["Event type"]) allEventTypes.add(event["Event type"].trim());
         if (event.Location) allLocations.add(event.Location.trim());
     });
 
-    allTags.forEach(tag => document.getElementById('tags-filter').innerHTML += `
-        <label>
-            <input type="checkbox" value="${tag}" onchange="filterAndRenderEvents()"> ${tag}
-        </label>
-    `);
+    allTags.forEach(tag => {
+        tagsContainer.innerHTML += `
+            <label>
+                <input type="checkbox" value="${tag}" onchange="filterAndRenderEvents()"> ${tag}
+            </label>`;
+    });
 
-    allEventTypes.forEach(type => document.getElementById('event-type-filter').innerHTML += `
-        <label>
-            <input type="checkbox" value="${type}" onchange="filterAndRenderEvents()"> ${type}
-        </label>
-    `);
+    allEventTypes.forEach(type => {
+        eventTypeContainer.innerHTML += `
+            <label>
+                <input type="checkbox" value="${type}" onchange="filterAndRenderEvents()"> ${type}
+            </label>`;
+    });
 
-    allLocations.forEach(location => document.getElementById('location-filter').innerHTML += `
-        <label>
-            <input type="checkbox" value="${location}" onchange="filterAndRenderEvents()"> ${location}
-        </label>
-    `);
-};
+    allLocations.forEach(location => {
+        locationContainer.innerHTML += `
+            <label>
+                <input type="checkbox" value="${location}" onchange="filterAndRenderEvents()"> ${location}
+            </label>`;
+    });
+}
 
-window.renderEvents = function(eventList) {
+function renderEvents(eventList) {
     const container = document.getElementById('events-container');
-    
-    // Append the next batch of events without clearing previous ones
+    const showMoreButton = document.getElementById('show-more-button');
+
+    if (displayedEventCount === 0) {
+        container.innerHTML = '';
+    }
+
     const eventsToShow = eventList.slice(displayedEventCount, displayedEventCount + eventsPerPage);
-    
     eventsToShow.forEach(event => {
         const { Name, Description, Location, "Event type": EventType, Date, "Start time": StartTime, "End time": EndTime, Tags, Thumbnail, URL } = event;
-        
-        // Append each event to the container
+
         container.innerHTML += `
             <div class="event">
                 <a href="${URL}" target="_blank">
                     <img src="${Thumbnail || 'https://via.placeholder.com/150'}" alt="${Name} Thumbnail">
                 </a>
                 <div class="event-content">
-                    <h3>${Name}</h3>
+                    <a href="${URL}" target="_blank">
+                        <h3>${Name}</h3>
+                    </a>
                     <div class="event-details">
                         <p>Date: <span>${Date}</span></p>
                         <p>Time: <span>${StartTime || ''} - ${EndTime || ''}</span></p>
@@ -408,52 +429,31 @@ window.renderEvents = function(eventList) {
         `;
     });
 
-    // Update the number of displayed events
     displayedEventCount += eventsToShow.length;
+    showMoreButton.style.display = displayedEventCount < eventList.length ? 'block' : 'none';
+}
 
-    // Show or hide the "Show More" button
-    const showMoreButton = document.getElementById('show-more-button');
-    showMoreButton.style.display = (displayedEventCount < eventList.length) ? 'block' : 'none';
-};
+function filterEventsList(eventsToFilter) {
+    const query = document.getElementById('search-input').value.toLowerCase();
+    const checkedTags = Array.from(document.querySelectorAll('#tags-filter input:checked')).map(input => input.value);
+    const checkedEventTypes = Array.from(document.querySelectorAll('#event-type-filter input:checked')).map(input => input.value);
+    const checkedLocations = Array.from(document.querySelectorAll('#location-filter input:checked')).map(input => input.value);
 
-// Attach key functions to the global window object
-window.filterAndRenderEvents = filterAndRenderEvents;
-window.toggleFilters = function() {
-    document.getElementById('filters-container').classList.toggle('hidden');
-};
-window.clearAllFilters = function() {
-    document.querySelectorAll('.filter-options input[type="checkbox"]').forEach(checkbox => checkbox.checked = false);
-    document.getElementById('search-input').value = '';
-    filterAndRenderEvents();
-};
-window.showMoreEvents = function() {
-    renderEvents(filteredEvents);
-};
+    return eventsToFilter.filter(event => {
+        const tags = event.Tags ? event.Tags.split(',').map(tag => tag.trim()) : [];
+        const matchesTags = checkedTags.length === 0 || tags.some(tag => checkedTags.includes(tag));
+        const matchesEventType = checkedEventTypes.length === 0 || checkedEventTypes.includes(event["Event type"]);
+        const matchesLocation = checkedLocations.length === 0 || checkedLocations.includes(event.Location);
+        const matchesSearch = event.Name.toLowerCase().includes(query);
 
-window.showMoreEvents = function() {
-    renderEvents(filteredEvents);
-};
+        return matchesTags && matchesEventType && matchesLocation && matchesSearch;
+    });
+}
 
-window.toggleFilters = function() {
-    document.getElementById('filters-container').classList.toggle('hidden');
-};
+// Initialize on DOMContentLoaded
+document.addEventListener('DOMContentLoaded', () => {
+    injectHTML(); // Inject the HTML structure
+    loadPapaParse(initializeEventTool); // Load PapaParse and initialize
+});
 
-window.clearAllFilters = function() {
-    document.querySelectorAll('.filter-options input[type="checkbox"]').forEach(checkbox => checkbox.checked = false);
-    document.getElementById('search-input').value = '';
-    filterAndRenderEvents();
-};
-
-window.toggleClearFiltersButton = function() {
-    const searchQuery = document.getElementById('search-input').value.trim();
-    const activeFilters = document.querySelectorAll('.filter-options input:checked').length > 0;
-    document.getElementById('clear-filters-button').style.display = (searchQuery || activeFilters) ? 'inline-block' : 'none';
-};
-
-
-
-// Start the process
-injectStyles();
-injectHTML();
-loadPapaParse(initializeEventTool);
 })();
