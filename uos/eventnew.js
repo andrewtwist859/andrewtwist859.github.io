@@ -308,28 +308,18 @@ function initializeEventTool() {
 
 // Filtering, Rendering, and Event Handling
 window.filterAndRenderEvents = function() {
-    const query = document.getElementById('search-input').value.toLowerCase();
-    const checkedTags = Array.from(document.querySelectorAll('#tags-filter input:checked')).map(input => input.value);
-    const checkedEventTypes = Array.from(document.querySelectorAll('#event-type-filter input:checked')).map(input => input.value);
-    const checkedLocations = Array.from(document.querySelectorAll('#location-filter input:checked')).map(input => input.value);
-
     const today = new Date();
     today.setHours(0, 0, 0, 0);
 
-    // Apply all filters
+    // First, filter future events
     filteredEvents = events.filter(event => {
         const [day, month, year] = event.Date.split('/');
         const eventDate = new Date(`${year}-${month}-${day}`);
-        const matchesDate = eventDate >= today;
-
-        const tags = event.Tags ? event.Tags.split(',').map(tag => tag.trim()) : [];
-        const matchesTags = checkedTags.length === 0 || tags.some(tag => checkedTags.includes(tag));
-        const matchesEventType = checkedEventTypes.length === 0 || checkedEventTypes.includes(event["Event type"]);
-        const matchesLocation = checkedLocations.length === 0 || checkedLocations.includes(event.Location);
-        const matchesSearch = event.Name.toLowerCase().includes(query);
-
-        return matchesDate && matchesTags && matchesEventType && matchesLocation && matchesSearch;
+        return eventDate >= today;
     });
+
+    // Apply search and filters to the future events
+    filteredEvents = filterEventsList(filteredEvents);
 
     // Sort events by date
     filteredEvents.sort((a, b) => {
@@ -338,10 +328,9 @@ window.filterAndRenderEvents = function() {
         return new Date(`${yearA}-${monthA}-${dayA}`) - new Date(`${yearB}-${monthB}-${dayB}`);
     });
 
-    // Reset event count and render filtered events
-    displayedEventCount = 0;
-    renderEvents(filteredEvents);
-    toggleClearFiltersButton();
+    displayedEventCount = 0; // Reset count
+    renderEvents(filteredEvents); // Re-render events
+    toggleClearFiltersButton(); // Toggle clear filters button if needed
 };
 
 window.renderFilters = function() {
@@ -380,21 +369,27 @@ window.renderFilters = function() {
 
 window.renderEvents = function(eventList) {
     const container = document.getElementById('events-container');
-    
-    // Append the next batch of events without clearing previous ones
+    const showMoreButton = document.getElementById('show-more-button');
+
+    // Clear current events if starting over
+    if (displayedEventCount === 0) {
+        container.innerHTML = '';
+    }
+
+    // Calculate the next batch of events to display
     const eventsToShow = eventList.slice(displayedEventCount, displayedEventCount + eventsPerPage);
-    
     eventsToShow.forEach(event => {
         const { Name, Description, Location, "Event type": EventType, Date, "Start time": StartTime, "End time": EndTime, Tags, Thumbnail, URL } = event;
-        
-        // Append each event to the container
+
         container.innerHTML += `
             <div class="event">
                 <a href="${URL}" target="_blank">
                     <img src="${Thumbnail || 'https://via.placeholder.com/150'}" alt="${Name} Thumbnail">
                 </a>
                 <div class="event-content">
-                    <h3>${Name}</h3>
+                    <a href="${URL}" target="_blank">
+                        <h3>${Name}</h3>
+                    </a>
                     <div class="event-details">
                         <p>Date: <span>${Date}</span></p>
                         <p>Time: <span>${StartTime || ''} - ${EndTime || ''}</span></p>
@@ -410,13 +405,36 @@ window.renderEvents = function(eventList) {
         `;
     });
 
-    // Update the number of displayed events
     displayedEventCount += eventsToShow.length;
 
-    // Show or hide the "Show More" button
-    const showMoreButton = document.getElementById('show-more-button');
-    showMoreButton.style.display = (displayedEventCount < eventList.length) ? 'block' : 'none';
+    // Show or hide the "Show More Events" button
+    showMoreButton.style.display = displayedEventCount < eventList.length ? 'block' : 'none';
 };
+
+function filterEventsList(eventsToFilter) {
+    const query = document.getElementById('search-input').value.toLowerCase();
+    const checkedTags = Array.from(document.querySelectorAll('#tags-filter input:checked')).map(input => input.value);
+    const checkedEventTypes = Array.from(document.querySelectorAll('#event-type-filter input:checked')).map(input => input.value);
+    const checkedLocations = Array.from(document.querySelectorAll('#location-filter input:checked')).map(input => input.value);
+
+    return eventsToFilter.filter(event => {
+        const tags = event.Tags ? event.Tags.split(',').map(tag => tag.trim()) : [];
+        const matchesTags = checkedTags.length === 0 || tags.some(tag => checkedTags.includes(tag));
+        const matchesEventType = checkedEventTypes.length === 0 || checkedEventTypes.includes(event["Event type"]);
+        const matchesLocation = checkedLocations.length === 0 || checkedLocations.includes(event.Location);
+        const matchesSearch = event.Name.toLowerCase().includes(query);
+
+        return matchesTags && matchesEventType && matchesLocation && matchesSearch;
+    });
+}
+
+document.getElementById('search-input').addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+        event.preventDefault(); // Prevent default action
+        filterAndRenderEvents(); // Trigger search
+        this.blur(); // Dismiss keyboard on mobile
+    }
+});
 
 window.showMoreEvents = function() {
     renderEvents(filteredEvents);
