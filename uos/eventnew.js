@@ -229,74 +229,7 @@
         document.head.appendChild(style);
     }
 
-// Inject HTML Structure
-function injectHTML() {
-    const parentContainer = document.currentScript.parentElement; // Get the parent of the script
-    const eventContainer = document.createElement('div'); // Create a new div
-    eventContainer.className = 'event-embed-container'; // Add your event tool's container class
-
-    // Inject the HTML structure inside the new div
-    eventContainer.innerHTML = `
-        <h1>Event Listings</h1>
-
-        <!-- Search Box -->
-        <input type="search" id="search-input" placeholder="Search by title..." enterkeyhint="search">
-
-        <!-- Filter Toggle -->
-        <div class="filter-toggle">
-            <button id="filter-toggle-button">Filter Events</button>
-            <button id="clear-filters-button" style="display: none;">Clear All Filters</button>
-        </div>
-
-        <!-- Filters -->
-        <div id="filters-container" class="hidden">
-            <div class="filters-container">
-                <div class="filter-section">
-                    <div class="filter-header">Filter by Tags:</div>
-                    <div id="tags-filter" class="filter-options"></div>
-                </div>
-                <div class="filter-section">
-                    <div class="filter-header">Filter by Event Type:</div>
-                    <div id="event-type-filter" class="filter-options"></div>
-                </div>
-                <div class="filter-section">
-                    <div class="filter-header">Filter by Location:</div>
-                    <div id="location-filter" class="filter-options"></div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Events Container -->
-        <div id="events-container"></div>
-        <button id="show-more-button" style="display: none;">Show more events</button>
-    `;
-
-    // Append the new event container to the parent
-    parentContainer.appendChild(eventContainer);
-
-    // Programmatically attach event listeners
-    attachEventListeners();
-}
-
-// Attach event listeners after HTML injection
-function attachEventListeners() {
-    document.getElementById('search-input').addEventListener('input', filterAndRenderEvents);
-    document.getElementById('search-input').addEventListener('keydown', function(event) {
-        if (event.key === 'Enter') {
-            event.preventDefault();
-            filterAndRenderEvents();
-            this.blur(); // Dismiss keyboard on mobile
-        }
-    });
-
-    document.getElementById('filter-toggle-button').addEventListener('click', toggleFilters);
-    document.getElementById('clear-filters-button').addEventListener('click', clearAllFilters);
-
-    document.getElementById('show-more-button').addEventListener('click', showMoreEvents);
-}
-
-
-  // Load PapaParse and Execute Main Logic
+// Load PapaParse and Execute Main Logic
 function loadPapaParse(callback) {
     const script = document.createElement('script');
     script.src = 'https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js';
@@ -458,37 +391,36 @@ function filterEventsList(eventsToFilter) {
     });
 }
 
-document.getElementById('search-input').addEventListener('keydown', function(event) {
-    if (event.key === 'Enter') {
-        event.preventDefault();
-        filterAndRenderEvents();
-        this.blur();
-    }
+// Attach all event listeners after injecting the HTML
+function attachEventListeners() {
+    document.getElementById('search-input').addEventListener('input', filterAndRenderEvents);
+    document.getElementById('filter-toggle-button').addEventListener('click', toggleFilters);
+    document.getElementById('clear-filters-button').addEventListener('click', clearAllFilters);
+    document.getElementById('show-more-button').addEventListener('click', showMoreEvents);
+}
+
+function injectHTML() {
+    const parentContainer = document.currentScript.parentElement; 
+    const eventContainer = document.createElement('div'); 
+    eventContainer.className = 'event-embed-container'; 
+    eventContainer.innerHTML = `
+        <h1>Event Listings</h1>
+        <input type="search" id="search-input" placeholder="Search by title..." enterkeyhint="search">
+        <div id="filters-container" class="hidden">
+            <div id="tags-filter"></div>
+            <div id="event-type-filter"></div>
+            <div id="location-filter"></div>
+        </div>
+        <div id="events-container"></div>
+        <button id="show-more-button" style="display:none;">Show More</button>
+    `;
+    parentContainer.appendChild(eventContainer);
+    attachEventListeners();
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    injectHTML();
+    loadPapaParse(initializeEventTool);
 });
-
-// Expose functions globally
-window.filterAndRenderEvents = filterAndRenderEvents;
-window.clearAllFilters = function() {
-    document.querySelectorAll('.filter-options input[type="checkbox"]').forEach(checkbox => checkbox.checked = false);
-    document.getElementById('search-input').value = '';
-    filterAndRenderEvents();
-};
-window.showMoreEvents = function() {
-    renderEvents(filteredEvents);
-};
-window.toggleFilters = function() {
-    document.getElementById('filters-container').classList.toggle('hidden');
-};
-window.toggleClearFiltersButton = function() {
-    const searchQuery = document.getElementById('search-input').value.trim();
-    const activeFilters = document.querySelectorAll('.filter-options input:checked').length > 0;
-    document.getElementById('clear-filters-button').style.display = (searchQuery || activeFilters) ? 'inline-block' : 'none';
-};
-
-// Initialize on page load
-injectStyles();
-injectHTML();
-loadPapaParse(initializeEventTool);
-
 
 })();
