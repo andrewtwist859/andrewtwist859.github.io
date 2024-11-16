@@ -1,7 +1,6 @@
 (function() {
-    // Inject CSS
     const css = `
-   .container {
+      .container {
               max-width: 800px;
               margin: 0 auto;
               padding: 20px;
@@ -225,7 +224,6 @@
         }
     `;
   
-    // Inject HTML
     const html = `
       <div class="container">
         <h1>Event Listings</h1>
@@ -240,11 +238,10 @@
           <div id="location-filter" class="filter-options"></div>
         </div>
         <div id="events-container"></div>
-        <button id="show-more-button" style="display: none;">Show More Events</button>
+        <button id="show-more-button" style="display: none;" onclick="showMoreEvents()">Show More Events</button>
       </div>
     `;
   
-    // Inject JavaScript
     const js = `
       const sheetURL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSuGS5R5uLLYkcmqRBmslKVHL3UanEYQN6xmluJcUkFU_kMliZLVWxZb9iBGXh3t8KXXsy--fAAAgsG/pub?output=csv';
   
@@ -253,27 +250,86 @@
       let displayedEventCount = 0;
       const eventsPerPage = 10;
   
-      function fetchEvents() {
-        fetch(sheetURL)
-          .then(response => response.text())
-          .then(csvText => {
-            Papa.parse(csvText, {
-              header: true,
-              skipEmptyLines: true,
-              complete: function(results) {
-                events = results.data;
-                filterAndRenderEvents();
-                renderFilters();
-              }
-            });
-          })
-          .catch(error => console.error('Error fetching data:', error));
-      }
+      fetch(sheetURL)
+        .then(response => response.text())
+        .then(csvText => {
+          Papa.parse(csvText, {
+            header: true,
+            skipEmptyLines: true,
+            complete: function(results) {
+              events = results.data;
+              filterAndRenderEvents();
+              renderFilters();
+            }
+          });
+        })
+        .catch(error => console.error('Error fetching data:', error));
   
       function filterAndRenderEvents() {
-        const query = document.getElementById('search-input').value.toLowerCase();
-        filteredEvents = events.filter(event => event.Name.toLowerCase().includes(query));
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+  
+        filteredEvents = events.filter(event => {
+          const [day, month, year] = event.Date.split('/');
+          const eventDate = new Date(\`\${year}-\${month}-\${day}\`);
+          return eventDate >= today;
+        });
+  
+        filteredEvents = filterEventsList(filteredEvents);
+        filteredEvents.sort((a, b) => {
+          const [dayA, monthA, yearA] = a.Date.split('/');
+          const [dayB, monthB, yearB] = b.Date.split('/');
+          return new Date(\`\${yearA}-\${monthA}-\${dayA}\`) - new Date(\`\${yearB}-\${monthB}-\${dayB}\`);
+        });
+  
+        displayedEventCount = 0;
         renderEvents(filteredEvents);
+        toggleClearFiltersButton();
+      }
+  
+      function renderFilters() {
+        document.getElementById('tags-filter').innerHTML = '';
+        document.getElementById('event-type-filter').innerHTML = '';
+        document.getElementById('location-filter').innerHTML = '';
+  
+        const allTags = new Set();
+        const allEventTypes = new Set();
+        const allLocations = new Set();
+  
+        events.forEach(event => {
+          if (event.Tags) event.Tags.split(',').map(tag => allTags.add(tag.trim()));
+          if (event['Event type']) allEventTypes.add(event['Event type'].trim());
+          if (event.Location) allLocations.add(event.Location.trim());
+        });
+  
+        allTags.forEach(tag => document.getElementById('tags-filter').innerHTML += filterInput(tag));
+        allEventTypes.forEach(type => document.getElementById('event-type-filter').innerHTML += filterInput(type));
+        allLocations.forEach(loc => document.getElementById('location-filter').innerHTML += filterInput(loc));
+      }
+  
+      function filterInput(value) {
+        return \`<label><input type="checkbox" value="\${value}" onchange="filterAndRenderEvents()"> \${value}</label>\`;
+      }
+  
+      function filterEventsList(eventsToFilter) {
+        const query = document.getElementById('search-input').value.toLowerCase();
+        const checkedTags = getCheckedValues('#tags-filter');
+        const checkedEventTypes = getCheckedValues('#event-type-filter');
+        const checkedLocations = getCheckedValues('#location-filter');
+  
+        return eventsToFilter.filter(event => {
+          const tags = event.Tags ? event.Tags.split(',').map(tag => tag.trim()) : [];
+          const matchesTags = checkedTags.length === 0 || tags.some(tag => checkedTags.includes(tag));
+          const matchesEventType = checkedEventTypes.length === 0 || checkedEventTypes.includes(event['Event type']);
+          const matchesLocation = checkedLocations.length === 0 || checkedLocations.includes(event.Location);
+          const matchesSearch = event.Name.toLowerCase().includes(query);
+  
+          return matchesTags && matchesEventType && matchesLocation && matchesSearch;
+        });
+      }
+  
+      function getCheckedValues(selector) {
+        return Array.from(document.querySelectorAll(\`\${selector} input:checked\`)).map(input => input.value);
       }
   
       function renderEvents(eventList) {
@@ -287,21 +343,30 @@
             </div>
           \`;
         });
+        displayedEventCount += eventsPerPage;
       }
   
       function toggleFilters() {
         document.getElementById('filters-container').classList.toggle('hidden');
       }
   
+      function toggleClearFiltersButton() {
+        const query = document.getElementById('search-input').value.trim();
+        const activeFilters = document.querySelectorAll('.filter-options input:checked').length > 0;
+        document.getElementById('clear-filters-button').style.display = (query || activeFilters) ? 'inline-block' : 'none';
+      }
+  
+      function showMoreEvents() {
+        renderEvents(filteredEvents);
+      }
+  
       function clearAllFilters() {
+        document.querySelectorAll('.filter-options input').forEach(input => input.checked = false);
         document.getElementById('search-input').value = '';
         filterAndRenderEvents();
       }
-  
-      fetchEvents();
     `;
   
-    // Helper functions for injecting styles, HTML, and JS
     function injectStyles(styles) {
       const styleSheet = document.createElement('style');
       styleSheet.type = 'text/css';
@@ -323,7 +388,6 @@
       document.head.appendChild(papaScript);
     }
   
-    // Inject everything
     injectStyles(css);
     injectWidget();
   })();
