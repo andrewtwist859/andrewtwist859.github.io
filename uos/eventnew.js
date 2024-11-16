@@ -334,49 +334,58 @@ window.filterAndRenderEvents = function() {
 };
 
 window.renderFilters = function() {
-    document.getElementById('tags-filter').innerHTML = '';
-    document.getElementById('event-type-filter').innerHTML = '';
-    document.getElementById('location-filter').innerHTML = '';
+    const tagsContainer = document.getElementById('tags-filter');
+    const eventTypeContainer = document.getElementById('event-type-filter');
+    const locationContainer = document.getElementById('location-filter');
+
+    tagsContainer.innerHTML = '';
+    eventTypeContainer.innerHTML = '';
+    locationContainer.innerHTML = '';
 
     const allTags = new Set();
     const allEventTypes = new Set();
     const allLocations = new Set();
 
     events.forEach(event => {
-        if (event.Tags) event.Tags.split(',').map(tag => allTags.add(tag.trim()));
+        if (event.Tags) event.Tags.split(',').forEach(tag => allTags.add(tag.trim()));
         if (event["Event type"]) allEventTypes.add(event["Event type"].trim());
         if (event.Location) allLocations.add(event.Location.trim());
     });
 
-    allTags.forEach(tag => document.getElementById('tags-filter').innerHTML += `
-        <label>
-            <input type="checkbox" value="${tag}" onchange="filterAndRenderEvents()"> ${tag}
-        </label>
-    `);
+    allTags.forEach(tag => {
+        tagsContainer.innerHTML += `
+            <label>
+                <input type="checkbox" value="${tag}"> ${tag}
+            </label>`;
+    });
 
-    allEventTypes.forEach(type => document.getElementById('event-type-filter').innerHTML += `
-        <label>
-            <input type="checkbox" value="${type}" onchange="filterAndRenderEvents()"> ${type}
-        </label>
-    `);
+    allEventTypes.forEach(type => {
+        eventTypeContainer.innerHTML += `
+            <label>
+                <input type="checkbox" value="${type}"> ${type}
+            </label>`;
+    });
 
-    allLocations.forEach(location => document.getElementById('location-filter').innerHTML += `
-        <label>
-            <input type="checkbox" value="${location}" onchange="filterAndRenderEvents()"> ${location}
-        </label>
-    `);
+    allLocations.forEach(location => {
+        locationContainer.innerHTML += `
+            <label>
+                <input type="checkbox" value="${location}"> ${location}
+            </label>`;
+    });
+
+    // Attach event listeners dynamically after filters are rendered
+    document.querySelectorAll('#tags-filter input, #event-type-filter input, #location-filter input')
+        .forEach(input => input.addEventListener('change', filterAndRenderEvents));
 };
 
 window.renderEvents = function(eventList) {
     const container = document.getElementById('events-container');
     const showMoreButton = document.getElementById('show-more-button');
 
-    // Clear current events if starting over
     if (displayedEventCount === 0) {
         container.innerHTML = '';
     }
 
-    // Calculate the next batch of events to display
     const eventsToShow = eventList.slice(displayedEventCount, displayedEventCount + eventsPerPage);
     eventsToShow.forEach(event => {
         const { Name, Description, Location, "Event type": EventType, Date, "Start time": StartTime, "End time": EndTime, Tags, Thumbnail, URL } = event;
@@ -406,8 +415,6 @@ window.renderEvents = function(eventList) {
     });
 
     displayedEventCount += eventsToShow.length;
-
-    // Show or hide the "Show More Events" button
     showMoreButton.style.display = displayedEventCount < eventList.length ? 'block' : 'none';
 };
 
@@ -430,9 +437,9 @@ function filterEventsList(eventsToFilter) {
 
 document.getElementById('search-input').addEventListener('keydown', function(event) {
     if (event.key === 'Enter') {
-        event.preventDefault(); // Prevent default action
-        filterAndRenderEvents(); // Trigger search
-        this.blur(); // Dismiss keyboard on mobile
+        event.preventDefault();
+        filterAndRenderEvents();
+        this.blur();
     }
 });
 
@@ -456,8 +463,4 @@ window.toggleClearFiltersButton = function() {
     document.getElementById('clear-filters-button').style.display = (searchQuery || activeFilters) ? 'inline-block' : 'none';
 };
 
-// Start the process
-injectStyles();
-injectHTML();
-loadPapaParse(initializeEventTool);
 })();
