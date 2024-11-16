@@ -2,9 +2,7 @@
     // Inject CSS
     function injectStyles() {
         const css = `
-                  .container {
-              max-width: 800px;
-              margin: 0 auto;
+            .event-embed-container {
               padding: 20px;
               border: 1px solid #ddd;
               border-radius: 5px;
@@ -233,7 +231,7 @@
     // Inject HTML Structure
     function injectHTML() {
         const container = document.createElement('div');
-        container.className = 'container';
+        container.className = 'event-embed-container';
         container.innerHTML = `
             <h1>Event Listings</h1>
 
