@@ -313,11 +313,14 @@ window.filterAndRenderEvents = function() {
     const checkedEventTypes = Array.from(document.querySelectorAll('#event-type-filter input:checked')).map(input => input.value);
     const checkedLocations = Array.from(document.querySelectorAll('#location-filter input:checked')).map(input => input.value);
 
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    // Apply all filters
     filteredEvents = events.filter(event => {
         const [day, month, year] = event.Date.split('/');
         const eventDate = new Date(`${year}-${month}-${day}`);
-        const today = new Date();
-        today.setHours(0, 0, 0, 0);
+        const matchesDate = eventDate >= today;
 
         const tags = event.Tags ? event.Tags.split(',').map(tag => tag.trim()) : [];
         const matchesTags = checkedTags.length === 0 || tags.some(tag => checkedTags.includes(tag));
@@ -325,7 +328,14 @@ window.filterAndRenderEvents = function() {
         const matchesLocation = checkedLocations.length === 0 || checkedLocations.includes(event.Location);
         const matchesSearch = event.Name.toLowerCase().includes(query);
 
-        return eventDate >= today && matchesTags && matchesEventType && matchesLocation && matchesSearch;
+        return matchesDate && matchesTags && matchesEventType && matchesLocation && matchesSearch;
+    });
+
+    // Sort events by date
+    filteredEvents.sort((a, b) => {
+        const [dayA, monthA, yearA] = a.Date.split('/');
+        const [dayB, monthB, yearB] = b.Date.split('/');
+        return new Date(`${yearA}-${monthA}-${dayA}`) - new Date(`${yearB}-${monthB}-${dayB}`);
     });
 
     // Reset event count and render filtered events
