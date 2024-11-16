@@ -258,7 +258,7 @@
   </div>
     `;
   
-    const js = `
+  const js = `
   document.addEventListener('DOMContentLoaded', function() {
     const sheetURL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSuGS5R5uLLYkcmqRBmslKVHL3UanEYQN6xmluJcUkFU_kMliZLVWxZb9iBGXh3t8KXXsy--fAAAgsG/pub?output=csv';
 
@@ -380,6 +380,9 @@
                 <p>Location: <span>\${Location}</span></p>
               </div>
               <p>\${Description}</p>
+              <div class="link">
+                <a href="\${URL}">Book your place</a>
+              </div>
               <div class="flags">
                 <span class="flag">\${EventType}</span>
                 \${Tags ? Tags.split(',').map(tag => \`<span class="flag">\${tag.trim()}</span>\`).join('') : ''}
@@ -393,12 +396,22 @@
     function toggleFilters() {
       const filtersContainer = document.getElementById('filters-container');
       filtersContainer.classList.toggle('hidden');
+
+      const isVisible = !filtersContainer.classList.contains('hidden');
+      document.getElementById('clear-filters-button').style.display = isVisible ? 'inline-block' : 'none';
     }
 
     function clearAllFilters() {
       document.querySelectorAll('.filter-options input[type="checkbox"]').forEach(input => (input.checked = false));
       document.getElementById('search-input').value = '';
       filterAndRenderEvents();
+    }
+
+    function toggleClearFiltersButton() {
+      const searchQuery = document.getElementById('search-input').value.trim();
+      const activeFilters = document.querySelectorAll('#filters-container input:checked').length > 0;
+
+      document.getElementById('clear-filters-button').style.display = searchQuery || activeFilters ? 'inline-block' : 'none';
     }
 
     // Attach global listeners
