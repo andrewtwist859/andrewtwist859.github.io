@@ -2,10 +2,6 @@
     const css = `
     .event-embed-container {
       max-width: 750px;
-      padding: 20px;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-      background-color: #f9f9f9;
     }
 
     h1 {
