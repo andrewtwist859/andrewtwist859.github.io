@@ -249,13 +249,18 @@ function initializeEventTool() {
     fetch(sheetURL)
         .then(response => response.text())
         .then(csvText => {
+            console.log('CSV Data Fetched'); // Debugging line
             Papa.parse(csvText, {
                 header: true,
                 skipEmptyLines: true,
                 complete: function(results) {
+                    console.log('Parsed Events:', results.data); // Debugging line
                     events = results.data;
                     filterAndRenderEvents(); // Start with all events
                     renderFilters();
+                },
+                error: function(error) {
+                    console.error('PapaParse Error:', error);
                 }
             });
         })
@@ -391,7 +396,6 @@ function filterEventsList(eventsToFilter) {
     });
 }
 
-// Attach all event listeners after injecting the HTML
 function attachEventListeners() {
     document.getElementById('search-input').addEventListener('input', filterAndRenderEvents);
     document.getElementById('filter-toggle-button').addEventListener('click', toggleFilters);
@@ -400,7 +404,7 @@ function attachEventListeners() {
 }
 
 function injectHTML() {
-    const parentContainer = document.currentScript.parentElement; 
+    const parentContainer = document.currentScript ? document.currentScript.parentElement : document.body;
     const eventContainer = document.createElement('div'); 
     eventContainer.className = 'event-embed-container'; 
     eventContainer.innerHTML = `
