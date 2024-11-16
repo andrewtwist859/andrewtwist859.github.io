@@ -455,18 +455,27 @@ function injectStyles(styles) {
 }
 
 function injectWidget() {
-  const container = document.createElement('div');
-  container.innerHTML = html;
-  document.body.appendChild(container);
-
-  const script = document.createElement('script');
-  script.textContent = js;
-  document.body.appendChild(script);
-
-  const papaScript = document.createElement('script');
-  papaScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js';
-  document.head.appendChild(papaScript);
-}
+    const scriptTag = document.currentScript; // Reference to the current script tag
+    const parent = scriptTag.parentElement;  // Parent element of the script tag
+  
+    // Create a container for the event embed
+    const container = document.createElement('div');
+    container.className = 'event-embed-container'; // Optional: Add a class for styling
+    container.innerHTML = html;
+    
+    // Append the container inside the parent div
+    parent.appendChild(container);
+  
+    // Inject the main logic script
+    const script = document.createElement('script');
+    script.textContent = js;
+    parent.appendChild(script);
+  
+    // Inject PapaParse for CSV parsing
+    const papaScript = document.createElement('script');
+    papaScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js';
+    parent.appendChild(papaScript);
+  }
 
 injectStyles(css);
 injectWidget();
