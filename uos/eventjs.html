@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://use.typekit.net/jou7rrz.css">
+  <title>Event List with Search, Filters, and Styled Cards</title>
+  <style>
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    #search-input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    .filter-toggle {
+      text-align: left;
+      margin-bottom: 10px;
+    }
+
+    #filter-toggle-button {
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #filter-toggle-button:hover {
+      background-color: #0056b3;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    #filters-container {
+      margin-top: 10px;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      background-color: #f1f1f1;
+    }
+
+    .filters-container {
+  display: block; /* Change from flex to block */
+  margin-bottom: 20px;
+}
+
+.filter-section {
+  margin-bottom: 20px; /* Add spacing between filter sections */
+}
+
+.filter-options {
+  display: block; /* Ensure filter options also stack vertically */
+  margin-top: 5px;
+  font-family: 'source-sans-pro';
+}
+
+.filter-options label {
+  margin-right: 1rem
+}
+
+.filter-header {
+  font-family: 'source-serif-pro';
+  font-weight: 700;
+  color: #007BFF;
+  margin-bottom: 5px; /* Add spacing between header and options */
+}
+
+    .event {
+      font-family: 'source-sans-pro';
+      display: flex;
+      align-items: flex-start;
+      gap: 15px;
+      margin-bottom: 20px;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      background-color: #ffffff;
+      position: relative;
+    }
+
+    .event img {
+      width: 150px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+
+    .event-content {
+      flex: 1;
+    }
+
+    .event h3 {
+      font-family: 'source-serif-pro';
+      font-weight: 700;
+      margin: 0;
+      font-size: 1.2em;
+    }
+
+    .event p {
+      margin: 5px 0;
+      font-size: 1em;
+    }
+
+    .event a {
+      color: #007BFF;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .event a:hover {
+      text-decoration: underline;
+    }
+
+    .flags {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .flag {
+      padding: 5px 10px;
+      font-size: 0.8em;
+      background-color: #007BFF;
+      color: white;
+      border-radius: 20px;
+      text-wrap: nowrap;
+    }
+
+    .event-details {
+      display: flex;
+      gap: 20px;
+      font-size: 0.9em;
+    }
+
+    .event-details p {
+      margin: 5px 0;
+      font-weight: bold;
+    }
+
+    .event-details span {
+      font-weight: normal;
+    }
+
+    @media (max-width: 768px) {
+  .event {
+    flex-direction: column; /* Stack content vertically */
+    align-items: center; /* Center-align content */
+  }
+
+  .event img {
+    width: 100%; /* Make image take full width */
+    height: auto; /* Maintain aspect ratio */
+    margin-bottom: 10px; /* Add spacing between image and content */
+  }
+
+  .event-details {
+      flex-direction: column;
+      gap: 0;
+      margin: 1rem 0rem;
+      font-size: 1rem;
+    }
+
+    .filter-options {
+  display: flex;
+  flex-direction: column; /* Ensure filter options also stack vertically */
+
+}
+
+    
+
+}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Event Listings</h1>
+
+    <!-- Search Box -->
+    <input type="text" id="search-input" placeholder="Search by title..." oninput="filterAndRenderEvents()">
+
+    <!-- Filter Toggle -->
+    <div class="filter-toggle">
+      <button id="filter-toggle-button" onclick="toggleFilters()">Filter Events</button>
+    </div>
+
+    <!-- Filters -->
+    <div id="filters-container" class="hidden">
+      <div class="filters-container">
+        <div class="filter-section">
+          <div class="filter-header">Filter by Tags:</div>
+          <div id="tags-filter" class="filter-options"></div>
+        </div>
+        <div class="filter-section">
+          <div class="filter-header">Filter by Event Type:</div>
+          <div id="event-type-filter" class="filter-options"></div>
+        </div>
+        <div class="filter-section">
+          <div class="filter-header">Filter by Location:</div>
+          <div id="location-filter" class="filter-options"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Events Container -->
+    <div id="events-container"></div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+  <script>
+    const sheetURL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSuGS5R5uLLYkcmqRBmslKVHL3UanEYQN6xmluJcUkFU_kMliZLVWxZb9iBGXh3t8KXXsy--fAAAgsG/pub?output=csv';
+
+    let events = [];
+    let allTags = new Set();
+    let allEventTypes = new Set();
+    let allLocations = new Set();
+
+    fetch(sheetURL)
+      .then(response => response.text())
+      .then(csvText => {
+        Papa.parse(csvText, {
+          header: true,
+          skipEmptyLines: true,
+          complete: function(results) {
+            events = results.data;
+
+            filterAndRenderEvents();
+            renderFilters();
+          }
+        });
+      })
+      .catch(error => console.error('Error fetching data:', error));
+
+    function filterAndRenderEvents() {
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+
+      const futureEvents = events.filter(event => {
+        const [day, month, year] = event.Date.split('/');
+        const eventDate = new Date(`${year}-${month}-${day}`);
+        return eventDate >= today;
+      });
+
+      filterEvents(futureEvents);
+    }
+
+    function renderFilters() {
+      events.forEach(event => {
+        const tags = event.Tags ? event.Tags.split(',').map(tag => tag.trim()) : [];
+        tags.forEach(tag => tag && allTags.add(tag));
+
+        const eventType = event["Event type"];
+        if (eventType) allEventTypes.add(eventType);
+
+        const location = event.Location;
+        if (location) allLocations.add(location);
+      });
+
+      renderFilterOptions('tags-filter', allTags);
+      renderFilterOptions('event-type-filter', allEventTypes);
+      renderFilterOptions('location-filter', allLocations);
+    }
+
+    function renderFilterOptions(filterId, options) {
+      const container = document.getElementById(filterId);
+      container.innerHTML = '';
+      options.forEach(option => {
+        container.innerHTML += `
+          <label>
+            <input type="checkbox" value="${option}" onchange="filterAndRenderEvents()">
+            ${option}
+          </label>
+        `;
+      });
+    }
+
+    function filterEvents(eventList) {
+      const query = document.getElementById('search-input').value.toLowerCase();
+      const checkedTags = Array.from(document.querySelectorAll('#tags-filter input:checked')).map(input => input.value);
+      const checkedEventTypes = Array.from(document.querySelectorAll('#event-type-filter input:checked')).map(input => input.value);
+      const checkedLocations = Array.from(document.querySelectorAll('#location-filter input:checked')).map(input => input.value);
+
+      const filteredEvents = eventList.filter(event => {
+        const tags = event.Tags ? event.Tags.split(',').map(tag => tag.trim()) : [];
+        const matchesTags = !checkedTags.length || tags.some(tag => checkedTags.includes(tag));
+        const matchesEventType = !checkedEventTypes.length || checkedEventTypes.includes(event["Event type"]);
+        const matchesLocation = !checkedLocations.length || checkedLocations.includes(event.Location);
+        const matchesSearch = event.Name.toLowerCase().includes(query);
+
+        return matchesTags && matchesEventType && matchesLocation && matchesSearch;
+      });
+
+      renderEvents(filteredEvents);
+    }
+
+    function renderEvents(eventList) {
+      const container = document.getElementById('events-container');
+      container.innerHTML = '';
+      eventList.forEach(event => {
+        const { Name, Description, Location, "Event type": EventType, Date, "Start time": StartTime, "End time": EndTime, Tags, Thumbnail, URL } = event;
+
+        container.innerHTML += `
+          <div class="event">
+            <img src="${Thumbnail || 'https://via.placeholder.com/150'}" alt="${Name} Thumbnail">
+            <div class="event-content">
+              <h3>${Name}</h3>
+              <div class="event-details">
+                <p>Date: <span>${Date}</span></p>
+                <p>Time: <span>${StartTime || ''} - ${EndTime || ''}</span></p>
+                <p>Location: <span>${Location}</span></p>
+              </div>
+              <p>${Description}</p>
+              <a href="${URL}" target="_blank">${URL ? 'Learn more' : ''}</a>
+              <div class="flags">
+                <span class="flag">${EventType}</span>
+                ${Tags ? Tags.split(',').map(tag => `<span class="flag">${tag.trim()}</span>`).join('') : ''}
+              </div>
+            </div>
+          </div>
+        `;
+      });
+    }
+
+    function toggleFilters() {
+      const filtersContainer = document.getElementById('filters-container');
+      filtersContainer.classList.toggle('hidden');
+    }
+  </script>
+</body>
+</html>
