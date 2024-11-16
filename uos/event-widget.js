@@ -187,12 +187,13 @@
   .event {
     flex-direction: column; /* Stack content vertically */
     align-items: center; /* Center-align content */
+    gap: 0;
   }
 
   .event img {
     width: 100%; /* Make image take full width */
     height: auto; /* Maintain aspect ratio */
-    margin-bottom: 10px; /* Add spacing between image and content */
+    margin-bottom: 0; /* Add spacing between image and content */
   }
 
   .event-details {
