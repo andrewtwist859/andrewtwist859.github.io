@@ -35,7 +35,7 @@
       margin-bottom: 10px;
     }
 
-    #filter-toggle-button {
+    #filter-toggle-button, #show-more-button {
       background-color: #440099;
       color: white;
       border: none;
@@ -263,7 +263,7 @@
 
     <!-- Events Container -->
     <div id="events-container"></div>
-    <button id="show-more-button" onclick="showMoreEvents()" style="display: none;">Show More Events</button>
+    <button id="show-more-button" onclick="showMoreEvents()" style="display: none;">Show more events</button>
     
   </div>
 
@@ -316,6 +316,57 @@
       toggleClearFiltersButton();
     }
   
+    function renderFilters() {
+      // Clear previous filters
+      document.getElementById('tags-filter').innerHTML = '';
+      document.getElementById('event-type-filter').innerHTML = '';
+      document.getElementById('location-filter').innerHTML = '';
+  
+      const allTags = new Set();
+      const allEventTypes = new Set();
+      const allLocations = new Set();
+  
+      // Populate unique filters from events data
+      events.forEach(event => {
+        if (event.Tags) {
+          event.Tags.split(',').map(tag => allTags.add(tag.trim()));
+        }
+        if (event["Event type"]) {
+          allEventTypes.add(event["Event type"].trim());
+        }
+        if (event.Location) {
+          allLocations.add(event.Location.trim());
+        }
+      });
+  
+      // Render Tags
+      allTags.forEach(tag => {
+        document.getElementById('tags-filter').innerHTML += `
+          <label>
+            <input type="checkbox" value="${tag}" onchange="filterAndRenderEvents()"> ${tag}
+          </label>
+        `;
+      });
+  
+      // Render Event Types
+      allEventTypes.forEach(eventType => {
+        document.getElementById('event-type-filter').innerHTML += `
+          <label>
+            <input type="checkbox" value="${eventType}" onchange="filterAndRenderEvents()"> ${eventType}
+          </label>
+        `;
+      });
+  
+      // Render Locations
+      allLocations.forEach(location => {
+        document.getElementById('location-filter').innerHTML += `
+          <label>
+            <input type="checkbox" value="${location}" onchange="filterAndRenderEvents()"> ${location}
+          </label>
+        `;
+      });
+    }
+  
     function filterEventsList(eventsToFilter) {
       const query = document.getElementById('search-input').value.toLowerCase();
       const checkedTags = Array.from(document.querySelectorAll('#tags-filter input:checked')).map(input => input.value);
@@ -324,9 +375,9 @@
   
       return eventsToFilter.filter(event => {
         const tags = event.Tags ? event.Tags.split(',').map(tag => tag.trim()) : [];
-        const matchesTags = !checkedTags.length || tags.some(tag => checkedTags.includes(tag));
-        const matchesEventType = !checkedEventTypes.length || checkedEventTypes.includes(event["Event type"]);
-        const matchesLocation = !checkedLocations.length || checkedLocations.includes(event.Location);
+        const matchesTags = checkedTags.length === 0 || tags.some(tag => checkedTags.includes(tag));
+        const matchesEventType = checkedEventTypes.length === 0 || checkedEventTypes.includes(event["Event type"]);
+        const matchesLocation = checkedLocations.length === 0 || checkedLocations.includes(event.Location);
         const matchesSearch = event.Name.toLowerCase().includes(query);
   
         return matchesTags && matchesEventType && matchesLocation && matchesSearch;
@@ -408,6 +459,7 @@
       filterAndRenderEvents();
     }
   </script>
+  
   
 
 </body>
