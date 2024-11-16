@@ -258,167 +258,175 @@
   </div>
     `;
   
-  const js = `
-  document.addEventListener('DOMContentLoaded', function() {
-    const sheetURL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSuGS5R5uLLYkcmqRBmslKVHL3UanEYQN6xmluJcUkFU_kMliZLVWxZb9iBGXh3t8KXXsy--fAAAgsG/pub?output=csv';
-
-    let events = [];
-    let filteredEvents = [];
-    let displayedEventCount = 0;
-    const eventsPerPage = 10;
-
-    fetch(sheetURL)
-      .then(response => response.text())
-      .then(csvText => {
-        Papa.parse(csvText, {
-          header: true,
-          skipEmptyLines: true,
-          complete: function(results) {
-            events = results.data;
-            filterAndRenderEvents();
-            renderFilters();
-          }
+    const js = `
+    document.addEventListener('DOMContentLoaded', function() {
+      const sheetURL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSuGS5R5uLLYkcmqRBmslKVHL3UanEYQN6xmluJcUkFU_kMliZLVWxZb9iBGXh3t8KXXsy--fAAAgsG/pub?output=csv';
+  
+      let events = [];
+      let filteredEvents = [];
+      let displayedEventCount = 0;
+      const eventsPerPage = 10;
+  
+      fetch(sheetURL)
+        .then(response => response.text())
+        .then(csvText => {
+          Papa.parse(csvText, {
+            header: true,
+            skipEmptyLines: true,
+            complete: function(results) {
+              events = results.data;
+              filterAndRenderEvents();
+              renderFilters();
+            }
+          });
+        })
+        .catch(error => console.error('Error fetching data:', error));
+  
+      function filterAndRenderEvents() {
+        const query = document.getElementById('search-input').value.toLowerCase();
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+  
+        // Filter future events and apply filters/search
+        filteredEvents = events.filter(event => {
+          const [day, month, year] = event.Date.split('/');
+          const eventDate = new Date(\`\${year}-\${month}-\${day}\`);
+          const matchesDate = eventDate >= today;
+  
+          // Search logic
+          const matchesSearch = event.Name.toLowerCase().includes(query);
+  
+          return matchesDate && matchesSearch;
         });
-      })
-      .catch(error => console.error('Error fetching data:', error));
-
-    function filterAndRenderEvents() {
-      const today = new Date();
-      today.setHours(0, 0, 0, 0);
-
-      filteredEvents = events.filter(event => {
-        const [day, month, year] = event.Date.split('/');
-        const eventDate = new Date(\`\${year}-\${month}-\${day}\`);
-        return eventDate >= today;
-      });
-
-      filteredEvents = filterEventsList(filteredEvents);
-      filteredEvents.sort((a, b) => {
-        const [dayA, monthA, yearA] = a.Date.split('/');
-        const [dayB, monthB, yearB] = b.Date.split('/');
-        return new Date(\`\${yearA}-\${monthA}-\${dayA}\`) - new Date(\`\${yearB}-\${monthB}-\${dayB}\`);
-      });
-
-      displayedEventCount = 0;
-      renderEvents(filteredEvents);
-      toggleClearFiltersButton();
-    }
-
-    function renderFilters() {
-      document.getElementById('tags-filter').innerHTML = '';
-      document.getElementById('event-type-filter').innerHTML = '';
-      document.getElementById('location-filter').innerHTML = '';
-
-      const allTags = new Set();
-      const allEventTypes = new Set();
-      const allLocations = new Set();
-
-      events.forEach(event => {
-        if (event.Tags) event.Tags.split(',').forEach(tag => allTags.add(tag.trim()));
-        if (event['Event type']) allEventTypes.add(event['Event type'].trim());
-        if (event.Location) allLocations.add(event.Location.trim());
-      });
-
-      allTags.forEach(tag => document.getElementById('tags-filter').innerHTML += filterInput(tag));
-      allEventTypes.forEach(type => document.getElementById('event-type-filter').innerHTML += filterInput(type));
-      allLocations.forEach(loc => document.getElementById('location-filter').innerHTML += filterInput(loc));
-
-      attachFilterListeners();
-    }
-
-    function attachFilterListeners() {
-      document.querySelectorAll('#filters-container input[type="checkbox"]').forEach(input => {
-        input.addEventListener('change', filterAndRenderEvents);
-      });
-    }
-
-    function filterInput(value) {
-      return \`<label><input type="checkbox" value="\${value}"> \${value}</label>\`;
-    }
-
-    function filterEventsList(eventsToFilter) {
-      const query = document.getElementById('search-input').value.toLowerCase();
-      const checkedTags = getCheckedValues('#tags-filter');
-      const checkedEventTypes = getCheckedValues('#event-type-filter');
-      const checkedLocations = getCheckedValues('#location-filter');
-
-      return eventsToFilter.filter(event => {
-        const tags = event.Tags ? event.Tags.split(',').map(tag => tag.trim()) : [];
-        const matchesTags = checkedTags.length === 0 || tags.some(tag => checkedTags.includes(tag));
-        const matchesEventType = checkedEventTypes.length === 0 || checkedEventTypes.includes(event['Event type']);
-        const matchesLocation = checkedLocations.length === 0 || checkedLocations.includes(event.Location);
-        const matchesSearch = event.Name.toLowerCase().includes(query);
-
-        return matchesTags && matchesEventType && matchesLocation && matchesSearch;
-      });
-    }
-
-    function getCheckedValues(selector) {
-      return Array.from(document.querySelectorAll(\`\${selector} input:checked\`)).map(input => input.value);
-    }
-
-    function renderEvents(eventList) {
-      const container = document.getElementById('events-container');
-      container.innerHTML = '';
-
-      eventList.slice(0, displayedEventCount + eventsPerPage).forEach(event => {
-        const {
-          Name, Description, Location, 'Event type': EventType, Date,
-          'Start time': StartTime, 'End time': EndTime, Tags, Thumbnail, URL
-        } = event;
-
-        container.innerHTML += \`
-          <div class="event">
-            <a href="\${URL}" target="_blank">
-              <img src="\${Thumbnail || 'https://via.placeholder.com/150'}" alt="\${Name} Thumbnail">
-            </a>
-            <div class="event-content">
-              <a href="\${URL}" target="_blank"><h3>\${Name}</h3></a>
-              <div class="event-details">
-                <p>Date: <span>\${Date}</span></p>
-                <p>Time: <span>\${StartTime || ''} - \${EndTime || ''}</span></p>
-                <p>Location: <span>\${Location}</span></p>
-              </div>
-              <p>\${Description}</p>
-              <div class="link">
-                <a href="\${URL}">Book your place</a>
-              </div>
-              <div class="flags">
-                <span class="flag">\${EventType}</span>
-                \${Tags ? Tags.split(',').map(tag => \`<span class="flag">\${tag.trim()}</span>\`).join('') : ''}
+  
+        filteredEvents = filterEventsList(filteredEvents);
+  
+        // Sort events by date
+        filteredEvents.sort((a, b) => {
+          const [dayA, monthA, yearA] = a.Date.split('/');
+          const [dayB, monthB, yearB] = b.Date.split('/');
+          return new Date(\`\${yearA}-\${monthA}-\${dayA}\`) - new Date(\`\${yearB}-\${monthB}-\${dayB}\`);
+        });
+  
+        displayedEventCount = 0; // Reset count
+        renderEvents(filteredEvents);
+        toggleClearFiltersButton();
+      }
+  
+      function renderFilters() {
+        document.getElementById('tags-filter').innerHTML = '';
+        document.getElementById('event-type-filter').innerHTML = '';
+        document.getElementById('location-filter').innerHTML = '';
+  
+        const allTags = new Set();
+        const allEventTypes = new Set();
+        const allLocations = new Set();
+  
+        events.forEach(event => {
+          if (event.Tags) event.Tags.split(',').forEach(tag => allTags.add(tag.trim()));
+          if (event['Event type']) allEventTypes.add(event['Event type'].trim());
+          if (event.Location) allLocations.add(event.Location.trim());
+        });
+  
+        allTags.forEach(tag => document.getElementById('tags-filter').innerHTML += filterInput(tag));
+        allEventTypes.forEach(type => document.getElementById('event-type-filter').innerHTML += filterInput(type));
+        allLocations.forEach(loc => document.getElementById('location-filter').innerHTML += filterInput(loc));
+  
+        attachFilterListeners();
+      }
+  
+      function attachFilterListeners() {
+        document.querySelectorAll('#filters-container input[type="checkbox"]').forEach(input => {
+          input.addEventListener('change', filterAndRenderEvents);
+        });
+      }
+  
+      function filterInput(value) {
+        return \`<label><input type="checkbox" value="\${value}"> \${value}</label>\`;
+      }
+  
+      function filterEventsList(eventsToFilter) {
+        const checkedTags = getCheckedValues('#tags-filter');
+        const checkedEventTypes = getCheckedValues('#event-type-filter');
+        const checkedLocations = getCheckedValues('#location-filter');
+  
+        return eventsToFilter.filter(event => {
+          const tags = event.Tags ? event.Tags.split(',').map(tag => tag.trim()) : [];
+          const matchesTags = checkedTags.length === 0 || tags.some(tag => checkedTags.includes(tag));
+          const matchesEventType = checkedEventTypes.length === 0 || checkedEventTypes.includes(event['Event type']);
+          const matchesLocation = checkedLocations.length === 0 || checkedLocations.includes(event.Location);
+  
+          return matchesTags && matchesEventType && matchesLocation;
+        });
+      }
+  
+      function getCheckedValues(selector) {
+        return Array.from(document.querySelectorAll(\`\${selector} input:checked\`)).map(input => input.value);
+      }
+  
+      function renderEvents(eventList) {
+        const container = document.getElementById('events-container');
+        container.innerHTML = '';
+  
+        eventList.slice(0, displayedEventCount + eventsPerPage).forEach(event => {
+          const {
+            Name, Description, Location, 'Event type': EventType, Date,
+            'Start time': StartTime, 'End time': EndTime, Tags, Thumbnail, URL
+          } = event;
+  
+          container.innerHTML += \`
+            <div class="event">
+              <a href="\${URL}" target="_blank">
+                <img src="\${Thumbnail || 'https://via.placeholder.com/150'}" alt="\${Name} Thumbnail">
+              </a>
+              <div class="event-content">
+                <a href="\${URL}" target="_blank"><h3>\${Name}</h3></a>
+                <div class="event-details">
+                  <p>Date: <span>\${Date}</span></p>
+                  <p>Time: <span>\${StartTime || ''} - \${EndTime || ''}</span></p>
+                  <p>Location: <span>\${Location}</span></p>
+                </div>
+                <p>\${Description}</p>
+                <div class="link">
+                  <a href="\${URL}">Book your place</a>
+                </div>
+                <div class="flags">
+                  <span class="flag">\${EventType}</span>
+                  \${Tags ? Tags.split(',').map(tag => \`<span class="flag">\${tag.trim()}</span>\`).join('') : ''}
+                </div>
               </div>
             </div>
-          </div>
-        \`;
-      });
-    }
-
-    function toggleFilters() {
-      const filtersContainer = document.getElementById('filters-container');
-      filtersContainer.classList.toggle('hidden');
-
-      const isVisible = !filtersContainer.classList.contains('hidden');
-      document.getElementById('clear-filters-button').style.display = isVisible ? 'inline-block' : 'none';
-    }
-
-    function clearAllFilters() {
-      document.querySelectorAll('.filter-options input[type="checkbox"]').forEach(input => (input.checked = false));
-      document.getElementById('search-input').value = '';
-      filterAndRenderEvents();
-    }
-
-    function toggleClearFiltersButton() {
-      const searchQuery = document.getElementById('search-input').value.trim();
-      const activeFilters = document.querySelectorAll('#filters-container input:checked').length > 0;
-
-      document.getElementById('clear-filters-button').style.display = searchQuery || activeFilters ? 'inline-block' : 'none';
-    }
-
-    // Attach global listeners
-    document.getElementById('filter-toggle-button').addEventListener('click', toggleFilters);
-    document.getElementById('clear-filters-button').addEventListener('click', clearAllFilters);
-  });
-`;
+          \`;
+        });
+      }
+  
+      function toggleFilters() {
+        const filtersContainer = document.getElementById('filters-container');
+        filtersContainer.classList.toggle('hidden');
+  
+        const isVisible = !filtersContainer.classList.contains('hidden');
+        document.getElementById('clear-filters-button').style.display = isVisible ? 'inline-block' : 'none';
+      }
+  
+      function clearAllFilters() {
+        document.querySelectorAll('.filter-options input[type="checkbox"]').forEach(input => (input.checked = false));
+        document.getElementById('search-input').value = '';
+        filterAndRenderEvents();
+      }
+  
+      function toggleClearFiltersButton() {
+        const searchQuery = document.getElementById('search-input').value.trim();
+        const activeFilters = document.querySelectorAll('#filters-container input:checked').length > 0;
+  
+        document.getElementById('clear-filters-button').style.display = searchQuery || activeFilters ? 'inline-block' : 'none';
+      }
+  
+      // Attach global listeners
+      document.getElementById('filter-toggle-button').addEventListener('click', toggleFilters);
+      document.getElementById('clear-filters-button').addEventListener('click', clearAllFilters);
+      document.getElementById('search-input').addEventListener('input', filterAndRenderEvents);
+    });
+  `;  
 
 function injectStyles(styles) {
   const styleSheet = document.createElement('style');
