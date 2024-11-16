@@ -279,6 +279,7 @@ function loadPapaParse(callback) {
     const script = document.createElement('script');
     script.src = 'https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js';
     script.onload = callback;
+    script.onerror = () => console.error('Failed to load PapaParse.');
     document.head.appendChild(script);
 }
 
@@ -307,18 +308,18 @@ function initializeEventTool() {
 }
 
 // Filtering, Rendering, and Event Handling
-window.filterAndRenderEvents = function() {
+function filterAndRenderEvents() {
     const today = new Date();
     today.setHours(0, 0, 0, 0);
 
-    // First, filter future events
+    // Filter future events
     filteredEvents = events.filter(event => {
         const [day, month, year] = event.Date.split('/');
         const eventDate = new Date(`${year}-${month}-${day}`);
         return eventDate >= today;
     });
 
-    // Apply search and filters to the future events
+    // Apply search and filters
     filteredEvents = filterEventsList(filteredEvents);
 
     // Sort events by date
@@ -330,10 +331,10 @@ window.filterAndRenderEvents = function() {
 
     displayedEventCount = 0; // Reset count
     renderEvents(filteredEvents); // Re-render events
-    toggleClearFiltersButton(); // Toggle clear filters button if needed
-};
+    toggleClearFiltersButton(); // Update clear filters button visibility
+}
 
-window.renderFilters = function() {
+function renderFilters() {
     const tagsContainer = document.getElementById('tags-filter');
     const eventTypeContainer = document.getElementById('event-type-filter');
     const locationContainer = document.getElementById('location-filter');
@@ -373,12 +374,12 @@ window.renderFilters = function() {
             </label>`;
     });
 
-    // Attach event listeners dynamically after filters are rendered
+    // Dynamically bind filter change events
     document.querySelectorAll('#tags-filter input, #event-type-filter input, #location-filter input')
         .forEach(input => input.addEventListener('change', filterAndRenderEvents));
-};
+}
 
-window.renderEvents = function(eventList) {
+function renderEvents(eventList) {
     const container = document.getElementById('events-container');
     const showMoreButton = document.getElementById('show-more-button');
 
@@ -416,7 +417,7 @@ window.renderEvents = function(eventList) {
 
     displayedEventCount += eventsToShow.length;
     showMoreButton.style.display = displayedEventCount < eventList.length ? 'block' : 'none';
-};
+}
 
 function filterEventsList(eventsToFilter) {
     const query = document.getElementById('search-input').value.toLowerCase();
@@ -443,24 +444,29 @@ document.getElementById('search-input').addEventListener('keydown', function(eve
     }
 });
 
-window.showMoreEvents = function() {
-    renderEvents(filteredEvents);
-};
-
-window.toggleFilters = function() {
-    document.getElementById('filters-container').classList.toggle('hidden');
-};
-
+// Expose functions globally
+window.filterAndRenderEvents = filterAndRenderEvents;
 window.clearAllFilters = function() {
     document.querySelectorAll('.filter-options input[type="checkbox"]').forEach(checkbox => checkbox.checked = false);
     document.getElementById('search-input').value = '';
     filterAndRenderEvents();
 };
-
+window.showMoreEvents = function() {
+    renderEvents(filteredEvents);
+};
+window.toggleFilters = function() {
+    document.getElementById('filters-container').classList.toggle('hidden');
+};
 window.toggleClearFiltersButton = function() {
     const searchQuery = document.getElementById('search-input').value.trim();
     const activeFilters = document.querySelectorAll('.filter-options input:checked').length > 0;
     document.getElementById('clear-filters-button').style.display = (searchQuery || activeFilters) ? 'inline-block' : 'none';
 };
+
+// Initialize on page load
+injectStyles();
+injectHTML();
+loadPapaParse(initializeEventTool);
+
 
 })();
