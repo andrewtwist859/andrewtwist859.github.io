@@ -16,7 +16,7 @@
     }
 
     h1 {
-      text-align: center;
+      text-align: left;
       font-family: 'source-serif-pro';
       font-weight: 700;
     }
@@ -36,7 +36,7 @@
     }
 
     #filter-toggle-button {
-      background-color: #007BFF;
+      background-color: #440099;
       color: white;
       border: none;
       padding: 10px 20px;
@@ -45,7 +45,7 @@
     }
 
     #filter-toggle-button:hover {
-      background-color: #0056b3;
+      background-color: #7100FF;
     }
 
     .hidden {
@@ -82,7 +82,7 @@
 .filter-header {
   font-family: 'source-serif-pro';
   font-weight: 700;
-  color: #007BFF;
+  color: #440099;
   margin-bottom: 5px; /* Add spacing between header and options */
 }
 
@@ -122,8 +122,20 @@
       font-size: 1em;
     }
 
+    .link {
+      margin: 2rem 0rem;
+    }
+
+    .link-icon svg {
+  width: 16px; /* Adjust size as needed */
+  height: 16px;
+  fill: #7100FF; /* Set the desired fill color */
+  margin-left: 0.1rem; /* Add spacing between text and icon */
+  vertical-align: middle; /* Align icon with text */
+}
+
     .event a {
-      color: #007BFF;
+      color: #7100FF;
       text-decoration: none;
       font-weight: bold;
     }
@@ -142,7 +154,7 @@
     .flag {
       padding: 5px 10px;
       font-size: 0.8em;
-      background-color: #007BFF;
+      background-color: #7100FF;
       color: white;
       border-radius: 20px;
       text-wrap: nowrap;
@@ -341,7 +353,13 @@
                 <p>Location: <span>${Location}</span></p>
               </div>
               <p>${Description}</p>
-              <a href="${URL}" target="_blank">${URL ? 'Learn more' : ''}</a>
+              <div class="link">
+              <a href="${URL}" target="_blank">${URL ? 'Book your place' : ''}</a>
+              <span class="link-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+      <path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/>
+    </svg>
+              </div>
               <div class="flags">
                 <span class="flag">${EventType}</span>
                 ${Tags ? Tags.split(',').map(tag => `<span class="flag">${tag.trim()}</span>`).join('') : ''}
