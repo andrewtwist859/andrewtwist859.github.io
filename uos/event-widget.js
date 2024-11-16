@@ -307,15 +307,7 @@
       allEventTypes.forEach(type => document.getElementById('event-type-filter').innerHTML += filterInput(type));
       allLocations.forEach(loc => document.getElementById('location-filter').innerHTML += filterInput(loc));
 
-      // Attach event listeners to new filters
       attachFilterListeners();
-    }
-
-    function attachFilterListeners() {
-      document.getElementById('search-input').addEventListener('input', filterAndRenderEvents);
-      document.querySelectorAll('#filters-container input[type="checkbox"]').forEach(input => {
-        input.addEventListener('change', filterAndRenderEvents);
-      });
     }
 
     function filterInput(value) {
@@ -385,30 +377,39 @@
 
       document.getElementById('clear-filters-button').style.display = searchQuery || activeFilters ? 'inline-block' : 'none';
     }
+
+    function toggleFilters() {
+      const filtersContainer = document.getElementById('filters-container');
+      filtersContainer.classList.toggle('hidden');
+    }
+
+    // Attach global event listeners
+    document.getElementById('filter-toggle-button').addEventListener('click', toggleFilters);
+    document.getElementById('search-input').addEventListener('input', filterAndRenderEvents);
   });
-  `;
+`;
 
-  function injectStyles(styles) {
-    const styleSheet = document.createElement('style');
-    styleSheet.type = 'text/css';
-    styleSheet.innerText = styles;
-    document.head.appendChild(styleSheet);
-  }
+function injectStyles(styles) {
+  const styleSheet = document.createElement('style');
+  styleSheet.type = 'text/css';
+  styleSheet.innerText = styles;
+  document.head.appendChild(styleSheet);
+}
 
-  function injectWidget() {
-    const container = document.createElement('div');
-    container.innerHTML = html;
-    document.body.appendChild(container);
+function injectWidget() {
+  const container = document.createElement('div');
+  container.innerHTML = html;
+  document.body.appendChild(container);
 
-    const script = document.createElement('script');
-    script.textContent = js;
-    document.body.appendChild(script);
+  const script = document.createElement('script');
+  script.textContent = js;
+  document.body.appendChild(script);
 
-    const papaScript = document.createElement('script');
-    papaScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js';
-    document.head.appendChild(papaScript);
-  }
+  const papaScript = document.createElement('script');
+  papaScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js';
+  document.head.appendChild(papaScript);
+}
 
-  injectStyles(css);
-  injectWidget();
+injectStyles(css);
+injectWidget();
 })();
