@@ -225,21 +225,37 @@
     `;
   
     const html = `
-      <div class="container">
-        <h1>Event Listings</h1>
-        <input type="search" id="search-input" placeholder="Search by title..." oninput="filterAndRenderEvents()">
-        <div class="filter-toggle">
-          <button id="filter-toggle-button" onclick="toggleFilters()">Filter Events</button>
-          <button id="clear-filters-button" onclick="clearAllFilters()">Clear All Filters</button>
-        </div>
-        <div id="filters-container" class="hidden">
+        <div class="container">
+    <h1>Event Listings</h1>
+    <input type="search" id="search-input" placeholder="Search by title..." oninput="filterAndRenderEvents()">
+    
+    <!-- Filter Toggle -->
+    <div class="filter-toggle">
+      <button id="filter-toggle-button">Filter Events</button>
+      <button id="clear-filters-button" style="display: none;">Clear All Filters</button>
+    </div>
+
+    <!-- Filters -->
+    <div id="filters-container" class="hidden">
+      <div class="filters-container">
+        <div class="filter-section">
+          <div class="filter-header">Filter by Tags:</div>
           <div id="tags-filter" class="filter-options"></div>
+        </div>
+        <div class="filter-section">
+          <div class="filter-header">Filter by Event Type:</div>
           <div id="event-type-filter" class="filter-options"></div>
+        </div>
+        <div class="filter-section">
+          <div class="filter-header">Filter by Location:</div>
           <div id="location-filter" class="filter-options"></div>
         </div>
-        <div id="events-container"></div>
-        <button id="show-more-button" style="display: none;" onclick="showMoreEvents()">Show More Events</button>
       </div>
+    </div>
+
+    <div id="events-container"></div>
+    <button id="show-more-button" style="display: none;" onclick="showMoreEvents()">Show More Events</button>
+  </div>
     `;
   
     const js = `
@@ -310,6 +326,12 @@
       attachFilterListeners();
     }
 
+    function attachFilterListeners() {
+      document.querySelectorAll('#filters-container input[type="checkbox"]').forEach(input => {
+        input.addEventListener('change', filterAndRenderEvents);
+      });
+    }
+
     function filterInput(value) {
       return \`<label><input type="checkbox" value="\${value}"> \${value}</label>\`;
     }
@@ -358,9 +380,6 @@
                 <p>Location: <span>\${Location}</span></p>
               </div>
               <p>\${Description}</p>
-              <div class="link">
-                <a href="\${URL}">Book your place</a>
-              </div>
               <div class="flags">
                 <span class="flag">\${EventType}</span>
                 \${Tags ? Tags.split(',').map(tag => \`<span class="flag">\${tag.trim()}</span>\`).join('') : ''}
@@ -371,21 +390,20 @@
       });
     }
 
-    function toggleClearFiltersButton() {
-      const searchQuery = document.getElementById('search-input').value.trim();
-      const activeFilters = document.querySelectorAll('#filters-container input:checked').length > 0;
-
-      document.getElementById('clear-filters-button').style.display = searchQuery || activeFilters ? 'inline-block' : 'none';
-    }
-
     function toggleFilters() {
       const filtersContainer = document.getElementById('filters-container');
       filtersContainer.classList.toggle('hidden');
     }
 
-    // Attach global event listeners
+    function clearAllFilters() {
+      document.querySelectorAll('.filter-options input[type="checkbox"]').forEach(input => (input.checked = false));
+      document.getElementById('search-input').value = '';
+      filterAndRenderEvents();
+    }
+
+    // Attach global listeners
     document.getElementById('filter-toggle-button').addEventListener('click', toggleFilters);
-    document.getElementById('search-input').addEventListener('input', filterAndRenderEvents);
+    document.getElementById('clear-filters-button').addEventListener('click', clearAllFilters);
   });
 `;
 
