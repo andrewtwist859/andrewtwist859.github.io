@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://use.typekit.net/jou7rrz.css">
+  <title>PhD Listings</title>
+  <style>
+    body {
+      font-family: 'source-sans-pro';
+      background-color: #f8f9fa;
+      color: #333;
+    }
+
+    #listings-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1em;
+      margin: 20px auto;
+      max-width: 800px;
+    }
+
+    .card {
+      background: #fff;
+      padding: 2rem;
+    }
+
+    .card h2 {
+      margin: 0 0 10px;
+      font-family: 'source-serif-pro';
+      font-size: 1.4rem;
+    }
+
+    .card h2.toggle-title {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.card h2.toggle-title:hover {
+  text-decoration: underline;
+  color: #440099; /* Optional: Change hover color for better UX */
+}
+
+    .details h3 {
+      margin: 0 0 10px;
+      font-family: 'source-serif-pro';
+      font-size: 1.1rem;
+    }
+
+    .card .tags {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .card .toggle {
+        padding-left: 0;
+        font-size: 1rem;
+        font-weight: bold;
+        text-decoration: underline;
+    }
+
+    .tag {
+      background-color: #440099;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-size: 0.85em;
+    }
+
+    .details {
+      display: none;
+      margin-top: 10px;
+    }
+
+    .details h3 {
+      margin-top: 10px;
+    }
+
+    .details p {
+      margin-bottom: 1rem;
+    }
+
+    p.info {
+      margin: 0.5rem 0rem;
+    }
+
+    button.toggle {
+      background: none;
+      border: none;
+      color: #440099;
+      cursor: pointer;
+      text-align: left;
+      margin-top: 1rem;
+    }
+
+    .enquiry {
+      display: inline-block;
+      margin-top: 10px;
+      background-color: #440099;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      text-decoration: none;
+      text-align: center;
+    }
+
+    .enquiry:hover {
+      background-color: #0056b3;
+    }
+
+    #pagination {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .pagination-btn {
+  background-color: #440099;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  margin: 2px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.pagination-btn.active {
+  background-color: #440099;
+}
+
+.pagination-btn:disabled {
+  background-color: #1F0F4D;
+  cursor: not-allowed;
+}
+
+    #search-box {
+      margin: 20px auto;
+      max-width: 800px;
+    }
+
+    #search-box input {
+      width: 60%;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-right: 5px;
+    }
+
+    #search-box button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #440099;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #search-box button:hover {
+      background-color: #440099;
+    }
+    #clear-search {
+  color: red;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+#clear-search:hover {
+  color: darkred;
+}
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+</head>
+<body>
+    <div id="search-box">
+        <input type="text" id="search-input" placeholder="Search by PhD title..." onkeydown="handleEnter(event)" />
+        <button onclick="performSearch()">Search</button>
+        <p id="clear-search-container" style="display: none;">
+          <a href="#" id="clear-search" onclick="clearSearch(event)">Clear Search Results</a>
+        </p>
+      </div>      
+  <div id="listings-container"></div>
+  <div id="pagination"></div>
+
+  <script>
+    const spreadsheetUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTzraDRKYlCA4SRjRs2v3FZUC-DWxMWw-vcb4lC1D2mlRwci6lAu-RUoRMRZ4w3bJO9aglqv_bPBYum/pub?output=csv';
+    const itemsPerPage = 10;
+    let currentPage = 1;
+    let data = [];
+    let filteredData = [];
+
+    async function fetchData() {
+      return new Promise((resolve, reject) => {
+        Papa.parse(spreadsheetUrl, {
+          download: true,
+          header: true,
+          complete: function(results) {
+            resolve(results.data.filter(entry => entry.Status && entry.Status.trim() === 'Published'));
+          },
+          error: function(error) {
+            reject(error);
+          }
+        });
+      });
+    }
+
+    function renderPagination() {
+  const totalPages = Math.ceil(filteredData.length / itemsPerPage);
+  const paginationDiv = document.getElementById('pagination');
+  paginationDiv.innerHTML = '';
+
+  if (filteredData.length === 0) return; // No results, no pagination needed
+
+  // Show results summary
+  const startResult = (currentPage - 1) * itemsPerPage + 1;
+  const endResult = Math.min(currentPage * itemsPerPage, filteredData.length);
+  const totalResults = filteredData.length;
+
+  const resultsSummary = document.createElement('p');
+  resultsSummary.textContent = `Results ${startResult} - ${endResult} of ${totalResults}`;
+  resultsSummary.style.textAlign = 'center';
+  resultsSummary.style.fontWeight = 'bold';
+  resultsSummary.style.marginBottom = '10px';
+
+  paginationDiv.appendChild(resultsSummary);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
+  // First Button
+  const firstBtn = document.createElement('button');
+  firstBtn.className = 'pagination-btn';
+  firstBtn.textContent = '<<';
+  firstBtn.disabled = currentPage === 1;
+  firstBtn.onclick = () => {
+    currentPage = 1;
+    renderCards();
+    renderPagination();
+    scrollToTop();
+  };
+  paginationDiv.appendChild(firstBtn);
+
+  // Prev Button
+  const prevBtn = document.createElement('button');
+  prevBtn.className = 'pagination-btn';
+  prevBtn.textContent = 'Prev';
+  prevBtn.disabled = currentPage === 1;
+  prevBtn.onclick = () => {
+    currentPage--;
+    renderCards();
+    renderPagination();
+    scrollToTop();
+  };
+  paginationDiv.appendChild(prevBtn);
+
+  // Pagination numbers
+  const maxVisibleButtons = 5;
+  let startPage = Math.max(1, currentPage - Math.floor(maxVisibleButtons / 2));
+  let endPage = Math.min(totalPages, startPage + maxVisibleButtons - 1);
+
+  if (endPage - startPage < maxVisibleButtons - 1) {
+    startPage = Math.max(1, endPage - maxVisibleButtons + 1);
+  }
+
+  for (let i = startPage; i <= endPage; i++) {
+    const btn = document.createElement('button');
+    btn.className = 'pagination-btn';
+    btn.textContent = i;
+    btn.disabled = i === currentPage;
+    btn.classList.toggle('active', i === currentPage);
+    btn.onclick = () => {
+      currentPage = i;
+      renderCards();
+      renderPagination();
+      scrollToTop();
+    };
+    paginationDiv.appendChild(btn);
+  }
+
+  // Next Button
+  const nextBtn = document.createElement('button');
+  nextBtn.className = 'pagination-btn';
+  nextBtn.textContent = 'Next';
+  nextBtn.disabled = currentPage === totalPages;
+  nextBtn.onclick = () => {
+    currentPage++;
+    renderCards();
+    renderPagination();
+    scrollToTop();
+  };
+  paginationDiv.appendChild(nextBtn);
+
+  // Last Button
+  const lastBtn = document.createElement('button');
+  lastBtn.className = 'pagination-btn';
+  lastBtn.textContent = '>>';
+  lastBtn.disabled = currentPage === totalPages;
+  lastBtn.onclick = () => {
+    currentPage = totalPages;
+    renderCards();
+    renderPagination();
+    scrollToTop();
+  };
+  paginationDiv.appendChild(lastBtn);
+}
+
+
+
+
+    function renderCards() {
+  const container = document.getElementById('listings-container');
+  container.innerHTML = '';
+
+  const start = (currentPage - 1) * itemsPerPage;
+  const end = start + itemsPerPage;
+  const pageData = filteredData.slice(start, end);
+
+  if (pageData.length === 0) {
+    container.innerHTML = '<p>No data to display.</p>';
+    return;
+  }
+
+  pageData.forEach(item => {
+    const title = item.Title || 'No Title Available';
+    const department = item.Department || 'No Department Available';
+    const funding = item.Funding || 'No Funding Information';
+    const supervisor = item.Supervisors || 'No Supervisor Listed';
+    const deadline = item.Deadline || 'No Deadline Provided';
+
+    const details = (item.Details || 'No further details available.')
+      .split('\n')
+      .map(para => `<p>${para.trim()}</p>`)
+      .join('');
+
+    const fundingNotes = item['Funding Notes'] || 'No additional funding notes.';
+    const enquiryText = item['Enquiry Text'] || 'Enquire Here';
+    const enquiryUrl = item['Enquiry URL'] || '#';
+
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `
+      <h2 class="toggle-title">${title}</h2>
+      <div class="tags">
+        ${funding.split(',').map(tag => `<span class="tag">${tag.trim()}</span>`).join('')}
+      </div>
+      <p class="info"><strong>Department:</strong> ${department}</p>
+      <p class="info"><strong>Supervisor:</strong> ${supervisor}</p>
+      <p class="info"><strong>${deadline}</strong></p>
+      <button class="toggle" onclick="toggleDetails(this)">Show details</button>
+      <div class="details">
+        <h3>Details</h3>
+        ${details}
+        <h3>Funding Notes</h3>
+        <p>${fundingNotes}</p>
+        <a class="enquiry" href="${enquiryUrl}" target="_blank">${enquiryText}</a>
+      </div>
+    `;
+    container.appendChild(card);
+
+    // Add click event to the H2 title to toggle details
+    card.querySelector('.toggle-title').addEventListener('click', function () {
+      toggleDetails(card.querySelector('.toggle'));
+    });
+  });
+}
+
+function toggleDetails(button) {
+  const details = button.nextElementSibling;
+  const isVisible = details.style.display === 'block';
+  details.style.display = isVisible ? 'none' : 'block';
+  button.textContent = isVisible ? 'Show details' : 'Hide details';
+}
+
+function performSearch() {
+  const searchInput = document.getElementById('search-input').value.toLowerCase();
+  filteredData = data.filter(item => item.Title && item.Title.toLowerCase().includes(searchInput));
+
+  currentPage = 1; // Reset to first page for new results
+
+  if (filteredData.length === 0) {
+    document.getElementById('listings-container').innerHTML = '<p>No results found.</p>';
+    document.getElementById('pagination').innerHTML = ''; // Clear pagination for empty results
+    document.getElementById('clear-search-container').style.display = 'none'; // Hide clear search link
+    return;
+  }
+
+  renderCards();
+  renderPagination();
+  document.getElementById('clear-search-container').style.display = 'block'; // Show clear search link
+}
+
+
+
+function clearSearch(event) {
+  event.preventDefault(); // Prevent default link behavior
+  document.getElementById('search-input').value = '';
+  filteredData = [...data]; // Reset to full dataset
+  currentPage = 1; // Reset to first page
+  renderCards();
+  renderPagination();
+  document.getElementById('clear-search-container').style.display = 'none'; // Hide clear search link
+}
+
+
+    function handleEnter(event) {
+      if (event.key === 'Enter') {
+        performSearch();
+      }
+    }
+
+    fetchData().then(fetchedData => {
+      data = fetchedData;
+      filteredData = [...data];
+      renderCards();
+      renderPagination();
+    }).catch(error => {
+      console.error('Failed to fetch data:', error);
+    });
+  </script>
+</body>
+</html>
