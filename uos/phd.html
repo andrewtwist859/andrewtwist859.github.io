@@ -187,7 +187,7 @@
 </head>
 <body>
     <div id="search-box">
-      <input type="search" id="search-input" placeholder="Search by project keyword, department or supervisor..." onkeydown="handleEnter(event)" />
+      <input type="search" id="search-input" placeholder="Search by project keyword, department or supervisor..." enterkeyhint="search" onkeydown="handleEnter(event)" />
         <button onclick="performSearch()">Search</button>
         <p id="clear-search-container" style="display: none;">
           <a href="#" id="clear-search" onclick="clearSearch(event)">Clear Search Results</a>
