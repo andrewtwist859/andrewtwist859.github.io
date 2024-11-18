@@ -176,7 +176,7 @@
 </head>
 <body>
     <div id="search-box">
-        <input type="text" id="search-input" placeholder="Search by PhD title..." onkeydown="handleEnter(event)" />
+      <input type="text" id="search-input" placeholder="Search by project keyword, department or supervisor..." onkeydown="handleEnter(event)" />
         <button onclick="performSearch()">Search</button>
         <p id="clear-search-container" style="display: none;">
           <a href="#" id="clear-search" onclick="clearSearch(event)">Clear Search Results</a>
@@ -380,9 +380,16 @@ function toggleDetails(button) {
 
 function performSearch() {
   const searchInput = document.getElementById('search-input').value.toLowerCase();
-  filteredData = data.filter(item => item.Title && item.Title.toLowerCase().includes(searchInput));
 
-  currentPage = 1; // Reset to first page for new results
+  // Search across Title, Department, and Supervisors fields
+  filteredData = data.filter(item => {
+    const titleMatch = item.Title && item.Title.toLowerCase().includes(searchInput);
+    const departmentMatch = item.Department && item.Department.toLowerCase().includes(searchInput);
+    const supervisorMatch = item.Supervisors && item.Supervisors.toLowerCase().includes(searchInput);
+    return titleMatch || departmentMatch || supervisorMatch;
+  });
+
+  currentPage = 1; // Reset to the first page for new results
 
   if (filteredData.length === 0) {
     document.getElementById('listings-container').innerHTML = '<p>No results found.</p>';
