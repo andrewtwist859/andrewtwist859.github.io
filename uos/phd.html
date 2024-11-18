@@ -187,7 +187,7 @@
 </head>
 <body>
     <div id="search-box">
-      <input type="text" id="search-input" placeholder="Search by project keyword, department or supervisor..." onkeydown="handleEnter(event)" />
+      <input type="search" id="search-input" placeholder="Search by project keyword, department or supervisor..." onkeydown="handleEnter(event)" />
         <button onclick="performSearch()">Search</button>
         <p id="clear-search-container" style="display: none;">
           <a href="#" id="clear-search" onclick="clearSearch(event)">Clear Search Results</a>
@@ -441,6 +441,14 @@ function clearSearch(event) {
     }).catch(error => {
       console.error('Failed to fetch data:', error);
     });
+
+    function handleEnter(event) {
+  if (event.key === 'Enter') {
+    event.preventDefault(); // Prevent form submission (if applicable)
+    performSearch(); // Trigger the search function
+    document.getElementById('search-input').blur(); // Dismiss the keyboard
+  }
+}
   </script>
 </body>
 </html>
