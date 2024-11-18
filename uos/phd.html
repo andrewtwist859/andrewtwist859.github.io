@@ -117,7 +117,7 @@
       margin-top: 20px;
     }
     .pagination-btn {
-  background-color: #440099;
+  background-color: #440099; /* Default button color */
   color: white;
   border: none;
   padding: 5px 10px;
@@ -126,12 +126,17 @@
   cursor: pointer;
 }
 
+.pagination-btn:hover:not(:disabled) {
+  background-color: #5a00cc; /* Slightly lighter hover for enabled buttons */
+}
+
 .pagination-btn.active {
-  background-color: #440099;
+  background-color: #7100FF; /* Active page color */
 }
 
 .pagination-btn:disabled {
-  background-color: #1F0F4D;
+  background-color: #cccccc; /* Disabled button color */
+  color: #666666; /* Grey out text for disabled buttons */
   cursor: not-allowed;
 }
 
