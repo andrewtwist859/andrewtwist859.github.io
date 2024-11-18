@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://use.typekit.net/jou7rrz.css">
+  <title>Event Filters and Cards</title>
+  <style>
+    /* Global Styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f4f4f4;
+    }
+
+    h1, h2, h3, h4 {
+        font-family: 'source-serif-pro';
+    }
+
+    .wrapper {
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: 800px 1fr; /* 800px cards + remaining space for filters */
+      gap: 20px;
+    }
+
+    /* Sidebar Styles */
+    .filters {
+      background: #fff;
+      padding: 15px;
+      height: fit-content;
+    }
+
+    .filter-section {
+      margin-bottom: 20px;
+    }
+
+    .filter-section h4 {
+      margin-bottom: 10px;
+      font-size: 16px;
+      font-family: 'source-serif-pro';
+    }
+
+    .filter-section label {
+      display: flex;
+      align-items: center;
+      margin-bottom: 5px;
+    }
+
+    .filter-section input[type="checkbox"] {
+      margin-right: 10px;
+    }
+
+    /* Event Card Styles */
+    .event-cards {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 20px; /* Space between cards */
+    }
+
+    .event-card {
+      display: flex;
+      gap: 15px;
+      padding: 15px;
+      background-color: #f9f9f9;
+      align-items: flex-start;
+      min-height: 100px;
+      transition: transform 0.2s;
+    }
+
+    .event-thumbnail img {
+      width: 120px;
+      height: 80px;
+      object-fit: cover;
+    }
+
+    .event-details {
+      flex: 1;
+    }
+
+    .event-card h3 {
+      margin-top: 0;
+      margin-bottom: 5px;
+      font-size: 1.4em;
+    }
+
+    .event-card p {
+      margin: 5px 0;
+      font-size: 0.9em;
+      color: #555;
+      display: flex;
+      align-items: center;
+    }
+
+    /* Search Bar Styles */
+    .search-bar {
+      max-width: 780px;
+      margin-bottom: 20px;
+    }
+
+    .search-bar input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .active-filters {
+      margin: 10px 0;
+    }
+
+    .active-filters span {
+      display: inline-block;
+      background-color: #6200ea;
+      color: #fff;
+      padding: 5px 10px;
+      border-radius: 5px;
+      margin-right: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <h2>Prospective student events</h2>
+    <!-- Search Bar -->
+    <div class="search-bar">
+      <input type="text" id="search-input" placeholder="Filter by keyword or UCAS code">
+    </div>
+
+    <!-- Active Filters -->
+    <div class="active-filters" id="active-filters">
+      <!-- Active filters will be shown here -->
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+      <!-- Event Cards -->
+      <main class="event-cards">
+        <div class="event-card" data-category="undergraduate postgraduate on-campus campus-tour">
+            <div class="event-thumbnail">
+              <img src="campus.jpg" alt="Event Thumbnail">
+            </div>
+            <div class="event-details">
+              <h3><a href="/">Campus Tour</a></h3>
+              <p><span>📅</span> Wednesday 13 November 2024</p>
+              <p><span>📍</span> On-campus</p>
+            </div>
+          </div>
+          <div class="event-card" data-category="undergraduate online sheffield-live">
+            <div class="event-thumbnail">
+              <img src="studyabroad.jpg" alt="Event Thumbnail">
+            </div>
+            <div class="event-details">
+              <h3><a href="/">Sheffield Live: Placements and Study abroad</a></h3>
+              <p><span>📅</span> Wednesday 20 November 2024, 12 noon to 1pm</p>
+              <p><span>📍</span> Online</p>
+            </div>
+          </div>
+        <div class="event-card" data-category="undergraduate on-campus open-day">
+          <div class="event-thumbnail">
+            <img src="open.jpg" alt="Event Thumbnail">
+          </div>
+          <div class="event-details">
+            <h3><a href="/">Undergraduate Open Day</a></h3>
+            <p><span>📅</span> Saturday 23 November 2024</p>
+            <p><span>📍</span> On-campus</p>
+          </div>
+        </div>
+        <div class="event-card" data-category="postgraduate international online open-day">
+            <div class="event-thumbnail">
+              <img src="pg.jpg" alt="Event Thumbnail">
+            </div>
+            <div class="event-details">
+              <h3><a href="/">Postgraduate online open day</a></h3>
+              <p><span>📅</span> Wednesday 27 November 2024</p>
+              <p><span>📍</span> Online</p>
+            </div>
+          </div>
+          <div class="event-card" data-category="undergraduate on-campus campus-tour">
+            <div class="event-thumbnail">
+              <img src="campus.jpg" alt="Event Thumbnail">
+            </div>
+            <div class="event-details">
+              <h3><a href="/">Campus Tour</a></h3>
+              <p><span>📅</span> Wedneday 27 November 2024</p>
+              <p><span>📍</span> On-campus</p>
+            </div>
+          </div>
+          <div class="event-card" data-category="undergraduate postgraduate phd international online sheffield-live">
+            <div class="event-thumbnail">
+              <img src="why.jpg" alt="Event Thumbnail">
+            </div>
+            <div class="event-details">
+              <h3><a href="/">Sheffield Live: Why choose to study at Sheffield?</a></h3>
+              <p><span>📅</span> Wednesday 4 December 2024</p>
+              <p><span>📍</span> Online</p>
+            </div>
+          </div>
+        <!-- More cards... -->
+      </main>
+
+      <!-- Sidebar Filters -->
+      <aside class="filters">
+        <div class="filter-section">
+          <h4>Study type</h4>
+          <label><input type="checkbox" value="undergraduate"> Undergraduate</label>
+          <label><input type="checkbox" value="postgraduate"> Postgraduate Taught</label>
+          <label><input type="checkbox" value="phd"> PhD</label>
+          <label><input type="checkbox" value="international"> International</label>
+        </div>
+
+        <div class="filter-section">
+          <h4>Event type</h4>
+          <label><input type="checkbox" value="on-campus"> On-campus</label>
+          <label><input type="checkbox" value="online"> Online</label>
+        </div>
+
+        <div class="filter-section">
+          <h4>Event format</h4>
+          <label><input type="checkbox" value="open-day"> Open day</label>
+          <label><input type="checkbox" value="campus-tour"> Campus tour</label>
+          <label><input type="checkbox" value="sheffield-live">Sheffield Live</label>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <script>
+    const searchInput = document.getElementById('search-input');
+    const activeFiltersContainer = document.getElementById('active-filters');
+    const eventCards = document.querySelectorAll('.event-card');
+    const filterCheckboxes = document.querySelectorAll('input[type="checkbox"]');
+
+    // Filter by search
+    searchInput.addEventListener('input', () => {
+      const searchText = searchInput.value.toLowerCase();
+      filterEvents(searchText);
+    });
+
+    // Filter by checkboxes
+    filterCheckboxes.forEach(checkbox => {
+      checkbox.addEventListener('change', () => {
+        updateActiveFilters();
+        filterEvents();
+      });
+    });
+
+    // Update active filters
+    function updateActiveFilters() {
+      activeFiltersContainer.innerHTML = '';
+      filterCheckboxes.forEach(checkbox => {
+        if (checkbox.checked) {
+          const filterBadge = document.createElement('span');
+          filterBadge.textContent = checkbox.value + ' ✕';
+          filterBadge.addEventListener('click', () => {
+            checkbox.checked = false;
+            filterBadge.remove();
+            filterEvents();
+          });
+          activeFiltersContainer.appendChild(filterBadge);
+        }
+      });
+    }
+
+    // Core filtering logic
+    function filterEvents(searchText = searchInput.value.toLowerCase()) {
+      const activeFilters = [...filterCheckboxes].filter(cb => cb.checked).map(cb => cb.value);
+      eventCards.forEach(card => {
+        const title = card.querySelector('h3').textContent.toLowerCase();
+        const categories = card.dataset.category.split(' ');
+        const matchesFilters = activeFilters.every(filter => categories.includes(filter));
+        const matchesSearch = title.includes(searchText);
+        card.style.display = matchesFilters && matchesSearch ? 'flex' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>
