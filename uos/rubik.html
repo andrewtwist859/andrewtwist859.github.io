@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS 3D Rubik's Cube</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: #1a1a1a;
+      margin: 0;
+      perspective: 1000px; /* Perspective for 3D depth */
+    }
+
+    .rubiks-cube {
+      position: relative;
+      width: 180px; /* Cube face size */
+      height: 180px;
+      transform-style: preserve-3d;
+      transform: rotateX(-30deg) rotateY(-30deg);
+      animation: spin 10s infinite linear;
+    }
+
+    .face {
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      background: #000; /* Black face base */
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+    }
+
+    .face div {
+      width: 58px; /* Adjusted to fill cube faces better */
+      height: 58px;
+      background: #ccc;
+      border-radius: 8px;
+      border: 1px solid #000; /* Subtle sticker border */
+    }
+
+    /* Positioning each face */
+    .front { transform: rotateY(0deg) translateZ(90px); }
+    .back { transform: rotateY(180deg) translateZ(90px); }
+    .left { transform: rotateY(-90deg) translateZ(90px); }
+    .right { transform: rotateY(90deg) translateZ(90px); }
+    .top { transform: rotateX(90deg) translateZ(90px); }
+    .bottom { transform: rotateX(-90deg) translateZ(90px); }
+
+    /* Colors for each face */
+    .front div { background: #7100FF; }
+    .back div { background: #7100FF; }
+    .left div { background: #7100FF; }
+    .right div { background: #7100FF; }
+    .top div { background: #7100FF; }
+    .bottom div { background: #7100FF; }
+
+    @keyframes spin {
+      from { transform: rotateX(-30deg) rotateY(0deg); }
+      to { transform: rotateX(-30deg) rotateY(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <div class="rubiks-cube">
+    <div class="face front">
+      <div></div><div></div><div></div>
+      <div></div><div></div><div></div>
+      <div></div><div></div><div></div>
+    </div>
+    <div class="face back">
+      <div></div><div></div><div></div>
+      <div></div><div></div><div></div>
+      <div></div><div></div><div></div>
+    </div>
+    <div class="face left">
+      <div></div><div></div><div></div>
+      <div></div><div></div><div></div>
+      <div></div><div></div><div></div>
+    </div>
+    <div class="face right">
+      <div></div><div></div><div></div>
+      <div></div><div></div><div></div>
+      <div></div><div></div><div></div>
+    </div>
+    <div class="face top">
+      <div></div><div></div><div></div>
+      <div></div><div></div><div></div>
+      <div></div><div></div><div></div>
+    </div>
+    <div class="face bottom">
+      <div></div><div></div><div></div>
+      <div></div><div></div><div></div>
+      <div></div><div></div><div></div>
+    </div>
+  </div>
+</body>
+</html>
