@@ -139,7 +139,7 @@
 }
 
     .event a {
-      color: #7100FF;
+      color: #440099;
       text-decoration: none;
       font-weight: bold;
     }
