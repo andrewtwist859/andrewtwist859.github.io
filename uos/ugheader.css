@@ -72,6 +72,16 @@ span.award-dark {
             margin-top: 1rem;
         }
 
+        span.entry {
+            padding: 5px 10px;
+            background-color: #7100FF;
+            color: white;
+            border-radius: 20px;
+            text-wrap: nowrap;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
         .info-section {
             display: flex;
             flex-wrap: wrap;
