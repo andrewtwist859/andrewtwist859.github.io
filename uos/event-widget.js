@@ -133,7 +133,7 @@
     .link-icon svg {
   width: 16px; /* Adjust size as needed */
   height: 16px;
-  fill: #7100FF; /* Set the desired fill color */
+  fill: #440099; /* Set the desired fill color */
   margin-left: 0.1rem; /* Add spacing between text and icon */
   vertical-align: middle; /* Align icon with text */
 }
