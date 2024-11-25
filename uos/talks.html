@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://use.typekit.net/yph5bbq.css">
+  <title>Google Sheet Data Display</title>
+  <style>
+    body {
+      font-family: 'source-sans-pro', sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    #search-box,
+    #listings-container {
+        width: 100%; /* Take full width of the parent container */
+        max-width: 800px; /* Constrain the maximum width */
+        padding: 0 10px; /* Add padding to ensure content doesn't touch screen edges */
+        box-sizing: border-box; /* Include padding and borders in width calculation */
+    }
+
+    #search-box {
+        margin-bottom: 1rem;
+        text-align: left; /* Align content to the left */
+    }
+
+    #search-box input {
+      width: 90%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+
+   
+
+    .faculty-group {
+      margin-bottom: 40px;
+    }
+
+    .faculty-header {
+      font-size: 1.5rem;
+      font-family: 'source-serif-pro';
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 10px;
+    }
+
+    .listing-card {
+        width: 100%; /* Cards stretch to full width */
+        max-width: 800px; /* Constrain to max width for larger screens */
+    box-sizing: border-box; /* Include padding/border in the total width */   
+      background: white;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    .listing-card h2 {
+      font-size: 1.2rem;
+      font-family: 'source-serif-pro';
+      font-weight: 700;
+      margin: 0 0 0;
+      color: #333;
+    }
+
+    .listing-card p {
+      margin: 5px 0;
+      color: #666;
+    }
+
+    p.directions {
+        margin-top: 1rem;
+    }
+
+    .listing-card a {
+      color: #440099;
+      text-decoration: underline;
+      font-weight: 700;
+    }
+
+    .listing-card a:hover {
+      text-decoration: underline;
+    }
+
+    .flag {
+  color: #7100FF;
+  font-weight: bold;
+  display: inline-block;
+}
+
+/* Responsive Design for smaller devices */
+@media (max-width: 768px) {
+  #listings-container,
+  .listing-card {
+    max-width: 100%; /* Override max width on small devices to ensure cards don't overflow */
+    padding: 0; /* Remove extra padding for a cleaner fit */
+  }
+
+  #search-box {
+    text-align: left;
+    padding: 0;
+  }
+
+  #search-box input {
+    width: 100%;
+    max-width: 90%;
+  }
+
+  .listing-card {
+    padding: 15px; /* Reduce padding inside cards for smaller screens */
+  }
+
+  .faculty-header {
+    font-size: 1.2rem; /* Slightly smaller header text */
+  }
+
+  .listing-card h2 {
+    font-size: 1rem; /* Reduce title font size */
+  }
+
+  .listing-card p,
+  .listing-card a {
+    font-size: 14px; /* Smaller text and link size for better fit */
+  }
+}
+
+  </style>
+</head>
+<body>
+  <div id="search-box">
+    <input type="text" id="search-input" placeholder="Search by subject, faculty or building" />
+  </div>
+  <div id="listings-container"></div>
+
+  <!-- Include Papaparse library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+  <script>
+    const SHEET_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQuPE-P6_okmP7p7kBb551q26JMaKiEWq3HnuSLXHh0C0298s5B9NieMi6fnKtosyuu9TVpis04rIJM/pub?output=csv';
+
+    let eventsData = [];
+
+    Papa.parse(SHEET_URL, {
+      download: true,
+      header: true,
+      complete: function(results) {
+        eventsData = results.data;
+        displayGroupedData(eventsData);
+      }
+    });
+
+    function displayGroupedData(data) {
+      const container = document.getElementById('listings-container');
+      container.innerHTML = '';
+
+      const groupedData = data.reduce((groups, item) => {
+        if (!item.Faculty || !item.Subject) return groups;
+        if (!groups[item.Faculty]) groups[item.Faculty] = [];
+        groups[item.Faculty].push(item);
+        return groups;
+      }, {});
+
+      Object.keys(groupedData).forEach(faculty => {
+        const facultyGroup = document.createElement('div');
+        facultyGroup.className = 'faculty-group';
+
+        const facultyHeader = document.createElement('div');
+        facultyHeader.className = 'faculty-header';
+        facultyHeader.textContent = faculty;
+        facultyGroup.appendChild(facultyHeader);
+
+        groupedData[faculty].forEach(item => {
+  const card = document.createElement('div');
+  card.className = 'listing-card';
+
+  const title = document.createElement('h2');
+  title.textContent = item.Subject;
+  card.appendChild(title);
+
+  const time = document.createElement('p');
+  time.textContent = item.Time;
+  card.appendChild(time);
+
+  const location = document.createElement('p');
+  if (item.Flag) {
+    location.innerHTML = `
+      <span class="flag">
+        <strong>${item.Flag}:</strong>
+      </span> ${item.Room} - ${item.Building}`;
+  } else {
+    location.textContent = `${item.Room} - ${item.Building}`;
+  }
+  card.appendChild(location);
+
+  const links = document.createElement('p');
+  links.className = 'directions';
+  links.innerHTML = `
+    Get directions via 
+    <a href="${item['Google Maps']}" target="_blank">Google Maps</a> / 
+    <a href="${item['Apple Maps']}" target="_blank">Apple Maps</a>
+  `;
+  card.appendChild(links);
+
+  facultyGroup.appendChild(card);
+});
+
+        container.appendChild(facultyGroup);
+      });
+    }
+
+    const searchInput = document.getElementById('search-input');
+searchInput.addEventListener('input', function () {
+  const searchTerm = searchInput.value.toLowerCase();
+  const filteredData = eventsData.filter(event =>
+    event.Subject.toLowerCase().includes(searchTerm) || // Match Subject
+    (event.Faculty && event.Faculty.toLowerCase().includes(searchTerm)) || // Match Faculty
+    (event.Building && event.Building.toLowerCase().includes(searchTerm)) // Match Building
+  );
+  displayGroupedData(filteredData);
+});
+  </script>
+</body>
+</html>
