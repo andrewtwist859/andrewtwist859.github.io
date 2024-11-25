@@ -144,108 +144,92 @@
   <script>
     const SHEET_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQuPE-P6_okmP7p7kBb551q26JMaKiEWq3HnuSLXHh0C0298s5B9NieMi6fnKtosyuu9TVpis04rIJM/pub?output=csv';
 
-    let eventsData = [];
+let eventsData = [];
 
-    Papa.parse(SHEET_URL, {
-      download: true,
-      header: true,
-      complete: function(results) {
-        eventsData = results.data;
-        displayGroupedData(eventsData);
+// Fetch and parse data from Google Sheets
+Papa.parse(SHEET_URL, {
+  download: true,
+  header: true,
+  complete: function(results) {
+    eventsData = results.data;
+    displayGroupedData(eventsData); // Display all data initially
+  }
+});
+
+function displayGroupedData(data) {
+  const container = document.getElementById('listings-container');
+  container.innerHTML = '';
+
+  const groupedData = data.reduce((groups, item) => {
+    if (!item.Faculty || !item.Subject) return groups;
+    if (!groups[item.Faculty]) groups[item.Faculty] = [];
+    groups[item.Faculty].push(item);
+    return groups;
+  }, {});
+
+  Object.keys(groupedData).forEach(faculty => {
+    const facultyGroup = document.createElement('div');
+    facultyGroup.className = 'faculty-group';
+
+    const facultyHeader = document.createElement('div');
+    facultyHeader.className = 'faculty-header';
+    facultyHeader.textContent = faculty;
+    facultyGroup.appendChild(facultyHeader);
+
+    groupedData[faculty].forEach(item => {
+      const card = document.createElement('div');
+      card.className = 'listing-card';
+
+      const title = document.createElement('h2');
+      title.textContent = item.Subject;
+      card.appendChild(title);
+
+      const time = document.createElement('p');
+      time.textContent = item.Time;
+      card.appendChild(time);
+
+      const location = document.createElement('p');
+      if (item.Flag) {
+        location.innerHTML = `
+          <span class="flag">
+            <strong>${item.Flag}:</strong>
+          </span> ${item.Room} - ${item.Building}`;
+      } else {
+        location.textContent = `${item.Room} - ${item.Building}`;
       }
+      card.appendChild(location);
+
+      const links = document.createElement('p');
+      links.className = 'directions';
+      links.innerHTML = `
+        Get directions via 
+        <a href="${item['Google Maps']}" target="_blank">Google Maps</a> / 
+        <a href="${item['Apple Maps']}" target="_blank">Apple Maps</a>
+      `;
+      card.appendChild(links);
+
+      facultyGroup.appendChild(card);
     });
 
-    function displayGroupedData(data) {
-      const container = document.getElementById('listings-container');
-      container.innerHTML = '';
+    container.appendChild(facultyGroup);
+  });
+}
 
-      const groupedData = data.reduce((groups, item) => {
-        if (!item.Faculty || !item.Subject) return groups;
-        if (!groups[item.Faculty]) groups[item.Faculty] = [];
-        groups[item.Faculty].push(item);
-        return groups;
-      }, {});
-
-      Object.keys(groupedData).forEach(faculty => {
-        const facultyGroup = document.createElement('div');
-        facultyGroup.className = 'faculty-group';
-
-        const facultyHeader = document.createElement('div');
-        facultyHeader.className = 'faculty-header';
-        facultyHeader.textContent = faculty;
-        facultyGroup.appendChild(facultyHeader);
-
-        groupedData[faculty].forEach(item => {
-  const card = document.createElement('div');
-  card.className = 'listing-card';
-
-  const title = document.createElement('h2');
-  title.textContent = item.Subject;
-  card.appendChild(title);
-
-  const time = document.createElement('p');
-  time.textContent = item.Time;
-  card.appendChild(time);
-
-  const location = document.createElement('p');
-  if (item.Flag) {
-    location.innerHTML = `
-      <span class="flag">
-        <strong>${item.Flag}:</strong>
-      </span> ${item.Room} - ${item.Building}`;
-  } else {
-    location.textContent = `${item.Room} - ${item.Building}`;
-  }
-  card.appendChild(location);
-
-  const links = document.createElement('p');
-  links.className = 'directions';
-  links.innerHTML = `
-    Get directions via 
-    <a href="${item['Google Maps']}" target="_blank">Google Maps</a> / 
-    <a href="${item['Apple Maps']}" target="_blank">Apple Maps</a>
-  `;
-  card.appendChild(links);
-
-  facultyGroup.appendChild(card);
-});
-
-        container.appendChild(facultyGroup);
-      });
-    }
-
-    const searchInput = document.getElementById('search-input');
-searchInput.addEventListener('input', function () {
-  const searchTerm = searchInput.value.toLowerCase();
+function performSearch() {
+  const searchTerm = document.getElementById('search-input').value.toLowerCase();
   const filteredData = eventsData.filter(event =>
-    event.Subject.toLowerCase().includes(searchTerm) || // Match Subject
-    (event.Faculty && event.Faculty.toLowerCase().includes(searchTerm)) || // Match Faculty
-    (event.Building && event.Building.toLowerCase().includes(searchTerm)) // Match Building
+    event.Subject.toLowerCase().includes(searchTerm) ||
+    (event.Faculty && event.Faculty.toLowerCase().includes(searchTerm)) ||
+    (event.Building && event.Building.toLowerCase().includes(searchTerm))
   );
   displayGroupedData(filteredData);
-});
-  </script>
-  <script>
-     function handleEnter(event) {
-          if (event.key === 'Enter') {
-            performSearch();
-          }
-        }
-    
-        fetchData().then(fetchedData => {
-          data = fetchedData;
-          filteredData = [...data];
-          renderCards();
-          renderPagination();
-        }).catch(error => {
-          console.error('Failed to fetch data:', error);
-        });
-    
-        function handleEnter(event) {
+}
+
+function handleEnter(event) {
   if (event.key === 'Enter') {
-    event.preventDefault(); // Prevent default behavior (e.g., form submission)
-    performSearch(); // Trigger the search function
-    document.getElementById('search-input').blur(); // Dismiss the keyboard on mobile
+    event.preventDefault(); // Prevent default behavior
+    performSearch(); // Trigger search
+    document.getElementById('search-input').blur(); // Dismiss keyboard
   }
 }
   </script>
