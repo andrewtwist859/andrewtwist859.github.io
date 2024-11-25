@@ -242,12 +242,12 @@ searchInput.addEventListener('input', function () {
         });
     
         function handleEnter(event) {
-      if (event.key === 'Enter') {
-        event.preventDefault(); // Prevent form submission (if applicable)
-        performSearch(); // Trigger the search function
-        document.getElementById('search-input').blur(); // Dismiss the keyboard
-      }
-    }
+  if (event.key === 'Enter') {
+    event.preventDefault(); // Prevent default behavior (e.g., form submission)
+    performSearch(); // Trigger the search function
+    document.getElementById('search-input').blur(); // Dismiss the keyboard on mobile
+  }
+}
   </script>
 </body>
 </html>
