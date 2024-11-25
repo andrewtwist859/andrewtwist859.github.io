@@ -135,7 +135,7 @@
 </head>
 <body>
   <div id="search-box">
-    <input type="text" id="search-input" placeholder="Search by subject, faculty or building" />
+    <input type="search" id="search-input" placeholder="Search by subject, faculty or building" enterkeyhint="search" onkeydown="handleEnter(event)" />
   </div>
   <div id="listings-container"></div>
 
@@ -224,6 +224,15 @@ searchInput.addEventListener('input', function () {
   );
   displayGroupedData(filteredData);
 });
+  </script>
+  <script>
+    function handleEnter(event) {
+      if (event.key === 'Enter') {
+        event.preventDefault(); // Prevent form submission (if applicable)
+        performSearch(); // Trigger the search function
+        document.getElementById('search-input').blur(); // Dismiss the keyboard
+      }
+    }
   </script>
 </body>
 </html>
