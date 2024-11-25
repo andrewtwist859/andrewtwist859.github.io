@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.typekit.net/yph5bbq.css">
+    <title>Scholarship Search Tool</title>
+    <style>
+        body {
+            font-family: 'source-sans-pro', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #F8F8F9;
+        }
+
+        .container {
+            max-width: 800px;;
+            padding: 20px;
+            border-radius: 8px;
+            color: #000;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            font-family: 'source-serif-pro';
+            font-weight: 700;
+        }
+
+        input[type="text"] {
+            width: 90%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .filters {
+            margin-bottom: 20px;
+        }
+
+        .filters h3 {
+            font-family: 'source-serif-pro';
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .filters label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .filters button {
+            margin-top: 10px;
+            padding: 10px 15px;
+            background-color: #6200ee;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .filters button:hover {
+            background-color: #3700b3;
+        }
+
+        .scholarship-card {
+            padding: 20px;
+            margin-bottom: 20px;
+            background-color: #fff;
+        }
+
+        .scholarship-card h2 {
+            font-family: 'source-serif-pro';
+            font-weight: 700;
+            font-size: 1.5em;
+            margin: 0 0 10px 0;
+        }
+
+        .scholarship-card p {
+            margin: 10px 0;
+            line-height: 1.5;
+        }
+
+        .scholarship-card a {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 15px;
+            background-color: #6200ee;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+
+        .scholarship-card a:hover {
+            background-color: #3700b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>PhD Research Council scholarships</h2>
+        <input type="text" id="search" placeholder="Search scholarships..." />
+        <div class="filters">
+            <h3>Filter by Research Council:</h3>
+            <div id="filter-options"></div>
+            <button id="clear-filters">Clear Search/Filters</button>
+        </div>
+        <div id="scholarships-list"></div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sheetURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTDqeMHGvE1xmrPVYDcWMl-u0STUqn_DHGiA1XMfZ09PFCZAcFkJXbhlGHvoZ-kYM_QOHzajjdkpMo7/pub?output=csv";
+            const scholarshipsList = document.getElementById('scholarships-list');
+            const searchInput = document.getElementById('search');
+            const filterOptions = document.getElementById('filter-options');
+            const clearFiltersButton = document.getElementById('clear-filters');
+
+            let scholarships = [];
+            let selectedFilters = [];
+
+            // Fetch and parse the Google Sheet
+            Papa.parse(sheetURL, {
+                download: true,
+                header: true,
+                complete: function(results) {
+                    scholarships = results.data;
+                    displayFilterOptions(scholarships);
+                    displayScholarships(scholarships);
+
+                    // Search functionality
+                    searchInput.addEventListener('input', applyFilters);
+
+                    // Filter functionality
+                    filterOptions.addEventListener('change', (e) => {
+                        if (e.target.checked) {
+                            selectedFilters.push(e.target.value);
+                        } else {
+                            selectedFilters = selectedFilters.filter(
+                                (filter) => filter !== e.target.value
+                            );
+                        }
+                        applyFilters();
+                    });
+
+                    // Clear filters functionality
+                    clearFiltersButton.addEventListener('click', () => {
+                        searchInput.value = '';
+                        selectedFilters = [];
+                        const checkboxes = filterOptions.querySelectorAll('input[type="checkbox"]');
+                        checkboxes.forEach((checkbox) => (checkbox.checked = false));
+                        displayScholarships(scholarships);
+                    });
+                },
+            });
+
+            // Function to display scholarships
+            function displayScholarships(filteredScholarships) {
+                scholarshipsList.innerHTML = '';
+                filteredScholarships.forEach((scholarship) => {
+                    const card = document.createElement('div');
+                    card.classList.add('scholarship-card');
+
+                    // Split description into paragraphs
+                    const paragraphs = scholarship.Description.split("\n").map((paragraph) => paragraph.trim()).filter((p) => p);
+
+                    // Check if the URL is provided
+                    const hasLink = scholarship.URL && scholarship.URL.trim() !== '';
+
+                    card.innerHTML = `
+                        <h2>${scholarship.Name}</h2>
+                        <p><strong>Research Council:</strong> ${scholarship["Research council"]}</p>
+                        <div class="description">
+                            ${paragraphs.map((p) => `<p>${p}</p>`).join('')}
+                        </div>
+                        ${
+                            hasLink
+                                ? `<a href="${scholarship.URL}" target="_blank">${scholarship["Link text"] || "Learn More"}</a>`
+                                : ''
+                        }
+                    `;
+
+                    scholarshipsList.appendChild(card);
+                });
+            }
+
+            // Function to display filter options
+            function displayFilterOptions(scholarships) {
+                const councils = Array.from(
+                    new Set(scholarships.map((scholarship) => scholarship["Research council"]))
+                ).filter((council) => council);
+
+                filterOptions.innerHTML = councils
+                    .map(
+                        (council) => `
+                            <label>
+                                <input type="checkbox" value="${council}" /> ${council}
+                            </label>
+                        `
+                    )
+                    .join('');
+            }
+
+            // Function to apply filters and search
+            function applyFilters() {
+                const searchTerm = searchInput.value.toLowerCase();
+
+                const filtered = scholarships.filter((scholarship) => {
+                    const matchesSearch = scholarship.Name.toLowerCase().includes(searchTerm) ||
+                        scholarship.Description.toLowerCase().includes(searchTerm);
+                    const matchesFilters = selectedFilters.length === 0 || selectedFilters.includes(scholarship["Research council"]);
+                    return matchesSearch && matchesFilters;
+                });
+
+                displayScholarships(filtered);
+            }
+        });
+    </script>
+</body>
+</html>
