@@ -11,6 +11,10 @@
       background-color: #f5f5f5;
       margin: 0;
       padding: 20px;
+    }
+
+    .subject-talks {
+      max-width: 800px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -96,8 +100,9 @@
 }
 
 #clear-search {
-  margin-top: 10px;
-  text-align: left; /* Align the button to the left */
+  align-self: flex-start; /* Align this specific element to the left */
+  width: fit-content; /* Shrink the container to fit the button */
+  margin-left: 0.75rem;
 }
 
 #clear-search button {
@@ -154,6 +159,7 @@
   </style>
 </head>
 <body>
+  <div class="subject-talks">
   <div id="search-box">
     <input type="search" id="search-input" placeholder="Search by subject, faculty or building" enterkeyhint="search" onkeydown="handleEnter(event)" />
   </div>
@@ -161,7 +167,7 @@
     <button onclick="clearSearch()">Clear Search</button>
   </div>
   <div id="listings-container"></div>
-
+</div>
   <!-- Include Papaparse library -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
   <script>
