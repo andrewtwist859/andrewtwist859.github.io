@@ -226,7 +226,22 @@ searchInput.addEventListener('input', function () {
 });
   </script>
   <script>
-    function handleEnter(event) {
+     function handleEnter(event) {
+          if (event.key === 'Enter') {
+            performSearch();
+          }
+        }
+    
+        fetchData().then(fetchedData => {
+          data = fetchedData;
+          filteredData = [...data];
+          renderCards();
+          renderPagination();
+        }).catch(error => {
+          console.error('Failed to fetch data:', error);
+        });
+    
+        function handleEnter(event) {
       if (event.key === 'Enter') {
         event.preventDefault(); // Prevent form submission (if applicable)
         performSearch(); // Trigger the search function
