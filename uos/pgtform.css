@@ -161,7 +161,7 @@
   content: ""; /* Create the inner circle */
   width: 1.5rem; /* Set fixed width */
   height: 1.5rem; /* Set fixed height */
-  background-color: black; /* Inner dot color */
+  background-color: #440099; /* Inner dot color */
   border-radius: 50%; /* Ensure it's a circle */
   position: absolute; /* Position it within the radio button */
   top: 50%; /* Center vertically */
@@ -188,4 +188,69 @@
 
     button:hover {
       background: #005bb5;
+    }
+
+    .dropdown-container {
+        position: relative;
+        width: 100%;
+      }
+      
+      #country-search {
+        width: 80%;
+        padding: 10px;
+        border: 2px solid black;
+        border-radius: 4px 4px 0 0;
+        font-size: 16px;
+      }
+      
+      #country-select {
+        width: 80%;
+        padding: 10px;
+        border: none;
+        border-radius: 0 0 4px 4px;
+        font-size: 16px;
+        display: none; /* Hide dropdown by default */
+        position: absolute;
+        z-index: 100;
+        background: white;
+        max-height: 200px; /* Restrict height for scrolling */
+        overflow-y: auto;
+      }
+      
+      #country-select option {
+          margin-bottom: 1rem;
+      }
+
+      .button-link {
+        display: inline-flex;
+        align-items: center;
+        background-color: #440099; /* Light blue background */
+        color: white; /* Dark text color */
+        padding: 10px 20px;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+    }
+
+    .button-link.next {
+        background-color: #3BD4AE;
+        color: #145041;
+    }
+
+    .button-link.next:hover {
+        background-color: #3ee7bd;
+    }
+    
+    .button-link:hover {
+        background-color: #7001FC; /* Darker shade of blue on hover */
+    }
+
+      @media (max-width: 768px) {
+    
+      #country-select {
+        display: block;
+        position: static;
+      }
+    
     }
