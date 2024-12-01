@@ -185,7 +185,7 @@
   content: ""; /* Create the inner circle */
   width: 1.5rem; /* Set fixed width */
   height: 1.5rem; /* Set fixed height */
-  background-color: black; /* Inner dot color */
+  background-color: #440099; /* Inner dot color */
   border-radius: 50%; /* Ensure it's a circle */
   position: absolute; /* Position it within the radio button */
   top: 50%; /* Center vertically */
@@ -223,7 +223,6 @@
   width: 80%;
   padding: 10px;
   border: 2px solid black;
-  border-radius: 4px 4px 0 0;
   font-size: 16px;
 }
 
@@ -231,7 +230,6 @@
   width: 80%;
   padding: 10px;
   border: none;
-  border-radius: 0 0 4px 4px;
   font-size: 16px;
   display: none; /* Hide dropdown by default */
   position: absolute;
@@ -245,50 +243,17 @@
     margin-bottom: 1rem;
 }
 
-@media (max-width: 768px) {
-    body {
-        padding: 0;
-    }
-
-  #country-select {
-    display: block;
-    position: static;
-  }
-  #country-search {
-    display: none;
-  }
-}
-
 
 
   </style>
 </head>
 <body>
   <div class="form-container">
-    <h2>Section B: Contact details</h2>
+    <h2>Section C: Nationality and Residency</h2>
+    <p>This information will be used to determine the rate of fee you will be charged if offered a place to study. Documentary evidence may be required in support of this information, and in some cases we may contact you for further information.</p>
+    <p>Items marked with an asterisk * must be completed.</p>
     <form id="personal-details-form">
-    <label for="email">Email<span class="required"> (required)</span></label>
-    <input type="email" id="email" name="email" required>
-
-    <label for="confirm-email">Confirm email: <span class="required">(required)</span></label>
-    <input type="email" id="confirm-email" name="confirm-email" required>
-    <h2>Postal address</h2>
-    <label for="address-line1">Address Line 1: <span class="required">(required)</span></label>
-      <input type="text" id="address-line1" name="address-line1" required>
-
-      <label for="address-line2">Address Line 2:</label>
-      <input type="text" id="address-line2" name="address-line2">
-
-      <label for="address-line3">Address Line 3:</label>
-      <input type="text" id="address-line3" name="address-line3">
-
-      <label for="town-city">Town / City: <span class="required">(required)</span></label>
-      <input type="text" id="town-city" name="town-city" required>
-
-      <label for="county">County / Region / Area:</label>
-      <input type="text" id="county" name="county">
-
-      <label for="country-search">Country: <span class="required">(required)</span></label>
+      <label for="country-search">What is the country of your nationality? <span class="required">(required)</span></label>
 <div class="dropdown-container">
   <input type="text" id="country-search" placeholder="Type to search..." autocomplete="off">
   <select id="country-select" name="country" size="5">
@@ -296,28 +261,52 @@
     <!-- Options will be dynamically populated -->
   </select>
 </div>
-<label for="postcode">UK Post Code (*UK only):</label>
-      <input type="text" id="postcode" name="postcode" required>
-
-      <label for="phone-number">Telephone Number:</label>
-      <input type="tel" id="phone-number" name="phone-number" required>
-      <p>When should we use this address to contact you?</p>
-      <div class="radio-container">
-        <label>
-          <input type="radio" id="address-always" name="contact-timing" value="always" required> Always
-        </label>
-        <label>
-          <input type="radio" id="address-dates" name="contact-timing" value="date-range"> From this date, to this date
-        </label>
-      </div>
-
-      <div id="date-range-fields" style="display: none; margin-top: 20px;">
-        <label for="from-date">From:</label>
-        <input type="date" id="from-date" name="from-date">
-
-        <label for="to-date">To:</label>
-        <input type="date" id="to-date" name="to-date">
-      </div>
+<label for="country-search">If you have a second nationality please select the country here:</span></label>
+<div class="dropdown-container">
+  <input type="text" id="country-search" placeholder="Type to search..." autocomplete="off">
+  <select id="country-select" name="country" size="5">
+    <option value="">Select a country</option>
+    <!-- Options will be dynamically populated -->
+  </select>
+</div>
+<label for="country-search">Which country were you born in? <span class="required">(required)</span></label>
+<div class="dropdown-container">
+  <input type="text" id="country-search" placeholder="Type to search..." autocomplete="off">
+  <select id="country-select" name="country" size="5">
+    <option value="">Select a country</option>
+    <!-- Options will be dynamically populated -->
+  </select>
+</div>
+<label for="country-search">Which country are you a permanent resident of? <span class="required">(required)</span></label>
+<div class="dropdown-container">
+  <input type="text" id="country-search" placeholder="Type to search..." autocomplete="off">
+  <select id="country-select" name="country" size="5">
+    <option value="">Select a country</option>
+    <!-- Options will be dynamically populated -->
+  </select>
+</div>
+<p>Have you been living outside of this country during the last 3 years? <span class="required">(required)</span></p>
+        <div class="radio-container">
+          <label>
+            <input type="radio" id="lived-elsewhere-yes" name="elsewhere-changed" value="yes">
+            Yes
+          </label>
+          <label>
+            <input type="radio" id="lived-elsewhere-no" name="elsewhere-changed" value="no">
+            No
+          </label>
+        </div>
+<p>Are you currently living in the UK? <span class="required">(required)</span></p>
+        <div class="radio-container">
+          <label>
+            <input type="radio" id="living-uk-yes" name="living-changed" value="yes">
+            Yes
+          </label>
+          <label>
+            <input type="radio" id="living-uk-no" name="living-changed" value="no">
+            No
+          </label>
+        </div>
 
     </form>
   </div>

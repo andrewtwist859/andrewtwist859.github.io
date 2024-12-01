@@ -185,7 +185,7 @@
   content: ""; /* Create the inner circle */
   width: 1.5rem; /* Set fixed width */
   height: 1.5rem; /* Set fixed height */
-  background-color: black; /* Inner dot color */
+  background-color: #440099; /* Inner dot color */
   border-radius: 50%; /* Ensure it's a circle */
   position: absolute; /* Position it within the radio button */
   top: 50%; /* Center vertically */
@@ -245,80 +245,85 @@
     margin-bottom: 1rem;
 }
 
-@media (max-width: 768px) {
-    body {
-        padding: 0;
-    }
-
-  #country-select {
-    display: block;
-    position: static;
-  }
-  #country-search {
-    display: none;
-  }
-}
-
 
 
   </style>
 </head>
 <body>
   <div class="form-container">
-    <h2>Section B: Contact details</h2>
+    <h2>Section D: English Language</h2>
+        <p>
+        Please supply details of your English language education below. If you have more than one English qualification they can be added after saving. You can upload evidence of your English language qualifications or post them to us at a later date. 
+        </p>
+        <p>
+        Items marked with an asterisk <font color="red">*</font> must be completed.
+        </p>
+        <hr />
     <form id="personal-details-form">
-    <label for="email">Email<span class="required"> (required)</span></label>
-    <input type="email" id="email" name="email" required>
-
-    <label for="confirm-email">Confirm email: <span class="required">(required)</span></label>
-    <input type="email" id="confirm-email" name="confirm-email" required>
-    <h2>Postal address</h2>
-    <label for="address-line1">Address Line 1: <span class="required">(required)</span></label>
-      <input type="text" id="address-line1" name="address-line1" required>
-
-      <label for="address-line2">Address Line 2:</label>
-      <input type="text" id="address-line2" name="address-line2">
-
-      <label for="address-line3">Address Line 3:</label>
-      <input type="text" id="address-line3" name="address-line3">
-
-      <label for="town-city">Town / City: <span class="required">(required)</span></label>
-      <input type="text" id="town-city" name="town-city" required>
-
-      <label for="county">County / Region / Area:</label>
-      <input type="text" id="county" name="county">
-
-      <label for="country-search">Country: <span class="required">(required)</span></label>
-<div class="dropdown-container">
-  <input type="text" id="country-search" placeholder="Type to search..." autocomplete="off">
-  <select id="country-select" name="country" size="5">
-    <option value="">Select a country</option>
-    <!-- Options will be dynamically populated -->
-  </select>
-</div>
-<label for="postcode">UK Post Code (*UK only):</label>
-      <input type="text" id="postcode" name="postcode" required>
-
-      <label for="phone-number">Telephone Number:</label>
-      <input type="tel" id="phone-number" name="phone-number" required>
-      <p>When should we use this address to contact you?</p>
-      <div class="radio-container">
-        <label>
-          <input type="radio" id="address-always" name="contact-timing" value="always" required> Always
-        </label>
-        <label>
-          <input type="radio" id="address-dates" name="contact-timing" value="date-range"> From this date, to this date
-        </label>
-      </div>
-
-      <div id="date-range-fields" style="display: none; margin-top: 20px;">
-        <label for="from-date">From:</label>
-        <input type="date" id="from-date" name="from-date">
-
-        <label for="to-date">To:</label>
-        <input type="date" id="to-date" name="to-date">
-      </div>
-
+        <label for="first-language">What is your first language? <span class="required">(required)</span></label>
+        <input type="text" id="first-language" name="first-language" required>
+        <p>Was your previous education taught in English?</p>
+        <div class="radio-container">
+          <label>
+            <input type="radio" id="taught-english-yes" name="taught-english" value="yes">
+            Yes
+          </label>
+          <label>
+            <input type="radio" id="taught-english-no" name="taught-english" value="no">
+            No
+          </label>
+        </div>
+        <div id="taught-other-language" style="display: none; margin-top: 20px;">
+            <label for="other-language">
+                Please enter the language you were educated in           
+            </label>
+            <input type="text" id="other-language" name="other-language" class="dynamic-input"></div>
+            <label for="qualification">Please indicate if you have one of the following English language qualifications:</label>
+            <select id="qualification" name="qualification" required>
+              <option value="">Select an option</option>
+              <option value="a-level-english-language">A-Level in English Language</option>
+              <option value="aes-study-group-providers">AES from Study Group Providers</option>
+              <option value="as-level-english-language">AS-Level in English Language</option>
+              <option value="cambridge-cae-post-2015">Cambridge Certificate in Advanced English (CAE) Post January 2015</option>
+              <option value="cambridge-cae-pre-2015">Cambridge Certificate in Advanced English (CAE) Pre January 2015</option>
+              <option value="cambridge-cpe-post-2015">Cambridge Certificate of Proficiency in English (CPE) Post January 2015</option>
+              <option value="cambridge-cpe-pre-2015">Cambridge Certificate of Proficiency in English (CPE) Pre January 2015</option>
+              <option value="cie-o-level">Cambridge International Exams (CIE) O-Level</option>
+              <option value="gcse-english-language">GCSE in English Language</option>
+              <option value="ielts">IELTS</option>
+              <option value="ielts-indicator">IELTS Indicator</option>
+              <option value="ielts-ukvi">IELTS for UKVI</option>
+              <option value="igcse-english-language">IGCSE in English Language</option>
+              <option value="issa">ISSA</option>
+              <option value="ib-higher-english-a">International Baccalaureate (IB) Higher Level English Language Syllabus A</option>
+              <option value="ib-standard-english">International Baccalaureate (IB) Standard Level English</option>
+              <option value="ib-standard-english-a">International Baccalaureate (IB) Standard Level English Language Syllabus A</option>
+              <option value="irish-higher-english">Irish Leaving Certificate English (Higher Level)</option>
+              <option value="irish-ordinary-english">Irish Leaving Certificate English (Ordinary Level)</option>
+              <option value="irish-leaving-english">Irish Leaving Certificate in English</option>
+              <option value="languagecert-b2-communicator-lrw">LanguageCert International ESOL B2 Communicator (Listening, Reading, Writing)</option>
+              <option value="languagecert-b2-communicator-speaking">LanguageCert International ESOL B2 Communicator (Speaking)</option>
+              <option value="languagecert-c1-expert-lrw">LanguageCert International ESOL C1 Expert (Listening, Reading, Writing)</option>
+              <option value="languagecert-c1-expert-speaking">LanguageCert International ESOL C1 Expert (Speaking)</option>
+              <option value="languagecert-selt-b2">LanguageCert International ESOL SELT B2</option>
+              <option value="languagecert-selt-c1">LanguageCert International ESOL SELT C1</option>
+              <option value="ncuk-english-test">NCUK English Language Test</option>
+              <option value="other">Other</option>
+              <option value="pte-academic">Pearson Test of English (PTE) Academic</option>
+              <option value="pte-academic-ukvi">Pearson Test of English (PTE) Academic UKVI</option>
+              <option value="scottish-advanced-higher-english">Scottish Advanced Higher English</option>
+              <option value="scottish-higher-english">Scottish Higher English</option>
+              <option value="scottish-qualifications">Scottish Qualifications Certificate</option>
+              <option value="sheffield-international-college">Sheffield International College</option>
+              <option value="toefl-special-home-edition">TOEFL - Internet Based Special Home Edition Test</option>
+              <option value="toefl-internet-based">TOEFL - Internet Based Test</option>
+              <option value="trinity-ise-ii">Trinity ISE II</option>
+              <option value="trinity-ise-iii">Trinity ISE III</option>
+              <option value="trinity-ise-iv">Trinity ISE IV</option>
+              <option value="uk-applicant">UK Applicant</option>
+              <option value="usept">USEPT</option>
+            </select>
+            
     </form>
   </div>
   <script>
@@ -399,5 +404,14 @@ document.getElementById('address-always').addEventListener('change', function ()
   document.getElementById('date-range-fields').style.display = 'none'; // Hide questions
 });
   </script> 
+  <script>
+    document.getElementById('taught-english-no').addEventListener('change', function () {
+  document.getElementById('taught-other-language').style.display = 'block'; // Show questions
+});
+
+document.getElementById('taught-english-yes').addEventListener('change', function () {
+  document.getElementById('taught-other-language').style.display = 'none'; // Hide questions
+});
+  </script>
 </body>
 </html>
