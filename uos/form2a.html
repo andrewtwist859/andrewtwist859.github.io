@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://use.typekit.net/yph5bbq.css">
+  <title>Form Mockup</title>
+  <style>
+    body {
+      font-family: 'source-sans-pro', sans-serif;
+      line-height: 1.6;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 20px;
+      font-size: 18px;
+    }
+
+    p {
+        margin-top: 0rem;
+    }
+
+    .form-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1, h2 {
+      font-family: 'source-serif-pro';
+      font-weight: 700;  
+      margin-top: 1rem;
+      color: #333;
+      margin-bottom: 0.5rem;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .required {
+      color: red;
+    }
+
+    input, select {
+      width: 80%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 2px solid #000;
+    }
+
+    input, select, textarea {
+  font-size: 1rem; /* Ensures no zooming on mobile */
+  line-height: 1.4; /* Provides good readability */
+}
+
+    input:focus, select:focus, textarea:focus, .radio-container input[type="radio"]:focus {
+  outline: 3px solid #3BD4AE; /* GDS yellow outline */
+  outline-offset: 2px; /* Adds space between the element and the outline */
+  border-color: black; /* Ensures the black border remains intact */
+}
+
+
+    .dob-container {
+  display: flex;
+  gap: 10px; /* Adds space between day, month, and year fields */
+}
+
+.dob-field {
+  display: flex;
+  flex-direction: column; /* Stacks label and input vertically */
+  align-items: center
+}
+
+.dob-label {
+  font-size: 14px;
+  text-align: center;
+}
+
+.dob-input {
+  display: block;
+  padding: 5px;
+  font-size: 16px;
+  text-align: center;
+  border: 2px solid black;
+  outline: none;
+  width: 3rem; /* Default size for small inputs */
+  margin-bottom: 0rem;
+  padding: 0.5rem 0rem;
+}
+
+.dob-input.large {
+  width: 6rem; /* Wider input for the year field */
+}
+
+.dob-input:focus {
+  border-color: #005ea5; /* Blue border on focus */
+  box-shadow: 0 0 0 2px #b3d9ff; /* Light blue highlight effect */
+}
+
+.dob-input::placeholder {
+  color: #999; /* Placeholder text color */
+}
+
+.checkbox-container {
+  display: inline-flex; /* Aligns checkbox and label in one line */
+  align-items: center; /* Vertically aligns the checkbox with the label */
+  gap: 10px; /* Adds space between checkbox and label text */
+  margin-bottom: 20px;
+}
+
+.checkbox-container input[type="checkbox"] {
+  appearance: none; /* Removes default checkbox styling */
+  width: 2.5rem; /* Set fixed width */
+  height: 2.5rem; /* Set fixed height */
+  border: 3px solid black; /* Adds a black border */
+  position: relative; /* Allows positioning of the checkmark */
+  outline: none;
+  cursor: pointer; /* Pointer cursor for interactivity */
+}
+
+.checkbox-container input[type="checkbox"]::before {
+  content: ""; /* Placeholder for the checkmark */
+  width: 0.6rem; /* Checkmark width */
+  height: 1rem; /* Checkmark height */
+  border: 3px solid black; /* Checkmark line styling */
+  border-width: 0 3px 3px 0; /* Creates the "tick" shape */
+  position: absolute;
+  top: 40%; /* Centers vertically relative to the checkbox */
+  left: 50%; /* Centers horizontally relative to the checkbox */
+  transform: translate(-50%, -50%) rotate(45deg) scale(0); /* Hidden initially */
+  transition: transform 0.2s ease-in-out; /* Smooth animation */
+}
+
+.checkbox-container input[type="checkbox"]:checked::before {
+  transform: translate(-50%, -50%) rotate(45deg) scale(1); /* Show the checkmark */
+}
+
+.checkbox-container input[type="checkbox"]:focus {
+  outline: 3px solid #3BD4AE; /* GDS yellow focus outline */
+  outline-offset: 2px; /* Adds space between checkbox and focus outline */
+}
+
+
+
+
+
+    .previous-details-question {
+  margin-bottom: 15px;
+  text-align: left; /* Ensures the question text is left-aligned */
+}
+
+.radio-container {
+  display: flex;
+  flex-direction: column; /* Stacks the radio buttons vertically */
+  gap: 10px; /* Adds consistent spacing between the labels */
+  align-items: flex-start; /* Ensures everything is left-aligned */
+  margin-bottom: 2rem;
+}
+
+.radio-container label {
+  display: inline-flex; /* Use inline-flex for better inline element alignment */
+  align-items: center; /* Ensures the text aligns vertically with the radio button */
+  gap: 10px; /* Adds spacing between radio button and label */
+  font-size: 16px; /* Ensures readable text size */
+}
+
+.radio-container input[type="radio"] {
+  appearance: none; /* Remove default styling */
+  width: 2.5rem; /* Set fixed width */
+  height: 2.5rem; /* Set fixed height */
+  border: 3px solid black; /* Create the outer circle */
+  border-radius: 50%; /* Ensure the button is circular */
+  outline: none;
+  display: inline-block;
+  margin: 0; /* Remove default margin */
+  position: relative; /* Enable positioning for the inner circle */
+}
+
+.radio-container input[type="radio"]::before {
+  content: ""; /* Create the inner circle */
+  width: 1.5rem; /* Set fixed width */
+  height: 1.5rem; /* Set fixed height */
+  background-color: black; /* Inner dot color */
+  border-radius: 50%; /* Ensure it's a circle */
+  position: absolute; /* Position it within the radio button */
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%) scale(0); /* Start with no inner dot */
+  transition: transform 0.2s ease-in-out; /* Add a smooth animation */
+}
+
+.radio-container input[type="radio"]:checked::before {
+  transform: translate(-50%, -50%) scale(1); /* Show the inner dot when selected */
+}
+
+
+
+    button {
+      background: #0073e6;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background: #005bb5;
+    }
+
+    .dropdown-container {
+  position: relative;
+  width: 100%;
+}
+
+#country-search {
+  width: 80%;
+  padding: 10px;
+  border: 2px solid black;
+  border-radius: 4px 4px 0 0;
+  font-size: 16px;
+}
+
+#country-select {
+  width: 80%;
+  padding: 10px;
+  border: none;
+  border-radius: 0 0 4px 4px;
+  font-size: 16px;
+  display: none; /* Hide dropdown by default */
+  position: absolute;
+  z-index: 100;
+  background: white;
+  max-height: 200px; /* Restrict height for scrolling */
+  overflow-y: auto;
+}
+
+#country-select option {
+    margin-bottom: 1rem;
+}
+
+
+
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>Contact details</h2>
+    <form id="personal-details-form">
+    <label for="email">Email<span class="required"> (required)</span></label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="confirm-email">Confirm email: <span class="required">(required)</span></label>
+    <input type="email" id="confirm-email" name="confirm-email" required>
+    <h2>Postal address</h2>
+    <label for="address-line1">Address Line 1: <span class="required">(required)</span></label>
+      <input type="text" id="address-line1" name="address-line1" required>
+
+      <label for="address-line2">Address Line 2:</label>
+      <input type="text" id="address-line2" name="address-line2">
+
+      <label for="address-line3">Address Line 3:</label>
+      <input type="text" id="address-line3" name="address-line3">
+
+      <label for="town-city">Town / City: <span class="required">(required)</span></label>
+      <input type="text" id="town-city" name="town-city" required>
+
+      <label for="county">County / Region / Area:</label>
+      <input type="text" id="county" name="county">
+
+      <label for="country-search">Country: <span class="required">(required)</span></label>
+<div class="dropdown-container">
+  <input type="text" id="country-search" placeholder="Type to search..." autocomplete="off">
+  <select id="country-select" name="country" size="5">
+    <option value="">Select a country</option>
+    <!-- Options will be dynamically populated -->
+  </select>
+</div>
+<label for="postcode">UK Post Code (*UK only):</label>
+      <input type="text" id="postcode" name="postcode" required>
+
+      <label for="phone-number">Telephone Number:</label>
+      <input type="tel" id="phone-number" name="phone-number" required>
+      <p>When should we use this address to contact you?</p>
+      <div class="radio-container">
+        <label>
+          <input type="radio" id="address-always" name="contact-timing" value="always" required> Always
+        </label>
+        <label>
+          <input type="radio" id="address-dates" name="contact-timing" value="date-range"> From this date, to this date
+        </label>
+      </div>
+
+      <div id="date-range-fields" style="display: none; margin-top: 20px;">
+        <label for="from-date">From:</label>
+        <input type="date" id="from-date" name="from-date">
+
+        <label for="to-date">To:</label>
+        <input type="date" id="to-date" name="to-date">
+      </div>
+
+    </form>
+  </div>
+  <script>
+  const countries = [
+  "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina", "Armenia",
+  "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium",
+  "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei", "Bulgaria",
+  "Burkina Faso", "Burundi", "Cabo Verde", "Cambodia", "Cameroon", "Canada", "Central African Republic",
+  "Chad", "Chile", "China", "Colombia", "Comoros", "Congo (Congo-Brazzaville)", "Costa Rica", "Croatia",
+  "Cuba", "Cyprus", "Czechia (Czech Republic)", "Denmark", "Djibouti", "Dominica", "Dominican Republic",
+  "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Eswatini (fmr. Swaziland)",
+  "Ethiopia", "Fiji", "Finland", "France", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Greece",
+  "Grenada", "Guatemala", "Guinea", "Guinea-Bissau", "Guyana", "Haiti", "Holy See", "Honduras", "Hungary",
+  "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Israel", "Italy", "Jamaica", "Japan", "Jordan",
+  "Kazakhstan", "Kenya", "Kiribati", "Korea (North)", "Korea (South)", "Kosovo", "Kuwait", "Kyrgyzstan", "Laos",
+  "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Madagascar",
+  "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Mauritania", "Mauritius", "Mexico",
+  "Micronesia", "Moldova", "Monaco", "Mongolia", "Montenegro", "Morocco", "Mozambique", "Myanmar (formerly Burma)",
+  "Namibia", "Nauru", "Nepal", "Netherlands", "New Zealand", "Nicaragua", "Niger", "Nigeria", "North Macedonia",
+  "Norway", "Oman", "Pakistan", "Palau", "Palestine State", "Panama", "Papua New Guinea", "Paraguay", "Peru",
+  "Philippines", "Poland", "Portugal", "Qatar", "Romania", "Russia", "Rwanda", "Saint Kitts and Nevis",
+  "Saint Lucia", "Saint Vincent and the Grenadines", "Samoa", "San Marino", "Sao Tome and Principe", "Saudi Arabia",
+  "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Solomon Islands",
+  "Somalia", "South Africa", "South Sudan", "Spain", "Sri Lanka", "Sudan", "Suriname", "Sweden", "Switzerland",
+  "Syria", "Tajikistan", "Tanzania", "Thailand", "Timor-Leste", "Togo", "Tonga", "Trinidad and Tobago", "Tunisia",
+  "Turkey", "Turkmenistan", "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States",
+  "Uruguay", "Uzbekistan", "Vanuatu", "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe"
+];
+
+// Populate select dropdown
+const countrySelect = document.getElementById("country-select");
+countries.forEach(country => {
+  const option = document.createElement("option");
+  option.value = country;
+  option.textContent = country;
+  countrySelect.appendChild(option);
+});
+
+// Handle search input
+const countrySearch = document.getElementById("country-search");
+countrySearch.addEventListener("input", () => {
+  const query = countrySearch.value.toLowerCase();
+  const options = Array.from(countrySelect.options);
+
+  // Filter options based on query
+  options.forEach(option => {
+    if (option.value.toLowerCase().includes(query)) {
+      option.style.display = "block";
+    } else {
+      option.style.display = "none";
+    }
+  });
+
+  // Show dropdown when typing
+  countrySelect.style.display = "block";
+});
+
+// Handle selection
+countrySelect.addEventListener("change", () => {
+  countrySearch.value = countrySelect.value;
+  countrySelect.style.display = "none"; // Hide dropdown after selection
+});
+
+// Hide dropdown when clicking outside
+document.addEventListener("click", (e) => {
+  if (!document.querySelector(".dropdown-container").contains(e.target)) {
+    countrySelect.style.display = "none";
+  }
+});
+
+  </script>
+  <script>
+   document.getElementById('address-dates').addEventListener('change', function () {
+  document.getElementById('date-range-fields').style.display = 'block'; // Show questions
+});
+
+document.getElementById('address-always').addEventListener('change', function () {
+  document.getElementById('date-range-fields').style.display = 'none'; // Hide questions
+});
+  </script> 
+</body>
+</html>

@@ -296,14 +296,24 @@
         <p>Has your name changed since you last applied or took a course?</p>
         <div class="radio-container">
           <label>
-            <input type="radio" name="name-changed" value="yes">
+            <input type="radio" id="study-namechange-yes" name="name-changed" value="yes">
             Yes
           </label>
           <label>
-            <input type="radio" name="name-changed" value="no">
+            <input type="radio" id="study-namechange-no" name="name-changed" value="no">
             No
           </label>
         </div>
+        <div id="study-name-change" style="display: none; margin-top: 20px;">
+            <label for="previous-first-name">
+                Previous First / Given Name            
+            </label>
+            <input type="text" id="previous-first-name" name="previous-first-name" class="dynamic-input">
+            <label for="previous-family-name">
+                Previous Family Name
+            </label>
+            <input type="text" id="previous-family-name" name="previous-family-name" class="dynamic-input">
+          </div>
       </div>
       <p class="previous-details-question">Have you previously applied for a course with The University of Sheffield?</p>
       <div class="radio-container">
@@ -325,14 +335,24 @@
         <p>Has your name changed since you last applied or took a course?</p>
         <div class="radio-container">
           <label>
-            <input type="radio" name="name-changed" value="yes">
+            <input type="radio" id="applied-namechange-yes" name="name-changed" value="yes">
             Yes
           </label>
           <label>
-            <input type="radio" name="name-changed" value="no">
+            <input type="radio" id="applied-namechange-no" name="name-changed" value="no">
             No
           </label>
         </div>
+        <div id="applied-name-change" style="display: none; margin-top: 20px;">
+            <label for="previous-first-name">
+                Previous First / Given Name            
+            </label>
+            <input type="text" id="previous-first-name" name="previous-first-name" class="dynamic-input">
+            <label for="previous-family-name">
+                Previous Family Name
+            </label>
+            <input type="text" id="previous-family-name" name="previous-family-name" class="dynamic-input">
+          </div>
       </div>
 
 
@@ -362,6 +382,22 @@ document.getElementById('applied-yes').addEventListener('change', function () {
 
 document.getElementById('applied-no').addEventListener('change', function () {
   document.getElementById('applied-questions').style.display = 'none'; // Hide questions
+});
+
+document.getElementById('study-namechange-yes').addEventListener('change', function () {
+  document.getElementById('study-name-change').style.display = 'block'; // Show questions
+});
+
+document.getElementById('study-namechange-no').addEventListener('change', function () {
+  document.getElementById('study-name-change').style.display = 'none'; // Hide questions
+});
+
+document.getElementById('applied-namechange-yes').addEventListener('change', function () {
+  document.getElementById('applied-name-change').style.display = 'block'; // Show questions
+});
+
+document.getElementById('applied-namechange-no').addEventListener('change', function () {
+  document.getElementById('applied-name-change').style.display = 'none'; // Hide questions
 });
   </script>
 </body>
