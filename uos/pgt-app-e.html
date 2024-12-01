@@ -12,7 +12,7 @@
     <link rel="icon" href="https://www.sheffield.ac.uk/themes/custom/uos_public/favicon.svg" type="image/svg+xml" />
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Subject Talks</title>
+  <title>Section F: Relevant Employment | Postgraduate Application Form</title>
   <style>
 
 .contents-container h3 {
@@ -668,147 +668,214 @@ hr {
   </div>
   <h1>Postgraduate Online Application</h1>
   <div class="form-container">
-    <h2>Section A: Personal details</h2>
+    <h2>Section E: Previous Education</h2>
     <form id="personal-details-form">
-      <label for="first-name">First / Given Name <span class="required">(required)</span></label>
-      <input type="text" id="first-name" name="first-name" required>
-
-      <label for="family-name">Family Name <span class="required">(required)</span></label>
-      <input type="text" id="family-name" name="family-name" required>
-
-      <label for="middle-names">Middle Names</label>
-      <input type="text" id="middle-names" name="middle-names">
-
-      <label for="preferred-name">Preferred/Chosen First Name</label>
-      <input type="text" id="preferred-name" name="preferred-name">
-
-      <label for="gender">Gender <span class="required">(required)</span></label>
-      <select id="gender" name="gender" required>
-        <option value="">Select</option>
-        <option value="male">Male</option>
-        <option value="female">Female</option>
-        <option value="other">Other</option>
-      </select>
-
-      <label for="dob-day">Date of birth <span class="required">(required)</span></label>
-      <div class="dob-container">
-        <div class="dob-field">
-          <input type="text" id="dob-day" name="dob-day" maxlength="2" class="dob-input small" placeholder="DD" required>
-          <label for="dob-day" class="dob-label">Day</label>
+        <h3>Higher Education Institution</h3>
+        <label for="country-search">Select the country the institution is based in <span class="required">(required)</span></label>
+        <div class="dropdown-container">
+          <input type="text" id="country-search" placeholder="Type to search..." autocomplete="off">
+          <select id="country-select" name="country" size="5">
+            <option value="">Select a country</option>
+            <!-- Options will be dynamically populated -->
+          </select>
         </div>
-        <div class="dob-field">
-          <input type="text" id="dob-month" name="dob-month" maxlength="2" class="dob-input small" placeholder="MM" required>
-          <label for="dob-month" class="dob-label">Month</label>
+        <label for="institution">Name of institution <span class="required">(required)</span></label>
+        <input type="text" id="institution" name="institution" required>
+        <h3>Qualification</h3>
+        <label for="qualification">Select your qualification:</label>
+        <select id="qualification" name="qualification" required>
+          <option value="">Select an option</option>
+          <option value="not-in-list">Not in list</option>
+          <option value="ba">BA</option>
+          <option value="bed">BEd</option>
+          <option value="beng">BEng</option>
+          <option value="bmedsci">BMedSci</option>
+          <option value="bsc">BSc</option>
+          <option value="cert-higher-ed">Certificate of Higher Ed</option>
+          <option value="dclinpsy">DClinPsy</option>
+          <option value="dip-higher-ed">Diploma of Higher Ed</option>
+          <option value="dmedsci">DMedSci</option>
+          <option value="edd">EdD</option>
+          <option value="llb">LLB</option>
+          <option value="llm">LLM</option>
+          <option value="ma">MA</option>
+          <option value="md">MD</option>
+          <option value="march">MArch</option>
+          <option value="mb-chb">MB,ChB</option>
+          <option value="mba">MBA</option>
+          <option value="mbbs">MBBS</option>
+          <option value="mchem">MChem</option>
+          <option value="mclindent">MClinDent</option>
+          <option value="mcomp">MComp</option>
+          <option value="med">MEd</option>
+          <option value="meng">MEng</option>
+          <option value="mmath">MMath</option>
+          <option value="mmedsci">MMedSci</option>
+          <option value="mmet">MMet</option>
+          <option value="mmus">MMus</option>
+          <option value="mpharm-ug">MPharm (UG)</option>
+          <option value="mphil">MPHIL</option>
+          <option value="mphys">MPHYS</option>
+          <option value="msc">MSC</option>
+          <option value="msc-eng">MSc(Eng)</option>
+          <option value="msc-res">MSc (Res)</option>
+          <option value="msci-ug">MSci (UG)</option>
+          <option value="ncuk-grad-dip">NCUK Grad Dip</option>
+          <option value="ncuk-pmp">NCUK PMP</option>
+          <option value="ncuk-eap">NCUK EAP</option>
+          <option value="pg-cert">PG Cert</option>
+          <option value="pg-diploma">PG Diploma</option>
+          <option value="pgce">PGCE</option>
+          <option value="phd">PhD</option>
+        </select>
+        <h3>Subject</h3>
+        <label for="subject">What subject did you study? <span class="required">(required)</span></label>
+        <input type="text" id="subject" name="subject" required>
+        <label for="start-date">Start date <span class="required">(required)</span></label>
+        <div class="dob-container">
+          <div class="dob-field">
+            <input type="text" id="dob-month" name="dob-month" maxlength="2" class="dob-input small" placeholder="MM" required>
+            <label for="dob-month" class="dob-label">Month</label>
+          </div>
+          <div class="dob-field">
+            <input type="text" id="dob-year" name="dob-year" maxlength="4" class="dob-input large" placeholder="YYYY" required>
+            <label for="dob-year" class="dob-label">Year</label>
+          </div>
         </div>
-        <div class="dob-field">
-          <input type="text" id="dob-year" name="dob-year" maxlength="4" class="dob-input large" placeholder="YYYY" required>
-          <label for="dob-year" class="dob-label">Year</label>
+        <label for="start-date">End date <span class="required">(required)</span></label>
+        <div class="dob-container">
+          <div class="dob-field">
+            <input type="text" id="dob-month" name="dob-month" maxlength="2" class="dob-input small" placeholder="MM" required>
+            <label for="dob-month" class="dob-label">Month</label>
+          </div>
+          <div class="dob-field">
+            <input type="text" id="dob-year" name="dob-year" maxlength="4" class="dob-input large" placeholder="YYYY" required>
+            <label for="dob-year" class="dob-label">Year</label>
+          </div>
+          
         </div>
-      </div>
-      
-      
-      <h2>Confirm your details</h2>
-      <p>Tick to confirm that you have entered your names and date of birth as they appear in your passport. This is to ensure you are able to get a student visa if you need to apply for one: </p>
+        <label for="award-date">Date of award <span class="required">(required)</span></label>
+        <div class="dob-container">
+          <div class="dob-field">
+            <input type="text" id="dob-month" name="dob-month" maxlength="2" class="dob-input small" placeholder="MM" required>
+            <label for="dob-month" class="dob-label">Month</label>
+          </div>
+          <div class="dob-field">
+            <input type="text" id="dob-year" name="dob-year" maxlength="4" class="dob-input large" placeholder="YYYY" required>
+            <label for="dob-year" class="dob-label">Year</label>
+          </div>
+          
+        </div>
+        <h3>Final grade/score</h3>
+        <label for="grade">Select your grade:</label>
+<select id="grade" name="grade" required>
+  <option value="">Select an option</option>
+  <option value="still-waiting">Still waiting for grade</option>
+  <option value="failed-course">Failed to complete course</option>
+  <option value="1st">1st</option>
+  <option value="2-1">2.1</option>
+  <option value="2-2">2.2</option>
+  <option value="3rd">3rd</option>
+  <option value="pass">Pass</option>
+  <option value="fail">Fail</option>
+</select>
+<h3>Level of award</h3>
+<p>Please tick here if this is this the highest qualification level you have taken</p>
 <div class="checkbox-container">
-    <input type="checkbox" id="passport-confirmation" name="passport-confirmation" required>
-    <label for="passport-confirmation">I confirm my names and date of birth appear as they do in my passport.</label>
+    <input type="checkbox" id="level-confirmation" name="level-confirmation" required>
+    <label for="level-confirmation">This is this the highest qualification level I have taken</label>
   </div>
-  
-
-      <h2>British Student Identification Numbers</h2>
-      <label for="hesa-number">HESA Number</label>
-      <input type="text" id="hesa-number" name="hesa-number">
-
-      <label for="uln">Unique Learner Number</label>
-      <input type="text" id="uln" name="uln">
-
-      <h2>Previous Details</h2>
-      <p class="previous-details-question">Are you currently studying, or have you previously studied, at The University of Sheffield?</p>
-      <div class="radio-container">
-        <label>
-          <input type="radio"id="study-yes" name="previous-study" value="yes">
-          Yes
-        </label>
-        <label>
-          <input type="radio" id="study-no" name="previous-study" value="no">
-          No
-        </label>
-      </div>
-      <div id="study-questions" style="display: none; margin-top: 20px;">
-        <label for="registration-number">
-          Please enter your previous registration number to help us link your new application to your record:
-        </label>
-        <input type="text" id="registration-number" name="registration-number" class="dynamic-input">
-      
-        <label for="course-name" style="margin-top: 10px;">
-          Please enter the name of the course you are/were taking:
-        </label>
-        <input type="text" id="course-name" name="course-name" class="dynamic-input">
-      
-        <p>Has your name changed since you last applied or took a course?</p>
-        <div class="radio-container">
-          <label>
-            <input type="radio" id="study-namechange-yes" name="name-changed" value="yes">
-            Yes
-          </label>
-          <label>
-            <input type="radio" id="study-namechange-no" name="name-changed" value="no">
-            No
-          </label>
-        </div>
-        <div id="study-name-change" style="display: none; margin-top: 20px;">
-            <label for="previous-first-name">
-                Previous First / Given Name            
-            </label>
-            <input type="text" id="previous-first-name" name="previous-first-name" class="dynamic-input">
-            <label for="previous-family-name">
-                Previous Family Name
-            </label>
-            <input type="text" id="previous-family-name" name="previous-family-name" class="dynamic-input">
-          </div>
-      </div>
-      <p class="previous-details-question">Have you previously applied for a course with The University of Sheffield?</p>
-      <div class="radio-container">
-        <label>
-          <input type="radio"id="applied-yes" name="previous-study" value="yes">
-          Yes
-        </label>
-        <label>
-          <input type="radio" id="applied-no" name="previous-study" value="no">
-          No
-        </label>
-      </div>
-      <div id="applied-questions" style="display: none; margin-top: 20px;">
-        <label for="registration-number">
-            Please enter your previous applicant number to help us link your new application to your previous record:
-        </label>
-        <input type="text" id="registration-number" name="registration-number" class="dynamic-input">
-      
-        <p>Has your name changed since you last applied or took a course?</p>
-        <div class="radio-container">
-          <label>
-            <input type="radio" id="applied-namechange-yes" name="name-changed" value="yes">
-            Yes
-          </label>
-          <label>
-            <input type="radio" id="applied-namechange-no" name="name-changed" value="no">
-            No
-          </label>
-        </div>
-        <div id="applied-name-change" style="display: none; margin-top: 20px;">
-            <label for="previous-first-name">
-                Previous First / Given Name            
-            </label>
-            <input type="text" id="previous-first-name" name="previous-first-name" class="dynamic-input">
-            <label for="previous-family-name">
-                Previous Family Name
-            </label>
-            <input type="text" id="previous-family-name" name="previous-family-name" class="dynamic-input">
-          </div>
-      </div>
-      <a href="pgt-app-2.html" class="button-link back">Save and back</a>
-      <a href="pgt-app-2.html" class="button-link next">Save and continue</a>
-    </form>
+  <h3>Documentary Evidence</h3>
+  <p>Please select how you will provide evidence for your qualification. You can upload scanned documents, but not text files.</p>
+  <p>Valid file formats are: <strong>.jpg, .png, .gif, .pdf, .doc, .docx, .odf</strong></p>
+  <p>If your transcript runs over more than one page please paste the scanned images into an MS Word or ODF document and upload the document. You will need to present your final documents to the Admissions Service for verification before you will be allowed to register.</p>
+  <p><strong>Final Academic Certificate</strong></p>
+  <div class="radio-container">
+    <label>
+      <input type="radio" id="certificate-upload" name="certificate" value="yes">
+      I will upload my final academic certificate now
+    </label>
+    <div id="certificate-file-upload" style="display: none;">
+        <label for="certificate-upload-file" class="custom-upload">Upload your file:</label>
+        <input type="file" id="certificate-upload-file" name="certificate-upload-file" accept=".pdf,.doc,.docx,.txt" required>
+    </div>
+    <label>
+      <input type="radio" id="certificate-later" name="certificate" value="later">
+      I will upload my final certificate later 
+    </label>
+    <label>
+      <input type="radio" id="certificate-no" name="certificate" value="no">
+      I will not be providing this document
+    </label>
+  </div>
+  <p><strong>Final Academic Certificate Translation</strong></p>
+  <div class="radio-container">
+    <label>
+        <input type="radio" id="certificate-translation-english" name="certificate-translation" value="no">
+        My certificate is in English
+      </label>
+    <label>
+      <input type="radio" id="certificate-translation-upload" name="certificate-translation" value="yes">
+      I will upload my certificate translation now
+    </label>
+    <div id="certificate-translated-file-upload" style="display: none;">
+        <label for="certificate-translated-upload-file">Upload your file:</label>
+        <input type="file" id="certificate-translated-upload-file" name="certificate-translated-upload-file" accept=".pdf,.doc,.docx,.txt" required>
+    </div>
+    <label>
+      <input type="radio" id="certificate-translation-later" name="certificate-translation" value="later">
+      I will upload my certificate translation later 
+    </label>
+    <label>
+      <input type="radio" id="certificate-translation-no" name="certificate-translation" value="no">
+      I will not be providing this document
+    </label>
+  </div>
+  <p><strong>Final Academic Transcript</strong></p>
+  <div class="radio-container">
+    <label>
+      <input type="radio" id="transcript-upload" name="transcript" value="yes">
+      I will upload my final transcript now
+    </label>
+    <div id="transcript-file-upload" style="display: none;">
+    <label for="transcript-upload-file">Upload your file:</label>
+    <input type="file" id="transcript-upload-file" name="transcript-upload-file" accept=".pdf,.doc,.docx,.txt" required>
+</div>
+    <label>
+      <input type="radio" id="transcript-later" name="transcript" value="later">
+      I will upload my final transcript later 
+    </label>
+    <label>
+      <input type="radio" id="transcript-no" name="transcript" value="no">
+      I will not be providing this document
+    </label>
+  </div>
+  <p><strong>Final Academic Transcript Translation</strong></p>
+  <div class="radio-container">
+    <label>
+        <input type="radio" id="transcript-translation-english" name="transcript-translation" value="no">
+        My transcript is in English
+      </label>
+    <label>
+      <input type="radio" id="transcript-translation-upload" name="transcript-translation" value="yes">
+      I will upload my transcript translation now
+    </label>
+    <div id="transcript-translated-file-upload" style="display: none;">
+        <label for="transcript-translated-upload-file">Upload your file:</label>
+        <input type="file" id="transcript-translated-upload-file" name="transcript-translated-upload-file" accept=".pdf,.doc,.docx,.txt" required>
+    </div>
+    <label>
+      <input type="radio" id="transcript-translation-later" name="transcript-translation" value="later">
+      I will upload my transcript translation later 
+    </label>
+    <label>
+      <input type="radio" id="transcript-translation-no" name="transcript-translation" value="no">
+      I will not be providing this document
+    </label>
+  </div>
+        </form>
+        <a href="pgt-app-d.html" class="button-link back">Save and back</a>
+      <a href="pgt-app-f.html" class="button-link next">Save and continue</a>
   </div>
 </div>
 
@@ -1187,37 +1254,131 @@ function handleEnter(event) {
         });
       </script>
       <script>
-        document.getElementById('study-yes').addEventListener('change', function () {
-      document.getElementById('study-questions').style.display = 'block'; // Show questions
-    });
-    
-    document.getElementById('study-no').addEventListener('change', function () {
-      document.getElementById('study-questions').style.display = 'none'; // Hide questions
-    });
-    
-    document.getElementById('applied-yes').addEventListener('change', function () {
-      document.getElementById('applied-questions').style.display = 'block'; // Show questions
-    });
-    
-    document.getElementById('applied-no').addEventListener('change', function () {
-      document.getElementById('applied-questions').style.display = 'none'; // Hide questions
-    });
-    
-    document.getElementById('study-namechange-yes').addEventListener('change', function () {
-      document.getElementById('study-name-change').style.display = 'block'; // Show questions
-    });
-    
-    document.getElementById('study-namechange-no').addEventListener('change', function () {
-      document.getElementById('study-name-change').style.display = 'none'; // Hide questions
-    });
-    
-    document.getElementById('applied-namechange-yes').addEventListener('change', function () {
-      document.getElementById('applied-name-change').style.display = 'block'; // Show questions
-    });
-    
-    document.getElementById('applied-namechange-no').addEventListener('change', function () {
-      document.getElementById('applied-name-change').style.display = 'none'; // Hide questions
-    });
-      </script>
+        const countries = [
+        "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina", "Armenia",
+        "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium",
+        "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei", "Bulgaria",
+        "Burkina Faso", "Burundi", "Cabo Verde", "Cambodia", "Cameroon", "Canada", "Central African Republic",
+        "Chad", "Chile", "China", "Colombia", "Comoros", "Congo (Congo-Brazzaville)", "Costa Rica", "Croatia",
+        "Cuba", "Cyprus", "Czechia (Czech Republic)", "Denmark", "Djibouti", "Dominica", "Dominican Republic",
+        "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Eswatini (fmr. Swaziland)",
+        "Ethiopia", "Fiji", "Finland", "France", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Greece",
+        "Grenada", "Guatemala", "Guinea", "Guinea-Bissau", "Guyana", "Haiti", "Holy See", "Honduras", "Hungary",
+        "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Israel", "Italy", "Jamaica", "Japan", "Jordan",
+        "Kazakhstan", "Kenya", "Kiribati", "Korea (North)", "Korea (South)", "Kosovo", "Kuwait", "Kyrgyzstan", "Laos",
+        "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Madagascar",
+        "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Mauritania", "Mauritius", "Mexico",
+        "Micronesia", "Moldova", "Monaco", "Mongolia", "Montenegro", "Morocco", "Mozambique", "Myanmar (formerly Burma)",
+        "Namibia", "Nauru", "Nepal", "Netherlands", "New Zealand", "Nicaragua", "Niger", "Nigeria", "North Macedonia",
+        "Norway", "Oman", "Pakistan", "Palau", "Palestine State", "Panama", "Papua New Guinea", "Paraguay", "Peru",
+        "Philippines", "Poland", "Portugal", "Qatar", "Romania", "Russia", "Rwanda", "Saint Kitts and Nevis",
+        "Saint Lucia", "Saint Vincent and the Grenadines", "Samoa", "San Marino", "Sao Tome and Principe", "Saudi Arabia",
+        "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Solomon Islands",
+        "Somalia", "South Africa", "South Sudan", "Spain", "Sri Lanka", "Sudan", "Suriname", "Sweden", "Switzerland",
+        "Syria", "Tajikistan", "Tanzania", "Thailand", "Timor-Leste", "Togo", "Tonga", "Trinidad and Tobago", "Tunisia",
+        "Turkey", "Turkmenistan", "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States",
+        "Uruguay", "Uzbekistan", "Vanuatu", "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe"
+      ];
+      
+      // Populate select dropdown
+      const countrySelect = document.getElementById("country-select");
+      countries.forEach(country => {
+        const option = document.createElement("option");
+        option.value = country;
+        option.textContent = country;
+        countrySelect.appendChild(option);
+      });
+      
+      // Handle search input
+      const countrySearch = document.getElementById("country-search");
+      countrySearch.addEventListener("input", () => {
+        const query = countrySearch.value.toLowerCase();
+        const options = Array.from(countrySelect.options);
+      
+        // Filter options based on query
+        options.forEach(option => {
+          if (option.value.toLowerCase().includes(query)) {
+            option.style.display = "block";
+          } else {
+            option.style.display = "none";
+          }
+        });
+      
+        // Show dropdown when typing
+        countrySelect.style.display = "block";
+      });
+      
+      // Handle selection
+      countrySelect.addEventListener("change", () => {
+        countrySearch.value = countrySelect.value;
+        countrySelect.style.display = "none"; // Hide dropdown after selection
+      });
+      
+      // Hide dropdown when clicking outside
+      document.addEventListener("click", (e) => {
+        if (!document.querySelector(".dropdown-container").contains(e.target)) {
+          countrySelect.style.display = "none";
+        }
+      });
+      
+        </script>
+        <script>
+         document.getElementById('certificate-upload').addEventListener('change', function () {
+  document.getElementById('certificate-file-upload').style.display = 'block'; // Show questions
+});
+
+document.getElementById('certificate-later').addEventListener('change', function () {
+  document.getElementById('certificate-file-upload').style.display = 'none'; // Show questions
+});
+
+document.getElementById('certificate-no').addEventListener('change', function () {
+  document.getElementById('certificate-file-upload').style.display = 'none'; // Show questions
+});
+
+document.getElementById('transcript-upload').addEventListener('change', function () {
+  document.getElementById('transcript-file-upload').style.display = 'block'; // Show questions
+});
+
+document.getElementById('transcript-later').addEventListener('change', function () {
+  document.getElementById('transcript-file-upload').style.display = 'none'; // Show questions
+});
+
+document.getElementById('transcript-no').addEventListener('change', function () {
+  document.getElementById('transcript-file-upload').style.display = 'none'; // Show questions
+});
+
+document.getElementById('certificate-translation-upload').addEventListener('change', function () {
+  document.getElementById('certificate-translated-file-upload').style.display = 'block'; // Show questions
+});
+
+document.getElementById('certificate-translation-later').addEventListener('change', function () {
+  document.getElementById('certificate-translated-file-upload').style.display = 'none'; // Show questions
+});
+
+document.getElementById('certificate-translation-no').addEventListener('change', function () {
+  document.getElementById('certificate-translated-file-upload').style.display = 'none'; // Show questions
+});
+
+document.getElementById('certificate-translation-english').addEventListener('change', function () {
+  document.getElementById('certificate-translated-file-upload').style.display = 'none'; // Show questions
+});
+
+document.getElementById('transcript-translation-upload').addEventListener('change', function () {
+  document.getElementById('transcript-translated-file-upload').style.display = 'block'; // Show questions
+});
+
+document.getElementById('transcript-translation-later').addEventListener('change', function () {
+  document.getElementById('transcript-translated-file-upload').style.display = 'none'; // Show questions
+});
+
+document.getElementById('transcript-translation-no').addEventListener('change', function () {
+  document.getElementById('transcript-translated-file-upload').style.display = 'none'; // Show questions
+});
+
+document.getElementById('transcript-translation-english').addEventListener('change', function () {
+  document.getElementById('transcript-translated-file-upload').style.display = 'none'; // Show questions
+});
+
+           </script>
 </body>
 </html>

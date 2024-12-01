@@ -199,7 +199,6 @@
         width: 80%;
         padding: 10px;
         border: 2px solid black;
-        border-radius: 4px 4px 0 0;
         font-size: 16px;
       }
       
@@ -207,7 +206,6 @@
         width: 80%;
         padding: 10px;
         border: none;
-        border-radius: 0 0 4px 4px;
         font-size: 16px;
         display: none; /* Hide dropdown by default */
         position: absolute;
@@ -220,6 +218,12 @@
       #country-select option {
           margin-bottom: 1rem;
       }
+
+      textarea {
+        width: 80%;
+        border: 2px solid #000;
+        min-height: 100px;
+    }
 
       .button-link {
         display: inline-flex;

@@ -105,14 +105,24 @@
   color: #999; /* Placeholder text color */
 }
 
+fieldset {
+    border: 0;
+    padding: 0;
+}
+
+fieldset legend {
+    margin-bottom: 1rem;
+}
+
 .checkbox-container {
   display: inline-flex; /* Aligns checkbox and label in one line */
   align-items: center; /* Vertically aligns the checkbox with the label */
   gap: 10px; /* Adds space between checkbox and label text */
   margin-bottom: 20px;
+  font-size: 16px;
 }
 
-.checkbox-container input[type="checkbox"] {
+.checkbox-container input[type="checkbox"], fieldset input[type="checkbox"] {
   appearance: none; /* Removes default checkbox styling */
   width: 2.5rem; /* Set fixed width */
   height: 2.5rem; /* Set fixed height */
@@ -122,7 +132,7 @@
   cursor: pointer; /* Pointer cursor for interactivity */
 }
 
-.checkbox-container input[type="checkbox"]::before {
+.checkbox-container input[type="checkbox"]::before, fieldset input[type="checkbox"]::before {
   content: ""; /* Placeholder for the checkmark */
   width: 0.6rem; /* Checkmark width */
   height: 1rem; /* Checkmark height */
@@ -135,11 +145,11 @@
   transition: transform 0.2s ease-in-out; /* Smooth animation */
 }
 
-.checkbox-container input[type="checkbox"]:checked::before {
+.checkbox-container input[type="checkbox"]:checked::before, fieldset input[type="checkbox"]:checked::before {
   transform: translate(-50%, -50%) rotate(45deg) scale(1); /* Show the checkmark */
 }
 
-.checkbox-container input[type="checkbox"]:focus {
+.checkbox-container input[type="checkbox"]:focus, fieldset input[type="checkbox"]:focus {
   outline: 3px solid #3BD4AE; /* GDS yellow focus outline */
   outline-offset: 2px; /* Adds space between checkbox and focus outline */
 }
@@ -263,6 +273,7 @@ textarea {
   <div class="form-container">
     <h2>Section G: Equal opportunities</h2>
     <form id="personal-details-form">
+        <h3>Disability</h3>
         <p>If you have a disability, it's important to let us know so we can make sure you get the support you need. This information is not used in the consideration of your application.</p>
         <div class="radio-container">
           <label>
@@ -278,12 +289,101 @@ textarea {
             I would prefer not to say 
           </label>
         </div>
-        <p>If your disability means that you have additional support needs please tick here</p>
+        <div id="conditions" style="display: none; margin-top: 20px;">
+        <fieldset>
+            <legend>Please tick any of the following which are appropriate to you</legend>
+            <div class="checkbox-container">
+                <input type="checkbox" name="conditions" value="specific-learning-difficulty">
+              <label>
+                A specific learning difficulty such as dyslexia, dyspraxia or AD(H)D
+              </label>
+              
+            </div>
+            <div class="checkbox-container">
+                <input type="checkbox" name="conditions" value="visual-impairment">
+              <label>
+                Blindness or a serious visual impairment uncorrected by glasses
+              </label>
+            </div>
+            <div class="checkbox-container">
+                <input type="checkbox" name="conditions" value="hearing-impairment">
+              <label>
+                Deafness or a serious hearing impairment
+              </label>
+            </div>
+            <div class="checkbox-container">
+                <input type="checkbox" name="conditions" value="physical-impairment">
+              <label>  
+                Physical impairment or mobility issues, such as difficulty using arms or using a wheelchair or crutches
+              </label>
+            </div>
+            <div class="checkbox-container">
+                <input type="checkbox" name="conditions" value="social-communication-impairment">
+              <label>
+                Social/communication impairment such as Asperger's syndrome/other autistic spectrum disorder
+              </label>
+            </div>
+            <div class="checkbox-container">
+                <input type="checkbox" name="conditions" value="mental-health-condition">
+                <label>
+                Mental health condition, such as depression, schizophrenia or anxiety disorder
+              </label>
+            </div>
+            <div class="checkbox-container">
+                <input type="checkbox" name="conditions" value="long-standing-illness">
+              <label>
+                Long standing illness or health condition such as cancer, HIV, diabetes, chronic heart disease, or epilepsy
+              </label>
+            </div>
+            <div class="checkbox-container">
+                <input type="checkbox" name="conditions" value="development-condition">
+              <label>
+                Development condition that you have had since childhood which affects motor, cognitive, social and emotional skills, and speech and language
+              </label>
+            </div>
+            <div class="checkbox-container">
+                <input type="checkbox" name="conditions" value="other-disability">
+              <label>
+                Disability, impairment or medical condition that is not listed above
+              </label>
+            </div>
+          </fieldset>
+          <p>If your disability means that you have additional support needs please tick here</p>
 <div class="checkbox-container">
     <input type="checkbox" id="passport-confirmation" name="passport-confirmation" required>
     <label for="passport-confirmation">I require additional support</label>
   </div>
-    </form>
+  <label for="support-details">If you have additional support needs please provide a brief description <span class="required">(required)</span></label>
+        <textarea id="support-details" name="support-details" required></textarea>
+          </div>
+          <h3>Ethnic origin</h3>
+          <p>Please select the term you feel describes your ethnic origin. If none of the terms seem appropriate, select 'Other ethnic background'. If you want to withhold this information, select 'Information withheld'.</p>
+          <p><strong>This information is treated confidentially. It is not passed on to the academic staff considering your application. We use it to keep track of the numbers of students joining us from each ethnic group. This helps us promote equality and diversity. Details of our Equal Opportunities policy.</strong></p>
+          <label for="ethnic-background">Select your ethnic background:</label>
+          <select id="ethnic-background" name="ethnic-background" required>
+            <option value="">Select an option</option>
+            <option value="arab">Arab</option>
+            <option value="asian-other">Asian - other background</option>
+            <option value="asian-bangladeshi">Asian or Asian British - Bangladeshi</option>
+            <option value="asian-indian">Asian or Asian British - Indian</option>
+            <option value="asian-pakistani">Asian or Asian British - Pakistani</option>
+            <option value="black-other">Black - other background</option>
+            <option value="black-african">Black or Black British - African</option>
+            <option value="black-caribbean">Black or Black British - Caribbean</option>
+            <option value="chinese">Chinese/Other Ethnic background - Chinese</option>
+            <option value="mixed-white-asian">Mixed - White and Asian</option>
+            <option value="mixed-white-black-african">Mixed - White and Black African</option>
+            <option value="mixed-white-black-caribbean">Mixed - White and Black Caribbean</option>
+            <option value="mixed-other">Mixed - other background</option>
+            <option value="white-other">White - Any other White background</option>
+            <option value="white-english-scottish-welsh">White - English, Scottish, Welsh, Northern Irish or British</option>
+            <option value="white-gypsy-traveller">White - Gypsy or Irish Traveller</option>
+            <option value="white-irish">White - Irish</option>
+            <option value="white-roma">White - Roma</option>
+            <option value="other-ethnic">Other ethnic background</option>
+            <option value="information-withheld">Information withheld</option>
+          </select>          
+        </form>
   </div>
   <script>
   const countries = [
@@ -355,22 +455,17 @@ document.addEventListener("click", (e) => {
 
   </script>
   <script>
-   document.getElementById('address-dates').addEventListener('change', function () {
-  document.getElementById('date-range-fields').style.display = 'block'; // Show questions
+   document.getElementById('disability-yes').addEventListener('change', function () {
+  document.getElementById('conditions').style.display = 'block'; // Show questions
 });
 
-document.getElementById('address-always').addEventListener('change', function () {
-  document.getElementById('date-range-fields').style.display = 'none'; // Hide questions
+document.getElementById('disability-no').addEventListener('change', function () {
+  document.getElementById('conditions').style.display = 'none'; // Hide questions
+});
+
+document.getElementById('disability-undisclosed').addEventListener('change', function () {
+  document.getElementById('conditions').style.display = 'none'; // Hide questions
 });
   </script> 
-  <script>
-    document.getElementById('taught-english-no').addEventListener('change', function () {
-  document.getElementById('taught-other-language').style.display = 'block'; // Show questions
-});
-
-document.getElementById('taught-english-yes').addEventListener('change', function () {
-  document.getElementById('taught-other-language').style.display = 'none'; // Hide questions
-});
-  </script>
 </body>
 </html>

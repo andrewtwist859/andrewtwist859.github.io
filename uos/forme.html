@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://use.typekit.net/yph5bbq.css">
+  <title>Form Mockup</title>
+  <style>
+    body {
+      font-family: 'source-sans-pro', sans-serif;
+      line-height: 1.6;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 20px;
+      font-size: 18px;
+    }
+
+    p {
+        margin-top: 0rem;
+        max-width: 80ch;
+    }
+    .form-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1, h2 {
+      font-family: 'source-serif-pro';
+      font-weight: 700;  
+      margin-top: 1rem;
+      color: #333;
+      margin-bottom: 0.5rem;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .required {
+      color: red;
+    }
+
+    input, select {
+      width: 80%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 2px solid #000;
+    }
+
+    input, select, textarea {
+  font-size: 1rem; /* Ensures no zooming on mobile */
+  line-height: 1.4; /* Provides good readability */
+}
+
+    input:focus, select:focus, textarea:focus, .radio-container input[type="radio"]:focus {
+  outline: 3px solid #3BD4AE; /* GDS yellow outline */
+  outline-offset: 2px; /* Adds space between the element and the outline */
+  border-color: black; /* Ensures the black border remains intact */
+}
+
+
+    .dob-container {
+  display: flex;
+  gap: 10px; /* Adds space between day, month, and year fields */
+}
+
+.dob-field {
+  display: flex;
+  flex-direction: column; /* Stacks label and input vertically */
+  align-items: center
+}
+
+.dob-label {
+  font-size: 14px;
+  text-align: center;
+}
+
+.dob-input {
+  display: block;
+  padding: 5px;
+  font-size: 16px;
+  text-align: center;
+  border: 2px solid black;
+  outline: none;
+  width: 3rem; /* Default size for small inputs */
+  margin-bottom: 0rem;
+  padding: 0.5rem 0rem;
+}
+
+.dob-input.large {
+  width: 6rem; /* Wider input for the year field */
+}
+
+.dob-input:focus {
+  border-color: #005ea5; /* Blue border on focus */
+  box-shadow: 0 0 0 2px #b3d9ff; /* Light blue highlight effect */
+}
+
+.dob-input::placeholder {
+  color: #999; /* Placeholder text color */
+}
+
+fieldset {
+    border: 0;
+    padding: 0;
+}
+
+fieldset legend {
+    margin-bottom: 1rem;
+}
+
+.checkbox-container {
+  display: inline-flex; /* Aligns checkbox and label in one line */
+  align-items: center; /* Vertically aligns the checkbox with the label */
+  gap: 10px; /* Adds space between checkbox and label text */
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+.checkbox-container input[type="checkbox"], fieldset input[type="checkbox"] {
+  appearance: none; /* Removes default checkbox styling */
+  width: 2.5rem; /* Set fixed width */
+  height: 2.5rem; /* Set fixed height */
+  border: 3px solid black; /* Adds a black border */
+  position: relative; /* Allows positioning of the checkmark */
+  outline: none;
+  cursor: pointer; /* Pointer cursor for interactivity */
+}
+
+.checkbox-container input[type="checkbox"]::before, fieldset input[type="checkbox"]::before {
+  content: ""; /* Placeholder for the checkmark */
+  width: 0.6rem; /* Checkmark width */
+  height: 1rem; /* Checkmark height */
+  border: 3px solid black; /* Checkmark line styling */
+  border-width: 0 3px 3px 0; /* Creates the "tick" shape */
+  position: absolute;
+  top: 40%; /* Centers vertically relative to the checkbox */
+  left: 50%; /* Centers horizontally relative to the checkbox */
+  transform: translate(-50%, -50%) rotate(45deg) scale(0); /* Hidden initially */
+  transition: transform 0.2s ease-in-out; /* Smooth animation */
+}
+
+.checkbox-container input[type="checkbox"]:checked::before, fieldset input[type="checkbox"]:checked::before {
+  transform: translate(-50%, -50%) rotate(45deg) scale(1); /* Show the checkmark */
+}
+
+.checkbox-container input[type="checkbox"]:focus, fieldset input[type="checkbox"]:focus {
+  outline: 3px solid #3BD4AE; /* GDS yellow focus outline */
+  outline-offset: 2px; /* Adds space between checkbox and focus outline */
+}
+
+
+
+
+
+    .previous-details-question {
+  margin-bottom: 15px;
+  text-align: left; /* Ensures the question text is left-aligned */
+}
+
+.radio-container {
+  display: flex;
+  flex-direction: column; /* Stacks the radio buttons vertically */
+  gap: 10px; /* Adds consistent spacing between the labels */
+  align-items: flex-start; /* Ensures everything is left-aligned */
+  margin-bottom: 2rem;
+}
+
+.radio-container label {
+  display: inline-flex; /* Use inline-flex for better inline element alignment */
+  align-items: center; /* Ensures the text aligns vertically with the radio button */
+  gap: 10px; /* Adds spacing between radio button and label */
+  font-size: 16px; /* Ensures readable text size */
+}
+
+.radio-container input[type="radio"] {
+  appearance: none; /* Remove default styling */
+  width: 2.5rem; /* Set fixed width */
+  height: 2.5rem; /* Set fixed height */
+  border: 3px solid black; /* Create the outer circle */
+  border-radius: 50%; /* Ensure the button is circular */
+  outline: none;
+  display: inline-block;
+  margin: 0; /* Remove default margin */
+  position: relative; /* Enable positioning for the inner circle */
+}
+
+.radio-container input[type="radio"]::before {
+  content: ""; /* Create the inner circle */
+  width: 1.5rem; /* Set fixed width */
+  height: 1.5rem; /* Set fixed height */
+  background-color: #440099; /* Inner dot color */
+  border-radius: 50%; /* Ensure it's a circle */
+  position: absolute; /* Position it within the radio button */
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%) scale(0); /* Start with no inner dot */
+  transition: transform 0.2s ease-in-out; /* Add a smooth animation */
+}
+
+.radio-container input[type="radio"]:checked::before {
+  transform: translate(-50%, -50%) scale(1); /* Show the inner dot when selected */
+}
+
+
+
+    button {
+      background: #0073e6;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background: #005bb5;
+    }
+
+    .dropdown-container {
+  position: relative;
+  width: 100%;
+}
+
+#country-search {
+  width: 80%;
+  padding: 10px;
+  border: 2px solid black;
+  border-radius: 4px 4px 0 0;
+  font-size: 16px;
+}
+
+#country-select {
+  width: 80%;
+  padding: 10px;
+  border: none;
+  border-radius: 0 0 4px 4px;
+  font-size: 16px;
+  display: none; /* Hide dropdown by default */
+  position: absolute;
+  z-index: 100;
+  background: white;
+  max-height: 200px; /* Restrict height for scrolling */
+  overflow-y: auto;
+}
+
+#country-select option {
+    margin-bottom: 1rem;
+}
+
+textarea {
+    width: 80%;
+    border: 2px solid #000;
+    min-height: 100px;
+}
+
+
+ /* Responsive Styles */
+ @media (max-width: 768px) {
+    body {
+        padding: 0;
+    }
+  }
+
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>Section E: Previous Education</h2>
+    <form id="personal-details-form">
+        <h3>Higher Education Institution</h3>
+        <label for="country-search">Select the country the institution is based in <span class="required">(required)</span></label>
+        <div class="dropdown-container">
+          <input type="text" id="country-search" placeholder="Type to search..." autocomplete="off">
+          <select id="country-select" name="country" size="5">
+            <option value="">Select a country</option>
+            <!-- Options will be dynamically populated -->
+          </select>
+        </div>
+        <label for="institution">Name of institution <span class="required">(required)</span></label>
+        <input type="text" id="institution" name="institution" required>
+        <h3>Qualification</h3>
+        <label for="qualification">Select your qualification:</label>
+        <select id="qualification" name="qualification" required>
+          <option value="">Select an option</option>
+          <option value="not-in-list">Not in list</option>
+          <option value="ba">BA</option>
+          <option value="bed">BEd</option>
+          <option value="beng">BEng</option>
+          <option value="bmedsci">BMedSci</option>
+          <option value="bsc">BSc</option>
+          <option value="cert-higher-ed">Certificate of Higher Ed</option>
+          <option value="dclinpsy">DClinPsy</option>
+          <option value="dip-higher-ed">Diploma of Higher Ed</option>
+          <option value="dmedsci">DMedSci</option>
+          <option value="edd">EdD</option>
+          <option value="llb">LLB</option>
+          <option value="llm">LLM</option>
+          <option value="ma">MA</option>
+          <option value="md">MD</option>
+          <option value="march">MArch</option>
+          <option value="mb-chb">MB,ChB</option>
+          <option value="mba">MBA</option>
+          <option value="mbbs">MBBS</option>
+          <option value="mchem">MChem</option>
+          <option value="mclindent">MClinDent</option>
+          <option value="mcomp">MComp</option>
+          <option value="med">MEd</option>
+          <option value="meng">MEng</option>
+          <option value="mmath">MMath</option>
+          <option value="mmedsci">MMedSci</option>
+          <option value="mmet">MMet</option>
+          <option value="mmus">MMus</option>
+          <option value="mpharm-ug">MPharm (UG)</option>
+          <option value="mphil">MPHIL</option>
+          <option value="mphys">MPHYS</option>
+          <option value="msc">MSC</option>
+          <option value="msc-eng">MSc(Eng)</option>
+          <option value="msc-res">MSc (Res)</option>
+          <option value="msci-ug">MSci (UG)</option>
+          <option value="ncuk-grad-dip">NCUK Grad Dip</option>
+          <option value="ncuk-pmp">NCUK PMP</option>
+          <option value="ncuk-eap">NCUK EAP</option>
+          <option value="pg-cert">PG Cert</option>
+          <option value="pg-diploma">PG Diploma</option>
+          <option value="pgce">PGCE</option>
+          <option value="phd">PhD</option>
+        </select>
+        <h3>Subject</h3>
+        <label for="subject">What subject did you study? <span class="required">(required)</span></label>
+        <input type="text" id="subject" name="subject" required>
+        <label for="start-date">Start date <span class="required">(required)</span></label>
+        <div class="dob-container">
+          <div class="dob-field">
+            <input type="text" id="dob-month" name="dob-month" maxlength="2" class="dob-input small" placeholder="MM" required>
+            <label for="dob-month" class="dob-label">Month</label>
+          </div>
+          <div class="dob-field">
+            <input type="text" id="dob-year" name="dob-year" maxlength="4" class="dob-input large" placeholder="YYYY" required>
+            <label for="dob-year" class="dob-label">Year</label>
+          </div>
+        </div>
+        <label for="start-date">End date <span class="required">(required)</span></label>
+        <div class="dob-container">
+          <div class="dob-field">
+            <input type="text" id="dob-month" name="dob-month" maxlength="2" class="dob-input small" placeholder="MM" required>
+            <label for="dob-month" class="dob-label">Month</label>
+          </div>
+          <div class="dob-field">
+            <input type="text" id="dob-year" name="dob-year" maxlength="4" class="dob-input large" placeholder="YYYY" required>
+            <label for="dob-year" class="dob-label">Year</label>
+          </div>
+          
+        </div>
+        <label for="award-date">Date of award <span class="required">(required)</span></label>
+        <div class="dob-container">
+          <div class="dob-field">
+            <input type="text" id="dob-month" name="dob-month" maxlength="2" class="dob-input small" placeholder="MM" required>
+            <label for="dob-month" class="dob-label">Month</label>
+          </div>
+          <div class="dob-field">
+            <input type="text" id="dob-year" name="dob-year" maxlength="4" class="dob-input large" placeholder="YYYY" required>
+            <label for="dob-year" class="dob-label">Year</label>
+          </div>
+          
+        </div>
+        <h3>Final grade/score</h3>
+        <label for="grade">Select your grade:</label>
+<select id="grade" name="grade" required>
+  <option value="">Select an option</option>
+  <option value="still-waiting">Still waiting for grade</option>
+  <option value="failed-course">Failed to complete course</option>
+  <option value="1st">1st</option>
+  <option value="2-1">2.1</option>
+  <option value="2-2">2.2</option>
+  <option value="3rd">3rd</option>
+  <option value="pass">Pass</option>
+  <option value="fail">Fail</option>
+</select>
+<h3>Level of award</h3>
+<p>Please tick here if this is this the highest qualification level you have taken</p>
+<div class="checkbox-container">
+    <input type="checkbox" id="level-confirmation" name="level-confirmation" required>
+    <label for="level-confirmation">This is this the highest qualification level I have taken</label>
+  </div>
+  <h3>Documentary Evidence</h3>
+  <p>Please select how you will provide evidence for your qualification. You can upload scanned documents, but not text files.</p>
+  <p>Valid file formats are: <strong>.jpg, .png, .gif, .pdf, .doc, .docx, .odf</strong></p>
+  <p>If your transcript runs over more than one page please paste the scanned images into an MS Word or ODF document and upload the document. You will need to present your final documents to the Admissions Service for verification before you will be allowed to register.</p>
+  <p><strong>Final Academic Certificate</strong></p>
+  <div class="radio-container">
+    <label>
+      <input type="radio" id="certificate-upload" name="certificate" value="yes">
+      I will upload my final academic certificate now
+    </label>
+    <div id="certificate-file-upload" style="display: none;">
+        <label for="certificate-upload-file" class="custom-upload">Upload your file:</label>
+        <input type="file" id="certificate-upload-file" name="certificate-upload-file" accept=".pdf,.doc,.docx,.txt" required>
+    </div>
+    <label>
+      <input type="radio" id="certificate-later" name="certificate" value="later">
+      I will upload my final certificate later 
+    </label>
+    <label>
+      <input type="radio" id="certificate-no" name="certificate" value="no">
+      I will not be providing this document
+    </label>
+  </div>
+  <p><strong>Final Academic Certificate Translation</strong></p>
+  <div class="radio-container">
+    <label>
+        <input type="radio" id="certificate-translation-english" name="certificate-translation" value="no">
+        My certificate is in English
+      </label>
+    <label>
+      <input type="radio" id="certificate-translation-upload" name="certificate-translation" value="yes">
+      I will upload my certificate translation now
+    </label>
+    <div id="certificate-translated-file-upload" style="display: none;">
+        <label for="certificate-translated-upload-file">Upload your file:</label>
+        <input type="file" id="certificate-translated-upload-file" name="certificate-translated-upload-file" accept=".pdf,.doc,.docx,.txt" required>
+    </div>
+    <label>
+      <input type="radio" id="certificate-translation-later" name="certificate-translation" value="later">
+      I will upload my certificate translation later 
+    </label>
+    <label>
+      <input type="radio" id="certificate-translation-no" name="certificate-translation" value="no">
+      I will not be providing this document
+    </label>
+  </div>
+  <p><strong>Final Academic Transcript</strong></p>
+  <div class="radio-container">
+    <label>
+      <input type="radio" id="transcript-upload" name="transcript" value="yes">
+      I will upload my final transcript now
+    </label>
+    <div id="transcript-file-upload" style="display: none;">
+    <label for="transcript-upload-file">Upload your file:</label>
+    <input type="file" id="transcript-upload-file" name="transcript-upload-file" accept=".pdf,.doc,.docx,.txt" required>
+</div>
+    <label>
+      <input type="radio" id="transcript-later" name="transcript" value="later">
+      I will upload my final transcript later 
+    </label>
+    <label>
+      <input type="radio" id="transcript-no" name="transcript" value="no">
+      I will not be providing this document
+    </label>
+  </div>
+  <p><strong>Final Academic Transcript Translation</strong></p>
+  <div class="radio-container">
+    <label>
+        <input type="radio" id="transcript-translation-english" name="transcript-translation" value="no">
+        My transcript is in English
+      </label>
+    <label>
+      <input type="radio" id="transcript-translation-upload" name="transcript-translation" value="yes">
+      I will upload my transcript translation now
+    </label>
+    <div id="transcript-translated-file-upload" style="display: none;">
+        <label for="transcript-translated-upload-file">Upload your file:</label>
+        <input type="file" id="transcript-translated-upload-file" name="transcript-translated-upload-file" accept=".pdf,.doc,.docx,.txt" required>
+    </div>
+    <label>
+      <input type="radio" id="transcript-translation-later" name="transcript-translation" value="later">
+      I will upload my transcript translation later 
+    </label>
+    <label>
+      <input type="radio" id="transcript-translation-no" name="transcript-translation" value="no">
+      I will not be providing this document
+    </label>
+  </div>
+        </form>
+  </div>
+  <script>
+  const countries = [
+  "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina", "Armenia",
+  "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium",
+  "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei", "Bulgaria",
+  "Burkina Faso", "Burundi", "Cabo Verde", "Cambodia", "Cameroon", "Canada", "Central African Republic",
+  "Chad", "Chile", "China", "Colombia", "Comoros", "Congo (Congo-Brazzaville)", "Costa Rica", "Croatia",
+  "Cuba", "Cyprus", "Czechia (Czech Republic)", "Denmark", "Djibouti", "Dominica", "Dominican Republic",
+  "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Eswatini (fmr. Swaziland)",
+  "Ethiopia", "Fiji", "Finland", "France", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Greece",
+  "Grenada", "Guatemala", "Guinea", "Guinea-Bissau", "Guyana", "Haiti", "Holy See", "Honduras", "Hungary",
+  "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Israel", "Italy", "Jamaica", "Japan", "Jordan",
+  "Kazakhstan", "Kenya", "Kiribati", "Korea (North)", "Korea (South)", "Kosovo", "Kuwait", "Kyrgyzstan", "Laos",
+  "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Madagascar",
+  "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Mauritania", "Mauritius", "Mexico",
+  "Micronesia", "Moldova", "Monaco", "Mongolia", "Montenegro", "Morocco", "Mozambique", "Myanmar (formerly Burma)",
+  "Namibia", "Nauru", "Nepal", "Netherlands", "New Zealand", "Nicaragua", "Niger", "Nigeria", "North Macedonia",
+  "Norway", "Oman", "Pakistan", "Palau", "Palestine State", "Panama", "Papua New Guinea", "Paraguay", "Peru",
+  "Philippines", "Poland", "Portugal", "Qatar", "Romania", "Russia", "Rwanda", "Saint Kitts and Nevis",
+  "Saint Lucia", "Saint Vincent and the Grenadines", "Samoa", "San Marino", "Sao Tome and Principe", "Saudi Arabia",
+  "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Solomon Islands",
+  "Somalia", "South Africa", "South Sudan", "Spain", "Sri Lanka", "Sudan", "Suriname", "Sweden", "Switzerland",
+  "Syria", "Tajikistan", "Tanzania", "Thailand", "Timor-Leste", "Togo", "Tonga", "Trinidad and Tobago", "Tunisia",
+  "Turkey", "Turkmenistan", "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States",
+  "Uruguay", "Uzbekistan", "Vanuatu", "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe"
+];
+
+// Populate select dropdown
+const countrySelect = document.getElementById("country-select");
+countries.forEach(country => {
+  const option = document.createElement("option");
+  option.value = country;
+  option.textContent = country;
+  countrySelect.appendChild(option);
+});
+
+// Handle search input
+const countrySearch = document.getElementById("country-search");
+countrySearch.addEventListener("input", () => {
+  const query = countrySearch.value.toLowerCase();
+  const options = Array.from(countrySelect.options);
+
+  // Filter options based on query
+  options.forEach(option => {
+    if (option.value.toLowerCase().includes(query)) {
+      option.style.display = "block";
+    } else {
+      option.style.display = "none";
+    }
+  });
+
+  // Show dropdown when typing
+  countrySelect.style.display = "block";
+});
+
+// Handle selection
+countrySelect.addEventListener("change", () => {
+  countrySearch.value = countrySelect.value;
+  countrySelect.style.display = "none"; // Hide dropdown after selection
+});
+
+// Hide dropdown when clicking outside
+document.addEventListener("click", (e) => {
+  if (!document.querySelector(".dropdown-container").contains(e.target)) {
+    countrySelect.style.display = "none";
+  }
+});
+
+  </script>
+  <script>
+   document.getElementById('disability-yes').addEventListener('change', function () {
+  document.getElementById('conditions').style.display = 'block'; // Show questions
+});
+
+document.getElementById('disability-no').addEventListener('change', function () {
+  document.getElementById('conditions').style.display = 'none'; // Hide questions
+});
+
+document.getElementById('disability-undisclosed').addEventListener('change', function () {
+  document.getElementById('conditions').style.display = 'none'; // Hide questions
+});
+document.getElementById('disability-yes').addEventListener('change', function () {
+  document.getElementById('conditions').style.display = 'block'; // Show questions
+});
+  </script> 
+  <script>
+      document.getElementById('certificate-upload').addEventListener('change', function () {
+  document.getElementById('certificate-file-upload').style.display = 'block'; // Show questions
+});
+
+document.getElementById('certificate-later').addEventListener('change', function () {
+  document.getElementById('certificate-file-upload').style.display = 'none'; // Show questions
+});
+
+document.getElementById('certificate-no').addEventListener('change', function () {
+  document.getElementById('certificate-file-upload').style.display = 'none'; // Show questions
+});
+
+document.getElementById('transcript-upload').addEventListener('change', function () {
+  document.getElementById('transcript-file-upload').style.display = 'block'; // Show questions
+});
+
+document.getElementById('transcript-later').addEventListener('change', function () {
+  document.getElementById('transcript-file-upload').style.display = 'none'; // Show questions
+});
+
+document.getElementById('transcript-no').addEventListener('change', function () {
+  document.getElementById('transcript-file-upload').style.display = 'none'; // Show questions
+});
+
+document.getElementById('certificate-translation-upload').addEventListener('change', function () {
+  document.getElementById('certificate-translated-file-upload').style.display = 'block'; // Show questions
+});
+
+document.getElementById('certificate-translation-later').addEventListener('change', function () {
+  document.getElementById('certificate-translated-file-upload').style.display = 'none'; // Show questions
+});
+
+document.getElementById('certificate-translation-no').addEventListener('change', function () {
+  document.getElementById('certificate-translated-file-upload').style.display = 'none'; // Show questions
+});
+
+document.getElementById('certificate-translation-english').addEventListener('change', function () {
+  document.getElementById('certificate-translated-file-upload').style.display = 'none'; // Show questions
+});
+
+document.getElementById('transcript-translation-upload').addEventListener('change', function () {
+  document.getElementById('transcript-translated-file-upload').style.display = 'block'; // Show questions
+});
+
+document.getElementById('transcript-translation-later').addEventListener('change', function () {
+  document.getElementById('transcript-translated-file-upload').style.display = 'none'; // Show questions
+});
+
+document.getElementById('transcript-translation-no').addEventListener('change', function () {
+  document.getElementById('transcript-translated-file-upload').style.display = 'none'; // Show questions
+});
+
+document.getElementById('transcript-translation-english').addEventListener('change', function () {
+  document.getElementById('transcript-translated-file-upload').style.display = 'none'; // Show questions
+});
+
+  </script>
+</body>
+</html>
