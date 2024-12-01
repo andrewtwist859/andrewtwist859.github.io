@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.typekit.net/yph5bbq.css">
+    <title>Scholarship Search Tool</title>
+    <style>
+        body {
+            font-family: 'source-sans-pro', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #F8F8F9;
+        }
+
+        .phd-container {
+            max-width: 800px;;
+            padding: 20px;
+            border-radius: 8px;
+            color: #000;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            font-family: 'source-serif-pro';
+            font-weight: 700;
+        }
+
+        input[type="text"] {
+            width: 90%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .filters {
+            margin-bottom: 20px;
+        }
+
+        .filters h3 {
+            font-family: 'source-serif-pro';
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .filters label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .filters button {
+            margin-top: 10px;
+            padding: 10px 15px;
+            background-color: #6200ee;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .filters button:hover {
+            background-color: #3700b3;
+        }
+
+        .scholarship-card {
+            padding: 20px;
+            margin-bottom: 20px;
+            background-color: #fff;
+        }
+
+        .scholarship-card h2 {
+            font-family: 'source-serif-pro';
+            font-weight: 700;
+            font-size: 1.5em;
+            margin: 0 0 10px 0;
+        }
+
+        .scholarship-card p {
+            margin: 10px 0;
+            line-height: 1.5;
+        }
+
+        .scholarship-card a {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 15px;
+            background-color: #6200ee;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+
+        .scholarship-card a:hover {
+            background-color: #3700b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Section A: Personal details</h2>
+        <form id="personal-details-form">
+          <label for="first-name">First / Given Name <span class="required">(required)</span></label>
+          <input type="text" id="first-name" name="first-name" required>
+    
+          <label for="family-name">Family Name <span class="required">(required)</span></label>
+          <input type="text" id="family-name" name="family-name" required>
+    
+          <label for="middle-names">Middle Names</label>
+          <input type="text" id="middle-names" name="middle-names">
+    
+          <label for="preferred-name">Preferred/Chosen First Name</label>
+          <input type="text" id="preferred-name" name="preferred-name">
+    
+          <label for="gender">Gender <span class="required">(required)</span></label>
+          <select id="gender" name="gender" required>
+            <option value="">Select</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+          </select>
+    
+          <label for="dob-day">Date of birth <span class="required">(required)</span></label>
+          <div class="dob-container">
+            <div class="dob-field">
+              <input type="text" id="dob-day" name="dob-day" maxlength="2" class="dob-input small" placeholder="DD" required>
+              <label for="dob-day" class="dob-label">Day</label>
+            </div>
+            <div class="dob-field">
+              <input type="text" id="dob-month" name="dob-month" maxlength="2" class="dob-input small" placeholder="MM" required>
+              <label for="dob-month" class="dob-label">Month</label>
+            </div>
+            <div class="dob-field">
+              <input type="text" id="dob-year" name="dob-year" maxlength="4" class="dob-input large" placeholder="YYYY" required>
+              <label for="dob-year" class="dob-label">Year</label>
+            </div>
+          </div>
+          
+          
+          <h2>Confirm your details</h2>
+          <p>Tick to confirm that you have entered your names and date of birth as they appear in your passport. This is to ensure you are able to get a student visa if you need to apply for one: </p>
+    <div class="checkbox-container">
+        <input type="checkbox" id="passport-confirmation" name="passport-confirmation" required>
+        <label for="passport-confirmation">I confirm my names and date of birth appear as they do in my passport.</label>
+      </div>
+      
+    
+          <h2>British Student Identification Numbers</h2>
+          <label for="hesa-number">HESA Number</label>
+          <input type="text" id="hesa-number" name="hesa-number">
+    
+          <label for="uln">Unique Learner Number</label>
+          <input type="text" id="uln" name="uln">
+    
+          <h2>Previous Details</h2>
+          <p class="previous-details-question">Are you currently studying, or have you previously studied, at The University of Sheffield?</p>
+          <div class="radio-container">
+            <label>
+              <input type="radio"id="study-yes" name="previous-study" value="yes">
+              Yes
+            </label>
+            <label>
+              <input type="radio" id="study-no" name="previous-study" value="no">
+              No
+            </label>
+          </div>
+          <div id="study-questions" style="display: none; margin-top: 20px;">
+            <label for="registration-number">
+              Please enter your previous registration number to help us link your new application to your record:
+            </label>
+            <input type="text" id="registration-number" name="registration-number" class="dynamic-input">
+          
+            <label for="course-name" style="margin-top: 10px;">
+              Please enter the name of the course you are/were taking:
+            </label>
+            <input type="text" id="course-name" name="course-name" class="dynamic-input">
+          
+            <p>Has your name changed since you last applied or took a course?</p>
+            <div class="radio-container">
+              <label>
+                <input type="radio" id="study-namechange-yes" name="name-changed" value="yes">
+                Yes
+              </label>
+              <label>
+                <input type="radio" id="study-namechange-no" name="name-changed" value="no">
+                No
+              </label>
+            </div>
+            <div id="study-name-change" style="display: none; margin-top: 20px;">
+                <label for="previous-first-name">
+                    Previous First / Given Name            
+                </label>
+                <input type="text" id="previous-first-name" name="previous-first-name" class="dynamic-input">
+                <label for="previous-family-name">
+                    Previous Family Name
+                </label>
+                <input type="text" id="previous-family-name" name="previous-family-name" class="dynamic-input">
+              </div>
+          </div>
+          <p class="previous-details-question">Have you previously applied for a course with The University of Sheffield?</p>
+          <div class="radio-container">
+            <label>
+              <input type="radio"id="applied-yes" name="previous-study" value="yes">
+              Yes
+            </label>
+            <label>
+              <input type="radio" id="applied-no" name="previous-study" value="no">
+              No
+            </label>
+          </div>
+          <div id="applied-questions" style="display: none; margin-top: 20px;">
+            <label for="registration-number">
+                Please enter your previous applicant number to help us link your new application to your previous record:
+            </label>
+            <input type="text" id="registration-number" name="registration-number" class="dynamic-input">
+          
+            <p>Has your name changed since you last applied or took a course?</p>
+            <div class="radio-container">
+              <label>
+                <input type="radio" id="applied-namechange-yes" name="name-changed" value="yes">
+                Yes
+              </label>
+              <label>
+                <input type="radio" id="applied-namechange-no" name="name-changed" value="no">
+                No
+              </label>
+            </div>
+            <div id="applied-name-change" style="display: none; margin-top: 20px;">
+                <label for="previous-first-name">
+                    Previous First / Given Name            
+                </label>
+                <input type="text" id="previous-first-name" name="previous-first-name" class="dynamic-input">
+                <label for="previous-family-name">
+                    Previous Family Name
+                </label>
+                <input type="text" id="previous-family-name" name="previous-family-name" class="dynamic-input">
+              </div>
+          </div>
+    
+    
+    
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sheetURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTDqeMHGvE1xmrPVYDcWMl-u0STUqn_DHGiA1XMfZ09PFCZAcFkJXbhlGHvoZ-kYM_QOHzajjdkpMo7/pub?output=csv";
+            const scholarshipsList = document.getElementById('scholarships-list');
+            const searchInput = document.getElementById('search');
+            const filterOptions = document.getElementById('filter-options');
+            const clearFiltersButton = document.getElementById('clear-filters');
+
+            let scholarships = [];
+            let selectedFilters = [];
+
+            // Fetch and parse the Google Sheet
+            Papa.parse(sheetURL, {
+                download: true,
+                header: true,
+                complete: function(results) {
+                    scholarships = results.data;
+                    displayFilterOptions(scholarships);
+                    displayScholarships(scholarships);
+
+                    // Search functionality
+                    searchInput.addEventListener('input', applyFilters);
+
+                    // Filter functionality
+                    filterOptions.addEventListener('change', (e) => {
+                        if (e.target.checked) {
+                            selectedFilters.push(e.target.value);
+                        } else {
+                            selectedFilters = selectedFilters.filter(
+                                (filter) => filter !== e.target.value
+                            );
+                        }
+                        applyFilters();
+                    });
+
+                    // Clear filters functionality
+                    clearFiltersButton.addEventListener('click', () => {
+                        searchInput.value = '';
+                        selectedFilters = [];
+                        const checkboxes = filterOptions.querySelectorAll('input[type="checkbox"]');
+                        checkboxes.forEach((checkbox) => (checkbox.checked = false));
+                        displayScholarships(scholarships);
+                    });
+                },
+            });
+
+            // Function to display scholarships
+            function displayScholarships(filteredScholarships) {
+                scholarshipsList.innerHTML = '';
+                filteredScholarships.forEach((scholarship) => {
+                    const card = document.createElement('div');
+                    card.classList.add('scholarship-card');
+
+                    // Split description into paragraphs
+                    const paragraphs = scholarship.Description.split("\n").map((paragraph) => paragraph.trim()).filter((p) => p);
+
+                    // Check if the URL is provided
+                    const hasLink = scholarship.URL && scholarship.URL.trim() !== '';
+
+                    card.innerHTML = `
+                        <h2>${scholarship.Name}</h2>
+                        <p><strong>Research Council:</strong> ${scholarship["Research council"]}</p>
+                        <div class="description">
+                            ${paragraphs.map((p) => `<p>${p}</p>`).join('')}
+                        </div>
+                        ${
+                            hasLink
+                                ? `<a href="${scholarship.URL}" target="_blank">${scholarship["Link text"] || "Learn More"}</a>`
+                                : ''
+                        }
+                    `;
+
+                    scholarshipsList.appendChild(card);
+                });
+            }
+
+            // Function to display filter options
+            function displayFilterOptions(scholarships) {
+                const councils = Array.from(
+                    new Set(scholarships.map((scholarship) => scholarship["Research council"]))
+                ).filter((council) => council);
+
+                filterOptions.innerHTML = councils
+                    .map(
+                        (council) => `
+                            <label>
+                                <input type="checkbox" value="${council}" /> ${council}
+                            </label>
+                        `
+                    )
+                    .join('');
+            }
+
+            // Function to apply filters and search
+            function applyFilters() {
+                const searchTerm = searchInput.value.toLowerCase();
+
+                const filtered = scholarships.filter((scholarship) => {
+                    const matchesSearch = scholarship.Name.toLowerCase().includes(searchTerm) ||
+                        scholarship.Description.toLowerCase().includes(searchTerm);
+                    const matchesFilters = selectedFilters.length === 0 || selectedFilters.includes(scholarship["Research council"]);
+                    return matchesSearch && matchesFilters;
+                });
+
+                displayScholarships(filtered);
+            }
+        });
+    </script>
+</body>
+</html>

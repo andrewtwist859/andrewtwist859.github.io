@@ -1,0 +1,192 @@
+.form-container {
+      max-width: 800px;
+      padding: 2rem;
+      background-color: #fff;
+      margin-top: 1rem;
+
+    }
+
+    h1, h2 {
+      font-family: 'source-serif-pro';
+      font-weight: 700;  
+      margin-top: 1rem;
+      color: #333;
+      margin-bottom: 0.5rem;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .required {
+      color: red;
+    }
+
+    input, select {
+      width: 80%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 2px solid #000;
+    }
+
+    input, select, textarea {
+  font-size: 1rem; /* Ensures no zooming on mobile */
+  line-height: 1.4; /* Provides good readability */
+}
+
+    input:focus, select:focus, textarea:focus, .radio-container input[type="radio"]:focus {
+  outline: 3px solid #3BD4AE; /* GDS yellow outline */
+  outline-offset: 2px; /* Adds space between the element and the outline */
+  border-color: black; /* Ensures the black border remains intact */
+}
+
+
+    .dob-container {
+  display: flex;
+  gap: 10px; /* Adds space between day, month, and year fields */
+}
+
+.dob-field {
+  display: flex;
+  flex-direction: column; /* Stacks label and input vertically */
+  align-items: center
+}
+
+.dob-label {
+  font-size: 14px;
+  text-align: center;
+}
+
+.dob-input {
+  display: block;
+  padding: 5px;
+  font-size: 16px;
+  text-align: center;
+  border: 2px solid black;
+  outline: none;
+  width: 3rem; /* Default size for small inputs */
+  margin-bottom: 0rem;
+  padding: 0.5rem 0rem;
+}
+
+.dob-input.large {
+  width: 6rem; /* Wider input for the year field */
+}
+
+.dob-input:focus {
+  border-color: #005ea5; /* Blue border on focus */
+  box-shadow: 0 0 0 2px #b3d9ff; /* Light blue highlight effect */
+}
+
+.dob-input::placeholder {
+  color: #999; /* Placeholder text color */
+}
+
+.checkbox-container {
+  display: inline-flex; /* Aligns checkbox and label in one line */
+  align-items: center; /* Vertically aligns the checkbox with the label */
+  gap: 10px; /* Adds space between checkbox and label text */
+  margin-bottom: 20px;
+}
+
+.checkbox-container input[type="checkbox"] {
+  appearance: none; /* Removes default checkbox styling */
+  width: 2.5rem; /* Set fixed width */
+  height: 2.5rem; /* Set fixed height */
+  border: 3px solid black; /* Adds a black border */
+  position: relative; /* Allows positioning of the checkmark */
+  outline: none;
+  cursor: pointer; /* Pointer cursor for interactivity */
+}
+
+.checkbox-container input[type="checkbox"]::before {
+  content: ""; /* Placeholder for the checkmark */
+  width: 0.6rem; /* Checkmark width */
+  height: 1rem; /* Checkmark height */
+  border: 3px solid black; /* Checkmark line styling */
+  border-width: 0 3px 3px 0; /* Creates the "tick" shape */
+  position: absolute;
+  top: 40%; /* Centers vertically relative to the checkbox */
+  left: 50%; /* Centers horizontally relative to the checkbox */
+  transform: translate(-50%, -50%) rotate(45deg) scale(0); /* Hidden initially */
+  transition: transform 0.2s ease-in-out; /* Smooth animation */
+}
+
+.checkbox-container input[type="checkbox"]:checked::before {
+  transform: translate(-50%, -50%) rotate(45deg) scale(1); /* Show the checkmark */
+}
+
+.checkbox-container input[type="checkbox"]:focus {
+  outline: 3px solid #3BD4AE; /* GDS yellow focus outline */
+  outline-offset: 2px; /* Adds space between checkbox and focus outline */
+}
+
+
+
+
+
+    .previous-details-question {
+  margin-bottom: 15px;
+  text-align: left; /* Ensures the question text is left-aligned */
+}
+
+.radio-container {
+  display: flex;
+  flex-direction: column; /* Stacks the radio buttons vertically */
+  gap: 10px; /* Adds consistent spacing between the labels */
+  align-items: flex-start; /* Ensures everything is left-aligned */
+  margin-bottom: 2rem;
+}
+
+.radio-container label {
+  display: inline-flex; /* Use inline-flex for better inline element alignment */
+  align-items: center; /* Ensures the text aligns vertically with the radio button */
+  gap: 10px; /* Adds spacing between radio button and label */
+  font-size: 16px; /* Ensures readable text size */
+}
+
+.radio-container input[type="radio"] {
+  appearance: none; /* Remove default styling */
+  width: 2.5rem; /* Set fixed width */
+  height: 2.5rem; /* Set fixed height */
+  border: 3px solid black; /* Create the outer circle */
+  border-radius: 50%; /* Ensure the button is circular */
+  outline: none;
+  display: inline-block;
+  margin: 0; /* Remove default margin */
+  position: relative; /* Enable positioning for the inner circle */
+}
+
+.radio-container input[type="radio"]::before {
+  content: ""; /* Create the inner circle */
+  width: 1.5rem; /* Set fixed width */
+  height: 1.5rem; /* Set fixed height */
+  background-color: black; /* Inner dot color */
+  border-radius: 50%; /* Ensure it's a circle */
+  position: absolute; /* Position it within the radio button */
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%) scale(0); /* Start with no inner dot */
+  transition: transform 0.2s ease-in-out; /* Add a smooth animation */
+}
+
+.radio-container input[type="radio"]:checked::before {
+  transform: translate(-50%, -50%) scale(1); /* Show the inner dot when selected */
+}
+
+
+
+    button {
+      background: #0073e6;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background: #005bb5;
+    }
