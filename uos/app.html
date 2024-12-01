@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://use.typekit.net/jou7rrz.css">
+    <link rel="stylesheet" href="global-menu.css"> 
+    <link rel="stylesheet" href="section-menu.css">
+    <link rel="stylesheet" href="footer.css"> 
+    <link rel="stylesheet" href="phd.css"> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+    <link rel="icon" href="https://www.sheffield.ac.uk/themes/custom/uos_public/favicon.ico" sizes="any">
+    <link rel="icon" href="https://www.sheffield.ac.uk/themes/custom/uos_public/favicon.svg" type="image/svg+xml" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Section F: Relevant Employment | Postgraduate Application Form</title>
+  <style>
+
+.contents-container h3 {
+  font-family: 'source-serif-pro';
+  font-size: 1.4rem;
+}
+
+    /* Mobile styling for moving description panel below image */
+@media (max-width: 768px) {
+
+.contents-container {
+padding: 1rem !important;
+}
+
+}
+
+
+.contents-container {
+max-width: 1180px;
+margin: 0 auto;
+padding: 2rem;
+}
+
+.contents-container p {
+max-width: 80ch;
+margin-bottom: 1rem;
+font-size: 1.2rem;
+}
+
+h1 {
+  font-family: 'source-serif-pro';
+  font-weight: 700;  
+}
+
+.contents-container h2{
+font-family: 'source-serif-pro';
+font-weight: 700;
+font-size: 1.6rem;
+margin-bottom: 1rem;
+}
+
+hr {
+    margin: 1rem 0rem;
+    border: 1px solid #B8BBBF;
+    max-width: 800px;
+}
+.subject-talks {
+      max-width: 800px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    #search-box,
+    #listings-container {
+        width: 100%; /* Take full width of the parent container */
+        max-width: 800px; /* Constrain the maximum width */
+        box-sizing: border-box; /* Include padding and borders in width calculation */
+    }
+
+    #listings-container {
+      margin-top: 1rem;
+    }
+
+    #search-box {
+        margin-bottom: 1rem;
+        text-align: left; /* Align content to the left */
+    }
+
+    #search-box input {
+      width: 90%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+
+   
+
+    .faculty-group {
+      margin-bottom: 40px;
+    }
+
+    .faculty-header {
+      font-size: 1.5rem;
+      font-family: 'source-serif-pro';
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 10px;
+    }
+
+    .listing-card {
+        width: 100%; /* Cards stretch to full width */
+        max-width: 800px; /* Constrain to max width for larger screens */
+    box-sizing: border-box; /* Include padding/border in the total width */   
+      background: white;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    .listing-card h2 {
+      font-size: 1.2rem;
+      font-family: 'source-serif-pro';
+      font-weight: 700;
+      margin: 0 0 0;
+      color: #333;
+    }
+
+    .listing-card p {
+      margin: 5px 0;
+      color: #666;
+    }
+
+    p.directions {
+        margin-top: 1rem;
+    }
+
+    .listing-card a {
+      color: #440099;
+      text-decoration: underline;
+      font-weight: 700;
+    }
+
+    .listing-card a:hover {
+      text-decoration: underline;
+    }
+
+    .flag {
+  color: #7100FF;
+  font-weight: bold;
+  display: inline-block;
+}
+
+#clear-search {
+  align-self: flex-start; /* Align this specific element to the left */
+  width: fit-content; /* Shrink the container to fit the button */
+}
+
+#clear-search button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  display: inline-block; /* Ensure the button doesn't take the full width */
+}
+
+#clear-search button:hover {
+  background-color: #0056b3;
+}
+
+/* Responsive Design for smaller devices */
+@media (max-width: 768px) {
+  #listings-container,
+  .listing-card {
+    max-width: 100%; /* Override max width on small devices to ensure cards don't overflow */
+    padding: 0; /* Remove extra padding for a cleaner fit */
+  }
+
+  #search-box {
+    text-align: left;
+    padding: 0;
+  }
+
+  #search-box input {
+    width: 100%;
+    max-width: 90%;
+  }
+
+  .listing-card {
+    padding: 15px; /* Reduce padding inside cards for smaller screens */
+  }
+
+  .faculty-header {
+    font-size: 1.2rem; /* Slightly smaller header text */
+  }
+
+  .listing-card h2 {
+    font-size: 1rem; /* Reduce title font size */
+  }
+
+  .listing-card p,
+  .listing-card a {
+    font-size: 14px; /* Smaller text and link size for better fit */
+  }
+}
+
+.application-form {
+      max-width: 800px;
+      width: 100%;
+    }
+
+
+    .app-section {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 15px;
+    }
+
+    .app-section:last-child {
+      margin-bottom: 0;
+    }
+
+    .app-section .app-details {
+      flex: 1;
+    }
+
+    .app-section .app-details h2 {
+      font-size: 1.2rem;
+      color: #333;
+      margin: 0;
+    }
+
+    .app-section .app-details span {
+      font-size: 18px;
+    }
+
+    .status {
+      padding: 5px 15px;
+      border-radius: 4px;
+      text-align: left;
+      background-color: #eee;
+      color: #666;
+      flex-shrink: 0; /* Prevents shrinking */
+    }
+
+    .status.completed {
+      background-color: #d4f5e9;
+      color: #218a6c;
+    }
+
+    .action {
+      text-decoration: none;
+      color: #5e2abf;
+      font-weight: bold;
+      font-size: 1rem;
+      transition: color 0.2s;
+      margin-left: 15px; /* Creates space between the flag and the action */
+    }
+
+    .action:hover {
+      color: #431a93;
+    }
+
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="navbar-content">
+      <div class="navbar-brand">
+        <a href="changes"><img src="logo.png" alt="University of Sheffield Logo" class="logo"></a>
+      </div>
+      <ul class="nav-links">
+        <li class="nav-item" onclick="togglePanel('study-panel')">Study</li>
+        <li class="nav-item" onclick="togglePanel('research-panel')">Research</li>
+        <li class="nav-item" onclick="togglePanel('collaborate-panel')">Collaborate</li>
+        <li class="nav-item" onclick="togglePanel('about-panel')">About</li>
+      </ul>
+      <div class="hamburger" onclick="toggleMobileMenu()">☰</div>
+    </div>
+  </nav>
+
+  <!-- Mega Menu Panels (Study) -->
+  <div class="mega-menu-panel" id="study-panel">
+    <div class="mega-menu-content">
+      <div class="menu-column">
+        <h4>Undergraduate</h4>
+        <ul>
+          <li>Undergraduate courses</li>
+          <li>Undergraduate open days</li>
+          <li>How to apply</li>
+          <li>Fees and funding</li>
+          <li>Accommodation</li>
+          <li>International students</li>
+        </ul>
+      </div>
+      <div class="menu-column">
+        <h4>Postgraduate taught</h4>
+        <ul>
+          <li>Postgraduate taught courses</li>
+          <li>Postgraduate open days</li>
+          <li>How to apply</li>
+          <li>Fees and funding</li>
+          <li>International students</li>
+        </ul>
+      </div>
+      <div class="menu-column">
+        <h4>PhD study</h4>
+        <ul>
+          <li>Find a PhD</li>
+          <li>How to apply</li>
+          <li>PhD fees</li>
+          <li>PhD scholarships</li>
+        </ul>
+      </div>
+      <div class="menu-column">
+        <h4>Other ways to study</h4>
+        <ul>
+          <li>Apprenticeships</li>
+          <li>Mature students</li>
+          <li>Online learning</li>
+          <li>TEFL and English as a second language</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mega Menu Panels (Research) -->
+  <div class="mega-menu-panel" id="research-panel">
+    <div class="mega-menu-content">
+      <div class="menu-column">
+        <h4>Research at Sheffield</h4>
+        <ul>
+          <li>Our strategic priorities</li>
+          <li>Our people</li>
+          <li>Research Excellence Framework 2021</li>
+          <li>Researcher support</li>
+          <li>Research environment and culture</li>
+          <li>Open Research</li>
+        </ul>
+      </div>
+      <div class="menu-column">
+        <h4>Postgraduate research</h4>
+        <ul>
+          <li>Find a PhD</li>
+          <li>PhD projects directory</li>
+          <li>PhD scholarships</li>
+        </ul>
+      </div>
+      <div class="menu-column">
+        <h4>Expertise</h4>
+        <ul>
+          <li>Flagship research institutes</li>
+          <li>Research centres</li>
+          <li>Facilities</li>
+          <li>Library</li>
+        </ul>
+      </div>
+      <div class="menu-column">
+        <h4>Our impact</h4>
+        <ul>
+          <li>Research features</li>
+          <li>UN sustainable development goals</li>
+          <li>University Player</li>
+          <li>Queen's Anniversary Prizes</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+   <!-- Mega Menu Panels (Collaborate) -->
+   <div class="mega-menu-panel" id="collaborate-panel">
+    <div class="mega-menu-content">
+      <div class="menu-column">
+        <h4>Partnerships</h4>
+        <ul>
+          <li>How we support business</li>
+          <li>Examples of business partners</li>
+          <li>Research centres, institutes and networks</li>
+          <li>Our role in the city and region</li>
+        </ul>
+      </div>
+      <div class="menu-column">
+        <h4>International</h4>
+        <ul>
+          <li>Our global networks</li>
+          <li>We Are International campaign</li>
+          <li>Global opportunities and exchanges</li>
+        </ul>
+      </div>
+      <div class="menu-column">
+        <h4>Alumni</h4>
+        <ul>
+          <li>Update your details</li>
+          <li>Support us</li>
+          <li>Our alumni</li>
+          <li>Alumni volunteering</li>
+        </ul>
+      </div>
+      <div class="menu-column">
+        <h4>Philanthropy</h4>
+        <ul>
+          <li>Forged in Sheffield, Shaping the Future campaign</li>
+          <li>Get involved</li>
+          <li>Donate now</li>
+          <li>MND appeal</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+ <!-- Mega Menu Panels (About) -->
+ <div class="mega-menu-panel" id="about-panel">
+    <div class="mega-menu-content">
+      <div class="menu-column">
+        <h4>About the University</h4>
+        <ul>
+          <li>News</li>
+          <li>Events</li>
+          <li>Jobs</li>
+          <li>Sustainability at Sheffield</li>
+          <li>Inclusion at Sheffield</li>
+          <li>Support for refugee students and scholars</li>
+          <li>Our vision and strategic plan</li>
+          <li>Our role in the city and region</li>
+          <li>Governance and management</li>
+          <li>Rankings</li>
+          <li>University of the Year</li>
+          <li>Queen's Anniversary Prizes</li>
+          <li>Nobel Prize winners</li>
+        </ul>
+      </div>
+      <div class="menu-column">
+        <h4>Departments and services</h4>
+        <ul>
+          <li>Academic departments</li>
+          <li>Faculties</li>
+          <li>Professional services</li>
+        </ul>
+      </div>
+      <div class="menu-column">
+        <h4>Studying at Sheffield</h4>
+        <ul>
+          <li>Guide to Sheffield</li>
+          <li>Courses</li>
+        </ul>
+      </div>
+      <div class="menu-column">
+        <h4>Hospitality</h4>
+        <ul>
+          <li>Conferences, events, visitor accommodation and weddings</li>
+          <li>Cafes and bars</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-menu-overlay" id="mobile-menu-overlay">
+    <div class="close-btn" onclick="toggleMobileMenu()">✕</div>
+    <div class="mobile-menu-panel" id="main-mobile-panel">
+      <h4 onclick="openSubmenu('mobile-study-panel')">Study</h4>
+      <h4 onclick="openSubmenu('mobile-research-panel')">Research</h4>
+      <h4 onclick="openSubmenu('mobile-collaborate-panel')">Collaborate</h4>
+      <h4 onclick="openSubmenu('mobile-about-panel')">About</h4>
+    </div>
+
+    <!-- Study Submenu Panel (Showing H4s only) -->
+    <div class="mobile-submenu-panel" id="mobile-study-panel">
+        <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+        <h4 onclick="openSubmenu('mobile-study-undergraduate')">Undergraduate</h4>
+      <h4 onclick="openSubmenu('mobile-study-postgraduate')">Postgraduate taught</h4>
+      <h4 onclick="openSubmenu('mobile-study-phd')">PhD study</h4>
+      <h4 onclick="openSubmenu('mobile-study-other')">Other ways to study</h4>
+    </div>
+
+    <!-- Study Category Panels (Third-level Panels) -->
+    <div class="mobile-submenu-panel" id="mobile-study-undergraduate">
+        <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+        <h4 class="plain">Undergraduate</h4>
+      <ul>
+        <li>Undergraduate courses</li>
+        <li>Undergraduate open days</li>
+        <li>How to apply</li>
+        <li>Fees and funding</li>
+        <li>Accommodation</li>
+        <li>International students</li>
+      </ul>
+      <img src="open.jpg">
+      <p><strong>Open day: Saturday 23 November 2024.</strong></p>
+      <p><a href="/">Book your place</a></p>
+    </div>
+
+    <div class="mobile-submenu-panel" id="mobile-study-postgraduate">
+        <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+        <h4 class="plain">Postgraduate taught</h4>
+      <ul>
+        <li>Postgraduate taught courses</li>
+        <li>Postgraduate open days</li>
+        <li>How to apply</li>
+        <li>Fees and funding</li>
+        <li>International students</li>
+      </ul>
+    </div>
+
+    <div class="mobile-submenu-panel" id="mobile-study-phd">
+        <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+        <h4 class="plain">PhD study</h4>
+      <ul>
+        <li>Find a PhD</li>
+        <li>How to apply</li>
+        <li>PhD fees</li>
+        <li>PhD scholarships</li>
+      </ul>
+    </div>
+
+    <div class="mobile-submenu-panel" id="mobile-study-other">
+        <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+        <h4 class="plain">Other ways to study</h4>
+      <ul>
+        <li>Apprenticeships</li>
+        <li>Mature students</li>
+        <li>Online learning</li>
+        <li>TEFL and English as a second language</li>
+      </ul>
+    </div>
+  
+
+   <!-- Research Submenu Panel (Showing H4s only) -->
+   <div class="mobile-submenu-panel" id="mobile-research-panel">
+    <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+    <h4 onclick="openSubmenu('mobile-research-research')">Research at Sheffield</h4>
+    <h4 onclick="openSubmenu('mobile-research-postgraduate')">Postgraduate research</h4>
+    <h4 onclick="openSubmenu('mobile-research-expertise')">Expertise</h4>
+    <h4 onclick="openSubmenu('mobile-research-impact')">Our impact</h4>
+  </div>
+
+  <!-- Study Category Panels (Third-level Panels) -->
+  <div class="mobile-submenu-panel" id="mobile-research-research">
+    <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+    <h4 class="plain">Research at Sheffield</h4>
+        <ul>
+          <li>Our strategic priorities</li>
+          <li>Our people</li>
+          <li>Research Excellence Framework 2021</li>
+          <li>Researcher support</li>
+          <li>Research environment and culture</li>
+          <li>Open Research</li>
+        </ul>
+  </div>
+  <div class="mobile-submenu-panel" id="mobile-research-postgraduate">
+    <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+    <h4 class="plain">Postgraduate research</h4>
+        <ul>
+          <li>Find a PhD</li>
+          <li>PhD projects directory</li>
+          <li>PhD scholarships</li>
+        </ul>
+  </div>
+  <div class="mobile-submenu-panel" id="mobile-research-expertise">
+    <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+    <h4 class="plain">Expertise</h4>
+        <ul>
+          <li>Flagship research institutes</li>
+          <li>Research centres</li>
+          <li>Facilities</li>
+          <li>Library</li>
+        </ul>
+  </div>
+  <div class="mobile-submenu-panel" id="mobile-research-impact">
+    <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+    <h4 class="plain">Our impact</h4>
+        <ul>
+          <li>Research features</li>
+          <li>UN sustainable development goals</li>
+          <li>University Player</li>
+          <li>Queen's Anniversary Prizes</li>
+        </ul>
+  </div>
+
+<!-- Collaborate Submenu Panel (Showing H4s only) -->
+<div class="mobile-submenu-panel" id="mobile-collaborate-panel">
+    <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+    <h4 onclick="openSubmenu('mobile-collaborate-partnerships')">Partnerships</h4>
+    <h4 onclick="openSubmenu('mobile-collaborate-international')">International</h4>
+    <h4 onclick="openSubmenu('mobile-collaborate-alumni')">Alumni</h4>
+    <h4 onclick="openSubmenu('mobile-collaborate-philanthrophy')">Philanthropy</h4>
+  </div>
+
+  <div class="mobile-submenu-panel" id="mobile-collaborate-partnerships">
+    <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+    <h4>Partnerships</h4>
+        <ul>
+          <li>How we support business</li>
+          <li>Examples of business partners</li>
+          <li>Research centres, institutes and networks</li>
+          <li>Our role in the city and region</li>
+        </ul>
+  </div>
+    <div class="mobile-submenu-panel" id="mobile-collaborate-international">
+        <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+        <h4>International</h4>
+        <ul>
+          <li>Our global networks</li>
+          <li>We Are International</li>
+          <li>Global opportunities and exchanges</li>
+        </ul>
+  </div>
+  <div class="mobile-submenu-panel" id="mobile-collaborate-alumni">
+    <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+    <h4>Alumni</h4>
+        <ul>
+          <li>Update your details</li>
+          <li>Support us</li>
+          <li>Our alumni</li>
+          <li>Alumni volunteering</li>
+        </ul>
+  </div>
+  <div class="mobile-submenu-panel" id="mobile-collaborate-philanthrophy">
+    <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+    <h4>Philanthropy</h4>
+        <ul>
+          <li>Forged in Sheffield, Shaping the Future campaign</li>
+          <li>Get involved</li>
+          <li>Donate now</li>
+          <li>MND appeal</li>
+        </ul>
+  </div>
+
+  <!-- About Submenu Panel (Showing H4s only) -->
+<div class="mobile-submenu-panel" id="mobile-about-panel">
+    <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+    <h4 onclick="openSubmenu('mobile-about-university')">About the University</h4>
+    <h4 onclick="openSubmenu('mobile-about-departments')">Departments</h4>
+    <h4 onclick="openSubmenu('mobile-about-studying')">Studying at Sheffield</h4>
+    <h4 onclick="openSubmenu('mobile-about-hospitality')">Hospitality</h4>
+  </div>
+  <div class="mobile-submenu-panel" id="mobile-about-university">
+    <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+    <h4>About the University</h4>
+        <ul>
+          <li>News</li>
+          <li>Events</li>
+          <li>Jobs</li>
+          <li>Sustainability at Sheffield</li>
+          <li>Inclusion at Sheffield</li>
+          <li>Support for refugee students and scholars</li>
+          <li>Our vision and strategic plan</li>
+          <li>Our role in the city and region</li>
+          <li>Governance and management</li>
+          <li>Rankings</li>
+          <li>University of the Year</li>
+          <li>Queen's Anniversary Prizes</li>
+          <li>Nobel Prize winners</li>
+        </ul>
+  </div>
+  <div class="mobile-submenu-panel" id="mobile-about-departments">
+    <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+    <h4>Departments and services</h4>
+    <ul>
+      <li>Academic departments</li>
+      <li>Faculties</li>
+      <li>Professional services</li>
+    </ul>
+  </div>
+  <div class="mobile-submenu-panel" id="mobile-about-studying">
+    <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+    <h4>Studying at Sheffield</h4>
+        <ul>
+          <li>Guide to Sheffield</li>
+          <li>Courses</li>
+        </ul>
+  </div>
+  <div class="mobile-submenu-panel" id="mobile-about-hospitality">
+    <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+    <h4>Hospitality</h4>
+        <ul>
+          <li>Conferences, events, visitor accommodation and weddings</li>
+          <li>Cafes and bars</li>
+        </ul>
+  </div>
+
+  
+
+</div>
+<div class="section-header-container">
+    <div class="section-header">
+        <h2>Postgraduate study</h2>
+    </div>
+</div>
+<div class="section-navbar-background">
+    <div class="section-navbar-container">
+      <ul class="section-navbar">
+        <li><a href="#" onclick="toggleSectionPanel(event, 'courses')">Courses
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/></svg>
+        </a></li>
+        <li><a href="#" onclick="toggleSectionPanel(event, 'visit')">Visit
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/></svg>
+        </a></li>
+        <li><a href="#" onclick="toggleSectionPanel(event, 'apply')">Apply
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/></svg>
+        </a></li>
+        <li><a href="#" onclick="toggleSectionPanel(event, 'fees')">Fees and funding
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/></svg>
+        </a></li>
+      </ul>
+    </div>
+  </div>
+
+  
+  <!-- Full-width dropdown panel -->
+  <div class="section-dropdown-panel" id="section-dropdown-panel">
+    <div class="section-panel-content" id="section-panel-content">
+      <!-- Content will be injected here dynamically -->
+    </div>
+  </div>
+  <div class="contents-container">
+    <div class="breadcrumbs">
+      <a href="#">Home</a>
+      <span class="separator">›</span>
+      <a href="#">Your application</a>
+      <span class="separator">›</span>
+      <a href="#" class="active">Section E: Previous Education</a>
+  </div>
+  <h1>Postgraduate Online Application</h1>
+  <div class="application-form">
+    <h2>Your application</h2>
+    <hr />
+    <div class="app-section">
+      <div class="app-details">
+        <h2>Section A</h2>
+        <span>Personal details</span>
+      </div>
+      <div class="status completed">Completed</div>
+      <a href="pgt-app-a.html" class="action">View/edit</a>
+    </div>
+    <hr />
+    <div class="app-section">
+      <div class="app-details">
+        <h2>Section B</h2>
+        <span>Contact details</span>
+      </div>
+      <div class="status">To complete</div>
+      <a href="pgt-app-b.html" class="action">View/edit</a>
+    </div>
+    <hr />
+    <div class="app-section">
+      <div class="app-details">
+        <h2>Section C</h2>
+        <span>Nationality and Residency</span>
+      </div>
+      <div class="status">To complete</div>
+      <a href="pgt-app-c.html" class="action">View/edit</a>
+    </div>
+    <hr />
+    <div class="app-section">
+      <div class="app-details">
+        <h2>Section D</h2>
+        <span>English Language</span>
+      </div>
+      <div class="status">To complete</div>
+      <a href="pgt-app-d.html" class="action">View/edit</a>
+    </div>
+    <hr />
+    <div class="app-section">
+      <div class="app-details">
+        <h2>Section E</h2>
+        <span>Previous Education</span>
+      </div>
+      <div class="status">To complete</div>
+      <a href="pgt-app-e.html" class="action">View/edit</a>
+    </div>
+    <hr />
+    <div class="app-section">
+      <div class="app-details">
+        <h2>Section F</h2>
+        <span>Relevant Employment</span>
+      </div>
+      <div class="status">To complete</div>
+      <a href="pgt-app-f.html" class="action">View/edit</a>
+    </div>
+  </div>
+</div>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-heading">
+        <h4>The University of Sheffield</h4>
+      </div>
+      
+      <!-- Footer links with additional links hidden by default on mobile -->
+      <div class="footer-links">
+        <ul>
+          <li><a href="#">Undergraduate courses</a></li>
+          <li><a href="#">Postgraduate taught courses</a></li>
+          <li><a href="#">PhD study</a></li>
+          <li><a href="#">Accommodation</a></li>
+          <li><a href="#">International students</a></li>
+        </ul>
+        
+        <ul class="more-links">
+          <li><a href="#">Jobs</a></li>
+          <li><a href="#">Information for visitors</a></li>
+          <li><a href="#">Player</a></li>
+          <li><a href="#">Policies</a></li>
+        </ul>
+        
+        <ul class="more-links">
+          <li><a href="#">Make an online payment</a></li>
+          <li><a href="#">Support us</a></li>
+          <li><a href="#">Student hub</a></li>
+          <li><a href="#">Staff hub</a></li>
+          <li><a href="#">Alumni</a></li>
+        </ul>
+        
+        <ul class="more-links">
+          <li><a href="#">Departments and services</a></li>
+          <li><a href="#">Students' Union</a></li>
+          <li><a href="#">Library</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+
+         <!-- "Show More" button -->
+         <a href="#" id="showMoreLink" class="toggle-label">Show More</a>
+        
+        <!-- Address should always be visible -->
+        <div class="contact-info">
+          <p>The University of Sheffield</p>
+          <p>Western Bank</p>
+          <p>Sheffield</p>
+          <p>S10 2TN</p>
+          <p>+44 114 222 2000</p>
+        </div>
+      </div>
+      
+     
+   
+    <div class="footer-bottom">
+        <div class="footer-awards">
+          <img src="top100.png" alt="World Top 100 University">
+          <img src="russellgroup.png" alt="Russell Group">
+          <img src="uoty.png" alt="University of the Year 2024">
+          <img src="queens.png" alt="Queen's Anniversary Prize">
+        </div>
+        <div class="footer-social">
+            <a href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="#7000ff" viewBox="0 0 448 512">
+                  <path d="M448 209.9a210.1 210.1 0 0 1 -122.8-39.3V349.4A162.6 162.6 0 1 1 185 188.3V278.2a74.6 74.6 0 1 0 52.2 71.2V0l88 0a121.2 121.2 0 0 0 1.9 22.2h0A122.2 122.2 0 0 0 381 102.4a121.4 121.4 0 0 0 67 20.1z"/>
+                </svg>
+              </a>
+              <a href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="#7000ff" viewBox="0 0 448 512">
+                <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
+              </a>
+              <a href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="#7000ff" viewBox="0 0 576 512">
+                    <path d="M549.7 124.1c-6.3-23.7-24.8-42.3-48.3-48.6C458.8 64 288 64 288 64S117.2 64 74.6 75.5c-23.5 6.3-42 24.9-48.3 48.6-11.4 42.9-11.4 132.3-11.4 132.3s0 89.4 11.4 132.3c6.3 23.7 24.8 41.5 48.3 47.8C117.2 448 288 448 288 448s170.8 0 213.4-11.5c23.5-6.3 42-24.2 48.3-47.8 11.4-42.9 11.4-132.3 11.4-132.3s0-89.4-11.4-132.3zm-317.5 213.5V175.2l142.7 81.2-142.7 81.2z"/></svg>
+              </a>
+              <a href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="#7000ff" viewBox="0 0 448 512">
+                    <path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+              </a>
+              <a href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="#7000ff"  viewBox="0 0 576 512">
+                    <path d="M385.2 167.6c6.4 0 12.6 .3 18.8 1.1C387.4 90.3 303.3 32 207.7 32 100.5 32 13 104.8 13 197.4c0 53.4 29.3 97.5 77.9 131.6l-19.3 58.6 68-34.1c24.4 4.8 43.8 9.7 68.2 9.7 6.2 0 12.1-.3 18.3-.8-4-12.9-6.2-26.6-6.2-40.8-.1-84.9 72.9-154 165.3-154zm-104.5-52.9c14.5 0 24.2 9.7 24.2 24.4 0 14.5-9.7 24.2-24.2 24.2-14.8 0-29.3-9.7-29.3-24.2 .1-14.7 14.6-24.4 29.3-24.4zm-136.4 48.6c-14.5 0-29.3-9.7-29.3-24.2 0-14.8 14.8-24.4 29.3-24.4 14.8 0 24.4 9.7 24.4 24.4 0 14.6-9.6 24.2-24.4 24.2zM563 319.4c0-77.9-77.9-141.3-165.4-141.3-92.7 0-165.4 63.4-165.4 141.3S305 460.7 397.6 460.7c19.3 0 38.9-5.1 58.6-9.9l53.4 29.3-14.8-48.6C534 402.1 563 363.2 563 319.4zm-219.1-24.5c-9.7 0-19.3-9.7-19.3-19.6 0-9.7 9.7-19.3 19.3-19.3 14.8 0 24.4 9.7 24.4 19.3 0 10-9.7 19.6-24.4 19.6zm107.1 0c-9.7 0-19.3-9.7-19.3-19.6 0-9.7 9.7-19.3 19.3-19.3 14.5 0 24.4 9.7 24.4 19.3 .1 10-9.9 19.6-24.4 19.6z"/></svg>
+              </a>
+              <a href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="#7000ff"  viewBox="0 0 512 512">
+                    <path d="M407 177.6c7.6-24-13.4-46.8-37.4-41.7-22 4.8-28.8-28.1-7.1-32.8 50.1-10.9 92.3 37.1 76.5 84.8-6.8 21.2-38.8 10.8-32-10.3zM214.8 446.7C108.5 446.7 0 395.3 0 310.4c0-44.3 28-95.4 76.3-143.7C176 67 279.5 65.8 249.9 161c-4 13.1 12.3 5.7 12.3 6 79.5-33.6 140.5-16.8 114 51.4-3.7 9.4 1.1 10.9 8.3 13.1 135.7 42.3 34.8 215.2-169.7 215.2zm143.7-146.3c-5.4-55.7-78.5-94-163.4-85.7-84.8 8.6-148.8 60.3-143.4 116s78.5 94 163.4 85.7c84.8-8.6 148.8-60.3 143.4-116zM347.9 35.1c-25.9 5.6-16.8 43.7 8.3 38.3 72.3-15.2 134.8 52.8 111.7 124-7.4 24.2 29.1 37 37.4 12 31.9-99.8-55.1-195.9-157.4-174.3zm-78.5 311c-17.1 38.8-66.8 60-109.1 46.3-40.8-13.1-58-53.4-40.3-89.7 17.7-35.4 63.1-55.4 103.4-45.1 42 10.8 63.1 50.2 46 88.5zm-86.3-30c-12.9-5.4-30 .3-38 12.9-8.3 12.9-4.3 28 8.6 34 13.1 6 30.8 .3 39.1-12.9 8-13.1 3.7-28.3-9.7-34zm32.6-13.4c-5.1-1.7-11.4 .6-14.3 5.4-2.9 5.1-1.4 10.6 3.7 12.9 5.1 2 11.7-.3 14.6-5.4 2.8-5.2 1.1-10.9-4-12.9z"/></svg>
+              </a>
+            </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+<script>
+    function togglePanel(panelId) {
+  const panel = document.getElementById(panelId);
+  const navItem = document.querySelector(`[onclick="togglePanel('${panelId}')"]`); // Find nav-item
+  const isPanelOpen = panel.classList.contains('show');
+
+  // Close any open panels and reset nav-item classes
+  document.querySelectorAll('.mega-menu-panel').forEach(p => p.classList.remove('show'));
+  document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('menu-open'));
+
+  // Toggle the clicked panel and rotate icon if opening
+  if (!isPanelOpen) {
+    panel.classList.add('show');
+    navItem.classList.add('menu-open'); // Add rotation class
+  }
+}
+
+  let currentPanel = 'main-mobile-panel';
+  const navHistory = [];
+
+  function toggleMobileMenu() {
+    const overlay = document.getElementById('mobile-menu-overlay');
+
+    if (overlay.style.display === 'flex') {
+      overlay.style.display = 'none';
+      navHistory.length = 0;
+      currentPanel = 'main-mobile-panel';
+      document.querySelectorAll('.mobile-submenu-panel').forEach(panel => panel.classList.remove('show', 'back'));
+      document.getElementById('main-mobile-panel').classList.add('show');
+    } else {
+      overlay.style.display = 'flex';
+      document.getElementById('main-mobile-panel').classList.add('show');
+    }
+  }
+
+  function openSubmenu(panelId) {
+    if (currentPanel) {
+      navHistory.push(currentPanel);
+      document.getElementById(currentPanel).classList.remove('show', 'back');
+    }
+    
+    document.getElementById(panelId).classList.add('show');
+    currentPanel = panelId;
+  }
+
+  function closeSubmenu() {
+    if (navHistory.length > 0) {
+      document.getElementById(currentPanel).classList.remove('show');
+      document.getElementById(currentPanel).classList.add('back'); // Slide out to the left
+      
+      currentPanel = navHistory.pop();
+      document.getElementById(currentPanel).classList.add('show'); // Show previous panel
+    } else {
+      document.getElementById('main-mobile-panel').style.left = '0';
+      currentPanel = 'main-mobile-panel';
+    }
+  };
+  </script>
+  <script>
+    const panelData = {
+      courses: `
+        <div class="section-panel-column">
+          <h4>Undergraduate course search</h4>
+          <a href="#">2025-26 courses</a>
+          <a href="#">Order a prospectus PDF</a>
+          <a href="#">International students</a>
+        </div>
+        <div class="section-panel-column">
+          <h4>Graduate programs</h4>
+          <a href="#">Masters courses</a>
+          <a href="#">Doctoral programs</a>
+          <a href="#">International students</a>
+        </div>
+        <div class="section-panel-column">
+          <h4></h4>
+          <a href="#">Summer programs</a>
+          <a href="#">Online courses</a>
+        </div>
+        <div class="section-panel-column">
+          <h4>Professional development</h4>
+          <a href="#">Executive education</a>
+          <a href="#">Certification courses</a>
+        </div>`,
+      visit: `
+        <div class="section-panel-column">
+          <h4>Plan your visit</h4>
+          <a href="#">Campus tours</a>
+          <a href="#">Virtual tours</a>
+        </div>
+        <div class="section-panel-column">
+          <h4>Open Days</h4>
+          <a href="#">Undergraduate Open Days</a>
+          <a href="#">Postgraduate Open Days</a>
+        </div>`,
+      apply: `
+        <div class="section-panel-column">
+          <h4>Application Process</h4>
+          <a href="#">Undergraduate</a>
+          <a href="#">Postgraduate</a>
+          <a href="#">International students</a>
+        </div>
+        <div class="section-panel-column">
+          <h4>Application Deadlines</h4>
+          <a href="#">Fall intake</a>
+          <a href="#">Spring intake</a>
+        </div>
+        <div class="section-panel-column">
+          <a href="#">How to apply</a>
+          <a href="#">Documents required</a>
+          <a href="#">Contact admissions</a>
+        </div>`,
+      fees: `
+        <div class="section-panel-column">
+          <h4>Fees and financial aid</h4>
+          <a href="#">Tuition fees</a>
+          <a href="#">Scholarships</a>
+          <a href="#">Financial support</a>
+        </div>
+        <div class="section-panel-column">
+          <a href="#">Online payment</a>
+          <a href="#">Installments</a>
+        </div>`
+    };
+  
+    function toggleSectionPanel(event, panelId) {
+      event.preventDefault();
+      const panel = document.getElementById('section-dropdown-panel');
+      const content = document.getElementById('section-panel-content');
+      
+      // If the clicked panel is already active, close it
+      if (panel.classList.contains('active') && content.innerHTML === panelData[panelId]) {
+        panel.classList.remove('active');
+        content.innerHTML = '';
+        return;
+      }
+      
+      // Update the panel content and show the panel
+      content.innerHTML = panelData[panelId];
+      panel.classList.add('active');
+    }
+  
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function(event) {
+      const panel = document.getElementById('section-dropdown-panel');
+      const isClickInsideNavbar = event.target.closest('.section-navbar-container');
+      const isClickInsidePanel = event.target.closest('.section-dropdown-panel');
+      
+      if (!isClickInsideNavbar && !isClickInsidePanel) {
+        panel.classList.remove('active');
+        document.getElementById('section-panel-content').innerHTML = ''; // Clear content
+      }
+    });
+  </script>
+      <script>
+        document.getElementById("showMoreLink").addEventListener("click", function(event) {
+       event.preventDefault(); // Prevents the link from navigating
+       const footerLinks = document.querySelector(".footer-links");
+       footerLinks.classList.toggle("show-all");
+       this.textContent = footerLinks.classList.contains("show-all") ? "Close footer" : "Show all links";
+     });
+       </script>
+       
+      <script>
+        // Add any custom behavior or validation here
+        document.getElementById("personal-details-form").addEventListener("submit", function (e) {
+          e.preventDefault();
+          alert("Form submitted!");
+        });
+      </script>
+      <script>
+        const countries = [
+        "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina", "Armenia",
+        "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium",
+        "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei", "Bulgaria",
+        "Burkina Faso", "Burundi", "Cabo Verde", "Cambodia", "Cameroon", "Canada", "Central African Republic",
+        "Chad", "Chile", "China", "Colombia", "Comoros", "Congo (Congo-Brazzaville)", "Costa Rica", "Croatia",
+        "Cuba", "Cyprus", "Czechia (Czech Republic)", "Denmark", "Djibouti", "Dominica", "Dominican Republic",
+        "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Eswatini (fmr. Swaziland)",
+        "Ethiopia", "Fiji", "Finland", "France", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Greece",
+        "Grenada", "Guatemala", "Guinea", "Guinea-Bissau", "Guyana", "Haiti", "Holy See", "Honduras", "Hungary",
+        "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Israel", "Italy", "Jamaica", "Japan", "Jordan",
+        "Kazakhstan", "Kenya", "Kiribati", "Korea (North)", "Korea (South)", "Kosovo", "Kuwait", "Kyrgyzstan", "Laos",
+        "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Madagascar",
+        "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Mauritania", "Mauritius", "Mexico",
+        "Micronesia", "Moldova", "Monaco", "Mongolia", "Montenegro", "Morocco", "Mozambique", "Myanmar (formerly Burma)",
+        "Namibia", "Nauru", "Nepal", "Netherlands", "New Zealand", "Nicaragua", "Niger", "Nigeria", "North Macedonia",
+        "Norway", "Oman", "Pakistan", "Palau", "Palestine State", "Panama", "Papua New Guinea", "Paraguay", "Peru",
+        "Philippines", "Poland", "Portugal", "Qatar", "Romania", "Russia", "Rwanda", "Saint Kitts and Nevis",
+        "Saint Lucia", "Saint Vincent and the Grenadines", "Samoa", "San Marino", "Sao Tome and Principe", "Saudi Arabia",
+        "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Solomon Islands",
+        "Somalia", "South Africa", "South Sudan", "Spain", "Sri Lanka", "Sudan", "Suriname", "Sweden", "Switzerland",
+        "Syria", "Tajikistan", "Tanzania", "Thailand", "Timor-Leste", "Togo", "Tonga", "Trinidad and Tobago", "Tunisia",
+        "Turkey", "Turkmenistan", "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States",
+        "Uruguay", "Uzbekistan", "Vanuatu", "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe"
+      ];
+      
+      // Populate select dropdown
+      const countrySelect = document.getElementById("country-select");
+      countries.forEach(country => {
+        const option = document.createElement("option");
+        option.value = country;
+        option.textContent = country;
+        countrySelect.appendChild(option);
+      });
+      
+      // Handle search input
+      const countrySearch = document.getElementById("country-search");
+      countrySearch.addEventListener("input", () => {
+        const query = countrySearch.value.toLowerCase();
+        const options = Array.from(countrySelect.options);
+      
+        // Filter options based on query
+        options.forEach(option => {
+          if (option.value.toLowerCase().includes(query)) {
+            option.style.display = "block";
+          } else {
+            option.style.display = "none";
+          }
+        });
+      
+        // Show dropdown when typing
+        countrySelect.style.display = "block";
+      });
+      
+      // Handle selection
+      countrySelect.addEventListener("change", () => {
+        countrySearch.value = countrySelect.value;
+        countrySelect.style.display = "none"; // Hide dropdown after selection
+      });
+      
+      // Hide dropdown when clicking outside
+      document.addEventListener("click", (e) => {
+        if (!document.querySelector(".dropdown-container").contains(e.target)) {
+          countrySelect.style.display = "none";
+        }
+      });
+      
+        </script>
+        <script>
+         document.getElementById('certificate-upload').addEventListener('change', function () {
+  document.getElementById('certificate-file-upload').style.display = 'block'; // Show questions
+});
+
+document.getElementById('certificate-later').addEventListener('change', function () {
+  document.getElementById('certificate-file-upload').style.display = 'none'; // Show questions
+});
+
+document.getElementById('certificate-no').addEventListener('change', function () {
+  document.getElementById('certificate-file-upload').style.display = 'none'; // Show questions
+});
+
+document.getElementById('transcript-upload').addEventListener('change', function () {
+  document.getElementById('transcript-file-upload').style.display = 'block'; // Show questions
+});
+
+document.getElementById('transcript-later').addEventListener('change', function () {
+  document.getElementById('transcript-file-upload').style.display = 'none'; // Show questions
+});
+
+document.getElementById('transcript-no').addEventListener('change', function () {
+  document.getElementById('transcript-file-upload').style.display = 'none'; // Show questions
+});
+
+document.getElementById('certificate-translation-upload').addEventListener('change', function () {
+  document.getElementById('certificate-translated-file-upload').style.display = 'block'; // Show questions
+});
+
+document.getElementById('certificate-translation-later').addEventListener('change', function () {
+  document.getElementById('certificate-translated-file-upload').style.display = 'none'; // Show questions
+});
+
+document.getElementById('certificate-translation-no').addEventListener('change', function () {
+  document.getElementById('certificate-translated-file-upload').style.display = 'none'; // Show questions
+});
+
+document.getElementById('certificate-translation-english').addEventListener('change', function () {
+  document.getElementById('certificate-translated-file-upload').style.display = 'none'; // Show questions
+});
+
+document.getElementById('transcript-translation-upload').addEventListener('change', function () {
+  document.getElementById('transcript-translated-file-upload').style.display = 'block'; // Show questions
+});
+
+document.getElementById('transcript-translation-later').addEventListener('change', function () {
+  document.getElementById('transcript-translated-file-upload').style.display = 'none'; // Show questions
+});
+
+document.getElementById('transcript-translation-no').addEventListener('change', function () {
+  document.getElementById('transcript-translated-file-upload').style.display = 'none'; // Show questions
+});
+
+document.getElementById('transcript-translation-english').addEventListener('change', function () {
+  document.getElementById('transcript-translated-file-upload').style.display = 'none'; // Show questions
+});
+
+           </script>
+</body>
+</html>

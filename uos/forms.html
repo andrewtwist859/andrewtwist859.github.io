@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Application Form</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      font-size: 18px;
+    }
+
+    .application-form {
+      max-width: 800px;
+      width: 100%;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .application-form h1 {
+      margin-bottom: 20px;
+      font-size: 1.5rem;
+      color: #333;
+    }
+
+    .section {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 15px;
+    }
+
+    .section:last-child {
+      margin-bottom: 0;
+    }
+
+    .section .details {
+      flex: 1;
+    }
+
+    .section .details h2 {
+      font-family: 'Roboto', sans-serif;
+      font-size: 1.2rem;
+      color: #333;
+      margin: 0;
+    }
+
+    .section .details span {
+      font-size: 1rem;
+      color: #666;
+    }
+
+    .status {
+      padding: 5px 15px;
+      font-size: 1rem;
+      border-radius: 4px;
+      text-align: left;
+      background-color: #eee;
+      color: #666;
+      flex-shrink: 0; /* Prevents shrinking */
+    }
+
+    .status.completed {
+      background-color: #d4f5e9;
+      color: #218a6c;
+    }
+
+    .action {
+      text-decoration: none;
+      color: #5e2abf;
+      font-weight: bold;
+      font-size: 1rem;
+      transition: color 0.2s;
+      margin-left: 15px; /* Creates space between the flag and the action */
+    }
+
+    .action:hover {
+      color: #431a93;
+    }
+  </style>
+</head>
+<body>
+  <div class="application-form">
+    <h1>Application Form</h1>
+    <div class="section">
+      <div class="details">
+        <h2>Section A</h2>
+        <span>Personal details</span>
+      </div>
+      <div class="status completed">Completed</div>
+      <a href="#" class="action">View/edit</a>
+    </div>
+    <div class="section">
+      <div class="details">
+        <h2>Section B</h2>
+        <span>Contact details</span>
+      </div>
+      <div class="status">To complete</div>
+      <a href="#" class="action">View/edit</a>
+    </div>
+    <div class="section">
+      <div class="details">
+        <h2>Section C</h2>
+        <span>Nationality and Residency</span>
+      </div>
+      <div class="status">To complete</div>
+      <a href="#" class="action">View/edit</a>
+    </div>
+    <div class="section">
+      <div class="details">
+        <h2>Section D</h2>
+        <span>English Language</span>
+      </div>
+      <div class="status">To complete</div>
+      <a href="#" class="action">View/edit</a>
+    </div>
+    <div class="section">
+      <div class="details">
+        <h2>Section E</h2>
+        <span>Previous Education</span>
+      </div>
+      <div class="status">To complete</div>
+      <a href="#" class="action">View/edit</a>
+    </div>
+    <div class="section">
+      <div class="details">
+        <h2>Section F</h2>
+        <span>Relevant Employment</span>
+      </div>
+      <div class="status">To complete</div>
+      <a href="#" class="action">View/edit</a>
+    </div>
+  </div>
+</body>
+</html>
