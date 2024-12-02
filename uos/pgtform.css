@@ -264,27 +264,6 @@ fieldset legend {
         background-color: #7001FC; /* Darker shade of blue on hover */
     }
 
-    select {
-      appearance: none; /* Remove default styling */
-      -webkit-appearance: none; /* For Safari and Chrome on iOS */
-      -moz-appearance: none; /* For Firefox */
-      border: 1px solid #000; /* Custom border */
-      border-radius: 4px; /* Custom border radius */
-      padding: 10px; /* Custom padding */
-      font-size: 16px; /* Custom font size */
-      background-color: white; /* Background color */
-      color: black; /* Text color */
-      width: 100%; /* Adjust width if necessary */
-    }
-    
-    /* Add a custom arrow (optional) */
-    select::after {
-      content: "▼";
-      font-size: 12px;
-      position: absolute;
-      right: 10px;
-      pointer-events: none;
-    }
 
       @media (max-width: 768px) {
     
