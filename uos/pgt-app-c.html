@@ -673,6 +673,7 @@ hr {
     <p>Items marked with an asterisk * must be completed.</p>
     <form id="personal-details-form">
       <label for="country-search">What is the country of your nationality? <span class="required">(required)</span></label>
+      <div class="hint">Select the country shown on your passport.</div>
 <div class="dropdown-container">
   <input type="text" id="country-search" placeholder="Type to search..." autocomplete="off">
   <select id="country-select" name="country" size="5">
@@ -681,6 +682,7 @@ hr {
   </select>
 </div>
 <label for="country-search">If you have a second nationality please select the country here:</span></label>
+<div class="hint">Only enter this if you have full citizenship of another country.</div>
 <div class="dropdown-container">
   <input type="text" id="country-search" placeholder="Type to search..." autocomplete="off">
   <select id="country-select" name="country" size="5">
@@ -697,6 +699,7 @@ hr {
   </select>
 </div>
 <label for="country-search">Which country are you a permanent resident of? <span class="required">(required)</span></label>
+<div class="hint">This is the country where you normally live. To be a permanent resident of a country you must either have been born there, hold a passport or have an indefinite Visa for that country.</div>
 <div class="dropdown-container">
   <input type="text" id="country-search" placeholder="Type to search..." autocomplete="off">
   <select id="country-select" name="country" size="5">
@@ -704,7 +707,7 @@ hr {
     <!-- Options will be dynamically populated -->
   </select>
 </div>
-<p>Have you been living outside of this country during the last 3 years? <span class="required">(required)</span></p>
+<p><strong>Have you been living outside of this country during the last 3 years? <span class="required">(required)</span></strong></p>
         <div class="radio-container">
           <label>
             <input type="radio" id="lived-elsewhere-yes" name="elsewhere-changed" value="yes">
@@ -715,7 +718,7 @@ hr {
             No
           </label>
         </div>
-<p>Are you currently living in the UK? <span class="required">(required)</span></p>
+<p><strong>Are you currently living in the UK? <span class="required">(required)</span></strong></p>
         <div class="radio-container">
           <label>
             <input type="radio" id="living-uk-yes" name="living-changed" value="yes">

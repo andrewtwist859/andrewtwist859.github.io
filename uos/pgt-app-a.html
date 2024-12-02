@@ -671,15 +671,19 @@ hr {
     <h2>Section A: Personal details</h2>
     <form id="personal-details-form">
       <label for="first-name">First / Given Name <span class="required">(required)</span></label>
+      <div class="hint">Enter your first name as it is shown in your passport. Please replace any accented characters with the basic Latin alphabet equivalent.</div>
       <input type="text" id="first-name" name="first-name" required>
 
       <label for="family-name">Family Name <span class="required">(required)</span></label>
+      <div class="hint">Enter your family name as it is shown in your passport. Please replace any accented characters with the basic Latin alphabet equivalent.</div>
       <input type="text" id="family-name" name="family-name" required>
 
       <label for="middle-names">Middle Names</label>
+      <div class="hint">If you have any middle names enter them as they are shown in your passport. If you have no middle names leave this box blank.</div>
       <input type="text" id="middle-names" name="middle-names">
 
       <label for="preferred-name">Preferred/Chosen First Name</label>
+      <div class="hint">If you have a preferred or chosen name, different to you first name, which you would like to be known as please enter it here. Please note this name will appear on most official correspondence with the University.</div>
       <input type="text" id="preferred-name" name="preferred-name">
 
       <label for="gender">Gender <span class="required">(required)</span></label>
@@ -691,6 +695,7 @@ hr {
       </select>
 
       <label for="dob-day">Date of birth <span class="required">(required)</span></label>
+      <div class="hint">Enter your date of birth as it is shown in your passport.</div>
       <div class="dob-container">
         <div class="dob-field">
           <input type="text" id="dob-day" name="dob-day" maxlength="2" class="dob-input small" placeholder="DD" required>
@@ -717,9 +722,11 @@ hr {
 
       <h2>British Student Identification Numbers</h2>
       <label for="hesa-number">HESA Number</label>
+      <div class="hint">UK students, please enter if known. Otherwise leave blank.</div>
       <input type="text" id="hesa-number" name="hesa-number">
 
       <label for="uln">Unique Learner Number</label>
+      <div class="hint">UK students should be provided with a 10 digit Unique Learner Number (ULN) which is used to track all previous education and qualifications. Please enter here if known.</div>
       <input type="text" id="uln" name="uln">
 
       <h2>Previous Details</h2>
