@@ -4,6 +4,7 @@
     <link rel="stylesheet" href="https://use.typekit.net/jou7rrz.css">
     <link rel="stylesheet" href="global-menu.css"> 
     <link rel="stylesheet" href="section-menu.css">
+    <link rel="stylesheet" href="pgtform.css"> 
     <link rel="stylesheet" href="footer.css"> 
     <link rel="stylesheet" href="phd.css"> 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
@@ -11,7 +12,7 @@
     <link rel="icon" href="https://www.sheffield.ac.uk/themes/custom/uos_public/favicon.svg" type="image/svg+xml" />
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Postgraduate Application Form</title>
+  <title>Section F: Relevant Employment | Postgraduate Application Form</title>
   <style>
 
 .contents-container h3 {
@@ -26,10 +27,6 @@
 padding: 1rem !important;
 }
 
-}
-
-ul li {
-    font-size: 1.2rem;
 }
 
 
@@ -207,90 +204,6 @@ hr {
   }
 }
 
-.application-form {
-      max-width: 800px;
-      width: 100%;
-    }
-
-
-    .app-section {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 15px;
-    }
-
-    .app-section:last-child {
-      margin-bottom: 0;
-    }
-
-    .app-section .app-details {
-      flex: 1;
-    }
-
-    .app-section .app-details h2 {
-      font-size: 1.2rem;
-      color: #333;
-      margin: 0;
-    }
-
-    .app-section .app-details span {
-      font-size: 18px;
-    }
-
-    .status {
-      padding: 5px 15px;
-      border-radius: 4px;
-      text-align: left;
-      background-color: #eee;
-      color: #666;
-      flex-shrink: 0; /* Prevents shrinking */
-    }
-
-    .status.completed {
-      background-color: #d4f5e9;
-      color: #218a6c;
-    }
-
-    .action {
-      text-decoration: none;
-      color: #5e2abf;
-      font-weight: bold;
-      font-size: 1rem;
-      transition: color 0.2s;
-      margin-left: 15px; /* Creates space between the flag and the action */
-    }
-
-    .action:hover {
-      color: #431a93;
-    }
-
-    .button-link {
-        display: inline-flex;
-        align-items: center;
-        background-color: #440099; /* Light blue background */
-        color: white; /* Dark text color */
-        padding: 10px 20px;
-        text-decoration: none;
-        font-size: 16px;
-        font-weight: bold;
-        transition: background-color 0.3s ease;
-        margin-bottom: 1rem;
-        margin-right: 0.5rem;
-    }
-
-    .button-link.next {
-        background-color: #3BD4AE;
-        color: #145041;
-    }
-
-    .button-link.next:hover {
-        background-color: #3ee7bd;
-    }
-    
-    .button-link:hover {
-        background-color: #7001FC; /* Darker shade of blue on hover */
-    }
 
   </style>
 </head>
@@ -749,81 +662,72 @@ hr {
     <div class="breadcrumbs">
       <a href="#">Home</a>
       <span class="separator">›</span>
-      <a href="#">Your application</a>
+      <a href="app.html">Your application</a>
       <span class="separator">›</span>
-      <a href="#" class="active"></a>
+      <a href="#" class="active">Section F</a>
   </div>
   <h1>Postgraduate Online Application</h1>
-  <p>Your application is in two parts:</p>
-<ul>
-    <li><strong>Part 1: Your details</strong></li>
-    <li><strong>Part 2: Course applications</strong></li>
-</ul>
-<p>Once you have completed both sections you can submit an application by clicking on the 'Submit Application' button at the bottom of your course choices.</p>
-<p>You can apply for a total of three courses. Your course applications do not need to be submitted at the same time.</p>
-  <div class="application-form">
-    <h2>Part 1: Your details</h2>
-    <hr />
-    <div class="app-section">
-      <div class="app-details">
-        <h2>Section A</h2>
-        <span>Personal details</span>
-      </div>
-      <div class="status completed">Completed</div>
-      <a href="pgt-app-a.html" class="action">View/edit</a>
-    </div>
-    <hr />
-    <div class="app-section">
-      <div class="app-details">
-        <h2>Section B</h2>
-        <span>Contact details</span>
-      </div>
-      <div class="status">To complete</div>
-      <a href="pgt-app-b.html" class="action">View/edit</a>
-    </div>
-    <hr />
-    <div class="app-section">
-      <div class="app-details">
-        <h2>Section C</h2>
-        <span>Nationality and Residency</span>
-      </div>
-      <div class="status">To complete</div>
-      <a href="pgt-app-c.html" class="action">View/edit</a>
-    </div>
-    <hr />
-    <div class="app-section">
-      <div class="app-details">
-        <h2>Section D</h2>
-        <span>English Language</span>
-      </div>
-      <div class="status">To complete</div>
-      <a href="pgt-app-d.html" class="action">View/edit</a>
-    </div>
-    <hr />
-    <div class="app-section">
-      <div class="app-details">
-        <h2>Section E</h2>
-        <span>Previous Education</span>
-      </div>
-      <div class="status">To complete</div>
-      <a href="pgt-app-e.html" class="action">View/edit</a>
-    </div>
-    <hr />
-    <div class="app-section">
-      <div class="app-details">
-        <h2>Section F</h2>
-        <span>Relevant Employment</span>
-      </div>
-      <div class="status">To complete</div>
-      <a href="pgt-app-f.html" class="action">View/edit</a>
-    </div>
-    <hr />
+  <div class="form-container">
+    <h2>Postgraduate Taught Courses</h2>
+    <h3>Course selection</h3>
+    <label for="faculty">Which faculty do you want to study in?</label>
+    <select id="faculty" name="faculty" required>
+      <option value="">Select a faculty</option>
+      <option value="arts">Faculty of Arts and Humanities</option>
+      <option value="engineering">Faculty of Engineering</option>
+      <option value="health">Faculty of Health</option>
+      <option value="science">Faculty of Science</option>
+      <option value="social">Faculty of Social Sciences</option>
+    </select>
+    <label for="school">Which school do you want to study in? <span class="required">(required)</span></label>
+        <input type="text" id="school" name="school" required>
+    <label for="study-mode">How do you want to study?</label>
+    <select id="study-mode" name="study-mode" required>
+      <option value="">Select an option</option>
+      <option value="ft">Full time</option>
+      <option value="pt">Part time</option>
+      <option value="distance">Part time distance learning</option>
+    </select>
+    <label for="year">Show courses starting between</label>
+    <select id="year" name="year" required>
+      <option value="">Select an option</option>
+      <option value="2025">August 2025 to July 2026</option>
+      <option value="2026">August 2026 to July 2027</option>
+    </select>
+    <label for="school">Which course do you want to apply for? <span class="required">(required)</span></label>
+        <input type="text" id="school" name="school" required>
+        <label for="school">Which qualification do you want to apply for? <span class="required">(required)</span></label>
+        <input type="text" id="school" name="school" required>
+        <h3>Funding</h3>
+        <p>Do you know how you want to fund your studies? <span class="required">(required)</span></p>
+        <div class="radio-container">
+          <label>
+            <input type="radio" id="funding-yes" name="funding-changed" value="yes">
+            Yes
+          </label>
+          <label>
+            <input type="radio" id="funding-no" name="funding-changed" value="no">
+            No
+          </label>
+        </div>
+        <label for="source">What is your most likely funding source? <span class="required">(required)</span></label>
+        <input type="text" id="source" name="source" required>
+        <label for="source-details">Please enter details of your funding source</label>
+        <textarea id="source-details" name="source-details" required></textarea>
+        <label for="funding-stage">What stage are you at with your funding?</label>
+    <select id="funding-stage" name="funding-stage" required>
+      <option value="">Select an option</option>
+      <option value="confirmed">The funding has been confirmed</option>
+      <option value="applying-studentship">I am applying for a project studentship</option>
+      <option value="applied">I have applied for funding</option>
+      <option value="applying-funding">I am applying for funding</option>
+      <option value="thinking">I am thinking about funding my studies this way</option>
+    </select>
+</form>
+
+		</div>
+    <a href="app.html" class="button-link back">Save and back</a>
   </div>
-  <h2>Part 2: Course applications</h2>
-  <p>You can apply for a combined maximum of 3 taught or research postgraduate courses. After choosing each course you will see links to add a personal statement, upload course supporting documents, and if necessary for your chosen course provide references.</p>
-<p>Each course application can be submitted separately, so if you want to apply for more than one course you can submit each application independently. You will be unable to change most of your personal details after an application has been submitted so please ensure they are correct before submission.</p>
-<a href="addcourse.html" class="button-link next">Apply for a postgraduate taught course</a>
-      <a href="#" class="button-link next">Apply for a postgraduate research course</a>
 </div>
 
   <footer class="footer">
@@ -1078,7 +982,121 @@ hr {
        this.textContent = footerLinks.classList.contains("show-all") ? "Close footer" : "Show all links";
      });
        </script>
-       
+       <script>
+         const SHEET_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQuPE-P6_okmP7p7kBb551q26JMaKiEWq3HnuSLXHh0C0298s5B9NieMi6fnKtosyuu9TVpis04rIJM/pub?output=csv';
+
+let eventsData = [];
+
+// Fetch and parse data from Google Sheets
+Papa.parse(SHEET_URL, {
+  download: true,
+  header: true,
+  complete: function(results) {
+    eventsData = results.data;
+    displayGroupedData(eventsData); // Display all data initially
+  }
+});
+
+function displayGroupedData(data) {
+  const container = document.getElementById('listings-container');
+  container.innerHTML = '';
+
+  const groupedData = data.reduce((groups, item) => {
+    if (!item.Faculty || !item.Subject) return groups;
+    if (!groups[item.Faculty]) groups[item.Faculty] = [];
+    groups[item.Faculty].push(item);
+    return groups;
+  }, {});
+
+  Object.keys(groupedData).forEach(faculty => {
+    const facultyGroup = document.createElement('div');
+    facultyGroup.className = 'faculty-group';
+
+    const facultyHeader = document.createElement('div');
+    facultyHeader.className = 'faculty-header';
+    facultyHeader.textContent = faculty;
+    facultyGroup.appendChild(facultyHeader);
+
+    groupedData[faculty].forEach(item => {
+      const card = document.createElement('div');
+      card.className = 'listing-card';
+
+      const title = document.createElement('h2');
+      title.textContent = item.Subject;
+      card.appendChild(title);
+
+      const time = document.createElement('p');
+      time.textContent = item.Time;
+      card.appendChild(time);
+
+      const location = document.createElement('p');
+      if (item.Flag) {
+        location.innerHTML = `
+          <span class="flag">
+            <strong>${item.Flag}:</strong>
+          </span> ${item.Room} - ${item.Building}`;
+      } else {
+        location.textContent = `${item.Room} - ${item.Building}`;
+      }
+      card.appendChild(location);
+
+      const links = document.createElement('p');
+      links.className = 'directions';
+      links.innerHTML = `
+        Get directions via 
+        <a href="${item['Google Maps']}" target="_blank">Google Maps</a> / 
+        <a href="${item['Apple Maps']}" target="_blank">Apple Maps</a>
+      `;
+      card.appendChild(links);
+
+      facultyGroup.appendChild(card);
+    });
+
+    container.appendChild(facultyGroup);
+  });
+}
+
+function performSearch() {
+  const searchInput = document.getElementById('search-input');
+  const searchTerm = searchInput.value.toLowerCase();
+  const filteredData = eventsData.filter(event =>
+    event.Subject.toLowerCase().includes(searchTerm) ||
+    (event.Faculty && event.Faculty.toLowerCase().includes(searchTerm)) ||
+    (event.Building && event.Building.toLowerCase().includes(searchTerm))
+  );
+
+  // Show the "Clear Search" button if a search term is entered
+  const clearSearchButton = document.getElementById('clear-search');
+  if (searchTerm) {
+    clearSearchButton.style.display = 'block';
+  } else {
+    clearSearchButton.style.display = 'none';
+  }
+
+  displayGroupedData(filteredData);
+}
+
+function clearSearch() {
+  // Clear the input field
+  const searchInput = document.getElementById('search-input');
+  searchInput.value = '';
+
+  // Hide the "Clear Search" button
+  const clearSearchButton = document.getElementById('clear-search');
+  clearSearchButton.style.display = 'none';
+
+  // Reset the displayed data to show all items
+  displayGroupedData(eventsData);
+}
+
+function handleEnter(event) {
+  if (event.key === 'Enter') {
+    event.preventDefault(); // Prevent default behavior
+    performSearch(); // Trigger search
+    document.getElementById('search-input').blur(); // Dismiss keyboard
+  }
+}
+      </script>
       <script>
         // Add any custom behavior or validation here
         document.getElementById("personal-details-form").addEventListener("submit", function (e) {
@@ -1156,62 +1174,31 @@ hr {
       
         </script>
         <script>
-         document.getElementById('certificate-upload').addEventListener('change', function () {
-  document.getElementById('certificate-file-upload').style.display = 'block'; // Show questions
-});
-
-document.getElementById('certificate-later').addEventListener('change', function () {
-  document.getElementById('certificate-file-upload').style.display = 'none'; // Show questions
-});
-
-document.getElementById('certificate-no').addEventListener('change', function () {
-  document.getElementById('certificate-file-upload').style.display = 'none'; // Show questions
-});
-
-document.getElementById('transcript-upload').addEventListener('change', function () {
-  document.getElementById('transcript-file-upload').style.display = 'block'; // Show questions
-});
-
-document.getElementById('transcript-later').addEventListener('change', function () {
-  document.getElementById('transcript-file-upload').style.display = 'none'; // Show questions
-});
-
-document.getElementById('transcript-no').addEventListener('change', function () {
-  document.getElementById('transcript-file-upload').style.display = 'none'; // Show questions
-});
-
-document.getElementById('certificate-translation-upload').addEventListener('change', function () {
-  document.getElementById('certificate-translated-file-upload').style.display = 'block'; // Show questions
-});
-
-document.getElementById('certificate-translation-later').addEventListener('change', function () {
-  document.getElementById('certificate-translated-file-upload').style.display = 'none'; // Show questions
-});
-
-document.getElementById('certificate-translation-no').addEventListener('change', function () {
-  document.getElementById('certificate-translated-file-upload').style.display = 'none'; // Show questions
-});
-
-document.getElementById('certificate-translation-english').addEventListener('change', function () {
-  document.getElementById('certificate-translated-file-upload').style.display = 'none'; // Show questions
-});
-
-document.getElementById('transcript-translation-upload').addEventListener('change', function () {
-  document.getElementById('transcript-translated-file-upload').style.display = 'block'; // Show questions
-});
-
-document.getElementById('transcript-translation-later').addEventListener('change', function () {
-  document.getElementById('transcript-translated-file-upload').style.display = 'none'; // Show questions
-});
-
-document.getElementById('transcript-translation-no').addEventListener('change', function () {
-  document.getElementById('transcript-translated-file-upload').style.display = 'none'; // Show questions
-});
-
-document.getElementById('transcript-translation-english').addEventListener('change', function () {
-  document.getElementById('transcript-translated-file-upload').style.display = 'none'; // Show questions
-});
-
+         document.getElementById('address-dates').addEventListener('change', function () {
+        document.getElementById('date-range-fields').style.display = 'block'; // Show questions
+      });
+      
+      document.getElementById('address-always').addEventListener('change', function () {
+        document.getElementById('date-range-fields').style.display = 'none'; // Hide questions
+      });
+        </script> 
+        <script>
+            document.getElementById('address-dates').addEventListener('change', function () {
+           document.getElementById('date-range-fields').style.display = 'block'; // Show questions
+         });
+         
+         document.getElementById('address-always').addEventListener('change', function () {
+           document.getElementById('date-range-fields').style.display = 'none'; // Hide questions
+         });
+           </script> 
+           <script>
+             document.getElementById('taught-english-no').addEventListener('change', function () {
+           document.getElementById('taught-other-language').style.display = 'block'; // Show questions
+         });
+         
+         document.getElementById('taught-english-yes').addEventListener('change', function () {
+           document.getElementById('taught-other-language').style.display = 'none'; // Hide questions
+         });
            </script>
 </body>
 </html>
