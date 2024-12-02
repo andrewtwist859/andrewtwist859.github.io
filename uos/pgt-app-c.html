@@ -1270,6 +1270,53 @@ initializeCountrySearchWithKeyboard("country-search-2", "country-select-2");
 initializeCountrySearchWithKeyboard("country-search-3", "country-select-3");
 initializeCountrySearchWithKeyboard("country-search-4", "country-select-4");
 
+function initializeMobileDropdown(searchInputId, selectId) {
+  const searchInput = document.getElementById(searchInputId);
+  const selectElement = document.getElementById(selectId);
+
+  // Add search filtering logic
+  searchInput.addEventListener("input", () => {
+    const query = searchInput.value.toLowerCase();
+    const options = Array.from(selectElement.options);
+
+    options.forEach((option) => {
+      if (option.value.toLowerCase().includes(query)) {
+        option.style.display = ""; // Show matching option
+      } else {
+        option.style.display = "none"; // Hide non-matching options
+      }
+    });
+
+    selectElement.size = Math.min(5, options.filter((opt) => opt.style.display !== "none").length); // Adjust size
+  });
+
+  // Show dropdown on focus
+  searchInput.addEventListener("focus", () => {
+    selectElement.style.display = "block";
+    selectElement.size = 5; // Ensure a fixed number of visible options
+  });
+
+  // Hide dropdown when losing focus
+  document.addEventListener("click", (e) => {
+    if (!searchInput.closest(".dropdown-container").contains(e.target)) {
+      selectElement.size = 1; // Reset to normal dropdown size
+      selectElement.style.display = "block";
+    }
+  });
+
+  // Sync selected option back to input
+  selectElement.addEventListener("change", () => {
+    searchInput.value = selectElement.value;
+    selectElement.size = 1; // Collapse dropdown
+  });
+}
+
+// Initialize the dropdown search
+initializeMobileDropdown("country-search-1", "country-select-1");
+initializeMobileDropdown("country-search-2", "country-select-2");
+initializeMobileDropdown("country-search-3", "country-select-3");
+initializeMobileDropdown("country-search-4", "country-select-4");
+
         </script>
         <script>
          document.getElementById('address-dates').addEventListener('change', function () {
