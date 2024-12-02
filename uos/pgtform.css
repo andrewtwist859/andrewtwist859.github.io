@@ -209,14 +209,14 @@ fieldset legend {
         width: 100%;
       }
       
-      #country-search {
+      #country-search-1, #country-search-2, #country-search-3, #country-search-4 {
         width: 80%;
         padding: 10px;
         border: 2px solid black;
         font-size: 16px;
       }
       
-      #country-select {
+      #country-select-1, #country-select-2, #country-select-3, #country-select-4 {
         width: 80%;
         padding: 10px;
         border: none;
@@ -229,7 +229,7 @@ fieldset legend {
         overflow-y: auto;
       }
       
-      #country-select option {
+      #country-select-1 option, #country-select-2 option, #country-select-3 option, #country-select-4 option {
           margin-bottom: 1rem;
       }
 

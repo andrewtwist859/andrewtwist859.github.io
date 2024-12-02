@@ -672,37 +672,37 @@ hr {
     <p>This information will be used to determine the rate of fee you will be charged if offered a place to study. Documentary evidence may be required in support of this information, and in some cases we may contact you for further information.</p>
     <p>Items marked with an asterisk * must be completed.</p>
     <form id="personal-details-form">
-      <label for="country-search">What is the country of your nationality? <span class="required">(required)</span></label>
+      <label for="country-search-1">What is the country of your nationality? <span class="required">(required)</span></label>
       <div class="hint">Select the country shown on your passport.</div>
 <div class="dropdown-container">
-  <input type="text" id="country-search" placeholder="Type to search..." autocomplete="off">
-  <select id="country-select" name="country" size="5">
+  <input type="text" id="country-search-1" placeholder="Type to search..." autocomplete="off">
+  <select id="country-select-1" name="country1" size="5">
     <option value="">Select a country</option>
     <!-- Options will be dynamically populated -->
   </select>
 </div>
-<label for="country-search">If you have a second nationality please select the country here:</span></label>
+<label for="country-search-2">If you have a second nationality please select the country here:</span></label>
 <div class="hint">Only enter this if you have full citizenship of another country.</div>
 <div class="dropdown-container">
-  <input type="text" id="country-search" placeholder="Type to search..." autocomplete="off">
-  <select id="country-select" name="country" size="5">
+  <input type="text" id="country-search-2" placeholder="Type to search..." autocomplete="off">
+  <select id="country-select-2" name="country2" size="5">
     <option value="">Select a country</option>
     <!-- Options will be dynamically populated -->
   </select>
 </div>
-<label for="country-search">Which country were you born in? <span class="required">(required)</span></label>
+<label for="country-search-3">Which country were you born in? <span class="required">(required)</span></label>
 <div class="dropdown-container">
-  <input type="text" id="country-search" placeholder="Type to search..." autocomplete="off">
-  <select id="country-select" name="country" size="5">
+  <input type="text" id="country-search-3" placeholder="Type to search..." autocomplete="off">
+  <select id="country-select-3" name="country3" size="5">
     <option value="">Select a country</option>
     <!-- Options will be dynamically populated -->
   </select>
 </div>
-<label for="country-search">Which country are you a permanent resident of? <span class="required">(required)</span></label>
+<label for="country-search-4">Which country are you a permanent resident of? <span class="required">(required)</span></label>
 <div class="hint">This is the country where you normally live. To be a permanent resident of a country you must either have been born there, hold a passport or have an indefinite Visa for that country.</div>
 <div class="dropdown-container">
-  <input type="text" id="country-search" placeholder="Type to search..." autocomplete="off">
-  <select id="country-select" name="country" size="5">
+  <input type="text" id="country-search-4" placeholder="Type to search..." autocomplete="off">
+  <select id="country-select-4" name="country4" size="5">
     <option value="">Select a country</option>
     <!-- Options will be dynamically populated -->
   </select>
@@ -718,7 +718,7 @@ hr {
             No
           </label>
         </div>
-<p><strong>Are you currently living in the UK? <span class="required">(required)</span></strong></p>
+<p><strong>Are you currently living in the UK? <span class="required">(required)</span></p>
         <div class="radio-container">
           <label>
             <input type="radio" id="living-uk-yes" name="living-changed" value="yes">
@@ -1135,48 +1135,141 @@ function handleEnter(event) {
         "Turkey", "Turkmenistan", "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States",
         "Uruguay", "Uzbekistan", "Vanuatu", "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe"
       ];
-      
-      // Populate select dropdown
-      const countrySelect = document.getElementById("country-select");
-      countries.forEach(country => {
-        const option = document.createElement("option");
-        option.value = country;
-        option.textContent = country;
-        countrySelect.appendChild(option);
-      });
-      
-      // Handle search input
-      const countrySearch = document.getElementById("country-search");
-      countrySearch.addEventListener("input", () => {
-        const query = countrySearch.value.toLowerCase();
-        const options = Array.from(countrySelect.options);
-      
-        // Filter options based on query
-        options.forEach(option => {
-          if (option.value.toLowerCase().includes(query)) {
-            option.style.display = "block";
-          } else {
-            option.style.display = "none";
-          }
-        });
-      
-        // Show dropdown when typing
-        countrySelect.style.display = "block";
-      });
-      
-      // Handle selection
-      countrySelect.addEventListener("change", () => {
-        countrySearch.value = countrySelect.value;
-        countrySelect.style.display = "none"; // Hide dropdown after selection
-      });
-      
-      // Hide dropdown when clicking outside
-      document.addEventListener("click", (e) => {
-        if (!document.querySelector(".dropdown-container").contains(e.target)) {
-          countrySelect.style.display = "none";
-        }
-      });
-      
+
+// Function to initialize country search for a given input and select
+function initializeCountrySearch(searchInputId, selectId) {
+  const searchInput = document.getElementById(searchInputId);
+  const selectElement = document.getElementById(selectId);
+
+  // Populate select dropdown
+  countries.forEach((country) => {
+    const option = document.createElement("option");
+    option.value = country;
+    option.textContent = country;
+    selectElement.appendChild(option);
+  });
+
+  // Handle search input
+  searchInput.addEventListener("input", () => {
+    const query = searchInput.value.toLowerCase();
+    const options = Array.from(selectElement.options);
+
+    options.forEach((option) => {
+      if (option.value.toLowerCase().includes(query)) {
+        option.style.display = "block";
+      } else {
+        option.style.display = "none";
+      }
+    });
+
+    selectElement.style.display = "block";
+  });
+
+  // Handle selection
+  selectElement.addEventListener("change", () => {
+    searchInput.value = selectElement.value;
+    selectElement.style.display = "none";
+  });
+
+  // Hide dropdown when clicking outside
+  document.addEventListener("click", (e) => {
+    if (!document.getElementById(searchInputId).closest(".dropdown-container").contains(e.target)) {
+      selectElement.style.display = "none";
+    }
+  });
+}
+
+// Function to initialize country search with keyboard navigation
+function initializeCountrySearchWithKeyboard(searchInputId, selectId) {
+  const searchInput = document.getElementById(searchInputId);
+  const selectElement = document.getElementById(selectId);
+
+  // Populate select dropdown
+  countries.forEach((country) => {
+    const option = document.createElement("option");
+    option.value = country;
+    option.textContent = country;
+    selectElement.appendChild(option);
+  });
+
+  let currentFocusIndex = -1; // Tracks the currently focused option
+
+  // Handle search input
+  searchInput.addEventListener("input", () => {
+    const query = searchInput.value.toLowerCase();
+    const options = Array.from(selectElement.options);
+
+    currentFocusIndex = -1; // Reset focus index
+    options.forEach((option) => {
+      if (option.value.toLowerCase().includes(query)) {
+        option.style.display = "block";
+      } else {
+        option.style.display = "none";
+      }
+    });
+
+    selectElement.style.display = "block"; // Show dropdown
+  });
+
+  // Handle keyboard navigation
+  searchInput.addEventListener("keydown", (e) => {
+    const options = Array.from(selectElement.options).filter(
+      (option) => option.style.display === "block"
+    );
+
+    if (e.key === "ArrowDown") {
+      // Move focus down
+      e.preventDefault();
+      currentFocusIndex = (currentFocusIndex + 1) % options.length;
+      focusOption(options, currentFocusIndex);
+    } else if (e.key === "ArrowUp") {
+      // Move focus up
+      e.preventDefault();
+      currentFocusIndex =
+        (currentFocusIndex - 1 + options.length) % options.length;
+      focusOption(options, currentFocusIndex);
+    } else if (e.key === "Enter") {
+      // Select focused option
+      e.preventDefault();
+      if (currentFocusIndex >= 0 && options[currentFocusIndex]) {
+        const selectedOption = options[currentFocusIndex];
+        searchInput.value = selectedOption.value;
+        selectElement.style.display = "none"; // Hide dropdown
+      }
+    }
+  });
+
+  // Focus a specific option
+  function focusOption(options, index) {
+    options.forEach((option, i) => {
+      option.style.backgroundColor = i === index ? "#f0f0f0" : "white";
+    });
+
+    if (options[index]) {
+      options[index].scrollIntoView({ block: "nearest" });
+    }
+  }
+
+  // Handle selection by mouse click
+  selectElement.addEventListener("click", (e) => {
+    searchInput.value = e.target.value;
+    selectElement.style.display = "none"; // Hide dropdown after selection
+  });
+
+  // Hide dropdown when clicking outside
+  document.addEventListener("click", (e) => {
+    if (!document.getElementById(searchInputId).closest(".dropdown-container").contains(e.target)) {
+      selectElement.style.display = "none";
+    }
+  });
+}
+
+// Initialize country search with keyboard navigation for all fields
+initializeCountrySearchWithKeyboard("country-search-1", "country-select-1");
+initializeCountrySearchWithKeyboard("country-search-2", "country-select-2");
+initializeCountrySearchWithKeyboard("country-search-3", "country-select-3");
+initializeCountrySearchWithKeyboard("country-search-4", "country-select-4");
+
         </script>
         <script>
          document.getElementById('address-dates').addEventListener('change', function () {
