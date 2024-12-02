@@ -257,6 +257,7 @@ fieldset legend {
         font-size: 16px;
         font-weight: bold;
         transition: background-color 0.3s ease;
+        margin-top: 2rem;
     }
 
     .button-link.next {
