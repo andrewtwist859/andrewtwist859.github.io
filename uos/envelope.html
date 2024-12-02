@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Envelope Address Preview</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 20px;
+    }
+
+    .envelope {
+      width: 500px;
+      height: 250px;
+      border: 2px solid black;
+      margin: 20px auto;
+      position: relative;
+      background-color: #f9f9f9;
+    }
+
+    .stamp {
+      width: 70px;
+      height: 70px;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      display: none; /* Hide the stamp by default */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .address {
+      position: absolute;
+      top: 80px;
+      left: 30px;
+      text-align: left;
+      font-size: 16px;
+    }
+
+    input, button {
+      margin: 10px;
+      padding: 10px;
+      font-size: 16px;
+    }
+
+    .input-container {
+      margin: 20px auto;
+      max-width: 500px;
+    }
+  </style>
+</head>
+<body>
+  <div class="input-container">
+    <input id="line1" type="text" placeholder="Recipient Name"><br>
+    <input id="line2" type="text" placeholder="Street Address"><br>
+    <input id="line3" type="text" placeholder="City"><br>
+    <input id="line4" type="text" placeholder="Postcode"><br>
+    <button onclick="updateEnvelope()">Preview Address</button>
+    <button onclick="changeStamp()" id="changeStampBtn" style="display: none;">Glynspire me</button>
+  </div>
+  <div class="envelope">
+    <div 
+      class="stamp" 
+      id="stamp" 
+      style="background-image: url('stamp1.png');">
+    </div>
+    <div class="address" id="addressPreview">
+      <!-- Address preview will be updated here -->
+    </div>
+  </div>
+
+  <script>
+    let currentStamp = 1;
+
+    function updateEnvelope() {
+      const line1 = document.getElementById('line1').value;
+      const line2 = document.getElementById('line2').value;
+      const line3 = document.getElementById('line3').value;
+      const line4 = document.getElementById('line4').value;
+
+      const addressPreview = document.getElementById('addressPreview');
+      addressPreview.innerHTML = `
+        ${line1 ? line1 + '<br>' : ''}
+        ${line2 ? line2 + '<br>' : ''}
+        ${line3 ? line3 + '<br>' : ''}
+        ${line4 ? line4 : ''}
+      `;
+
+      const stamp = document.getElementById('stamp');
+      stamp.style.display = 'block'; // Show the stamp
+      document.getElementById('changeStampBtn').style.display = 'inline-block'; // Show the change stamp button
+    }
+
+    function changeStamp() {
+      currentStamp = currentStamp === 1 ? 2 : 1; // Toggle between two stamp images
+      const stamp = document.getElementById('stamp');
+      stamp.style.backgroundImage = `url('stamp${currentStamp}.png')`;
+    }
+  </script>
+</body>
+</html>
