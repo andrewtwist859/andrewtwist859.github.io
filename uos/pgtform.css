@@ -208,6 +208,14 @@ fieldset legend {
         position: relative;
         width: 100%;
       }
+
+      .dropdown-container input {
+        display: block;
+      }
+      
+      .dropdown-container select {
+        display: none;
+      }
       
       #country-search-1, #country-search-2, #country-search-3, #country-search-4 {
         width: 80%;
