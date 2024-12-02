@@ -267,11 +267,13 @@ fieldset legend {
 
       @media (max-width: 768px) {
     
-      #country-select {
-        display: block;
-        position: static;
-      }
-
+          .dropdown-container input {
+            display: none; /* Hide the search input */
+          }
+        
+          .dropdown-container select {
+            display: block; /* Show the select dropdown */
+          }
       select {
         font-size: 18px; /* Larger font for easier selection on mobile */
       }
