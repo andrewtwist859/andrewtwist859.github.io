@@ -20,6 +20,7 @@ body {
             display: flex;
             flex-direction: column;
             align-items: flex-start;
+            padding-left: 0rem;
         }
 
         .course-dark {
@@ -112,11 +113,11 @@ span.award-dark {
         }
 
         .location-dark {
-            color: #FF9664;
+            color: #DAA8E2;
         }
 
         .start-dark {
-            color: #DAA8E2;
+            color: #FF9664;
         }
 
         .info-block-dark .value {
@@ -127,15 +128,16 @@ span.award-dark {
 
         .icon-section {
             display: flex;
-            align-items: center;
+            flex-wrap: wrap;
             gap: 2rem;
-            margin-top: 2rem;
+            margin-top: 3rem;
         }
 
         .icon {
             display: flex;
             align-items: center;
             gap: 0.5rem;
+            height: 1rem;
         }
 
         .icon img {

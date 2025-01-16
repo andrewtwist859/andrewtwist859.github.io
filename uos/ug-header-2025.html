@@ -1,0 +1,1610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://use.typekit.net/yph5bbq.css">
+<link rel="stylesheet" href="gallery.css">
+<link rel="stylesheet" href="footer.css"> 
+<link rel="stylesheet" href="video.css"> 
+<link rel="stylesheet" href="imd.css"> 
+<link rel="stylesheet" href="vertical-shelf.css"> 
+<link rel="stylesheet" href="ugheader.css"> 
+<link rel="stylesheet" href="global-menu.css"> 
+<link rel="stylesheet" href="testimonials.css"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="https://www.sheffield.ac.uk/themes/custom/uos_public/favicon.ico" sizes="any">
+<link rel="icon" href="https://www.sheffield.ac.uk/themes/custom/uos_public/favicon.svg" type="image/svg+xml" />
+<title>Journalism Studies BA | The University of Sheffield</title>
+<style>
+  
+  /* General Styles */
+  body {
+    font-family: 'source-sans-pro', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color:#F3F4F4;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4 {
+    font-family:"source-serif-pro";
+    font-weight: 700;
+  }
+
+  h3 {
+    font-size: 1.6rem;
+    margin: 0.5rem 0rem;
+  }
+
+  h4 {
+    font-size: 1.4rem;
+    margin: 0.5rem 0rem;
+  }
+
+  p, li {
+    font-size: 1.2rem;
+    line-height: 1.6;
+  }
+
+  p a {
+    font-weight: bold;
+    color: #440099;
+  }
+
+  p a:hover {
+    color: #7000ff;
+  }
+
+  p a:visited {
+    color:#1f0f4d
+  }
+
+  .content-container li {
+    padding-bottom: 1rem;
+  }
+
+  li:last-child {
+    padding-bottom: 0rem;
+  }
+
+  .banner-text {
+    font-family:"source-serif-pro";
+    font-weight: 700;
+    font-size: 2rem;
+  }
+
+  /* Sticky Container */
+  .sticky-container {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: white;
+  }
+
+  /* Banner Styles */
+  .banner {
+    background-color: #3B0D74;
+    color: #fff;
+    padding: 2rem 0rem;
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  /* Wrapper for Menu and Gradient */
+  .nav-menu-wrapper {
+    position: relative;
+    max-width: 1180px;
+    margin: 0 auto;
+  }
+
+  /* Desktop and Horizontal Scroll Menu Styles */
+  .nav-menu-container {
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .nav-menu {
+    display: flex;
+    justify-content: flex-start;
+    padding: 1rem 0rem;
+    max-width: 1180px;
+    margin: 0 auto;
+  }
+
+  .nav-menu a {
+    color: black;
+    padding: 10px 20px;
+    text-decoration: none;
+    display: inline-block;
+    
+  }
+
+  .nav-menu a:hover,
+  .nav-menu .active {
+    background-color: #440099;
+    border-radius: 5px;
+    color: white;
+  }
+
+  /* Gradient overlay for fade effect */
+  .gradient-overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 50px;
+    background: linear-gradient(to left, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+    pointer-events: none;
+    z-index: 5; /* Ensure it appears above menu items */
+  }
+
+  /* Mobile Menu and Toggle Button Styles */
+  .menu-toggle {
+    display: none;
+    color: black;
+    background: none;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 15px;
+    cursor: pointer;
+    text-align: left;
+    background-color: white;
+    width: 100%;
+  }
+
+  .mobile-menu {
+    display: none;
+    background-color: white;
+    padding: 0;
+    width: 100%;
+    z-index: 9;
+  }
+
+  .mobile-menu a {
+    display: block;
+    color: black;
+    padding: 15px;
+    text-decoration: none;
+    border-bottom: 1px solid #440099;
+  }
+
+  .mobile-menu a:hover,
+  .mobile-menu .active {
+    background-color: #440099;
+    color: white;
+  }
+
+  /* Sticky Bottom Footer */
+  .sticky-footer {
+    position: fixed;
+    bottom: -100px;
+    left: 0;
+    width: 100%;
+    background-color: #1F0F4D;
+    color: #fff;
+    padding: 1.5rem 0;
+    z-index: 10;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    transition: bottom 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+  /* Class to make footer visible */
+.sticky-footer.visible {
+  bottom: 0; /* Slide-up to visible */
+}
+
+.hidden {
+    display: none;
+}
+
+  .footer-container {
+    max-width: 1180px;
+    margin: 0 auto;
+  }
+
+  
+  .footer-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+  }
+
+  .footer-item svg {
+    margin-right:0.5rem;
+  }
+
+  .footer-item a {
+    color: white;
+  }
+
+  .footer-item svg {
+    width: 24px;
+    height: 24px;
+    margin-bottom: 5px;
+  }
+
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    h1.course-dark, span.award-dark {
+      font-size: 1.6rem !important;
+    }
+
+    .olp-banner-dark {
+      padding: 0.5rem !important;
+    }
+
+    .sticky-footer {
+      flex-direction: row;
+      padding: 10px 0;
+    }
+
+    .fee-container {
+      flex-direction: column;
+    }
+
+    .info-section {
+        flex-direction: column;
+        gap:10px !important;
+    }
+
+    .icon-section {
+        flex-direction: column;
+        gap:10px !important;
+        align-items: first baseline;
+    }
+
+    .icon-section p {
+       margin:0;
+    }
+
+    .icon {
+        margin-top: 0.5rem;
+    }
+
+    .summary {
+      font-size: 1.2rem;
+      max-width: 90%;
+  
+    }
+
+    .footer-item {
+      margin: 5px 0;
+      max-width: 12ch;
+      flex-direction: column;
+      text-wrap:balance;
+    }
+    .footer-item a {
+      text-decoration: none !important;
+      line-height: 1rem;
+      
+    }
+
+    
+  }
+
+  .slider-nav-container {
+      margin-bottom: 0rem !important;
+    }
+
+  .banner-content {
+    position: relative;
+    max-width: 1180px;
+    margin: 0 auto;
+}
+  
+  .banner-text {
+    padding-left:1rem;
+  }
+
+  .content-container {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding-bottom: 2rem;
+    
+  }
+
+  .content {
+    margin: 0;
+    padding: 0.25rem 0.5rem; 
+  }
+
+  .content p, li {
+    max-width: 80ch;
+  }
+
+  .content img.main {
+    max-width: 800px;
+
+  }
+
+
+.subtext {
+    padding-top: 0.5rem;
+}
+
+.global-nav {
+    height:100px;
+    background-color: white;
+}
+
+
+/* Accordion styles */
+.accordion {
+  cursor: pointer;
+  font-weight: bold;
+  display: flex;
+  align-items: center; /* Align text and icon vertically */
+  text-decoration: underline;
+  font-family:"source-serif-pro";
+font-weight: 700;
+font-size: 1.2rem;
+padding: 0.5rem 0rem;
+}
+
+
+.accordion:hover {
+color: #7000ff;
+}
+
+.accordion::after {
+  content: '';
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin-right: 10px; /* Space between icon and text */
+  background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" fill="%237000ff" viewBox="0 0 448 512"%3E%3Cpath d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"%2F%3E%3C%2Fsvg%3E');
+  background-size: contain;
+  background-repeat: no-repeat;
+  transition: transform 0.3s ease;
+  margin-left: 0.5rem;
+}
+
+.accordion.active::after {
+  transform: rotate(180deg); /* Rotate to show up arrow */
+}
+
+.panel {
+    background-color: white;
+    padding: 1rem 2rem;
+    display: none;
+    max-width: 750px;
+}
+
+hr {
+    margin: 1rem 0rem;
+    border: 1px solid #B8BBBF;
+    max-width: 800px;
+}
+
+hr.space {
+    margin: 0.5rem 0rem;
+    border: none;
+}
+
+hr.section {
+    margin: 2rem 0rem;
+    border: 2px solid #1F0F4D;
+}
+
+.tab-container {
+      overflow: hidden;
+      font-family: 'source-sans-pro', sans-serif;
+      background-color: white;
+      max-width: 800px;
+    }
+
+    .tabs {
+      display: flex;
+      cursor: pointer;
+    }
+
+    .tab {
+      flex: 1;
+      padding: 10px;
+      text-align: center;
+      font-weight: bold;
+      background-color: #ECE6F5;
+      color: #24135f;
+      transition: background-color 0.3s;
+    }
+
+    .tab.active {
+      background-color: #24135f;
+      color: #fff;
+    }
+
+    /* Content Styles */
+    .tab-content {
+        padding: 1rem 2rem;
+      background-color: white;
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    /* Container for the fee boxes */
+    .fee-container {
+      display: flex;
+      gap: 20px;
+    }
+
+    /* Individual fee box styles */
+    .fee-box {
+      background-color: white;
+      padding: 20px;
+      border-radius: 3px;
+      text-align: center;
+      width: 310px;
+    }
+
+    /* Amount style */
+    .fee-box .amount {
+      font-size: 1.8rem;
+      font-family: "source-serif-pro";
+      font-weight: 700;
+      color: #333;
+    }
+
+    /* Label and description styles */
+    .fee-box .label {
+      font-size: 18px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .fee-box .description {
+      font-size: 14px;
+      color: #666;
+      margin-top: 4px;
+    }
+
+
+    header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #fff;
+    max-width: 1180px;
+    margin: 0 auto;
+}
+
+
+.menu {
+    display: flex;
+    list-style: none;
+}
+
+.menu li {
+    margin: 0 15px;
+}
+
+.menu li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 1em;
+}
+
+.hamburger {
+    display: none;
+    font-size: 2.5em;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #333;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .menu {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        width: 150px;
+    }
+
+    .menu.show {
+        display: flex;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .global-nav {
+    height:90px;
+    background-color: white;
+}
+
+.content img.main {
+    width: 100%;
+
+  }
+
+  .content-container {
+    padding: 0.5rem;
+    
+  }
+
+  .panel {
+    padding: 1rem 1rem;
+}
+
+
+}
+
+#imd-widget {
+  padding: 0 !important;
+}
+
+.sticky-footer-content {
+    max-width: 1180px;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+}
+
+.button-link {
+    display: inline-flex;
+    align-items: center;
+    background-color: #7000ff; /* Light blue background */
+    color: white; /* Dark text color */
+    padding: 10px 20px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.button-link:hover {
+    background-color: #440099; /* Darker shade of blue on hover */
+}
+
+.button-link svg {
+    width: 16px;
+    height: 16px;
+    margin-left: 10px;
+}
+
+.mobile-submenu-panel ul {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .lookup-container {
+        max-width: 800px;
+    }
+</style>
+</head>
+<body>
+
+<!-- Sticky Container with Banner and Nav Menu -->
+<nav class="navbar">
+  <div class="navbar-content">
+    <div class="navbar-brand">
+      <a href="changes"><img src="logo.png" alt="University of Sheffield Logo" class="logo"></a>
+    </div>
+    <ul class="nav-links">
+      <li class="nav-item" onclick="togglePanel('study-panel')">Study</li>
+      <li class="nav-item" onclick="togglePanel('research-panel')">Research</li>
+      <li class="nav-item" onclick="togglePanel('collaborate-panel')">Collaborate</li>
+      <li class="nav-item" onclick="togglePanel('about-panel')">About</li>
+    </ul>
+    <div class="hamburger" onclick="toggleMobileMenu()">☰</div>
+  </div>
+</nav>
+
+<!-- Mega Menu Panels (Study) -->
+<div class="mega-menu-panel" id="study-panel">
+  <div class="mega-menu-content">
+    <div class="menu-column">
+      <h4>Undergraduate</h4>
+      <ul>
+        <li>Undergraduate courses</li>
+        <li>Undergraduate open days</li>
+        <li>How to apply</li>
+        <li>Fees and funding</li>
+        <li>Accommodation</li>
+        <li>International students</li>
+      </ul>
+    </div>
+    <div class="menu-column">
+      <h4>Postgraduate taught</h4>
+      <ul>
+        <li>Postgraduate taught courses</li>
+        <li>Postgraduate open days</li>
+        <li>How to apply</li>
+        <li>Fees and funding</li>
+        <li>International students</li>
+      </ul>
+    </div>
+    <div class="menu-column">
+      <h4>PhD study</h4>
+      <ul>
+        <li>Find a PhD</li>
+        <li>How to apply</li>
+        <li>PhD fees</li>
+        <li>PhD scholarships</li>
+      </ul>
+    </div>
+    <div class="menu-column">
+      <h4>Other ways to study</h4>
+      <ul>
+        <li>Apprenticeships</li>
+        <li>Mature students</li>
+        <li>Online learning</li>
+        <li>TEFL and English as a second language</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Mega Menu Panels (Research) -->
+<div class="mega-menu-panel" id="research-panel">
+  <div class="mega-menu-content">
+    <div class="menu-column">
+      <h4>Research at Sheffield</h4>
+      <ul>
+        <li>Our strategic priorities</li>
+        <li>Our people</li>
+        <li>Research Excellence Framework 2021</li>
+        <li>Researcher support</li>
+        <li>Research environment and culture</li>
+        <li>Open Research</li>
+      </ul>
+    </div>
+    <div class="menu-column">
+      <h4>Postgraduate research</h4>
+      <ul>
+        <li>Find a PhD</li>
+        <li>PhD projects directory</li>
+        <li>PhD scholarships</li>
+      </ul>
+    </div>
+    <div class="menu-column">
+      <h4>Expertise</h4>
+      <ul>
+        <li>Flagship research institutes</li>
+        <li>Research centres</li>
+        <li>Facilities</li>
+        <li>Library</li>
+      </ul>
+    </div>
+    <div class="menu-column">
+      <h4>Our impact</h4>
+      <ul>
+        <li>Research features</li>
+        <li>UN sustainable development goals</li>
+        <li>University Player</li>
+        <li>Queen's Anniversary Prizes</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+ <!-- Mega Menu Panels (Collaborate) -->
+ <div class="mega-menu-panel" id="collaborate-panel">
+  <div class="mega-menu-content">
+    <div class="menu-column">
+      <h4>Partnerships</h4>
+      <ul>
+        <li>How we support business</li>
+        <li>Examples of business partners</li>
+        <li>Research centres, institutes and networks</li>
+        <li>Our role in the city and region</li>
+      </ul>
+    </div>
+    <div class="menu-column">
+      <h4>International</h4>
+      <ul>
+        <li>Our global networks</li>
+        <li>We Are International campaign</li>
+        <li>Global opportunities and exchanges</li>
+      </ul>
+    </div>
+    <div class="menu-column">
+      <h4>Alumni</h4>
+      <ul>
+        <li>Update your details</li>
+        <li>Support us</li>
+        <li>Our alumni</li>
+        <li>Alumni volunteering</li>
+      </ul>
+    </div>
+    <div class="menu-column">
+      <h4>Philanthropy</h4>
+      <ul>
+        <li>Forged in Sheffield, Shaping the Future campaign</li>
+        <li>Get involved</li>
+        <li>Donate now</li>
+        <li>MND appeal</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Mega Menu Panels (About) -->
+<div class="mega-menu-panel" id="about-panel">
+  <div class="mega-menu-content">
+    <div class="menu-column">
+      <h4>About the University</h4>
+      <ul>
+        <li>News</li>
+        <li>Events</li>
+        <li>Jobs</li>
+        <li>Sustainability at Sheffield</li>
+        <li>Inclusion at Sheffield</li>
+        <li>Support for refugee students and scholars</li>
+        <li>Our vision and strategic plan</li>
+        <li>Our role in the city and region</li>
+        <li>Governance and management</li>
+        <li>Rankings</li>
+        <li>University of the Year</li>
+        <li>Queen's Anniversary Prizes</li>
+        <li>Nobel Prize winners</li>
+      </ul>
+    </div>
+    <div class="menu-column">
+      <h4>Departments and services</h4>
+      <ul>
+        <li>Academic departments</li>
+        <li>Faculties</li>
+        <li>Professional services</li>
+      </ul>
+    </div>
+    <div class="menu-column">
+      <h4>Studying at Sheffield</h4>
+      <ul>
+        <li>Guide to Sheffield</li>
+        <li>Courses</li>
+      </ul>
+    </div>
+    <div class="menu-column">
+      <h4>Hospitality</h4>
+      <ul>
+        <li>Conferences, events, visitor accommodation and weddings</li>
+        <li>Cafes and bars</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Mobile Menu Overlay -->
+<div class="mobile-menu-overlay" id="mobile-menu-overlay">
+  <div class="close-btn" onclick="toggleMobileMenu()">✕</div>
+  <div class="mobile-menu-panel" id="main-mobile-panel">
+    <h4 onclick="openSubmenu('mobile-study-panel')">Study</h4>
+    <h4 onclick="openSubmenu('mobile-research-panel')">Research</h4>
+    <h4 onclick="openSubmenu('mobile-collaborate-panel')">Collaborate</h4>
+    <h4 onclick="openSubmenu('mobile-about-panel')">About</h4>
+  </div>
+
+  <!-- Study Submenu Panel (Showing H4s only) -->
+  <div class="mobile-submenu-panel" id="mobile-study-panel">
+      <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+      <h4 onclick="openSubmenu('mobile-study-undergraduate')">Undergraduate</h4>
+    <h4 onclick="openSubmenu('mobile-study-postgraduate')">Postgraduate taught</h4>
+    <h4 onclick="openSubmenu('mobile-study-phd')">PhD study</h4>
+    <h4 onclick="openSubmenu('mobile-study-other')">Other ways to study</h4>
+  </div>
+
+  <!-- Study Category Panels (Third-level Panels) -->
+  <div class="mobile-submenu-panel" id="mobile-study-undergraduate">
+      <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+      <h4 class="plain">Undergraduate</h4>
+    <ul>
+      <li>Undergraduate courses</li>
+      <li>Undergraduate open days</li>
+      <li>How to apply</li>
+      <li>Fees and funding</li>
+      <li>Accommodation</li>
+      <li>International students</li>
+    </ul>
+    <img src="open.jpg">
+    <p><strong>Open day: Saturday 23 November 2024.</strong></p>
+    <p><a href="/">Book your place</a></p>
+  </div>
+
+  <div class="mobile-submenu-panel" id="mobile-study-postgraduate">
+      <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+      <h4 class="plain">Postgraduate taught</h4>
+    <ul>
+      <li>Postgraduate taught courses</li>
+      <li>Postgraduate open days</li>
+      <li>How to apply</li>
+      <li>Fees and funding</li>
+      <li>International students</li>
+    </ul>
+  </div>
+
+  <div class="mobile-submenu-panel" id="mobile-study-phd">
+      <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+      <h4 class="plain">PhD study</h4>
+    <ul>
+      <li>Find a PhD</li>
+      <li>How to apply</li>
+      <li>PhD fees</li>
+      <li>PhD scholarships</li>
+    </ul>
+  </div>
+
+  <div class="mobile-submenu-panel" id="mobile-study-other">
+      <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+      <h4 class="plain">Other ways to study</h4>
+    <ul>
+      <li>Apprenticeships</li>
+      <li>Mature students</li>
+      <li>Online learning</li>
+      <li>TEFL and English as a second language</li>
+    </ul>
+  </div>
+
+
+ <!-- Research Submenu Panel (Showing H4s only) -->
+ <div class="mobile-submenu-panel" id="mobile-research-panel">
+  <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+  <h4 onclick="openSubmenu('mobile-research-research')">Research at Sheffield</h4>
+  <h4 onclick="openSubmenu('mobile-research-postgraduate')">Postgraduate research</h4>
+  <h4 onclick="openSubmenu('mobile-research-expertise')">Expertise</h4>
+  <h4 onclick="openSubmenu('mobile-research-impact')">Our impact</h4>
+</div>
+
+<!-- Study Category Panels (Third-level Panels) -->
+<div class="mobile-submenu-panel" id="mobile-research-research">
+  <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+  <h4 class="plain">Research at Sheffield</h4>
+      <ul>
+        <li>Our strategic priorities</li>
+        <li>Our people</li>
+        <li>Research Excellence Framework 2021</li>
+        <li>Researcher support</li>
+        <li>Research environment and culture</li>
+        <li>Open Research</li>
+      </ul>
+</div>
+<div class="mobile-submenu-panel" id="mobile-research-postgraduate">
+  <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+  <h4 class="plain">Postgraduate research</h4>
+      <ul>
+        <li>Find a PhD</li>
+        <li>PhD projects directory</li>
+        <li>PhD scholarships</li>
+      </ul>
+</div>
+<div class="mobile-submenu-panel" id="mobile-research-expertise">
+  <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+  <h4 class="plain">Expertise</h4>
+      <ul>
+        <li>Flagship research institutes</li>
+        <li>Research centres</li>
+        <li>Facilities</li>
+        <li>Library</li>
+      </ul>
+</div>
+<div class="mobile-submenu-panel" id="mobile-research-impact">
+  <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+  <h4 class="plain">Our impact</h4>
+      <ul>
+        <li>Research features</li>
+        <li>UN sustainable development goals</li>
+        <li>University Player</li>
+        <li>Queen's Anniversary Prizes</li>
+      </ul>
+</div>
+
+<!-- Collaborate Submenu Panel (Showing H4s only) -->
+<div class="mobile-submenu-panel" id="mobile-collaborate-panel">
+  <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+  <h4 onclick="openSubmenu('mobile-collaborate-partnerships')">Partnerships</h4>
+  <h4 onclick="openSubmenu('mobile-collaborate-international')">International</h4>
+  <h4 onclick="openSubmenu('mobile-collaborate-alumni')">Alumni</h4>
+  <h4 onclick="openSubmenu('mobile-collaborate-philanthrophy')">Philanthropy</h4>
+</div>
+
+<div class="mobile-submenu-panel" id="mobile-collaborate-partnerships">
+  <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+  <h4>Partnerships</h4>
+      <ul>
+        <li>How we support business</li>
+        <li>Examples of business partners</li>
+        <li>Research centres, institutes and networks</li>
+        <li>Our role in the city and region</li>
+      </ul>
+</div>
+  <div class="mobile-submenu-panel" id="mobile-collaborate-international">
+      <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+      <h4>International</h4>
+      <ul>
+        <li>Our global networks</li>
+        <li>We Are International</li>
+        <li>Global opportunities and exchanges</li>
+      </ul>
+</div>
+<div class="mobile-submenu-panel" id="mobile-collaborate-alumni">
+  <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+  <h4>Alumni</h4>
+      <ul>
+        <li>Update your details</li>
+        <li>Support us</li>
+        <li>Our alumni</li>
+        <li>Alumni volunteering</li>
+      </ul>
+</div>
+<div class="mobile-submenu-panel" id="mobile-collaborate-philanthrophy">
+  <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+  <h4>Philanthropy</h4>
+      <ul>
+        <li>Forged in Sheffield, Shaping the Future campaign</li>
+        <li>Get involved</li>
+        <li>Donate now</li>
+        <li>MND appeal</li>
+      </ul>
+</div>
+
+<!-- About Submenu Panel (Showing H4s only) -->
+<div class="mobile-submenu-panel" id="mobile-about-panel">
+  <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+  <h4 onclick="openSubmenu('mobile-about-university')">About the University</h4>
+  <h4 onclick="openSubmenu('mobile-about-departments')">Departments</h4>
+  <h4 onclick="openSubmenu('mobile-about-studying')">Studying at Sheffield</h4>
+  <h4 onclick="openSubmenu('mobile-about-hospitality')">Hospitality</h4>
+</div>
+<div class="mobile-submenu-panel" id="mobile-about-university">
+  <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+  <h4>About the University</h4>
+      <ul>
+        <li>News</li>
+        <li>Events</li>
+        <li>Jobs</li>
+        <li>Sustainability at Sheffield</li>
+        <li>Inclusion at Sheffield</li>
+        <li>Support for refugee students and scholars</li>
+        <li>Our vision and strategic plan</li>
+        <li>Our role in the city and region</li>
+        <li>Governance and management</li>
+        <li>Rankings</li>
+        <li>University of the Year</li>
+        <li>Queen's Anniversary Prizes</li>
+        <li>Nobel Prize winners</li>
+      </ul>
+</div>
+<div class="mobile-submenu-panel" id="mobile-about-departments">
+  <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+  <h4>Departments and services</h4>
+  <ul>
+    <li>Academic departments</li>
+    <li>Faculties</li>
+    <li>Professional services</li>
+  </ul>
+</div>
+<div class="mobile-submenu-panel" id="mobile-about-studying">
+  <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+  <h4>Studying at Sheffield</h4>
+      <ul>
+        <li>Guide to Sheffield</li>
+        <li>Courses</li>
+      </ul>
+</div>
+<div class="mobile-submenu-panel" id="mobile-about-hospitality">
+  <div class="back-btn" onclick="closeSubmenu()">← Back</div>
+  <h4>Hospitality</h4>
+      <ul>
+        <li>Conferences, events, visitor accommodation and weddings</li>
+        <li>Cafes and bars</li>
+      </ul>
+</div>
+</div>
+<div class="section-header-container">
+  <div class="section-header">
+      <h2>Undergraduate courses</h2>
+  </div>
+</div>
+  <!-- Banner -->
+  <div class="course-banner-dark">
+    <div class="olp-banner-dark">
+      <span class="entry">2025-26 entry</span>
+        <div class="course-container">
+        <h1 class="course-dark">Journalism Studies</h1><span class="award-dark">BA</span></div>
+        <span class="school">School of Journalism, Media and Communication</span>
+        <span class="school">School of Something Else</span>
+        <p class="summary">Practice journalism for real with your own patch in the city. Each day will present you with a new challenge: you could be on location filming for a breaking TV news story, heading to the courtroom to hunt down details of a criminal prosecution, or interviewing a sports star for an Instagram reel.</p>
+        <div class="info-section">
+            <div class="info-block-dark">
+                <div class="offer-dark heading">A Levels</div>
+                <div class="value">ABB</div>
+            </div>
+            <div class="info-block-dark">
+                <div class="ucas-dark heading">UCAS code</div>
+                <div class="value">Q306</div>
+            </div>
+            <div class="info-block-dark">
+                <div class="duration-dark heading">Duration</div>
+                <div class="value">3 years / full-time</div>
+            </div>
+            <div class="info-block-dark">
+                <div class="start-dark heading">Start date</div>
+                <div class="value">September 2025</div>
+            </div>
+        </div>
+        <div class="icon-section">
+            <div class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="30" height="24" fill="white">
+                    <path d="M173.8 5.5c11-7.3 25.4-7.3 36.4 0L228 17.2c6 3.9 13 5.8 20.1 5.4l21.3-1.3c13.2-.8 25.6 6.4 31.5 18.2l9.6 19.1c3.2 6.4 8.4 11.5 14.7 14.7L344.5 83c11.8 5.9 19 18.3 18.2 31.5l-1.3 21.3c-.4 7.1 1.5 14.2 5.4 20.1l11.8 17.8c7.3 11 7.3 25.4 0 36.4L366.8 228c-3.9 6-5.8 13-5.4 20.1l1.3 21.3c.8 13.2-6.4 25.6-18.2 31.5l-19.1 9.6c-6.4 3.2-11.5 8.4-14.7 14.7L301 344.5c-5.9 11.8-18.3 19-31.5 18.2l-21.3-1.3c-7.1-.4-14.2 1.5-20.1 5.4l-17.8 11.8c-11 7.3-25.4 7.3-36.4 0L156 366.8c-6-3.9-13-5.8-20.1-5.4l-21.3 1.3c-13.2 .8-25.6-6.4-31.5-18.2l-9.6-19.1c-3.2-6.4-8.4-11.5-14.7-14.7L39.5 301c-11.8-5.9-19-18.3-18.2-31.5l1.3-21.3c.4-7.1-1.5-14.2-5.4-20.1L5.5 210.2c-7.3-11-7.3-25.4 0-36.4L17.2 156c3.9-6 5.8-13 5.4-20.1l-1.3-21.3c-.8-13.2 6.4-25.6 18.2-31.5l19.1-9.6C65 70.2 70.2 65 73.4 58.6L83 39.5c5.9-11.8 18.3-19 31.5-18.2l21.3 1.3c7.1 .4 14.2-1.5 20.1-5.4L173.8 5.5zM272 192a80 80 0 1 0 -160 0 80 80 0 1 0 160 0zM1.3 441.8L44.4 339.3c.2 .1 .3 .2 .4 .4l9.6 19.1c11.7 23.2 36 37.3 62 35.8l21.3-1.3c.2 0 .5 0 .7 .2l17.8 11.8c5.1 3.3 10.5 5.9 16.1 7.7l-37.6 89.3c-2.3 5.5-7.4 9.2-13.3 9.7s-11.6-2.2-14.8-7.2L74.4 455.5l-56.1 8.3c-5.7 .8-11.4-1.5-15-6s-4.3-10.7-2.1-16zm248 60.4L211.7 413c5.6-1.8 11-4.3 16.1-7.7l17.8-11.8c.2-.1 .4-.2 .7-.2l21.3 1.3c26 1.5 50.3-12.6 62-35.8l9.6-19.1c.1-.2 .2-.3 .4-.4l43.2 102.5c2.2 5.3 1.4 11.4-2.1 16s-9.3 6.9-15 6l-56.1-8.3-32.2 49.2c-3.2 5-8.9 7.7-14.8 7.2s-11-4.3-13.3-9.7z"/>
+                </svg>
+                <a href="#">Accredited</a>
+            </div>
+            <div class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="30" height="24" fill="white"><!--!Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M512 80c0 18-14.3 34.6-38.4 48c-29.1 16.1-72.5 27.5-122.3 30.9c-3.7-1.8-7.4-3.5-11.3-5C300.6 137.4 248.2 128 192 128c-8.3 0-16.4 .2-24.5 .6l-1.1-.6C142.3 114.6 128 98 128 80c0-44.2 86-80 192-80S512 35.8 512 80zM160.7 161.1c10.2-.7 20.7-1.1 31.3-1.1c62.2 0 117.4 12.3 152.5 31.4C369.3 204.9 384 221.7 384 240c0 4-.7 7.9-2.1 11.7c-4.6 13.2-17 25.3-35 35.5c0 0 0 0 0 0c-.1 .1-.3 .1-.4 .2c0 0 0 0 0 0s0 0 0 0c-.3 .2-.6 .3-.9 .5c-35 19.4-90.8 32-153.6 32c-59.6 0-112.9-11.3-148.2-29.1c-1.9-.9-3.7-1.9-5.5-2.9C14.3 274.6 0 258 0 240c0-34.8 53.4-64.5 128-75.4c10.5-1.5 21.4-2.7 32.7-3.5zM416 240c0-21.9-10.6-39.9-24.1-53.4c28.3-4.4 54.2-11.4 76.2-20.5c16.3-6.8 31.5-15.2 43.9-25.5l0 35.4c0 19.3-16.5 37.1-43.8 50.9c-14.6 7.4-32.4 13.7-52.4 18.5c.1-1.8 .2-3.5 .2-5.3zm-32 96c0 18-14.3 34.6-38.4 48c-1.8 1-3.6 1.9-5.5 2.9C304.9 404.7 251.6 416 192 416c-62.8 0-118.6-12.6-153.6-32C14.3 370.6 0 354 0 336l0-35.4c12.5 10.3 27.6 18.7 43.9 25.5C83.4 342.6 135.8 352 192 352s108.6-9.4 148.1-25.9c7.8-3.2 15.3-6.9 22.4-10.9c6.1-3.4 11.8-7.2 17.2-11.2c1.5-1.1 2.9-2.3 4.3-3.4l0 3.4 0 5.7 0 26.3zm32 0l0-32 0-25.9c19-4.2 36.5-9.5 52.1-16c16.3-6.8 31.5-15.2 43.9-25.5l0 35.4c0 10.5-5 21-14.9 30.9c-16.3 16.3-45 29.7-81.3 38.4c.1-1.7 .2-3.5 .2-5.3zM192 448c56.2 0 108.6-9.4 148.1-25.9c16.3-6.8 31.5-15.2 43.9-25.5l0 35.4c0 44.2-86 80-192 80S0 476.2 0 432l0-35.4c12.5 10.3 27.6 18.7 43.9 25.5C83.4 438.6 135.8 448 192 448z"/>
+                </svg>
+                <a href="#">Find out the course fee</a>
+            </div>
+            <div class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="30" height="24" fill="white"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M0 80l0 48c0 17.7 14.3 32 32 32l16 0 48 0 0-80c0-26.5-21.5-48-48-48S0 53.5 0 80zM112 32c10 13.4 16 30 16 48l0 304c0 35.3 28.7 64 64 64s64-28.7 64-64l0-5.3c0-32.4 26.3-58.7 58.7-58.7L480 320l0-192c0-53-43-96-96-96L112 32zM464 480c61.9 0 112-50.1 112-112c0-8.8-7.2-16-16-16l-245.3 0c-14.7 0-26.7 11.9-26.7 26.7l0 5.3c0 53-43 96-96 96l176 0 96 0z"/></svg>                </svg>
+                <p>Dual honours</p>
+            </div>
+            <div class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="30" height="24" fill="white"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M512 240c0 114.9-114.6 208-256 208c-37.1 0-72.3-6.4-104.1-17.9c-11.9 8.7-31.3 20.6-54.3 30.6C73.6 471.1 44.7 480 16 480c-6.5 0-12.3-3.9-14.8-9.9c-2.5-6-1.1-12.8 3.4-17.4c0 0 0 0 0 0s0 0 0 0s0 0 0 0c0 0 0 0 0 0l.3-.3c.3-.3 .7-.7 1.3-1.4c1.1-1.2 2.8-3.1 4.9-5.7c4.1-5 9.6-12.4 15.2-21.6c10-16.6 19.5-38.4 21.4-62.9C17.7 326.8 0 285.1 0 240C0 125.1 114.6 32 256 32s256 93.1 256 208z"/></svg>                </svg>
+                <p>Foreign language study</p>
+            </div>
+            <div class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="30" height="24" fill="white"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"/></svg>                </svg>
+                <p>Foundation year</p>
+            </div>
+            <div class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="30" height="24" fill="white"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M48 0C21.5 0 0 21.5 0 48L0 464c0 26.5 21.5 48 48 48l96 0 0-80c0-26.5 21.5-48 48-48s48 21.5 48 48l0 80 96 0c26.5 0 48-21.5 48-48l0-416c0-26.5-21.5-48-48-48L48 0zM64 240c0-8.8 7.2-16 16-16l32 0c8.8 0 16 7.2 16 16l0 32c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-32zm112-16l32 0c8.8 0 16 7.2 16 16l0 32c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-32c0-8.8 7.2-16 16-16zm80 16c0-8.8 7.2-16 16-16l32 0c8.8 0 16 7.2 16 16l0 32c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-32zM80 96l32 0c8.8 0 16 7.2 16 16l0 32c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-32c0-8.8 7.2-16 16-16zm80 16c0-8.8 7.2-16 16-16l32 0c8.8 0 16 7.2 16 16l0 32c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-32zM272 96l32 0c8.8 0 16 7.2 16 16l0 32c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-32c0-8.8 7.2-16 16-16z"/></svg>                </svg>
+                </svg>
+                <p>Industrial placement year</p>
+            </div>
+            <div class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="30" height="24" fill="white"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M48 0C21.5 0 0 21.5 0 48L0 464c0 26.5 21.5 48 48 48l96 0 0-80c0-26.5 21.5-48 48-48s48 21.5 48 48l0 80 96 0c26.5 0 48-21.5 48-48l0-416c0-26.5-21.5-48-48-48L48 0zM64 240c0-8.8 7.2-16 16-16l32 0c8.8 0 16 7.2 16 16l0 32c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-32zm112-16l32 0c8.8 0 16 7.2 16 16l0 32c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-32c0-8.8 7.2-16 16-16zm80 16c0-8.8 7.2-16 16-16l32 0c8.8 0 16 7.2 16 16l0 32c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-32zM80 96l32 0c8.8 0 16 7.2 16 16l0 32c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-32c0-8.8 7.2-16 16-16zm80 16c0-8.8 7.2-16 16-16l32 0c8.8 0 16 7.2 16 16l0 32c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-32zM272 96l32 0c8.8 0 16 7.2 16 16l0 32c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-32c0-8.8 7.2-16 16-16z"/></svg>                </svg>
+                <p>Industry placement</p>
+            </div>
+            <div class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="30" height="24" fill="white"><!--!Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M184 48l144 0c4.4 0 8 3.6 8 8l0 40L176 96l0-40c0-4.4 3.6-8 8-8zm-56 8l0 40L64 96C28.7 96 0 124.7 0 160l0 96 192 0 128 0 192 0 0-96c0-35.3-28.7-64-64-64l-64 0 0-40c0-30.9-25.1-56-56-56L184 0c-30.9 0-56 25.1-56 56zM512 288l-192 0 0 32c0 17.7-14.3 32-32 32l-64 0c-17.7 0-32-14.3-32-32l0-32L0 288 0 416c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-128z"/>
+                </svg>
+                <p>Optional placement year</p>
+            </div>
+            <div class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="30" height="24" fill="white"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M256 32l-74.8 0c-27.1 0-51.3 17.1-60.3 42.6L3.1 407.2C1.1 413 0 419.2 0 425.4C0 455.5 24.5 480 54.6 480L256 480l0-64c0-17.7 14.3-32 32-32s32 14.3 32 32l0 64 201.4 0c30.2 0 54.6-24.5 54.6-54.6c0-6.2-1.1-12.4-3.1-18.2L455.1 74.6C446 49.1 421.9 32 394.8 32L320 32l0 64c0 17.7-14.3 32-32 32s-32-14.3-32-32l0-64zm64 192l0 64c0 17.7-14.3 32-32 32s-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32s32 14.3 32 32z"/></svg>                </svg>
+                <p>Pathway programme</p>
+            </div>
+            <div class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="30" height="24" fill="white"><!--!Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M482.3 192c34.2 0 93.7 29 93.7 64c0 36-59.5 64-93.7 64l-116.6 0L265.2 495.9c-5.7 10-16.3 16.1-27.8 16.1l-56.2 0c-10.6 0-18.3-10.2-15.4-20.4l49-171.6L112 320 68.8 377.6c-3 4-7.8 6.4-12.8 6.4l-42 0c-7.8 0-14-6.3-14-14c0-1.3 .2-2.6 .5-3.9L32 256 .5 145.9c-.4-1.3-.5-2.6-.5-3.9c0-7.8 6.3-14 14-14l42 0c5 0 9.8 2.4 12.8 6.4L112 192l102.9 0-49-171.6C162.9 10.2 170.6 0 181.2 0l56.2 0c11.5 0 22.1 6.2 27.8 16.1L365.7 192l116.6 0z"/>
+                </svg>
+                <p>Study abroad</p>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const sections = document.querySelectorAll('h2[id]');
+  const navLinks = document.querySelectorAll('.nav-menu a');
+  const navMenuContainer = document.querySelector(".nav-menu-container");
+
+  // Observer for forward scrolling (top of section enters view)
+  const forwardObserverOptions = {
+    root: null,
+    threshold: 0,
+    rootMargin: '-10% 0px -90% 0px' // Triggers when top is near the top of viewport
+  };
+
+  // Observer for backward scrolling (bottom of previous section enters view)
+  const backwardObserverOptions = {
+    root: null,
+    threshold: 0,
+    rootMargin: '-90% 0px -10% 0px' // Triggers when bottom is near the bottom of viewport
+  };
+
+  function activateLink(activeSectionId) {
+    // Remove active class from all links
+    navLinks.forEach(link => link.classList.remove("active"));
+
+    // Add active class to the current link and scroll it to the start position
+    const activeLink = Array.from(navLinks).find(
+      link => link.getAttribute("href") === `#${activeSectionId}`
+    );
+
+    if (activeLink) {
+      activeLink.classList.add("active");
+
+      // Smoothly scroll the active link to the start of the menu
+      const linkOffsetLeft = activeLink.offsetLeft;
+      navMenuContainer.scrollTo({
+        left: linkOffsetLeft,
+        behavior: 'smooth'
+      });
+    }
+  }
+
+  // Observer callbacks for forward and backward scrolling
+  function forwardIntersect(entries) {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const activeSectionId = entry.target.getAttribute('id');
+        activateLink(activeSectionId);
+      }
+    });
+  }
+
+  function backwardIntersect(entries) {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const prevSection = entry.target.previousElementSibling;
+        if (prevSection && prevSection.tagName === 'H2') {
+          const activeSectionId = prevSection.getAttribute('id');
+          activateLink(activeSectionId);
+        }
+      }
+    });
+  }
+
+  // Initialize observers
+  const forwardObserver = new IntersectionObserver(forwardIntersect, forwardObserverOptions);
+  const backwardObserver = new IntersectionObserver(backwardIntersect, backwardObserverOptions);
+
+  // Observe each section with both observers
+  sections.forEach(section => {
+    forwardObserver.observe(section);
+    backwardObserver.observe(section);
+  });
+});
+
+
+
+  </script>
+  
+  <script>
+    // Select all accordion elements
+    const accordions = document.querySelectorAll(".accordion");
+  
+    accordions.forEach(accordion => {
+      accordion.addEventListener("click", function() {
+        // Toggle 'active' class on the clicked accordion
+        this.classList.toggle("active");
+  
+        // Toggle the display of the associated panel
+        const panel = this.nextElementSibling;
+        if (panel.style.display === "block") {
+          panel.style.display = "none";
+        } else {
+          panel.style.display = "block";
+        }
+      });
+    });
+  </script>
+  <script>
+    function showContent(contentId) {
+      // Remove active class from all tabs and contents
+      document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+  
+      // Add active class to clicked tab and corresponding content
+      document.querySelector(`[onclick="showContent('${contentId}')"]`).classList.add('active');
+      document.getElementById(contentId).classList.add('active');
+    }
+  </script>
+  <script>
+    // Change the main image on thumbnail click
+    function changeMainImage(imageSrc, title, description) {
+      document.getElementById("mainImage").src = imageSrc;
+      document.getElementById("mainImage").setAttribute("onclick", `openModal('${imageSrc}', '${title}', '${description}')`);
+    }
+  
+    // Open the modal with the clicked image, title, and description
+    function openModal(imageSrc, title, description) {
+      document.getElementById("modalImage").src = imageSrc;
+      document.getElementById("imageTitle").innerText = title;
+      document.getElementById("imageDescription").innerText = description;
+      document.getElementById("imageModal").style.display = "flex";
+    }
+  
+    // Close the modal
+    function closeModal() {
+      document.getElementById("imageModal").style.display = "none";
+    }
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+  // Set your desired offset here (in pixels)
+  const offset = 100;
+
+  // Function to handle offsetting scroll position
+  function offsetAnchor() {
+    if (window.location.hash) {
+      const target = document.querySelector(window.location.hash);
+      if (target) {
+        const targetPosition = target.getBoundingClientRect().top + window.pageYOffset;
+        window.scrollTo({
+          top: targetPosition - offset,
+          behavior: 'smooth'
+        });
+      }
+    }
+  }
+
+  // Apply offset when links are clicked
+  document.querySelectorAll('.nav-menu a, .mobile-menu a').forEach(anchor => {
+    anchor.addEventListener('click', function(event) {
+      event.preventDefault(); // Prevent the default jump to the section
+      history.pushState(null, null, this.getAttribute('href')); // Update the URL hash
+      offsetAnchor(); // Scroll with offset
+    });
+  });
+
+  // Apply offset when navigating directly to a section (e.g., page load with hash)
+  window.addEventListener('load', offsetAnchor);
+});
+
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+  const stickyFooter = document.querySelector('.sticky-footer');
+
+  window.addEventListener('scroll', function () {
+    if (window.scrollY > 100) {
+      stickyFooter.classList.add('visible'); // Show the footer
+    } else {
+      stickyFooter.classList.remove('visible'); // Hide the footer
+    }
+  });
+});
+
+  </script>
+  <script>
+    function toggleMenu() {
+    const menu = document.querySelector('.menu');
+    menu.classList.toggle('show');
+}
+  </script>
+  <script>
+
+    // Modify event listener to avoid unintended closing of the modal on touch
+document.querySelector('.prev').addEventListener('touchstart', (e) => {
+e.stopPropagation(); // Prevent touch from bubbling and triggering modal close
+changeImage(-1);
+});
+
+document.querySelector('.next').addEventListener('touchstart', (e) => {
+e.stopPropagation(); // Prevent touch from bubbling and triggering modal close
+changeImage(1);
+});
+
+// Prevent modal from closing when touching inside it
+document.querySelector('.modal-content-container').addEventListener('touchstart', (e) => {
+e.stopPropagation();
+});
+
+
+// Array of images for the gallery with titles and descriptions
+const images = [
+{src: 'wave.jpg', title: 'The Wave', description: 'We are very excited to welcome you to The Wave: home to the Faculty of Social Sciences, and the University of Sheffields most sustainable building to date.'},
+{src: 'lecture.jpg', title: 'Teaching spaces', description: 'Our facilities in The Wave include state-of-the-art lecture theatres, broadcast facilities and editing suites.'},
+{src: 'edit.jpg', title: 'Edit suites', description: 'We have industry-standard equipment including five newsrooms, TV and radio studios and editing galleries, as well as editing suites and four bookable radio booths.'},
+{src: 'radio.jpg', title: 'Research', description: 'Our research staff and PGT students will also benefit from the interdisciplinary space, which is shared with other departments from across the social sciences.'},
+{src: 'teaching.jpg', title: 'Teaching', description: 'Our research staff and PGT students will also benefit from the interdisciplinary space, which is shared with other departments from across the social sciences.'},
+{src: 'studio.jpg', title: 'Studio', description: 'Our research staff and PGT students will also benefit from the interdisciplinary space, which is shared with other departments from across the social sciences.'}
+
+];
+let currentIndex = 0;
+
+
+// Debounce function to prevent rapid calls
+function debounce(func, delay) {
+let timeout;
+return function (...args) {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => func.apply(this, args), delay);
+};
+}
+
+// Debounced changeImage function to avoid double navigation
+const changeImage = debounce((direction) => {
+currentIndex = (currentIndex + direction + images.length) % images.length;
+updateModal();
+}, 100); // 100ms debounce delay
+
+// Change the main image on thumbnail click
+function changeMainImage(index) {
+const image = images[index];
+document.getElementById("mainImage").src = image.src;
+document.getElementById("mainImage").setAttribute("onclick", `openModal(${index})`);
+}
+
+// Open the modal with the selected image
+function openModal(index) {
+currentIndex = index;
+updateModal();
+const modal = document.getElementById("imageModal");
+modal.style.display = "flex";
+modal.setAttribute("aria-hidden", "false");
+modal.focus();
+}
+
+// Close the modal and return focus to the main image
+function closeModal() {
+const modal = document.getElementById("imageModal");
+modal.style.display = "none";
+modal.setAttribute("aria-hidden", "true");
+document.getElementById("mainImage").focus();
+}
+
+// Update modal content based on the current image index
+function updateModal() {
+const image = images[currentIndex];
+document.getElementById("modalImage").src = image.src;
+document.getElementById("imageTitle").innerText = image.title;
+document.getElementById("imageDescription").innerText = image.description;
+
+// Update the image counter
+document.getElementById("imageCounter").innerText = `${currentIndex + 1} of ${images.length}`;
+}
+
+// Handle Enter key to open modal on thumbnails
+function handleKeyOpenModal(event, index) {
+if (event.key === 'Enter') {
+    openModal(index);
+}
+}
+
+// Handle Enter key to change main image from thumbnails
+function handleKeyChangeMainImage(event, index) {
+if (event.key === 'Enter') {
+    changeMainImage(index);
+}
+}
+
+// Swipe detection for mobile navigation
+let touchStartX = 0;
+let touchEndX = 0;
+
+function handleGesture() {
+if (touchEndX < touchStartX) {
+    changeImage(1); // Swipe left to move to next image
+}
+if (touchEndX > touchStartX) {
+    changeImage(-1); // Swipe right to move to previous image
+}
+}
+
+document.getElementById("imageModal").addEventListener("touchstart", (e) => {
+touchStartX = e.changedTouches[0].screenX;
+});
+
+document.getElementById("imageModal").addEventListener("touchend", (e) => {
+touchEndX = e.changedTouches[0].screenX;
+handleGesture();
+});
+
+// Prevent modal from closing when clicking inside the content container
+document.querySelector('.modal-content-container').addEventListener('click', (e) => {
+e.stopPropagation();
+});
+
+// Use pointerdown for reliable navigation button interaction without double events
+document.querySelector('.prev').addEventListener('pointerdown', (e) => {
+e.stopPropagation();
+changeImage(-1);
+});
+
+document.querySelector('.next').addEventListener('pointerdown', (e) => {
+e.stopPropagation();
+changeImage(1);
+});
+
+// Global function to initialize keyboard accessibility on page load
+function initializeGalleryAccessibility() {
+// Get all thumbnails and add 'keydown' event listeners for Enter key
+const thumbnails = document.querySelectorAll('.thumbnail');
+thumbnails.forEach((thumbnail, index) => {
+    thumbnail.setAttribute('tabindex', '0');
+    thumbnail.addEventListener('keydown', (event) => handleKeyChangeMainImage(event, index));
+    thumbnail.addEventListener('click', () => changeMainImage(index)); // Restore click functionality
+});
+
+// Set tabindex and keydown event for the main image to open modal
+const mainImage = document.getElementById("mainImage");
+mainImage.setAttribute('tabindex', '0');
+mainImage.addEventListener('keydown', (event) => handleKeyOpenModal(event, currentIndex));
+}
+
+// Global keyboard event listener for modal navigation
+document.addEventListener('keydown', (event) => {
+const modal = document.getElementById("imageModal");
+
+// Only respond to keys if the modal is open
+if (modal.style.display === "flex") {
+    if (event.key === 'Escape') {
+        closeModal();
+    } else if (event.key === 'ArrowRight') {
+        changeImage(1);
+    } else if (event.key === 'ArrowLeft') {
+        changeImage(-1);
+    }
+}
+});
+
+// Call initialize function when the page loads
+window.onload = initializeGalleryAccessibility;
+</script>
+<script>
+  function togglePanel(panelId) {
+const panel = document.getElementById(panelId);
+const navItem = document.querySelector(`[onclick="togglePanel('${panelId}')"]`); // Find nav-item
+const isPanelOpen = panel.classList.contains('show');
+
+// Close any open panels and reset nav-item classes
+document.querySelectorAll('.mega-menu-panel').forEach(p => p.classList.remove('show'));
+document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('menu-open'));
+
+// Toggle the clicked panel and rotate icon if opening
+if (!isPanelOpen) {
+  panel.classList.add('show');
+  navItem.classList.add('menu-open'); // Add rotation class
+}
+}
+
+let currentPanel = 'main-mobile-panel';
+const navHistory = [];
+
+function toggleMobileMenu() {
+  const overlay = document.getElementById('mobile-menu-overlay');
+
+  if (overlay.style.display === 'flex') {
+    overlay.style.display = 'none';
+    navHistory.length = 0;
+    currentPanel = 'main-mobile-panel';
+    document.querySelectorAll('.mobile-submenu-panel').forEach(panel => panel.classList.remove('show', 'back'));
+    document.getElementById('main-mobile-panel').classList.add('show');
+  } else {
+    overlay.style.display = 'flex';
+    document.getElementById('main-mobile-panel').classList.add('show');
+  }
+}
+
+function openSubmenu(panelId) {
+  if (currentPanel) {
+    navHistory.push(currentPanel);
+    document.getElementById(currentPanel).classList.remove('show', 'back');
+  }
+  
+  document.getElementById(panelId).classList.add('show');
+  currentPanel = panelId;
+}
+
+function closeSubmenu() {
+  if (navHistory.length > 0) {
+    document.getElementById(currentPanel).classList.remove('show');
+    document.getElementById(currentPanel).classList.add('back'); // Slide out to the left
+    
+    currentPanel = navHistory.pop();
+    document.getElementById(currentPanel).classList.add('show'); // Show previous panel
+  } else {
+    document.getElementById('main-mobile-panel').style.left = '0';
+    currentPanel = 'main-mobile-panel';
+  }
+};
+</script>
+<script>
+    window.addEventListener('scroll', function() {
+    const navbar = document.querySelector('.sticky-footer');
+    const footer = document.querySelector('.footer-links');
+    const footerRect = footer.getBoundingClientRect();
+
+    // Hide sticky footer when it reaches the footer
+    if (footerRect.top <= window.innerHeight) {
+        navbar.classList.add('hidden');
+    } else {
+        navbar.classList.remove('hidden');
+    }
+});
+
+  </script>
+    <script>
+      document.getElementById("showMoreLink").addEventListener("click", function(event) {
+     event.preventDefault(); // Prevents the link from navigating
+     const footerLinks = document.querySelector(".footer-links");
+     footerLinks.classList.toggle("show-all");
+     this.textContent = footerLinks.classList.contains("show-all") ? "Close footer links" : "Show all footer links";
+   });
+     </script>
+   <script>
+    const sliderContainer = document.getElementById('sliderContainer');
+    const testimonials = document.querySelectorAll('.testimonial');
+    let testimonialWidth = testimonials[0].offsetWidth + parseInt(window.getComputedStyle(testimonials[0]).marginRight); // Exact width including gap
+    let testimonialIndex = 0;
+
+    function updateTestimonialWidth() {
+        testimonialWidth = testimonials[0].offsetWidth + parseInt(window.getComputedStyle(testimonials[0]).marginRight);
+    }
+
+    function moveSlide(direction) {
+        // Update maxIndex based on the screen size (1 testimonial or 2 testimonials per view)
+        const maxIndex = window.innerWidth <= 768 ? testimonials.length - 1 : testimonials.length - 2;
+        testimonialIndex = Math.max(0, Math.min(testimonialIndex + direction, maxIndex));
+
+        // Scroll the container to the appropriate position
+        sliderContainer.scrollTo({
+            left: testimonialIndex * testimonialWidth,
+            behavior: 'smooth'
+        });
+    }
+
+    // Update width and scroll settings on window resize
+    window.addEventListener('resize', () => {
+        updateTestimonialWidth();
+    });
+
+    // Sync `testimonialIndex` with manual scrolling for smooth behavior with arrows
+    sliderContainer.addEventListener('scroll', () => {
+        testimonialIndex = Math.round(sliderContainer.scrollLeft / testimonialWidth);
+    });
+
+    // Initialize testimonial width for responsive layout
+    updateTestimonialWidth();
+</script>
+<script>
+  // Load the YouTube API
+  let player;
+  function onYouTubeIframeAPIReady() {
+      player = new YT.Player('videoPlayer', {
+          events: {
+              'onReady': onPlayerReady
+          }
+      });
+  }
+
+  function onPlayerReady(event) {
+      console.log("Player is ready");
+  }
+
+  function navigateToTime(seconds) {
+      if (player && typeof player.seekTo === 'function') {
+          player.seekTo(seconds, true);  // Seek to the specified time and autoplay
+      }
+  }
+
+  // Toggle the visibility of the chapters on mobile
+  function toggleChapters() {
+      const chapterLinks = document.getElementById('chapterLinks');
+      chapterLinks.classList.toggle('open');
+  }
+
+  // Add YouTube IFrame API script
+  var tag = document.createElement('script');
+  tag.src = "https://www.youtube.com/iframe_api";
+  var firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+</script>
+<script>
+  function setSliderView() {
+      const container = document.getElementById('sliderContainer');
+      const navContainer = document.querySelector('.slider-nav-container');
+  
+      container.classList.remove('testimonial-grid');
+      navContainer.classList.remove('hidden'); // Show nav container in slider view
+  }
+  
+  function setGridView() {
+      const container = document.getElementById('sliderContainer');
+      const navContainer = document.querySelector('.slider-nav-container');
+  
+      container.classList.add('testimonial-grid');
+      navContainer.classList.add('hidden'); // Hide nav container in grid view
+  }
+  
+  
+      </script>
+</body>
+</html>

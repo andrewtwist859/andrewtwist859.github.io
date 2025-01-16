@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Staff Directory</title>
+<style>
+  body, h1, input, button {
+    font-family: Arial, sans-serif;
+  }
+  .container {
+    width: 80%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  .search-box {
+    grid-column: 1 / -1;
+    padding: 20px;
+    text-align: center;
+  }
+  input[type="text"] {
+    padding: 10px;
+    width: 300px;
+    margin-right: 10px;
+  }
+  button {
+    padding: 10px 20px;
+  }
+  .profile-card {
+    background-color: #f0f0f0;
+    border: 1px solid #d3d3d3;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 100px auto;
+    gap: 10px;
+    align-items: center;
+  }
+  .avatar {
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+  }
+  .info {
+    display: grid;
+    gap: 2px;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="search-box">
+    <input type="text" id="searchInput" placeholder="Search by name, job title, team..." oninput="searchProfiles()">
+    <button onclick="searchProfiles()">Search</button>
+  </div>
+  <div id="profiles">
+    <!-- Profiles will be added here -->
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+<script>
+    const sheetUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQq-VWxY0LJS733k2cy-gFAFJOI3rnbtVzi1wSPUleNj5ulB9E-cAH0-mSo4-PQrvFsczyC2P-wfyw5/pub?output=csv";
+  
+    document.addEventListener('DOMContentLoaded', function() {
+      loadAndDisplayProfiles(); // Load and display profiles on page load
+    });
+  
+    function searchProfiles() {
+      const searchTerm = document.getElementById("searchInput").value.toLowerCase();
+      filterProfiles(searchTerm);
+    }
+  
+    function loadAndDisplayProfiles() {
+      Papa.parse(sheetUrl, {
+        download: true,
+        header: true,
+        complete: function(results) {
+          displayProfiles(results.data); // Display all profiles by default
+        }
+      });
+    }
+  
+    function filterProfiles(searchTerm) {
+      Papa.parse(sheetUrl, {
+        download: true,
+        header: true,
+        complete: function(results) {
+          const data = results.data;
+          const filteredData = data.filter(profile =>
+            profile['First name'].toLowerCase().includes(searchTerm) ||
+            profile['Surname'].toLowerCase().includes(searchTerm) ||
+            profile['Job title'].toLowerCase().includes(searchTerm) ||
+            profile['Team'].toLowerCase().includes(searchTerm)
+          );
+          displayProfiles(filteredData);
+        }
+      });
+    }
+  
+    function displayProfiles(profiles) {
+      const profilesContainer = document.getElementById("profiles");
+      profilesContainer.innerHTML = ''; // Clear previous results
+      profiles.forEach(profile => {
+        const profileElement = document.createElement('div');
+        profileElement.className = 'profile-card';
+        profileElement.innerHTML = `
+          <img class="avatar" src="${profile.Avatar}" alt="${profile['First name']} ${profile['Surname']}">
+          <div class="info">
+            <div><strong>${profile['First name']} ${profile['Surname']}</strong> (${profile.Pronouns})</div>
+            <div>${profile['Job title']}</div>
+            <div>${profile.Team}</div>
+            <div>${profile.Email}</div>
+            <div>Ask me about: ${profile['Ask me about']}</div>
+            <div>Group membership: ${profile['Group membership']}</div>
+          `;
+        profilesContainer.appendChild(profileElement);
+      });
+    }
+  </script>  
+</body>
+</html>
