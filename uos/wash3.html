@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Top 20 University Guide</title>
+<style>
+/* Reset and center */
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+}
+
+/* Container for the badge */
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Badge styling */
+.top-20-uni-badge {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    text-align: center;
+    background: white;
+}
+
+/* Square bracket styling */
+.bracket {
+    position: absolute;
+    width: 25px;
+    height: 80%;
+    background: transparent;
+    border: 10px solid #D9A8D9; /* Light purple color */
+    box-sizing: border-box;
+}
+
+.bracket-left {
+    left: 0;
+    border-right: none;
+}
+
+.bracket-right {
+    right: 0;
+    border-left: none;
+}
+
+/* Badge content styling */
+.content {
+    padding: 0 20px;
+}
+
+.top {
+    font-size: 5rem;
+    font-weight: bold;
+    color: #2A0131; /* Dark purple */
+}
+
+.uni {
+    font-size: 5rem;
+    font-weight: bold;
+    color: #2A0131;
+    font-style: italic;
+}
+
+.guide {
+    font-size: 12px;
+    margin-top: 5px;
+    color: #2A0131;
+}
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="top-20-uni-badge">
+        <div class="bracket bracket-left"></div>
+        <div class="content">
+            <span class="top">TOP 20</span>
+            <br />
+            <span class="uni">UNI</span>
+            <div class="guide">The Guardian University Guide 2025</div>
+        </div>
+        <div class="bracket bracket-right"></div>
+    </div>
+</div>
+</body>
+</html>

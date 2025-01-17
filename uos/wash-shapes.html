@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unique Shape Badge</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+
+        .shape-container {
+            width: 300px; /* Adjust width as needed */
+            height: 300px; /* Adjust height as needed */
+            background-color: #005A4D; /* Green background */
+            clip-path: polygon(
+                0% 0%, /* top left */
+                85% 0%, /* top right close to chevron start */
+                100% 50%, /* peak of the right chevron */
+                85% 100%, /* bottom right close to chevron end */
+                0% 100% /* bottom left */
+            );
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            color: white; /* Text color */
+            font-family: Arial, sans-serif; /* Font family */
+            padding: 20px; /* Padding for text */
+            box-sizing: border-box; /* Includes padding in height & width */
+            text-align: center; /* Text alignment */
+        }
+
+        .text-container {
+            max-width: 240px;
+        }
+
+        .main-text {
+            font-size: 20px; /* Main text size */
+            font-weight: bold; /* Bold main text */
+            margin-bottom: 5px; /* Space between main text and sub-text */
+        }
+
+        .sub-text {
+            font-size: 14px; /* Sub text size */
+            text-wrap: balance;
+        }
+    </style>
+</head>
+<body>
+    <div class="shape-container">
+        <div class="text-container">
+        <div class="main-text">92% OF RESEARCH RATED WORLD-LEADING OR INTERNATIONALLY EXCELLENT</div>
+        <div class="sub-text">Research Excellence Framework 2021</div></div>
+    </div>
+</body>
+</html>

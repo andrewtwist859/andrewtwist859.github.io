@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://use.typekit.net/hvq7yfy.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University Badges Proportional</title>
+    <style>
+        body, html {
+            margin: 3rem;
+            padding: 0;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            font-family: 'source-sans-pro';
+            
+        }
+
+        .container {
+            display: flex;
+            width: 100%; /* Adjust overall container width as needed */
+            max-width: 1200px; /* Ensures the container doesn't get too wide on larger screens */
+            align-items: stretch; /* Aligns children's heights */
+            height: 300px; /* Set a fixed height for all items */
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .ref-container {
+            flex: 1; /* Takes 1 part of the container */
+            background-color: #005A4D;
+            clip-path: polygon(
+                0% 0%, /* top left */
+                85% 0%, /* top right close to chevron start */
+                100% 50%, /* peak of the right chevron */
+                85% 100%, /* bottom right close to chevron end */
+                0% 100% /* bottom left */
+            );
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 20px;
+            box-sizing: border-box;
+            color: white;
+            font-family: 'source-sans-pro', sans-serif;
+            text-align: left;
+        }
+
+        .uoty-container {
+            flex: 2; /* Takes 1 part of the container */
+            background-color: #1E064C;
+            clip-path: polygon(
+                0% 0%, /* top left */
+                95% 0%, /* top right close to chevron start */
+                100% 50%, /* peak of the right chevron */
+                95% 100%, /* bottom right close to chevron end */
+                0% 100% /* bottom left */
+            );
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 20px;
+            box-sizing: border-box;
+            color: white;
+            font-family: 'source-sans-pro', sans-serif;
+            text-align: left;
+        }
+
+        .nss-container {
+            flex: 2; /* Takes 2 parts of the container */
+            background-color: #BB3E97;
+            border-radius: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+            color: white;
+            font-family: 'source-sans-pro', sans-serif;
+            text-align: center;
+        }
+
+        .rounded-rectangle-small {
+            flex: 1; /* Takes 2 parts of the container */
+            background-color: #BB3E97;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+            color: white;
+            font-family: 'source-sans-pro', sans-serif;
+            text-align: center;
+            clip-path: polygon(10% 0, 100% 0, 100% 90%, 90% 100%, 0 100%, 0 10%);
+
+        }
+
+        .rounded-rectangle-arrow {
+            flex: 1; /* Takes 2 parts of the container */
+            background-color: #7FCDC3;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+            color: #1E064C;
+            font-family: 'source-sans-pro', sans-serif;
+            text-align: center;
+            position: relative;
+    box-sizing: border-box;
+
+        }
+
+        .rounded-rectangle-arrow::after {
+            content: "";
+    position: absolute;
+    bottom: -20px; /* Positions the triangle below the box */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid #7FCDC3; /* Matches the box color */
+        }
+
+        .rounded-rectangle-arrow-orange {
+            flex: 1; /* Takes 2 parts of the container */
+            background-color: #F89B49;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+            color: #1E064C;
+            font-family: 'source-sans-pro', sans-serif;
+            text-align: center;
+            position: relative;
+    box-sizing: border-box;
+
+        }
+
+        .rounded-rectangle-arrow-orange::after {
+            content: "";
+    position: absolute;
+    bottom: -20px; /* Positions the triangle below the box */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid #F89B49; /* Matches the box color */
+        }
+
+            .refsub-text, .main-text-rounded, .nss-sub-text, .uoty-sub-text, .guide {
+            font-size: 18px;
+            text-wrap: balance;
+        }
+
+        .ref-text {
+        font-size: 2rem;
+            font-weight: 900;
+            margin-bottom: 5px;
+            text-wrap: balance;
+            max-width: 20ch;
+            line-height: 100%;
+        }
+
+        .uoty-main-text{
+        font-size: 5rem;
+            font-weight: 900;
+            margin-bottom: 5px;
+            text-wrap: balance;
+            line-height: 100%;
+            text-transform: uppercase;
+        }
+
+        .nss-main-text {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 5px;
+            text-wrap: balance;
+            max-width: 30ch;
+            line-height: 100%;
+        }
+
+        .ref-text-container, .uoty-container {
+            max-width: 80%;
+            text-align: center;
+        }
+
+        /* Badge styling */
+.top-20-uni-badge {
+    flex:1;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+    text-align: center;
+}
+
+/* Square bracket styling */
+.bracket {
+    position: absolute;
+    width: 50px;
+    height: 100%;
+    background: transparent;
+    border: 25px solid #D9A8D9; /* Light purple color */
+    box-sizing: border-box;
+}
+
+.bracket-left {
+    left: 0;
+    border-right: none;
+}
+
+.bracket-right {
+    right: 0;
+    border-left: none;
+}
+
+/* Badge content styling */
+.content {
+    padding: 0 20px;
+}
+
+.top {
+    font-size: 5rem;
+    font-weight: 900;
+    color: #2A0131; /* Dark purple */
+}
+
+.uni {
+    font-size: 5rem;
+    font-weight: 900;
+    color: #2A0131;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="ref-container">
+            <div class="ref-text-container">
+            <div class="ref-text">92% OF RESEARCH RATED WORLD-LEADING OR INTERNATIONALLY EXCELLENT</div>
+            <div class="ref-subtext">Research Excellence Framework 2021</div>
+        </div>
+        </div>
+
+        <div class="nss-container">
+            <div class="nss-main-text">NUMBER 1 UNIVERSITY IN THE RUSSELL GROUP</div>
+            <div class="nss-sub-text">National Student Survey 2024</div>
+        </div>
+    </div>
+
+    
+    <div class="container">
+        <div class="top-20-uni-badge">
+            <div class="bracket bracket-left"></div>
+            <div class="content">
+                <span class="top">TOP 20</span>
+                <span class="uni">UNI</span>
+                <div class="guide">The Guardian University Guide 2025 </div>
+            </div>
+            <div class="bracket bracket-right"></div>
+        </div>
+        <div class="ref-container">
+            <div class="ref-text-container">
+            <div class="ref-text">92% OF RESEARCH RATED WORLD-LEADING OR INTERNATIONALLY EXCELLENT</div>
+            <div class="ref-subtext">Research Excellence Framework 2021</div>
+        </div>
+        </div>
+        <div class="rounded-rectangle-small">
+            <div class="nss-main-text">AFFORDABLE CITY</div>
+            <div class="sub-text-rounded">National Student Survey 2024</div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="uoty-container">
+            <div class="uoty-text-container">
+            <div class="uoty-main-text">University of the Year</div>
+            <div class="uoty-sub-text">Whatuni Student Choice Awards 2024</div>
+        </div>
+        </div>
+        <div class="rounded-rectangle-arrow">
+            <div class="nss-main-text">AFFORDABLE CITY</div>
+            <div class="sub-text-rounded">National Student Survey 2024</div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="rounded-rectangle-arrow">
+            <div class="nss-main-text">AFFORDABLE CITY</div>
+            <div class="sub-text-rounded">National Student Survey 2024</div>
+        </div>
+        <div class="rounded-rectangle-arrow">
+            <div class="nss-main-text">AFFORDABLE CITY</div>
+            <div class="sub-text-rounded">National Student Survey 2024</div>
+        </div>
+        <div class="rounded-rectangle-arrow-orange">
+            <div class="nss-main-text">TOP 5 FOR JOB PROSPECTS</div>
+            <div class="sub-text-rounded">National Student Survey 2024</div>
+        </div>
+    </div>
+
+</body>
+</html>

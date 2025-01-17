@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'Hot Mess';
+    src: url('HotMess.woff2') format('woff2'),
+        url('HotMess.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
