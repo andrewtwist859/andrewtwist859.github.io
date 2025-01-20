@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="https://use.typekit.net/jou7rrz.css">
+    <link rel="preload" href="https://andrewtwist859.github.io/uos/fonts/HotMess.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="https://use.typekit.net/hvq7yfy.css">
     <link rel="stylesheet" href="global-menu.css"> 
     <link rel="stylesheet" href="section-menu.css"> 
     <link rel="stylesheet" href="footer.css">
@@ -49,7 +51,7 @@ body {
 .contents-container h2{
     font-family: 'source-serif-pro';
     font-weight: 700;
-    font-size: 1.6rem;
+    font-size: 2rem;
     margin-bottom: 1rem;
 }
 
@@ -339,7 +341,183 @@ hr.grey {
   }
 }
 
+.ranking-container {
+            display: flex;
+            width: 100%; /* Adjust overall container width as needed */
+            max-width: 1200px; /* Ensures the container doesn't get too wide on larger screens */
+            align-items: stretch; /* Aligns children's heights */
+            height: 300px; /* Set a fixed height for all items */
+            gap: 20px;
+            margin-bottom: 3rem;
+            margin-top: 2rem;
+        }
 
+        .rounded-rectangle-arrow {
+            flex: 1; /* Takes 2 parts of the container */
+            background-color: #7FCDC3;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+            color: #1E064C;
+            font-family: 'source-sans-pro', sans-serif;
+            text-align: center;
+            position: relative;
+    box-sizing: border-box;
+
+        }
+
+        .rounded-rectangle-arrow::after {
+            content: "";
+    position: absolute;
+    bottom: -20px; /* Positions the triangle below the box */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid #7FCDC3; /* Matches the box color */
+        }
+
+        .rounded-rectangle-arrow-orange {
+            flex: 1; /* Takes 2 parts of the container */
+            background-color: #F89B49;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+            color: #1E064C;
+            font-family: 'source-sans-pro', sans-serif;
+            text-align: center;
+            position: relative;
+    box-sizing: border-box;
+
+        }
+
+        .rounded-rectangle-arrow-orange::after {
+            content: "";
+    position: absolute;
+    bottom: -20px; /* Positions the triangle below the box */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid #F89B49; /* Matches the box color */
+        }
+
+        .rounded-rectangle-arrow-pv {
+            flex: 1; /* Takes 2 parts of the container */
+            background-color: #A59FDA;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+            color: #1E064C;
+            font-family: 'source-sans-pro', sans-serif;
+            text-align: center;
+            position: relative;
+    box-sizing: border-box;
+
+        }
+
+        .rounded-rectangle-arrow-pv::after {
+            content: "";
+    position: absolute;
+    bottom: -20px; /* Positions the triangle below the box */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid #A59FDA; /* Matches the box color */
+        }
+
+             .arrow-sub-text, .guide {
+            font-size: 18px;
+            text-wrap: balance;
+            max-width: 28ch;
+            margin-top: 0.5rem;
+            line-height: 1.2;
+        }
+
+        .uoty-sub-text {
+            font-size: 18px;
+            text-wrap: balance;
+            margin-top: 0.5rem;
+            line-height: 1.2;
+        }
+
+        .top {
+    font-size: 6rem;
+    color: #1E064C; /* Dark purple */
+    font-family: 'Hot Mess';
+    margin-bottom: 0;
+}
+
+.nss-main-text {
+            font-size: 2.8rem;
+            font-weight: 900;
+            margin-bottom: 5px;
+            text-wrap: balance;
+            max-width: 10ch;
+            line-height: 100%;
+            margin-top: -1rem;
+            font-family: 'source-serif-pro';
+        }
+
+        .uoty-container {
+            flex: 2; /* Takes 1 part of the container */
+            background-color: #1E064C;
+            clip-path: polygon(
+                0% 0%, /* top left */
+                95% 0%, /* top right close to chevron start */
+                100% 50%, /* peak of the right chevron */
+                95% 100%, /* bottom right close to chevron end */
+                0% 100% /* bottom left */
+            );
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 20px;
+            box-sizing: border-box;
+            color: white;
+            font-family: 'source-sans-pro', sans-serif;
+            text-align: left;
+        }
+
+        .uoty-main-text{
+        font-size: 5rem;
+            font-weight: 900;
+            margin-bottom: 5px;
+            text-wrap: balance;
+            line-height:90%;
+            text-transform: uppercase;
+        }
+
+         .uoty-text-container {
+            max-width: 90%;
+            text-align: center;
+        }
+
+        .hot-year {
+          font-family: 'Hot Mess';
+          font-weight: normal;
+          font-size: 6rem;
+        }
+
+        .testimonial-name {
+          font-family: 'Hot Mess';
+          font-size: 2rem;
+          font-weight: normal;
+        }
     </style>
 </head>
 <body>
@@ -799,7 +977,7 @@ hr.grey {
                 <h1 class="forged">
                   <span class="forged-in">Made from every experience</span>
                 </h1>
-                <p>Laboris ad ad deserunt veniam tempor Lorem voluptate consectetur aliquip consequat dolor ullamco sint enim ipsum.</p>
+                <p>Our students love every side of Sheffield.</p>
               </div>
             </div>
           </div>
@@ -818,33 +996,64 @@ hr.grey {
             </div>
           </div>
           <div class="contents-container">
-      <h2>Lorem ipsum</h2>
+            <div class="ranking-container">
+              <div class="uoty-container">
+            <div class="uoty-text-container">
+            <div class="uoty-main-text">University of the <span class="hot-year">Year</span></div>
+            <div class="uoty-sub-text">Whatuni Student Choice Awards 2024</div>
+        </div>
+        </div>
+        <div class="rounded-rectangle-arrow-orange">
+          <div class="top">No.1</div>
+          <div class="nss-main-text">Students' Union</div>
+          <div class="arrow-sub-text">Whatuni Student Choice Awards 2017-2024</div>
+      </div>
+          </div>
+      <h2>Start your experience</h2>
       <p>Mollit eiusmod esse nostrud ipsum dolore consequat velit.</p>
       <div class="info-section">
         <div class="info-container">
           <div class="info-box">
-            <img src="infoph.png" alt="A quick guide to Sheffield" />
-            <h3>Lorem ipsum</h3>
-            <p>Cillum qui incididunt dolore aute labore fugiat officia officia enim. Anim quis Lorem cupidatat excepteur enim exercitation sunt sit ad dolore qui.</p>
-            <a href="#">Call to action link</a>
+            <img src="od.jpg" alt="A quick guide to Sheffield" />
+            <h3>Book an open day visit</h3>
+            <p>Visit our campus in the summer or autumn of 2025 to discover what living and studying in Sheffield is all about. </p>
+            <a href="#">Book your place</a>
           </div>
           <div class="info-box">
-            <img src="infoph.png" alt="Our neighbourhoods" />
-            <h3>Lorem ipsum</h3>
-            <p>Cillum qui incididunt dolore aute labore fugiat officia officia enim. Anim quis Lorem cupidatat excepteur enim exercitation sunt sit ad dolore qui.</p>
+            <img src="cube1.png" alt="Our neighbourhoods" />
+            <h3>Read our applying essentials</h3>
+            <p>From asking your first question to submitting   your application. We’ve got you covered  with every aspect of applying to Sheffield.</p>
             <a href="#">Call to action link</a>
           </div>
         </div>
       </div>
-      <hr class="grey">
-      <h2>Lorem ipsum</h2>
+      <h2>Our rankings</h2>
+      <p>Mollit eiusmod esse nostrud ipsum dolore consequat velit.</p>
+      <div class="ranking-container">
+        <div class="rounded-rectangle-arrow-pv">
+            <div class="top">TOP 20</div>
+            <div class="nss-main-text">university in the UK</div>
+            <div class="arrow-sub-text">The Guardian University Guide 2025</div>
+        </div>
+        <div class="rounded-rectangle-arrow">
+            <div class="top">TOP 10</div>
+            <div class="nss-main-text">city for students</div>
+            <div class="arrow-sub-text">StudentCrowd Best Student Cities 2024</div>
+        </div>
+        <div class="rounded-rectangle-arrow-orange">
+            <div class="top">TOP 5</div>
+            <div class="nss-main-text">for job prospects</div>
+            <div class="arrow-sub-text">StudentCrowd University Job Prospects League Table 2024</div>
+        </div>
+    </div>
+      <h2>Our students love every side of Sheffield</h2>
       <p>Cillum qui incididunt dolore aute labore fugiat officia officia enim.</p>
       <div class="vertical-shelf-container">
         <div class="vertical-shelf">
             <div class="vertical-video">
               <a href="https://www.tiktok.com/@sheffielduni/video/7372200575594745121" target="_blank">
               <div class="vertical-thumbnail">
-                <img src="verticalph.png" alt="Video 1 Thumbnail">
+                <img src="eccyroad.avif" alt="Video 1 Thumbnail">
                 <div class="vertical-overlay">
                   <span class="vertical-duration">1:19</span>
                   <h3 class="vertical-title">Cillum qui incididunt dolore aute labore fugiat officia</h3>
@@ -906,19 +1115,19 @@ hr.grey {
         <div class="info-container">
           <div class="info-box">
             <img src="infoph.png" alt="A quick guide to Sheffield" />
-            <h3>Lorem ipsum</h3>
+            <h3>Support on your journey</h3>
             <p>Cillum qui incididunt dolore aute labore fugiat officia officia enim. Anim quis Lorem cupidatat excepteur enim exercitation sunt sit ad dolore qui.</p>
             <a href="#">Call to action link</a>
           </div>
           <div class="info-box">
             <img src="infoph.png" alt="Our neighbourhoods" />
-            <h3>Lorem ipsum</h3>
+            <h3>Fees and student living costs</h3>
             <p>Cillum qui incididunt dolore aute labore fugiat officia officia enim. Anim quis Lorem cupidatat excepteur enim exercitation sunt sit ad dolore qui.</p>
             <a href="#">Call to action link</a>
           </div>
           <div class="info-box">
             <img src="infoph.png" alt="Our neighbourhoods" />
-            <h3>Lorem ipsum</h3>
+            <h3>Accommodation</h3>
             <p>Cillum qui incididunt dolore aute labore fugiat officia officia enim. Anim quis Lorem cupidatat excepteur enim exercitation sunt sit ad dolore qui.</p>
             <a href="#">Call to action link</a>
           </div>
@@ -948,18 +1157,18 @@ hr.grey {
               <!-- Testimonial 1 -->
               <div class="testimonial">
                   <img src="testph.png" alt="Martha Kelner" class="testimonial-img">
-                  <div class="testimonial-content">"Adipisicing elit ut occaecat elit voluptate deserunt esse aliquip mollit ullamco consectetur. Irure sint tempor ad sunt nisi sunt ad laboris consequat. Enim veniam id esse. Aliqua ut fugiat pariatur quis incididunt sint quis."</div>
-                  <div class="testimonial-name"><a href="/">Lorem Doe</a></div>
-                  <div class="testimonial-title">Lorem ipsum</div>
-                  <div class="testimonial-class">BA Lorem Ipsum</div>
+                  <div class="testimonial-content">"Residence Life social activities made my accommodation experience enjoyable and stress-free. Cooking (baking with Rahul from Bake Off!), knitting and body-butter-making sessions were my favourite, plus they always had freebies to take home. They also offered trips to concerts, parks and even other cities, all at affordable prices."</div>
+                  <div class="testimonial-name">SANJANA MEHROTRA</div>
+                  <div class="testimonial-title">Medicine</div>
+              
               </div>
               <!-- Testimonial 2 -->
               <div class="testimonial">
                   <img src="testph.png" alt="Sam Moir" class="testimonial-img">
-                  <div class="testimonial-content">"Adipisicing elit ut occaecat elit voluptate deserunt esse aliquip mollit ullamco consectetur. Irure sint tempor ad sunt nisi sunt ad laboris consequat. Enim veniam id esse. Aliqua ut fugiat pariatur quis incididunt sint quis."</div>
-                  <div class="testimonial-name"><a href="/">Lorem Doe</a></div>
-                  <div class="testimonial-title">Lorem ipsum</div>
-                  <div class="testimonial-class">BA Lorem Ipsum</div>
+                  <div class="testimonial-content">"The experience gave me an insight into two different cultures and the opportunity to work in a total of four different languages. The year abroad was a testing yet incredibly rewarding experience. I learnt so much, not only about other ways of life, but also about myself. Plus, I made so many new friends along the way!"</div>
+                  <div class="testimonial-name">Joel Lufton</div>
+                  <div class="testimonial-title">Politics and Modern Languages  and Cultures </div>
+ 
               </div>
               <!-- Testimonial 3 -->
               <div class="testimonial">

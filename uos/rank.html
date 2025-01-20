@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Rankings</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preload" href="https://andrewtwist859.github.io/uos/fonts/HotMess.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="https://use.typekit.net/hvq7yfy.css">
+    <style>
+         .ranking-container {
+            display: flex;
+            width: 100%; /* Adjust overall container width as needed */
+            max-width: 1200px; /* Ensures the container doesn't get too wide on larger screens */
+            align-items: stretch; /* Aligns children's heights */
+            height: 300px; /* Set a fixed height for all items */
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .rounded-rectangle-arrow {
+            flex: 1; /* Takes 2 parts of the container */
+            background-color: #7FCDC3;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+            color: #1E064C;
+            font-family: 'source-sans-pro', sans-serif;
+            text-align: center;
+            position: relative;
+    box-sizing: border-box;
+
+        }
+
+        .rounded-rectangle-arrow::after {
+            content: "";
+    position: absolute;
+    bottom: -20px; /* Positions the triangle below the box */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid #7FCDC3; /* Matches the box color */
+        }
+
+        .rounded-rectangle-arrow-orange {
+            flex: 1; /* Takes 2 parts of the container */
+            background-color: #F89B49;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+            color: #1E064C;
+            font-family: 'source-sans-pro', sans-serif;
+            text-align: center;
+            position: relative;
+    box-sizing: border-box;
+
+        }
+
+        .rounded-rectangle-arrow-orange::after {
+            content: "";
+    position: absolute;
+    bottom: -20px; /* Positions the triangle below the box */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid #F89B49; /* Matches the box color */
+        }
+
+        .rounded-rectangle-arrow-pv {
+            flex: 1; /* Takes 2 parts of the container */
+            background-color: #A59FDA;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+            color: #1E064C;
+            font-family: 'source-sans-pro', sans-serif;
+            text-align: center;
+            position: relative;
+    box-sizing: border-box;
+
+        }
+
+        .rounded-rectangle-arrow-pv::after {
+            content: "";
+    position: absolute;
+    bottom: -20px; /* Positions the triangle below the box */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid #A59FDA; /* Matches the box color */
+        }
+
+            .refsub-text, .main-text-rounded, .nss-sub-text, .uoty-sub-text, .guide {
+            font-size: 18px;
+            text-wrap: balance;
+            max-width: 28ch;
+            margin-top: 0.5rem;
+        }
+
+        .top {
+    font-size: 6rem;
+    font-weight: 900;
+    color: #1E064C; /* Dark purple */
+    font-family: 'Hot Mess';
+    margin-bottom: 0;
+}
+
+.nss-main-text {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 5px;
+            text-wrap: balance;
+            max-width: 10ch;
+            line-height: 100%;
+            margin-top: -0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="ranking-container">
+        <div class="rounded-rectangle-arrow-pv">
+            <div class="top">TOP 20</div>
+            <div class="nss-main-text">UNIVERSITY IN THE UK</div>
+            <div class="uoty-sub-text">The Guardian University Guide 2025</div>
+        </div>
+        <div class="rounded-rectangle-arrow">
+            <div class="top">TOP 10</div>
+            <div class="nss-main-text">CITY FOR STUDENTS</div>
+            <div class="uoty-sub-text">StudentCrowd Best Student Cities 2024</div>
+        </div>
+        <div class="rounded-rectangle-arrow-orange">
+            <div class="top">TOP 5</div>
+            <div class="nss-main-text">FOR JOB PROSPECTS</div>
+            <div class="uoty-sub-text">StudentCrowd University Job Prospects League Table 2024</div>
+        </div>
+    </div>
+</body>
+</html>
