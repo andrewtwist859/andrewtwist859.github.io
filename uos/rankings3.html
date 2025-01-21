@@ -1,0 +1,167 @@
+<div class="ranking-container">
+<div class="rounded-rectangle-arrow-purple">
+          <div class="affordable">Affordable</div>
+          <div class="nss-main-text"></div>
+          <div class="arrow-sub-text">6th in the RBS  Student Living Index 2024</div>
+      </div>
+              <div class="ref-container">
+            <div class="uoty-text-container">
+            <div class="ref-main-text">92% of research rated world-leading or internationally excellent</div>
+            <div class="uoty-sub-text"> Research Excellence  Framework 2021</div>
+        </div>
+        </div>
+        
+          </div>
+          <style>
+
+            .ref-container {
+            flex: 2; /* Takes 1 part of the container */
+            background-color: #015A4D;
+            clip-path: polygon(
+                0% 0%, /* top left */
+                95% 0%, /* top right close to chevron start */
+                100% 50%, /* peak of the right chevron */
+                95% 100%, /* bottom right close to chevron end */
+                0% 100% /* bottom left */
+            );
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 20px;
+            box-sizing: border-box;
+            color: white;
+            font-family: 'source-sans-pro', sans-serif;
+            text-align: left;
+        }
+            .ranking-container {
+            display: flex;
+            width: 100%; /* Adjust overall container width as needed */
+            max-width: 1200px; /* Ensures the container doesn't get too wide on larger screens */
+            align-items: stretch; /* Aligns children's heights */
+            gap: 20px;
+         
+        }
+
+        .ref-main-text{
+        font-size: 2.5rem;
+        font-family: 'source-serif-pro';
+            font-weight: 900;
+            margin-bottom: 5px;
+            text-wrap: balance;
+            line-height:1;
+        
+        }
+
+         .uoty-text-container {
+            max-width: 90%;
+            text-align: center;
+        }
+
+        .uoty-sub-text {
+            font-size: 18px;
+            text-wrap: balance;
+            margin-top: 0.5rem;
+            line-height: 1.2;
+        }
+
+        .hot-year {
+          font-family: 'Hot Mess';
+          font-weight: normal;
+          font-size: 5rem;
+        }
+
+        .rounded-rectangle-arrow-purple {
+            flex: 1; /* Takes 2 parts of the container */
+            background-color: #BB3E97;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+            color: #fff;
+            font-family: 'source-sans-pro', sans-serif;
+            text-align: center;
+            position: relative;
+    box-sizing: border-box;
+
+        }
+
+        .rounded-rectangle-arrow-orange::after {
+            content: "";
+    position: absolute;
+    bottom: -20px; /* Positions the triangle below the box */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid #F89B49; /* Matches the box color */
+        }
+
+        .affordable {
+          font-size: 3rem;
+          color: #fff; /* Dark purple */
+          margin-bottom: 0;
+          text-transform: uppercase;
+          line-height: 1;
+          font-family: 'Hot Mess';
+      }
+
+      .nss-main-text {
+        font-size: 2.8rem;
+        font-weight: 900;
+        margin-bottom: 5px;
+        margin-top: -0.25rem;
+        text-wrap: balance;
+        max-width: 10ch;
+        line-height: 100%;
+        font-family: 'source-serif-pro';
+    }
+
+    .arrow-sub-text {
+      font-size: 18px;
+      text-wrap: balance;
+      max-width: 28ch;
+      margin-top: 0.5rem;
+      line-height: 1.2;
+  }
+
+  @media (max-width: 1040px) {
+    .ranking-container {
+      flex-direction: column;
+    }
+  
+    .uoty-main-text
+    {font-size: 3rem !important;
+  
+    }
+ 
+  
+  
+  
+  .testimonial-name {
+    font-family: 'source-serif-pro' !important;
+      font-weight: 800 !important;
+      text-transform: none;
+      font-size: 1.4rem;
+  }
+  
+    .hot-year {
+      font-size: 3rem !important;
+    }
+  }
+
+ @media (max-width:1280px)
+        {
+            .uoty-main-text
+            {font-size: 3rem !important;
+            }
+
+.hot-year {
+      font-size: 4rem !important;
+    }
+        }
+
+          </style>

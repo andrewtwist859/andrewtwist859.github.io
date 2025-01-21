@@ -297,62 +297,7 @@ hr.grey {
     border:1px solid #B8BBBF;
 }
 
-@media (max-width: 768px) {
-  .info-container {
-    flex-direction: column;
-  }
 
-  .info-box {
-    margin-bottom: 20px; /* Add some spacing between collapsed boxes */
-  }
-
-  .course-search-section {
-    padding: 1rem 0.5rem; /* Add some padding for smaller screens */
-  }
-
-  .search-bar {
-    display: flex;
-    flex-direction: column; /* Stack elements vertically */
-    gap: 10px; /* Space between stacked elements */
-  }
-
-  .search-bar input,
-  .search-bar select,
-  .search-bar button {
-    width: 100%; /* Make all elements full width */
-    box-sizing: border-box; /* Ensure padding and borders are included in the width */
-  }
-
-  .search-bar button {
-    margin-left: 0;
-  }
-
-  .course-links {
-    flex-direction: column;
-    gap: 10px; /* Reduce gap for smaller screens */
-  }
-
-  span.forged-in {
-    font-size: 2.6rem;
-  }
-
-  h1.forged {
-    line-height: 125%;
-  }
-
-  .ranking-container {
-    flex-direction: column;
-  }
-
-  .uoty-main-text
-  {font-size: 3rem !important;
-
-  }
-
-  .hot-year {
-    font-size: 4rem !important;
-  }
-}
 
 .ranking-container {
             display: flex;
@@ -471,6 +416,7 @@ hr.grey {
     color: #1E064C; /* Dark purple */
     font-family: 'Hot Mess';
     margin-bottom: 0;
+    text-transform: uppercase;
 }
 
 .nss-main-text {
@@ -531,6 +477,234 @@ hr.grey {
           font-weight: normal;
           color: #440099;
         }
+
+        @media (max-width: 768px) {
+  .info-container {
+    flex-direction: column;
+  }
+
+  .info-box {
+    margin-bottom: 20px; /* Add some spacing between collapsed boxes */
+  }
+
+  .course-search-section {
+    padding: 1rem 0.5rem; /* Add some padding for smaller screens */
+  }
+
+  .search-bar {
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    gap: 10px; /* Space between stacked elements */
+  }
+
+  .search-bar input,
+  .search-bar select,
+  .search-bar button {
+    width: 100%; /* Make all elements full width */
+    box-sizing: border-box; /* Ensure padding and borders are included in the width */
+  }
+
+  .search-bar button {
+    margin-left: 0;
+  }
+
+  .course-links {
+    flex-direction: column;
+    gap: 10px; /* Reduce gap for smaller screens */
+  }
+
+  span.forged-in {
+    font-size: 2.6rem;
+  }
+
+  h1.forged {
+    line-height: 125%;
+  }
+
+  .ranking-container {
+    flex-direction: column;
+  }
+
+  .uoty-main-text
+  {font-size: 3rem !important;
+
+  }
+
+  .hot-year {
+    font-family: 'source-sans-pro';
+    font-weight: 900;
+  }
+  
+  .top {
+    font-family: 'source-serif-pro' !important;
+    font-weight: 800 !important;
+    text-transform: none;
+    margin-bottom: 0.5rem;
+  }
+
+
+.testimonial-name {
+  font-family: 'source-serif-pro' !important;
+    font-weight: 800 !important;
+    text-transform: none;
+    font-size: 1.4rem;
+}
+
+  .hot-year {
+    font-size: 3rem !important;
+  }
+}
+
+.ref-container {
+                flex: 2; /* Takes 1 part of the container */
+                background-color: #015A4D;
+                clip-path: polygon(
+                    0% 0%, /* top left */
+                    95% 0%, /* top right close to chevron start */
+                    100% 50%, /* peak of the right chevron */
+                    95% 100%, /* bottom right close to chevron end */
+                    0% 100% /* bottom left */
+                );
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-start;
+                padding: 20px;
+                box-sizing: border-box;
+                color: white;
+                font-family: 'source-sans-pro', sans-serif;
+                text-align: left;
+            }
+                .ranking-container {
+                display: flex;
+                width: 100%; /* Adjust overall container width as needed */
+                max-width: 1200px; /* Ensures the container doesn't get too wide on larger screens */
+                align-items: stretch; /* Aligns children's heights */
+                gap: 20px;
+            
+            }
+
+            .ref-main-text{
+            font-size: 2.5rem;
+            font-family: 'source-serif-pro';
+                font-weight: 900;
+                margin-bottom: 5px;
+                text-wrap: balance;
+                line-height:1;
+            
+            }
+
+            .uoty-text-container {
+                max-width: 90%;
+                text-align: center;
+            }
+
+            .uoty-sub-text {
+                font-size: 18px;
+                text-wrap: balance;
+                margin-top: 0.5rem;
+                line-height: 1.2;
+            }
+
+            .hot-year {
+            font-family: 'Hot Mess';
+            font-weight: normal;
+            font-size: 5rem;
+            }
+
+            .rounded-rectangle-arrow-purple {
+                flex: 1; /* Takes 2 parts of the container */
+                background-color: #BB3E97;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                padding: 20px;
+                box-sizing: border-box;
+                color: #fff;
+                font-family: 'source-sans-pro', sans-serif;
+                text-align: center;
+                position: relative;
+        box-sizing: border-box;
+
+            }
+
+            .rounded-rectangle-arrow-orange::after {
+                content: "";
+        position: absolute;
+        bottom: -20px; /* Positions the triangle below the box */
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border-left: 20px solid transparent;
+        border-right: 20px solid transparent;
+        border-top: 20px solid #F89B49; /* Matches the box color */
+            }
+
+            .affordable {
+            font-size: 3rem;
+            color: #fff; /* Dark purple */
+            margin-bottom: 0;
+            text-transform: uppercase;
+            line-height: 1;
+            font-family: 'Hot Mess';
+        }
+
+        .nss-main-text {
+            font-size: 2.8rem;
+            font-weight: 900;
+            margin-bottom: 5px;
+            margin-top: -0.25rem;
+            text-wrap: balance;
+            max-width: 10ch;
+            line-height: 100%;
+            font-family: 'source-serif-pro';
+        }
+
+        .arrow-sub-text {
+        font-size: 18px;
+        text-wrap: balance;
+        max-width: 28ch;
+        margin-top: 0.5rem;
+        line-height: 1.2;
+    }
+
+    @media (max-width: 1040px) {
+        .ranking-container {
+        flex-direction: column;
+        }
+    
+        .uoty-main-text
+        {font-size: 3rem !important;
+    
+        }
+    
+    
+    
+    
+    .testimonial-name {
+        font-family: 'source-serif-pro' !important;
+        font-weight: 800 !important;
+        text-transform: none;
+        font-size: 1.4rem;
+    }
+    
+        .hot-year {
+        font-size: 3rem !important;
+        }
+    }
+
+    @media (max-width:1280px)
+            {
+                .uoty-main-text
+                {font-size: 3rem !important;
+                }
+
+    .hot-year {
+        font-size: 4rem !important;
+        }
+            }
     </style>
 </head>
 <body>
@@ -1044,17 +1218,17 @@ hr.grey {
       <p>We're a world top-100 university and a member of the Russell Group of leading UK research universities.</p>
       <div class="ranking-container">
         <div class="rounded-rectangle-arrow-pv">
-            <div class="top">TOP 20</div>
+            <div class="top">Top 20</div>
             <div class="nss-main-text">university in the UK</div>
             <div class="arrow-sub-text">The Guardian University Guide 2025</div>
         </div>
         <div class="rounded-rectangle-arrow">
-            <div class="top">TOP 10</div>
+            <div class="top">Top 10</div>
             <div class="nss-main-text">city for students</div>
             <div class="arrow-sub-text">StudentCrowd Best Student Cities 2024</div>
         </div>
         <div class="rounded-rectangle-arrow-orange">
-            <div class="top">TOP 5</div>
+            <div class="top">Top 5</div>
             <div class="nss-main-text">for job prospects</div>
             <div class="arrow-sub-text">StudentCrowd University Job Prospects League Table 2024</div>
         </div>
@@ -1146,6 +1320,20 @@ hr.grey {
           </div>
         </div>
       </div>
+      <div class="ranking-container">
+        <div class="rounded-rectangle-arrow-purple">
+                <div class="affordable">Affordable</div>
+                <div class="nss-main-text"></div>
+                <div class="arrow-sub-text">6th in the RBS  Student Living Index 2024</div>
+            </div>
+                    <div class="ref-container">
+                    <div class="uoty-text-container">
+                    <div class="ref-main-text">92% of research rated world-leading or internationally excellent</div>
+                    <div class="uoty-sub-text"> Research Excellence  Framework 2021</div>
+                </div>
+                </div>
+                
+                </div>
       <hr class="grey">
       <h2>What our students say about Sheffield</h2>
       <p>Read our testimonials to learn what makes Sheffield special to our students.</p>
@@ -1171,7 +1359,7 @@ hr.grey {
               <div class="testimonial">
                   <img src="san.png" alt="Martha Kelner" class="testimonial-img">
                   <div class="testimonial-content">"Residence Life social activities made my accommodation experience enjoyable and stress-free. Cooking (baking with Rahul from Bake Off!), knitting and body-butter-making sessions were my favourite, plus they always had freebies to take home. They also offered trips to concerts, parks and even other cities, all at affordable prices."</div>
-                  <div class="testimonial-name">SANJANA MEHROTRA</div>
+                  <div class="testimonial-name">Sanjana Mehrotra</div>
                   <div class="testimonial-title">Medicine</div>
               
               </div>
