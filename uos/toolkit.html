@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Toolkit</title>
+    <link rel="stylesheet" href="https://use.typekit.net/jou7rrz.css">
+    <style>
+
+        /* Toolkit containers */
+
+        .toolkit-container {
+          display: flex;
+          width: 100%; /* Adjust overall container width as needed */
+          align-items: stretch; /* Aligns children's heights */
+          gap: 20px;
+          margin-bottom:2rem;
+      }
+
+          .uoty-container {
+          flex: 2; /* Takes 1 part of the container */
+          background-color: #1E064C;
+          clip-path: polygon(
+              0% 0%, /* top left */
+              95% 0%, /* top right close to chevron start */
+              100% 50%, /* peak of the right chevron */
+              95% 100%, /* bottom right close to chevron end */
+              0% 100% /* bottom left */
+          );
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: flex-start;
+          padding: 20px;
+          box-sizing: border-box;
+          color: white;
+          font-family: 'source-sans-pro', sans-serif;
+          text-align: left;
+      }
+
+      .uoty-text-container {
+        max-width: 90%;
+        text-align: center;
+    }
+
+    .su-container {
+      flex: 1; /* Takes 2 parts of the container */
+      background-color: #F89B49;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      box-sizing: border-box;
+      color: #1E064C;
+      font-family: 'source-sans-pro', sans-serif;
+      text-align: center;
+      position: relative;
+      box-sizing: border-box;
+
+  }
+
+  .su-container::after {
+      content: "";
+      position: absolute;
+      bottom: -20px; /* Positions the triangle below the box */
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 20px solid transparent;
+      border-right: 20px solid transparent;
+      border-top: 20px solid #F89B49; /* Matches the box color */
+  }
+         
+    .guardian-container {
+          flex: 1; /* Takes 2 parts of the container */
+          background-color: #A59FDA;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          padding: 20px;
+          box-sizing: border-box;
+          color: #1E064C;
+          font-family: 'source-sans-pro', sans-serif;
+          text-align: center;
+          position: relative;
+  box-sizing: border-box;
+
+      }
+
+      .guardian-container::after {
+          content: "";
+  position: absolute;
+  bottom: -20px; /* Positions the triangle below the box */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-top: 20px solid #A59FDA; /* Matches the box color */
+      }
+     
+      .city-container {
+          flex: 1; /* Takes 2 parts of the container */
+          background-color: #7FCDC3;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          padding: 20px;
+          box-sizing: border-box;
+          color: #1E064C;
+          font-family: 'source-sans-pro', sans-serif;
+          text-align: center;
+          position: relative;
+  box-sizing: border-box;
+
+      }
+
+      .city-container::after {
+          content: "";
+  position: absolute;
+  bottom: -20px; /* Positions the triangle below the box */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-top: 20px solid #7FCDC3; /* Matches the box color */
+      }
+
+      .job-container {
+          flex: 1; /* Takes 2 parts of the container */
+          background-color: #F89B49;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          padding: 20px;
+          box-sizing: border-box;
+          color: #1E064C;
+          font-family: 'source-sans-pro', sans-serif;
+          text-align: center;
+          position: relative;
+  box-sizing: border-box;
+
+      }
+
+      .job-container::after {
+          content: "";
+  position: absolute;
+  bottom: -20px; /* Positions the triangle below the box */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-top: 20px solid #F89B49; /* Matches the box color */
+      }
+
+      .ref-container {
+          flex: 2; /* Takes 1 part of the container */
+          background-color: #015A4D;
+          clip-path: polygon(
+              0% 0%, /* top left */
+              95% 0%, /* top right close to chevron start */
+              100% 50%, /* peak of the right chevron */
+              95% 100%, /* bottom right close to chevron end */
+              0% 100% /* bottom left */
+          );
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: flex-start;
+          padding: 20px;
+          box-sizing: border-box;
+          color: white;
+          font-family: 'source-sans-pro', sans-serif;
+          text-align: left;
+      }
+
+      .ref-text-container {
+        max-width: 90%;
+        text-align: center;
+    }
+
+    .affordable-container {
+      flex: 1; /* Takes 2 parts of the container */
+      background-color: #BB3E97;
+      display: flex;
+      flex-direction: column;
+     justify-content:center;
+      align-items: center;
+      padding: 20px;
+      box-sizing: border-box;
+      color: #fff;
+      font-family: 'source-sans-pro', sans-serif;
+      text-align: center;
+      position: relative;
+box-sizing: border-box;
+
+  }
+
+  .affordable-container::after {
+      content: "";
+position: absolute;
+bottom: -20px; /* Positions the triangle below the box */
+left: 50%;
+transform: translateX(-50%);
+width: 0;
+height: 0;
+border-left: 20px solid transparent;
+border-right: 20px solid transparent;
+border-top: 20px solid #BB3E97; /* Matches the box color */
+  }
+    
+    
+    /* Custom text styling */
+    
+    .uoty-main-text{
+      font-size: 5rem;
+          font-weight: 900;
+          margin-bottom: 5px;
+          text-wrap: balance;
+          line-height:90%;
+          text-transform: uppercase;
+      }
+
+      .uoty-sub-text {
+          font-size: 18px;
+          text-wrap: balance;
+          margin-top: 0.5rem;
+          line-height: 1.2;
+      }
+
+      .hot-year {
+        font-family: 'Hot Mess';
+        font-weight: normal;
+        font-size: 5rem;
+      }
+
+      .su-number {
+        font-size: 6rem;
+        color: #1E064C; /* Dark purple */
+        font-family: 'Hot Mess';
+        margin-bottom: 0;
+        text-transform: uppercase;
+        line-height: 1;
+    }
+
+    .su-main-text {
+      font-size: 2.8rem;
+      font-weight: 900;
+      margin-bottom: 5px;
+      text-wrap: balance;
+      max-width: 10ch;
+      line-height: 100%;
+      margin-top: -1rem;
+      font-family: 'source-serif-pro';
+  }
+
+  .su-sub-text {
+    font-size: 18px;
+    text-wrap: balance;
+    max-width: 28ch;
+    margin-top: 0.5rem;
+    line-height: 1.2;
+}
+
+.top-number {
+  font-size: 5rem;
+  color: #1E064C; /* Dark purple */
+  font-family: 'Hot Mess';
+  margin-bottom: 0;
+  text-transform: uppercase;
+}
+
+.ranking-main-text {
+  font-size: 2.8rem;
+  font-weight: 900;
+  margin-bottom: 5px;
+  text-wrap: balance;
+  max-width: 10ch;
+  line-height: 100%;
+  margin-top: -1rem;
+  font-family: 'source-serif-pro';
+}
+
+.ranking-sub-text {
+  font-size: 18px;
+  text-wrap: balance;
+  max-width: 28ch;
+  margin-top: 0.5rem;
+  line-height: 1.2;
+}
+
+
+.affordable-header {
+font-size: 3rem;
+color: #fff; /* Dark purple */
+margin-bottom: 0;
+text-transform: uppercase;
+line-height: 1;
+font-family: 'Hot Mess';
+}
+
+.ranking-main-text {
+font-size: 2.8rem;
+font-weight: 900;
+margin-bottom: 5px;
+margin-top: -0.25rem;
+text-wrap: balance;
+max-width: 10ch;
+line-height: 100%;
+font-family: 'source-serif-pro';
+}
+
+.ranking-sub-text {
+font-size: 18px;
+text-wrap: balance;
+max-width: 28ch;
+margin-top: 0.5rem;
+line-height: 1.2;
+}
+
+@media screen and (max-width: 47.9988em)  {
+  .toolkit-container {
+    flex-direction: column;
+  }
+
+  .hot-year {
+    font-size: 3rem !important;
+  }
+}
+
+@media print, screen and (min-width: 64em)
+      {
+          .uoty-main-text
+          {font-size: 3rem !important;
+          }
+
+.hot-year {
+    font-size: 4rem !important;
+  }
+      }
+
+      .ref-main-text
+  {font-size: 2rem !important;
+
+  }
+
+      .ref-main-text
+  {font-size: 3rem !important;
+
+  }
+
+#block-uos-public-content > article > div.view-mode-full > div.region.region-breadcrumbs {
+display: none;
+}
+
+.homecoursesearch {
+margin-top:-0.9rem;
+</style>
+</head>
+<body>
+    <div class="toolkit-container">
+        <div class="uoty-container">
+      <div class="uoty-text-container">
+      <div class="uoty-main-text">University of the <span class="hot-year">Year</span></div>
+      <div class="uoty-sub-text">Whatuni Student Choice Awards 2024</div>
+  </div>
+  </div>
+  <div class="su-container">
+    <div class="su-number">No.1</div>
+    <div class="su-main-text">Students' Union</div>
+    <div class="su-sub-text">Whatuni Student Choice Awards 2017-2024</div>
+</div>
+    </div>
+
+    <div class="toolkit-container">
+        <div class="guardian-container">
+            <div class="top-number">Top 20</div>
+            <div class="ranking-main-text">university in the UK</div>
+            <div class="ranking-sub-text">The Guardian University Guide 2025</div>
+        </div>
+        <div class="city-container">
+            <div class="top-number">Top 10</div>
+            <div class="ranking-main-text">city for students</div>
+            <div class="ranking-sub-text">StudentCrowd Best Student Cities 2024</div>
+        </div>
+        <div class="job-container">
+            <div class="top-number">Top 5</div>
+            <div class="ranking-main-text">for job prospects</div>
+            <div class="ranking-sub-text">StudentCrowd University Job Prospects League Table 2024</div>
+        </div>
+    </div>
+    <div class="toolkit-container">
+        <div class="affordable-container">
+                  <div class="affordable-header">Affordable</div>
+                  <div class="ranking-sub-text">6th in the RBS  Student Living Index 2024</div>
+              </div>
+                      <div class="ref-container">
+                    <div class="ref-text-container">
+                    <div class="ref-main-text">92% of research rated world-leading or internationally excellent</div>
+                    <div class="ref-sub-text"> Research Excellence  Framework 2021</div>
+                </div>
+                </div>
+                
+                  </div>
+</body>
+</html>

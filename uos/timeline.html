@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aligned Timeline</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            margin: 0;
+        }
+        .timeline {
+            position: relative;
+            margin: 0;
+            padding: 0;
+            padding-left: 20px; /* Space for the timeline line */
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 10px; /* Adjusted to center the line */
+            top: 0;
+            bottom: 0;
+            width: 4px; /* Same as border width of circles */
+            background-color: #000;
+        }
+        .timeline-entry {
+            position: relative;
+            list-style: none;
+            margin-bottom: 20px; /* Space between entries */
+            padding-left: 1rem; /* Space for text from the timeline line */
+        }
+        .timeline-entry::before {
+            content: '';
+            position: absolute;
+            left: -18px; /* Precisely center the circle on the line */
+            top: 0;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            box-sizing: border-box;
+        }
+        .past-event::before {
+            background-color: #FF6371; /* Red fill for past events */
+            border: 4px solid #000; /* Black stroke */
+        }
+        .future-event::before {
+            background-color: #3BD4AE; /* Green fill for future events */
+            border: 4px solid #000; /* Black stroke */
+        }
+    </style>
+</head>
+<body>
+    <ol class="timeline">
+        <li class="timeline-entry" data-date="2024-09-16">
+            <strong>Monday 16 September 2024</strong><br>
+            Applications open for courses starting in September 2025
+        </li>
+        <li class="timeline-entry" data-date="2024-12-23">
+            <strong>Monday 23 December 2024 – Wednesday 1 January 2025</strong><br>
+            University closed for Christmas
+        </li>
+        <li class="timeline-entry" data-date="2025-06-01">
+            <strong>June 2025</strong><br>
+            For applicants who need a visa to study in the UK, CAS application begins
+        </li>
+        <li class="timeline-entry" data-date="2025-08-18">
+            <strong>Monday 18 August 2025</strong><br>
+            If your course requires ATAS clearance, we advise you to apply for ATAS clearance by this date
+        </li>
+        <li class="timeline-entry" data-date="2025-08-18">
+            <strong>Early September 2025</strong><br>
+            Online Module Selection opens in the Pre-Registration system for those students who are required to choose approved modules.
+        </li>
+        <li class="timeline-entry" data-date="2025-09-01">
+            <strong>Monday 1 September 2025</strong><br>
+            Last date to request a deferral to September 2026 entry. You can request a deferral via your online application.
+        </li>
+        <li class="timeline-entry" data-date="2025-09-01">
+            <strong>Monday 1 September 2025</strong><br>
+            Last date to apply for a postgraduate course if you'll need a visa to study in the UK
+        </li>
+        <li class="timeline-entry" data-date="2025-09-05">
+            <strong>Friday 5 September 2025</strong><br>
+            Applications close for September 2025 entry
+        </li>
+        <li class="timeline-entry" data-date="2025-09-08">
+            <strong>Monday 8 September 2025</strong><br>
+            We advise you to apply for your CAS number by this date. If you apply for your CAS number after this date and will be applying for your visa from outside the UK, we would advise you to use a priority visa application service.
+            <p>We won't arrange a CAS number if you apply for your CAS number less than 3 weeks before the latest possible start date for your course, unless you tell us you'll be applying for your visa inside the UK, or using a priority visa application service.</p>
+        </li>
+        <li class="timeline-entry" data-date="2025-09-15">
+            <strong>Monday 15–Friday 19 September 2025</strong><br>
+            Orientation Week
+        </li>
+        <li class="timeline-entry" data-date="2025-09-22">
+            <strong>Monday 22 September 2025</strong><br>
+            Last date to let us know that you've met any offer conditions. If you'll need a visa to study in the UK, please note that you need to meet any offer conditions before you apply for your CAS number, and we advise you to apply for your CAS number by Monday 8 September 2025.
+        </li>
+        <li class="timeline-entry" data-date="2025-09-22">
+            <strong>Monday 22 September 2025</strong><br>
+            Welcome Week, including registration at the University
+        </li>
+        <li class="timeline-entry" data-date="2025-09-29">
+            <strong>Monday 29 September 2025</strong><br>
+            Teaching begins
+        </li>
+        <li class="timeline-entry" data-date="2025-10-20">
+            <strong>Monday 20 October 2025</strong><br>
+            Latest possible start date for most courses (exceptions are listed on our New Students webpages)
+        </li>
+    </ol>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const today = new Date();
+            const entries = document.querySelectorAll('.timeline-entry');
+
+            entries.forEach(function(entry) {
+                const dateStr = entry.getAttribute('data-date');
+                const eventDate = new Date(dateStr);
+
+                if (eventDate < today) {
+                    entry.classList.add('past-event');
+                } else {
+                    entry.classList.add('future-event');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
