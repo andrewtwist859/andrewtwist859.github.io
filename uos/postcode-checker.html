@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://use.typekit.net/jou7rrz.css">
+    <link rel="stylesheet" href="global-menu.css"> 
+    <link rel="stylesheet" href="section-menu.css"> 
+    <link rel="stylesheet" href="footer.css"> 
+    <link rel="icon" href="https://www.sheffield.ac.uk/themes/custom/uos_public/favicon.ico" sizes="any">
+    <link rel="icon" href="https://www.sheffield.ac.uk/themes/custom/uos_public/favicon.svg" type="image/svg+xml" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Access Sheffield Postcode Checker</title>
+  <style>
+
+    body {
+        background-color: white;
+    }
+
+    /* Mobile styling for moving description panel below image */
+@media (max-width: 768px) {
+
+.contents-container {
+padding: 1rem !important;
+}
+
+}
+
+
+.contents-container {
+max-width: 1180px;
+margin: 0 auto;
+padding: 1rem;
+}
+
+.contents-container p {
+max-width: 80ch;
+margin-bottom: 1rem;
+font-size: 1.2rem;
+}
+
+.contents-container h2{
+font-family: 'source-serif-pro';
+font-weight: 700;
+font-size: 1.6rem;
+margin-bottom: 1rem;
+}
+    footer {
+        margin-top: 3rem;
+    }
+
+    .lookup-container {
+        max-width: 800px;
+    }
+
+    #imd-widget {
+        background-color: #fff;
+        width: 100%; /* Ensures it uses full width of the container */
+        max-width: 100%; /* Prevent overflow if parent has constraints */
+        box-sizing: border-box; /* Includes padding in width calculation */
+    }
+
+    #imd-widget h3 {
+        color: #333;
+        font-family: 'source-serif-pro';
+        font-size: 1.6rem;
+        margin: 0;
+        margin-bottom: 0.5rem;
+    }
+
+    #imd-widget textarea, #imd-widget button {
+        width: 100%; /* Fully responsive inside the container */
+        padding: 10px;
+        margin-top: 10px;
+        font-size: 1rem;
+        font-family: 'source-sans-pro';
+        box-sizing: border-box;
+    }
+
+    #imd-widget button {
+        background-color: #440099;
+        color: white;
+        cursor: pointer;
+    }
+
+    #imd-widget button:hover {
+        background-color: #0056b3;
+    }
+
+    .result {
+        font-family: 'source-sans-pro';
+        font-size: 1.2rem;
+    }
+
+    #imd-form {
+        font-family: 'source-sans-pro';
+    }
+
+    .result.success {
+        background-color: #d4edda;
+        color: #155724;
+        padding: 10px;
+        margin-top: 10px;
+        border-radius: 5px;
+    }
+
+    .result.error {
+        background-color: #f8d7da;
+        color: #721c24;
+        padding: 10px;
+        margin-top: 10px;
+        border-radius: 5px;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        #imd-widget {
+            padding: 1rem;
+        }
+
+        #imd-widget h3 {
+            font-size: 1.4rem;
+        }
+
+        #imd-widget textarea, #imd-widget button {
+            font-size: 0.9rem;
+        }
+
+        .result {
+            font-size: 1rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        #imd-widget h3 {
+            font-size: 1.2rem;
+        }
+
+        #imd-widget textarea, #imd-widget button {
+            font-size: 0.8rem;
+        }
+
+        .result {
+            font-size: 0.9rem;
+        }
+    }
+
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="navbar-content">
+      <div class="navbar-brand">
+        <a href="changes"><img src="logo.png" alt="University of Sheffield Logo" class="logo"></a>
+      </div>
+    </div>
+  </nav>
+  
+<div class="section-header-container">
+    <div class="section-header">
+        <h2>Access Sheffield</h2>
+    </div>
+</div>
+<div class="section-navbar-background">
+    <div class="section-navbar-container">
+      <ul class="section-navbar">
+        <li><a href="#">Postcode Checker
+        </a></li>
+      </ul>
+    </div>
+  </div>
+
+  
+  <!-- Full-width dropdown panel -->
+  <div class="section-dropdown-panel" id="section-dropdown-panel">
+    <div class="section-panel-content" id="section-panel-content">
+      <!-- Content will be injected here dynamically -->
+    </div>
+  </div>
+<div class="contents-container">
+    <h2>Access Sheffield Postcode Checker</h2>
+    <p>Check your postcode to see if you meet the criteria for Access+ support:
+        <p><strong>You live in a postcode area with an IMD Quintile of 1 or 2 - which means you live in a neighbourhood that is assessed as being in a lower quintile in the Governments Indices of Multiple Deprivation.</strong></p>
+        
+        <p>Please note that we are unable to assess applicants living outside of the UK or those from the Channel Islands or Isle of Man.</p>
+        <p>The postcode search is intended as a guide only.</p>
+        <p></p>
+    <div class="lookup-container">
+    <script src="https://pni.cmh.mybluehost.me/website_e0879ab5/postcodes.js"></script>
+</div>
+</div>
+  <footer class="footer">
+    <div class="footer-content">
+      
+          
+      
+     
+   
+    <div class="footer-bottom">
+        <div class="footer-awards">
+          <img src="top100.png" alt="World Top 100 University">
+          <img src="russellgroup.png" alt="Russell Group">
+          <img src="uoty.png" alt="University of the Year 2024">
+          <img src="queens.png" alt="Queen's Anniversary Prize">
+        </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+<script>
+    function togglePanel(panelId) {
+  const panel = document.getElementById(panelId);
+  const navItem = document.querySelector(`[onclick="togglePanel('${panelId}')"]`); // Find nav-item
+  const isPanelOpen = panel.classList.contains('show');
+
+  // Close any open panels and reset nav-item classes
+  document.querySelectorAll('.mega-menu-panel').forEach(p => p.classList.remove('show'));
+  document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('menu-open'));
+
+  // Toggle the clicked panel and rotate icon if opening
+  if (!isPanelOpen) {
+    panel.classList.add('show');
+    navItem.classList.add('menu-open'); // Add rotation class
+  }
+}
+
+  let currentPanel = 'main-mobile-panel';
+  const navHistory = [];
+
+  function toggleMobileMenu() {
+    const overlay = document.getElementById('mobile-menu-overlay');
+
+    if (overlay.style.display === 'flex') {
+      overlay.style.display = 'none';
+      navHistory.length = 0;
+      currentPanel = 'main-mobile-panel';
+      document.querySelectorAll('.mobile-submenu-panel').forEach(panel => panel.classList.remove('show', 'back'));
+      document.getElementById('main-mobile-panel').classList.add('show');
+    } else {
+      overlay.style.display = 'flex';
+      document.getElementById('main-mobile-panel').classList.add('show');
+    }
+  }
+
+  function openSubmenu(panelId) {
+    if (currentPanel) {
+      navHistory.push(currentPanel);
+      document.getElementById(currentPanel).classList.remove('show', 'back');
+    }
+    
+    document.getElementById(panelId).classList.add('show');
+    currentPanel = panelId;
+  }
+
+  function closeSubmenu() {
+    if (navHistory.length > 0) {
+      document.getElementById(currentPanel).classList.remove('show');
+      document.getElementById(currentPanel).classList.add('back'); // Slide out to the left
+      
+      currentPanel = navHistory.pop();
+      document.getElementById(currentPanel).classList.add('show'); // Show previous panel
+    } else {
+      document.getElementById('main-mobile-panel').style.left = '0';
+      currentPanel = 'main-mobile-panel';
+    }
+  };
+  </script>
+  <script>
+    const panelData = {
+      courses: `
+        <div class="section-panel-column">
+          <h4>Undergraduate course search</h4>
+          <a href="#">2025-26 courses</a>
+          <a href="#">Order a prospectus PDF</a>
+          <a href="#">International students</a>
+        </div>
+        <div class="section-panel-column">
+          <h4>Graduate programs</h4>
+          <a href="#">Masters courses</a>
+          <a href="#">Doctoral programs</a>
+          <a href="#">International students</a>
+        </div>
+        <div class="section-panel-column">
+          <h4></h4>
+          <a href="#">Summer programs</a>
+          <a href="#">Online courses</a>
+        </div>
+        <div class="section-panel-column">
+          <h4>Professional development</h4>
+          <a href="#">Executive education</a>
+          <a href="#">Certification courses</a>
+        </div>`,
+      visit: `
+        <div class="section-panel-column">
+          <h4>Plan your visit</h4>
+          <a href="#">Campus tours</a>
+          <a href="#">Virtual tours</a>
+        </div>
+        <div class="section-panel-column">
+          <h4>Open Days</h4>
+          <a href="#">Undergraduate Open Days</a>
+          <a href="#">Postgraduate Open Days</a>
+        </div>`,
+      apply: `
+        <div class="section-panel-column">
+          <h4>Application Process</h4>
+          <a href="#">Undergraduate</a>
+          <a href="#">Postgraduate</a>
+          <a href="#">International students</a>
+        </div>
+        <div class="section-panel-column">
+          <h4>Application Deadlines</h4>
+          <a href="#">Fall intake</a>
+          <a href="#">Spring intake</a>
+        </div>
+        <div class="section-panel-column">
+          <a href="#">How to apply</a>
+          <a href="#">Documents required</a>
+          <a href="#">Contact admissions</a>
+        </div>`,
+      fees: `
+        <div class="section-panel-column">
+          <h4>Fees and financial aid</h4>
+          <a href="#">Tuition fees</a>
+          <a href="#">Scholarships</a>
+          <a href="#">Financial support</a>
+        </div>
+        <div class="section-panel-column">
+          <a href="#">Online payment</a>
+          <a href="#">Installments</a>
+        </div>`
+    };
+  
+    function toggleSectionPanel(event, panelId) {
+      event.preventDefault();
+      const panel = document.getElementById('section-dropdown-panel');
+      const content = document.getElementById('section-panel-content');
+      
+      // If the clicked panel is already active, close it
+      if (panel.classList.contains('active') && content.innerHTML === panelData[panelId]) {
+        panel.classList.remove('active');
+        content.innerHTML = '';
+        return;
+      }
+      
+      // Update the panel content and show the panel
+      content.innerHTML = panelData[panelId];
+      panel.classList.add('active');
+    }
+  
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function(event) {
+      const panel = document.getElementById('section-dropdown-panel');
+      const isClickInsideNavbar = event.target.closest('.section-navbar-container');
+      const isClickInsidePanel = event.target.closest('.section-dropdown-panel');
+      
+      if (!isClickInsideNavbar && !isClickInsidePanel) {
+        panel.classList.remove('active');
+        document.getElementById('section-panel-content').innerHTML = ''; // Clear content
+      }
+    });
+  </script>
+      <script>
+        document.getElementById("showMoreLink").addEventListener("click", function(event) {
+       event.preventDefault(); // Prevents the link from navigating
+       const footerLinks = document.querySelector(".footer-links");
+       footerLinks.classList.toggle("show-all");
+       this.textContent = footerLinks.classList.contains("show-all") ? "Close footer" : "Show all links";
+     });
+       </script>
+</body>
+</html>
