@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="https://use.typekit.net/jou7rrz.css">
+  <title>Staff Directory</title>
+  <style>
+    body {
+      font-family: 'source-sans-pro', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #F3F4F4;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 20px auto;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .search-box {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    input[type="text"], select {
+      padding: 10px;
+      flex: 1 1 30%;
+      min-width: 200px;
+      border: 2px solid #cccccc;
+      border-radius: 5px;
+      font-size: 1rem;
+      background-color: white;
+    }
+    button {
+      padding: 10px 20px;
+      border: none;
+      background-color: #440099;
+      color: white;
+      cursor: pointer;
+    }
+    .team-section {
+      margin-top: 2rem;
+    }
+    .team-heading {
+      font-family: 'source-serif-pro';
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      border-bottom: 2px solid #ccc;
+      padding-bottom: 0.5rem;
+    }
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    .profile-card {
+      background-color: #fff;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+    }
+    .avatar {
+      width: 80px;
+      height: 80px;
+      margin-bottom: 10px;
+    }
+    .name {
+      font-family: 'source-serif-pro';
+      font-size: 1.4rem;
+      color: #333333;
+      margin: 5px 0;
+    }
+    .title, .team {
+      font-size: 1.1rem;
+      margin: 5px 0;
+    }
+    .email {
+      margin-top: 1rem;
+      font-weight: 700;
+    }
+    .email a {
+      color: #440099;
+      text-decoration: underline;
+    }
+    .info {
+      font-size: 1.1rem;
+      line-height: 1.5;
+    }
+    mark {
+      background-color: yellow;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>People</h2>
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Search by name, job title, team and expertise" />
+      <select id="teamFilter">
+        <option value="">All teams</option>
+      </select>
+      <button onclick="applyFilters()">Search</button>
+      <button onclick="resetFilters()">Reset</button>
+    </div>
+    <div id="profiles"></div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+  <script>
+    const sheetUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQq-VWxY0LJS733k2cy-gFAFJOI3rnbtVzi1wSPUleNj5ulB9E-cAH0-mSo4-PQrvFsczyC2P-wfyw5/pub?output=csv";
+    let allProfiles = [];
+
+    document.addEventListener("DOMContentLoaded", () => {
+      Papa.parse(sheetUrl, {
+        download: true,
+        header: true,
+        complete: (results) => {
+          allProfiles = results.data.filter(p => p['First name'] && p['Surname']);
+          allProfiles.sort((a, b) => a['Surname'].localeCompare(b['Surname']));
+          populateTeamFilter(allProfiles);
+          loadFromURL();
+        }
+      });
+
+      document.getElementById("searchInput").addEventListener("keydown", e => {
+        if (e.key === "Enter") applyFilters();
+      });
+    });
+
+    function populateTeamFilter(profiles) {
+      const select = document.getElementById("teamFilter");
+      const teams = [...new Set(profiles.map(p => p.Team).filter(Boolean))].sort();
+      for (const team of teams) {
+        const opt = document.createElement("option");
+        opt.value = team;
+        opt.textContent = team;
+        select.appendChild(opt);
+      }
+    }
+
+    function applyFilters() {
+      const search = document.getElementById("searchInput").value.trim();
+      const team = document.getElementById("teamFilter").value;
+
+      const params = new URLSearchParams();
+      if (search) params.set("search", search);
+      if (team) params.set("team", team);
+
+      const newUrl = `${window.location.pathname}?${params.toString()}`;
+      history.pushState({}, "", newUrl);
+
+      filterAndDisplay(search, team);
+    }
+
+    function resetFilters() {
+      document.getElementById("searchInput").value = "";
+      document.getElementById("teamFilter").value = "";
+      history.pushState({}, "", window.location.pathname);
+      filterAndDisplay("", "");
+    }
+
+    function loadFromURL() {
+      const params = new URLSearchParams(window.location.search);
+      const search = params.get("search") || "";
+      const team = params.get("team") || "";
+
+      document.getElementById("searchInput").value = search;
+      document.getElementById("teamFilter").value = team;
+
+      filterAndDisplay(search, team);
+    }
+
+    function highlight(text, term) {
+      if (!term) return text;
+      const regex = new RegExp(`(${term})`, 'gi');
+      return text.replace(regex, '<mark>$1</mark>');
+    }
+
+    function filterAndDisplay(searchTerm, teamFilter) {
+      const profiles = allProfiles.filter(profile => {
+        const matchesTeam = !teamFilter || profile.Team === teamFilter;
+        const text = (profile['First name'] + " " + profile['Surname'] + " " +
+                      profile['Job title'] + " " + profile['Team'] + " " +
+                      profile['Ask me about'] + " " + profile['Group membership']).toLowerCase();
+        const matchesSearch = !searchTerm || text.includes(searchTerm.toLowerCase());
+        return matchesTeam && matchesSearch;
+      });
+
+      // Group by team
+      const grouped = {};
+      for (const profile of profiles) {
+        const team = profile.Team || "Other";
+        if (!grouped[team]) grouped[team] = [];
+        grouped[team].push(profile);
+      }
+
+      const profilesContainer = document.getElementById("profiles");
+      profilesContainer.innerHTML = "";
+
+      for (const team of Object.keys(grouped).sort()) {
+        const section = document.createElement("div");
+        section.className = "team-section";
+
+        const heading = document.createElement("div");
+        heading.className = "team-heading";
+        heading.textContent = team;
+        section.appendChild(heading);
+
+        const grid = document.createElement("div");
+        grid.className = "team-grid";
+
+        for (const profile of grouped[team]) {
+          const card = document.createElement("div");
+          card.className = "profile-card";
+          card.innerHTML = `
+            <img class="avatar" src="${profile.Avatar}" alt="Profile Image">
+            <div class="name"><strong>${highlight(profile['First name'] + " " + profile['Surname'], searchTerm)}</strong></div>
+            <div class="title">${highlight(profile['Job title'] || "", searchTerm)}</div>
+            <div class="team">${highlight(profile['Team'] || "", searchTerm)}</div>
+            <div class="email"><a href="mailto:${profile.Email}">${profile.Email}</a></div>
+            <div class="info"><h3>Ask me about:</h3> ${highlight(profile['Ask me about'] || "", searchTerm)}</div>
+          `;
+          grid.appendChild(card);
+        }
+
+        section.appendChild(grid);
+        profilesContainer.appendChild(section);
+      }
+
+      if (profiles.length === 0) {
+        profilesContainer.innerHTML = "<p>No matching staff found.</p>";
+      }
+    }
+  </script>
+</body>
+</html>
