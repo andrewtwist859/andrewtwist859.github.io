@@ -130,6 +130,10 @@
   <div class="container">
     <div class="search-box">
       <input type="text" id="searchInput" placeholder="Search by name, job title, team and expertise" oninput="searchProfiles()">
+      <!-- Add this inside the <div class="search-box"> (after the search input and before buttons) -->
+<select id="teamFilter" onchange="filterByTeam()">
+  <option value="">All teams</option>
+</select>
       <button onclick="searchProfiles()">Search</button>
       <button onclick="resetSearch()">Reset</button>
     </div>
@@ -138,114 +142,137 @@
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
-  <script>
-    const sheetUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQq-VWxY0LJS733k2cy-gFAFJOI3rnbtVzi1wSPUleNj5ulB9E-cAH0-mSo4-PQrvFsczyC2P-wfyw5/pub?output=csv";
-    let allProfiles = [];
-    let filteredProfiles = [];
-    let currentPage = 1;
-    const itemsPerPage = 24;
-    let lastSearchTerm = "";
+<script>
+  const sheetUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQq-VWxY0LJS733k2cy-gFAFJOI3rnbtVzi1wSPUleNj5ulB9E-cAH0-mSo4-PQrvFsczyC2P-wfyw5/pub?output=csv";
+  let allProfiles = [];
+  let filteredProfiles = [];
+  let currentPage = 1;
+  const itemsPerPage = 12;
+  let lastSearchTerm = "";
+  let selectedTeam = "";
 
-    document.addEventListener('DOMContentLoaded', function () {
-      Papa.parse(sheetUrl, {
-        download: true,
-        header: true,
-        complete: function (results) {
-          allProfiles = results.data.filter(p => p['First name'] && p['Surname']);
-          allProfiles.sort((a, b) => a['Surname'].localeCompare(b['Surname']));
-          filteredProfiles = allProfiles;
-          displayProfiles(filteredProfiles, 1);
-        }
-      });
+  document.addEventListener('DOMContentLoaded', function () {
+    Papa.parse(sheetUrl, {
+      download: true,
+      header: true,
+      complete: function (results) {
+        allProfiles = results.data.filter(p => p['First name'] && p['Surname']);
+        allProfiles.sort((a, b) => a['Surname'].localeCompare(b['Surname']));
+        populateTeamFilter(allProfiles);
+        filteredProfiles = allProfiles;
+        displayProfiles(filteredProfiles, 1);
+      }
+    });
+  });
+
+  function populateTeamFilter(profiles) {
+    const teamSelect = document.getElementById('teamFilter');
+    const teams = [...new Set(profiles.map(p => p.Team).filter(Boolean))].sort();
+
+    teams.forEach(team => {
+      const option = document.createElement('option');
+      option.value = team;
+      option.textContent = team;
+      teamSelect.appendChild(option);
+    });
+  }
+
+  function resetSearch() {
+    document.getElementById("searchInput").value = "";
+    document.getElementById("teamFilter").value = "";
+    lastSearchTerm = "";
+    selectedTeam = "";
+    filteredProfiles = allProfiles;
+    displayProfiles(filteredProfiles, 1);
+  }
+
+  function searchProfiles() {
+    lastSearchTerm = document.getElementById("searchInput").value.toLowerCase();
+    selectedTeam = document.getElementById("teamFilter").value;
+    filterProfiles();
+  }
+
+  function filterByTeam() {
+    selectedTeam = document.getElementById("teamFilter").value;
+    lastSearchTerm = document.getElementById("searchInput").value.toLowerCase();
+    filterProfiles();
+  }
+
+  function filterProfiles() {
+    filteredProfiles = allProfiles.filter(profile => {
+      const matchTeam = selectedTeam === "" || profile.Team === selectedTeam;
+      const matchSearch = (profile['First name'] || '').toLowerCase().includes(lastSearchTerm) ||
+                          (profile['Surname'] || '').toLowerCase().includes(lastSearchTerm) ||
+                          (profile['Job title'] || '').toLowerCase().includes(lastSearchTerm) ||
+                          (profile['Team'] || '').toLowerCase().includes(lastSearchTerm) ||
+                          (profile['Ask me about'] || '').toLowerCase().includes(lastSearchTerm) ||
+                          (profile['Group membership'] || '').toLowerCase().includes(lastSearchTerm);
+      return matchTeam && matchSearch;
     });
 
-    function resetSearch() {
-      document.getElementById("searchInput").value = "";
-      filteredProfiles = allProfiles;
-      lastSearchTerm = "";
-      displayProfiles(filteredProfiles, 1);
+    filteredProfiles.sort((a, b) => a['Surname'].localeCompare(b['Surname']));
+    displayProfiles(filteredProfiles, 1);
+  }
+
+  function highlight(text, term) {
+    if (!term) return text;
+    const regex = new RegExp(`(${term})`, 'gi');
+    return text.replace(regex, '<mark>$1</mark>');
+  }
+
+  function displayProfiles(profiles, page = 1) {
+    currentPage = page;
+    const profilesContainer = document.getElementById("profiles");
+    profilesContainer.innerHTML = '';
+
+    const start = (page - 1) * itemsPerPage;
+    const end = start + itemsPerPage;
+    const pageProfiles = profiles.slice(start, end);
+
+    pageProfiles.forEach(profile => {
+      const profileElement = document.createElement('div');
+      profileElement.className = 'profile-card';
+      profileElement.innerHTML = `
+        <img class="avatar" src="${profile.Avatar}" alt="Profile Image">
+        <div class="name"><strong>${highlight(profile['First name'] + ' ' + profile['Surname'], lastSearchTerm)}</strong></div>
+        <div class="title">${highlight(profile['Job title'] || '', lastSearchTerm)}</div>
+        <div class="team">${highlight(profile['Team'] || '', lastSearchTerm)}</div>
+        <div class="email"><a href="mailto:${profile.Email}">${profile.Email}</a></div>
+        <div class="info"><h3>Ask me about:</h3> ${highlight(profile['Ask me about'] || '', lastSearchTerm)}</div>
+      `;
+      profilesContainer.appendChild(profileElement);
+    });
+
+    renderPaginationControls(profiles.length);
+  }
+
+  function renderPaginationControls(totalItems) {
+    const paginationContainer = document.getElementById("pagination");
+    paginationContainer.innerHTML = '';
+    const totalPages = Math.ceil(totalItems / itemsPerPage);
+    if (totalPages <= 1) return;
+
+    const prev = document.createElement('button');
+    prev.textContent = 'Prev';
+    prev.disabled = currentPage === 1;
+    prev.onclick = () => displayProfiles(filteredProfiles, currentPage - 1);
+    paginationContainer.appendChild(prev);
+
+    for (let i = 1; i <= totalPages; i++) {
+      const btn = document.createElement('button');
+      btn.textContent = i;
+      btn.style.backgroundColor = i === currentPage ? '#440099' : '#ccc';
+      btn.style.color = i === currentPage ? 'white' : 'black';
+      btn.onclick = () => displayProfiles(filteredProfiles, i);
+      paginationContainer.appendChild(btn);
     }
 
-    function searchProfiles() {
-      const term = document.getElementById("searchInput").value.toLowerCase();
-      lastSearchTerm = term;
-
-      filteredProfiles = allProfiles.filter(profile =>
-        (profile['First name'] || '').toLowerCase().includes(term) ||
-        (profile['Surname'] || '').toLowerCase().includes(term) ||
-        (profile['Job title'] || '').toLowerCase().includes(term) ||
-        (profile['Team'] || '').toLowerCase().includes(term) ||
-        (profile['Ask me about'] || '').toLowerCase().includes(term) ||
-        (profile['Group membership'] || '').toLowerCase().includes(term)
-      );
-
-      filteredProfiles.sort((a, b) => a['Surname'].localeCompare(b['Surname']));
-      displayProfiles(filteredProfiles, 1);
-    }
-
-    function highlight(text, term) {
-      if (!term) return text;
-      const regex = new RegExp(`(${term})`, 'gi');
-      return text.replace(regex, '<mark>$1</mark>');
-    }
-
-    function displayProfiles(profiles, page = 1) {
-      currentPage = page;
-      const profilesContainer = document.getElementById("profiles");
-      profilesContainer.innerHTML = '';
-
-      const start = (page - 1) * itemsPerPage;
-      const end = start + itemsPerPage;
-      const pageProfiles = profiles.slice(start, end);
-
-      pageProfiles.forEach(profile => {
-        const profileElement = document.createElement('div');
-        profileElement.className = 'profile-card';
-        profileElement.innerHTML = `
-          <img class="avatar" src="${profile.Avatar}" alt="Profile Image">
-          <div class="name"><strong>${highlight(profile['First name'] + ' ' + profile['Surname'], lastSearchTerm)}</strong></div>
-          <div class="title">${highlight(profile['Job title'] || '', lastSearchTerm)}</div>
-          <div class="team">${highlight(profile['Team'] || '', lastSearchTerm)}</div>
-          <div class="email"><a href="mailto:${profile.Email}">${profile.Email}</a></div>
-          <div class="info"><h3>Ask me about:</h3> ${highlight(profile['Ask me about'] || '', lastSearchTerm)}</div>
-        `;
-        profilesContainer.appendChild(profileElement);
-      });
-
-      renderPaginationControls(profiles.length);
-    }
-
-    function renderPaginationControls(totalItems) {
-      const paginationContainer = document.getElementById("pagination");
-      paginationContainer.innerHTML = '';
-      const totalPages = Math.ceil(totalItems / itemsPerPage);
-
-      if (totalPages <= 1) return;
-
-      // Prev button
-      const prev = document.createElement('button');
-      prev.textContent = 'Prev';
-      prev.disabled = currentPage === 1;
-      prev.onclick = () => displayProfiles(filteredProfiles, currentPage - 1);
-      paginationContainer.appendChild(prev);
-
-      // Page numbers
-      for (let i = 1; i <= totalPages; i++) {
-        const btn = document.createElement('button');
-        btn.textContent = i;
-        btn.style.backgroundColor = i === currentPage ? '#440099' : '#ccc';
-        btn.style.color = i === currentPage ? 'white' : 'black';
-        btn.onclick = () => displayProfiles(filteredProfiles, i);
-        paginationContainer.appendChild(btn);
-      }
-
-      // Next button
-      const next = document.createElement('button');
-      next.textContent = 'Next';
-      next.disabled = currentPage === totalPages;
-      next.onclick = () => displayProfiles(filteredProfiles, currentPage + 1);
-      paginationContainer.appendChild(next);
-    }
-  </script>
+    const next = document.createElement('button');
+    next.textContent = 'Next';
+    next.disabled = currentPage === totalPages;
+    next.onclick = () => displayProfiles(filteredProfiles, currentPage + 1);
+    paginationContainer.appendChild(next);
+  }
+</script>
 </body>
 </html>
