@@ -49,10 +49,6 @@
       font-size: 1rem;
     }
 
-    .team-section {
-      margin-top: 2rem;
-    }
-
     h2 {
       color: black;
       font-family: 'source-serif-pro';
@@ -122,18 +118,23 @@
     }
 
     .pagination {
-      margin-top: 1rem;
       display: flex;
       justify-content: center;
-      gap: 10px;
+      margin-top: 2rem;
+      gap: 5px;
     }
 
     .pagination button {
-      padding: 5px 10px;
+      padding: 8px 12px;
       border: none;
       background-color: #ccc;
       color: black;
       cursor: pointer;
+    }
+
+    .pagination button.active {
+      background-color: #440099;
+      color: white;
     }
 
     .pagination button:disabled {
@@ -153,14 +154,16 @@
       <button class="clear-filters" onclick="resetFilters()">Clear all filters</button>
     </div>
     <div id="profiles"></div>
+    <div id="pagination" class="pagination"></div>
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
   <script>
     const sheetUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQq-VWxY0LJS733k2cy-gFAFJOI3rnbtVzi1wSPUleNj5ulB9E-cAH0-mSo4-PQrvFsczyC2P-wfyw5/pub?output=csv";
     let allProfiles = [];
+    let filteredProfiles = [];
     const itemsPerPage = 12;
-    const teamPageState = {}; // Keeps track of page number per team
+    let currentPage = 1;
     let debounceTimer;
 
     document.addEventListener("DOMContentLoaded", () => {
@@ -177,10 +180,16 @@
 
       document.getElementById("searchInput").addEventListener("input", () => {
         clearTimeout(debounceTimer);
-        debounceTimer = setTimeout(applyFilters, 300);
+        debounceTimer = setTimeout(() => {
+          currentPage = 1;
+          applyFilters();
+        }, 300);
       });
 
-      document.getElementById("teamFilter").addEventListener("change", applyFilters);
+      document.getElementById("teamFilter").addEventListener("change", () => {
+        currentPage = 1;
+        applyFilters();
+      });
     });
 
     function populateTeamFilter(profiles) {
@@ -209,6 +218,7 @@
     function resetFilters() {
       document.getElementById("searchInput").value = "";
       document.getElementById("teamFilter").value = "";
+      currentPage = 1;
       history.replaceState({}, "", window.location.pathname);
       filterAndDisplay("", "");
     }
@@ -231,7 +241,7 @@
     }
 
     function filterAndDisplay(searchTerm, teamFilter) {
-      const profiles = allProfiles.filter(profile => {
+      filteredProfiles = allProfiles.filter(profile => {
         const matchesTeam = !teamFilter || profile.Team === teamFilter;
         const text = (profile['First name'] + " " + profile['Surname'] + " " +
                       profile['Job title'] + " " + profile['Team'] + " " +
@@ -240,37 +250,34 @@
         return matchesTeam && matchesSearch;
       });
 
+      filteredProfiles.sort((a, b) => a['Surname'].localeCompare(b['Surname']));
+      displayProfiles(searchTerm);
+      renderPaginationControls();
+    }
+
+    function displayProfiles(searchTerm) {
+      const paginated = filteredProfiles.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+
       const grouped = {};
-      for (const profile of profiles) {
+      for (const profile of paginated) {
         const team = profile.Team || "Other";
         if (!grouped[team]) grouped[team] = [];
         grouped[team].push(profile);
       }
 
-      const profilesContainer = document.getElementById("profiles");
-      profilesContainer.innerHTML = "";
+      const container = document.getElementById("profiles");
+      container.innerHTML = "";
 
       for (const team of Object.keys(grouped).sort()) {
-        if (!teamPageState[team]) teamPageState[team] = 1;
-        const section = document.createElement("div");
-        section.className = "team-section";
-
         const heading = document.createElement("div");
         heading.className = "team-heading";
         heading.textContent = team;
-        section.appendChild(heading);
+        container.appendChild(heading);
 
         const grid = document.createElement("div");
         grid.className = "team-grid";
 
-        const profilesInTeam = grouped[team];
-        const currentPage = teamPageState[team];
-        const totalPages = Math.ceil(profilesInTeam.length / itemsPerPage);
-        const start = (currentPage - 1) * itemsPerPage;
-        const end = start + itemsPerPage;
-        const currentItems = profilesInTeam.slice(start, end);
-
-        for (const profile of currentItems) {
+        for (const profile of grouped[team]) {
           const card = document.createElement("div");
           card.className = "profile-card";
           card.innerHTML = `
@@ -284,38 +291,32 @@
           grid.appendChild(card);
         }
 
-        section.appendChild(grid);
-
-        if (totalPages > 1) {
-          const pagination = document.createElement("div");
-          pagination.className = "pagination";
-
-          const prev = document.createElement("button");
-          prev.textContent = "Prev";
-          prev.disabled = currentPage === 1;
-          prev.onclick = () => {
-            teamPageState[team]--;
-            filterAndDisplay(searchTerm, teamFilter);
-          };
-          pagination.appendChild(prev);
-
-          const next = document.createElement("button");
-          next.textContent = "Next";
-          next.disabled = currentPage === totalPages;
-          next.onclick = () => {
-            teamPageState[team]++;
-            filterAndDisplay(searchTerm, teamFilter);
-          };
-          pagination.appendChild(next);
-
-          section.appendChild(pagination);
-        }
-
-        profilesContainer.appendChild(section);
+        container.appendChild(grid);
       }
 
-      if (profiles.length === 0) {
-        profilesContainer.innerHTML = "<p>No matching staff found.</p>";
+      if (filteredProfiles.length === 0) {
+        container.innerHTML = "<p>No matching staff found.</p>";
+      }
+    }
+
+    function renderPaginationControls() {
+      const totalPages = Math.ceil(filteredProfiles.length / itemsPerPage);
+      const pagination = document.getElementById("pagination");
+      pagination.innerHTML = "";
+
+      if (totalPages <= 1) return;
+
+      for (let i = 1; i <= totalPages; i++) {
+        const btn = document.createElement("button");
+        btn.textContent = i;
+        btn.className = i === currentPage ? "active" : "";
+        btn.onclick = () => {
+          currentPage = i;
+          displayProfiles(document.getElementById("searchInput").value.trim());
+          renderPaginationControls();
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        };
+        pagination.appendChild(btn);
       }
     }
   </script>
