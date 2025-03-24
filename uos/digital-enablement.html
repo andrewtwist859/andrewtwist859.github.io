@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://use.typekit.net/jou7rrz.css">
+<title>Digital Enablement</title>
+<style>
+  body {
+    font-family: 'source-sans-pro', sans-serif; /* Consistent font family */
+    margin: 0;
+    padding: 0;
+    background: #F3F4F4; /* Light background color */
+  }
+  .container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Three columns layout */
+    gap: 20px;
+  }
+
+  #profiles {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    width: 100%; 
+    grid-column: 1 / -1; 
+  }
+  .search-box {
+    grid-column: 1 / -1; /* Full width */
+    display: flex;
+    margin-bottom: 20px;
+  }
+  input[type="text"] {
+    padding: 10px;
+    width: 60%;
+    margin-right: 10px;
+    border: 2px solid #cccccc; /* Light gray border */
+    border-radius: 5px;
+    font-size: 1rem;
+  }
+  button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #440099; /* Theme color */
+    color: white;
+    cursor: pointer;
+  }
+  .profile-card {
+    background-color: #fff  ; /* Light gray background */
+    padding: 2rem;
+    display: flex;
+    flex-direction: column; /* Vertical stack */
+  
+  }
+  .avatar {
+    width: 80px; /* Fixed size for consistency */
+    height: 80px;
+    margin-bottom: 10px; /* Space between image and text */
+  }
+
+  h2 {
+    color: black;
+    font-family: 'source-serif-pro';
+    font-weight: 700;
+    font-size: 40pt;
+    margin-bottom: 0.25rem;
+    margin-top: 0rem;
+  }
+
+  h3 {
+    color: black;
+    font-family: 'source-serif-pro';
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .email {
+    margin-top: 1rem;
+    font-weight: 700;
+  }
+
+  .email a{
+    color: #440099;
+    text-decoration: underline;
+  }
+
+  .name {
+    font-family: 'source-serif-pro';
+    font-size: 1.4rem;
+    color: #333333;
+    margin: 5px 0; /* Tighter spacing around names and titles */
+  }
+.title,.team {
+    font-size: 1.1rem;
+    margin: 5px 0; /* Tighter spacing around names and titles */
+  }
+  .info {
+    font-size: 1.1rem; /* Slightly smaller font size for less important info */
+    line-height: 1.5    ;
+  }
+
+  /* Medium screens (tablets, large phones etc.) */
+@media (max-width: 1200px) {
+  .container, #profiles {
+    grid-template-columns: repeat(2, 1fr); /* Two columns when the screen is under 800px wide */
+  }
+}
+
+/* Small screens (small devices, phones etc.) */
+@media (max-width: 700px) {
+  .container, #profiles {
+    grid-template-columns: 1fr; /* One column when the screen is under 500px wide */
+  }
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <h2>People</h2>
+  <div class="search-box">
+    <input type="text" id="searchInput" placeholder="Search by name, job title, team and expertise" oninput="searchProfiles()">
+    <button onclick="searchProfiles()">Search</button>
+  </div>
+  <div id="profiles">
+    <!-- Profiles will be added here -->
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+<script>
+  const sheetUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQq-VWxY0LJS733k2cy-gFAFJOI3rnbtVzi1wSPUleNj5ulB9E-cAH0-mSo4-PQrvFsczyC2P-wfyw5/pub?output=csv";
+
+  document.addEventListener('DOMContentLoaded', function() {
+    loadAndDisplayProfiles();
+  });
+
+  function searchProfiles() {
+    const searchTerm = document.getElementById("searchInput").value.toLowerCase();
+    filterProfiles(searchTerm);
+  }
+
+  function loadAndDisplayProfiles() {
+    Papa.parse(sheetUrl, {
+        download: true,
+        header: true,
+        complete: function(results) {
+            let profiles = results.data;
+            profiles.sort((a, b) => a['Surname'].localeCompare(b['Surname'])); // Sorting profiles alphabetically by surname
+            displayProfiles(profiles);
+        }
+    });
+}
+
+function filterProfiles(searchTerm) {
+    Papa.parse(sheetUrl, {
+        download: true,
+        header: true,
+        complete: function(results) {
+            let data = results.data;
+            let filteredData = data.filter(profile =>
+                profile['First name'].toLowerCase().includes(searchTerm) ||
+                profile['Surname'].toLowerCase().includes(searchTerm) ||
+                profile['Job title'].toLowerCase().includes(searchTerm) ||
+                profile['Team'].toLowerCase().includes(searchTerm) ||
+                profile['Ask me about'].toLowerCase().includes(searchTerm) ||
+                profile['Group membership'].toLowerCase().includes(searchTerm)
+            );
+            filteredData.sort((a, b) => a['Surname'].localeCompare(b['Surname'])); // Sorting filtered profiles alphabetically by surname
+            displayProfiles(filteredData);
+        }
+    });
+}
+
+  function displayProfiles(profiles) {
+    const profilesContainer = document.getElementById("profiles");
+    profilesContainer.innerHTML = '';
+    profiles.forEach(profile => {
+      const profileElement = document.createElement('div');
+      profileElement.className = 'profile-card';
+      profileElement.innerHTML = `
+        <img class="avatar" src="${profile.Avatar}" alt="Profile Image">
+        <div class="name"><strong>${profile['First name']} ${profile['Surname']}</strong></div>
+        <div class="title">${profile['Job title']}</div>
+        <div class="team">${profile.Team}</div>
+        <div class="email"><a href="mailto:${profile.Email}">${profile.Email}</a></div>
+        <div class="info"><h3>Ask me about:</h3> ${profile['Ask me about']}</div>
+      `;
+      profilesContainer.appendChild(profileElement);
+    });
+  }
+</script>
+</body>
+</html>
