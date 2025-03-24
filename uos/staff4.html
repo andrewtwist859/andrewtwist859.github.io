@@ -67,7 +67,7 @@
       padding-bottom: 0.5rem;
     }
 
-    .team-grid {
+    .grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
       gap: 20px;
@@ -251,44 +251,47 @@
       });
 
       filteredProfiles.sort((a, b) => a['Surname'].localeCompare(b['Surname']));
-      displayProfiles(searchTerm);
+      displayProfiles(searchTerm, teamFilter);
       renderPaginationControls();
     }
 
-    function displayProfiles(searchTerm) {
+    function displayProfiles(searchTerm, teamFilter) {
       const paginated = filteredProfiles.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
-
-      const grouped = {};
-      for (const profile of paginated) {
-        const team = profile.Team || "Other";
-        if (!grouped[team]) grouped[team] = [];
-        grouped[team].push(profile);
-      }
-
       const container = document.getElementById("profiles");
       container.innerHTML = "";
 
-      for (const team of Object.keys(grouped).sort()) {
-        const heading = document.createElement("div");
-        heading.className = "team-heading";
-        heading.textContent = team;
-        container.appendChild(heading);
+      const showGrouped = searchTerm || teamFilter;
 
+      if (showGrouped) {
+        const grouped = {};
+        for (const profile of paginated) {
+          const team = profile.Team || "Other";
+          if (!grouped[team]) grouped[team] = [];
+          grouped[team].push(profile);
+        }
+
+        for (const team of Object.keys(grouped).sort()) {
+          const heading = document.createElement("div");
+          heading.className = "team-heading";
+          heading.textContent = team;
+          container.appendChild(heading);
+
+          const grid = document.createElement("div");
+          grid.className = "grid";
+
+          for (const profile of grouped[team]) {
+            grid.appendChild(createCard(profile, searchTerm));
+          }
+
+          container.appendChild(grid);
+        }
+
+      } else {
         const grid = document.createElement("div");
-        grid.className = "team-grid";
+        grid.className = "grid";
 
-        for (const profile of grouped[team]) {
-          const card = document.createElement("div");
-          card.className = "profile-card";
-          card.innerHTML = `
-            <img class="avatar" src="${profile.Avatar}" alt="Profile Image">
-            <div class="name"><strong>${highlight(profile['First name'] + " " + profile['Surname'], searchTerm)}</strong></div>
-            <div class="title">${highlight(profile['Job title'] || "", searchTerm)}</div>
-            <div class="team">${highlight(profile['Team'] || "", searchTerm)}</div>
-            <div class="email"><a href="mailto:${profile.Email}">${profile.Email}</a></div>
-            <div class="info"><h3>Ask me about:</h3> ${highlight(profile['Ask me about'] || "", searchTerm)}</div>
-          `;
-          grid.appendChild(card);
+        for (const profile of paginated) {
+          grid.appendChild(createCard(profile, searchTerm));
         }
 
         container.appendChild(grid);
@@ -297,6 +300,20 @@
       if (filteredProfiles.length === 0) {
         container.innerHTML = "<p>No matching staff found.</p>";
       }
+    }
+
+    function createCard(profile, searchTerm) {
+      const card = document.createElement("div");
+      card.className = "profile-card";
+      card.innerHTML = `
+        <img class="avatar" src="${profile.Avatar}" alt="Profile Image">
+        <div class="name"><strong>${highlight(profile['First name'] + " " + profile['Surname'], searchTerm)}</strong></div>
+        <div class="title">${highlight(profile['Job title'] || "", searchTerm)}</div>
+        <div class="team">${highlight(profile['Team'] || "", searchTerm)}</div>
+        <div class="email"><a href="mailto:${profile.Email}">${profile.Email}</a></div>
+        <div class="info"><h3>Ask me about:</h3> ${highlight(profile['Ask me about'] || "", searchTerm)}</div>
+      `;
+      return card;
     }
 
     function renderPaginationControls() {
@@ -312,7 +329,9 @@
         btn.className = i === currentPage ? "active" : "";
         btn.onclick = () => {
           currentPage = i;
-          displayProfiles(document.getElementById("searchInput").value.trim());
+          const search = document.getElementById("searchInput").value.trim();
+          const team = document.getElementById("teamFilter").value;
+          displayProfiles(search, team);
           renderPaginationControls();
           window.scrollTo({ top: 0, behavior: "smooth" });
         };
