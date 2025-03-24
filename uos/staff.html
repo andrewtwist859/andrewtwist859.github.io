@@ -140,43 +140,37 @@
       loadAndDisplayProfiles();
     });
 
-    function searchProfiles() {
-      const searchTerm = document.getElementById("searchInput").value.toLowerCase();
-      Papa.parse(sheetUrl, {
-        download: true,
-        header: true,
-        complete: function(results) {
-          const data = results.data;
-          const filtered = data.filter(profile =>
-            (profile['First name'] || '').toLowerCase().includes(searchTerm) ||
-            (profile['Surname'] || '').toLowerCase().includes(searchTerm) ||
-            (profile['Job title'] || '').toLowerCase().includes(searchTerm) ||
-            (profile['Team'] || '').toLowerCase().includes(searchTerm) ||
-            (profile['Ask me about'] || '').toLowerCase().includes(searchTerm) ||
-            (profile['Group membership'] || '').toLowerCase().includes(searchTerm)
-          );
-          filtered.sort((a, b) => a['Surname'].localeCompare(b['Surname']));
-          displayProfiles(filtered, 1);
-        }
-      });
-    }
-
     function loadAndDisplayProfiles() {
       Papa.parse(sheetUrl, {
         download: true,
         header: true,
         complete: function(results) {
-          const profiles = results.data;
-          profiles.sort((a, b) => a['Surname'].localeCompare(b['Surname']));
-          displayProfiles(profiles, 1);
+          allProfiles = results.data.filter(p => p['First name'] && p['Surname']); // Remove empty rows
+          allProfiles.sort((a, b) => a['Surname'].localeCompare(b['Surname']));
+          displayProfiles(allProfiles, 1);
         }
       });
+    }
+
+    function searchProfiles() {
+      const searchTerm = document.getElementById("searchInput").value.toLowerCase();
+
+      const filtered = allProfiles.filter(profile =>
+        (profile['First name'] || '').toLowerCase().includes(searchTerm) ||
+        (profile['Surname'] || '').toLowerCase().includes(searchTerm) ||
+        (profile['Job title'] || '').toLowerCase().includes(searchTerm) ||
+        (profile['Team'] || '').toLowerCase().includes(searchTerm) ||
+        (profile['Ask me about'] || '').toLowerCase().includes(searchTerm) ||
+        (profile['Group membership'] || '').toLowerCase().includes(searchTerm)
+      );
+
+      filtered.sort((a, b) => a['Surname'].localeCompare(b['Surname']));
+      displayProfiles(filtered, 1);
     }
 
     function displayProfiles(profiles, page = 1) {
       const profilesContainer = document.getElementById("profiles");
       const paginationContainer = document.getElementById("pagination");
-      allProfiles = profiles;
       currentPage = page;
 
       profilesContainer.innerHTML = '';
@@ -216,7 +210,14 @@
         btn.style.cursor = 'pointer';
         btn.style.backgroundColor = i === currentPage ? '#440099' : '#ccc';
         btn.style.color = i === currentPage ? 'white' : 'black';
-        btn.onclick = () => displayProfiles(allProfiles, i);
+        btn.onclick = () => displayProfiles(allProfiles.filter(profile =>
+          (profile['First name'] || '').toLowerCase().includes(document.getElementById("searchInput").value.toLowerCase()) ||
+          (profile['Surname'] || '').toLowerCase().includes(document.getElementById("searchInput").value.toLowerCase()) ||
+          (profile['Job title'] || '').toLowerCase().includes(document.getElementById("searchInput").value.toLowerCase()) ||
+          (profile['Team'] || '').toLowerCase().includes(document.getElementById("searchInput").value.toLowerCase()) ||
+          (profile['Ask me about'] || '').toLowerCase().includes(document.getElementById("searchInput").value.toLowerCase()) ||
+          (profile['Group membership'] || '').toLowerCase().includes(document.getElementById("searchInput").value.toLowerCase())
+        ), i);
         paginationContainer.appendChild(btn);
       }
     }
