@@ -79,17 +79,7 @@
       padding: 2rem;
       display: flex;
       flex-direction: column;
-      transition: transform 0.3s ease, opacity 0.3s ease;
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeInUp 0.4s forwards;
-    }
 
-    @keyframes fadeInUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
     }
 
     .avatar {
@@ -330,18 +320,25 @@
     }
 
     function createCard(profile, searchTerm) {
-      const card = document.createElement("div");
-      card.className = "profile-card";
-      card.innerHTML = `
-        <img class="avatar" src="${profile.Avatar}" alt="Profile Image">
-        <div class="name"><strong>${highlight(profile['First name'] + " " + profile['Surname'], searchTerm)}</strong></div>
-        <div class="title">${highlight(profile['Job title'] || "", searchTerm)}</div>
-        <div class="team">${highlight(profile['Team'] || "", searchTerm)}</div>
-        <div class="email"><a href="mailto:${profile.Email}">${profile.Email}</a></div>
-        <div class="info"><h3>Ask me about:</h3> ${highlight(profile['Ask me about'] || "", searchTerm)}</div>
-      `;
-      return card;
-    }
+    const safe = str => str ? str : "";
+    const card = document.createElement("div");
+    card.className = "profile-card";
+    card.innerHTML = `
+      <img class="avatar" src="${safe(profile.Avatar)}" alt="Profile Image">
+      <div class="name"><strong>${highlight(safe(profile['First name']) + " " + safe(profile['Surname']), searchTerm)}</strong></div>
+      <div class="title">${highlight(safe(profile['Job title']), searchTerm)}</div>
+      <div class="team">${highlight(safe(profile['Team']), searchTerm)}</div>
+      <div class="email"><a href="mailto:${safe(profile.Email)}">${safe(profile.Email)}</a></div>
+      <div class="info"><h3>Ask me about:</h3> ${highlight(safe(profile['Ask me about']), searchTerm)}</div>
+    `;
+    return card;
+  }
+
+  function highlight(text, term) {
+    if (!term || !text) return text;
+    const regex = new RegExp(`(${term})`, 'gi');
+    return text.replace(regex, '<mark>$1</mark>');
+  }
 
     function renderPaginationControls() {
       const totalPages = Math.ceil(filteredProfiles.length / itemsPerPage);
