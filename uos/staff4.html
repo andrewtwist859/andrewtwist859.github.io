@@ -62,6 +62,7 @@
       font-family: 'source-serif-pro';
       font-weight: 700;
       font-size: 2rem;
+      margin-top:0.5rem;
       margin-bottom: 1rem;
       border-bottom: 2px solid #ccc;
       padding-bottom: 0.5rem;
@@ -78,6 +79,17 @@
       padding: 2rem;
       display: flex;
       flex-direction: column;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.4s forwards;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .avatar {
@@ -190,6 +202,17 @@
         currentPage = 1;
         applyFilters();
       });
+
+      document.addEventListener("keydown", e => {
+        const totalPages = Math.ceil(filteredProfiles.length / itemsPerPage);
+        if (e.key === "ArrowLeft" && currentPage > 1) {
+          currentPage--;
+          updateView();
+        } else if (e.key === "ArrowRight" && currentPage < totalPages) {
+          currentPage++;
+          updateView();
+        }
+      });
     });
 
     function populateTeamFilter(profiles) {
@@ -206,11 +229,10 @@
     function applyFilters() {
       const search = document.getElementById("searchInput").value.trim();
       const team = document.getElementById("teamFilter").value;
-
       const params = new URLSearchParams();
       if (search) params.set("search", search);
       if (team) params.set("team", team);
-
+      params.set("page", currentPage);
       history.replaceState({}, "", `${window.location.pathname}?${params.toString()}`);
       filterAndDisplay(search, team);
     }
@@ -227,10 +249,9 @@
       const params = new URLSearchParams(window.location.search);
       const search = params.get("search") || "";
       const team = params.get("team") || "";
-
+      currentPage = parseInt(params.get("page") || "1");
       document.getElementById("searchInput").value = search;
       document.getElementById("teamFilter").value = team;
-
       filterAndDisplay(search, team);
     }
 
@@ -251,11 +272,19 @@
       });
 
       filteredProfiles.sort((a, b) => a['Surname'].localeCompare(b['Surname']));
-      displayProfiles(searchTerm, teamFilter);
-      renderPaginationControls();
+      updateView();
     }
 
-    function displayProfiles(searchTerm, teamFilter) {
+    function updateView() {
+      displayProfiles();
+      renderPaginationControls();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      applyFilters(); // keeps URL in sync
+    }
+
+    function displayProfiles() {
+      const searchTerm = document.getElementById("searchInput").value.trim();
+      const teamFilter = document.getElementById("teamFilter").value;
       const paginated = filteredProfiles.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
       const container = document.getElementById("profiles");
       container.innerHTML = "";
@@ -289,11 +318,9 @@
       } else {
         const grid = document.createElement("div");
         grid.className = "grid";
-
         for (const profile of paginated) {
           grid.appendChild(createCard(profile, searchTerm));
         }
-
         container.appendChild(grid);
       }
 
@@ -329,11 +356,7 @@
         btn.className = i === currentPage ? "active" : "";
         btn.onclick = () => {
           currentPage = i;
-          const search = document.getElementById("searchInput").value.trim();
-          const team = document.getElementById("teamFilter").value;
-          displayProfiles(search, team);
-          renderPaginationControls();
-          window.scrollTo({ top: 0, behavior: "smooth" });
+          updateView();
         };
         pagination.appendChild(btn);
       }
