@@ -272,6 +272,12 @@
         });
       }
     });
+
+    function highlight(text, term) {
+      if (!term) return text;
+      const regex = new RegExp(`(${term})`, 'gi');
+      return text.replace(regex, '<mark>$1</mark>');
+    }
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
 </body>
