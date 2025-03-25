@@ -78,11 +78,13 @@
     }
 
     .profile-details {
-      display: flex;
-      flex-direction: column;
-      gap: 0.3rem;
-      font-size: 0.95rem;
-    }
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  font-size: 0.95rem;
+  flex: 1; /* Add this! */
+  min-width: 0; /* Prevent flexbox from enforcing unnecessary width minimums */
+}
 
     .name {
       font-family: 'source-serif-pro';
