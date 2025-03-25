@@ -104,15 +104,21 @@
   width: 100%;
 }
 
-    .email-input {
+.email-input {
+  flex-grow: 1;
+  flex-shrink: 1;
+  min-width: 0;
   border: none;
   background: transparent;
   font-weight: 600;
   color: #440099;
   cursor: pointer;
   padding: 0;
-  flex: 1 1 auto; /* Allow the input to grow */
-  min-width: 0;   /* Important: prevents shrinking issues in flexbox */
+  font-size: 0.9rem;
+  font-family: inherit;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
     .email-input:focus {
