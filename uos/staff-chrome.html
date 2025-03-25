@@ -22,7 +22,7 @@
     }
 
     .container h2 {
-        font-family: 'source-serif-pro';
+      font-family: 'source-serif-pro';
       font-size: 1.4rem;
       font-weight: 700;
     }
@@ -91,8 +91,7 @@
       margin: 0;
     }
 
-    .title,
-    .team {
+    .title, .team {
       font-size: 0.95rem;
       margin: 0;
     }
@@ -120,27 +119,54 @@
     }
 
     .copy-email {
-  cursor: pointer;
-}
-.copy-email:hover {
-  text-decoration: none;
-}
+      cursor: pointer;
+    }
+    .copy-email:hover {
+      text-decoration: none;
+    }
+
+    .tooltip {
+      position: relative;
+      display: inline-block;
+    }
+
+    .tooltip-text {
+      visibility: hidden;
+      background-color: #440099;
+      color: #fff;
+      text-align: center;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      position: absolute;
+      z-index: 1;
+      bottom: 125%;
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      white-space: nowrap;
+    }
+
+    .tooltip.show .tooltip-text {
+      visibility: visible;
+      opacity: 1;
+    }
   </style>
 </head>
 <body>
-    <div class="section-header-container">
-        <div class="section-header">
-            <h2>MARC</h2>
-        </div>
+  <div class="section-header-container">
+    <div class="section-header">
+      <h2>MARC</h2>
     </div>
-    <div class="section-navbar-background">
-        <div class="section-navbar-container">
-          <ul class="section-navbar">
-            <li><a href="#">Staff Directory
-            </a></li>
-          </ul>
-        </div>
-      </div>
+  </div>
+  <div class="section-navbar-background">
+    <div class="section-navbar-container">
+      <ul class="section-navbar">
+        <li><a href="#">Staff Directory</a></li>
+      </ul>
+    </div>
+  </div>
   <div class="container">
     <h2>Find a colleague</h2>
     <div class="search-box">
@@ -153,6 +179,7 @@
     <div id="profiles" class="grid"></div>
   </div>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
   <script>
     const sheetUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQq-VWxY0LJS733k2cy-gFAFJOI3rnbtVzi1wSPUleNj5ulB9E-cAH0-mSo4-PQrvFsczyC2P-wfyw5/pub?output=csv";
     let allProfiles = [];
@@ -169,13 +196,8 @@
           displayProfiles(allProfiles);
         });
 
-      document.getElementById("searchInput").addEventListener("input", () => {
-        applyFilters();
-      });
-
-      document.getElementById("teamFilter").addEventListener("change", () => {
-        applyFilters();
-      });
+      document.getElementById("searchInput").addEventListener("input", () => applyFilters());
+      document.getElementById("teamFilter").addEventListener("change", () => applyFilters());
     });
 
     function populateTeamFilter(profiles) {
@@ -208,12 +230,6 @@
       displayProfiles(filteredProfiles);
     }
 
-    function highlight(text, term) {
-      if (!term) return text;
-      const regex = new RegExp(`(${term})`, 'gi');
-      return text.replace(regex, '<mark>$1</mark>');
-    }
-
     function displayProfiles(profiles) {
       const container = document.getElementById("profiles");
       container.innerHTML = "";
@@ -231,7 +247,10 @@
           <div class="name">${profile['First name']} ${profile['Surname']}</div>
           <div class="title">${profile['Job title'] || ''}</div>
           <div class="team">${profile['Team'] || ''}</div>
-          <div class="email"><a href="#" class="copy-email" data-email="${profile.Email}">${profile.Email}</a></div>
+          <div class="email tooltip">
+            <a href="#" class="copy-email" data-email="${profile.Email}">${profile.Email}</a>
+            <span class="tooltip-text">Email address copied to clipboard</span>
+          </div>
           <div class="info"><h3>Ask me about:</h3> ${profile['Ask me about'] || ''}</div>
         </div>
       `;
@@ -239,23 +258,21 @@
     }
 
     document.addEventListener("click", function (e) {
-  if (e.target.classList.contains("copy-email")) {
-    e.preventDefault();
-    const email = e.target.dataset.email;
+      if (e.target.classList.contains("copy-email")) {
+        e.preventDefault();
+        const email = e.target.dataset.email;
+        const tooltipWrapper = e.target.closest(".tooltip");
 
-    // Copy to clipboard
-    navigator.clipboard.writeText(email).then(() => {
-      // Optional: show a quick confirmation
-      e.target.textContent = "Copied!";
-      setTimeout(() => {
-        e.target.textContent = email;
-      }, 1200);
-    }).catch(err => {
-      console.error("Failed to copy!", err);
+        navigator.clipboard.writeText(email).then(() => {
+          tooltipWrapper.classList.add("show");
+          setTimeout(() => {
+            tooltipWrapper.classList.remove("show");
+          }, 1200);
+        }).catch(err => {
+          console.error("Failed to copy!", err);
+        });
+      }
     });
-  }
-});
   </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
 </body>
 </html>
