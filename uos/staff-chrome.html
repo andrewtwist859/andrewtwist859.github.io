@@ -98,23 +98,24 @@
     }
 
     .email {
-      margin: 0.2rem 0;
-      font-size: 0.9rem;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+}
 
     .email-input {
-      border: none;
-      background: transparent;
-      font-weight: 600;
-      color: #440099;
-      cursor: pointer;
-      padding: 0;
-      width: 100%;
-    }
+  border: none;
+  background: transparent;
+  font-weight: 600;
+  color: #440099;
+  cursor: pointer;
+  padding: 0;
+  flex: 1 1 auto; /* Allow the input to grow */
+  min-width: 0;   /* Important: prevents shrinking issues in flexbox */
+  width: 100%;
+  font-family: inherit;
+}
 
     .email-input:focus {
       outline: none;
