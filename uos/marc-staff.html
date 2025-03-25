@@ -324,6 +324,30 @@ font-size: 16pt;
       cursor: not-allowed;
     }
 
+    @media (max-width: 600px) {
+  .pagination {
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 0 10px;
+  }
+
+  .pagination button {
+    flex: 1 1 40px;
+    padding: 10px 0;
+    font-size: 1rem;
+    min-width: 40px;
+  }
+}
+
+@media (max-width: 400px) {
+  .pagination button {
+    flex: 1 1 30px;
+    font-size: 0.9rem;
+    padding: 8px 0;
+    min-width: 30px;
+  }
+}
+
   </style>
 </head>
 <body>
