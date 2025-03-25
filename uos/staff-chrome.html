@@ -145,6 +145,11 @@
       margin: 0 0 0.2rem;
       font-size: 0.9rem;
     }
+
+    mark {
+  background-color: yellow;
+  padding: 0 2px;
+}
   </style>
 </head>
 <body>
@@ -236,22 +241,23 @@
     }
 
     function createCard(profile) {
-      const card = document.createElement("div");
-      card.className = "profile-card";
-      card.innerHTML = `
-        <img class="avatar" src="${profile.Avatar}" alt="Profile Image">
-        <div class="profile-details">
-          <div class="name">${profile['First name']} ${profile['Surname']}</div>
-          <div class="title">${profile['Job title'] || ''}</div>
-          <div class="team">${profile['Team'] || ''}</div>
-          <div class="email">
-            <input class="email-input" value="${profile.Email}" readonly data-original="${profile.Email}" />
-          </div>
-          <div class="info"><h3>Ask me about:</h3> ${profile['Ask me about'] || ''}</div>
-        </div>
-      `;
-      return card;
-    }
+  const searchTerm = document.getElementById("searchInput").value.trim();
+  const card = document.createElement("div");
+  card.className = "profile-card";
+  card.innerHTML = `
+    <img class="avatar" src="${profile.Avatar}" alt="Profile Image">
+    <div class="profile-details">
+      <div class="name">${highlight(profile['First name'] + ' ' + profile['Surname'], searchTerm)}</div>
+      <div class="title">${highlight(profile['Job title'] || '', searchTerm)}</div>
+      <div class="team">${highlight(profile['Team'] || '', searchTerm)}</div>
+      <div class="email">
+        <input class="email-input" value="${profile.Email}" readonly data-original="${profile.Email}" />
+      </div>
+      <div class="info"><h3>Ask me about:</h3> ${highlight(profile['Ask me about'] || '', searchTerm)}</div>
+    </div>
+  `;
+  return card;
+}
 
     document.addEventListener("click", function (e) {
       if (e.target.classList.contains("email-input")) {
