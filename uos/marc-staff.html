@@ -349,6 +349,14 @@ font-size: 16pt;
     line-height: 36px;
   }
 }
+.copy-email {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.copy-email:hover {
+  color: #0056b3;
+}
 
 
   </style>
@@ -569,7 +577,7 @@ font-size: 16pt;
         <div class="name"><strong>${highlight(profile['First name'] + " " + profile['Surname'], searchTerm)}</strong></div>
         <div class="title">${highlight(profile['Job title'] || "", searchTerm)}</div>
         <div class="team">${highlight(profile['Team'] || "", searchTerm)}</div>
-        <div class="email"><a href="mailto:${profile.Email}">${profile.Email}</a></div>
+        <div class="email"><a href="#" class="copy-email" data-email="${profile.Email}" title="Click to copy">${profile.Email}</a></div>
         <div class="info"><h3>Ask me about:</h3> ${highlight(profile['Ask me about'] || "", searchTerm)}</div>
       `;
       return card;
@@ -597,6 +605,22 @@ font-size: 16pt;
         pagination.appendChild(btn);
       }
     }
+
+    document.addEventListener("click", function(e) {
+  if (e.target.classList.contains("copy-email")) {
+    e.preventDefault();
+    const email = e.target.getAttribute("data-email");
+    navigator.clipboard.writeText(email).then(() => {
+      e.target.textContent = "Copied!";
+      setTimeout(() => {
+        e.target.textContent = email;
+      }, 1500);
+    }).catch(err => {
+      console.error("Failed to copy email: ", err);
+    });
+  }
+});
+
   </script>
 </body>
 </html>
