@@ -380,7 +380,10 @@ h1 {
       wrapper.innerHTML = `
         <div class="level">${course.Level}</div>
         <h2 class="title">${highlightedTitle}</h2>
-        <div class="start-date-pill pill-${currentYear}">${course['Start date']}</div>
+        <div class="start-date-pill pill-${course.Level.includes('Postgraduate') ? 'PGT' : currentYear}">
+  ${course['Start date']}
+</div>
+
         <div class="description">${course.Description}</div>
       `;
     
