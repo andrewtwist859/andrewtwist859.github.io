@@ -467,35 +467,20 @@ details[open] .accordion-icon-wrapper {
   
 <!-- Accordion layout -->
 <div id="courseContainer">
-    <details>
-      <summary id="undergraduate">
-        Undergraduate courses
-        <span class="accordion-icon-wrapper">
-        <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-          <path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/>
-        </svg>
-    </span>
-      </summary>
+    
+    <h2 id="undergraduate" class="course-header">
+      Undergraduate courses</h2>
       <div class="dataset-toggle">
-        <p>Choose undergraduate year:</p>
-        <button class="dataset-btn active" data-year="2025">2025–26 Courses</button>
-        <button class="dataset-btn" data-year="2026">2026–27 Courses</button>
-      </div>
-      
-      <div class="course-grid" id="ugCourses"></div>
-    </details>
-  
-    <details>
-      <summary id="pgt">
-        Postgraduate taught courses
-        <span class="accordion-icon-wrapper">
-        <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-          <path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/>
-        </svg></span>
-      </summary>
-      <div class="course-grid" id="pgtCourses"></div>
-    </details>
-  </div>
+          <p>Choose undergraduate year:</p>
+          <button class="dataset-btn active" data-year="2025">2025–26 Courses</button>
+          <button class="dataset-btn" data-year="2026">2026–27 Courses</button>
+        </div>          
+    <div class="course-grid" id="ugCourses"></div>
+  <hr />
+    <h2 id="pgt" class="course-header">
+      Postgraduate taught courses</h2>
+    <div class="course-grid" id="pgtCourses"></div>
+</div>
   
   
 
