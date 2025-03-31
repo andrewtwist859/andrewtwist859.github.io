@@ -330,16 +330,6 @@ h1 {
         <button id="clearSearch" class="clear-search" aria-label="Clear search">×</button>
       </div>
           </div>
-    <div class="filter-item">
-      <div class="select-wrapper">
-        <select id="subjectSelect"></select>
-        <span class="custom-arrow">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-            <path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/>
-          </svg>
-        </span>
-      </div>
-    </div>
     <div class="filter-item" style="flex: 0 0 auto;">
       <button id="clearFilters" class="clear-button">Clear filters</button>
     </div>
@@ -513,8 +503,8 @@ wrapper.className = `card ${levelClass}`;
       const container = document.getElementById('courseContainer');
       const resultsCount = document.getElementById('resultsCount');
     
-      const selected = subjectSelect.value;
-      activeSubjects = selected ? new Set([selected]) : new Set();
+      activeSubjects = new Set(["Biosciences"]);
+
     
       let filtered = allData.filter(row =>
         matchSubjectFilter(row) && matchSearch(row, query)
@@ -526,48 +516,59 @@ wrapper.className = `card ${levelClass}`;
       container.innerHTML = '';
     
       if (hasSearch || hasFilter) {
-  const grouped = {
-    Undergraduate: [],
-    'Postgraduate Taught': []
-  };
+        const grouped = {
+  Undergraduate: [],
+  'Postgraduate Taught': []
+};
 
-  // Group the filtered results by level
-  filtered.forEach(course => {
-    const level = (course.Level || '').trim();
-    if (level === 'Postgraduate Taught') {
-      grouped['Postgraduate Taught'].push(course);
-    } else {
-      grouped['Undergraduate'].push(course);
-    }
+filtered.forEach(course => {
+  const level = (course.Level || '').trim();
+  if (level === 'Postgraduate Taught') {
+    grouped['Postgraduate Taught'].push(course);
+  } else {
+    grouped['Undergraduate'].push(course);
+  }
+});
+
+container.innerHTML = '';
+
+// Render UG
+if (grouped['Undergraduate'].length > 0) {
+  const ugHeading = document.createElement('h3');
+  ugHeading.className = 'course-group-heading';
+  ugHeading.textContent = 'Undergraduate courses';
+  container.appendChild(ugHeading);
+
+  const ugGrid = document.createElement('div');
+  ugGrid.className = 'course-grid';
+
+  grouped['Undergraduate'].forEach(course => {
+    ugGrid.appendChild(renderCourseCard(course, query));
   });
 
-  // Render grouped course sections
-  for (const level of ['Undergraduate', 'Postgraduate Taught']) {
-    if (grouped[level].length > 0) {
-      // Heading
-      const heading = document.createElement('h3');
-      heading.className = 'course-group-heading';
-      heading.textContent = level;
-      container.appendChild(heading);
+  container.appendChild(ugGrid);
+}
 
-      // Grid of cards
-      const grid = document.createElement('div');
-      grid.className = 'course-grid';
+// Render PG
+if (grouped['Postgraduate Taught'].length > 0) {
+  const pgHeading = document.createElement('h3');
+  pgHeading.className = 'course-group-heading';
+  pgHeading.textContent = 'Postgraduate taught courses';
+  container.appendChild(pgHeading);
 
-      grouped[level].forEach(course => {
-        grid.appendChild(renderCourseCard(course, query));
-      });
+  const pgGrid = document.createElement('div');
+  pgGrid.className = 'course-grid';
 
-      container.appendChild(grid);
-    }
-  }
+  grouped['Postgraduate Taught'].forEach(course => {
+    pgGrid.appendChild(renderCourseCard(course, query));
+  });
 
-  // Show combined result count
-  resultsCount.textContent = `${filtered.length} result${filtered.length === 1 ? '' : 's'}`;
+  container.appendChild(pgGrid);
+}
 
-  // Clear pagination controls in filtered view
-  document.getElementById('paginationControls').innerHTML = '';
-     
+resultsCount.textContent = `${filtered.length} Biosciences course${filtered.length === 1 ? '' : 's'}`;
+document.getElementById('paginationControls').innerHTML = '';
+
       } else {
   // Default flat A–Z view with pagination
   filtered.sort((a, b) => a.Programme.localeCompare(b.Programme));
