@@ -428,29 +428,62 @@ wrapper.className = `card ${levelClass}`;
     }
     
     function updatePaginationControls(totalPages) {
-      const container = document.getElementById('paginationControls');
-      container.innerHTML = '';
-    
-      for (let i = 1; i <= totalPages; i++) {
-        const btn = document.createElement('button');
-        btn.textContent = i;
-        btn.disabled = i === currentPage;
-        btn.className = i === currentPage ? 'page-btn current' : 'page-btn';
-    
-        btn.addEventListener('click', () => {
-          currentPage = i;
-          updateFilters();
-    
-          const filters = document.querySelector('.filters');
-          if (filters) {
-            const offset = filters.offsetTop;
-            window.scrollTo({ top: offset - 20, behavior: 'smooth' });
-          }
-        });
-    
-        container.appendChild(btn);
+  const container = document.getElementById('paginationControls');
+  container.innerHTML = '';
+
+  const maxVisible = 5; // Max number of numeric buttons (excluding first/last)
+
+  function createButton(page, label = page) {
+    const btn = document.createElement('button');
+    btn.textContent = label;
+    btn.disabled = page === currentPage;
+    btn.className = page === currentPage ? 'page-btn current' : 'page-btn';
+    btn.addEventListener('click', () => {
+      currentPage = page;
+      updateFilters();
+
+      const filters = document.querySelector('.filters');
+      if (filters) {
+        const offset = filters.offsetTop;
+        window.scrollTo({ top: offset - 20, behavior: 'smooth' });
       }
+    });
+    container.appendChild(btn);
+  }
+
+  if (totalPages <= maxVisible + 2) {
+    // Simple case: show all pages
+    for (let i = 1; i <= totalPages; i++) {
+      createButton(i);
     }
+  } else {
+    // Always show first page
+    createButton(1);
+
+    if (currentPage > 3) {
+      const dots = document.createElement('span');
+      dots.textContent = '...';
+      container.appendChild(dots);
+    }
+
+    const start = Math.max(2, currentPage - 1);
+    const end = Math.min(totalPages - 1, currentPage + 1);
+
+    for (let i = start; i <= end; i++) {
+      createButton(i);
+    }
+
+    if (currentPage < totalPages - 2) {
+      const dots = document.createElement('span');
+      dots.textContent = '...';
+      container.appendChild(dots);
+    }
+
+    // Always show last page
+    createButton(totalPages);
+  }
+}
+
     
     function updateFilters() {
       const query = document.getElementById('searchInput').value.trim().toLowerCase();
