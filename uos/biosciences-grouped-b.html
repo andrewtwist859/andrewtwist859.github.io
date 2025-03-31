@@ -42,7 +42,8 @@
     #courseContainer {
   display: block;
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 1rem auto;
+  
 }
 
 
@@ -378,6 +379,40 @@ h2 {
   margin: 0;
 }
 
+summary {
+  font-family: 'source-serif-pro', serif;
+  font-weight: 700;
+  font-size: 2rem;
+  cursor: pointer;
+  list-style: none;
+  margin-bottom: 1rem;
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+.accordion-icon-wrapper {
+  display: inline-block;
+  margin-left: 0.5rem;
+  vertical-align: middle;
+  transition: transform 0.3s ease;
+}
+
+details[open] .accordion-icon-wrapper {
+  transform: rotate(180deg);
+}
+
+.accordion-icon {
+  width: 0.75em;
+  height: 0.75em;
+  vertical-align: middle;
+  display: inline-block;
+  transform: translateY(-4px); /* now this only affects layout */
+  fill: #440099;
+}
+
+
 
 
   </style>
@@ -424,20 +459,37 @@ h2 {
     <div class="search-box">
         <div class="search-container">
   <h1 id="search">Biosciences</h1>
-<p>Search by keyword or filter by course level.</p>
+<p>Browse our undergraduate and postgraduate taught courses</p>
 </div>
 </div>
   
+<!-- Accordion layout -->
 <div id="courseContainer">
-    <details open="">
-    <summary><strong>Undergraduate Courses</strong></summary>
-    <div class="course-grid" id="ugCourses"></div>
-    </details>
     <details>
-    <summary><strong>Postgraduate Taught Courses</strong></summary>
-    <div class="course-grid" id="pgtCourses"></div>
+      <summary>
+        Undergraduate Courses
+        <span class="accordion-icon-wrapper">
+        <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+          <path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/>
+        </svg>
+    </span>
+      </summary>
+      <div class="course-grid" id="ugCourses"></div>
     </details>
-    </div>
+  
+    <details>
+      <summary>
+        Postgraduate Taught Courses
+        <span class="accordion-icon-wrapper">
+        <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+          <path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/>
+        </svg></span>
+      </summary>
+      <div class="course-grid" id="pgtCourses"></div>
+    </details>
+  </div>
+  
+  
 
   <footer class="footer">
     <div class="footer-content">
@@ -531,6 +583,7 @@ h2 {
     </div>
   </div>
   </footer>
+
 <script>
   async function fetchAndParseCSV(key) {
     const urls = {
