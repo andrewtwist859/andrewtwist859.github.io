@@ -631,25 +631,33 @@ h2 {
     container.appendChild(pgHeading);
   }
 
-  const grid = document.createElement('div');
-  grid.className = 'course-grid';
-
   if (isDefaultGroupedView) {
-    // Show grouped UG and PG
+  if (grouped['Undergraduate'].length > 0) {
+    const ugGrid = document.createElement('div');
+    ugGrid.className = 'course-grid';
     grouped['Undergraduate'].forEach(course => {
-      grid.appendChild(renderCourseCard(course, query));
+      ugGrid.appendChild(renderCourseCard(course, query));
     });
-    grouped['Postgraduate Taught'].forEach(course => {
-      grid.appendChild(renderCourseCard(course, query));
-    });
-  } else {
-    // Flat list of all filtered results
-    filtered.forEach(course => {
-      grid.appendChild(renderCourseCard(course, query));
-    });
+    container.appendChild(ugGrid);
   }
 
+  if (grouped['Postgraduate Taught'].length > 0) {
+    const pgGrid = document.createElement('div');
+    pgGrid.className = 'course-grid';
+    grouped['Postgraduate Taught'].forEach(course => {
+      pgGrid.appendChild(renderCourseCard(course, query));
+    });
+    container.appendChild(pgGrid);
+  }
+} else {
+  const grid = document.createElement('div');
+  grid.className = 'course-grid';
+  filtered.forEach(course => {
+    grid.appendChild(renderCourseCard(course, query));
+  });
   container.appendChild(grid);
+}
+
 
   // Update count
   if (resultsCount) {
