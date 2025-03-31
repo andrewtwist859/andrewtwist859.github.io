@@ -429,6 +429,28 @@ h2 {
   }
 }
 
+  @media (max-width: 768px) {
+  body.searching .select-wrapper,
+  body.searching .custom-arrow {
+    display: none !important;
+  }
+}
+
+@media (max-width: 768px) {
+  body.searching .filters {
+    margin: 0 !important;
+    padding: 0 !important;
+    height: 0;
+    overflow: hidden;
+  }
+
+  body.searching .search-box h2,
+  body.searching .search-box p {
+    display: none;
+  }
+}
+
+
   </style>
 </head>
 <body>
