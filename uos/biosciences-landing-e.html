@@ -424,16 +424,12 @@ h2 {
   }
 
   @media (max-width: 768px) {
-  /* 🔒 Fix search box to top when active */
+  /* 🚫 Remove fixed positioning (it causes iOS bugs) */
   body.searching .search-box {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 999;
+    position: static;
     background: #f4f4f4;
     padding: 1rem 1rem 0.5rem;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    box-shadow: none;
   }
 
   /* 🧼 Hide the title, paragraph, dropdown and clear button */
@@ -447,14 +443,15 @@ h2 {
     display: none !important;
   }
 
-  /* 🧩 Keep layout tidy */
+  /* 🧩 Keep filters layout tidy */
   body.searching .filters {
     margin-bottom: 0 !important;
   }
 
-  /* 🪄 Push content below the fixed search box */
+  /* ❌ DO NOT push courseContainer down */
+  /* (since search-box is no longer fixed) */
   body.searching #courseContainer {
-    margin-top: 5.5rem;
+    margin-top: 0 !important;
   }
 }
 }
@@ -952,6 +949,16 @@ if (isMobile && isSearching) {
   }
 });
 
+searchInput.addEventListener('focus', () => {
+  if (window.innerWidth < 768) {
+    setTimeout(() => {
+      searchInput.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }, 100); // Give keyboard time to open
+  }
+});
   
       levelSelect.addEventListener('change', () => {
         currentPage = 1;
