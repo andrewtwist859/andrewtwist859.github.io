@@ -470,51 +470,48 @@ wrapper.className = `card ${levelClass}`;
       container.innerHTML = '';
     
       if (hasSearch || hasFilter) {
-        // Grouped view by Level
-        const grouped = {
-          Undergraduate: [],
-          'Postgraduate Taught': []
-        };
-    
-        filtered.forEach(course => {
-          if (course.Level === 'Postgraduate Taught') {
-            grouped['Postgraduate Taught'].push(course);
-          } else {
-            grouped['Undergraduate'].push(course);
-          }
-        });
-    
-        for (const level of ['Undergraduate', 'Postgraduate Taught']) {
-  if (grouped[level].length > 0) {
-    // Full-width heading
-    const heading = document.createElement('h3');
-    heading.className = 'course-group-heading';
-    heading.textContent = level;
-    container.appendChild(heading);
+  const grouped = {
+    Undergraduate: [],
+    'Postgraduate Taught': []
+  };
 
-    // New grid block
-    const totalPages = Math.ceil(filtered.length / pageSize);
-currentPage = Math.min(currentPage, totalPages || 1);
+  // Group the filtered results by level
+  filtered.forEach(course => {
+    const level = (course.Level || '').trim();
+    if (level === 'Postgraduate Taught') {
+      grouped['Postgraduate Taught'].push(course);
+    } else {
+      grouped['Undergraduate'].push(course);
+    }
+  });
 
-const start = (currentPage - 1) * pageSize;
-const paginated = filtered.slice(start, start + pageSize);
+  // Render grouped course sections
+  for (const level of ['Undergraduate', 'Postgraduate Taught']) {
+    if (grouped[level].length > 0) {
+      // Heading
+      const heading = document.createElement('h3');
+      heading.className = 'course-group-heading';
+      heading.textContent = level;
+      container.appendChild(heading);
 
-const grid = document.createElement('div');
-grid.className = 'course-grid';
+      // Grid of cards
+      const grid = document.createElement('div');
+      grid.className = 'course-grid';
 
-paginated.forEach(course => {
-  grid.appendChild(renderCourseCard(course, query));
-});
+      grouped[level].forEach(course => {
+        grid.appendChild(renderCourseCard(course, query));
+      });
 
-container.appendChild(grid);
-
+      container.appendChild(grid);
+    }
   }
-}
 
-resultsCount.textContent = `${filtered.length} result${filtered.length === 1 ? '' : 's'}`;
-    
-        document.getElementById('paginationControls').innerHTML = '';
-        resultsCount.textContent = `${filtered.length} results`;
+  // Show combined result count
+  resultsCount.textContent = `${filtered.length} result${filtered.length === 1 ? '' : 's'}`;
+
+  // Clear pagination controls in filtered view
+  document.getElementById('paginationControls').innerHTML = '';
+     
       } else {
   // Default flat A–Z view with pagination
   filtered.sort((a, b) => a.Programme.localeCompare(b.Programme));
