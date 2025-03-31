@@ -694,7 +694,8 @@ h2 {
     }
   
     function updateFilters() {
-  const query = document.getElementById('searchInput').value.trim().toLowerCase();
+        const searchInput = document.getElementById('searchInput');
+const query = searchInput ? searchInput.value.trim().toLowerCase() : '';
   const levelSelect = document.getElementById('levelSelect');
   const container = document.getElementById('courseContainer');
   const resultsCount = document.getElementById('resultsCount');
@@ -815,8 +816,32 @@ h2 {
       allData = [...ugData, ...pgtData];
   
       const searchInput = document.getElementById('searchInput');
-      const clearButton = document.getElementById('clearFilters');
-      const levelSelect = document.getElementById('levelSelect');
+const clearButton = document.getElementById('clearFilters');
+const levelSelect = document.getElementById('levelSelect');
+
+if (searchInput) {
+  searchInput.addEventListener('input', () => {
+    currentPage = 1;
+    updateFilters();
+  });
+}
+
+if (levelSelect) {
+  levelSelect.addEventListener('change', () => {
+    currentPage = 1;
+    updateFilters();
+  });
+}
+
+if (clearButton) {
+  clearButton.addEventListener('click', () => {
+    if (searchInput) searchInput.value = '';
+    if (levelSelect) levelSelect.value = '';
+    currentPage = 1;
+    updateFilters();
+  });
+}
+
   
       searchInput.addEventListener('input', () => {
         currentPage = 1;
