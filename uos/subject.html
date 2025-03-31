@@ -337,6 +337,30 @@ h2 {
     margin-top:2rem;
 }
 
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.feature-box {
+  background: #f9f9f9;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+.feature-box h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.feature-box p {
+  margin: 0;
+}
+
+
   </style>
 </head>
 <body>
@@ -384,6 +408,28 @@ h2 {
         <a href="#" class="active">Biosciences</a>
     </div>
     <h2>Why study Biosciences?</h2>
+    <section class="features-grid">
+        <div class="feature-box">
+          <h3>Breadth</h3>
+          <p>Study the areas you're most passionate about with courses spanning the full spectrum of biology...</p>
+        </div>
+        <div class="feature-box">
+          <h3>Options beyond the three-year BSc</h3>
+          <p>Our courses all come with options to gain additional experience beyond a three-year BSc...</p>
+        </div>
+        <div class="feature-box">
+          <h3>4th in the UK for research quality</h3>
+          <p>The Research Excellence Framework (REF) 2021 rated 98% of research and impact...</p>
+        </div>
+        <div class="feature-box">
+          <h3>Partnership with Sheffield Teaching Hospitals</h3>
+          <p>Our partnership with Sheffield Teaching Hospitals includes opportunities to contribute...</p>
+        </div>
+        <div class="feature-box">
+          <h3>Careers</h3>
+          <p>Our graduates enter the pharmaceutical, biotechnology, and healthcare industries...</p>
+        </div>
+      </section>      
     <h3>Breadth</h3>
 <p>Study the areas you're most passionate about with courses spanning the full spectrum of biology. We train students to solve some of the world's biggest challenges, from cancer, antimicrobial resistance and healthy ageing, to saving the planet’s biodiversity and mitigating climate change.</p>
 <h3>Options beyond the three-year BSc</h3>
