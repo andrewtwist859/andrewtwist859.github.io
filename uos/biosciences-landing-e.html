@@ -958,7 +958,44 @@ h2 {
       }
     }
   </script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const searchInput = document.getElementById('searchInput');
+      const clearSearch = document.getElementById('clearSearch');
+      const levelSelect = document.getElementById('levelSelect');
   
+      // Update results when user types
+      searchInput.addEventListener('input', () => {
+        updateFilters();
+        clearSearch.style.display = searchInput.value ? 'block' : 'none';
+  
+        if (window.innerWidth < 768) {
+          if (searchInput.value.trim()) {
+            document.body.classList.add('searching');
+          } else {
+            document.body.classList.remove('searching');
+          }
+        }
+      });
+  
+      // Clear search input
+      clearSearch.addEventListener('click', () => {
+        searchInput.value = '';
+        updateFilters();
+        clearSearch.style.display = 'none';
+        document.body.classList.remove('searching');
+      });
+  
+      // Update when level dropdown changes
+      levelSelect.addEventListener('change', () => {
+        updateFilters();
+      });
+  
+      // Load data and run filter once
+      init();
+    });
+  </script>
+    
   
     
 </body>
