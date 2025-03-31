@@ -130,7 +130,7 @@ span.award-dark {
             display: flex;
             flex-wrap: wrap;
             gap: 2rem;
-            margin-top: 3rem;
+            margin-top: 1rem;
         }
 
         .icon {
