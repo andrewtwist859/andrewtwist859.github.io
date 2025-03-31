@@ -268,6 +268,18 @@ h1 {
   }
 }
 
+.course-section {
+  margin-bottom: 3rem;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.course-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+}
 
   </style>
 </head>
@@ -463,17 +475,30 @@ h1 {
         });
     
         for (const level of ['Undergraduate', 'Postgraduate Taught']) {
-          if (grouped[level].length > 0) {
-            const heading = document.createElement('h3');
-            heading.className = 'courses';
-            heading.textContent = level;
-            container.appendChild(heading);
-    
-            grouped[level]
-              .sort((a, b) => a.Programme.localeCompare(b.Programme))
-              .forEach(course => container.appendChild(renderCourseCard(course, query)));
-          }
-        }
+  if (grouped[level].length > 0) {
+    // Create section container
+    const section = document.createElement('div');
+    section.className = 'course-section';
+
+    // Heading
+    const heading = document.createElement('h3');
+    heading.className = 'courses';
+    heading.textContent = level;
+    section.appendChild(heading);
+
+    // Grid wrapper for cards
+    const grid = document.createElement('div');
+    grid.className = 'course-grid';
+
+    grouped[level]
+      .sort((a, b) => a.Programme.localeCompare(b.Programme))
+      .forEach(course => grid.appendChild(renderCourseCard(course, query)));
+
+    section.appendChild(grid);
+    container.appendChild(section);
+  }
+}
+
     
         document.getElementById('paginationControls').innerHTML = '';
         resultsCount.textContent = `${filtered.length} results`;
