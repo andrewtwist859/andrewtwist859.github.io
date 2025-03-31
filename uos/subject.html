@@ -317,12 +317,6 @@ h1 {
     </div>
 </div>
   
-  <div class="dataset-toggle" style="margin-bottom: 2rem;">
-    <p>Choose undergraduate year:</p>
-    <button class="dataset-btn active" data-year="2025">2025–26 Courses</button>
-    <button class="dataset-btn" data-year="2026">2026–27 Courses</button>
-  </div>
-  
   <div class="filters">
     <div class="filter-item">
       <div class="search-wrapper">
@@ -530,6 +524,36 @@ if (grouped['Undergraduate'].length > 0) {
   ugHeading.className = 'course-group-heading';
   ugHeading.textContent = 'Undergraduate courses';
   container.appendChild(ugHeading);
+
+  // Add year toggle under UG heading
+  const toggleWrapper = document.createElement('div');
+  toggleWrapper.className = 'dataset-toggle';
+  toggleWrapper.innerHTML = `
+    <p>Choose undergraduate year:</p>
+    <button class="dataset-btn ${currentYear === 2025 ? 'active' : ''}" data-year="2025">2025–26 Courses</button>
+    <button class="dataset-btn ${currentYear === 2026 ? 'active' : ''}" data-year="2026">2026–27 Courses</button>
+  `;
+  container.appendChild(toggleWrapper);
+
+  // Attach event listeners to the buttons
+  toggleWrapper.querySelectorAll('.dataset-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const selectedYear = btn.dataset.year;
+
+      document.querySelectorAll('.dataset-btn').forEach(b => {
+        b.classList.remove('active');
+      });
+      btn.classList.add('active');
+
+      const currentSearch = document.getElementById('searchInput')?.value || '';
+      const currentPg = currentPage;
+
+      init(parseInt(selectedYear), {
+        query: currentSearch,
+        page: currentPg
+      });
+    });
+  });
 
   const ugGrid = document.createElement('div');
   ugGrid.className = 'course-grid';
