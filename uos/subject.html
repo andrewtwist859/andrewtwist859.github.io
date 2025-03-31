@@ -573,7 +573,6 @@ h2 {
 
   container.innerHTML = '';
 
-  // Group UG and PG
   const grouped = {
     Undergraduate: [],
     'Postgraduate Taught': []
@@ -623,47 +622,51 @@ h2 {
     });
   }
 
-  // PG heading (only when grouped or level PG selected, and no search)
-  if (!query && grouped['Postgraduate Taught'].length > 0 && (isDefaultGroupedView || levelSelect.value === 'Postgraduate Taught')) {
-    const pgHeading = document.createElement('h3');
-    pgHeading.className = 'course-group-heading';
-    pgHeading.textContent = 'Postgraduate taught courses';
-    container.appendChild(pgHeading);
-  }
-
   if (isDefaultGroupedView) {
-  if (grouped['Undergraduate'].length > 0) {
-    const ugGrid = document.createElement('div');
-    ugGrid.className = 'course-grid';
-    grouped['Undergraduate'].forEach(course => {
-      ugGrid.appendChild(renderCourseCard(course, query));
+    if (grouped['Undergraduate'].length > 0) {
+      const ugGrid = document.createElement('div');
+      ugGrid.className = 'course-grid';
+      grouped['Undergraduate'].forEach(course => {
+        ugGrid.appendChild(renderCourseCard(course, query));
+      });
+      container.appendChild(ugGrid);
+    }
+
+    if (grouped['Postgraduate Taught'].length > 0) {
+      const pgHeading = document.createElement('h3');
+      pgHeading.className = 'course-group-heading';
+      pgHeading.textContent = 'Postgraduate taught courses';
+      container.appendChild(pgHeading);
+
+      const pgGrid = document.createElement('div');
+      pgGrid.className = 'course-grid';
+      grouped['Postgraduate Taught'].forEach(course => {
+        pgGrid.appendChild(renderCourseCard(course, query));
+      });
+      container.appendChild(pgGrid);
+    }
+  } else {
+    const grid = document.createElement('div');
+    grid.className = 'course-grid';
+    filtered.forEach(course => {
+      grid.appendChild(renderCourseCard(course, query));
     });
-    container.appendChild(ugGrid);
+    container.appendChild(grid);
+
+    // Optional: show PG heading when level = PG and not searching
+    if (!query && grouped['Postgraduate Taught'].length > 0 && levelSelect.value === 'Postgraduate Taught') {
+      const pgHeading = document.createElement('h3');
+      pgHeading.className = 'course-group-heading';
+      pgHeading.textContent = 'Postgraduate taught courses';
+      container.insertBefore(pgHeading, grid);
+    }
   }
 
-  if (grouped['Postgraduate Taught'].length > 0) {
-    const pgGrid = document.createElement('div');
-    pgGrid.className = 'course-grid';
-    grouped['Postgraduate Taught'].forEach(course => {
-      pgGrid.appendChild(renderCourseCard(course, query));
-    });
-    container.appendChild(pgGrid);
-  }
-} else {
-  const grid = document.createElement('div');
-  grid.className = 'course-grid';
-  filtered.forEach(course => {
-    grid.appendChild(renderCourseCard(course, query));
-  });
-  container.appendChild(grid);
-}
-
-
-  // Update count
   if (resultsCount) {
     resultsCount.textContent = `${filtered.length} Biosciences course${filtered.length === 1 ? '' : 's'}`;
   }
 }
+
   
     async function init(year = 2025, preserve = {}) {
       currentYear = year;
