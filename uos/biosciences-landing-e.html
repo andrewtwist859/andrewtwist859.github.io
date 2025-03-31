@@ -423,31 +423,27 @@ h2 {
     padding: 0 1rem;
   }
 
-  body.searching #levelSelect,
-  body.searching #clearFilters {
-    display: none !important;
-  }
-}
-
   @media (max-width: 768px) {
-  body.searching .select-wrapper,
+  body.searching #levelSelect,
+  body.searching #clearFilters,
   body.searching .custom-arrow {
     display: none !important;
-  }
-}
-
-@media (max-width: 768px) {
-  body.searching .filters {
-    margin: 0 !important;
-    padding: 0 !important;
-    height: 0;
-    overflow: hidden;
   }
 
   body.searching .search-box h2,
   body.searching .search-box p {
-    display: none;
+    display: none !important;
   }
+
+  body.searching .filters {
+    gap: 0 !important;
+    margin-bottom: 0 !important;
+  }
+
+  body.searching .filter-item:not(:first-child) {
+    display: none !important;
+  }
+}
 }
 
 
