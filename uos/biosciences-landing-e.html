@@ -424,23 +424,27 @@ h2 {
   }
 
   @media (max-width: 768px) {
+  /* Hide dropdown and clear button */
   body.searching #levelSelect,
   body.searching #clearFilters,
   body.searching .custom-arrow {
     display: none !important;
   }
 
+  /* Hide intro text */
   body.searching .search-box h2,
   body.searching .search-box p {
     display: none !important;
   }
 
+  /* Keep layout but remove extra margin */
   body.searching .filters {
-    gap: 0 !important;
     margin-bottom: 0 !important;
   }
 
-  body.searching .filter-item:not(:first-child) {
+  /* Hide only the 2nd and 3rd filter blocks (dropdown + button), keep search */
+  body.searching .filter-item:nth-child(2),
+  body.searching .filter-item:nth-child(3) {
     display: none !important;
   }
 }
