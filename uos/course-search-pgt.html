@@ -508,7 +508,18 @@ h1 {
         resultsCount.textContent = `${filtered.length} results`;
       } else {
         // Default flat A–Z view
-        filtered.sort((a, b) => a.Programme.localeCompare(b.Programme));
+filtered.sort((a, b) => a.Programme.localeCompare(b.Programme));
+container.innerHTML = '';
+
+const grid = document.createElement('div');
+grid.className = 'course-grid';
+
+filtered.forEach(course => {
+  grid.appendChild(renderCourseCard(course, query));
+});
+
+container.appendChild(grid);
+
     
         const totalPages = Math.ceil(filtered.length / pageSize);
         currentPage = Math.min(currentPage, totalPages || 1);
