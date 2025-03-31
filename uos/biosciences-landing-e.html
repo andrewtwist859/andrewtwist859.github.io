@@ -833,8 +833,10 @@ h2 {
     }
   } else {
     const isMobile = window.innerWidth < 768;
+const isSearching = !!query;
 
-if (isMobile) {
+if (isMobile && isSearching) {
+  // Show a compact list view on mobile during search
   const list = document.createElement('ul');
   list.className = 'course-list';
 
@@ -855,7 +857,9 @@ if (isMobile) {
   });
 
   container.appendChild(list);
+
 } else {
+  // Default grid view (used for browsing or on desktop)
   const grid = document.createElement('div');
   grid.className = 'course-grid';
 
@@ -865,6 +869,7 @@ if (isMobile) {
 
   container.appendChild(grid);
 }
+
 
 
     // Optional: show PG heading when level = PG and not searching
