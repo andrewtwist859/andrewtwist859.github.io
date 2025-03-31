@@ -511,6 +511,7 @@ container.appendChild(grid);
   }
 }
 
+resultsCount.textContent = `${filtered.length} result${filtered.length === 1 ? '' : 's'}`;
     
         document.getElementById('paginationControls').innerHTML = '';
         resultsCount.textContent = `${filtered.length} results`;
