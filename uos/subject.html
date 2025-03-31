@@ -499,7 +499,6 @@ wrapper.className = `card ${levelClass}`;
     
     function updateFilters() {
       const query = document.getElementById('searchInput').value.trim().toLowerCase();
-      const subjectSelect = document.getElementById('subjectSelect');
       const container = document.getElementById('courseContainer');
       const resultsCount = document.getElementById('resultsCount');
     
@@ -578,28 +577,22 @@ document.getElementById('paginationControls').innerHTML = '';
     
       allData = [...ugData, ...pgtData];
     
-      const subjectSelect = document.getElementById('subjectSelect');
       const searchInput = document.getElementById('searchInput');
       const clearButton = document.getElementById('clearFilters');
     
-      subjectSelect.innerHTML = '';
       const subjects = extractSubjects(allData);
       const defaultOption = document.createElement('option');
       defaultOption.value = '';
       defaultOption.textContent = 'All Subjects';
-      subjectSelect.appendChild(defaultOption);
     
       subjects.forEach(subject => {
         const option = document.createElement('option');
         option.value = subject;
         option.textContent = subject;
-        subjectSelect.appendChild(option);
+
       });
     
-      subjectSelect.addEventListener('change', () => {
-        currentPage = 1;
-        updateFilters();
-      });
+
     
       searchInput.addEventListener('input', () => {
         currentPage = 1;
@@ -608,13 +601,11 @@ document.getElementById('paginationControls').innerHTML = '';
     
       clearButton.addEventListener('click', () => {
         searchInput.value = '';
-        subjectSelect.value = '';
         currentPage = 1;
         updateFilters();
       });
     
       if (preserve.query !== undefined) searchInput.value = preserve.query;
-      if (preserve.subject !== undefined) subjectSelect.value = preserve.subject;
       if (preserve.page !== undefined) currentPage = preserve.page;
       else currentPage = 1;
     
@@ -633,7 +624,6 @@ document.getElementById('paginationControls').innerHTML = '';
           btn.classList.add('active');
     
           const currentSearch = document.getElementById('searchInput')?.value || '';
-          const currentSubject = document.getElementById('subjectSelect')?.value || '';
           const currentPg = currentPage;
     
           init(parseInt(selectedYear), {
