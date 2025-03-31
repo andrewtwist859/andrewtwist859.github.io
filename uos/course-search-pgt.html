@@ -272,7 +272,7 @@ h1 {
   font-family: "source-serif-pro", serif;
   font-weight: 700;
   font-size: 1.5rem;
-  margin: 2rem auto 1rem;
+  margin: 2.5rem auto 1rem;
   max-width: 1200px;
   padding: 0 1rem;
 }
@@ -285,6 +285,7 @@ h1 {
   margin: 0 auto 3rem;
   padding: 0 1rem;
 }
+
 
 
   </style>
@@ -482,13 +483,13 @@ h1 {
     
         for (const level of ['Undergraduate', 'Postgraduate Taught']) {
   if (grouped[level].length > 0) {
-    // Heading sits above the grid
+    // Full-width heading
     const heading = document.createElement('h3');
     heading.className = 'course-group-heading';
     heading.textContent = level;
     container.appendChild(heading);
 
-    // Grid of course cards
+    // New grid block
     const grid = document.createElement('div');
     grid.className = 'course-grid';
 
@@ -499,6 +500,7 @@ h1 {
     container.appendChild(grid);
   }
 }
+
 
 
     
