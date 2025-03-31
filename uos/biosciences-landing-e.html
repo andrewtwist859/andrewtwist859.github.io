@@ -977,6 +977,28 @@ h2 {
     }
   </script>
 <script>
+
+async function init(year = 2025, preserve = {}) {
+  currentYear = year;
+
+  const [ugData, pgtData] = await Promise.all([
+    fetchAndParseCSV(year),
+    fetchAndParseCSV('PGT')
+  ]);
+
+  allData = [...ugData, ...pgtData];
+
+  const searchInput = document.getElementById('searchInput');
+  const levelSelect = document.getElementById('levelSelect');
+
+  if (preserve.query !== undefined) searchInput.value = preserve.query;
+  if (preserve.level !== undefined) levelSelect.value = preserve.level;
+  if (preserve.page !== undefined) currentPage = preserve.page;
+  else currentPage = 1;
+
+  updateFilters();
+}
+
     document.addEventListener('DOMContentLoaded', () => {
       const searchInput = document.getElementById('searchInput');
       const clearSearch = document.getElementById('clearSearch');
