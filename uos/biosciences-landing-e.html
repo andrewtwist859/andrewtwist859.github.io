@@ -927,26 +927,39 @@ if (isMobile && isSearching) {
     }
   
     document.addEventListener('DOMContentLoaded', () => {
-      const clearSearch = document.getElementById('clearSearch');
-      const searchInput = document.getElementById('searchInput');
-  
-      searchInput.addEventListener('input', () => {
-        currentPage = 1;
-        updateFilters();
-        clearSearch.style.display = searchInput.value ? 'block' : 'none';
-      });
-  
-      clearSearch.addEventListener('click', () => {
-        searchInput.value = '';
-        clearSearch.style.display = 'none';
-        currentPage = 1;
-        updateFilters();
-      });
-  
-      clearSearch.style.display = searchInput.value ? 'block' : 'none';
-  
-      init();
-    });
+  const clearSearch = document.getElementById('clearSearch');
+  const searchInput = document.getElementById('searchInput');
+
+  // Search input event (updates results and toggles clear button)
+  searchInput.addEventListener('input', () => {
+    currentPage = 1;
+    updateFilters();
+    clearSearch.style.display = searchInput.value ? 'block' : 'none';
+  });
+
+  // Clear button event
+  clearSearch.addEventListener('click', () => {
+    searchInput.value = '';
+    clearSearch.style.display = 'none';
+    currentPage = 1;
+    updateFilters();
+  });
+
+  // Initial clear button state
+  clearSearch.style.display = searchInput.value ? 'block' : 'none';
+
+  // ✅ Mobile focus: scroll input into view
+  searchInput.addEventListener('focus', () => {
+    if (window.innerWidth < 768) {
+      setTimeout(() => {
+        searchInput.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 100);
+    }
+  });
+
+  init(); // load data
+});
+
   </script>
   
     
