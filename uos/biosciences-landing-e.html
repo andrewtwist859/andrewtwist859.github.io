@@ -422,6 +422,11 @@ h2 {
   #courseContainer {
     padding: 0 1rem;
   }
+
+  body.searching #levelSelect,
+  body.searching #clearFilters {
+    display: none !important;
+  }
 }
 
   </style>
@@ -902,9 +907,20 @@ if (isMobile && isSearching) {
       const levelSelect = document.getElementById('levelSelect');
   
       searchInput.addEventListener('input', () => {
-        currentPage = 1;
-        updateFilters();
-      });
+  currentPage = 1;
+  updateFilters();
+  clearSearch.style.display = searchInput.value ? 'block' : 'none';
+
+  // ✅ Add/remove .searching class on <body> (mobile only)
+  if (window.innerWidth < 768) {
+    if (searchInput.value.trim()) {
+      document.body.classList.add('searching');
+    } else {
+      document.body.classList.remove('searching');
+    }
+  }
+});
+
   
       levelSelect.addEventListener('change', () => {
         currentPage = 1;
@@ -941,6 +957,7 @@ if (isMobile && isSearching) {
   clearSearch.addEventListener('click', () => {
     searchInput.value = '';
     clearSearch.style.display = 'none';
+    document.body.classList.remove('searching'); // ✅ clear class
     currentPage = 1;
     updateFilters();
   });
