@@ -509,14 +509,7 @@ wrapper.className = `card ${levelClass}`;
       let filtered = allData.filter(row =>
         matchSubjectFilter(row) && matchSearch(row, query)
       );
-    
-      const hasSearch = query.length > 0;
-      const hasFilter = activeSubjects.size > 0;
-    
-      container.innerHTML = '';
-    
-      if (hasSearch || hasFilter) {
-        const grouped = {
+      const grouped = {
   Undergraduate: [],
   'Postgraduate Taught': []
 };
@@ -566,36 +559,14 @@ if (grouped['Postgraduate Taught'].length > 0) {
   container.appendChild(pgGrid);
 }
 
+// Update result count
 resultsCount.textContent = `${filtered.length} Biosciences course${filtered.length === 1 ? '' : 's'}`;
+
+// No pagination in this view
 document.getElementById('paginationControls').innerHTML = '';
 
-      } else {
-  // Default flat A–Z view with pagination
-  filtered.sort((a, b) => a.Programme.localeCompare(b.Programme));
-  container.innerHTML = '';
 
-  const totalPages = Math.ceil(filtered.length / pageSize);
-  currentPage = Math.min(currentPage, totalPages || 1);
-
-  const start = (currentPage - 1) * pageSize;
-  const paginated = filtered.slice(start, start + pageSize);
-
-  const grid = document.createElement('div');
-  grid.className = 'course-grid';
-
-  paginated.forEach(course => {
-    grid.appendChild(renderCourseCard(course, query));
-  });
-
-  container.appendChild(grid);
-
-  updatePaginationControls(totalPages);
-
-  resultsCount.textContent = filtered.length > 0
-    ? `Showing ${start + 1}–${Math.min(start + pageSize, filtered.length)} of ${filtered.length} courses`
-    : 'No results found.';
-}
-    }
+      } 
     
     async function init(year = 2025, preserve = {}) {
       currentYear = year;
