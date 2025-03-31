@@ -7,7 +7,8 @@
 
   <!-- Fonts -->
   <link href="https://use.typekit.net/jou7rrz.css" rel="stylesheet"/>
-  <link rel="stylesheet" href="ugheader.css"> 
+  <link rel="stylesheet" href="ugheader.css">
+  <link rel="stylesheet" href="global-menu.css"> 
 
   <!-- Choices.js -->
   
@@ -294,6 +295,20 @@ h1 {
   </style>
 </head>
 <body>
+    <nav class="navbar">
+        <div class="navbar-content">
+          <div class="navbar-brand">
+            <a href="changes"><img src="logo.png" alt="University of Sheffield Logo" class="logo"></a>
+          </div>
+          <ul class="nav-links">
+            <li class="nav-item" onclick="togglePanel('study-panel')">Study</li>
+            <li class="nav-item" onclick="togglePanel('research-panel')">Research</li>
+            <li class="nav-item" onclick="togglePanel('collaborate-panel')">Collaborate</li>
+            <li class="nav-item" onclick="togglePanel('about-panel')">About</li>
+          </ul>
+          <div class="hamburger" onclick="toggleMobileMenu()">☰</div>
+        </div>
+      </nav>
   <div class="course-banner-dark">
     <div class="olp-banner-dark">
       <span class="entry">Our subjects</span>
