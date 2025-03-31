@@ -410,14 +410,6 @@ h2 {
     font-size: 0.9rem;
   }
 
-  .search-box {
-    position: static;
-    top: 0;
-    background-color: #f4f4f4;
-    z-index: 10;
-    padding: 1rem;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-  }
 
   #courseContainer {
     padding: 0 1rem;
@@ -959,21 +951,19 @@ h2 {
         });
   
         panel.appendChild(list);
-      } else {
-        // Desktop or no search: show full card grid
-        const grid = document.createElement('div');
-        grid.className = 'course-grid';
-  
-        filtered.forEach(course => {
-          grid.appendChild(renderCourseCard(course, query));
-        });
-  
-        container.appendChild(grid);
-      }
-  
-      if (resultsCount) {
-        resultsCount.textContent = `${filtered.length} Biosciences course${filtered.length === 1 ? '' : 's'}`;
-      }
+      } else if (!(isMobile && query)) {
+  // Only render fallback grid if not actively searching on mobile
+  if (filtered.length > 0) {
+    const grid = document.createElement('div');
+    grid.className = 'course-grid';
+
+    filtered.forEach(course => {
+      grid.appendChild(renderCourseCard(course, query));
+    });
+
+    container.appendChild(grid);
+  }
+}
     }
   </script>
 <script>
