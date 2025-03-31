@@ -424,28 +424,37 @@ h2 {
   }
 
   @media (max-width: 768px) {
-  /* Hide dropdown and clear button */
+  /* 🔒 Fix search box to top when active */
+  body.searching .search-box {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    background: #f4f4f4;
+    padding: 1rem 1rem 0.5rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  }
+
+  /* 🧼 Hide the title, paragraph, dropdown and clear button */
+  body.searching .search-box h2,
+  body.searching .search-box p,
   body.searching #levelSelect,
   body.searching #clearFilters,
-  body.searching .custom-arrow {
+  body.searching .custom-arrow,
+  body.searching .filter-item:nth-child(2),
+  body.searching .filter-item:nth-child(3) {
     display: none !important;
   }
 
-  /* Hide intro text */
-  body.searching .search-box h2,
-  body.searching .search-box p {
-    display: none !important;
-  }
-
-  /* Keep layout but remove extra margin */
+  /* 🧩 Keep layout tidy */
   body.searching .filters {
     margin-bottom: 0 !important;
   }
 
-  /* Hide only the 2nd and 3rd filter blocks (dropdown + button), keep search */
-  body.searching .filter-item:nth-child(2),
-  body.searching .filter-item:nth-child(3) {
-    display: none !important;
+  /* 🪄 Push content below the fixed search box */
+  body.searching #courseContainer {
+    margin-top: 5.5rem;
   }
 }
 }
