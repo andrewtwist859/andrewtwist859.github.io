@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Biosciences | Subjects | The University of Sheffield</title>
+  <link rel="icon" href="https://www.sheffield.ac.uk/themes/custom/uos_public/favicon.ico" sizes="any">
+<link rel="icon" href="https://www.sheffield.ac.uk/themes/custom/uos_public/favicon.svg" type="image/svg+xml" />
+
+  <!-- Fonts -->
+  <link href="https://use.typekit.net/jou7rrz.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="subjectheader.css">
+  <link rel="stylesheet" href="global-menu.css"> 
+  <link rel="stylesheet" href="section-menu.css"> 
+  <link rel="stylesheet" href="footer.css"> 
+
+  <!-- Choices.js -->
+  
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+
+  <style>
+    body {
+      font-family: "source-sans-pro", sans-serif;
+      background: #f4f4f4;
+      overflow-x: hidden;
+    }
+
+
+    .search-input {
+      padding: 0.6rem 1rem;
+      font-size: 1rem;
+      width: 100%;
+      border: 2px solid #e0e0e0;
+      border-radius: 6px;
+    }
+
+    #subjectSelect {
+      width: 100%;
+    }
+
+
+    #courseContainer {
+  display: block;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+
+    .card {
+      background: #fff;
+      padding: 1.5rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+      border-top: 6px solid #440099;
+      font-family: "source-sans-pro", sans-serif;
+    }
+
+    .level {
+      color: #440099;
+      font-weight: bold;
+      font-size: 1rem;
+      text-transform: uppercase;
+      margin-bottom: 0.3rem;
+    }
+
+    .title {
+      margin: 0.2rem 0;
+      font-size: 1.4rem;
+      font-family: "source-serif-pro", serif;
+      font-weight: 700;
+    }
+
+    .start-date-pill {
+      display: inline-block;
+      background: #eee;
+      color: #444;
+      font-size: 0.85rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      margin: 0.5rem 0;
+    }
+
+    .description {
+      margin: 0.5rem 0 1rem 0;
+      color: #333;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .course-list {
+      padding-left: 1.2rem;
+      margin: 0;
+    }
+
+    .course-list li {
+      margin-bottom: 0.3rem;
+    }
+
+    .course-list a {
+      color: #440099;
+      text-decoration: none;
+    }
+
+    .course-list a:hover {
+      text-decoration: underline;
+    }
+
+    .filters {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 1rem;
+  max-width: 1200px;
+  margin: 2rem auto 1rem auto;
+  align-items: stretch;
+}
+
+.filter-item {
+  flex: 1;
+  min-width: 0;
+}
+
+.search-input,
+#subjectSelect {
+  box-sizing: border-box;
+  font-size: 1rem;
+  padding: 0.6rem 1rem;
+  width: 100%;
+  border: 2px solid #e0e0e0;
+  border-radius: 6px;
+  background-color: white;
+  color: #333;
+  appearance: none;
+  min-height: 44px;
+}
+
+.select-wrapper {
+  position: relative;
+}
+
+.select-wrapper .custom-arrow {
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  transform: translateY(-50%);
+  pointer-events: none;
+  width: 1rem;
+  height: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.select-wrapper .custom-arrow svg {
+  width: 100%;
+  height: 100%;
+  fill: #2a2a87;
+}
+
+.clear-button {
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+  background-color: #B3003C;
+  color: white;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  height: 44px;
+  white-space: nowrap;
+  border: none;
+}
+
+#paginationControls {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.page-btn {
+  padding: 0.5rem 1rem;
+  margin: 0 0.25rem;
+  background: white;
+  color: #2a2a87;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.2s ease;
+  border: none;
+}
+
+.page-btn:hover:not(:disabled) {
+  background: #2a2a87;
+  color: white;
+}
+
+.page-btn.current {
+  background: #2a2a87;
+  color: white;
+  cursor: default;
+}
+
+h3.courses {
+  margin: 0.5rem 0rem;
+  font-family: 'source-serif-pro';
+  font-weight: 700;
+}
+
+.results-count {
+  text-align: center;
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.dataset-toggle {
+  max-width: 1200px;
+  margin: 0 auto 2rem auto;
+}
+
+.dataset-btn {
+  padding: 0.5rem 1rem;
+  font-family: 'source-sans-pro';
+  font-weight: 700;
+  font-size: 1rem;
+  margin-right: 0.5rem;
+  border-radius: 20px;
+  background: #e0e0e0;
+  color: #2a2a87;
+  cursor: pointer;
+  border: 0;
+}
+
+.dataset-btn.active {
+  background: #2a2a87;
+  color: white;
+}
+
+h1 {
+  font-family: 'source-serif-pro';
+  font-weight: 700;
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+
+h2 {
+  font-family: 'source-serif-pro';
+  font-weight: 700;
+  font-size: 2rem;
+  margin-bottom: 0rem;
+}
+
+.search-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.clear-search {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  font-size: 1.25rem;
+  color: #2a2a87;
+  cursor: pointer;
+  display: none;
+  padding: 0;
+  line-height: 1;
+}
+
+@media (max-width: 768px) {
+  .filters {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .filter-item {
+    width: 100%;
+  }
+
+  .clear-button {
+    width: 100%;
+  }
+
+  #courseContainer, .container {
+    padding:1rem;
+  }
+}
+
+.course-group-heading {
+  font-family: "source-serif-pro", serif;
+  font-weight: 700;
+  font-size: 2rem;
+  margin: 2.5rem auto 1rem;
+  max-width: 1200px;
+}
+
+.course-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  max-width: 1200px;
+  margin: 0 auto 3rem;
+}
+
+.card.pgt .level {
+  color: #7100ff;
+}
+
+.container, .search-container {
+    display: block;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.search-box {
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    background-color: #440099;
+    color: white;
+}
+
+.container p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    max-width: 80ch;
+    margin-top: 0.5rem;
+    
+}
+
+.container h3 {
+    font-size: 1.4rem;
+    line-height: 1.6;
+    font-family: 'source-serif-pro';
+    font-weight: 700;
+    margin-bottom: 0rem;
+    
+}
+
+.container h2 {
+    margin-bottom: 2rem;
+    
+}
+
+.search-box h2 {
+    margin-top: 0rem !important;
+}
+
+.breadcrumbs {
+    margin-top:2rem;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  max-width: 100%;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 640px) {
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.feature-box {
+  background: #fff;
+  padding: 1.5rem;
+}
+
+.feature-box h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  margin-top: 0rem;
+}
+
+.feature-box p {
+  margin: 0;
+}
+
+
+
+  </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-content">
+          <div class="navbar-brand">
+            <a href="changes"><img src="logo.png" alt="University of Sheffield Logo" class="logo"></a>
+          </div>
+          <ul class="nav-links">
+            <li class="nav-item" onclick="togglePanel('study-panel')">Study</li>
+            <li class="nav-item" onclick="togglePanel('research-panel')">Research</li>
+            <li class="nav-item" onclick="togglePanel('collaborate-panel')">Collaborate</li>
+            <li class="nav-item" onclick="togglePanel('about-panel')">About</li>
+          </ul>
+          <div class="hamburger" onclick="toggleMobileMenu()">☰</div>
+        </div>
+      </nav>
+      <div class="section-header-container">
+        <div class="section-header">
+            <h2>Study at Sheffield</h2>
+        </div>
+    </div>
+    <div class="section-navbar-background">
+        <div class="section-navbar-container">
+          <ul class="section-navbar">
+            <li><a href="#" onclick="toggleSectionPanel(event, 'courses')">Courses
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/></svg>
+            </a></li>
+            <li><a href="#" onclick="toggleSectionPanel(event, 'visit')">Visit
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/></svg>
+            </a></li>
+            <li><a href="#" onclick="toggleSectionPanel(event, 'apply')">Apply
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/></svg>
+            </a></li>
+            <li><a href="#" onclick="toggleSectionPanel(event, 'fees')">Fees and funding
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/></svg>
+            </a></li>
+          </ul>
+        </div>
+      </div>
+  <div class="course-banner-dark">
+    <div class="olp-banner-dark">
+      <span class="entry">Subjects</span>
+        <div class="course-container">
+        <h1 class="course-dark">Biosciences</h1></div>
+        <p class="summary">Biological Sciences at Sheffield lets you tailor your degree to your interests and career goals. You can choose to focus on organisms and the environment, form and function of plants or animals, human health, or the molecular basis of life.</p>
+        <div class="icon-section">
+            <div class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="24" height="24" fill="white">
+                    <path d="M173.8 5.5c11-7.3 25.4-7.3 36.4 0L228 17.2c6 3.9 13 5.8 20.1 5.4l21.3-1.3c13.2-.8 25.6 6.4 31.5 18.2l9.6 19.1c3.2 6.4 8.4 11.5 14.7 14.7L344.5 83c11.8 5.9 19 18.3 18.2 31.5l-1.3 21.3c-.4 7.1 1.5 14.2 5.4 20.1l11.8 17.8c7.3 11 7.3 25.4 0 36.4L366.8 228c-3.9 6-5.8 13-5.4 20.1l1.3 21.3c.8 13.2-6.4 25.6-18.2 31.5l-19.1 9.6c-6.4 3.2-11.5 8.4-14.7 14.7L301 344.5c-5.9 11.8-18.3 19-31.5 18.2l-21.3-1.3c-7.1-.4-14.2 1.5-20.1 5.4l-17.8 11.8c-11 7.3-25.4 7.3-36.4 0L156 366.8c-6-3.9-13-5.8-20.1-5.4l-21.3 1.3c-13.2 .8-25.6-6.4-31.5-18.2l-9.6-19.1c-3.2-6.4-8.4-11.5-14.7-14.7L39.5 301c-11.8-5.9-19-18.3-18.2-31.5l1.3-21.3c.4-7.1-1.5-14.2-5.4-20.1L5.5 210.2c-7.3-11-7.3-25.4 0-36.4L17.2 156c3.9-6 5.8-13 5.4-20.1l-1.3-21.3c-.8-13.2 6.4-25.6 18.2-31.5l19.1-9.6C65 70.2 70.2 65 73.4 58.6L83 39.5c5.9-11.8 18.3-19 31.5-18.2l21.3 1.3c7.1 .4 14.2-1.5 20.1-5.4L173.8 5.5zM272 192a80 80 0 1 0 -160 0 80 80 0 1 0 160 0zM1.3 441.8L44.4 339.3c.2 .1 .3 .2 .4 .4l9.6 19.1c11.7 23.2 36 37.3 62 35.8l21.3-1.3c.2 0 .5 0 .7 .2l17.8 11.8c5.1 3.3 10.5 5.9 16.1 7.7l-37.6 89.3c-2.3 5.5-7.4 9.2-13.3 9.7s-11.6-2.2-14.8-7.2L74.4 455.5l-56.1 8.3c-5.7 .8-11.4-1.5-15-6s-4.3-10.7-2.1-16zm248 60.4L211.7 413c5.6-1.8 11-4.3 16.1-7.7l17.8-11.8c.2-.1 .4-.2 .7-.2l21.3 1.3c26 1.5 50.3-12.6 62-35.8l9.6-19.1c.1-.2 .2-.3 .4-.4l43.2 102.5c2.2 5.3 1.4 11.4-2.1 16s-9.3 6.9-15 6l-56.1-8.3-32.2 49.2c-3.2 5-8.9 7.7-14.8 7.2s-11-4.3-13.3-9.7z"/>
+                </svg>
+                <a href="#why">Why study Biosciences?</a>
+            </div>
+            <div class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="24" height="24" fill="white"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/></svg>
+                </svg>
+                <a href="#search">Biosciences courses</a>
+            </div>
+        </div>
+    </div>
+    </div>
+</div><div class="container">
+    <div class="breadcrumbs">
+        <a href="#">Home</a>
+        <span class="separator">›</span>
+        <a href="#">Subjects</a>
+        <span class="separator">›</span>
+        <a href="#" class="active">Biosciences</a>
+    </div>
+    <h2 id="why">Why study Biosciences?</h2>
+    <section class="features-grid">
+        <div class="feature-box">
+          <h3>Breadth</h3>
+          <p>Study the areas you're most passionate about with courses spanning the full spectrum of biology. We train students to solve some of the world's biggest challenges, from cancer, antimicrobial resistance and healthy ageing, to saving the planet’s biodiversity and mitigating climate change.</p>
+        </div>
+        <div class="feature-box">
+          <h3>Options beyond the three-year BSc</h3>
+          <p>Our courses all come with options to gain additional experience beyond a three-year BSc. Add an extra year of research experience with an integrated masters, spend a year gaining work experience with a top employer, or apply to spend a year studying abroad.</p>
+        </div>
+        <div class="feature-box">
+          <h3>4th in the UK for research quality</h3>
+          <p>The Research Excellence Framework (REF) 2021 rated 98% of research and impact from the School of Biosciences as world-leading or internationally excellent.</p>
+        </div>
+        <div class="feature-box">
+          <h3>Partnership with Sheffield Teaching Hospitals</h3>
+          <p>Our partnership with Sheffield Teaching Hospitals includes opportunities to contribute to the analysis of patient cancer samples with the Julia Garnham Centre.</p>
+        </div>
+      </section>      
+</div>
+    <div class="search-box">
+        <div class="search-container">
+  <h2 id="search">Biosciences courses</h2>
+<p>Browse courses or filter by course level.</p>
+</div>
+
+  <div class="filters">
+          <div class="filter-item">
+            <div class="select-wrapper">
+            <select id="levelSelect" class="search-input">
+              <option value="">All levels</option>
+              <option value="Undergraduate">Undergraduate</option>
+              <option value="Postgraduate Taught">Postgraduate</option>
+            </select>
+            <span class="custom-arrow">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                  <path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/>
+                </svg>
+              </span>
+            </div>
+          </div>
+    <div class="filter-item" style="flex: 0 0 auto;">
+      <button id="clearFilters" class="clear-button">Clear filters</button>
+    </div>
+    
+  </div>
+</div>
+  
+
+  <div id="courseContainer"></div>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-heading">
+        <h4>The University of Sheffield</h4>
+      </div>
+      
+      <!-- Footer links with additional links hidden by default on mobile -->
+      <div class="footer-links">
+        <ul>
+          <li><a href="#">Undergraduate courses</a></li>
+          <li><a href="#">Postgraduate taught courses</a></li>
+          <li><a href="#">PhD study</a></li>
+          <li><a href="#">Accommodation</a></li>
+          <li><a href="#">International students</a></li>
+        </ul>
+        
+        <ul class="more-links">
+          <li><a href="#">Jobs</a></li>
+          <li><a href="#">Information for visitors</a></li>
+          <li><a href="#">Player</a></li>
+          <li><a href="#">Policies</a></li>
+        </ul>
+        
+        <ul class="more-links">
+          <li><a href="#">Make an online payment</a></li>
+          <li><a href="#">Support us</a></li>
+          <li><a href="#">Student hub</a></li>
+          <li><a href="#">Staff hub</a></li>
+          <li><a href="#">Alumni</a></li>
+        </ul>
+        
+        <ul class="more-links">
+          <li><a href="#">Departments and services</a></li>
+          <li><a href="#">Students' Union</a></li>
+          <li><a href="#">Library</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+
+         <!-- "Show More" button -->
+         <a href="#" id="showMoreLink" class="toggle-label">Show More</a>
+        
+        <!-- Address should always be visible -->
+        <div class="contact-info">
+          <p>The University of Sheffield</p>
+          <p>Western Bank</p>
+          <p>Sheffield</p>
+          <p>S10 2TN</p>
+          <p>+44 114 222 2000</p>
+        </div>
+      </div>
+      
+    </div> 
+   
+    <div class="footer-bottom">
+        <div class="footer-awards">
+          <img src="top100.png" alt="World Top 100 University">
+          <img src="russellgroup.png" alt="Russell Group">
+          <img src="uoty.png" alt="University of the Year 2024">
+          <img src="queens.png" alt="Queen's Anniversary Prize">
+        </div>
+        <div class="footer-social">
+            <a href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="#7000ff" viewBox="0 0 448 512">
+                  <path d="M448 209.9a210.1 210.1 0 0 1 -122.8-39.3V349.4A162.6 162.6 0 1 1 185 188.3V278.2a74.6 74.6 0 1 0 52.2 71.2V0l88 0a121.2 121.2 0 0 0 1.9 22.2h0A122.2 122.2 0 0 0 381 102.4a121.4 121.4 0 0 0 67 20.1z"/>
+                </svg>
+              </a>
+              <a href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="#7000ff" viewBox="0 0 448 512">
+                <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
+              </a>
+              <a href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="#7000ff" viewBox="0 0 576 512">
+                    <path d="M549.7 124.1c-6.3-23.7-24.8-42.3-48.3-48.6C458.8 64 288 64 288 64S117.2 64 74.6 75.5c-23.5 6.3-42 24.9-48.3 48.6-11.4 42.9-11.4 132.3-11.4 132.3s0 89.4 11.4 132.3c6.3 23.7 24.8 41.5 48.3 47.8C117.2 448 288 448 288 448s170.8 0 213.4-11.5c23.5-6.3 42-24.2 48.3-47.8 11.4-42.9 11.4-132.3 11.4-132.3s0-89.4-11.4-132.3zm-317.5 213.5V175.2l142.7 81.2-142.7 81.2z"/></svg>
+              </a>
+              <a href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="#7000ff" viewBox="0 0 448 512">
+                    <path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+              </a>
+              <a href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="#7000ff"  viewBox="0 0 576 512">
+                    <path d="M385.2 167.6c6.4 0 12.6 .3 18.8 1.1C387.4 90.3 303.3 32 207.7 32 100.5 32 13 104.8 13 197.4c0 53.4 29.3 97.5 77.9 131.6l-19.3 58.6 68-34.1c24.4 4.8 43.8 9.7 68.2 9.7 6.2 0 12.1-.3 18.3-.8-4-12.9-6.2-26.6-6.2-40.8-.1-84.9 72.9-154 165.3-154zm-104.5-52.9c14.5 0 24.2 9.7 24.2 24.4 0 14.5-9.7 24.2-24.2 24.2-14.8 0-29.3-9.7-29.3-24.2 .1-14.7 14.6-24.4 29.3-24.4zm-136.4 48.6c-14.5 0-29.3-9.7-29.3-24.2 0-14.8 14.8-24.4 29.3-24.4 14.8 0 24.4 9.7 24.4 24.4 0 14.6-9.6 24.2-24.4 24.2zM563 319.4c0-77.9-77.9-141.3-165.4-141.3-92.7 0-165.4 63.4-165.4 141.3S305 460.7 397.6 460.7c19.3 0 38.9-5.1 58.6-9.9l53.4 29.3-14.8-48.6C534 402.1 563 363.2 563 319.4zm-219.1-24.5c-9.7 0-19.3-9.7-19.3-19.6 0-9.7 9.7-19.3 19.3-19.3 14.8 0 24.4 9.7 24.4 19.3 0 10-9.7 19.6-24.4 19.6zm107.1 0c-9.7 0-19.3-9.7-19.3-19.6 0-9.7 9.7-19.3 19.3-19.3 14.5 0 24.4 9.7 24.4 19.3 .1 10-9.9 19.6-24.4 19.6z"/></svg>
+              </a>
+              <a href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="#7000ff"  viewBox="0 0 512 512">
+                    <path d="M407 177.6c7.6-24-13.4-46.8-37.4-41.7-22 4.8-28.8-28.1-7.1-32.8 50.1-10.9 92.3 37.1 76.5 84.8-6.8 21.2-38.8 10.8-32-10.3zM214.8 446.7C108.5 446.7 0 395.3 0 310.4c0-44.3 28-95.4 76.3-143.7C176 67 279.5 65.8 249.9 161c-4 13.1 12.3 5.7 12.3 6 79.5-33.6 140.5-16.8 114 51.4-3.7 9.4 1.1 10.9 8.3 13.1 135.7 42.3 34.8 215.2-169.7 215.2zm143.7-146.3c-5.4-55.7-78.5-94-163.4-85.7-84.8 8.6-148.8 60.3-143.4 116s78.5 94 163.4 85.7c84.8-8.6 148.8-60.3 143.4-116zM347.9 35.1c-25.9 5.6-16.8 43.7 8.3 38.3 72.3-15.2 134.8 52.8 111.7 124-7.4 24.2 29.1 37 37.4 12 31.9-99.8-55.1-195.9-157.4-174.3zm-78.5 311c-17.1 38.8-66.8 60-109.1 46.3-40.8-13.1-58-53.4-40.3-89.7 17.7-35.4 63.1-55.4 103.4-45.1 42 10.8 63.1 50.2 46 88.5zm-86.3-30c-12.9-5.4-30 .3-38 12.9-8.3 12.9-4.3 28 8.6 34 13.1 6 30.8 .3 39.1-12.9 8-13.1 3.7-28.3-9.7-34zm32.6-13.4c-5.1-1.7-11.4 .6-14.3 5.4-2.9 5.1-1.4 10.6 3.7 12.9 5.1 2 11.7-.3 14.6-5.4 2.8-5.2 1.1-10.9-4-12.9z"/></svg>
+              </a>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </footer>
+
+  <script>
+    const CSV_URLS = {
+      2025: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTbwCWto19Yyl6peSwvbjGYerbUgeJo2Spkb10B7DbZNHT0K_VU_4e0LNKcHUyu4qp7qnx_bYOVpxJe/pub?gid=1765915941&single=true&output=csv',
+      2026: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTbwCWto19Yyl6peSwvbjGYerbUgeJo2Spkb10B7DbZNHT0K_VU_4e0LNKcHUyu4qp7qnx_bYOVpxJe/pub?gid=1229341297&single=true&output=csv',
+      PGT: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTbwCWto19Yyl6peSwvbjGYerbUgeJo2Spkb10B7DbZNHT0K_VU_4e0LNKcHUyu4qp7qnx_bYOVpxJe/pub?gid=1313875461&single=true&output=csv'
+    };
+  
+    let currentYear = 2025;
+    let allData = [];
+    let currentPage = 1;
+    const pageSize = 12;
+    let activeSubjects = new Set();
+  
+    async function fetchAndParseCSV(key) {
+      const response = await fetch(CSV_URLS[key]);
+      const csvText = await response.text();
+      return new Promise(resolve => {
+        Papa.parse(csvText, {
+          header: true,
+          skipEmptyLines: true,
+          complete: results => resolve(results.data)
+        });
+      });
+    }
+  
+    function extractSubjects(data) {
+      const allSubjects = new Set();
+      data.forEach(row => {
+        (row['Subject(s)'] || '').split(/[,;]+/).forEach(s => {
+          const trimmed = s.trim();
+          if (trimmed) allSubjects.add(trimmed);
+        });
+      });
+      return Array.from(allSubjects).sort();
+    }
+  
+    function matchSubjectFilter(row) {
+      if (activeSubjects.size === 0) return true;
+      const subjects = (row['Subject(s)'] || '').split(/[,;]+/).map(s => s.trim());
+      return [...activeSubjects].every(tag => subjects.includes(tag));
+    }
+  
+    function matchSearch(row, query) {
+      if (!query) return true;
+      const programme = (row.Programme || '').toLowerCase();
+      const q = query.toLowerCase();
+      return programme.includes(q);
+    }
+  
+    function matchLevelFilter(row) {
+      const selectedLevel = document.getElementById('levelSelect')?.value || '';
+      if (!selectedLevel) return true;
+      return (row.Level || '').trim() === selectedLevel;
+    }
+  
+    function splitMultiline(value) {
+      return (value || '').split(/\r?\n/).map(line => line.trim()).filter(line => line.length);
+    }
+  
+    function highlightMatch(text, query) {
+      if (!query) return text;
+      const regex = new RegExp(`(${query})`, 'gi');
+      return text.replace(regex, '<mark>$1</mark>');
+    }
+  
+    function renderCourseCard(course, query) {
+      const wrapper = document.createElement('div');
+      const levelClass = (course.Level || '').toLowerCase().includes('postgraduate') ? 'pgt' : 'ug';
+      wrapper.className = `card ${levelClass}`;
+  
+      const highlightedTitle = highlightMatch(course.Programme, query);
+      const courseNames = splitMultiline(course.Courses);
+      const links = splitMultiline(course['Course links']);
+  
+      wrapper.innerHTML = `
+        <div class="level">${course.Level}</div>
+        <h2 class="title">${highlightedTitle}</h2>
+        <div class="start-date-pill pill-${course.Level.includes('Postgraduate') ? 'PGT' : currentYear}">
+          ${course['Start date']}
+        </div>
+        <div class="description">${course.Description}</div>
+      `;
+  
+      const courseList = document.createElement('ul');
+      courseList.className = 'course-list';
+  
+      courseNames.forEach((name, i) => {
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.href = links[i] || '#';
+        a.target = '_blank';
+        a.innerHTML = highlightMatch(name, query);
+        li.appendChild(a);
+        courseList.appendChild(li);
+      });
+  
+      wrapper.appendChild(courseList);
+      return wrapper;
+    }
+  
+    function updateFilters() {
+  const query = document.getElementById('searchInput').value.trim().toLowerCase();
+  const levelSelect = document.getElementById('levelSelect');
+  const container = document.getElementById('courseContainer');
+  const resultsCount = document.getElementById('resultsCount');
+
+  activeSubjects = new Set(["Biosciences"]);
+
+  let filtered = allData.filter(row =>
+    matchSubjectFilter(row) &&
+    matchSearch(row, query) &&
+    matchLevelFilter(row)
+  );
+
+  container.innerHTML = '';
+
+  const grouped = {
+    Undergraduate: [],
+    'Postgraduate Taught': []
+  };
+
+  filtered.forEach(course => {
+    const level = (course.Level || '').trim();
+    if (level === 'Postgraduate Taught') {
+      grouped['Postgraduate Taught'].push(course);
+    } else {
+      grouped['Undergraduate'].push(course);
+    }
+  });
+
+  const isDefaultGroupedView = !query && !levelSelect.value;
+  const isUGSelected = !levelSelect.value || levelSelect.value === 'Undergraduate';
+  const hasUGCourses = grouped['Undergraduate'].length > 0;
+
+  // UG heading + toggle (shown when in grouped view or UG selected, regardless of search)
+  if (hasUGCourses && isUGSelected) {
+    if (isDefaultGroupedView || levelSelect.value === 'Undergraduate') {
+      const ugHeading = document.createElement('h3');
+      ugHeading.className = 'course-group-heading';
+      ugHeading.textContent = 'Undergraduate courses';
+      container.appendChild(ugHeading);
+    }
+
+    const toggleWrapper = document.createElement('div');
+    toggleWrapper.className = 'dataset-toggle';
+    toggleWrapper.innerHTML = `
+      <p>Choose undergraduate year:</p>
+      <button class="dataset-btn ${currentYear === 2025 ? 'active' : ''}" data-year="2025">2025–26 Courses</button>
+      <button class="dataset-btn ${currentYear === 2026 ? 'active' : ''}" data-year="2026">2026–27 Courses</button>
+    `;
+    container.appendChild(toggleWrapper);
+
+    toggleWrapper.querySelectorAll('.dataset-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const selectedYear = btn.dataset.year;
+        document.querySelectorAll('.dataset-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        init(parseInt(selectedYear), {
+          query,
+          level: levelSelect?.value || ''
+        });
+      });
+    });
+  }
+
+  if (isDefaultGroupedView) {
+    if (grouped['Undergraduate'].length > 0) {
+      const ugGrid = document.createElement('div');
+      ugGrid.className = 'course-grid';
+      grouped['Undergraduate'].forEach(course => {
+        ugGrid.appendChild(renderCourseCard(course, query));
+      });
+      container.appendChild(ugGrid);
+    }
+
+    if (grouped['Postgraduate Taught'].length > 0) {
+      const pgHeading = document.createElement('h3');
+      pgHeading.className = 'course-group-heading';
+      pgHeading.textContent = 'Postgraduate taught courses';
+      container.appendChild(pgHeading);
+
+      const pgGrid = document.createElement('div');
+      pgGrid.className = 'course-grid';
+      grouped['Postgraduate Taught'].forEach(course => {
+        pgGrid.appendChild(renderCourseCard(course, query));
+      });
+      container.appendChild(pgGrid);
+    }
+  } else {
+    const grid = document.createElement('div');
+    grid.className = 'course-grid';
+    filtered.forEach(course => {
+      grid.appendChild(renderCourseCard(course, query));
+    });
+    container.appendChild(grid);
+
+    // Optional: show PG heading when level = PG and not searching
+    if (!query && grouped['Postgraduate Taught'].length > 0 && levelSelect.value === 'Postgraduate Taught') {
+      const pgHeading = document.createElement('h3');
+      pgHeading.className = 'course-group-heading';
+      pgHeading.textContent = 'Postgraduate taught courses';
+      container.insertBefore(pgHeading, grid);
+    }
+  }
+
+  if (resultsCount) {
+    resultsCount.textContent = `${filtered.length} Biosciences course${filtered.length === 1 ? '' : 's'}`;
+  }
+}
+
+  
+    async function init(year = 2025, preserve = {}) {
+      currentYear = year;
+  
+      const [ugData, pgtData] = await Promise.all([
+        fetchAndParseCSV(year),
+        fetchAndParseCSV('PGT')
+      ]);
+  
+      allData = [...ugData, ...pgtData];
+  
+      const searchInput = document.getElementById('searchInput');
+      const clearButton = document.getElementById('clearFilters');
+      const levelSelect = document.getElementById('levelSelect');
+  
+      searchInput.addEventListener('input', () => {
+        currentPage = 1;
+        updateFilters();
+      });
+  
+      levelSelect.addEventListener('change', () => {
+        currentPage = 1;
+        updateFilters();
+      });
+  
+      clearButton.addEventListener('click', () => {
+        searchInput.value = '';
+        levelSelect.value = '';
+        currentPage = 1;
+        updateFilters();
+      });
+  
+      if (preserve.query !== undefined) searchInput.value = preserve.query;
+      if (preserve.level !== undefined) levelSelect.value = preserve.level;
+      if (preserve.page !== undefined) currentPage = preserve.page;
+      else currentPage = 1;
+  
+      updateFilters();
+    }
+  
+    document.addEventListener('DOMContentLoaded', () => {
+      const clearSearch = document.getElementById('clearSearch');
+      const searchInput = document.getElementById('searchInput');
+  
+      searchInput.addEventListener('input', () => {
+        currentPage = 1;
+        updateFilters();
+        clearSearch.style.display = searchInput.value ? 'block' : 'none';
+      });
+  
+      clearSearch.addEventListener('click', () => {
+        searchInput.value = '';
+        clearSearch.style.display = 'none';
+        currentPage = 1;
+        updateFilters();
+      });
+  
+      clearSearch.style.display = searchInput.value ? 'block' : 'none';
+  
+      init();
+    });
+  </script>
+  
+    
+</body>
+</html>
