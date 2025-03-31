@@ -523,6 +523,11 @@ details[open] .accordion-icon-wrapper {
         </svg>
     </span>
       </summary>
+      <div class="dataset-toggle">
+        <p>Choose undergraduate year:</p>
+        <button class="dataset-btn active" data-year="2025">2025–26 Courses</button>
+        <button class="dataset-btn" data-year="2026">2026–27 Courses</button>
+      </div>      
       <div class="course-grid" id="ugCourses"></div>
     </details>
     <hr />
@@ -633,97 +638,117 @@ details[open] .accordion-icon-wrapper {
   </div>
   </footer>
 
-<script>
-  async function fetchAndParseCSV(key) {
-    const urls = {
-      2025: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTbwCWto19Yyl6peSwvbjGYerbUgeJo2Spkb10B7DbZNHT0K_VU_4e0LNKcHUyu4qp7qnx_bYOVpxJe/pub?gid=1765915941&single=true&output=csv',
-      PGT: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTbwCWto19Yyl6peSwvbjGYerbUgeJo2Spkb10B7DbZNHT0K_VU_4e0LNKcHUyu4qp7qnx_bYOVpxJe/pub?gid=1313875461&single=true&output=csv'
-    };
-    const response = await fetch(urls[key]);
-    const text = await response.text();
-    return new Promise(resolve => {
-      Papa.parse(text, {
-        header: true,
-        skipEmptyLines: true,
-        complete: results => resolve(results.data)
+  <script>
+    let currentYear = 2025;
+  
+    async function fetchAndParseCSV(key) {
+      const urls = {
+        2025: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTbwCWto19Yyl6peSwvbjGYerbUgeJo2Spkb10B7DbZNHT0K_VU_4e0LNKcHUyu4qp7qnx_bYOVpxJe/pub?gid=1765915941&single=true&output=csv',
+        2026: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTbwCWto19Yyl6peSwvbjGYerbUgeJo2Spkb10B7DbZNHT0K_VU_4e0LNKcHUyu4qp7qnx_bYOVpxJe/pub?gid=1229341297&single=true&output=csv',
+        PGT: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTbwCWto19Yyl6peSwvbjGYerbUgeJo2Spkb10B7DbZNHT0K_VU_4e0LNKcHUyu4qp7qnx_bYOVpxJe/pub?gid=1313875461&single=true&output=csv'
+      };
+      const response = await fetch(urls[key]);
+      const text = await response.text();
+      return new Promise(resolve => {
+        Papa.parse(text, {
+          header: true,
+          skipEmptyLines: true,
+          complete: results => resolve(results.data)
+        });
+      });
+    }
+  
+    function matchSubjectFilter(row) {
+      const activeSubjects = new Set(["Biosciences"]);
+      const subjects = (row['Subject(s)'] || '').split(/[,;]+/).map(s => s.trim().toLowerCase());
+      return [...activeSubjects].every(tag => subjects.includes(tag.toLowerCase()));
+    }
+  
+    function splitMultiline(value) {
+      return (value || '').split(/\r?\n/).map(line => line.trim()).filter(line => line.length);
+    }
+  
+    function renderCourseCard(course) {
+      const wrapper = document.createElement('div');
+      const levelClass = (course.Level || '').toLowerCase().includes('postgraduate') ? 'pgt' : 'ug';
+      wrapper.className = `card ${levelClass}`;
+  
+      const courseNames = splitMultiline(course.Courses);
+      const links = splitMultiline(course['Course links']);
+  
+      wrapper.innerHTML = `
+        <div class="level">${course.Level}</div>
+        <h2 class="title">${course.Programme}</h2>
+        <div class="start-date-pill pill-${course.Level.includes('Postgraduate') ? 'PGT' : 'UG'}">
+          ${course['Start date']}
+        </div>
+        <div class="description">${course.Description}</div>
+      `;
+  
+      const courseList = document.createElement('ul');
+      courseList.className = 'course-list';
+  
+      courseNames.forEach((name, i) => {
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.href = links[i] || '#';
+        a.target = '_blank';
+        a.textContent = name;
+        li.appendChild(a);
+        courseList.appendChild(li);
+      });
+  
+      wrapper.appendChild(courseList);
+      return wrapper;
+    }
+  
+    function updateAccordionCourses(allData) {
+      const containerUG = document.getElementById('ugCourses');
+      const containerPGT = document.getElementById('pgtCourses');
+      containerUG.innerHTML = '';
+      containerPGT.innerHTML = '';
+  
+      const filtered = allData.filter(row => matchSubjectFilter(row));
+  
+      filtered.forEach(course => {
+        const level = (course.Level || '').trim();
+        if (level === 'Postgraduate Taught') {
+          containerPGT.appendChild(renderCourseCard(course));
+        } else {
+          containerUG.appendChild(renderCourseCard(course));
+        }
+      });
+    }
+  
+    async function init(year = 2025) {
+      currentYear = year;
+  
+      const [ugData, pgtData] = await Promise.all([
+        fetchAndParseCSV(year),
+        fetchAndParseCSV('PGT')
+      ]);
+  
+      const allData = [...ugData, ...pgtData];
+      updateAccordionCourses(allData);
+    }
+  
+    document.addEventListener('DOMContentLoaded', () => {
+      init(currentYear);
+  
+      document.querySelectorAll('.dataset-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const selectedYear = parseInt(btn.dataset.year);
+          currentYear = selectedYear;
+  
+          document.querySelectorAll('.dataset-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+  
+          init(selectedYear);
+        });
       });
     });
-  }
-
-  function matchSubjectFilter(row) {
-    const activeSubjects = new Set(["Biosciences"]);
-    const subjects = (row['Subject(s)'] || '').split(/[,;]+/).map(s => s.trim().toLowerCase());
-    return [...activeSubjects].every(tag => subjects.includes(tag.toLowerCase()));
-  }
-
-  function splitMultiline(value) {
-    return (value || '').split(/\r?\n/).map(line => line.trim()).filter(line => line.length);
-  }
-
-  function renderCourseCard(course) {
-    const wrapper = document.createElement('div');
-    const levelClass = (course.Level || '').toLowerCase().includes('postgraduate') ? 'pgt' : 'ug';
-    wrapper.className = `card ${levelClass}`;
-
-    const courseNames = splitMultiline(course.Courses);
-    const links = splitMultiline(course['Course links']);
-
-    wrapper.innerHTML = `
-      <div class="level">${course.Level}</div>
-      <h2 class="title">${course.Programme}</h2>
-      <div class="start-date-pill pill-${course.Level.includes('Postgraduate') ? 'PGT' : 'UG'}">
-        ${course['Start date']}
-      </div>
-      <div class="description">${course.Description}</div>
-    `;
-
-    const courseList = document.createElement('ul');
-    courseList.className = 'course-list';
-
-    courseNames.forEach((name, i) => {
-      const li = document.createElement('li');
-      const a = document.createElement('a');
-      a.href = links[i] || '#';
-      a.target = '_blank';
-      a.textContent = name;
-      li.appendChild(a);
-      courseList.appendChild(li);
-    });
-
-    wrapper.appendChild(courseList);
-    return wrapper;
-  }
-
-  function updateAccordionCourses(allData) {
-    const containerUG = document.getElementById('ugCourses');
-    const containerPGT = document.getElementById('pgtCourses');
-    containerUG.innerHTML = '';
-    containerPGT.innerHTML = '';
-
-    const filtered = allData.filter(row => matchSubjectFilter(row));
-
-    filtered.forEach(course => {
-      const level = (course.Level || '').trim();
-      if (level === 'Postgraduate Taught') {
-        containerPGT.appendChild(renderCourseCard(course));
-      } else {
-        containerUG.appendChild(renderCourseCard(course));
-      }
-    });
-  }
-
-  async function init() {
-    const [ugData, pgtData] = await Promise.all([
-      fetchAndParseCSV('2025'),
-      fetchAndParseCSV('PGT')
-    ]);
-    const allData = [...ugData, ...pgtData];
-    updateAccordionCourses(allData);
-  }
-
-  document.addEventListener('DOMContentLoaded', init);
-</script>
-
+  </script>
+  
   
     
 </body>
