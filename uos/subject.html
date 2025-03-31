@@ -558,97 +558,104 @@ h2 {
     }
   
     function updateFilters() {
-      const query = document.getElementById('searchInput').value.trim().toLowerCase();
-      const levelSelect = document.getElementById('levelSelect');
-      const container = document.getElementById('courseContainer');
-      const resultsCount = document.getElementById('resultsCount');
-  
-      activeSubjects = new Set(["Biosciences"]);
-  
-      let filtered = allData.filter(row =>
-        matchSubjectFilter(row) && matchSearch(row, query) && matchLevelFilter(row)
-      );
-  
-      container.innerHTML = '';
-  
-      // If searching or filtering by level, show flat grid
-      if (query || levelSelect.value) {
-        const grid = document.createElement('div');
-        grid.className = 'course-grid';
-        filtered.forEach(course => {
-          grid.appendChild(renderCourseCard(course, query));
-        });
-        container.appendChild(grid);
-        resultsCount.textContent = `${filtered.length} Biosciences course${filtered.length === 1 ? '' : 's'}`;
-        return;
-      }
-  
-      // Else: split into UG and PG
-      const grouped = {
-        Undergraduate: [],
-        'Postgraduate Taught': []
-      };
-  
-      filtered.forEach(course => {
-        const level = (course.Level || '').trim();
-        if (level === 'Postgraduate Taught') {
-          grouped['Postgraduate Taught'].push(course);
-        } else {
-          grouped['Undergraduate'].push(course);
-        }
-      });
-  
-      if (grouped['Undergraduate'].length > 0) {
-        const ugHeading = document.createElement('h3');
-        ugHeading.className = 'course-group-heading';
-        ugHeading.textContent = 'Undergraduate courses';
-        container.appendChild(ugHeading);
-  
-        const toggleWrapper = document.createElement('div');
-        toggleWrapper.className = 'dataset-toggle';
-        toggleWrapper.innerHTML = `
-          <p>Choose undergraduate year:</p>
-          <button class="dataset-btn ${currentYear === 2025 ? 'active' : ''}" data-year="2025">2025–26 Courses</button>
-          <button class="dataset-btn ${currentYear === 2026 ? 'active' : ''}" data-year="2026">2026–27 Courses</button>
-        `;
-        container.appendChild(toggleWrapper);
-  
-        toggleWrapper.querySelectorAll('.dataset-btn').forEach(btn => {
-          btn.addEventListener('click', () => {
-            const selectedYear = btn.dataset.year;
-            document.querySelectorAll('.dataset-btn').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            init(parseInt(selectedYear), {
-              query: query,
-              level: levelSelect?.value || ''
-            });
-          });
-        });
-  
-        const ugGrid = document.createElement('div');
-        ugGrid.className = 'course-grid';
-        grouped['Undergraduate'].forEach(course => {
-          ugGrid.appendChild(renderCourseCard(course, query));
-        });
-        container.appendChild(ugGrid);
-      }
-  
-      if (grouped['Postgraduate Taught'].length > 0) {
-        const pgHeading = document.createElement('h3');
-        pgHeading.className = 'course-group-heading';
-        pgHeading.textContent = 'Postgraduate taught courses';
-        container.appendChild(pgHeading);
-  
-        const pgGrid = document.createElement('div');
-        pgGrid.className = 'course-grid';
-        grouped['Postgraduate Taught'].forEach(course => {
-          pgGrid.appendChild(renderCourseCard(course, query));
-        });
-        container.appendChild(pgGrid);
-      }
-  
-      resultsCount.textContent = `${filtered.length} Biosciences course${filtered.length === 1 ? '' : 's'}`;
+  const query = document.getElementById('searchInput').value.trim().toLowerCase();
+  const levelSelect = document.getElementById('levelSelect');
+  const container = document.getElementById('courseContainer');
+  const resultsCount = document.getElementById('resultsCount');
+
+  activeSubjects = new Set(["Biosciences"]);
+
+  let filtered = allData.filter(row =>
+    matchSubjectFilter(row) &&
+    matchSearch(row, query) &&
+    matchLevelFilter(row)
+  );
+
+  container.innerHTML = '';
+
+  // Group UG and PG
+  const grouped = {
+    Undergraduate: [],
+    'Postgraduate Taught': []
+  };
+
+  filtered.forEach(course => {
+    const level = (course.Level || '').trim();
+    if (level === 'Postgraduate Taught') {
+      grouped['Postgraduate Taught'].push(course);
+    } else {
+      grouped['Undergraduate'].push(course);
     }
+  });
+
+  const isDefaultGroupedView = !query && !levelSelect.value;
+  const isUGSelected = !levelSelect.value || levelSelect.value === 'Undergraduate';
+  const hasUGCourses = grouped['Undergraduate'].length > 0;
+
+  // UG heading + toggle (shown when in grouped view or UG selected, regardless of search)
+  if (hasUGCourses && isUGSelected) {
+    if (isDefaultGroupedView || levelSelect.value === 'Undergraduate') {
+      const ugHeading = document.createElement('h3');
+      ugHeading.className = 'course-group-heading';
+      ugHeading.textContent = 'Undergraduate courses';
+      container.appendChild(ugHeading);
+    }
+
+    const toggleWrapper = document.createElement('div');
+    toggleWrapper.className = 'dataset-toggle';
+    toggleWrapper.innerHTML = `
+      <p>Choose undergraduate year:</p>
+      <button class="dataset-btn ${currentYear === 2025 ? 'active' : ''}" data-year="2025">2025–26 Courses</button>
+      <button class="dataset-btn ${currentYear === 2026 ? 'active' : ''}" data-year="2026">2026–27 Courses</button>
+    `;
+    container.appendChild(toggleWrapper);
+
+    toggleWrapper.querySelectorAll('.dataset-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const selectedYear = btn.dataset.year;
+        document.querySelectorAll('.dataset-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        init(parseInt(selectedYear), {
+          query,
+          level: levelSelect?.value || ''
+        });
+      });
+    });
+  }
+
+  // PG heading (only when grouped or level PG selected, and no search)
+  if (!query && grouped['Postgraduate Taught'].length > 0 && (isDefaultGroupedView || levelSelect.value === 'Postgraduate Taught')) {
+    const pgHeading = document.createElement('h3');
+    pgHeading.className = 'course-group-heading';
+    pgHeading.textContent = 'Postgraduate taught courses';
+    container.appendChild(pgHeading);
+  }
+
+  const grid = document.createElement('div');
+  grid.className = 'course-grid';
+
+  if (isDefaultGroupedView) {
+    // Show grouped UG and PG
+    grouped['Undergraduate'].forEach(course => {
+      grid.appendChild(renderCourseCard(course, query));
+    });
+    grouped['Postgraduate Taught'].forEach(course => {
+      grid.appendChild(renderCourseCard(course, query));
+    });
+  } else {
+    // Flat list of all filtered results
+    filtered.forEach(course => {
+      grid.appendChild(renderCourseCard(course, query));
+    });
+  }
+
+  container.appendChild(grid);
+
+  // Update count
+  if (resultsCount) {
+    resultsCount.textContent = `${filtered.length} Biosciences course${filtered.length === 1 ? '' : 's'}`;
+  }
+}
   
     async function init(year = 2025, preserve = {}) {
       currentYear = year;
