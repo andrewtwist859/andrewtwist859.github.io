@@ -284,6 +284,13 @@ h1 {
   margin: 0 auto 3rem;
 }
 
+.card.pgt {
+  border-top: 6px solid #7100ff;
+}
+
+.card.pgt .level {
+  color: #7100ff;
+}
 
 
   </style>
@@ -388,8 +395,9 @@ h1 {
     
     function renderCourseCard(course, query) {
       const wrapper = document.createElement('div');
-      wrapper.className = 'card';
-    
+const levelClass = (course.Level || '').toLowerCase().includes('postgraduate') ? 'pgt' : 'ug';
+wrapper.className = `card ${levelClass}`;
+
       const highlightedTitle = highlightMatch(course.Programme, query);
       const courseNames = splitMultiline(course.Courses);
       const links = splitMultiline(course['Course links']);
