@@ -493,18 +493,23 @@ wrapper.className = `card ${levelClass}`;
     container.appendChild(heading);
 
     // New grid block
-    const grid = document.createElement('div');
-    grid.className = 'course-grid';
+    const totalPages = Math.ceil(filtered.length / pageSize);
+currentPage = Math.min(currentPage, totalPages || 1);
 
-    grouped[level]
-      .sort((a, b) => a.Programme.localeCompare(b.Programme))
-      .forEach(course => grid.appendChild(renderCourseCard(course, query)));
+const start = (currentPage - 1) * pageSize;
+const paginated = filtered.slice(start, start + pageSize);
 
-    container.appendChild(grid);
+const grid = document.createElement('div');
+grid.className = 'course-grid';
+
+paginated.forEach(course => {
+  grid.appendChild(renderCourseCard(course, query));
+});
+
+container.appendChild(grid);
+
   }
 }
-
-
 
     
         document.getElementById('paginationControls').innerHTML = '';
