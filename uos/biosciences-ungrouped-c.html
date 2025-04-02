@@ -580,12 +580,14 @@ h2.course-header {
   </footer>
   <script>
     let currentYear = 2025;
+
+
   
     async function fetchAndParseCSV(key) {
       const urls = {
-        2025: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTbwCWto19Yyl6peSwvbjGYerbUgeJo2Spkb10B7DbZNHT0K_VU_4e0LNKcHUyu4qp7qnx_bYOVpxJe/pub?gid=1765915941&single=true&output=csv',
-        2026: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTbwCWto19Yyl6peSwvbjGYerbUgeJo2Spkb10B7DbZNHT0K_VU_4e0LNKcHUyu4qp7qnx_bYOVpxJe/pub?gid=1229341297&single=true&output=csv',
-        PGT: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTbwCWto19Yyl6peSwvbjGYerbUgeJo2Spkb10B7DbZNHT0K_VU_4e0LNKcHUyu4qp7qnx_bYOVpxJe/pub?gid=1313875461&single=true&output=csv'
+        2025: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTbwCWto19Yyl6peSwvbjGYerbUgeJo2Spkb10B7DbZNHT0K_VU_4e0LNKcHUyu4qp7qnx_bYOVpxJe/pub?gid=115940614&single=true&output=csv',
+      2026: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTbwCWto19Yyl6peSwvbjGYerbUgeJo2Spkb10B7DbZNHT0K_VU_4e0LNKcHUyu4qp7qnx_bYOVpxJe/pub?gid=839278913&single=true&output=csv',
+      PGT: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTbwCWto19Yyl6peSwvbjGYerbUgeJo2Spkb10B7DbZNHT0K_VU_4e0LNKcHUyu4qp7qnx_bYOVpxJe/pub?gid=1313875461&single=true&output=csv'
       };
       const response = await fetch(urls[key]);
       const text = await response.text();
