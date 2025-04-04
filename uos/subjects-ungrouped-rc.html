@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Subjects Test | The University of Sheffield</title>
+  <link rel="icon" href="https://www.sheffield.ac.uk/themes/custom/uos_public/favicon.ico" sizes="any">
+  <link rel="icon" href="https://www.sheffield.ac.uk/themes/custom/uos_public/favicon.svg" type="image/svg+xml" />
+
+  <!-- Fonts -->
+  <link href="https://use.typekit.net/jou7rrz.css" rel="stylesheet"/>
+
+  <!-- Choices.js -->
+  
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+
+  <style>
+    body {
+      font-family: "source-sans-pro", sans-serif;
+      margin: 2rem;
+      background: #f4f4f4;
+    }
+
+
+    .search-input {
+      padding: 0.6rem 1rem;
+      font-size: 1rem;
+      width: 100%;
+      border: 2px solid #e0e0e0;
+      border-radius: 6px;
+    }
+
+    #subjectSelect {
+      width: 100%;
+    }
+
+
+    #courseContainer {
+  display: block;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+
+    .card {
+      background: #fff;
+      padding: 1.5rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+      border-top: 6px solid #440099;
+      font-family: "source-sans-pro", sans-serif;
+    }
+
+    .level {
+      color: #440099;
+      font-weight: bold;
+      font-size: 1rem;
+      text-transform: uppercase;
+      margin-bottom: 0.3rem;
+    }
+
+    .title {
+      margin: 0.2rem 0;
+      font-size: 1.4rem;
+      font-family: "source-serif-pro", serif;
+      font-weight: 700;
+    }
+
+    .start-date-pill {
+      display: inline-block;
+      background: #eee;
+      color: #444;
+      font-size: 0.85rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      margin: 0.5rem 0;
+    }
+
+    .description {
+      margin: 0.5rem 0 1rem 0;
+      color: #333;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .course-list {
+      padding-left: 1.2rem;
+      margin: 0;
+    }
+
+    .course-list li {
+      margin-bottom: 0.3rem;
+    }
+
+    .course-list a {
+      color: #440099;
+      text-decoration: none;
+    }
+
+    .course-list a:hover {
+      text-decoration: underline;
+    }
+
+    .filters {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 1rem;
+  max-width: 1200px;
+  margin: 0 auto 2rem auto;
+  align-items: stretch;
+}
+
+.filter-item {
+  flex: 1;
+  min-width: 0;
+}
+
+.search-input,
+#subjectSelect {
+  box-sizing: border-box;
+  font-size: 1rem;
+  padding: 0.6rem 1rem;
+  width: 100%;
+  border: 2px solid #e0e0e0;
+  border-radius: 6px;
+  background-color: white;
+  color: #333;
+  appearance: none;
+  min-height: 44px;
+}
+
+.select-wrapper {
+  position: relative;
+}
+
+.select-wrapper .custom-arrow {
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  transform: translateY(-50%);
+  pointer-events: none;
+  width: 1rem;
+  height: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.select-wrapper .custom-arrow svg {
+  width: 100%;
+  height: 100%;
+  fill: #2a2a87;
+}
+
+.clear-button {
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+  background-color: #e0e0e0;
+  color: #E7004C;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  height: 44px;
+  white-space: nowrap;
+  border: none;
+}
+
+#paginationControls {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.page-btn {
+  padding: 0.5rem 1rem;
+  margin: 0 0.25rem;
+  background: white;
+  color: #2a2a87;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.2s ease;
+  border: none;
+}
+
+.page-btn:hover:not(:disabled) {
+  background: #2a2a87;
+  color: white;
+}
+
+.page-btn.current {
+  background: #2a2a87;
+  color: white;
+  cursor: default;
+}
+
+h3.courses {
+  margin: 0.5rem 0rem;
+  font-family: 'source-serif-pro';
+  font-weight: 700;
+}
+
+.results-count {
+  text-align: center;
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.dataset-toggle {
+  max-width: 1200px;
+  margin: 0 auto 2rem auto;
+}
+
+.dataset-btn {
+  padding: 0.5rem 1rem;
+  font-family: 'source-sans-pro';
+  font-weight: 700;
+  font-size: 1rem;
+  margin-right: 0.5rem;
+  border-radius: 20px;
+  background: #e0e0e0;
+  color: #2a2a87;
+  cursor: pointer;
+  border: 0;
+}
+
+.dataset-btn.active {
+  background: #2a2a87;
+  color: white;
+}
+
+h1 {
+  font-family: 'source-serif-pro';
+  font-weight: 700;
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+
+.search-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.clear-search {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  font-size: 1.25rem;
+  color: #2a2a87;
+  cursor: pointer;
+  display: none;
+  padding: 0;
+  line-height: 1;
+}
+
+@media (max-width: 768px) {
+
+    body {
+    margin:1rem; 
+  }
+
+  .filters {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .filter-item {
+    width: 100%;
+  }
+
+  .clear-button {
+    width: 100%;
+  }
+}
+
+.course-group-heading {
+  font-family: "source-serif-pro", serif;
+  font-weight: 700;
+  font-size: 2rem;
+  margin: 2.5rem auto 1rem;
+  max-width: 1200px;
+}
+
+.course-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  max-width: 1200px;
+  margin: 0 auto 3rem;
+}
+
+.card.pgt .level {
+  color: #7100ff;
+}
+
+
+  </style>
+</head>
+<body>
+  
+  <div class="dataset-toggle" style="margin-bottom: 2rem;">
+    <h1>Subject area tests</h1>
+    <p>Choose undergraduate year:</p>
+    <button class="dataset-btn active" data-year="2025">2025–26 Courses</button>
+    <button class="dataset-btn" data-year="2026">2026–27 Courses</button>
+  </div>
+  
+  <div class="filters">
+    <div class="filter-item">
+      <div class="search-wrapper">
+        <input type="text" id="searchInput" class="search-input" placeholder="Search by title or course…" />
+        <button id="clearSearch" class="clear-search" aria-label="Clear search">×</button>
+      </div>
+          </div>
+    <div class="filter-item">
+      <div class="select-wrapper">
+        <select id="subjectSelect"></select>
+        <span class="custom-arrow">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+            <path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/>
+          </svg>
+        </span>
+      </div>
+    </div>
+    <div class="filter-item" style="flex: 0 0 auto;">
+      <button id="clearFilters" class="clear-button">Clear filters</button>
+    </div>
+    
+  </div>
+  
+  
+
+  <div id="courseContainer"></div>
+  <div id="paginationControls" style="text-align: center; margin-top: 2rem;"></div>
+  <div id="resultsCount" class="results-count"></div>
+
+
+
+  <script>
+    const CSV_URLS = {
+      2025: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTbwCWto19Yyl6peSwvbjGYerbUgeJo2Spkb10B7DbZNHT0K_VU_4e0LNKcHUyu4qp7qnx_bYOVpxJe/pub?gid=1605773843&single=true&output=csv',
+      2026: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTbwCWto19Yyl6peSwvbjGYerbUgeJo2Spkb10B7DbZNHT0K_VU_4e0LNKcHUyu4qp7qnx_bYOVpxJe/pub?gid=1947280371&single=true&output=csv',
+      PGT: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTbwCWto19Yyl6peSwvbjGYerbUgeJo2Spkb10B7DbZNHT0K_VU_4e0LNKcHUyu4qp7qnx_bYOVpxJe/pub?gid=1313875461&single=true&output=csv'
+    };
+    
+    let currentYear = 2025;
+    let allData = [];
+    let currentPage = 1;
+    const pageSize = 12;
+    let activeSubjects = new Set();
+    
+    async function fetchAndParseCSV(key) {
+      const response = await fetch(CSV_URLS[key]);
+      const csvText = await response.text();
+      return new Promise(resolve => {
+        Papa.parse(csvText, {
+          header: true,
+          skipEmptyLines: true,
+          complete: results => resolve(results.data)
+        });
+      });
+    }
+    
+    function extractSubjects(data) {
+      const allSubjects = new Set();
+      data.forEach(row => {
+        (row['Subject(s)'] || '').split(/[,;]+/).forEach(s => {
+          const trimmed = s.trim();
+          if (trimmed) allSubjects.add(trimmed);
+        });
+      });
+      return Array.from(allSubjects).sort();
+    }
+    
+    function matchSubjectFilter(row) {
+      if (activeSubjects.size === 0) return true;
+      const subjects = (row['Subject(s)'] || '').split(/[,;]+/).map(s => s.trim());
+      return [...activeSubjects].every(tag => subjects.includes(tag));
+    }
+    
+    function matchSearch(row, query) {
+      if (!query) return true;
+      const programme = (row.Programme || '').toLowerCase();
+      const q = query.toLowerCase();
+      return programme.includes(q);
+    }
+    
+    function splitMultiline(value) {
+      return (value || '').split(/\r?\n/).map(line => line.trim()).filter(line => line.length);
+    }
+    
+    function highlightMatch(text, query) {
+      if (!query) return text;
+      const regex = new RegExp(`(${query})`, 'gi');
+      return text.replace(regex, '<mark>$1</mark>');
+    }
+    
+    function renderCourseCard(course, query) {
+      const wrapper = document.createElement('div');
+const levelClass = (course.Level || '').toLowerCase().includes('postgraduate') ? 'pgt' : 'ug';
+wrapper.className = `card ${levelClass}`;
+
+      const highlightedTitle = highlightMatch(course.Programme, query);
+      const courseNames = splitMultiline(course.Courses);
+      const links = splitMultiline(course['Course links']);
+    
+      wrapper.innerHTML = `
+        <div class="level">${course.Level}</div>
+        <h2 class="title">${highlightedTitle}</h2>
+        <div class="start-date-pill pill-${course.Level.includes('Postgraduate') ? 'PGT' : currentYear}">
+  ${course['Start date']}
+</div>
+
+        <div class="description">${course.Description}</div>
+      `;
+    
+      const courseList = document.createElement('ul');
+      courseList.className = 'course-list';
+    
+      courseNames.forEach((name, i) => {
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.href = links[i] || '#';
+        a.target = '_blank';
+        a.innerHTML = highlightMatch(name, query);
+        li.appendChild(a);
+        courseList.appendChild(li);
+      });
+    
+      wrapper.appendChild(courseList);
+      return wrapper;
+    }
+    
+    function updatePaginationControls(totalPages) {
+  const container = document.getElementById('paginationControls');
+  container.innerHTML = '';
+
+  const maxVisible = 5; // Max number of numeric buttons (excluding first/last)
+
+  function createButton(page, label = page) {
+    const btn = document.createElement('button');
+    btn.textContent = label;
+    btn.disabled = page === currentPage;
+    btn.className = page === currentPage ? 'page-btn current' : 'page-btn';
+    btn.addEventListener('click', () => {
+      currentPage = page;
+      updateFilters();
+
+      const filters = document.querySelector('.filters');
+      if (filters) {
+        const offset = filters.offsetTop;
+        window.scrollTo({ top: offset - 20, behavior: 'smooth' });
+      }
+    });
+    container.appendChild(btn);
+  }
+
+  if (totalPages <= maxVisible + 2) {
+    // Simple case: show all pages
+    for (let i = 1; i <= totalPages; i++) {
+      createButton(i);
+    }
+  } else {
+    // Always show first page
+    createButton(1);
+
+    if (currentPage > 3) {
+      const dots = document.createElement('span');
+      dots.textContent = '...';
+      container.appendChild(dots);
+    }
+
+    const start = Math.max(2, currentPage - 1);
+    const end = Math.min(totalPages - 1, currentPage + 1);
+
+    for (let i = start; i <= end; i++) {
+      createButton(i);
+    }
+
+    if (currentPage < totalPages - 2) {
+      const dots = document.createElement('span');
+      dots.textContent = '...';
+      container.appendChild(dots);
+    }
+
+    // Always show last page
+    createButton(totalPages);
+  }
+}
+
+    
+    function updateFilters() {
+      const query = document.getElementById('searchInput').value.trim().toLowerCase();
+      const subjectSelect = document.getElementById('subjectSelect');
+      const container = document.getElementById('courseContainer');
+      const resultsCount = document.getElementById('resultsCount');
+    
+      const selected = subjectSelect.value;
+      activeSubjects = selected ? new Set([selected]) : new Set();
+    
+      let filtered = allData.filter(row =>
+        matchSubjectFilter(row) && matchSearch(row, query)
+      );
+    
+      const hasSearch = query.length > 0;
+      const hasFilter = activeSubjects.size > 0;
+    
+      container.innerHTML = '';
+    
+      if (hasSearch || hasFilter) {
+  const grouped = {
+    Undergraduate: [],
+    'Postgraduate Taught': []
+  };
+
+  // Group the filtered results by level
+  filtered.forEach(course => {
+    const level = (course.Level || '').trim();
+    if (level === 'Postgraduate Taught') {
+      grouped['Postgraduate Taught'].push(course);
+    } else {
+      grouped['Undergraduate'].push(course);
+    }
+  });
+
+  // Render grouped course sections
+  for (const level of ['Undergraduate', 'Postgraduate Taught']) {
+    if (grouped[level].length > 0) {
+      // Heading
+      const heading = document.createElement('h3');
+      heading.className = 'course-group-heading';
+      heading.textContent = level;
+      container.appendChild(heading);
+
+      // Grid of cards
+      const grid = document.createElement('div');
+      grid.className = 'course-grid';
+
+      grouped[level].forEach(course => {
+        grid.appendChild(renderCourseCard(course, query));
+      });
+
+      container.appendChild(grid);
+    }
+  }
+
+  // Show combined result count
+  resultsCount.textContent = `${filtered.length} result${filtered.length === 1 ? '' : 's'}`;
+
+  // Clear pagination controls in filtered view
+  document.getElementById('paginationControls').innerHTML = '';
+     
+      } else {
+  // Default flat A–Z view with pagination
+  filtered.sort((a, b) => a.Programme.localeCompare(b.Programme));
+  container.innerHTML = '';
+
+  const totalPages = Math.ceil(filtered.length / pageSize);
+  currentPage = Math.min(currentPage, totalPages || 1);
+
+  const start = (currentPage - 1) * pageSize;
+  const paginated = filtered.slice(start, start + pageSize);
+
+  const grid = document.createElement('div');
+  grid.className = 'course-grid';
+
+  paginated.forEach(course => {
+    grid.appendChild(renderCourseCard(course, query));
+  });
+
+  container.appendChild(grid);
+
+  updatePaginationControls(totalPages);
+
+  resultsCount.textContent = filtered.length > 0
+    ? `Showing ${start + 1}–${Math.min(start + pageSize, filtered.length)} of ${filtered.length} courses`
+    : 'No results found.';
+}
+    }
+    
+    async function init(year = 2025, preserve = {}) {
+      currentYear = year;
+    
+      const [ugData, pgtData] = await Promise.all([
+        fetchAndParseCSV(year),
+        fetchAndParseCSV('PGT')
+      ]);
+    
+      allData = [...ugData, ...pgtData];
+    
+      const subjectSelect = document.getElementById('subjectSelect');
+      const searchInput = document.getElementById('searchInput');
+      const clearButton = document.getElementById('clearFilters');
+    
+      subjectSelect.innerHTML = '';
+      const subjects = extractSubjects(allData);
+      const defaultOption = document.createElement('option');
+      defaultOption.value = '';
+      defaultOption.textContent = 'All Subjects';
+      subjectSelect.appendChild(defaultOption);
+    
+      subjects.forEach(subject => {
+        const option = document.createElement('option');
+        option.value = subject;
+        option.textContent = subject;
+        subjectSelect.appendChild(option);
+      });
+    
+      subjectSelect.addEventListener('change', () => {
+        currentPage = 1;
+        updateFilters();
+      });
+    
+      searchInput.addEventListener('input', () => {
+        currentPage = 1;
+        updateFilters();
+      });
+    
+      clearButton.addEventListener('click', () => {
+        searchInput.value = '';
+        subjectSelect.value = '';
+        currentPage = 1;
+        updateFilters();
+      });
+    
+      if (preserve.query !== undefined) searchInput.value = preserve.query;
+      if (preserve.subject !== undefined) subjectSelect.value = preserve.subject;
+      if (preserve.page !== undefined) currentPage = preserve.page;
+      else currentPage = 1;
+    
+      updateFilters();
+    }
+    
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.dataset-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const selectedYear = btn.dataset.year;
+    
+          document.querySelectorAll('.dataset-btn').forEach(b => {
+            b.classList.remove('active');
+          });
+    
+          btn.classList.add('active');
+    
+          const currentSearch = document.getElementById('searchInput')?.value || '';
+          const currentSubject = document.getElementById('subjectSelect')?.value || '';
+          const currentPg = currentPage;
+    
+          init(parseInt(selectedYear), {
+            query: currentSearch,
+            subject: currentSubject,
+            page: currentPg
+          });
+        });
+      });
+    
+      const clearSearch = document.getElementById('clearSearch');
+      const searchInput = document.getElementById('searchInput');
+    
+      searchInput.addEventListener('input', () => {
+        currentPage = 1;
+        updateFilters();
+        clearSearch.style.display = searchInput.value ? 'block' : 'none';
+      });
+    
+      clearSearch.addEventListener('click', () => {
+        searchInput.value = '';
+        clearSearch.style.display = 'none';
+        currentPage = 1;
+        updateFilters();
+      });
+    
+      clearSearch.style.display = searchInput.value ? 'block' : 'none';
+    
+      init();
+    });
+    </script>
+    
+</body>
+</html>
