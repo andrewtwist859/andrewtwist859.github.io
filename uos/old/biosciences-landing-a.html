@@ -12,8 +12,7 @@
   <link rel="stylesheet" href="subjectheader.css">
   <link rel="stylesheet" href="global-menu.css"> 
   <link rel="stylesheet" href="section-menu.css"> 
-  <link rel="stylesheet" href="footer.css">
-  <link rel="stylesheet" href="subjectbanner.css"> 
+  <link rel="stylesheet" href="footer.css"> 
 
   <!-- Choices.js -->
   
@@ -23,6 +22,7 @@
     body {
       font-family: "source-sans-pro", sans-serif;
       background: #f4f4f4;
+      overflow-x: hidden;
     }
 
 
@@ -42,8 +42,7 @@
     #courseContainer {
   display: block;
   max-width: 1200px;
-  margin: 1rem auto;
-  
+  margin: 0 auto;
 }
 
 
@@ -162,8 +161,8 @@
 .clear-button {
   padding: 0.6rem 1rem;
   font-size: 1rem;
-  background-color: #e0e0e0;
-  color: #B3003C;
+  background-color: #B3003C;
+  color: white;
   cursor: pointer;
   transition: background 0.2s ease;
   height: 44px;
@@ -282,11 +281,7 @@ h2 {
     width: 100%;
   }
 
-  #courseContainer {
-    padding:1rem;
-  }
-
-  .container {
+  #courseContainer, .container {
     padding:1rem;
   }
 }
@@ -320,8 +315,8 @@ h2 {
 .search-box {
     margin: 0 auto;
     padding: 2rem 1rem;
-    background-color: #eee;
-    color: #111    ;
+    background-color: #440099;
+    color: white;
 }
 
 .container p {
@@ -383,40 +378,6 @@ h2 {
   margin: 0;
 }
 
-summary {
-  font-family: 'source-serif-pro', serif;
-  font-weight: 700;
-  font-size: 2rem;
-  cursor: pointer;
-  list-style: none;
-  margin-bottom: 1rem;
-}
-
-summary::-webkit-details-marker {
-  display: none;
-}
-
-.accordion-icon-wrapper {
-  display: inline-block;
-  margin-left: 0.5rem;
-  vertical-align: middle;
-  transition: transform 0.3s ease;
-}
-
-details[open] .accordion-icon-wrapper {
-  transform: rotate(180deg);
-}
-
-.accordion-icon {
-  width: 0.75em;
-  height: 0.75em;
-  vertical-align: middle;
-  display: inline-block;
-  transform: translateY(-4px); /* now this only affects layout */
-  fill: #440099;
-}
-
-
 
 
   </style>
@@ -459,8 +420,7 @@ details[open] .accordion-icon-wrapper {
           </ul>
         </div>
       </div>
-</div>
-<div class="course-banner-dark">
+  <div class="course-banner-dark">
     <div class="olp-banner-dark">
       <span class="entry">Subjects</span>
         <div class="course-container">
@@ -476,78 +436,75 @@ details[open] .accordion-icon-wrapper {
             <div class="icon">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="24" height="24" fill="white"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/></svg>
                 </svg>
-                <a href="#undergraduate">Undergraduate courses</a>
+                <a href="#search">Search Biosciences courses</a>
             </div>
-            <div class="icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="24" height="24" fill="white"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/></svg>
+        </div>
+    </div>
+    </div>
+</div><div class="container">
+    <div class="breadcrumbs">
+        <a href="#">Home</a>
+        <span class="separator">›</span>
+        <a href="#">Subjects</a>
+        <span class="separator">›</span>
+        <a href="#" class="active">Biosciences</a>
+    </div>
+    <h2 id="why">Why study Biosciences?</h2>
+    <section class="features-grid">
+        <div class="feature-box">
+          <h3>Breadth</h3>
+          <p>Study the areas you're most passionate about with courses spanning the full spectrum of biology. We train students to solve some of the world's biggest challenges, from cancer, antimicrobial resistance and healthy ageing, to saving the planet’s biodiversity and mitigating climate change.</p>
+        </div>
+        <div class="feature-box">
+          <h3>Options beyond the three-year BSc</h3>
+          <p>Our courses all come with options to gain additional experience beyond a three-year BSc. Add an extra year of research experience with an integrated masters, spend a year gaining work experience with a top employer, or apply to spend a year studying abroad.</p>
+        </div>
+        <div class="feature-box">
+          <h3>4th in the UK for research quality</h3>
+          <p>The Research Excellence Framework (REF) 2021 rated 98% of research and impact from the School of Biosciences as world-leading or internationally excellent.</p>
+        </div>
+        <div class="feature-box">
+          <h3>Partnership with Sheffield Teaching Hospitals</h3>
+          <p>Our partnership with Sheffield Teaching Hospitals includes opportunities to contribute to the analysis of patient cancer samples with the Julia Garnham Centre.</p>
+        </div>
+      </section>      
+</div>
+    <div class="search-box">
+        <div class="search-container">
+  <h2 id="search">Search Biosciences courses</h2>
+<p>Search by keyword or filter by course level.</p>
+</div>
+
+  <div class="filters">
+    <div class="filter-item">
+      <div class="search-wrapper">
+        <input type="text" id="searchInput" class="search-input" placeholder="Search by title or course…" />
+        <button id="clearSearch" class="clear-search" aria-label="Clear search">×</button>
+      </div>
+          </div>
+          <div class="filter-item">
+            <div class="select-wrapper">
+            <select id="levelSelect" class="search-input">
+              <option value="">All levels</option>
+              <option value="Undergraduate">Undergraduate</option>
+              <option value="Postgraduate Taught">Postgraduate</option>
+            </select>
+            <span class="custom-arrow">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                  <path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/>
                 </svg>
-                <a href="#pgt">Postgraduate taught courses</a>
+              </span>
             </div>
-        </div>
+          </div>
+    <div class="filter-item" style="flex: 0 0 auto;">
+      <button id="clearFilters" class="clear-button">Clear filters</button>
     </div>
-    </div>
-    <div class="container">
-        <div class="breadcrumbs">
-            <a href="#">Home</a>
-            <span class="separator">›</span>
-            <a href="#">Subjects</a>
-            <span class="separator">›</span>
-            <a href="#" class="active">Biosciences</a>
-        </div>
-        <h2 id="why">Why study Biosciences?</h2>
-        <section class="features-grid">
-            <div class="feature-box">
-              <h3>Breadth</h3>
-              <p>Study the areas you're most passionate about with courses spanning the full spectrum of biology. We train students to solve some of the world's biggest challenges, from cancer, antimicrobial resistance and healthy ageing, to saving the planet’s biodiversity and mitigating climate change.</p>
-            </div>
-            <div class="feature-box">
-              <h3>Options beyond the three-year BSc</h3>
-              <p>Our courses all come with options to gain additional experience beyond a three-year BSc. Add an extra year of research experience with an integrated masters, spend a year gaining work experience with a top employer, or apply to spend a year studying abroad.</p>
-            </div>
-            <div class="feature-box">
-              <h3>4th in the UK for research quality</h3>
-              <p>The Research Excellence Framework (REF) 2021 rated 98% of research and impact from the School of Biosciences as world-leading or internationally excellent.</p>
-            </div>
-            <div class="feature-box">
-              <h3>Partnership with Sheffield Teaching Hospitals</h3>
-              <p>Our partnership with Sheffield Teaching Hospitals includes opportunities to contribute to the analysis of patient cancer samples with the Julia Garnham Centre.</p>
-            </div>
-          </section>      
-          <hr />
-    </div>
-  
-<!-- Accordion layout -->
-<div id="courseContainer">
-    <details>
-      <summary id="undergraduate">
-        Undergraduate courses
-        <span class="accordion-icon-wrapper">
-        <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-          <path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/>
-        </svg>
-    </span>
-      </summary>
-      <div class="dataset-toggle">
-        <p>Choose undergraduate year:</p>
-        <button class="dataset-btn active" data-year="2025">2025–26 Courses</button>
-        <button class="dataset-btn" data-year="2026">2026–27 Courses</button>
-      </div>      
-      <div class="course-grid" id="ugCourses"></div>
-    </details>
-    <hr />
-    <details>
-      <summary id="pgt">
-        Postgraduate taught courses
-        <span class="accordion-icon-wrapper">
-        <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-          <path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/>
-        </svg></span>
-      </summary>
-      <div class="course-grid" id="pgtCourses"></div>
-    </details>
+    
   </div>
+</div>
   
-  
+
+  <div id="courseContainer"></div>
 
   <footer class="footer">
     <div class="footer-content">
@@ -643,18 +600,23 @@ details[open] .accordion-icon-wrapper {
   </footer>
 
   <script>
+    const CSV_URLS = {
+      2025: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTbwCWto19Yyl6peSwvbjGYerbUgeJo2Spkb10B7DbZNHT0K_VU_4e0LNKcHUyu4qp7qnx_bYOVpxJe/pub?gid=1765915941&single=true&output=csv',
+      2026: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTbwCWto19Yyl6peSwvbjGYerbUgeJo2Spkb10B7DbZNHT0K_VU_4e0LNKcHUyu4qp7qnx_bYOVpxJe/pub?gid=1229341297&single=true&output=csv',
+      PGT: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTbwCWto19Yyl6peSwvbjGYerbUgeJo2Spkb10B7DbZNHT0K_VU_4e0LNKcHUyu4qp7qnx_bYOVpxJe/pub?gid=1313875461&single=true&output=csv'
+    };
+  
     let currentYear = 2025;
+    let allData = [];
+    let currentPage = 1;
+    const pageSize = 12;
+    let activeSubjects = new Set();
   
     async function fetchAndParseCSV(key) {
-      const urls = {
-        2025: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTbwCWto19Yyl6peSwvbjGYerbUgeJo2Spkb10B7DbZNHT0K_VU_4e0LNKcHUyu4qp7qnx_bYOVpxJe/pub?gid=1765915941&single=true&output=csv',
-        2026: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTbwCWto19Yyl6peSwvbjGYerbUgeJo2Spkb10B7DbZNHT0K_VU_4e0LNKcHUyu4qp7qnx_bYOVpxJe/pub?gid=1229341297&single=true&output=csv',
-        PGT: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTbwCWto19Yyl6peSwvbjGYerbUgeJo2Spkb10B7DbZNHT0K_VU_4e0LNKcHUyu4qp7qnx_bYOVpxJe/pub?gid=1313875461&single=true&output=csv'
-      };
-      const response = await fetch(urls[key]);
-      const text = await response.text();
+      const response = await fetch(CSV_URLS[key]);
+      const csvText = await response.text();
       return new Promise(resolve => {
-        Papa.parse(text, {
+        Papa.parse(csvText, {
           header: true,
           skipEmptyLines: true,
           complete: results => resolve(results.data)
@@ -662,28 +624,59 @@ details[open] .accordion-icon-wrapper {
       });
     }
   
+    function extractSubjects(data) {
+      const allSubjects = new Set();
+      data.forEach(row => {
+        (row['Subject(s)'] || '').split(/[,;]+/).forEach(s => {
+          const trimmed = s.trim();
+          if (trimmed) allSubjects.add(trimmed);
+        });
+      });
+      return Array.from(allSubjects).sort();
+    }
+  
     function matchSubjectFilter(row) {
-      const activeSubjects = new Set(["Biosciences"]);
-      const subjects = (row['Subject(s)'] || '').split(/[,;]+/).map(s => s.trim().toLowerCase());
-      return [...activeSubjects].every(tag => subjects.includes(tag.toLowerCase()));
+      if (activeSubjects.size === 0) return true;
+      const subjects = (row['Subject(s)'] || '').split(/[,;]+/).map(s => s.trim());
+      return [...activeSubjects].every(tag => subjects.includes(tag));
+    }
+  
+    function matchSearch(row, query) {
+      if (!query) return true;
+      const programme = (row.Programme || '').toLowerCase();
+      const q = query.toLowerCase();
+      return programme.includes(q);
+    }
+  
+    function matchLevelFilter(row) {
+      const selectedLevel = document.getElementById('levelSelect')?.value || '';
+      if (!selectedLevel) return true;
+      return (row.Level || '').trim() === selectedLevel;
     }
   
     function splitMultiline(value) {
       return (value || '').split(/\r?\n/).map(line => line.trim()).filter(line => line.length);
     }
   
-    function renderCourseCard(course) {
+    function highlightMatch(text, query) {
+      if (!query) return text;
+      const regex = new RegExp(`(${query})`, 'gi');
+      return text.replace(regex, '<mark>$1</mark>');
+    }
+  
+    function renderCourseCard(course, query) {
       const wrapper = document.createElement('div');
       const levelClass = (course.Level || '').toLowerCase().includes('postgraduate') ? 'pgt' : 'ug';
       wrapper.className = `card ${levelClass}`;
   
+      const highlightedTitle = highlightMatch(course.Programme, query);
       const courseNames = splitMultiline(course.Courses);
       const links = splitMultiline(course['Course links']);
   
       wrapper.innerHTML = `
         <div class="level">${course.Level}</div>
-        <h2 class="title">${course.Programme}</h2>
-        <div class="start-date-pill pill-${course.Level.includes('Postgraduate') ? 'PGT' : 'UG'}">
+        <h2 class="title">${highlightedTitle}</h2>
+        <div class="start-date-pill pill-${course.Level.includes('Postgraduate') ? 'PGT' : currentYear}">
           ${course['Start date']}
         </div>
         <div class="description">${course.Description}</div>
@@ -697,7 +690,7 @@ details[open] .accordion-icon-wrapper {
         const a = document.createElement('a');
         a.href = links[i] || '#';
         a.target = '_blank';
-        a.textContent = name;
+        a.innerHTML = highlightMatch(name, query);
         li.appendChild(a);
         courseList.appendChild(li);
       });
@@ -706,25 +699,118 @@ details[open] .accordion-icon-wrapper {
       return wrapper;
     }
   
-    function updateAccordionCourses(allData) {
-      const containerUG = document.getElementById('ugCourses');
-      const containerPGT = document.getElementById('pgtCourses');
-      containerUG.innerHTML = '';
-      containerPGT.innerHTML = '';
-  
-      const filtered = allData.filter(row => matchSubjectFilter(row));
-  
-      filtered.forEach(course => {
-        const level = (course.Level || '').trim();
-        if (level === 'Postgraduate Taught') {
-          containerPGT.appendChild(renderCourseCard(course));
-        } else {
-          containerUG.appendChild(renderCourseCard(course));
-        }
-      });
+    function updateFilters() {
+  const query = document.getElementById('searchInput').value.trim().toLowerCase();
+  const levelSelect = document.getElementById('levelSelect');
+  const container = document.getElementById('courseContainer');
+  const resultsCount = document.getElementById('resultsCount');
+
+  activeSubjects = new Set(["Biosciences"]);
+
+  let filtered = allData.filter(row =>
+    matchSubjectFilter(row) &&
+    matchSearch(row, query) &&
+    matchLevelFilter(row)
+  );
+
+  container.innerHTML = '';
+
+  const grouped = {
+    Undergraduate: [],
+    'Postgraduate Taught': []
+  };
+
+  filtered.forEach(course => {
+    const level = (course.Level || '').trim();
+    if (level === 'Postgraduate Taught') {
+      grouped['Postgraduate Taught'].push(course);
+    } else {
+      grouped['Undergraduate'].push(course);
     }
+  });
+
+  const isDefaultGroupedView = !query && !levelSelect.value;
+  const isUGSelected = !levelSelect.value || levelSelect.value === 'Undergraduate';
+  const hasUGCourses = grouped['Undergraduate'].length > 0;
+
+  // UG heading + toggle (shown when in grouped view or UG selected, regardless of search)
+  if (hasUGCourses && isUGSelected) {
+    if (isDefaultGroupedView || levelSelect.value === 'Undergraduate') {
+      const ugHeading = document.createElement('h3');
+      ugHeading.className = 'course-group-heading';
+      ugHeading.textContent = 'Undergraduate courses';
+      container.appendChild(ugHeading);
+    }
+
+    const toggleWrapper = document.createElement('div');
+    toggleWrapper.className = 'dataset-toggle';
+    toggleWrapper.innerHTML = `
+      <p>Choose undergraduate year:</p>
+      <button class="dataset-btn ${currentYear === 2025 ? 'active' : ''}" data-year="2025">2025–26 Courses</button>
+      <button class="dataset-btn ${currentYear === 2026 ? 'active' : ''}" data-year="2026">2026–27 Courses</button>
+    `;
+    container.appendChild(toggleWrapper);
+
+    toggleWrapper.querySelectorAll('.dataset-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const selectedYear = btn.dataset.year;
+        document.querySelectorAll('.dataset-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        init(parseInt(selectedYear), {
+          query,
+          level: levelSelect?.value || ''
+        });
+      });
+    });
+  }
+
+  if (isDefaultGroupedView) {
+    if (grouped['Undergraduate'].length > 0) {
+      const ugGrid = document.createElement('div');
+      ugGrid.className = 'course-grid';
+      grouped['Undergraduate'].forEach(course => {
+        ugGrid.appendChild(renderCourseCard(course, query));
+      });
+      container.appendChild(ugGrid);
+    }
+
+    if (grouped['Postgraduate Taught'].length > 0) {
+      const pgHeading = document.createElement('h3');
+      pgHeading.className = 'course-group-heading';
+      pgHeading.textContent = 'Postgraduate taught courses';
+      container.appendChild(pgHeading);
+
+      const pgGrid = document.createElement('div');
+      pgGrid.className = 'course-grid';
+      grouped['Postgraduate Taught'].forEach(course => {
+        pgGrid.appendChild(renderCourseCard(course, query));
+      });
+      container.appendChild(pgGrid);
+    }
+  } else {
+    const grid = document.createElement('div');
+    grid.className = 'course-grid';
+    filtered.forEach(course => {
+      grid.appendChild(renderCourseCard(course, query));
+    });
+    container.appendChild(grid);
+
+    // Optional: show PG heading when level = PG and not searching
+    if (!query && grouped['Postgraduate Taught'].length > 0 && levelSelect.value === 'Postgraduate Taught') {
+      const pgHeading = document.createElement('h3');
+      pgHeading.className = 'course-group-heading';
+      pgHeading.textContent = 'Postgraduate taught courses';
+      container.insertBefore(pgHeading, grid);
+    }
+  }
+
+  if (resultsCount) {
+    resultsCount.textContent = `${filtered.length} Biosciences course${filtered.length === 1 ? '' : 's'}`;
+  }
+}
+
   
-    async function init(year = 2025) {
+    async function init(year = 2025, preserve = {}) {
       currentYear = year;
   
       const [ugData, pgtData] = await Promise.all([
@@ -732,27 +818,59 @@ details[open] .accordion-icon-wrapper {
         fetchAndParseCSV('PGT')
       ]);
   
-      const allData = [...ugData, ...pgtData];
-      updateAccordionCourses(allData);
+      allData = [...ugData, ...pgtData];
+  
+      const searchInput = document.getElementById('searchInput');
+      const clearButton = document.getElementById('clearFilters');
+      const levelSelect = document.getElementById('levelSelect');
+  
+      searchInput.addEventListener('input', () => {
+        currentPage = 1;
+        updateFilters();
+      });
+  
+      levelSelect.addEventListener('change', () => {
+        currentPage = 1;
+        updateFilters();
+      });
+  
+      clearButton.addEventListener('click', () => {
+        searchInput.value = '';
+        levelSelect.value = '';
+        currentPage = 1;
+        updateFilters();
+      });
+  
+      if (preserve.query !== undefined) searchInput.value = preserve.query;
+      if (preserve.level !== undefined) levelSelect.value = preserve.level;
+      if (preserve.page !== undefined) currentPage = preserve.page;
+      else currentPage = 1;
+  
+      updateFilters();
     }
   
     document.addEventListener('DOMContentLoaded', () => {
-      init(currentYear);
+      const clearSearch = document.getElementById('clearSearch');
+      const searchInput = document.getElementById('searchInput');
   
-      document.querySelectorAll('.dataset-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-          const selectedYear = parseInt(btn.dataset.year);
-          currentYear = selectedYear;
-  
-          document.querySelectorAll('.dataset-btn').forEach(b => b.classList.remove('active'));
-          btn.classList.add('active');
-  
-          init(selectedYear);
-        });
+      searchInput.addEventListener('input', () => {
+        currentPage = 1;
+        updateFilters();
+        clearSearch.style.display = searchInput.value ? 'block' : 'none';
       });
+  
+      clearSearch.addEventListener('click', () => {
+        searchInput.value = '';
+        clearSearch.style.display = 'none';
+        currentPage = 1;
+        updateFilters();
+      });
+  
+      clearSearch.style.display = searchInput.value ? 'block' : 'none';
+  
+      init();
     });
   </script>
-  
   
     
 </body>
