@@ -249,14 +249,15 @@
     }
 
     function applySearch() {
-      const query = document.getElementById("search-input").value.toLowerCase();
-      const results = filteredData.filter(row =>
-        (row["course"] && row["course"].toLowerCase().includes(query)) ||
-        (row["ucas"] && row["ucas"].toLowerCase().includes(query))
-      );
-      renderTable(results);
-      renderCards(results);
-    }
+  const query = document.getElementById("search-input").value.toLowerCase();
+  const results = filteredData.filter(row =>
+    (row["Course"] && row["Course"].toLowerCase().includes(query)) ||
+    (row["UCAS"] && row["UCAS"].toLowerCase().includes(query))
+  );
+  renderTable(results);
+  renderCards(results);
+}
+
 
     function sortTableBy(column) {
       const asc = currentSort.column === column ? !currentSort.asc : true;
