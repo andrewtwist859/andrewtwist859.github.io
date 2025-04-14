@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Google Sheet Table</title>
+  <title>Course Table</title>
   <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
   <style>
     body {
@@ -29,15 +29,13 @@
 
     #search-input {
       padding: 0.5rem 0.75rem;
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
       width: 100%;
       max-width: 320px;
       border: 1px solid #ccc;
       border-radius: 4px;
       font-size: 0.95rem;
     }
-
-
 
     .table-wrapper {
       overflow-x: auto;
@@ -150,8 +148,8 @@
 <body>
 
   <div class="container">
-    <h2>Data from Google Sheet</h2>
-    <input type="text" id="search-input" placeholder="Search table...">
+    <h2>Course Search</h2>
+    <input type="text" id="search-input" placeholder="Search course or UCAS code...">
 
     <!-- Table View -->
     <div class="table-wrapper desktop-view">
@@ -181,7 +179,6 @@
 
       const headers = Object.keys(data[0]);
 
-      // Table headers
       const headerRow = document.createElement("tr");
       headers.forEach(header => {
         const th = document.createElement("th");
@@ -192,7 +189,6 @@
       });
       tableHead.appendChild(headerRow);
 
-      // Table rows
       data.forEach(row => {
         const tr = document.createElement("tr");
         headers.forEach(header => {
@@ -220,7 +216,6 @@
         card.appendChild(expandIcon);
 
         card.addEventListener("click", (e) => {
-          // prevent toggling if a dropdown was clicked
           if (e.target.tagName.toLowerCase() === "select") return;
           card.classList.toggle("collapsed");
         });
@@ -240,7 +235,7 @@
           item.appendChild(label);
           item.appendChild(value);
 
-          if (header === "Course") {
+          if (header.toLowerCase() === "course") {
             item.classList.add("card-title");
           } else {
             item.classList.add("card-detail");
@@ -254,15 +249,14 @@
     }
 
     function applySearch() {
-  const query = document.getElementById("search-input").value.toLowerCase();
-  const results = filteredData.filter(row =>
-    (row["course"] && row["course"].toLowerCase().includes(query)) ||
-    (row["ucas"] && row["ucas"].toLowerCase().includes(query))
-  );
-  renderTable(results);
-  renderCards(results);
-}
-
+      const query = document.getElementById("search-input").value.toLowerCase();
+      const results = filteredData.filter(row =>
+        (row["course"] && row["course"].toLowerCase().includes(query)) ||
+        (row["ucas"] && row["ucas"].toLowerCase().includes(query))
+      );
+      renderTable(results);
+      renderCards(results);
+    }
 
     function sortTableBy(column) {
       const asc = currentSort.column === column ? !currentSort.asc : true;
@@ -284,8 +278,6 @@
         rawData = results.data.filter(row => Object.values(row).some(v => v !== ""));
         filteredData = [...rawData];
 
-        const headers = Object.keys(rawData[0]);
-        updateFilters(headers);
         renderTable(filteredData);
         renderCards(filteredData);
 
