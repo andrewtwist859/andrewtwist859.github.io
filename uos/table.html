@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Course Table</title>
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 1rem;
+      background: #f9f9f9;
+    }
+
+    input, select {
+      margin-bottom: 1rem;
+      padding: 0.5rem;
+      font-size: 1rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 0.75rem;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    tr:hover {
+      background-color: #f1f7ff;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Course Table</h1>
+
+  <label>
+    Search Course or UCAS:
+    <input type="text" id="searchInput" placeholder="Type to search..." />
+  </label>
+  
+  <br>
+  
+  <label>
+    Filter by Subject:
+    <select id="subjectFilter">
+      <option value="">All Subjects</option>
+    </select>
+  </label>
+
+  <table id="courseTable">
+    <thead>
+      <tr>
+        <th>Course</th>
+        <th>Award</th>
+        <th>UCAS</th>
+        <th>A Levels</th>
+        <th>IB</th>
+        <th>BTEC</th>
+        <th>EPQ</th>
+        <th>Subject requirements include</th>
+        <th>Contextual offer</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <input type="file" id="csvFileInput" accept=".csv" />
+
+  <script>
+    const searchInput = document.getElementById('searchInput');
+    const subjectFilter = document.getElementById('subjectFilter');
+    const tableBody = document.querySelector('#courseTable tbody');
+    const csvFileInput = document.getElementById('csvFileInput');
+
+    let originalData = [];
+
+    function renderTable(data) {
+      tableBody.innerHTML = '';
+
+      data.forEach(row => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>${row['Course'] || ''}</td>
+          <td>${row['Award'] || ''}</td>
+          <td>${row['UCAS'] || ''}</td>
+          <td>${row['A Levels'] || ''}</td>
+          <td>${row['IB'] || ''}</td>
+          <td>${row['BTEC'] || ''}</td>
+          <td>${row['EPQ'] || ''}</td>
+          <td>${row['Subject requirements include'] || ''}</td>
+          <td>${row['Contextual offer'] || ''}</td>
+        `;
+        tableBody.appendChild(tr);
+      });
+    }
+
+    function updateFilters() {
+      const query = searchInput.value.toLowerCase();
+      const selectedSubject = subjectFilter.value;
+
+      const filtered = originalData.filter(row => {
+        const courseMatch = row['Course']?.toLowerCase().includes(query);
+        const ucasMatch = row['UCAS']?.toLowerCase().includes(query);
+        const subjectMatch = selectedSubject === '' || (row['Subject(s)']?.includes(selectedSubject));
+
+        return (courseMatch || ucasMatch) && subjectMatch;
+      });
+
+      renderTable(filtered);
+    }
+
+    function populateSubjectFilter(data) {
+      const subjects = new Set();
+      data.forEach(row => {
+        const subjectField = row['Subject(s)'];
+        if (subjectField) {
+          subjectField.split(',').forEach(sub => subjects.add(sub.trim()));
+        }
+      });
+
+      subjectFilter.innerHTML = '<option value="">All Subjects</option>';
+      [...subjects].sort().forEach(subject => {
+        const option = document.createElement('option');
+        option.value = subject;
+        option.textContent = subject;
+        subjectFilter.appendChild(option);
+      });
+    }
+
+    csvFileInput.addEventListener('change', (event) => {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      Papa.parse(file, {
+        header: true,
+        skipEmptyLines: true,
+        complete: function(results) {
+          originalData = results.data;
+          renderTable(originalData);
+          populateSubjectFilter(originalData);
+        }
+      });
+    });
+
+    searchInput.addEventListener('input', updateFilters);
+    subjectFilter.addEventListener('change', updateFilters);
+  </script>
+
+</body>
+</html>
