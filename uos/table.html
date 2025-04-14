@@ -73,13 +73,12 @@
     <tbody></tbody>
   </table>
 
-  <input type="file" id="csvFileInput" accept=".csv" />
-
   <script>
     const searchInput = document.getElementById('searchInput');
     const subjectFilter = document.getElementById('subjectFilter');
     const tableBody = document.querySelector('#courseTable tbody');
-    const csvFileInput = document.getElementById('csvFileInput');
+
+    const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQtVRbh8WDlCjSEk4uSM2EGBYklBPLfAmvkOp-XGm1ADfS9OMX0TFQlzLx3kuCGTLKjWSMEo_NGZjSS/pub?output=csv";
 
     let originalData = [];
 
@@ -136,19 +135,16 @@
       });
     }
 
-    csvFileInput.addEventListener('change', (event) => {
-      const file = event.target.files[0];
-      if (!file) return;
-
-      Papa.parse(file, {
-        header: true,
-        skipEmptyLines: true,
-        complete: function(results) {
-          originalData = results.data;
-          renderTable(originalData);
-          populateSubjectFilter(originalData);
-        }
-      });
+    // Fetch CSV from Google Sheets and load the table
+    Papa.parse(CSV_URL, {
+      download: true,
+      header: true,
+      skipEmptyLines: true,
+      complete: function(results) {
+        originalData = results.data;
+        renderTable(originalData);
+        populateSubjectFilter(originalData);
+      }
     });
 
     searchInput.addEventListener('input', updateFilters);
