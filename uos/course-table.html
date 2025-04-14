@@ -37,19 +37,7 @@
       font-size: 0.95rem;
     }
 
-    .filters {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-bottom: 1rem;
-    }
 
-    .filters select {
-      padding: 0.4rem;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      font-size: 0.9rem;
-    }
 
     .table-wrapper {
       overflow-x: auto;
@@ -164,7 +152,6 @@
   <div class="container">
     <h2>Data from Google Sheet</h2>
     <input type="text" id="search-input" placeholder="Search table...">
-    <div class="filters" id="column-filters"></div>
 
     <!-- Table View -->
     <div class="table-wrapper desktop-view">
@@ -266,53 +253,16 @@
       });
     }
 
-    function updateFilters(headers) {
-      const filterContainer = document.getElementById("column-filters");
-      filterContainer.innerHTML = '';
-
-      headers.forEach(header => {
-        const select = document.createElement("select");
-        select.setAttribute("data-column", header);
-        const uniqueVals = [...new Set(rawData.map(row => row[header]).filter(Boolean))].sort();
-        const allOption = document.createElement("option");
-        allOption.value = "";
-        allOption.textContent = `All ${header}`;
-        select.appendChild(allOption);
-
-        uniqueVals.forEach(val => {
-          const option = document.createElement("option");
-          option.value = val;
-          option.textContent = val;
-          select.appendChild(option);
-        });
-
-        select.addEventListener("change", applyFilters);
-        filterContainer.appendChild(select);
-      });
-    }
-
-    function applyFilters() {
-      const selects = document.querySelectorAll(".filters select");
-      filteredData = rawData.filter(row => {
-        return Array.from(selects).every(select => {
-          const col = select.getAttribute("data-column");
-          const val = select.value;
-          return !val || row[col] === val;
-        });
-      });
-      applySearch();
-    }
-
     function applySearch() {
-      const query = document.getElementById("search-input").value.toLowerCase();
-      const results = filteredData.filter(row =>
-        Object.values(row).some(val =>
-          String(val).toLowerCase().includes(query)
-        )
-      );
-      renderTable(results);
-      renderCards(results);
-    }
+  const query = document.getElementById("search-input").value.toLowerCase();
+  const results = filteredData.filter(row =>
+    (row["course"] && row["course"].toLowerCase().includes(query)) ||
+    (row["ucas"] && row["ucas"].toLowerCase().includes(query))
+  );
+  renderTable(results);
+  renderCards(results);
+}
+
 
     function sortTableBy(column) {
       const asc = currentSort.column === column ? !currentSort.asc : true;
