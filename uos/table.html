@@ -7,14 +7,22 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      padding: 1rem;
       background: #f9f9f9;
+      margin: 0;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 1rem;
     }
 
     input, select {
       margin-bottom: 1rem;
       padding: 0.5rem;
       font-size: 1rem;
+      width: 100%;
+      max-width: 400px;
     }
 
     table {
@@ -36,47 +44,87 @@
     tr:hover {
       background-color: #f1f7ff;
     }
+
+    /* Mobile Card Styles */
+    .card-container {
+      display: none;
+    }
+
+    .card {
+      background: white;
+      border: 1px solid #ddd;
+      margin-bottom: 1rem;
+      padding: 1rem;
+      border-radius: 8px;
+    }
+
+    .card h3 {
+      margin-top: 0;
+      cursor: pointer;
+    }
+
+    .card-details {
+      display: none;
+      padding-top: 0.5rem;
+    }
+
+    .card.open .card-details {
+      display: block;
+    }
+
+    @media (max-width: 768px) {
+      table {
+        display: none;
+      }
+      .card-container {
+        display: block;
+      }
+    }
   </style>
 </head>
 <body>
+  <div class="container">
+    <h1>Course Table</h1>
 
-  <h1>Course Table</h1>
+    <label>
+      Search Course or UCAS:
+      <input type="text" id="searchInput" placeholder="Type to search..." />
+    </label>
 
-  <label>
-    Search Course or UCAS:
-    <input type="text" id="searchInput" placeholder="Type to search..." />
-  </label>
-  
-  <br>
-  
-  <label>
-    Filter by Subject:
-    <select id="subjectFilter">
-      <option value="">All Subjects</option>
-    </select>
-  </label>
+    <br>
 
-  <table id="courseTable">
-    <thead>
-      <tr>
-        <th>Course</th>
-        <th>Award</th>
-        <th>UCAS</th>
-        <th>A Levels</th>
-        <th>IB</th>
-        <th>BTEC</th>
-        <th>EPQ</th>
-        <th>Subject requirements include</th>
-        <th>Contextual offer</th>
-      </tr>
-    </thead>
-    <tbody></tbody>
-  </table>
+    <label>
+      Filter by Subject:
+      <select id="subjectFilter">
+        <option value="">All Subjects</option>
+      </select>
+    </label>
+
+    <table id="courseTable">
+      <thead>
+        <tr>
+          <th>Course</th>
+          <th>Award</th>
+          <th>UCAS</th>
+          <th>A Levels</th>
+          <th>IB</th>
+          <th>BTEC</th>
+          <th>EPQ</th>
+          <th>Subject requirements include</th>
+          <th>Contextual offer</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <div class="card-container" id="cardContainer"></div>
+  </div>
 
   <script>
     const searchInput = document.getElementById('searchInput');
     const subjectFilter = document.getElementById('subjectFilter');
     const tableBody = document.querySelector('#courseTable tbody');
+    const cardContainer = document.getElementById('cardContainer');
 
     const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQtVRbh8WDlCjSEk4uSM2EGBYklBPLfAmvkOp-XGm1ADfS9OMX0TFQlzLx3kuCGTLKjWSMEo_NGZjSS/pub?output=csv";
 
@@ -84,8 +132,10 @@
 
     function renderTable(data) {
       tableBody.innerHTML = '';
+      cardContainer.innerHTML = '';
 
       data.forEach(row => {
+        // Render desktop table
         const tr = document.createElement('tr');
         tr.innerHTML = `
           <td>${row['Course'] || ''}</td>
@@ -99,6 +149,27 @@
           <td>${row['Contextual offer'] || ''}</td>
         `;
         tableBody.appendChild(tr);
+
+        // Render mobile card
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `
+          <h3>${row['Course'] || 'Course'}</h3>
+          <div class="card-details">
+            <p><strong>Award:</strong> ${row['Award'] || ''}</p>
+            <p><strong>UCAS:</strong> ${row['UCAS'] || ''}</p>
+            <p><strong>A Levels:</strong> ${row['A Levels'] || ''}</p>
+            <p><strong>IB:</strong> ${row['IB'] || ''}</p>
+            <p><strong>BTEC:</strong> ${row['BTEC'] || ''}</p>
+            <p><strong>EPQ:</strong> ${row['EPQ'] || ''}</p>
+            <p><strong>Subject requirements include:</strong> ${row['Subject requirements include'] || ''}</p>
+            <p><strong>Contextual offer:</strong> ${row['Contextual offer'] || ''}</p>
+          </div>
+        `;
+        card.querySelector('h3').addEventListener('click', () => {
+          card.classList.toggle('open');
+        });
+        cardContainer.appendChild(card);
       });
     }
 
@@ -110,7 +181,6 @@
         const courseMatch = row['Course']?.toLowerCase().includes(query);
         const ucasMatch = row['UCAS']?.toLowerCase().includes(query);
         const subjectMatch = selectedSubject === '' || (row['Subject(s)']?.includes(selectedSubject));
-
         return (courseMatch || ucasMatch) && subjectMatch;
       });
 
@@ -135,7 +205,6 @@
       });
     }
 
-    // Fetch CSV from Google Sheets and load the table
     Papa.parse(CSV_URL, {
       download: true,
       header: true,
@@ -150,6 +219,5 @@
     searchInput.addEventListener('input', updateFilters);
     subjectFilter.addEventListener('change', updateFilters);
   </script>
-
 </body>
 </html>
