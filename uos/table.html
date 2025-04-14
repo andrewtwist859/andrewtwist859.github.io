@@ -139,47 +139,56 @@
     let originalData = [];
 
     function renderTable(data) {
-      tableBody.innerHTML = '';
-      cardContainer.innerHTML = '';
+  tableBody.innerHTML = '';
+  cardContainer.innerHTML = '';
 
-      data.forEach(row => {
-        // Render desktop table
-        const tr = document.createElement('tr');
-        tr.innerHTML = `
-          <td>${row['Course'] || ''}</td>
-          <td>${row['Award'] || ''}</td>
-          <td>${row['UCAS'] || ''}</td>
-          <td>${row['A Levels'] || ''}</td>
-          <td>${row['IB'] || ''}</td>
-          <td>${row['BTEC'] || ''}</td>
-          <td>${row['EPQ'] || ''}</td>
-          <td>${row['Subject requirements include'] || ''}</td>
-          <td>${row['Contextual offer'] || ''}</td>
-        `;
-        tableBody.appendChild(tr);
+  data.forEach(row => {
+    const courseName = row['Course'] || '';
+    const courseLink = row['Course links']?.trim();
+    const linkedTitle = courseLink
+      ? `<a href="${courseLink}" target="_blank" rel="noopener noreferrer">${courseName}</a>`
+      : courseName;
 
-        // Render mobile card
-        const card = document.createElement('div');
-        card.className = 'card';
-        card.innerHTML = `
-          <h3>${row['Course'] || 'Course'}</h3>
-          <div class="card-details">
-            <p><strong>Award:</strong> ${row['Award'] || ''}</p>
-            <p><strong>UCAS:</strong> ${row['UCAS'] || ''}</p>
-            <p><strong>A Levels:</strong> ${row['A Levels'] || ''}</p>
-            <p><strong>IB:</strong> ${row['IB'] || ''}</p>
-            <p><strong>BTEC:</strong> ${row['BTEC'] || ''}</p>
-            <p><strong>EPQ:</strong> ${row['EPQ'] || ''}</p>
-            <p><strong>Subject requirements include:</strong> ${row['Subject requirements include'] || ''}</p>
-            <p><strong>Contextual offer:</strong> ${row['Contextual offer'] || ''}</p>
-          </div>
-        `;
-        card.querySelector('h3').addEventListener('click', () => {
-          card.classList.toggle('open');
-        });
-        cardContainer.appendChild(card);
-      });
-    }
+    // --- Desktop table row ---
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td>${linkedTitle}</td>
+      <td>${row['Award'] || ''}</td>
+      <td>${row['UCAS'] || ''}</td>
+      <td>${row['A Levels'] || ''}</td>
+      <td>${row['IB'] || ''}</td>
+      <td>${row['BTEC'] || ''}</td>
+      <td>${row['EPQ'] || ''}</td>
+      <td>${row['Subject requirements include'] || ''}</td>
+      <td>${row['Contextual offer'] || ''}</td>
+    `;
+    tableBody.appendChild(tr);
+
+    // --- Mobile card ---
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `
+      <h3>${linkedTitle}</h3>
+      <div class="card-details">
+        <p><strong>Award:</strong> ${row['Award'] || ''}</p>
+        <p><strong>UCAS:</strong> ${row['UCAS'] || ''}</p>
+        <p><strong>A Levels:</strong> ${row['A Levels'] || ''}</p>
+        <p><strong>IB:</strong> ${row['IB'] || ''}</p>
+        <p><strong>BTEC:</strong> ${row['BTEC'] || ''}</p>
+        <p><strong>EPQ:</strong> ${row['EPQ'] || ''}</p>
+        <p><strong>Subject requirements include:</strong> ${row['Subject requirements include'] || ''}</p>
+        <p><strong>Contextual offer:</strong> ${row['Contextual offer'] || ''}</p>
+      </div>
+    `;
+
+    card.querySelector('h3').addEventListener('click', () => {
+      card.classList.toggle('open');
+    });
+
+    cardContainer.appendChild(card);
+  });
+}
+
 
     function updateFilters() {
       const query = searchInput.value.toLowerCase();
