@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>title</title>
+    <!-- Tom Select CSS -->
+<link href="https://cdn.jsdelivr.net/npm/tom-select@2.2.2/dist/css/tom-select.css" rel="stylesheet">
+<link href="https://use.typekit.net/jou7rrz.css" rel="stylesheet"/>
+<!-- Tom Select JS -->
+<script src="https://cdn.jsdelivr.net/npm/tom-select@2.2.2/dist/js/tom-select.complete.min.js"></script>
+<style>
+body {
+    padding: 1rem;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.container p {
+    max-width: 80ch;
+    line-height: 1.6;
+    margin-top: 0;
+    font-family: 'source-sans-pro';
+}
+
+.container h2 {
+margin-bottom: 0.5rem;
+font-family: 'source-serif-pro';
+font-weight: 800;
+}
+
+.ts-wrapper {
+    max-width: 500px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-family: 'source-sans-pro';
+    font-size: 1.2rem;
+}
+
+button {
+    background-color: #3BD4AE;
+    border: 0;
+    border-radius: 0;
+    padding: 0.5rem 1rem;
+    font-weight: 700;
+    font-family: 'source-sans-pro';
+}
+
+/* Wrapper - overall font size */
+.ts-wrapper {
+  font-size: 16px;
+}
+
+/* Input area (where you type) */
+.ts-control input {
+  font-size: 16px;
+}
+
+/* Dropdown option items */
+.ts-dropdown .ts-dropdown-content {
+  font-size: 16px;
+}
+
+.ts-dropdown .option {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+</style>
+</head>
+<body>
+    <div class="container">
+   <!-- HTML -->
+<label for="countrySelect"><h2>Choose your country</h2></label>
+<p>Choose your country from the A-Z list to get information specific to you, including entry requirements, visits, scholarships and who to contact.</p>
+<select id="countrySelect" placeholder="Search for your country...">
+  <option value=""></option> <!-- empty for Tom Select to allow placeholder -->
+  <option value="https://www.sheffield.ac.uk/international/australia">Australia</option>
+  <option value="https://www.sheffield.ac.uk/international/argentina">Argentina</option>
+  <option value="https://www.sheffield.ac.uk/international/azerbaijan">Azerbaijan</option>
+  <option value="https://www.sheffield.ac.uk/international/bahrain">Bahrain</option>
+  <option value="https://www.sheffield.ac.uk/international/bangladesh">Bangladesh</option>
+  <option value="https://www.sheffield.ac.uk/international/bolivia">Bolivia</option>
+  <option value="https://www.sheffield.ac.uk/international/botswana">Botswana</option>
+  <option value="https://www.sheffield.ac.uk/international/brazil">Brazil</option>
+  <option value="https://www.sheffield.ac.uk/international/brunei">Brunei</option>
+  <option value="https://www.sheffield.ac.uk/international/canada">Canada</option>
+  <option value="https://www.sheffield.ac.uk/international/chile">Chile</option>
+  <option value="https://www.sheffield.ac.uk/international/china">China (PRC)</option>
+  <option value="https://www.sheffield.ac.uk/international/colombia">Colombia</option>
+  <option value="https://www.sheffield.ac.uk/international/cyprus">Cyprus</option>
+  <option value="https://www.sheffield.ac.uk/international/ecuador">Ecuador</option>
+  <option value="https://www.sheffield.ac.uk/international/egypt">Egypt</option>
+  <option value="https://www.sheffield.ac.uk/international/france">France</option>
+  <option value="https://www.sheffield.ac.uk/international/ghana">Ghana</option>
+  <option value="https://www.sheffield.ac.uk/international/greece">Greece</option>
+  <option value="https://www.sheffield.ac.uk/international/guatemala">Guatemala</option>
+  <option value="https://www.sheffield.ac.uk/international/hong-kong">Hong Kong (SAR)</option>
+  <option value="https://www.sheffield.ac.uk/international/india">India</option>
+  <option value="https://www.sheffield.ac.uk/international/indonesia">Indonesia</option>
+  <option value="https://www.sheffield.ac.uk/international/iran">Iran</option>
+  <option value="https://www.sheffield.ac.uk/international/iraq">Iraq</option>
+  <option value="https://www.sheffield.ac.uk/international/italy">Italy</option>
+  <option value="https://www.sheffield.ac.uk/international/japan">Japan</option>
+  <option value="https://www.sheffield.ac.uk/international/jordan">Jordan</option>
+  <option value="https://www.sheffield.ac.uk/international/kazakhstan">Kazakhstan</option>
+  <option value="https://www.sheffield.ac.uk/international/kenya">Kenya</option>
+  <option value="https://www.sheffield.ac.uk/international/kuwait">Kuwait</option>
+  <option value="https://www.sheffield.ac.uk/international/lebanon">Lebanon</option>
+  <option value="https://www.sheffield.ac.uk/international/libya">Libya</option>
+  <option value="https://www.sheffield.ac.uk/international/macao">Macao (SAR)</option>
+  <option value="https://www.sheffield.ac.uk/international/malawi">Malawi</option>
+  <option value="https://www.sheffield.ac.uk/international/malaysia">Malaysia</option>
+  <option value="https://www.sheffield.ac.uk/international/mauritius">Mauritius</option>
+  <option value="https://www.sheffield.ac.uk/international/mexico">Mexico</option>
+  <option value="https://www.sheffield.ac.uk/international/morocco">Morocco</option>
+  <option value="https://www.sheffield.ac.uk/international/nepal">Nepal</option>
+  <option value="https://www.sheffield.ac.uk/international/nigeria">Nigeria</option>
+  <option value="https://www.sheffield.ac.uk/international/norway">Norway</option>
+  <option value="https://www.sheffield.ac.uk/international/oman">Oman</option>
+  <option value="https://www.sheffield.ac.uk/international/pakistan">Pakistan</option>
+  <option value="https://www.sheffield.ac.uk/international/panama">Panama</option>
+  <option value="https://www.sheffield.ac.uk/international/paraguay">Paraguay</option>
+  <option value="https://www.sheffield.ac.uk/international/peru">Peru</option>
+  <option value="https://www.sheffield.ac.uk/international/philippines">Philippines</option>
+  <option value="https://www.sheffield.ac.uk/international/poland">Poland</option>
+  <option value="https://www.sheffield.ac.uk/international/qatar">Qatar</option>
+  <option value="https://www.sheffield.ac.uk/international/romania">Romania</option>
+  <option value="https://www.sheffield.ac.uk/international/russia">Russia</option>
+  <option value="https://www.sheffield.ac.uk/international/saudi-arabia">Saudi Arabia</option>
+  <option value="https://www.sheffield.ac.uk/international/singapore">Singapore</option>
+  <option value="https://www.sheffield.ac.uk/international/south-africa">South Africa</option>
+  <option value="https://www.sheffield.ac.uk/international/south-korea">South Korea</option>
+  <option value="https://www.sheffield.ac.uk/international/spain">Spain</option>
+  <option value="https://www.sheffield.ac.uk/international/sudan">Sudan</option>
+  <option value="https://www.sheffield.ac.uk/international/switzerland">Switzerland</option>
+  <option value="https://www.sheffield.ac.uk/international/sri-lanka">Sri Lanka</option>
+  <option value="https://www.sheffield.ac.uk/international/syria">Syria</option>
+  <option value="https://www.sheffield.ac.uk/international/taiwan">Taiwan</option>
+  <option value="https://www.sheffield.ac.uk/international/tanzania">Tanzania</option>
+  <option value="https://www.sheffield.ac.uk/international/thailand">Thailand</option>
+  <option value="https://www.sheffield.ac.uk/international/turkey">Turkey</option>
+  <option value="https://www.sheffield.ac.uk/international/uae">UAE</option>
+  <option value="https://www.sheffield.ac.uk/international/uganda">Uganda</option>
+  <option value="https://www.sheffield.ac.uk/international/ukraine">Ukraine</option>
+  <option value="https://www.sheffield.ac.uk/international/usa">USA</option>
+  <option value="https://www.sheffield.ac.uk/international/venezuela">Venezuela</option>
+  <option value="https://www.sheffield.ac.uk/international/vietnam">Vietnam</option>
+  <option value="https://www.sheffield.ac.uk/international/zambia">Zambia</option>
+  <option value="https://www.sheffield.ac.uk/international/zimbabwe">Zimbabwe</option>
+  <!-- etc... -->
+</select>
+
+<button onclick="goToCountry()">View country specific information</button>
+
+</div>
+   <!-- JS -->
+<script>
+    new TomSelect("#countrySelect", {
+      create: false,
+      placeholder: "Start typing to filter...",
+      allowEmptyOption: false,  // hides the default empty option from dropdown
+      shouldLoad: () => true,
+      maxOptions: 500,
+    });
+  
+    function goToCountry() {
+      const select = document.getElementById("countrySelect");
+      const url = select.value;
+      if (url) {
+        window.location.href = url;
+      } else {
+        alert("Please select a country.");
+      }
+    }
+  </script>
+  
+
+</body>
+</html>
