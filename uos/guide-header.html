@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="global-menu.css"> 
+    <link rel="stylesheet" href="https://use.typekit.net/jou7rrz.css">
+        <link rel="stylesheet" href="https://use.typekit.net/hvq7yfy.css">
+        <link rel="stylesheet" href="testimonials-wide.css">
+          <link rel="stylesheet" href="footer.css"> 
+        
+  <title>Responsive Autoplay Looping Video Banner</title>
+  <style>
+    @font-face {
+    font-family: 'Hot Mess';
+    src: url('https://andrewtwist859.github.io/uos/fonts/HotMess.woff2') format('woff2'),
+        url('https://andrewtwist859.github.io/uos/fonts/HotMess.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    .video-banner {
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 aspect ratio */
+      height: 0;
+      overflow: hidden;
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .video-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.75); /* black with 0.5 opacity */
+      pointer-events: none; /* allow clicks to pass through to iframe if needed */
+      z-index: 1;
+    }
+
+     .full-width-container {
+background-color: #440099;
+background-image: url(blob2.svg);
+background-repeat: repeat-x;
+    background-position: center;
+    background-size: cover;
+}
+           
+    
+            .info-section {
+  padding: 1rem 0;
+}
+
+.info-container {
+  max-width: 1180px;
+  margin: 0 auto;
+  display: flex;
+  gap: 20px;
+}
+
+.info-box {
+  background-color: white;
+  overflow: hidden;
+  text-align: left;
+  flex: 1;
+}
+
+.info-box img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.info-box h3 {
+  font-family: 'source-serif-pro';
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin: 16px;
+  color: #333;
+}
+
+.info-box p {
+  font-size: 16px;
+  margin: 0 16px 16px 16px;
+  color: #555;
+}
+
+.info-box a {
+  display: inline-block;
+  margin: 0 16px 16px 16px;
+  color: #4b0082; /* Link color to match the theme */
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.info-box a:hover {
+  text-decoration: underline;
+}
+
+.contents-container {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 1rem;
+    text-align: center;
+}
+
+h2 {
+    font-size: 3.5rem;
+    font-family: 'Hot Mess';
+    font-weight: normal;
+    text-transform: uppercase;
+    margin-bottom: 0.25rem;
+     color: white;
+    background-color: #24125E;
+    padding: 1rem 2rem;
+    display: inline-block;
+}
+
+
+.svg-pattern {
+  width: 100%;
+  height: 300px;
+background-color: #005750;
+background-image: url(blob3.svg);
+background-repeat: repeat-x;
+    background-position: center;
+    background-size: cover;
+}
+
+
+.pub-title{
+    margin-left: 2rem;
+    font-family: 'source-sans-pro';
+    font-weight: 4  00    ;
+    font-size: 1.5rem;
+}
+
+.ranking-container {
+            display: flex;
+            width: 100%; /* Adjust overall container width as needed */
+            max-width: 1200px; /* Ensures the container doesn't get too wide on larger screens */
+            align-items: stretch; /* Aligns children's heights */
+            gap: 20px;
+            margin-bottom: 3rem;
+            margin-top: 2rem;
+        }
+
+        .rounded-rectangle-arrow {
+            flex: 1; /* Takes 2 parts of the container */
+            background-color: #7FCDC3;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+            color: #1E064C;
+            font-family: 'source-sans-pro', sans-serif;
+            text-align: center;
+            position: relative;
+    box-sizing: border-box;
+
+        }
+
+        .rounded-rectangle-arrow::after {
+            content: "";
+    position: absolute;
+    bottom: -20px; /* Positions the triangle below the box */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid #7FCDC3; /* Matches the box color */
+        }
+
+        .rounded-rectangle-arrow-orange {
+            flex: 1; /* Takes 2 parts of the container */
+            background-color: #F89B49;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+            color: #1E064C;
+            font-family: 'source-sans-pro', sans-serif;
+            text-align: center;
+            position: relative;
+    box-sizing: border-box;
+
+        }
+
+        .rounded-rectangle-arrow-orange::after {
+            content: "";
+    position: absolute;
+    bottom: -20px; /* Positions the triangle below the box */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid #F89B49; /* Matches the box color */
+        }
+
+        .rounded-rectangle-arrow-pv {
+            flex: 1; /* Takes 2 parts of the container */
+            background-color: #A59FDA;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+            color: #1E064C;
+            font-family: 'source-sans-pro', sans-serif;
+            text-align: center;
+            position: relative;
+    box-sizing: border-box;
+
+        }
+
+        .rounded-rectangle-arrow-pv::after {
+            content: "";
+    position: absolute;
+    bottom: -20px; /* Positions the triangle below the box */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid #A59FDA; /* Matches the box color */
+        }
+
+             .arrow-sub-text, .guide {
+            font-size: 18px;
+            text-wrap: balance;
+            max-width: 28ch;
+            margin-top: 0.5rem;
+            line-height: 1.2;
+        }
+
+        .uoty-sub-text {
+            font-size: 18px;
+            text-wrap: balance;
+            margin-top: 0.5rem;
+            line-height: 1.2;
+        }
+
+        .top {
+    font-size: 6rem;
+    color: #1E064C; /* Dark purple */
+    font-family: 'Hot Mess';
+    margin-bottom: 0;
+    text-transform: uppercase;
+}
+
+.nss-main-text {
+            font-size: 2.8rem;
+            font-weight: 900;
+            margin-bottom: 5px;
+            text-wrap: balance;
+            max-width: 10ch;
+            line-height: 100%;
+            margin-top: -1rem;
+            font-family: 'source-serif-pro';
+        }
+
+        .uoty-container {
+            flex: 2; /* Takes 1 part of the container */
+            background-color: #1E064C;
+            clip-path: polygon(
+                0% 0%, /* top left */
+                95% 0%, /* top right close to chevron start */
+                100% 50%, /* peak of the right chevron */
+                95% 100%, /* bottom right close to chevron end */
+                0% 100% /* bottom left */
+            );
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 20px;
+            box-sizing: border-box;
+            color: white;
+            font-family: 'source-sans-pro', sans-serif;
+            text-align: left;
+        }
+
+        .uoty-main-text{
+        font-size: 5rem;
+            font-weight: 900;
+            margin-bottom: 5px;
+            text-wrap: balance;
+            line-height:90%;
+            text-transform: uppercase;
+        }
+
+         .uoty-text-container {
+            max-width: 90%;
+            text-align: center;
+        }
+
+        .hot-year {
+          font-family: 'Hot Mess';
+          font-weight: normal;
+          font-size: 6rem;
+        }
+
+        .testimonial-name {
+          font-family: 'Hot Mess';
+          font-size: 2rem;
+          font-weight: normal;
+          color: #440099;
+        }
+
+a.full {
+    color: white;
+    font-size: 1.5rem;
+}
+  </style>
+</head>
+<body>
+<nav class="navbar">
+    <div class="navbar-content">
+      <div class="navbar-brand">
+        <a href="changes"><img src="logo.png" alt="University of Sheffield Logo" class="logo"></a>
+      </div>
+      <span class="pub-title">Undergraduate prospectus 2025-26</span>
+    </div>
+  </nav>
+  <section class="video-banner">
+    <div class="video-container">
+      <iframe
+        id="kaltura_player"
+        src="https://cdnapisec.kaltura.com/p/2103181/embedPlaykitJs/uiconf_id/53345422?iframeembed=true&entry_id=1_xs4ld79f&config%5Bprovider%5D=%7B%22widgetId%22%3A%221_nrt8cqb1%22%7D&config%5Bplayback%5D=%7B%22autoplay%22%3Atrue%2C%22muted%22%3Atrue%2C%22loop%22%3Atrue%2C%22startTime%22%3A0%7D&config%5Bui%5D=%7B%22controls%22%3Afalse%7D"
+        allowfullscreen
+        webkitallowfullscreen
+        mozallowfullscreen
+        allow="autoplay *; fullscreen *; encrypted-media *"
+        sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation"
+        title="Sheffield City Tour _ The University of Sheffield"
+      ></iframe>
+      <div class="video-overlay"></div>
+    </div>
+  </section>
+  <div class="contents-container"></div>
+   <div class="full-width-container">
+        <div class="contents-container">
+            <h2>Student life</h2>
+      <div class="info-section">
+        <div class="info-container">
+          <div class="info-box">
+            <img src="od.jpg" alt="A quick guide to Sheffield" />
+            <h3>Our city</h3>
+            <p>Visit our campus in the summer or autumn of 2025 to discover what living and studying in Sheffield is all about. </p>
+            <a href="#">Book your place</a>
+          </div>
+          <div class="info-box">
+            <img src="cube1.png" alt="Our neighbourhoods" />
+            <h3>Our campus</h3>
+            <p>From asking your first question to submitting   your application. We’ve got you covered  with every aspect of applying to Sheffield.</p>
+            <a href="#">Applying to Sheffield</a>
+          </div>
+          <div class="info-box">
+            <img src="od.jpg" alt="A quick guide to Sheffield" />
+            <h3>Our student experience</h3>
+            <p>Visit our campus in the summer or autumn of 2025 to discover what living and studying in Sheffield is all about. </p>
+            <a href="#">Book your place</a>
+          </div>
+        </div>
+      </div>
+      </div>
+      </div>
+      <div class="contents-container">
+        <h2>What our students say</h2>
+      <p>Read our testimonials to learn what makes Sheffield special to our students.</p>
+        <div class="test-controls">
+          <button id="gridViewButton" onclick="setGridView()" title="Grid View" style="background: none; border: none; cursor: pointer;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="16" height="16">
+                <path d="M64 32C28.7 32 0 60.7 0 96L0 416c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-320c0-35.3-28.7-64-64-64L64 32zm88 64l0 64-88 0 0-64 88 0zm56 0l88 0 0 64-88 0 0-64zm240 0l0 64-88 0 0-64 88 0zM64 224l88 0 0 64-88 0 0-64zm232 0l0 64-88 0 0-64 88 0zm64 0l88 0 0 64-88 0 0-64zM152 352l0 64-88 0 0-64 88 0zm56 0l88 0 0 64-88 0 0-64zm240 0l0 64-88 0 0-64 88 0z"/>
+            </svg>
+        </button>
+        <div style="text-align: right; margin-bottom: 10px;">View as:
+          <button id="sliderViewButton" onclick="setSliderView()" title="Slider View" style="background: none; border: none; cursor: pointer;">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="16" height="16">
+                  <path d="M406.6 374.6l96-96c12.5-12.5 12.5-32.8 0-45.3l-96-96c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224l-293.5 0 41.4-41.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-96 96c-12.5 12.5-12.5 32.8 0 45.3l96 96c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 288l293.5 0-41.4 41.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0z"/>
+              </svg>
+          </button> 
+      </div></div>
+    
+        <div class="testimonial-slider-container" id="sliderContainer">
+          
+          <!-- Testimonial Slider Wrapper -->
+          <div class="testimonial-slider">
+              <!-- Testimonial 1 -->
+              <div class="testimonial">
+                  <img src="san.png" alt="Martha Kelner" class="testimonial-img">
+                  <div class="testimonial-content">"Residence Life social activities made my accommodation experience enjoyable and stress-free. Cooking (baking with Rahul from Bake Off!), knitting and body-butter-making sessions were my favourite, plus they always had freebies to take home. They also offered trips to concerts, parks and even other cities, all at affordable prices."</div>
+                  <div class="testimonial-name">Sanjana Mehrotra</div>
+                  <div class="testimonial-title">Medicine</div>
+              
+              </div>
+              <!-- Testimonial 2 -->
+              <div class="testimonial">
+                  <img src="joel.png" alt="Sam Moir" class="testimonial-img">
+                  <div class="testimonial-content">"The experience gave me an insight into two different cultures and the opportunity to work in a total of four different languages. The year abroad was a testing yet incredibly rewarding experience. I learnt so much, not only about other ways of life, but also about myself. Plus, I made so many new friends along the way!"</div>
+                  <div class="testimonial-name">Joel Lufton</div>
+                  <div class="testimonial-title">Politics and Modern Languages  and Cultures </div>
+ 
+              </div>
+              <!-- Testimonial 3 -->
+              <div class="testimonial">
+                  <img src="jess.png" alt="Daniel Sheridan" class="testimonial-img">
+                  <div class="testimonial-content">"The support from the Disability and Dyslexia Support Service is amazing. When I started at uni, I didn’t have an autism diagnosis and they provided support from a working diagnosis, making it possible for me to thrive at uni. The team is always so welcoming and there’s never a problem too small."</div>
+                  <div class="testimonial-name">Jess Lomas</div>
+                  <div class="testimonial-title">Biochemistry and Genetics</div>
+              </div>
+              <!-- Testimonial 4 -->
+              <div class="testimonial">
+                  <img src="testph.png" alt="Person" class="testimonial-img">
+                  <div class="testimonial-content">"Adipisicing elit ut occaecat elit voluptate deserunt esse aliquip mollit ullamco consectetur. Irure sint tempor ad sunt nisi sunt ad laboris consequat. Enim veniam id esse. Aliqua ut fugiat pariatur quis incididunt sint quis."</div>
+                  <div class="testimonial-name"><a href="/">Lorem Doe</a></div>
+                  <div class="testimonial-title">Lorem ipsum</div>
+                  <div class="testimonial-class">BA Lorem Ipsum</div>
+              </div>
+              <!-- Testimonial 5 -->
+              <div class="testimonial">
+                  <img src="testph.png" alt="Person" class="testimonial-img">
+                  <div class="testimonial-content">"Adipisicing elit ut occaecat elit voluptate deserunt esse aliquip mollit ullamco consectetur. Irure sint tempor ad sunt nisi sunt ad laboris consequat. Enim veniam id esse. Aliqua ut fugiat pariatur quis incididunt sint quis."</div>
+                  <div class="testimonial-name"><a href="/">Lorem Doe</a></div>
+                  <div class="testimonial-title">Lorem ipsum</div>
+                  <div class="testimonial-class">BA Lorem Ipsum</div>
+              </div>
+              <!-- Testimonial 6 -->
+              <div class="testimonial">
+                  <img src="testph.png" alt="Person" class="testimonial-img">
+                  <div class="testimonial-content">"Adipisicing elit ut occaecat elit voluptate deserunt esse aliquip mollit ullamco consectetur. Irure sint tempor ad sunt nisi sunt ad laboris consequat. Enim veniam id esse. Aliqua ut fugiat pariatur quis incididunt sint quis."</div>
+                  <div class="testimonial-name"><a href="/">Lorem Doe</a></div>
+                  <div class="testimonial-title">Lorem ipsum</div>
+                  <div class="testimonial-class">BA Lorem Ipsum</div>
+              </div>
+          </div>
+      </div>
+  
+      <!-- Centered Navigation Arrows Below the Scroll Container -->
+      <div class="slider-nav-container">
+          <div class="slider-nav left" onclick="moveSlide(-1)">&#10094;</div>
+          <div class="slider-nav right" onclick="moveSlide(1)">&#10095;</div>
+      </div>
+      </div>
+      <div class="full-width-container">
+      <div class="contents-container">
+        <h2>Our rankings</h2>
+        <div class="ranking-container">
+        <div class="rounded-rectangle-arrow-pv">
+            <div class="top">Top 20</div>
+            <div class="nss-main-text">university in the UK</div>
+            <div class="arrow-sub-text">The Guardian University Guide 2025</div>
+        </div>
+        <div class="rounded-rectangle-arrow">
+            <div class="top">Top 10</div>
+            <div class="nss-main-text">city for students</div>
+            <div class="arrow-sub-text">StudentCrowd Best Student Cities 2024</div>
+        </div>
+        <div class="rounded-rectangle-arrow-orange">
+            <div class="top">Top 5</div>
+            <div class="nss-main-text">for job prospects</div>
+            <div class="arrow-sub-text">StudentCrowd University Job Prospects League Table 2024</div>
+        </div>
+    </div>
+    <p><a class="full" href="/">Rankings and reputation</a></p>
+      </div>
+      </div>
+       <footer class="footer">
+    <div class="footer-content">
+      
+          
+      
+     
+   
+    <div class="footer-bottom">
+        <div class="footer-awards">
+          <img src="top100.png" alt="World Top 100 University">
+          <img src="russellgroup.png" alt="Russell Group">
+          <img src="uoty.png" alt="University of the Year 2024">
+          <img src="queens.png" alt="Queen's Anniversary Prize">
+        </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+       <script>
+        const sliderContainer = document.getElementById('sliderContainer');
+        const testimonials = document.querySelectorAll('.testimonial');
+        let testimonialWidth = testimonials[0].offsetWidth + parseInt(window.getComputedStyle(testimonials[0]).marginRight); // Exact width including gap
+        let currentIndex = 0;
+
+        function updateTestimonialWidth() {
+            testimonialWidth = testimonials[0].offsetWidth + parseInt(window.getComputedStyle(testimonials[0]).marginRight);
+        }
+
+        function moveSlide(direction) {
+            // Update maxIndex based on the screen size (1 testimonial or 2 testimonials per view)
+            const maxIndex = window.innerWidth <= 768 ? testimonials.length - 1 : testimonials.length - 2;
+            currentIndex = Math.max(0, Math.min(currentIndex + direction, maxIndex));
+
+            // Scroll the container to the appropriate position
+            sliderContainer.scrollTo({
+                left: currentIndex * testimonialWidth,
+                behavior: 'smooth'
+            });
+        }
+
+        // Update width and scroll settings on window resize
+        window.addEventListener('resize', () => {
+            updateTestimonialWidth();
+        });
+
+        // Sync `currentIndex` with manual scrolling for smooth behavior with arrows
+        sliderContainer.addEventListener('scroll', () => {
+            currentIndex = Math.round(sliderContainer.scrollLeft / testimonialWidth);
+        });
+
+        // Initialize testimonial width for responsive layout
+        updateTestimonialWidth();
+    </script>
+    <script>
+function setSliderView() {
+    const container = document.getElementById('sliderContainer');
+    const navContainer = document.querySelector('.slider-nav-container');
+
+    container.classList.remove('testimonial-grid');
+    navContainer.classList.remove('hidden'); // Show nav container in slider view
+}
+
+function setGridView() {
+    const container = document.getElementById('sliderContainer');
+    const navContainer = document.querySelector('.slider-nav-container');
+
+    container.classList.add('testimonial-grid');
+    navContainer.classList.add('hidden'); // Hide nav container in grid view
+}
+
+
+    </script>
+</body>
+</html>

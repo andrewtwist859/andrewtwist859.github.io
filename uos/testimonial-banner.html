@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Student Budget Panel</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #32006e;
+      background-image: url("data:image/svg+xml;utf8,<svg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'><path fill='%238000ff' d='M20,0c11.046,0,20,8.954,20,20s-8.954,20-20,20S0,31.046,0,20S8.954,0,20,0z M20,2C9.506,2,2,9.506,2,20 s7.506,18,18,18s18-7.506,18-18S30.494,2,20,2z'/></svg>");
+      font-family: Arial, sans-serif;
+      padding: 2rem;
+    }
+
+    .budget-container {
+      position: relative;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .text-panel {
+      background: white;
+      padding: 2rem;
+      max-width: 600px;
+      border-radius: 8px;
+      position: relative;
+      z-index: 2;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .text-panel::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 50px;
+      height: 50px;
+      background: white;
+      clip-path: polygon(0 0, 100% 0, 100% 100%);
+    }
+
+    .text-panel h2 {
+      font-size: 1.6rem;
+      font-weight: bold;
+      margin-top: 0;
+    }
+
+    .text-panel ol {
+      padding-left: 1.2rem;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .student-name {
+      font-family: 'Brush Script MT', cursive;
+      font-weight: bold;
+      font-size: 1.3rem;
+      margin-top: 1rem;
+    }
+
+    .student-course {
+      margin: 0.2rem 0 0 0;
+    }
+
+    .image-panel {
+      position: absolute;
+      top: 0;
+      right: 0;
+      max-width: 420px;
+      width: 45%;
+      z-index: 1;
+    }
+
+    .image-panel img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      display: block;
+    }
+
+    @media (max-width: 768px) {
+      .budget-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .text-panel, .image-panel {
+        position: static;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      .text-panel::after {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="budget-container">
+  <div class="text-panel">
+    <h2>How do I live my best student life on a budget?</h2>
+    <p>It’s easy to live on a student budget in Sheffield with:</p>
+    <ol>
+      <li>Affordable rent</li>
+      <li>Paid work as an Ambassador for the University</li>
+      <li>Student discounts on nights out, food and drink</li>
+      <li>Budget-friendly supermarkets</li>
+      <li>Part-time jobs in the city</li>
+    </ol>
+    <p class="student-name">Eleanor Moorton</p>
+    <p class="student-course">MEng Biomedical Engineering</p>
+  </div>
+  <div class="image-panel">
+    <img src="eleanor.png" alt="Student portrait" />
+  </div>
+</div>
+
+</body>
+</html>

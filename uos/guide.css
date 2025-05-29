@@ -1,0 +1,106 @@
+   @font-face {
+    font-family: 'Hot Mess';
+    src: url('https://andrewtwist859.github.io/uos/fonts/HotMess.woff2') format('woff2'),
+        url('https://andrewtwist859.github.io/uos/fonts/HotMess.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+body {
+    margin: 0;
+}
+
+    .full-width-container {
+background-color: #006D99;
+background-image: url(blob-blue.svg);
+background-repeat: repeat-x;
+    background-position: center;
+    background-size: cover;
+    padding: 5rem;
+}
+
+.contents-container {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 1rem;
+    text-align: center;
+}
+
+.gallery-container, .video-container, .copy-container {
+    margin: 0 auto;
+}
+
+.copy-container {
+    max-width: 70ch;
+    text-align: left;
+    font-size: 1.2rem;
+}
+
+.copy-container h2 {
+margin-bottom: 0.25rem;
+margin-top: 2rem;
+font-size: 1.4rem;
+}
+
+.copy-container p {
+margin-top: 0.25rem;
+}
+
+.header-banner h2{
+    color: white;
+    background-color: #440099;
+    padding: 10px 20px;
+    display: inline-block;
+    text-transform: uppercase;
+    font-size: 2rem;
+}
+
+p.intro {
+    font-size: 1.6rem;
+    margin-top: 1rem;
+}
+
+.su-container {
+      flex: 1; /* Takes 2 parts of the container */
+      background-color: #F89B49;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      box-sizing: border-box;
+      color: #1E064C;
+      font-family: 'source-sans-pro', sans-serif;
+      position: relative;
+      box-sizing: border-box;
+      margin: 3rem 0rem;
+
+  }
+
+  .su-container p {
+    text-align: left;
+  }
+  }
+
+  .su-container::after {
+      content: "";
+      position: absolute;
+      bottom: -20px; /* Positions the triangle below the box */
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 20px solid transparent;
+      border-right: 20px solid transparent;
+      border-top: 20px solid #F89B49; /* Matches the box color */
+  }
+
+  .su-main-text {
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 2rem;
+  }
+
+  .su-sub-text {
+    text-wrap: balance;
+  }

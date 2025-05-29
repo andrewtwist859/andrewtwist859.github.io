@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Responsive Autoplay Looping Video Banner</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    .video-banner {
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 aspect ratio */
+      height: 0;
+      overflow: hidden;
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .video-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 1); /* black with 0.5 opacity */
+      pointer-events: none; /* allow clicks to pass through to iframe if needed */
+      z-index: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <section class="video-banner">
+    <div class="video-container">
+      <iframe
+        id="kaltura_player"
+        src="https://cdnapisec.kaltura.com/p/2103181/embedPlaykitJs/uiconf_id/53345422?iframeembed=true&entry_id=1_xs4ld79f&config%5Bprovider%5D=%7B%22widgetId%22%3A%221_nrt8cqb1%22%7D&config%5Bplayback%5D=%7B%22autoplay%22%3Atrue%2C%22muted%22%3Atrue%2C%22loop%22%3Atrue%2C%22startTime%22%3A0%7D&config%5Bui%5D=%7B%22controls%22%3Afalse%7D"
+        allowfullscreen
+        webkitallowfullscreen
+        mozallowfullscreen
+        allow="autoplay *; fullscreen *; encrypted-media *"
+        sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation"
+        title="Sheffield City Tour _ The University of Sheffield"
+      ></iframe>
+      <div class="video-overlay"></div>
+    </div>
+  </section>
+
+</body>
+</html>

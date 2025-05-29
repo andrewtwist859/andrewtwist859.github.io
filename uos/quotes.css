@@ -1,0 +1,207 @@
+    @font-face {
+    font-family: 'Hot Mess';
+    src: url('https://andrewtwist859.github.io/uos/fonts/HotMess.woff2') format('woff2'),
+        url('https://andrewtwist859.github.io/uos/fonts/HotMess.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+        .quote-container-orange {
+      flex: 1; /* Takes 2 parts of the container */
+      background-color: #F89B49;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      box-sizing: border-box;
+      color: #1E064C;
+      font-family: 'source-sans-pro', sans-serif;
+      position: relative;
+      box-sizing: border-box;
+        margin: 0 auto;
+      max-width: 800px;
+      padding: 2rem;
+
+  }
+
+   .quote-container-green {
+      flex: 1; /* Takes 2 parts of the container */
+      background-color: #00564B;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      box-sizing: border-box;
+      color: #fff;
+      font-family: 'source-sans-pro', sans-serif;
+      position: relative;
+      box-sizing: border-box;
+    margin: 0 auto;
+      max-width: 800px;
+      padding: 2rem;
+  }
+
+  .quote-container-blue {
+      flex: 1; /* Takes 2 parts of the container */
+      background-color: #B3DFEF;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      box-sizing: border-box;
+      color: #1E064C;
+      font-family: 'source-sans-pro', sans-serif;
+      position: relative;
+      box-sizing: border-box;
+      margin: 0 auto;
+      max-width: 800px;
+      padding: 2rem;
+
+ }
+
+  .quote-container-violet {
+      flex: 1; /* Takes 2 parts of the container */
+      background-color: #440099;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      box-sizing: border-box;
+      color: #fff;
+      font-family: 'source-sans-pro', sans-serif;
+      position: relative;
+      box-sizing: border-box;
+       margin: 0 auto;
+      max-width: 800px;
+      padding: 2rem;
+
+  }
+  
+
+  .quote-container-orange::after {
+      content: "";
+      position: absolute;
+      bottom: -20px; /* Positions the triangle below the box */
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 20px solid transparent;
+      border-right: 20px solid transparent;
+      border-top: 20px solid #F89B49; /* Matches the box color */
+  }
+
+   .quote-container-blue::after {
+      content: "";
+      position: absolute;
+      bottom: -20px; /* Positions the triangle below the box */
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 20px solid transparent;
+      border-right: 20px solid transparent;
+      border-top: 20px solid #B3DFEF; /* Matches the box color */
+  }
+
+   .quote-container-green::after {
+      content: "";
+      position: absolute;
+      bottom: -20px; /* Positions the triangle below the box */
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 20px solid transparent;
+      border-right: 20px solid transparent;
+      border-top: 20px solid #00564B; /* Matches the box color */
+  }
+
+  .quote-container-violet::after {
+      content: "";
+      position: absolute;
+      bottom: -20px; /* Positions the triangle below the box */
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 20px solid transparent;
+      border-right: 20px solid transparent;
+      border-top: 20px solid #440099; /* Matches the box color */
+  }
+
+
+
+  .quote-container-green .quote-name{
+      color: #B3DFEF;
+      
+  }
+
+  .quote-content {
+    margin: 0 auto;
+  }
+
+   .quote-content li {
+    margin-bottom: 0rem;
+  }
+
+  .quote-text ol {
+    font-size: 3rem;
+    font-family: 'Hot Mess', sans-serif;
+    margin-top: 1rem;
+    margin-bottom: 0rem;
+}
+
+  .quote-text ol li p {
+    font-size: 1rem;
+    font-family: 'source-sans-pro', sans-serif;
+    transform: translateY(-0.5rem);
+    margin: 0rem;
+}
+
+
+  .quote-title {
+    font-weight: 700;
+    font-size: 1.4rem;
+    font-family: 'source-serif-pro';
+  }
+
+  .quote-name {
+    font-family: 'Hot Mess';
+    font-size: 2rem;
+    margin-top: 2rem;
+  }
+
+  .quote-text, .quote-title {
+    text-wrap: balance;
+    max-width: 70ch;
+  }
+
+.quote-attribution {
+  display: flex;
+  align-items: center;
+  margin-top: 1.5rem;
+}
+
+.avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 1rem;
+}
+
+.text-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.name {
+  font-family: 'Hot Mess', cursive; /* or another script font */
+  text-transform: uppercase;
+  font-size: 2rem;
+}
+
+.course {
+  font-size: 1rem;
+}
+
+hr.dark {
+    border-color: #1E064C;
+}

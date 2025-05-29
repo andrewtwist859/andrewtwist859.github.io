@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>title</title>
+     <link rel="stylesheet" href="global-menu.css"> 
+    <link rel="stylesheet" href="https://use.typekit.net/jou7rrz.css">
+        <link rel="stylesheet" href="https://use.typekit.net/hvq7yfy.css">
+        <link rel="stylesheet" href="gallery.css">
+        <link rel="stylesheet" href="video.css">
+        <link rel="stylesheet" href="testimonials-wide.css">
+        <link rel="stylesheet" href="footer.css"> 
+        <link rel="stylesheet" href="quotes.css"> 
+<style>
+     @font-face {
+    font-family: 'Hot Mess';
+    src: url('https://andrewtwist859.github.io/uos/fonts/HotMess.woff2') format('woff2'),
+        url('https://andrewtwist859.github.io/uos/fonts/HotMess.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+body {
+    margin: 0;
+}
+
+    .full-width-container {
+background-color: #006D99;
+background-image: url(blob-blue.svg);
+background-repeat: repeat-x;
+    background-position: center;
+    background-size: cover;
+    padding: 2rem;
+}
+
+.contents-container {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 1rem;
+    text-align: center;
+}
+
+.gallery-container, .video-container, .copy-container {
+    margin: 0 auto;
+}
+
+.copy-container {
+    max-width: 70ch;
+    text-align: left;
+    font-size: 1.2rem;
+}
+
+.copy-container h2 {
+margin-bottom: 0.25rem;
+margin-top: 2rem;
+font-size: 1.4rem;
+}
+
+.copy-container p {
+margin-top: 0.25rem;
+}
+
+.header-banner h2{
+    color: white;
+    background-color: #440099;
+    padding: 10px 20px;
+    display: inline-block;
+    text-transform: uppercase;
+    font-size: 2rem;
+}
+
+p.intro {
+    font-size: 1.6rem;
+    margin-top: 1rem;
+}
+
+.su-container {
+      flex: 1; /* Takes 2 parts of the container */
+      background-color: #F89B49;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      box-sizing: border-box;
+      color: #1E064C;
+      font-family: 'source-sans-pro', sans-serif;
+      text-align: center;
+      position: relative;
+      box-sizing: border-box;
+      margin: 3rem 0rem;
+
+  }
+
+  .su-container::after {
+      content: "";
+      position: absolute;
+      bottom: -20px; /* Positions the triangle below the box */
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 20px solid transparent;
+      border-right: 20px solid transparent;
+      border-top: 20px solid #F89B49; /* Matches the box color */
+  }
+
+  .su-main-text {
+    text-transform: uppercase;
+    font-weight: 900;
+    font-size: 2rem;
+    line-height: 1.2;
+  }
+
+  .su-sub-text {
+    text-wrap: balance;
+  }
+
+  h2 {
+    color: #200F4D;
+  }
+
+</style>
+    </head>
+<body>
+    <nav class="navbar">
+    <div class="navbar-content">
+      <div class="navbar-brand">
+        <a href="changes"><img src="logo.png" alt="University of Sheffield Logo" class="logo"></a>
+      </div>
+      <span class="pub-title">Undergraduate prospectus 2025-26</span>
+    </div>
+  </nav>
+  <section class="header-banner">
+    <div class="full-width-container">
+        <div class="contents-container">
+            <h2 class="serif">Expert teaching with flexible options</h2>
+      </div>
+      </div>
+  </section>
+  <section class="main-content">
+<div class="contents-container">
+    <div class="copy-container">
+        <p class="intro">From inspirational teaching to lightbulb moments. You’ll find more than a Russell Group education.</p>
+           <div class="video-container">
+        <!-- Responsive YouTube Video Embed -->
+        <div class="responsive-iframe-container">
+            <iframe id="videoPlayer" 
+                src="https://www.youtube.com/embed/BoIZJjrKW-4?enablejsapi=1"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+            </iframe>
+        </div>
+    
+        <!-- Navigation Panel Anchored Directly Below the Video -->
+        <div class="chapter-links" id="chapterLinks">
+            <h3 onclick="toggleChapters()">Explore this video
+                <!-- SVG Icon for dropdown toggle -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="#7000FF"><path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/></svg>
+            </h3>
+            <div class="chapters">
+                <div class="chapter"><span class="time" onclick="navigateToTime(0)">00:00</span> - Introduction</div>
+                <div class="chapter"><span class="time" onclick="navigateToTime(25)">00:25</span> - Firth Court</div>
+                <div class="chapter"><span class="time" onclick="navigateToTime(42)">00:42</span> - Weston Park</div>
+                <div class="chapter"><span class="time" onclick="navigateToTime(58)">00:58</span> - The Arts Tower</div>
+                <div class="chapter"><span class="time" onclick="navigateToTime(84)">01:24</span> - Alfred Denny Building</div>
+                <div class="chapter"><span class="time" onclick="navigateToTime(100)">01:40</span> - Goodwin Sports Centre</div>
+                <div class="chapter"><span class="time" onclick="navigateToTime(117)">01:57</span> - Social Sciences Building</div>
+                <div class="chapter"><span class="time" onclick="navigateToTime(128)">02:08</span> - The Medical School</div>
+                <div class="chapter"><span class="time" onclick="navigateToTime(145)">02:25</span> - Concourse</div>
+                <div class="chapter"><span class="time" onclick="navigateToTime(164)">02:44</span> - Students' Union</div>
+                <div class="chapter"><span class="time" onclick="navigateToTime(209)">03:29</span> - The Octagon Centre</div>
+                <div class="chapter"><span class="time" onclick="navigateToTime(224)">03:44</span> - The University Arms</div>
+                <div class="chapter"><span class="time" onclick="navigateToTime(238)">03:58</span> - Information Commons</div>
+                <div class="chapter"><span class="time" onclick="navigateToTime(255)">04:15</span> - Jessop West</div>
+                <div class="chapter"><span class="time" onclick="navigateToTime(267)">04:27</span> - The Diamond</div>
+                <div class="chapter"><span class="time" onclick="navigateToTime(290)">04:50</span> - Sir Frederick Mappin Building</div>
+            </div>
+        </div>
+    </div>
+    
+        <h2>Research-led teaching</h2>
+<p>You’ll be taught by academics at the forefront of human understanding, whose discoveries are changing the world. Cutting-edge research is incorporated into every degree programme. Our research spans from developing new treatments for life-threatening diseases, to solving the problem of feeding a world of 10 billion.</p>
+<h2>Learn your way</h2>
+<p>At Sheffield, you’re empowered to shape your own learning, studying what’s relevant to you through flexible degree programmes.</p>
+<h2>World-class facilities</h2>
+<p>With industry-standard equipment, physical and digital libraries, and relaxed study spaces you have the freedom to learn in your own way.</p>
+</div>
+</div>
+ <div class="full-width-container">
+ <div class="quote-container-blue">
+        <div class="quote-content">
+            
+    <div class="quote-title">Top 3 differences between school and uni</div>
+    <div class="quote-text">
+<ol>
+            <li><p>Uni work is a lot more independent and you dive deeper into the subjects that you love. I can personalise my assignments and research to focus on my interests!</p></li>
+            <li><p>Even though it’s more independent, you can easily access one-to-one support. I’ve built a network of support with academic staff who help with all aspects of my learning.</p></li>
+            <li><p>Uni teaching can be more accessible for disabled and neurodiverse students. I can study in more diverse and unique ways.</p></li>
+        </ol><hr class="dark" />
+     <div class="quote-attribution">
+  <div class="text-info">
+    <div class="name">Morven Cameron</div>
+    <div class="course">Geography</div>
+  </div>
+</div>
+    </div>
+</div>
+</div>
+</div>
+<div class="contents-container">
+    <div class="copy-container">
+<div class="su-container">
+    <div class="su-main-text">92% of our research is rated as world-leading or internationally excellent</div>
+    <div class="su-sub-text"><p>Research Excellence Framework 2021</p></div>
+    
+</div>
+    </div>
+</div>
+</div>
+
+     
+    
+    
+       
+        </div>
+        
+</div>
+  </section>
+    <footer class="footer">
+    <div class="footer-content">
+      
+          
+      
+     
+   
+    <div class="footer-bottom">
+        <div class="footer-awards">
+          <img src="top100.png" alt="World Top 100 University">
+          <img src="russellgroup.png" alt="Russell Group">
+          <img src="uoty.png" alt="University of the Year 2024">
+          <img src="queens.png" alt="Queen's Anniversary Prize">
+        </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+   <script>
+
+        // Modify event listener to avoid unintended closing of the modal on touch
+document.querySelector('.prev').addEventListener('touchstart', (e) => {
+    e.stopPropagation(); // Prevent touch from bubbling and triggering modal close
+    changeImage(-1);
+});
+
+document.querySelector('.next').addEventListener('touchstart', (e) => {
+    e.stopPropagation(); // Prevent touch from bubbling and triggering modal close
+    changeImage(1);
+});
+
+// Prevent modal from closing when touching inside it
+document.querySelector('.modal-content-container').addEventListener('touchstart', (e) => {
+    e.stopPropagation();
+});
+
+
+ // Array of images for the gallery with titles and descriptions
+const images = [
+    {src: 'steph.jpg', title: 'Steph Massey', description: 'Steph Massey graduated with a degree in Business Management in 2022. She is now working on a HR graduate scheme at TikTok.'},
+    {src: 'aaron.jpeg.jpg', title: 'Aaron Probert', description: 'Since graduating in 2019, Aaron has been hard at work bringing together his social enterprise, Labre’s Hope. He has partnered with leading charitable organisations and won £500,000 of UK Government funding.'},
+    {src: 'helen.jpg', title: 'Helen Monks', description: 'School of English graduate Helen Monks is a writer and actor, known for her roles in Raised by Wolves and Upstart Crow.'},
+    {src: 'yash.jpg', title: 'Yash Bordia', description: 'Computer Science BSc graduate Yash Bordia works at PayPal within their UK Enterprise Integrations Team, assisting large enterprise merchants integrate PayPal solutions into their businesses.'},
+];
+let currentIndex = 0;
+
+
+// Debounce function to prevent rapid calls
+function debounce(func, delay) {
+    let timeout;
+    return function (...args) {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func.apply(this, args), delay);
+    };
+}
+
+// Debounced changeImage function to avoid double navigation
+const changeImage = debounce((direction) => {
+    currentIndex = (currentIndex + direction + images.length) % images.length;
+    updateModal();
+}, 100); // 100ms debounce delay
+
+// Change the main image on thumbnail click
+function changeMainImage(index) {
+    const image = images[index];
+    document.getElementById("mainImage").src = image.src;
+    document.getElementById("mainImage").setAttribute("onclick", `openModal(${index})`);
+}
+
+// Open the modal with the selected image
+function openModal(index) {
+    currentIndex = index;
+    updateModal();
+    const modal = document.getElementById("imageModal");
+    modal.style.display = "flex";
+    modal.setAttribute("aria-hidden", "false");
+    modal.focus();
+}
+
+// Close the modal and return focus to the main image
+function closeModal() {
+    const modal = document.getElementById("imageModal");
+    modal.style.display = "none";
+    modal.setAttribute("aria-hidden", "true");
+    document.getElementById("mainImage").focus();
+}
+
+// Update modal content based on the current image index
+function updateModal() {
+    const image = images[currentIndex];
+    document.getElementById("modalImage").src = image.src;
+    document.getElementById("imageTitle").innerText = image.title;
+    document.getElementById("imageDescription").innerText = image.description;
+
+    // Update the image counter
+    document.getElementById("imageCounter").innerText = `${currentIndex + 1} of ${images.length}`;
+}
+
+// Handle Enter key to open modal on thumbnails
+function handleKeyOpenModal(event, index) {
+    if (event.key === 'Enter') {
+        openModal(index);
+    }
+}
+
+// Handle Enter key to change main image from thumbnails
+function handleKeyChangeMainImage(event, index) {
+    if (event.key === 'Enter') {
+        changeMainImage(index);
+    }
+}
+
+// Swipe detection for mobile navigation
+let touchStartX = 0;
+let touchEndX = 0;
+
+function handleGesture() {
+    if (touchEndX < touchStartX) {
+        changeImage(1); // Swipe left to move to next image
+    }
+    if (touchEndX > touchStartX) {
+        changeImage(-1); // Swipe right to move to previous image
+    }
+}
+
+document.getElementById("imageModal").addEventListener("touchstart", (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+});
+
+document.getElementById("imageModal").addEventListener("touchend", (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleGesture();
+});
+
+// Prevent modal from closing when clicking inside the content container
+document.querySelector('.modal-content-container').addEventListener('click', (e) => {
+    e.stopPropagation();
+});
+
+// Use pointerdown for reliable navigation button interaction without double events
+document.querySelector('.prev').addEventListener('pointerdown', (e) => {
+    e.stopPropagation();
+    changeImage(-1);
+});
+
+document.querySelector('.next').addEventListener('pointerdown', (e) => {
+    e.stopPropagation();
+    changeImage(1);
+});
+
+// Global function to initialize keyboard accessibility on page load
+function initializeGalleryAccessibility() {
+    // Get all thumbnails and add 'keydown' event listeners for Enter key
+    const thumbnails = document.querySelectorAll('.thumbnail');
+    thumbnails.forEach((thumbnail, index) => {
+        thumbnail.setAttribute('tabindex', '0');
+        thumbnail.addEventListener('keydown', (event) => handleKeyChangeMainImage(event, index));
+        thumbnail.addEventListener('click', () => changeMainImage(index)); // Restore click functionality
+    });
+
+    // Set tabindex and keydown event for the main image to open modal
+    const mainImage = document.getElementById("mainImage");
+    mainImage.setAttribute('tabindex', '0');
+    mainImage.addEventListener('keydown', (event) => handleKeyOpenModal(event, currentIndex));
+}
+
+// Global keyboard event listener for modal navigation
+document.addEventListener('keydown', (event) => {
+    const modal = document.getElementById("imageModal");
+
+    // Only respond to keys if the modal is open
+    if (modal.style.display === "flex") {
+        if (event.key === 'Escape') {
+            closeModal();
+        } else if (event.key === 'ArrowRight') {
+            changeImage(1);
+        } else if (event.key === 'ArrowLeft') {
+            changeImage(-1);
+        }
+    }
+});
+
+// Call initialize function when the page loads
+window.onload = initializeGalleryAccessibility;
+    </script>
+    <script>
+        function setSliderView() {
+            const container = document.getElementById('sliderContainer');
+            const navContainer = document.querySelector('.slider-nav-container');
+        
+            container.classList.remove('testimonial-grid');
+            navContainer.classList.remove('hidden'); // Show nav container in slider view
+        }
+        
+        function setGridView() {
+            const container = document.getElementById('sliderContainer');
+            const navContainer = document.querySelector('.slider-nav-container');
+        
+            container.classList.add('testimonial-grid');
+            navContainer.classList.add('hidden'); // Hide nav container in grid view
+        }
+        
+        
+            </script>
+</body>
+</html>

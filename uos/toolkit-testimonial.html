@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>title</title>
+        <link rel="stylesheet" href="https://use.typekit.net/jou7rrz.css">
+        <link rel="stylesheet" href="https://use.typekit.net/hvq7yfy.css">
+    <style>
+        @font-face {
+    font-family: 'Hot Mess';
+    src: url('https://andrewtwist859.github.io/uos/fonts/HotMess.woff2') format('woff2'),
+        url('https://andrewtwist859.github.io/uos/fonts/HotMess.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+        .quote-container-orange {
+      flex: 1; /* Takes 2 parts of the container */
+      background-color: #F89B49;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      box-sizing: border-box;
+      color: #1E064C;
+      font-family: 'source-sans-pro', sans-serif;
+      position: relative;
+      box-sizing: border-box;
+      margin: 3rem 0rem;
+
+  }
+
+   .quote-container-green {
+      flex: 1; /* Takes 2 parts of the container */
+      background-color: #00564B;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      box-sizing: border-box;
+      color: #fff;
+      font-family: 'source-sans-pro', sans-serif;
+      position: relative;
+      box-sizing: border-box;
+      margin: 3rem 0rem;
+
+  }
+
+  .quote-container-blue {
+      flex: 1; /* Takes 2 parts of the container */
+      background-color: #B3DFEF;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      box-sizing: border-box;
+      color: #1E064C;
+      font-family: 'source-sans-pro', sans-serif;
+      position: relative;
+      box-sizing: border-box;
+      margin: 3rem 0rem;
+
+ }
+
+  .quote-container-violet {
+      flex: 1; /* Takes 2 parts of the container */
+      background-color: #440099;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      box-sizing: border-box;
+      color: #fff;
+      font-family: 'source-sans-pro', sans-serif;
+      position: relative;
+      box-sizing: border-box;
+      margin: 3rem 0rem;
+
+  }
+  
+
+  .quote-container-orange::after {
+      content: "";
+      position: absolute;
+      bottom: -20px; /* Positions the triangle below the box */
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 20px solid transparent;
+      border-right: 20px solid transparent;
+      border-top: 20px solid #F89B49; /* Matches the box color */
+  }
+
+   .quote-container-blue::after {
+      content: "";
+      position: absolute;
+      bottom: -20px; /* Positions the triangle below the box */
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 20px solid transparent;
+      border-right: 20px solid transparent;
+      border-top: 20px solid #B3DFEF; /* Matches the box color */
+  }
+
+   .quote-container-green::after {
+      content: "";
+      position: absolute;
+      bottom: -20px; /* Positions the triangle below the box */
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 20px solid transparent;
+      border-right: 20px solid transparent;
+      border-top: 20px solid #00564B; /* Matches the box color */
+  }
+
+  .quote-container-violet::after {
+      content: "";
+      position: absolute;
+      bottom: -20px; /* Positions the triangle below the box */
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 20px solid transparent;
+      border-right: 20px solid transparent;
+      border-top: 20px solid #440099; /* Matches the box color */
+  }
+
+
+
+  .quote-container-green .quote-name{
+      color: #B3DFEF;
+      
+  }
+
+  .quote-content {
+    margin: 0 auto;
+  }
+
+   .quote-content li {
+    margin-bottom: 0rem;
+  }
+
+  .quote-text ol {
+    font-size: 3rem;
+    font-family: 'Hot Mess', sans-serif;
+    margin-top: 1rem;
+    margin-bottom: 0rem;
+}
+
+  .quote-text ol li p {
+    font-size: 1rem;
+    font-family: 'source-sans-pro', sans-serif;
+    transform: translateY(-0.5rem);
+    margin: 0rem;
+}
+
+
+  .quote-title {
+    font-weight: 700;
+    font-size: 1.4rem;
+    font-family: 'source-serif-pro';
+  }
+
+  .quote-name {
+    font-family: 'Hot Mess';
+    font-size: 2rem;
+    margin-top: 2rem;
+  }
+
+  .quote-text, .quote-title {
+    text-wrap: balance;
+    max-width: 70ch;
+  }
+
+.quote-attribution {
+  display: flex;
+  align-items: center;
+  margin-top: 1.5rem;
+}
+
+.avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 1rem;
+}
+
+.text-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.name {
+  font-family: 'Hot Mess', cursive; /* or another script font */
+  text-transform: uppercase;
+  font-size: 2rem;
+}
+
+.course {
+  font-size: 1rem;
+}
+
+hr.dark {
+    border-color: #1E064C;
+}
+    </style>
+</head>
+<body>
+     <div class="quote-container-orange">
+        <div class="quote-content">
+    <div class="quote-title">How do I live my best student life on a budget?</div>
+    <div class="quote-text">
+        <p>It’s easy to live on a student budget in Sheffield with:</p>
+        <ol>
+            <li><p>Affordable rent</p></li>
+            <li><p>Paid work as an Ambassador for the University</p></li>
+            <li><p>Student discounts on nights out, food and drink</p></li>
+            <li><p>Budget-friendly supermarkets</p></li>
+            <li><p>Part-time jobs in the city</p></li>
+        </ol><hr class="dark" />
+    </div>
+    <div class="quote-attribution">
+  <img src="eleanor.png" alt="Eleanor Moorton" class="avatar" />
+  <div class="text-info">
+    <div class="name">Eleanor Moorton</div>
+    <div class="course">MEng Biomedical Engineering</div>
+  </div>
+</div>
+    </div>
+</div>
+  <div class="quote-container-green">
+        <div class="quote-content">
+    <div class="quote-title">Q&A: My placement year at Jaguar Land Rover UK</div>
+    <div class="quote-text"><h3>How did the University support your placement search?</h3>
+    <p>The placement team was instrumental, offering weekly job listings and refining my applications. It helped me secure an incredible opportunity.</p>
+<h3>Can you tell us about your placement?</h3>
+<p>I worked at Jaguar Land Rover UK, contributing to groundbreaking projects in the Chassis, ADAS, and Battery departments.</p>
+<h3>What were your highlights?</h3>
+<p>Working on developing control architectures for future technologies like the 2028 Range Rover and performing Failure Injection Testing for lane-centring features.</p>
+<h3>What difference has the experience made?</h3>
+<p>It has shaped my career ambitions and confidence. I’ve boosted my technical and problem-solving skills, preparing me for a career in innovative engineering.</p>
+<hr />
+</div>
+     <div class="quote-attribution">
+  <img src="mayank.png" alt="Mayank Sewatrar" class="avatar" />
+  <div class="text-info">
+    <div class="name">Mayank Sewatrar</div>
+    <div class="course">Computer Systems Engineering with an Industrial Placement Year</div>
+  </div>
+</div>
+    </div>
+</div>
+ <div class="quote-container-blue">
+        <div class="quote-content">
+            
+    <div class="quote-title">Top 3 differences between school and uni</div>
+    <div class="quote-text">
+<ol>
+            <li><p>Uni work is a lot more independent and you dive deeper into the subjects that you love. I can personalise my assignments and research to focus on my interests!</p></li>
+            <li><p>Even though it’s more independent, you can easily access one-to-one support. I’ve built a network of support with academic staff who help with all aspects of my learning.</p></li>
+            <li><p>Uni teaching can be more accessible for disabled and neurodiverse students. I can study in more diverse and unique ways.</p></li>
+        </ol><hr class="dark" />
+     <div class="quote-attribution">
+  <div class="text-info">
+    <div class="name">Morven Cameron</div>
+    <div class="course">Geography</div>
+  </div>
+</div>
+    </div>
+</div>
+</div>
+<div class="quote-container-violet">
+        <div class="quote-content">
+    <div class="quote-title">My year abroad in 100 words</div>
+    <div class="quote-text">
+        <p>I had the opportunity to spend a year abroad during my studies at Sheffield. I split my year in two, spending the first semester studying at the University of Valencia, Spain, and the second semester working for an accountancy firm in Lyon, France.</p>
+<p>The experience gave me an insight into two different cultures and the opportunity to work in a total of four different languages. The year abroad was a testing yet incredibly rewarding experience. I learnt so much, not only about other
+ways of life, but also about myself. Plus, I made so many new friends along the way!</p>
+<hr />  
+    <div class="quote-attribution">
+  <img src="joel.png" alt="Joel Lufton" class="avatar" />
+  <div class="text-info">
+    <div class="name">Joel Lufton</div>
+    <div class="course">Politics and Modern Languages and Cultures</div>
+  </div>
+</div>
+    </div>
+</div>
+</div>
+ <div class="quote-container-orange">
+        <div class="quote-content">
+    <div class="quote-title">5 things you need to know about your SU</div>
+    <div class="quote-text">
+        <ol>
+            <li><p>Our Students’ Union (SU) is an independent charity, run by student officers elected by students. You’ll automatically become a member when you arrive.</p></li>
+            <li><p>Our SU is your place to get support, discover something new or make a change in the world.</p></li>
+            <li><p>You’ll find over 300 student-led societies - more than 11,000 students were members of our societies in 2024! Across the SU, there are loads of students working to represent your views and lived experiences.</p></li>
+            <li><p>Your SU is home to lots of places to eat and drink, support services and venues which host weekly nights out, live music, comedy and unique one-off events. We host cultural celebrations and global food festivals, so you can explore the world from within our SU.</p></li>
+            <li><p> We have a zero-waste store and a clothes swap shop, where you can refill your groceries or refresh your wardrobe to help to reduce waste on campus.</p></li>
+        </ol>
+    </div>
+    <hr class="dark" />  
+    <div class="quote-attribution">
+  <img src="daisy.jpg" alt="Joel Lufton" class="avatar" />
+  <div class="text-info">
+    <div class="name">Daisy Watson</div>
+    <div class="course">Students' Union President</div>
+  </div>
+</div>
+    </div>
+</div>
+</body>
+</html>

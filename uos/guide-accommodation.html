@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>title</title>
+     <link rel="stylesheet" href="global-menu.css"> 
+    <link rel="stylesheet" href="https://use.typekit.net/jou7rrz.css">
+        <link rel="stylesheet" href="https://use.typekit.net/hvq7yfy.css">
+        <link rel="stylesheet" href="gallery.css">
+        <link rel="stylesheet" href="video.css">
+        <link rel="stylesheet" href="testimonials-wide.css">
+        <link rel="stylesheet" href="footer.css"> 
+        <link rel="stylesheet" href="guide.css"> 
+<style>
+  
+
+</style>
+    </head>
+<body>
+    <nav class="navbar">
+    <div class="navbar-content">
+      <div class="navbar-brand">
+        <a href="changes"><img src="logo.png" alt="University of Sheffield Logo" class="logo"></a>
+      </div>
+      <span class="pub-title">Undergraduate prospectus 2025-26</span>
+    </div>
+  </nav>
+  <section class="header-banner">
+    <div class="full-width-container">
+        <div class="contents-container">
+            <h2 class="serif">Guaranteed accommodation</h2>
+      </div>
+      </div>
+  </section>
+  <section class="main-content">
+<div class="contents-container">
+    <div class="copy-container">
+        <p class="intro">From lasting friendships to a safe place to call home. Our accommodation is more than just a room.</p>
+        
+           <div class="video-container">
+        <!-- Responsive YouTube Video Embed -->
+        <div class="responsive-iframe-container">
+            <iframe id="videoPlayer" 
+                src="https://www.youtube.com/embed/sjZ_5iHQr7g?enablejsapi=1"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+            </iframe>
+        </div>
+    
+        <!-- Navigation Panel Anchored Directly Below the Video -->
+        <div class="chapter-links" id="chapterLinks">
+            <h3 onclick="toggleChapters()">Explore this video
+                <!-- SVG Icon for dropdown toggle -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="#7000FF"><path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/></svg>
+            </h3>
+            <div class="chapters">
+                <div class="chapter"><span class="time" onclick="navigateToTime(0)">00:00</span> - Introduction</div>
+                <div class="chapter"><span class="time" onclick="navigateToTime(15)">00:15</span> - City accommodation</div>
+                <div class="chapter"><span class="time" onclick="navigateToTime(49)">00:49</span> - The Edge</div>
+                <div class="chapter"><span class="time" onclick="navigateToTime(105)">01:45</span> - En-suite</div>
+                <div class="chapter"><span class="time" onclick="navigateToTime(203)">03:23</span> - Studio flats </div>
+                <div class="chapter"><span class="time" onclick="navigateToTime(220)">03:40</span> - Room types</div>
+                <div class="chapter"><span class="time" onclick="navigateToTime(243)">04:03</span> - Village Store</div>
+                <div class="chapter"><span class="time" onclick="navigateToTime(260)">04:20</span> - Green space</div>
+                <div class="chapter"><span class="time" onclick="navigateToTime(280)">04:40</span> - The Ridge</div>
+                <div class="chapter"><span class="time" onclick="navigateToTime(303)">05:03</span> - Broomhill</div>
+            </div>
+        </div>
+    </div>
+    <h2>A guaranteed place to live</h2>
+<p>Apply for accommodation by the deadline and your room will be secured.</p>
+<h2>A package deal</h2>
+<p>Your rent includes:</p>
+<p>
+    <ul>
+        <li>Utility bills, contents insurance and wifi</li>
+        <li>Free fitness suite or gym on-site</li>
+        <li>24-hour security at all accommodation</li>
+        <li>Residence Life: 24/7 wellbeing support and hundreds of free events</li>
+    </ul>
+</p>
+
+</div>
+ 
+    <div class="gallery-container">
+            <div class="main-image-container">
+                <img id="mainImage" src="accom1.jpg" class="main-image" alt="Main image" onclick="openModal(0)">
+                <!-- SVG Overlay Icon -->
+                <div class="icon-overlay">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                        <path d="M344 0L488 0c13.3 0 24 10.7 24 24l0 144c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-39-39-87 87c-9.4 9.4-24.6 9.4-33.9 0l-32-32c-9.4-9.4-9.4-24.6 0-33.9l87-87L327 41c-6.9-6.9-8.9-17.2-5.2-26.2S334.3 0 344 0zM168 512L24 512c-13.3 0-24-10.7-24-24L0 344c0-9.7 5.8-18.5 14.8-22.2s19.3 1.7 26.2 5.2l39 39 87-87c9.4 9.4 24.6 9.4 33.9 0l32 32c9.4 9.4 9.4 24.6 0 33.9l-87 87 39 39c6.9 6.9 8.9 17.2 5.2 26.2s-12.5 14.8-22.2 14.8z"/>
+                    </svg>
+                </div>
+            </div>
+            <!-- Thumbnail Container -->
+            <div class="thumbnail-container">
+                <img src="accom1.jpg" class="thumbnail" alt="Thumbnail 1: The Wave" 
+                     tabindex="0" role="button" onclick="changeMainImage(0)"
+                     aria-label="Thumbnail 1" onkeydown="handleKeyChangeMainImage(event, 0)">
+                <img src="accom2.jpg" class="thumbnail" alt="Thumbnail 2: Teaching spaces" 
+                     tabindex="0" role="button" onclick="changeMainImage(1)"
+                     aria-label="Thumbnail 2" onkeydown="handleKeyChangeMainImage(event, 1)">
+                <img src="accom3.jpg" class="thumbnail" alt="Thumbnail 3: Edit suites" 
+                     tabindex="0" role="button" onclick="changeMainImage(2)"
+                     aria-label="Thumbnail 3" onkeydown="handleKeyChangeMainImage(event, 2)">
+                <img src="accom4.jpg" class="thumbnail" alt="Thumbnail 4: Research" 
+                     tabindex="0" role="button" onclick="changeMainImage(3)"
+                     aria-label="Thumbnail 4" onkeydown="handleKeyChangeMainImage(event, 3)">
+            </div>
+        </div>    
+        <!-- Modal -->
+        <div id="imageModal" class="modal" tabindex="-1" role="dialog" aria-modal="true" 
+             aria-labelledby="imageTitle" aria-describedby="imageDescription" onclick="closeModal()">
+             <span class="close" onclick="closeModal()" tabindex="0" role="button" aria-label="Close modal">&times;</span>
+     <div class="modal-content-container">
+                <div class="image-counter" id="imageCounter"></div>
+                <span class="prev" onclick="changeImage(-1)" tabindex="0" role="button" aria-label="Previous image"
+                      onkeydown="handleKeyChangeImage(event, -1)">&#10094;</span>
+                <img id="modalImage" class="modal-content" alt="Modal Image">
+                <span class="next" onclick="changeImage(1)" tabindex="0" role="button" aria-label="Next image"
+                      onkeydown="handleKeyChangeImage(event, 1)">&#10095;</span>
+                <div class="description-panel">
+                    <h3 id="imageTitle">Image Title</h3>
+                    <p id="imageDescription">Image Description</p>
+                </div>
+            </div>
+        </div> 
+    <h2>Testimonials</h2>
+      <p>Read our testimonials to learn what makes Sheffield special to our students.</p>
+        <div class="test-controls">
+          <button id="gridViewButton" onclick="setGridView()" title="Grid View" style="background: none; border: none; cursor: pointer;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="16" height="16">
+                <path d="M64 32C28.7 32 0 60.7 0 96L0 416c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-320c0-35.3-28.7-64-64-64L64 32zm88 64l0 64-88 0 0-64 88 0zm56 0l88 0 0 64-88 0 0-64zm240 0l0 64-88 0 0-64 88 0zM64 224l88 0 0 64-88 0 0-64zm232 0l0 64-88 0 0-64 88 0zm64 0l88 0 0 64-88 0 0-64zM152 352l0 64-88 0 0-64 88 0zm56 0l88 0 0 64-88 0 0-64zm240 0l0 64-88 0 0-64 88 0z"/>
+            </svg>
+        </button>
+        <div style="text-align: right; margin-bottom: 10px;">View as:
+          <button id="sliderViewButton" onclick="setSliderView()" title="Slider View" style="background: none; border: none; cursor: pointer;">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="16" height="16">
+                  <path d="M406.6 374.6l96-96c12.5-12.5 12.5-32.8 0-45.3l-96-96c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224l-293.5 0 41.4-41.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-96 96c-12.5 12.5-12.5 32.8 0 45.3l96 96c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 288l293.5 0-41.4 41.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0z"/>
+              </svg>
+          </button> 
+      </div></div>
+    
+        <div class="testimonial-slider-container" id="sliderContainer">
+          
+          <!-- Testimonial Slider Wrapper -->
+          <div class="testimonial-slider">
+              <!-- Testimonial 1 -->
+              <div class="testimonial">
+                  <img src="san.png" alt="Martha Kelner" class="testimonial-img">
+                  <div class="testimonial-content">"Residence Life social activities made my accommodation experience enjoyable and stress-free. Cooking (baking with Rahul from Bake Off!), knitting and body-butter-making sessions were my favourite, plus they always had freebies to take home. They also offered trips to concerts, parks and even other cities, all at affordable prices."</div>
+                  <div class="testimonial-name">Sanjana Mehrotra</div>
+                  <div class="testimonial-title">Medicine</div>
+              
+              </div>
+              <!-- Testimonial 2 -->
+              <div class="testimonial">
+                  <img src="joel.png" alt="Sam Moir" class="testimonial-img">
+                  <div class="testimonial-content">"The experience gave me an insight into two different cultures and the opportunity to work in a total of four different languages. The year abroad was a testing yet incredibly rewarding experience. I learnt so much, not only about other ways of life, but also about myself. Plus, I made so many new friends along the way!"</div>
+                  <div class="testimonial-name">Joel Lufton</div>
+                  <div class="testimonial-title">Politics and Modern Languages  and Cultures </div>
+ 
+              </div>
+              <!-- Testimonial 3 -->
+              <div class="testimonial">
+                  <img src="jess.png" alt="Daniel Sheridan" class="testimonial-img">
+                  <div class="testimonial-content">"The support from the Disability and Dyslexia Support Service is amazing. When I started at uni, I didn’t have an autism diagnosis and they provided support from a working diagnosis, making it possible for me to thrive at uni. The team is always so welcoming and there’s never a problem too small."</div>
+                  <div class="testimonial-name">Jess Lomas</div>
+                  <div class="testimonial-title">Biochemistry and Genetics</div>
+              </div>
+              <!-- Testimonial 4 -->
+              <div class="testimonial">
+                  <img src="testph.png" alt="Person" class="testimonial-img">
+                  <div class="testimonial-content">"Adipisicing elit ut occaecat elit voluptate deserunt esse aliquip mollit ullamco consectetur. Irure sint tempor ad sunt nisi sunt ad laboris consequat. Enim veniam id esse. Aliqua ut fugiat pariatur quis incididunt sint quis."</div>
+                  <div class="testimonial-name"><a href="/">Lorem Doe</a></div>
+                  <div class="testimonial-title">Lorem ipsum</div>
+                  <div class="testimonial-class">BA Lorem Ipsum</div>
+              </div>
+              <!-- Testimonial 5 -->
+              <div class="testimonial">
+                  <img src="testph.png" alt="Person" class="testimonial-img">
+                  <div class="testimonial-content">"Adipisicing elit ut occaecat elit voluptate deserunt esse aliquip mollit ullamco consectetur. Irure sint tempor ad sunt nisi sunt ad laboris consequat. Enim veniam id esse. Aliqua ut fugiat pariatur quis incididunt sint quis."</div>
+                  <div class="testimonial-name"><a href="/">Lorem Doe</a></div>
+                  <div class="testimonial-title">Lorem ipsum</div>
+                  <div class="testimonial-class">BA Lorem Ipsum</div>
+              </div>
+              <!-- Testimonial 6 -->
+              <div class="testimonial">
+                  <img src="testph.png" alt="Person" class="testimonial-img">
+                  <div class="testimonial-content">"Adipisicing elit ut occaecat elit voluptate deserunt esse aliquip mollit ullamco consectetur. Irure sint tempor ad sunt nisi sunt ad laboris consequat. Enim veniam id esse. Aliqua ut fugiat pariatur quis incididunt sint quis."</div>
+                  <div class="testimonial-name"><a href="/">Lorem Doe</a></div>
+                  <div class="testimonial-title">Lorem ipsum</div>
+                  <div class="testimonial-class">BA Lorem Ipsum</div>
+              </div>
+          </div>
+      </div>
+        </div>
+        
+</div>
+  </section>
+    <footer class="footer">
+    <div class="footer-content">
+      
+          
+      
+     
+   
+    <div class="footer-bottom">
+        <div class="footer-awards">
+          <img src="top100.png" alt="World Top 100 University">
+          <img src="russellgroup.png" alt="Russell Group">
+          <img src="uoty.png" alt="University of the Year 2024">
+          <img src="queens.png" alt="Queen's Anniversary Prize">
+        </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+   <script>
+
+        // Modify event listener to avoid unintended closing of the modal on touch
+document.querySelector('.prev').addEventListener('touchstart', (e) => {
+    e.stopPropagation(); // Prevent touch from bubbling and triggering modal close
+    changeImage(-1);
+});
+
+document.querySelector('.next').addEventListener('touchstart', (e) => {
+    e.stopPropagation(); // Prevent touch from bubbling and triggering modal close
+    changeImage(1);
+});
+
+// Prevent modal from closing when touching inside it
+document.querySelector('.modal-content-container').addEventListener('touchstart', (e) => {
+    e.stopPropagation();
+});
+
+
+ // Array of images for the gallery with titles and descriptions
+const images = [
+    {src: 'accom1.jpg', title: 'Steph Massey', description: 'Steph Massey graduated with a degree in Business Management in 2022. She is now working on a HR graduate scheme at TikTok.'},
+    {src: 'accom2.jpg', title: 'Aaron Probert', description: 'Since graduating in 2019, Aaron has been hard at work bringing together his social enterprise, Labre’s Hope. He has partnered with leading charitable organisations and won £500,000 of UK Government funding.'},
+    {src: 'accom3.jpg', title: 'Helen Monks', description: 'School of English graduate Helen Monks is a writer and actor, known for her roles in Raised by Wolves and Upstart Crow.'},
+    {src: 'accom4.jpg', title: 'Yash Bordia', description: 'Computer Science BSc graduate Yash Bordia works at PayPal within their UK Enterprise Integrations Team, assisting large enterprise merchants integrate PayPal solutions into their businesses.'},
+];
+let currentIndex = 0;
+
+
+// Debounce function to prevent rapid calls
+function debounce(func, delay) {
+    let timeout;
+    return function (...args) {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func.apply(this, args), delay);
+    };
+}
+
+// Debounced changeImage function to avoid double navigation
+const changeImage = debounce((direction) => {
+    currentIndex = (currentIndex + direction + images.length) % images.length;
+    updateModal();
+}, 100); // 100ms debounce delay
+
+// Change the main image on thumbnail click
+function changeMainImage(index) {
+    const image = images[index];
+    document.getElementById("mainImage").src = image.src;
+    document.getElementById("mainImage").setAttribute("onclick", `openModal(${index})`);
+}
+
+// Open the modal with the selected image
+function openModal(index) {
+    currentIndex = index;
+    updateModal();
+    const modal = document.getElementById("imageModal");
+    modal.style.display = "flex";
+    modal.setAttribute("aria-hidden", "false");
+    modal.focus();
+}
+
+// Close the modal and return focus to the main image
+function closeModal() {
+    const modal = document.getElementById("imageModal");
+    modal.style.display = "none";
+    modal.setAttribute("aria-hidden", "true");
+    document.getElementById("mainImage").focus();
+}
+
+// Update modal content based on the current image index
+function updateModal() {
+    const image = images[currentIndex];
+    document.getElementById("modalImage").src = image.src;
+    document.getElementById("imageTitle").innerText = image.title;
+    document.getElementById("imageDescription").innerText = image.description;
+
+    // Update the image counter
+    document.getElementById("imageCounter").innerText = `${currentIndex + 1} of ${images.length}`;
+}
+
+// Handle Enter key to open modal on thumbnails
+function handleKeyOpenModal(event, index) {
+    if (event.key === 'Enter') {
+        openModal(index);
+    }
+}
+
+// Handle Enter key to change main image from thumbnails
+function handleKeyChangeMainImage(event, index) {
+    if (event.key === 'Enter') {
+        changeMainImage(index);
+    }
+}
+
+// Swipe detection for mobile navigation
+let touchStartX = 0;
+let touchEndX = 0;
+
+function handleGesture() {
+    if (touchEndX < touchStartX) {
+        changeImage(1); // Swipe left to move to next image
+    }
+    if (touchEndX > touchStartX) {
+        changeImage(-1); // Swipe right to move to previous image
+    }
+}
+
+document.getElementById("imageModal").addEventListener("touchstart", (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+});
+
+document.getElementById("imageModal").addEventListener("touchend", (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleGesture();
+});
+
+// Prevent modal from closing when clicking inside the content container
+document.querySelector('.modal-content-container').addEventListener('click', (e) => {
+    e.stopPropagation();
+});
+
+// Use pointerdown for reliable navigation button interaction without double events
+document.querySelector('.prev').addEventListener('pointerdown', (e) => {
+    e.stopPropagation();
+    changeImage(-1);
+});
+
+document.querySelector('.next').addEventListener('pointerdown', (e) => {
+    e.stopPropagation();
+    changeImage(1);
+});
+
+// Global function to initialize keyboard accessibility on page load
+function initializeGalleryAccessibility() {
+    // Get all thumbnails and add 'keydown' event listeners for Enter key
+    const thumbnails = document.querySelectorAll('.thumbnail');
+    thumbnails.forEach((thumbnail, index) => {
+        thumbnail.setAttribute('tabindex', '0');
+        thumbnail.addEventListener('keydown', (event) => handleKeyChangeMainImage(event, index));
+        thumbnail.addEventListener('click', () => changeMainImage(index)); // Restore click functionality
+    });
+
+    // Set tabindex and keydown event for the main image to open modal
+    const mainImage = document.getElementById("mainImage");
+    mainImage.setAttribute('tabindex', '0');
+    mainImage.addEventListener('keydown', (event) => handleKeyOpenModal(event, currentIndex));
+}
+
+// Global keyboard event listener for modal navigation
+document.addEventListener('keydown', (event) => {
+    const modal = document.getElementById("imageModal");
+
+    // Only respond to keys if the modal is open
+    if (modal.style.display === "flex") {
+        if (event.key === 'Escape') {
+            closeModal();
+        } else if (event.key === 'ArrowRight') {
+            changeImage(1);
+        } else if (event.key === 'ArrowLeft') {
+            changeImage(-1);
+        }
+    }
+});
+
+// Call initialize function when the page loads
+window.onload = initializeGalleryAccessibility;
+    </script>
+    <script>
+        function setSliderView() {
+            const container = document.getElementById('sliderContainer');
+            const navContainer = document.querySelector('.slider-nav-container');
+        
+            container.classList.remove('testimonial-grid');
+            navContainer.classList.remove('hidden'); // Show nav container in slider view
+        }
+        
+        function setGridView() {
+            const container = document.getElementById('sliderContainer');
+            const navContainer = document.querySelector('.slider-nav-container');
+        
+            container.classList.add('testimonial-grid');
+            navContainer.classList.add('hidden'); // Hide nav container in grid view
+        }
+        
+        
+            </script>
+             <script>
+        // Load the YouTube API
+        let player;
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('videoPlayer', {
+                events: {
+                    'onReady': onPlayerReady
+                }
+            });
+        }
+    
+        function onPlayerReady(event) {
+            console.log("Player is ready");
+        }
+    
+        function navigateToTime(seconds) {
+            if (player && typeof player.seekTo === 'function') {
+                player.seekTo(seconds, true);  // Seek to the specified time and autoplay
+            }
+        }
+    
+        // Toggle the visibility of the chapters on mobile
+        function toggleChapters() {
+            const chapterLinks = document.getElementById('chapterLinks');
+            chapterLinks.classList.toggle('open');
+        }
+    
+        // Add YouTube IFrame API script
+        var tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    </script>
+</body>
+</html>
