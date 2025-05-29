@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>title</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://www.sheffield.ac.uk/themes/custom/uos_public/favicon.ico" sizes="any">
+    <link rel="icon" href="https://www.sheffield.ac.uk/themes/custom/uos_public/favicon.svg" type="image/svg+xml" />
+     <link rel="stylesheet" href="global-menu.css"> 
+    <link rel="stylesheet" href="https://use.typekit.net/jou7rrz.css">
+        <link rel="stylesheet" href="https://use.typekit.net/hvq7yfy.css">
+        <link rel="stylesheet" href="gallery.css">
+        <link rel="stylesheet" href="video.css">
+        <link rel="stylesheet" href="testimonials-wide.css">
+        <link rel="stylesheet" href="footer.css"> 
+        <link rel="stylesheet" href="quotes.css"> 
+<style>
+     @font-face {
+    font-family: 'Hot Mess';
+    src: url('https://andrewtwist859.github.io/uos/fonts/HotMess.woff2') format('woff2'),
+        url('https://andrewtwist859.github.io/uos/fonts/HotMess.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+body {
+    margin: 0;
+}
+
+.copy-container h2 {
+    font-family: 'source-serif-pro';
+}
+
+    .full-width-container {
+background-color: #440099;
+background-image: url(blob2.svg);
+background-repeat: repeat-x;
+    background-position: center;
+    background-size: cover;
+    padding: 2rem;
+}
+
+.contents-container {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 1rem;
+    text-align: center;
+}
+
+.gallery-container, .video-container, .copy-container {
+    margin: 0 auto;
+}
+
+.copy-container {
+    max-width: 70ch;
+    text-align: left;
+    font-size: 1.2rem;
+}
+
+.copy-container h2 {
+margin-bottom: 0.25rem;
+margin-top: 2rem;
+font-size: 1.4rem;
+}
+
+.copy-container p {
+margin-top: 0.25rem;
+}
+
+.header-banner h2{
+    color: white;
+    background-color: #440099;
+    padding: 10px 20px;
+    display: inline-block;
+    text-transform: uppercase;
+    font-size: 2rem;
+}
+
+p.intro {
+    font-size: 1.6rem;
+    margin-top: 1rem;
+}
+
+.su-container {
+      flex: 1; /* Takes 2 parts of the container */
+      background-color: #F89B49;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      box-sizing: border-box;
+      color: #1E064C;
+      font-family: 'source-sans-pro', sans-serif;
+      text-align: center;
+      position: relative;
+      box-sizing: border-box;
+      margin: 3rem 0rem;
+
+  }
+
+  .su-container::after {
+      content: "";
+      position: absolute;
+      bottom: -20px; /* Positions the triangle below the box */
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 20px solid transparent;
+      border-right: 20px solid transparent;
+      border-top: 20px solid #F89B49; /* Matches the box color */
+  }
+
+  .su-main-text {
+    text-transform: uppercase;
+    font-weight: 900;
+    font-size: 2rem;
+    line-height: 1.2;
+  }
+
+  .su-sub-text {
+    text-wrap: balance;
+  }
+
+  h2 {
+    color: #200F4D;
+  }
+
+  h2.hotmess {
+    font-size: 3.5rem;
+    font-family: 'Hot Mess';
+    font-weight: normal;
+    text-transform: uppercase;
+    margin-bottom: 0.25rem;
+     color: white;
+    background-color: #24125E;
+    padding: 1rem 2rem;
+    display: inline-block;
+    margin-top: 0rem;
+}
+
+.vertical-container {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.vertical-embed {
+  flex: 1 1 2%;
+  max-width: 300px;
+}
+
+.vertical-wrapper {
+  position: relative;
+  padding-bottom: 177.78%; /* 9:16 vertical ratio */
+  height: 0;
+  overflow: hidden;
+}
+
+.vertical-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+
+</style>
+    </head>
+<body>
+    <nav class="navbar">
+    <div class="navbar-content">
+      <div class="navbar-brand">
+        <a href="changes"><img src="logo.png" alt="University of Sheffield Logo" class="logo"></a>
+      </div>
+      <span class="pub-title">Undergraduate prospectus 2025-26</span>
+    </div>
+  </nav>
+  <section class="header-banner">
+    <div class="full-width-container">
+        <div class="contents-container">
+            <h2 class="hotmess">A student city with plenty to offer</h2>
+      </div>
+      </div>
+  </section>
+  <section class="main-content">
+<div class="contents-container">
+    <div class="copy-container">
+        <p class="intro">From big nights out to early morning hikes. There are so many reasons to make Sheffield your home.</p>
+        <h2>Sheffield City Tour</h2>
+        <p>If you’re considering coming to study with us, or if you’re looking for some new things to do around the city, check out our new City Tour! Our students Ryan and Aleena will show you around.
+
+</p>
+</div>
+           <div class="video-container">
+        <!-- Responsive YouTube Video Embed -->
+        <div class="responsive-iframe-container">
+            <iframe id="videoPlayer" 
+                src="https://www.youtube.com/embed/NRZWX5VDn4I?enablejsapi=1"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+            </iframe>
+        </div>
+    
+        <!-- Navigation Panel Anchored Directly Below the Video -->
+        <div class="chapter-links" id="chapterLinks">
+            <h3 onclick="toggleChapters()">Explore this video
+                <!-- SVG Icon for dropdown toggle -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="#7000FF"><path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/></svg>
+            </h3>
+            <div class="chapters">
+                <div class="chapter"><span class="time" onclick="navigateToTime(0)">00:00</span> - Introduction</div>
+                <div class="chapter"><span class="time" onclick="navigateToTime(14)">00:14</span> - Reasons to choose Sheffield</div>
+                <div class="chapter"><span class="time" onclick="navigateToTime(75)">01:15</span> - Division Street</div>
+                <div class="chapter"><span class="time" onclick="navigateToTime(123)">02:03</span> - The Moor</div>
+                <div class="chapter"><span class="time" onclick="navigateToTime(192)">03:12</span> - Meadowhall</div>
+                <div class="chapter"><span class="time" onclick="navigateToTime(203)">03:23</span> - Kelham Island</div>
+                <div class="chapter"><span class="time" onclick="navigateToTime(252)">04:12</span> - Sharrow Vale</div>
+                <div class="chapter"><span class="time" onclick="navigateToTime(318)">05:18</span> - London Road</div>
+                <div class="chapter"><span class="time" onclick="navigateToTime(355)">05:55</span> - Broomhill</div>
+                <div class="chapter"><span class="time" onclick="navigateToTime(390)">06:30</span> - Crookes</div>
+                <div class="chapter"><span class="time" onclick="navigateToTime(417)">06:57</span> - Conclusion</div>
+            </div>
+        </div>
+    </div>
+    <div class="copy-container">
+       <div class="su-container">
+    <div class="su-main-text">Top 10 city</div>
+    <div class="su-sub-text"><p>StudentCrowd Best Student Cities 2024</p></div>
+    </div>
+</div>
+</div>
+</div>
+ <div class="full-width-container">
+<div class="contents-container">
+     <h2 class="hotmess">Student City TikToks</h2>
+     <div class="vertical-container">
+  <div class="vertical-embed">
+    <div class="vertical-wrapper">
+      <iframe
+        src="https://cdnapisec.kaltura.com/p/2103181/embedPlaykitJs/uiconf_id/53345422?iframeembed=true&amp;entry_id=1_ex750ccr&amp;config%5Bprovider%5D=%7B%22widgetId%22%3A%221_cf8wqdzu%22%7D&amp;config%5Bplayback%5D=%7B%22startTime%22%3A0%7D"
+        allowfullscreen
+        allow="autoplay *; fullscreen *; encrypted-media *"
+        sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation"
+        title="Vertical test">
+      </iframe>
+    </div>
+  </div>
+
+  <!-- Repeat two more times -->
+  <div class="vertical-embed">
+    <div class="vertical-wrapper">
+       <iframe
+        src="https://cdnapisec.kaltura.com/p/2103181/embedPlaykitJs/uiconf_id/53345422?iframeembed=true&amp;entry_id=1_ex750ccr&amp;config%5Bprovider%5D=%7B%22widgetId%22%3A%221_cf8wqdzu%22%7D&amp;config%5Bplayback%5D=%7B%22startTime%22%3A0%7D"
+        allowfullscreen
+        allow="autoplay *; fullscreen *; encrypted-media *"
+        sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation"
+        title="Vertical test">
+      </iframe>
+    </div>
+  </div>
+
+  <div class="vertical-embed">
+    <div class="vertical-wrapper">
+       <iframe
+        src="https://cdnapisec.kaltura.com/p/2103181/embedPlaykitJs/uiconf_id/53345422?iframeembed=true&amp;entry_id=1_ex750ccr&amp;config%5Bprovider%5D=%7B%22widgetId%22%3A%221_cf8wqdzu%22%7D&amp;config%5Bplayback%5D=%7B%22startTime%22%3A0%7D"
+        allowfullscreen
+        allow="autoplay *; fullscreen *; encrypted-media *"
+        sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation"
+        title="Vertical test">
+      </iframe>
+    </div>
+  </div>
+
+    <div class="vertical-embed">
+    <div class="vertical-wrapper">
+       <iframe
+        src="https://cdnapisec.kaltura.com/p/2103181/embedPlaykitJs/uiconf_id/53345422?iframeembed=true&amp;entry_id=1_ex750ccr&amp;config%5Bprovider%5D=%7B%22widgetId%22%3A%221_cf8wqdzu%22%7D&amp;config%5Bplayback%5D=%7B%22startTime%22%3A0%7D"
+        allowfullscreen
+        allow="autoplay *; fullscreen *; encrypted-media *"
+        sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation"
+        title="Vertical test">
+      </iframe>
+    </div>
+  </div>
+</div>
+
+</div>
+</div>
+
+         <div class="contents-container">
+        <h2 class="hotmess">What our students say</h2>
+      <p>Read our testimonials to learn what makes Sheffield special to our students.</p>
+        <div class="test-controls">
+          <button id="gridViewButton" onclick="setGridView()" title="Grid View" style="background: none; border: none; cursor: pointer;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="16" height="16">
+                <path d="M64 32C28.7 32 0 60.7 0 96L0 416c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-320c0-35.3-28.7-64-64-64L64 32zm88 64l0 64-88 0 0-64 88 0zm56 0l88 0 0 64-88 0 0-64zm240 0l0 64-88 0 0-64 88 0zM64 224l88 0 0 64-88 0 0-64zm232 0l0 64-88 0 0-64 88 0zm64 0l88 0 0 64-88 0 0-64zM152 352l0 64-88 0 0-64 88 0zm56 0l88 0 0 64-88 0 0-64zm240 0l0 64-88 0 0-64 88 0z"/>
+            </svg>
+        </button>
+        <div style="text-align: right; margin-bottom: 10px;">View as:
+          <button id="sliderViewButton" onclick="setSliderView()" title="Slider View" style="background: none; border: none; cursor: pointer;">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="16" height="16">
+                  <path d="M406.6 374.6l96-96c12.5-12.5 12.5-32.8 0-45.3l-96-96c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224l-293.5 0 41.4-41.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-96 96c-12.5 12.5-12.5 32.8 0 45.3l96 96c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 288l293.5 0-41.4 41.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0z"/>
+              </svg>
+          </button> 
+      </div></div>
+    
+        <div class="testimonial-slider-container" id="sliderContainer">
+          
+          <!-- Testimonial Slider Wrapper -->
+          <div class="testimonial-slider">
+              <!-- Testimonial 1 -->
+              <div class="testimonial">
+                  <img src="san.png" alt="Martha Kelner" class="testimonial-img">
+                  <div class="testimonial-content">"Residence Life social activities made my accommodation experience enjoyable and stress-free. Cooking (baking with Rahul from Bake Off!), knitting and body-butter-making sessions were my favourite, plus they always had freebies to take home. They also offered trips to concerts, parks and even other cities, all at affordable prices."</div>
+                  <div class="testimonial-name">Sanjana Mehrotra</div>
+                  <div class="testimonial-title">Medicine</div>
+              
+              </div>
+              <!-- Testimonial 2 -->
+              <div class="testimonial">
+                  <img src="joel.png" alt="Sam Moir" class="testimonial-img">
+                  <div class="testimonial-content">"The experience gave me an insight into two different cultures and the opportunity to work in a total of four different languages. The year abroad was a testing yet incredibly rewarding experience. I learnt so much, not only about other ways of life, but also about myself. Plus, I made so many new friends along the way!"</div>
+                  <div class="testimonial-name">Joel Lufton</div>
+                  <div class="testimonial-title">Politics and Modern Languages  and Cultures </div>
+ 
+              </div>
+              <!-- Testimonial 3 -->
+              <div class="testimonial">
+                  <img src="jess.png" alt="Daniel Sheridan" class="testimonial-img">
+                  <div class="testimonial-content">"The support from the Disability and Dyslexia Support Service is amazing. When I started at uni, I didn’t have an autism diagnosis and they provided support from a working diagnosis, making it possible for me to thrive at uni. The team is always so welcoming and there’s never a problem too small."</div>
+                  <div class="testimonial-name">Jess Lomas</div>
+                  <div class="testimonial-title">Biochemistry and Genetics</div>
+              </div>
+              <!-- Testimonial 4 -->
+              <div class="testimonial">
+                  <img src="testph.png" alt="Person" class="testimonial-img">
+                  <div class="testimonial-content">"Adipisicing elit ut occaecat elit voluptate deserunt esse aliquip mollit ullamco consectetur. Irure sint tempor ad sunt nisi sunt ad laboris consequat. Enim veniam id esse. Aliqua ut fugiat pariatur quis incididunt sint quis."</div>
+                  <div class="testimonial-name"><a href="/">Lorem Doe</a></div>
+                  <div class="testimonial-title">Lorem ipsum</div>
+                  <div class="testimonial-class">BA Lorem Ipsum</div>
+              </div>
+              <!-- Testimonial 5 -->
+              <div class="testimonial">
+                  <img src="testph.png" alt="Person" class="testimonial-img">
+                  <div class="testimonial-content">"Adipisicing elit ut occaecat elit voluptate deserunt esse aliquip mollit ullamco consectetur. Irure sint tempor ad sunt nisi sunt ad laboris consequat. Enim veniam id esse. Aliqua ut fugiat pariatur quis incididunt sint quis."</div>
+                  <div class="testimonial-name"><a href="/">Lorem Doe</a></div>
+                  <div class="testimonial-title">Lorem ipsum</div>
+                  <div class="testimonial-class">BA Lorem Ipsum</div>
+              </div>
+              <!-- Testimonial 6 -->
+              <div class="testimonial">
+                  <img src="testph.png" alt="Person" class="testimonial-img">
+                  <div class="testimonial-content">"Adipisicing elit ut occaecat elit voluptate deserunt esse aliquip mollit ullamco consectetur. Irure sint tempor ad sunt nisi sunt ad laboris consequat. Enim veniam id esse. Aliqua ut fugiat pariatur quis incididunt sint quis."</div>
+                  <div class="testimonial-name"><a href="/">Lorem Doe</a></div>
+                  <div class="testimonial-title">Lorem ipsum</div>
+                  <div class="testimonial-class">BA Lorem Ipsum</div>
+              </div>
+          </div>
+      </div>
+  
+      <!-- Centered Navigation Arrows Below the Scroll Container -->
+      <div class="slider-nav-container">
+          <div class="slider-nav left" onclick="moveSlide(-1)">&#10094;</div>
+          <div class="slider-nav right" onclick="moveSlide(1)">&#10095;</div>
+      </div>
+      </div>
+</div>
+
+     
+    
+    
+       
+        </div>
+        
+</div>
+  </section>
+    <footer class="footer">
+    <div class="footer-content">
+      
+          
+      
+     
+   
+    <div class="footer-bottom">
+        <div class="footer-awards">
+          <img src="top100.png" alt="World Top 100 University">
+          <img src="russellgroup.png" alt="Russell Group">
+          <img src="uoty.png" alt="University of the Year 2024">
+          <img src="queens.png" alt="Queen's Anniversary Prize">
+        </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+   <script>
+
+        // Modify event listener to avoid unintended closing of the modal on touch
+document.querySelector('.prev').addEventListener('touchstart', (e) => {
+    e.stopPropagation(); // Prevent touch from bubbling and triggering modal close
+    changeImage(-1);
+});
+
+document.querySelector('.next').addEventListener('touchstart', (e) => {
+    e.stopPropagation(); // Prevent touch from bubbling and triggering modal close
+    changeImage(1);
+});
+
+// Prevent modal from closing when touching inside it
+document.querySelector('.modal-content-container').addEventListener('touchstart', (e) => {
+    e.stopPropagation();
+});
+
+
+ // Array of images for the gallery with titles and descriptions
+const images = [
+    {src: 'steph.jpg', title: 'Steph Massey', description: 'Steph Massey graduated with a degree in Business Management in 2022. She is now working on a HR graduate scheme at TikTok.'},
+    {src: 'aaron.jpeg.jpg', title: 'Aaron Probert', description: 'Since graduating in 2019, Aaron has been hard at work bringing together his social enterprise, Labre’s Hope. He has partnered with leading charitable organisations and won £500,000 of UK Government funding.'},
+    {src: 'helen.jpg', title: 'Helen Monks', description: 'School of English graduate Helen Monks is a writer and actor, known for her roles in Raised by Wolves and Upstart Crow.'},
+    {src: 'yash.jpg', title: 'Yash Bordia', description: 'Computer Science BSc graduate Yash Bordia works at PayPal within their UK Enterprise Integrations Team, assisting large enterprise merchants integrate PayPal solutions into their businesses.'},
+];
+let currentIndex = 0;
+
+
+// Debounce function to prevent rapid calls
+function debounce(func, delay) {
+    let timeout;
+    return function (...args) {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func.apply(this, args), delay);
+    };
+}
+
+// Debounced changeImage function to avoid double navigation
+const changeImage = debounce((direction) => {
+    currentIndex = (currentIndex + direction + images.length) % images.length;
+    updateModal();
+}, 100); // 100ms debounce delay
+
+// Change the main image on thumbnail click
+function changeMainImage(index) {
+    const image = images[index];
+    document.getElementById("mainImage").src = image.src;
+    document.getElementById("mainImage").setAttribute("onclick", `openModal(${index})`);
+}
+
+// Open the modal with the selected image
+function openModal(index) {
+    currentIndex = index;
+    updateModal();
+    const modal = document.getElementById("imageModal");
+    modal.style.display = "flex";
+    modal.setAttribute("aria-hidden", "false");
+    modal.focus();
+}
+
+// Close the modal and return focus to the main image
+function closeModal() {
+    const modal = document.getElementById("imageModal");
+    modal.style.display = "none";
+    modal.setAttribute("aria-hidden", "true");
+    document.getElementById("mainImage").focus();
+}
+
+// Update modal content based on the current image index
+function updateModal() {
+    const image = images[currentIndex];
+    document.getElementById("modalImage").src = image.src;
+    document.getElementById("imageTitle").innerText = image.title;
+    document.getElementById("imageDescription").innerText = image.description;
+
+    // Update the image counter
+    document.getElementById("imageCounter").innerText = `${currentIndex + 1} of ${images.length}`;
+}
+
+// Handle Enter key to open modal on thumbnails
+function handleKeyOpenModal(event, index) {
+    if (event.key === 'Enter') {
+        openModal(index);
+    }
+}
+
+// Handle Enter key to change main image from thumbnails
+function handleKeyChangeMainImage(event, index) {
+    if (event.key === 'Enter') {
+        changeMainImage(index);
+    }
+}
+
+// Swipe detection for mobile navigation
+let touchStartX = 0;
+let touchEndX = 0;
+
+function handleGesture() {
+    if (touchEndX < touchStartX) {
+        changeImage(1); // Swipe left to move to next image
+    }
+    if (touchEndX > touchStartX) {
+        changeImage(-1); // Swipe right to move to previous image
+    }
+}
+
+document.getElementById("imageModal").addEventListener("touchstart", (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+});
+
+document.getElementById("imageModal").addEventListener("touchend", (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleGesture();
+});
+
+// Prevent modal from closing when clicking inside the content container
+document.querySelector('.modal-content-container').addEventListener('click', (e) => {
+    e.stopPropagation();
+});
+
+// Use pointerdown for reliable navigation button interaction without double events
+document.querySelector('.prev').addEventListener('pointerdown', (e) => {
+    e.stopPropagation();
+    changeImage(-1);
+});
+
+document.querySelector('.next').addEventListener('pointerdown', (e) => {
+    e.stopPropagation();
+    changeImage(1);
+});
+
+// Global function to initialize keyboard accessibility on page load
+function initializeGalleryAccessibility() {
+    // Get all thumbnails and add 'keydown' event listeners for Enter key
+    const thumbnails = document.querySelectorAll('.thumbnail');
+    thumbnails.forEach((thumbnail, index) => {
+        thumbnail.setAttribute('tabindex', '0');
+        thumbnail.addEventListener('keydown', (event) => handleKeyChangeMainImage(event, index));
+        thumbnail.addEventListener('click', () => changeMainImage(index)); // Restore click functionality
+    });
+
+    // Set tabindex and keydown event for the main image to open modal
+    const mainImage = document.getElementById("mainImage");
+    mainImage.setAttribute('tabindex', '0');
+    mainImage.addEventListener('keydown', (event) => handleKeyOpenModal(event, currentIndex));
+}
+
+// Global keyboard event listener for modal navigation
+document.addEventListener('keydown', (event) => {
+    const modal = document.getElementById("imageModal");
+
+    // Only respond to keys if the modal is open
+    if (modal.style.display === "flex") {
+        if (event.key === 'Escape') {
+            closeModal();
+        } else if (event.key === 'ArrowRight') {
+            changeImage(1);
+        } else if (event.key === 'ArrowLeft') {
+            changeImage(-1);
+        }
+    }
+});
+
+// Call initialize function when the page loads
+window.onload = initializeGalleryAccessibility;
+    </script>
+    <script>
+        function setSliderView() {
+            const container = document.getElementById('sliderContainer');
+            const navContainer = document.querySelector('.slider-nav-container');
+        
+            container.classList.remove('testimonial-grid');
+            navContainer.classList.remove('hidden'); // Show nav container in slider view
+        }
+        
+        function setGridView() {
+            const container = document.getElementById('sliderContainer');
+            const navContainer = document.querySelector('.slider-nav-container');
+        
+            container.classList.add('testimonial-grid');
+            navContainer.classList.add('hidden'); // Hide nav container in grid view
+        }
+        
+        
+            </script>
+</body>
+</html>
