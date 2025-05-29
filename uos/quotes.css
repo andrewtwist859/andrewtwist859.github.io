@@ -151,7 +151,7 @@
   .quote-text ol li p {
     font-size: 1rem;
     font-family: 'source-sans-pro', sans-serif;
-    transform: translateY(-0.5rem);
+    transform: translateY(-1rem);
     margin: 0rem;
 }
 
