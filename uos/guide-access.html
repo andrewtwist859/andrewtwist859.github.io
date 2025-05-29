@@ -38,37 +38,6 @@
     <div class="copy-container">
         <p class="intro">From contextual offers to a dedicated team. Find support tailored to you.</p>
         
-           <div class="video-container">
-        <!-- Responsive YouTube Video Embed -->
-        <div class="responsive-iframe-container">
-            <iframe id="videoPlayer" 
-                src="https://www.youtube.com/embed/sjZ_5iHQr7g?enablejsapi=1"
-                title="YouTube video player" frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
-            </iframe>
-        </div>
-    
-        <!-- Navigation Panel Anchored Directly Below the Video -->
-        <div class="chapter-links" id="chapterLinks">
-            <h3 onclick="toggleChapters()">Explore this video
-                <!-- SVG Icon for dropdown toggle -->
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="#7000FF"><path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/></svg>
-            </h3>
-            <div class="chapters">
-                <div class="chapter"><span class="time" onclick="navigateToTime(0)">00:00</span> - Introduction</div>
-                <div class="chapter"><span class="time" onclick="navigateToTime(15)">00:15</span> - City accommodation</div>
-                <div class="chapter"><span class="time" onclick="navigateToTime(49)">00:49</span> - The Edge</div>
-                <div class="chapter"><span class="time" onclick="navigateToTime(105)">01:45</span> - En-suite</div>
-                <div class="chapter"><span class="time" onclick="navigateToTime(203)">03:23</span> - Studio flats </div>
-                <div class="chapter"><span class="time" onclick="navigateToTime(220)">03:40</span> - Room types</div>
-                <div class="chapter"><span class="time" onclick="navigateToTime(243)">04:03</span> - Village Store</div>
-                <div class="chapter"><span class="time" onclick="navigateToTime(260)">04:20</span> - Green space</div>
-                <div class="chapter"><span class="time" onclick="navigateToTime(280)">04:40</span> - The Ridge</div>
-                <div class="chapter"><span class="time" onclick="navigateToTime(303)">05:03</span> - Broomhill</div>
-            </div>
-        </div>
-    </div>
     <h2>Access+</h2>
 <p>Make sure you check whether you meet our Access+ criteria. If you live in a certain postcode or were eligible for free school meals (find more criteria and info on our website), you could get:<p>
 <p>
@@ -90,93 +59,12 @@
         <li>If you’re an international student and your high school qualifications aren’t accepted for direct entry, the University of Sheffield International College offers pathway programmes to university study.</li>
     </ul>
 </p>
- <div class="su-container">
-    <div class="su-main-text">How do I live my best student life on a budget?</div>
-    <div class="su-sub-text"><p>It’s easy to live on a student budget in Sheffield with:</p>
-    <p>
-        <ol>
-            <li>Affordable rent</li>
-            <li>Paid work as an Ambassador for the University</li>
-            <li>Student discounts on nights out, food and drink</li>
-            <li>Budget-friendly supermarkets</li>
-            <li>Part-time jobs in the city</li>
-        </ol>
-    </p>
-    </div>
-    <div class="su-sub-text"><p><strong>Explore our money tools</strong></p></div>
-</div>
 
 </div>
 
-    <h2>Testimonials</h2>
-      <p>Read our testimonials to learn what makes Sheffield special to our students.</p>
-        <div class="test-controls">
-          <button id="gridViewButton" onclick="setGridView()" title="Grid View" style="background: none; border: none; cursor: pointer;">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="16" height="16">
-                <path d="M64 32C28.7 32 0 60.7 0 96L0 416c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-320c0-35.3-28.7-64-64-64L64 32zm88 64l0 64-88 0 0-64 88 0zm56 0l88 0 0 64-88 0 0-64zm240 0l0 64-88 0 0-64 88 0zM64 224l88 0 0 64-88 0 0-64zm232 0l0 64-88 0 0-64 88 0zm64 0l88 0 0 64-88 0 0-64zM152 352l0 64-88 0 0-64 88 0zm56 0l88 0 0 64-88 0 0-64zm240 0l0 64-88 0 0-64 88 0z"/>
-            </svg>
-        </button>
-        <div style="text-align: right; margin-bottom: 10px;">View as:
-          <button id="sliderViewButton" onclick="setSliderView()" title="Slider View" style="background: none; border: none; cursor: pointer;">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="16" height="16">
-                  <path d="M406.6 374.6l96-96c12.5-12.5 12.5-32.8 0-45.3l-96-96c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224l-293.5 0 41.4-41.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-96 96c-12.5 12.5-12.5 32.8 0 45.3l96 96c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 288l293.5 0-41.4 41.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0z"/>
-              </svg>
-          </button> 
-      </div></div>
+   
     
-        <div class="testimonial-slider-container" id="sliderContainer">
-          
-          <!-- Testimonial Slider Wrapper -->
-          <div class="testimonial-slider">
-              <!-- Testimonial 1 -->
-              <div class="testimonial">
-                  <img src="san.png" alt="Martha Kelner" class="testimonial-img">
-                  <div class="testimonial-content">"Residence Life social activities made my accommodation experience enjoyable and stress-free. Cooking (baking with Rahul from Bake Off!), knitting and body-butter-making sessions were my favourite, plus they always had freebies to take home. They also offered trips to concerts, parks and even other cities, all at affordable prices."</div>
-                  <div class="testimonial-name">Sanjana Mehrotra</div>
-                  <div class="testimonial-title">Medicine</div>
-              
-              </div>
-              <!-- Testimonial 2 -->
-              <div class="testimonial">
-                  <img src="joel.png" alt="Sam Moir" class="testimonial-img">
-                  <div class="testimonial-content">"The experience gave me an insight into two different cultures and the opportunity to work in a total of four different languages. The year abroad was a testing yet incredibly rewarding experience. I learnt so much, not only about other ways of life, but also about myself. Plus, I made so many new friends along the way!"</div>
-                  <div class="testimonial-name">Joel Lufton</div>
-                  <div class="testimonial-title">Politics and Modern Languages  and Cultures </div>
- 
-              </div>
-              <!-- Testimonial 3 -->
-              <div class="testimonial">
-                  <img src="jess.png" alt="Daniel Sheridan" class="testimonial-img">
-                  <div class="testimonial-content">"The support from the Disability and Dyslexia Support Service is amazing. When I started at uni, I didn’t have an autism diagnosis and they provided support from a working diagnosis, making it possible for me to thrive at uni. The team is always so welcoming and there’s never a problem too small."</div>
-                  <div class="testimonial-name">Jess Lomas</div>
-                  <div class="testimonial-title">Biochemistry and Genetics</div>
-              </div>
-              <!-- Testimonial 4 -->
-              <div class="testimonial">
-                  <img src="testph.png" alt="Person" class="testimonial-img">
-                  <div class="testimonial-content">"Adipisicing elit ut occaecat elit voluptate deserunt esse aliquip mollit ullamco consectetur. Irure sint tempor ad sunt nisi sunt ad laboris consequat. Enim veniam id esse. Aliqua ut fugiat pariatur quis incididunt sint quis."</div>
-                  <div class="testimonial-name"><a href="/">Lorem Doe</a></div>
-                  <div class="testimonial-title">Lorem ipsum</div>
-                  <div class="testimonial-class">BA Lorem Ipsum</div>
-              </div>
-              <!-- Testimonial 5 -->
-              <div class="testimonial">
-                  <img src="testph.png" alt="Person" class="testimonial-img">
-                  <div class="testimonial-content">"Adipisicing elit ut occaecat elit voluptate deserunt esse aliquip mollit ullamco consectetur. Irure sint tempor ad sunt nisi sunt ad laboris consequat. Enim veniam id esse. Aliqua ut fugiat pariatur quis incididunt sint quis."</div>
-                  <div class="testimonial-name"><a href="/">Lorem Doe</a></div>
-                  <div class="testimonial-title">Lorem ipsum</div>
-                  <div class="testimonial-class">BA Lorem Ipsum</div>
-              </div>
-              <!-- Testimonial 6 -->
-              <div class="testimonial">
-                  <img src="testph.png" alt="Person" class="testimonial-img">
-                  <div class="testimonial-content">"Adipisicing elit ut occaecat elit voluptate deserunt esse aliquip mollit ullamco consectetur. Irure sint tempor ad sunt nisi sunt ad laboris consequat. Enim veniam id esse. Aliqua ut fugiat pariatur quis incididunt sint quis."</div>
-                  <div class="testimonial-name"><a href="/">Lorem Doe</a></div>
-                  <div class="testimonial-title">Lorem ipsum</div>
-                  <div class="testimonial-class">BA Lorem Ipsum</div>
-              </div>
-          </div>
-      </div>
+      
         </div>
         
 </div>
