@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <title>title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link rel="stylesheet" href="global-menu.css"> 
+     <link rel="stylesheet" href="menu.css"> 
     <link rel="stylesheet" href="https://use.typekit.net/jou7rrz.css">
         <link rel="stylesheet" href="https://use.typekit.net/hvq7yfy.css">
         <link rel="stylesheet" href="gallery.css">
@@ -12,6 +12,7 @@
         <link rel="stylesheet" href="testimonials-wide.css">
         <link rel="stylesheet" href="footer.css"> 
         <link rel="stylesheet" href="quotes.css"> 
+        <link rel="stylesheet" href="guide.css"> 
 <style>
      @font-face {
     font-family: 'Hot Mess';
@@ -145,14 +146,90 @@ p.intro {
 </style>
     </head>
 <body>
-    <nav class="navbar">
-    <div class="navbar-content">
-      <div class="navbar-brand">
-        <a href="changes"><img src="logo.png" alt="University of Sheffield Logo" class="logo"></a>
+   <!-- Navbar -->
+  <header class="navbar">
+    <div class="container">
+      <div class="logo">
+        <img src="logo.png" alt="University of Sheffield">
       </div>
-      <span class="pub-title">Undergraduate prospectus 2025-26</span>
+      <button class="hamburger" id="menuToggle" aria-haspopup="dialog" aria-expanded="false" aria-controls="menu">☰</button>
     </div>
-  </nav>
+  </header>
+
+  <!-- Fade-in Overlay Menu -->
+  <div class="menu-overlay" id="menu" role="dialog" aria-modal="true" aria-labelledby="menuHeading">
+    <div class="container">
+      <div class="menu-item">
+        <a href="guide-access.html">
+          <h2 id="menuHeading">Support to study at Sheffield</h2>
+          <p>From contextual offers to a dedicated team. Find support tailored to you.</p>
+        </a>
+      </div>
+
+      <div class="menu-item">
+        <a href="guide-fee.html">
+          <h2>Fees and budget friendly living</h2>
+          <p>From scholarships to affordable living. Make your student budget stretch further at Sheffield.</p>
+        </a>
+      </div>
+
+      <div class="menu-item">
+        <a href="guide-accommodation.html">
+          <h2>Guaranteed accommodation</h2>
+          <p>From lasting friendships to a safe place to call home. Our accommodation is more than just a room.</p>
+        </a>
+      </div>
+
+         <div class="menu-item">
+        <a href="guide-careers.html">
+          <h2>Careers support tailored to you</h2>
+          <p>From submitting your first assignment to your first day in your graduate job — and beyond. Your future career is covered from every angle.</p>
+        </a>
+      </div>
+
+       <div class="menu-item">
+        <a href="guide-teaching.html">
+          <h2>Expert teaching with flexible options</h2>
+          <p>From inspirational teaching to lightbulb moments. You’ll find more than a Russell Group education.</p>
+        </a>
+      </div>
+
+      <div class="menu-item">
+        <a href="guide-campus.html">
+          <h2>Your campus</h2>
+          <p>From inspirational teaching to lightbulb moments. You’ll find more than a Russell Group education.</p>
+        </a>
+      </div>
+
+        <div class="menu-item">
+        <a href="guide-sustainability.html">
+          <h2>Sustainability at Sheffield</h2>
+          <p>From a sustainable campus to tackling global climate challenges. We’re committed to fulfilling all of our responsibilities.</p>
+        </a>
+      </div>
+
+      <div class="menu-item">
+        <a href="guide-su.html">
+          <h2>The best Students' Union in the UK</h2>
+          <p>From a sustainable campus to tackling global climate challenges. We’re committed to fulfilling all of our responsibilities.</p>
+        </a>
+      </div>
+
+      <div class="menu-item">
+        <a href="guide-support.html">
+          <h2>Get the support you need</h2>
+          <p>From practical help to academic and study support. We’re here every step of the way.</p>
+        </a>
+      </div>
+
+      <div class="menu-item">
+        <a href="guide-city.html">
+          <h2>A student city with plenty to offer</h2>
+          <p>From big nights out to early morning hikes. There are so many reasons to make Sheffield your home.</p>
+        </a>
+      </div>
+    </div>
+  </div>
   <section class="header-banner">
     <div class="full-width-container">
         <div class="contents-container">
@@ -463,5 +540,53 @@ window.onload = initializeGalleryAccessibility;
         
         
             </script>
+             <!-- JavaScript -->
+  <script>
+    const menu = document.getElementById("menu");
+    const toggleBtn = document.getElementById("menuToggle");
+
+    function toggleMenu() {
+      const isOpen = menu.classList.contains("active");
+
+      if (isOpen) {
+        menu.classList.remove("active");
+        document.body.classList.remove("no-scroll");
+        toggleBtn.setAttribute("aria-expanded", "false");
+        toggleBtn.innerText = "☰";
+        toggleBtn.focus();
+      } else {
+        menu.classList.add("active");
+        document.body.classList.add("no-scroll");
+        toggleBtn.setAttribute("aria-expanded", "true");
+        toggleBtn.innerText = "✖";
+        toggleBtn.focus();
+      }
+    }
+
+    toggleBtn.addEventListener("click", toggleMenu);
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && menu.classList.contains("active")) {
+        toggleMenu();
+      }
+
+      if (menu.classList.contains("active")) {
+        const focusable = menu.querySelectorAll("a, button, [tabindex]:not([tabindex='-1'])");
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+
+        if (e.key === "Tab") {
+          if (e.shiftKey && document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+          } else if (!e.shiftKey && document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
+          }
+        }
+      }
+    });
+  </script>
+
 </body>
 </html>
