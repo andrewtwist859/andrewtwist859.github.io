@@ -56,39 +56,6 @@
     font-weight: 700;
   }
 
-.pagination-nav {
-  display: flex;
-  flex-direction: column;
-  gap: 3rem;
-  max-width: 1180px;
-  margin: 4rem auto;
-  padding-top: 2rem;
-  border-top: 1px solid #ccc;
-  box-sizing: border-box;
-}
-
-.pagination-item {
-  display: block;
-}
-
-.pagination-label {
-  display: block;
-  font-weight: bold;
-  color: #666;
-  margin-bottom: 0.25rem;
-}
-
-.pagination-item a {
-  color: #005ea5;
-  text-decoration: underline;
-  font-size: 1rem;
-}
-
-.pagination-item a:hover {
-  text-decoration: none;
-}
-
-
 
 
 </style>
@@ -239,6 +206,10 @@
     </div>
       
 <div class="pagination-nav">
+  <div class="pagination-item pagination-prev">
+    <span class="pagination-label">← Previous</span>
+    <a href="pg-home.html">Home</a>
+  </div>
   <div class="pagination-item pagination-next">
     <span class="pagination-label">Next →</span>
     <a href="pg-learning.html">Learning patterns designed around you</a>

@@ -183,14 +183,14 @@ p.intro {
 .pagination-label {
   display: block;
   font-weight: bold;
-  color: #666;
+  color: #333;
   margin-bottom: 0.25rem;
 }
 
 .pagination-item a {
   color: #005ea5;
   text-decoration: underline;
-  font-size: 1rem;
+  font-size: 1.2rem;
 }
 
 .pagination-item a:hover {
