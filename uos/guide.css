@@ -33,7 +33,7 @@ background-repeat: repeat-x;
     padding: 5rem;
 }
 
-    .full-width-content-container {
+    .full-width-content-container{
 background-color: #006D99;
 background-image: url(blob-blue.svg);
 background-repeat: repeat-x;
@@ -168,6 +168,11 @@ p.intro {
       @media (max-width: 48rem) {
 .full-width-container {
     padding: 0.25rem;
+
+}
+
+.full-width-content-container {
+    padding: 2rem;
 
 }
 
