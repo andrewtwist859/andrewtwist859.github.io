@@ -47,6 +47,10 @@ font-size: 1.4rem;
 margin-top: 0.25rem;
 }
 
+.header-banner {
+    margin-top: 5rem;
+}
+
 .header-banner h2{
     color: white;
     background-color: #440099;
@@ -80,7 +84,7 @@ p.intro {
   .su-container p {
     text-align: left;
   }
-  }
+  
 
   .su-container::after {
       content: "";
