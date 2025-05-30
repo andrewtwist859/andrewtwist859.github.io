@@ -110,6 +110,10 @@ p.intro {
     text-wrap: balance;
   }
 
+  .copy-container img {
+    max-width: 100%;
+  }
+
       @media (max-width: 48rem) {
 .full-width-container {
     padding: 0.25rem;
