@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8" />
     <title>title</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://www.sheffield.ac.uk/themes/custom/uos_public/favicon.ico" sizes="any">
+    <link rel="icon" href="https://www.sheffield.ac.uk/themes/custom/uos_public/favicon.svg" type="image/svg+xml" />
      <link rel="stylesheet" href="global-menu.css"> 
     <link rel="stylesheet" href="https://use.typekit.net/jou7rrz.css">
         <link rel="stylesheet" href="https://use.typekit.net/hvq7yfy.css">
@@ -11,8 +13,7 @@
         <link rel="stylesheet" href="video.css">
         <link rel="stylesheet" href="testimonials-wide.css">
         <link rel="stylesheet" href="footer.css"> 
-        <link rel="stylesheet" href="quotes.css">
-        <link rel="stylesheet" href="guide.css"> 
+        <link rel="stylesheet" href="quotes.css"> 
 <style>
      @font-face {
     font-family: 'Hot Mess';
@@ -27,9 +28,13 @@ body {
     margin: 0;
 }
 
+.copy-container h2 {
+    font-family: 'source-serif-pro';
+}
+
     .full-width-container {
-background-color: #006D99;
-background-image: url(blob-blue.svg);
+background-color: #440099;
+background-image: url(blob2.svg);
 background-repeat: repeat-x;
     background-position: center;
     background-size: cover;
@@ -122,7 +127,7 @@ p.intro {
     color: #200F4D;
   }
 
-   h2.hotmess {
+  h2.hotmess {
     font-size: 3.5rem;
     font-family: 'Hot Mess';
     font-weight: normal;
@@ -135,10 +140,6 @@ p.intro {
     margin-top: 0rem;
 }
 
- .copy-container img {
-    max-width: 100%;
-  }
-
 </style>
     </head>
 <body>
@@ -147,69 +148,64 @@ p.intro {
       <div class="navbar-brand">
         <a href="changes"><img src="logo.png" alt="University of Sheffield Logo" class="logo"></a>
       </div>
-      <span class="pub-title">Undergraduate prospectus 2025-26</span>
+      <span class="pub-title">Undergraduate guide 2025-26</span>
     </div>
   </nav>
   <section class="header-banner">
     <div class="full-width-container">
         <div class="contents-container">
-            <h2 class="hotmess">Expert teaching with flexible options</h2>
+            <h2 class="hotmess">Sustainability at Sheffield</h2>
       </div>
       </div>
   </section>
   <section class="main-content">
 <div class="contents-container">
     <div class="copy-container">
-        <p class="intro">From inspirational teaching to lightbulb moments. You’ll find more than a Russell Group education.</p>
-        
-        <img src="uos.jpg">
-
-        <h2>Research-led teaching</h2>
-<p>You’ll be taught by academics at the forefront of human understanding, whose discoveries are changing the world. Cutting-edge research is incorporated into every degree programme. Our <a href="https://www.sheffield.ac.uk/research">research</a> spans from developing new treatments for life-threatening diseases, to solving the problem of feeding a world of 10 billion.</p>
-<h2>Learn your way</h2>
-<p>At Sheffield, you’re empowered to shape your own learning, studying what’s relevant to you through flexible degree programmes.</p>
-<h2>World-class facilities</h2>
-<p>With industry-standard equipment, physical and digital libraries, and relaxed study spaces you have the freedom to learn in your own way.</p>
-</div>
-</div>
- <div class="full-width-container">
- <div class="quote-container-blue">
-        <div class="quote-content">
-            
-    <div class="quote-title">Top 3 differences between school and uni</div>
-    <div class="quote-text">
-<ol class="custom-list">
-  <li><span class="item-text">
-    Uni work is a lot more independent and you dive deeper into the subjects that you love. I can personalise my assignments and research to focus on my interests!
-  </span></li>
-  <li><span class="item-text">
-    Even though it’s more independent, you can easily access one-to-one support. I’ve built a network of support with academic staff who help with all aspects of my learning.
-  </span></li>
-  <li><span class="item-text">
-    Uni teaching can be more accessible for disabled and neurodiverse students. I can study in more diverse and unique ways.
-  </span></li>
-</ol>
-
-        <hr class="dark" />
-     <div class="quote-attribution">
-  <div class="text-info">
-    <div class="name">Morven Cameron</div>
-    <div class="course">Geography</div>
-  </div>
-</div>
-    </div>
-</div>
-</div>
-</div>
-<div class="contents-container">
-    <div class="copy-container">
-<div class="su-container">
-    <div class="su-main-text">92% of our research is rated as world-leading or internationally excellent</div>
-    <div class="su-sub-text"><p>Research Excellence Framework 2021</p></div>
+        <p class="intro">From a sustainable campus to tackling global climate challenges. We’re committed to fulfilling all of our responsibilities.</p>
+        <h2>Sustainability at the University of Sheffield</h2>
+        <p>Join third year student Jade as she gives you a tour of our sustainability efforts at the University of Sheffield.</p></div>
+           <div class="video-container">
+        <!-- Responsive YouTube Video Embed -->
+        <div class="responsive-iframe-container">
+            <iframe id="videoPlayer" 
+                src="https://www.youtube.com/embed/_H-iOpLphqA?enablejsapi=1"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+            </iframe>
+        </div>
     
-</div>
+        <!-- Navigation Panel Anchored Directly Below the Video -->
+        <div class="chapter-links" id="chapterLinks">
+            <h3 onclick="toggleChapters()">Explore this video
+                <!-- SVG Icon for dropdown toggle -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="#7000FF"><path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/></svg>
+            </h3>
+       <div class="chapters">
+                <div class="chapter"><span class="time" onclick="navigateToTime(0)">00:00</span> - Introduction</div>
+                <div class="chapter"><span class="time" onclick="navigateToTime(25)">00:25</span> - Firth Court</div>
+                <div class="chapter"><span class="time" onclick="navigateToTime(42)">00:42</span> - Weston Park</div>
+                <div class="chapter"><span class="time" onclick="navigateToTime(58)">00:58</span> - The Arts Tower</div>
+                <div class="chapter"><span class="time" onclick="navigateToTime(84)">01:24</span> - Alfred Denny Building</div>
+                <div class="chapter"><span class="time" onclick="navigateToTime(100)">01:40</span> - Goodwin Sports Centre</div>
+                <div class="chapter"><span class="time" onclick="navigateToTime(117)">01:57</span> - Social Sciences Building</div>
+                <div class="chapter"><span class="time" onclick="navigateToTime(128)">02:08</span> - The Medical School</div>
+                <div class="chapter"><span class="time" onclick="navigateToTime(145)">02:25</span> - Concourse</div>
+                <div class="chapter"><span class="time" onclick="navigateToTime(164)">02:44</span> - Students' Union</div>
+                <div class="chapter"><span class="time" onclick="navigateToTime(209)">03:29</span> - The Octagon Centre</div>
+                <div class="chapter"><span class="time" onclick="navigateToTime(224)">03:44</span> - The University Arms</div>
+                <div class="chapter"><span class="time" onclick="navigateToTime(238)">03:58</span> - Information Commons</div>
+                <div class="chapter"><span class="time" onclick="navigateToTime(255)">04:15</span> - Jessop West</div>
+                <div class="chapter"><span class="time" onclick="navigateToTime(267)">04:27</span> - The Diamond</div>
+                <div class="chapter"><span class="time" onclick="navigateToTime(290)">04:50</span> - Sir Frederick Mappin Building</div>
+            </div>
+        </div>
     </div>
 </div>
+</div>
+ 
+
+    
 </div>
 
      
@@ -259,9 +255,9 @@ document.querySelector('.modal-content-container').addEventListener('touchstart'
 
  // Array of images for the gallery with titles and descriptions
 const images = [
-    {src: 'steph.jpg', title: 'Steph Massey', description: 'Steph Massey graduated with a degree in Business Management in 2022. She is now working on a HR graduate scheme at TikTok.'},
-    {src: 'aaron.jpeg.jpg', title: 'Aaron Probert', description: 'Since graduating in 2019, Aaron has been hard at work bringing together his social enterprise, Labre’s Hope. He has partnered with leading charitable organisations and won £500,000 of UK Government funding.'},
-    {src: 'helen.jpg', title: 'Helen Monks', description: 'School of English graduate Helen Monks is a writer and actor, known for her roles in Raised by Wolves and Upstart Crow.'},
+    {src: 'su1.jpg', title: 'Steph Massey', description: 'Steph Massey graduated with a degree in Business Management in 2022. She is now working on a HR graduate scheme at TikTok.'},
+    {src: 'su2.jpg', title: 'Aaron Probert', description: 'Since graduating in 2019, Aaron has been hard at work bringing together his social enterprise, Labre’s Hope. He has partnered with leading charitable organisations and won £500,000 of UK Government funding.'},
+    {src: 'su3.jpg', title: 'Helen Monks', description: 'School of English graduate Helen Monks is a writer and actor, known for her roles in Raised by Wolves and Upstart Crow.'},
     {src: 'yash.jpg', title: 'Yash Bordia', description: 'Computer Science BSc graduate Yash Bordia works at PayPal within their UK Enterprise Integrations Team, assisting large enterprise merchants integrate PayPal solutions into their businesses.'},
 ];
 let currentIndex = 0;
