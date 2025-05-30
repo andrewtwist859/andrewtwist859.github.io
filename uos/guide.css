@@ -109,3 +109,11 @@ p.intro {
   .su-sub-text {
     text-wrap: balance;
   }
+
+      @media (max-width: 48rem) {
+.full-width-container {
+    padding: 2rem;
+
+}
+}
+  
