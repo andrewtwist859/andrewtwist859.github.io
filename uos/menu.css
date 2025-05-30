@@ -1,0 +1,98 @@
+    .container {
+      max-width: 1180px;
+      margin: 0 auto;
+      width: 100%;
+      padding: 0 1rem;
+      box-sizing: border-box;
+    }
+
+    .navbar {
+      background: #fff;
+      padding: 1rem 0;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    .navbar .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo img {
+      height: 40px;
+    }
+
+    .hamburger {
+      font-size: 1.5rem;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+
+ .menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: white;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 999;
+  padding-top: 5rem; /* matches navbar height */
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+.menu-overlay.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.menu-overlay .container {
+  height: calc(100vh - 5rem); /* 100% of viewport minus navbar */
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding-bottom: 2rem;
+  box-sizing: border-box;
+  padding-top: 2rem;
+}
+
+.menu-overlay .container {
+  -webkit-overflow-scrolling: touch;
+}
+
+    .menu-item a {
+      text-decoration: none;
+      color: black;
+    }
+
+    .menu-item a h2 {
+      font-weight: 700;
+      margin: 0;
+      font-family: 'source-serif-pro';
+    }
+
+    .menu-item a p {
+      margin: 0.5rem 0 0;
+      max-width: 500px;
+    }
+
+    .no-scroll {
+      overflow: hidden;
+    }
+
+    @media (min-width: 768px) {
+      .hamburger {
+        font-size: 2rem;
+      }
+    }
