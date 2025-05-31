@@ -213,6 +213,14 @@ p.intro {
       scroll-snap-align: start;
     }
 
+    .video-wrapper {
+      flex: 0 0 auto;
+      max-width: 300px;
+      width: 100%;
+      scroll-snap-align: start;
+      margin-bottom: 1rem;
+    }
+
     .video-inner {
       position: relative;
       padding-bottom: 177.78%; /* 9:16 aspect ratio */
