@@ -13,7 +13,9 @@
         <link rel="stylesheet" href="footer.css"> 
         <link rel="stylesheet" href="quotes.css"> 
         <link rel="stylesheet" href="pg-guide.css"> 
-        <link rel="stylesheet" href="madebanner.css"> 
+        <link rel="stylesheet" href="madebanner.css">
+             <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
 <style>
 .su-main-text, .su-sub-text, .su-container p {
     text-align: center;
@@ -255,7 +257,7 @@ span.mess {
     <div class="contents-container"></div>
 
         <div class="contents-container">
-      <div class="info-section">
+      <div class="info-section" data-aos="fade-up">
         <div class="info-container">
           <div class="info-box"><a href="pg-uni.html">
             <img src="firth.png" alt="A quick guide to Sheffield" />
@@ -274,7 +276,7 @@ span.mess {
           </div>
         </div>
       </div>
-      <div class="info-section">
+      <div class="info-section" data-aos="fade-up">
         <div class="info-container">
           <div class="info-box"><a href="pg-apply.html">
             <img src="lecture.jpg" alt="A quick guide to Sheffield" />
@@ -293,7 +295,7 @@ span.mess {
           </div>
         </div>
       </div>
-      <div class="info-section">
+      <div class="info-section" data-aos="fade-up">
         <div class="info-container">
           <div class="info-box"><a href="pg-city.html">
             <img src="citypg.png" alt="A quick guide to Sheffield" />
@@ -312,7 +314,7 @@ span.mess {
           </div>
         </div>
       </div>
-      <div class="info-section">
+      <div class="info-section" data-aos="fade-up">
         <div class="info-container">
           <div class="info-box"><a href="pg-city.html">
             <img src="citypg.png" alt="A quick guide to Sheffield" />
@@ -353,7 +355,7 @@ span.mess {
         
 </div>
 <div class="full-width-container">
-    <div class="contents-container">
+    <div class="contents-container" data-aos="fade-up">
         <h2 class="hotmess">Our latest postgrad TikToks</h2>
   <div class="scroll-container">
     <div class="video-wrapper">
@@ -410,9 +412,9 @@ span.mess {
   </section>
   <div class="cta-wrapper">
   <div class="cta-container">
-    <a href="#" class="cta-button">Search for a course</a>
-    <a href="#" class="cta-button">Book an open day</a>
-    <a href="#" class="cta-button">Register your interest</a>
+    <a href="#" class="cta-button" data-aos="zoom-in">Search for a course</a>
+    <a href="#" class="cta-button" data-aos="zoom-in" data-aos-delay="300">Book an open day</a>
+    <a href="#" class="cta-button" data-aos="zoom-in" data-aos-delay="600">Register your interest</a>
   </div>
 </div>
     <footer class="footer">
@@ -666,6 +668,12 @@ window.onload = initializeGalleryAccessibility;
       }
     });
   </script>
-
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init({
+    duration: 600,
+    once: true
+  });
+</script>
 </body>
 </html>
