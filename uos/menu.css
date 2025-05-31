@@ -71,6 +71,10 @@
   -webkit-overflow-scrolling: touch;
 }
 
+.menu-item {
+      margin-left: 1rem;
+}
+
     .menu-item a {
       text-decoration: none;
       color: black;
@@ -80,6 +84,7 @@
       font-weight: 700;
       margin: 0;
       font-family: 'source-serif-pro';
+    
     }
 
     h1 {
