@@ -12,7 +12,9 @@
         <link rel="stylesheet" href="testimonials-wide.css">
         <link rel="stylesheet" href="footer.css"> 
         <link rel="stylesheet" href="quotes.css"> 
-        <link rel="stylesheet" href="pg-guide.css"> 
+        <link rel="stylesheet" href="pg-guide.css">
+        <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script> 
 <style>
 .su-main-text, .su-sub-text, .su-container p {
     text-align: center;
@@ -162,7 +164,7 @@
 <div class="contents-container">
     <div class="copy-container">
         <p class="intro">A city you can afford to enjoy</p>
-        <img src="pg.jpg">
+        <img src="pg.jpg" data-aos="fade-zoom-in">
  <p>Sheffield is one of the UK’s most affordable cities. From parks and galleries, to job opportunities that fit around your studies, and countless discounts, this is the place to live and study affordably.</p>
  <h3 class="rank">Rent</h3>
  <p>Average monthly room rents vary across the city. As a guide, an en-suite room in University accommodation with all bills included is around £682 a month.</p>
@@ -173,7 +175,7 @@
 </div>
 </div>
  <div class="full-width-content-container">
-  <div class="quote-container-green">
+  <div class="quote-container-green" data-aos="fade-up">
         <div class="quote-content">
     <div class="quote-title">How I save and spend money as a postgraduate student</div>
     <div class="quote-text">
@@ -197,7 +199,7 @@ events. This year I was able to get free tickets to the Lunar and Chinese New Ye
 </div>
 <div class="contents-container">
     <div class="copy-container">
-       <div class="su-container">
+       <div class="su-container" data-aos="fade-in">
         <div class="su-main-text">Further information</div>
     <div class="su-sub-text"><p><a href="https://www.sheffield.ac.uk/postgraduate/alumni-discount">Living costs</a></p></div>
     </div>
@@ -227,9 +229,9 @@ events. This year I was able to get free tickets to the Lunar and Chinese New Ye
   </section>
     <div class="cta-wrapper">
   <div class="cta-container">
-    <a href="#" class="cta-button">Search for a course</a>
-    <a href="#" class="cta-button">Book an open day</a>
-    <a href="#" class="cta-button">Register your interest</a>
+    <a href="#" class="cta-button" data-aos="zoom-in">Search for a course</a>
+    <a href="#" class="cta-button" data-aos="zoom-in" data-aos-delay="300">Book an open day</a>
+    <a href="#" class="cta-button" data-aos="zoom-in" data-aos-delay="600">Register your interest</a>
   </div>
 </div>
     <footer class="footer">
@@ -483,6 +485,12 @@ window.onload = initializeGalleryAccessibility;
       }
     });
   </script>
-
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init({
+    duration: 600,
+    once: true
+  });
+</script>
 </body>
 </html>

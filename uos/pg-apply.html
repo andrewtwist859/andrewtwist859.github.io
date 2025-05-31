@@ -13,6 +13,8 @@
         <link rel="stylesheet" href="footer.css"> 
         <link rel="stylesheet" href="quotes.css"> 
         <link rel="stylesheet" href="pg-guide.css"> 
+        <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
 <style>
 .su-main-text, .su-sub-text, .su-container p {
     text-align: center;
@@ -161,7 +163,7 @@
 <h2>Watch our applying for postgraduate study talk</h2> 
 <p>Watch our 'Applying for postgraduate study' video to learn more about the application process at the University of Sheffield. This 11-minute talk covers what to do before you apply, the application process itself, and what happens after you've submitted your application.</p>
 </div>
-   <div class="video-container">
+   <div class="video-container" data-aos="fade-in">
         <!-- Responsive YouTube Video Embed -->
         <div class="responsive-iframe-container">
 <iframe id="kaltura_player" src='https://cdnapisec.kaltura.com/p/2103181/embedPlaykitJs/uiconf_id/53345422?iframeembed=true&amp;entry_id=1_i81n3wr6&amp;config%5Bprovider%5D=%7B%22widgetId%22%3A%221_k25mz0li%22%7D&amp;config%5Bplayback%5D=%7B%22startTime%22%3A0%7D'  allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" title="Applying for Postgraduate Study Talk" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0"></iframe>
@@ -177,7 +179,7 @@
  <h3 class="rank">English language skills are essential</h3>
  <p>You need to prove your English is good enough to successfully complete your course. We accept many qualifications as proof. And if you need help, the University’s English Language Teaching Centre (ELTC) can help you improve your English to meet our entry requirements.</p>
 
- <div class="su-container">
+ <div class="su-container" data-aos="fade-up">
         <div class="su-main-text">Further information</div>
     <div class="su-sub-text"><p><a href="https://www.sheffield.ac.uk/postgraduate/alumni-discount">Applying essentials</a></p></div>
     </div>
@@ -209,9 +211,9 @@
   </section>
     <div class="cta-wrapper">
   <div class="cta-container">
-    <a href="#" class="cta-button">Search for a course</a>
-    <a href="#" class="cta-button">Book an open day</a>
-    <a href="#" class="cta-button">Register your interest</a>
+    <a href="#" class="cta-button" data-aos="zoom-in">Search for a course</a>
+    <a href="#" class="cta-button" data-aos="zoom-in" data-aos-delay="300">Book an open day</a>
+    <a href="#" class="cta-button" data-aos="zoom-in" data-aos-delay="600">Register your interest</a>
   </div>
 </div>
     <footer class="footer">
@@ -465,6 +467,12 @@ window.onload = initializeGalleryAccessibility;
       }
     });
   </script>
-
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init({
+    duration: 600,
+    once: true
+  });
+</script>
 </body>
 </html>
