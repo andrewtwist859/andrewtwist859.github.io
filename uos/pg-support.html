@@ -12,7 +12,9 @@
         <link rel="stylesheet" href="testimonials-wide.css">
         <link rel="stylesheet" href="footer.css"> 
         <link rel="stylesheet" href="quotes.css"> 
-        <link rel="stylesheet" href="pg-guide.css"> 
+        <link rel="stylesheet" href="pg-guide.css">
+        <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
 <style>
 .su-main-text, .su-sub-text, .su-container p {
     text-align: center;
@@ -163,7 +165,7 @@
     <div class="copy-container">
         <p class="intro">Your wellbeing matters</p>
  <p>When you feel happy, healthy and secure, you can truly focus on what matters to you. Our dedicated support teams are here to give you free and confidential advice. We’re always ready to listen.</p>
- <img src="support.png">
+ <img src="support.png" data-aos="fade-in">
  <hr />
  <p class="intro">On campus</p>
  <h3 class="rank">For practical help</h3>
@@ -183,7 +185,7 @@
     <h3 class="rank">For improving your English skills</h3>
  <p>You can get help with your English before and during your studies. If your partner or spouse comes with you to Sheffield, they can take lessons at the English Language Teaching Centre, too.</p>
 
- <div class="su-container">
+ <div class="su-container" data-aos="fade-in">
         <div class="su-main-text">Further information</div>
     <div class="su-sub-text"><p><a href="https://www.sheffield.ac.uk/postgraduate/alumni-discount">How we support you</a></p></div>
     </div>
@@ -215,9 +217,9 @@
   </section>
     <div class="cta-wrapper">
   <div class="cta-container">
-    <a href="#" class="cta-button">Search for a course</a>
-    <a href="#" class="cta-button">Book an open day</a>
-    <a href="#" class="cta-button">Register your interest</a>
+    <a href="#" class="cta-button" data-aos="zoom-in">Search for a course</a>
+    <a href="#" class="cta-button" data-aos="zoom-in" data-aos-delay="300">Book an open day</a>
+    <a href="#" class="cta-button" data-aos="zoom-in" data-aos-delay="600">Register your interest</a>
   </div>
 </div>
     <footer class="footer">
@@ -471,6 +473,12 @@ window.onload = initializeGalleryAccessibility;
       }
     });
   </script>
-
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init({
+    duration: 600,
+    once: true
+  });
+</script>
 </body>
 </html>

@@ -13,6 +13,8 @@
         <link rel="stylesheet" href="footer.css"> 
         <link rel="stylesheet" href="quotes.css"> 
         <link rel="stylesheet" href="pg-guide.css"> 
+                <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
 <style>
 .su-main-text, .su-sub-text, .su-container p {
     text-align: center;
@@ -180,7 +182,7 @@
     <li>Flexible contracts from 42 or 51 weeks</li>
 </ul></p>
  
- <div class="su-container">
+ <div class="su-container" data-aos="fade-in">
         <div class="su-main-text">Further information</div>
     <div class="su-sub-text"><p><a href="https://www.sheffield.ac.uk/postgraduate/alumni-discount">Accommodation</a></p></div>
     </div>
@@ -212,9 +214,9 @@
   </section>
     <div class="cta-wrapper">
   <div class="cta-container">
-    <a href="#" class="cta-button">Search for a course</a>
-    <a href="#" class="cta-button">Book an open day</a>
-    <a href="#" class="cta-button">Register your interest</a>
+    <a href="#" class="cta-button" data-aos="zoom-in">Search for a course</a>
+    <a href="#" class="cta-button" data-aos="zoom-in" data-aos-delay="300">Book an open day</a>
+    <a href="#" class="cta-button" data-aos="zoom-in" data-aos-delay="600">Register your interest</a>
   </div>
 </div>
     <footer class="footer">
@@ -468,6 +470,13 @@ window.onload = initializeGalleryAccessibility;
       }
     });
   </script>
+ <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init({
+    duration: 600,
+    once: true
+  });
+</script>
 
 </body>
 </html>

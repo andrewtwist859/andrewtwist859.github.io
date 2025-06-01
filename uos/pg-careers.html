@@ -13,6 +13,8 @@
         <link rel="stylesheet" href="footer.css"> 
         <link rel="stylesheet" href="quotes.css"> 
         <link rel="stylesheet" href="pg-guide.css"> 
+                <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
 <style>
 .su-main-text, .su-sub-text, .su-container p {
     text-align: center;
@@ -164,7 +166,7 @@
         <p class="intro">Future-focused from day one</p>
  <p>Sheffield’s career support system is one of the best in the country. (No 2 in the UK according to the Student Crowd Awards 2023-2024). From the moment your course begins, you’ll be developing into the kind of top candidate employers are looking for.</p>
  <p>Whatever stage of career planning you’re at, you’ll find a wide range of job opportunities, events and online resources to help develop your skills, build a network of contacts and hone your employability.</p>
-  <div class="su-container">
+  <div class="su-container" data-aos="fade-in">
         <div class="su-main-text">93% of postgraduate taught graduates are in employment or further study 15 months after finishing their studies</div>
     <div class="su-sub-text"><p>Graduate Outcomes Survey 2021/22</p></div>
     </div>
@@ -172,7 +174,7 @@
  <p>You’ll have access to Career Connect, our University’s careers and employability platform, to help you find thousands of job opportunities and secure your next part-time job, internship, or graduate job.</p> 
  <p>As a Sheffield graduate, you’ll join our global network of over 320,000 alumni. Throughout your degree and after graduation, you’ll also have access to Sheffield Connect, which allows you to connect with Sheffield students and alumni, access mentorship opportunities, and build your professional network.</p>
  
- <div class="su-container">
+ <div class="su-container" data-aos="fade-in">
         <div class="su-main-text">Further information</div>
     <div class="su-sub-text"><p><a href="https://www.sheffield.ac.uk/postgraduate/alumni-discount">How we support your career</a></p></div>
     </div>
@@ -200,9 +202,9 @@
   </section>
     <div class="cta-wrapper">
   <div class="cta-container">
-    <a href="#" class="cta-button">Search for a course</a>
-    <a href="#" class="cta-button">Book an open day</a>
-    <a href="#" class="cta-button">Register your interest</a>
+    <a href="#" class="cta-button" data-aos="zoom-in">Search for a course</a>
+    <a href="#" class="cta-button" data-aos="zoom-in" data-aos-delay="300">Book an open day</a>
+    <a href="#" class="cta-button" data-aos="zoom-in" data-aos-delay="600">Register your interest</a>
   </div>
 </div>
     <footer class="footer">
@@ -456,6 +458,12 @@ window.onload = initializeGalleryAccessibility;
       }
     });
   </script>
-
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init({
+    duration: 600,
+    once: true
+  });
+</script>
 </body>
 </html>
