@@ -62,6 +62,18 @@
     font-family: 'source-serif-pro';
     font-weight: 700;
   }
+
+  h2 {
+    font-family: 'source-serif-pro';
+    font-size: 2rem;
+    margin: 0;
+  }
+
+  p.center {
+    font-size:1.2rem;
+    margin-top: 0.25rem;
+  }
+
   </style>
  </head>
  <body>
@@ -238,6 +250,86 @@
      <p>
       As a Sheffield graduate, you’ll join our global network of over 320,000 alumni. Throughout your degree and after graduation, you’ll also have access to Sheffield Connect, which allows you to connect with Sheffield students and alumni, access mentorship opportunities, and build your professional network.
      </p>
+     </div>
+     </div>
+      <div class="contents-container">
+          <h2>Where our students work</h2>
+      <p class="center">Find out more about our alumni community and their careers.</p>
+        <div class="test-controls">
+          <button id="gridViewButton" onclick="setGridView()" title="Grid View" style="background: none; border: none; cursor: pointer;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="16" height="16">
+                <path d="M64 32C28.7 32 0 60.7 0 96L0 416c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-320c0-35.3-28.7-64-64-64L64 32zm88 64l0 64-88 0 0-64 88 0zm56 0l88 0 0 64-88 0 0-64zm240 0l0 64-88 0 0-64 88 0zM64 224l88 0 0 64-88 0 0-64zm232 0l0 64-88 0 0-64 88 0zm64 0l88 0 0 64-88 0 0-64zM152 352l0 64-88 0 0-64 88 0zm56 0l88 0 0 64-88 0 0-64zm240 0l0 64-88 0 0-64 88 0z"/>
+            </svg>
+        </button>
+        <div style="text-align: right; margin-bottom: 10px;">View as:
+          <button id="sliderViewButton" onclick="setSliderView()" title="Slider View" style="background: none; border: none; cursor: pointer;">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="16" height="16">
+                  <path d="M406.6 374.6l96-96c12.5-12.5 12.5-32.8 0-45.3l-96-96c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224l-293.5 0 41.4-41.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-96 96c-12.5 12.5-12.5 32.8 0 45.3l96 96c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 288l293.5 0-41.4 41.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0z"/>
+              </svg>
+          </button> 
+      </div></div>
+    
+        <div class="testimonial-slider-container" id="sliderContainer">
+          
+          <!-- Testimonial Slider Wrapper -->
+          <div class="testimonial-slider">
+              <!-- Testimonial 1 -->
+              <div class="testimonial">
+                  <img src="san.png" alt="Martha Kelner" class="testimonial-img">
+                  <div class="testimonial-content">"Residence Life social activities made my accommodation experience enjoyable and stress-free. Cooking (baking with Rahul from Bake Off!), knitting and body-butter-making sessions were my favourite, plus they always had freebies to take home. They also offered trips to concerts, parks and even other cities, all at affordable prices."</div>
+                  <div class="testimonial-name">Sanjana Mehrotra</div>
+                  <div class="testimonial-title">Medicine</div>
+              
+              </div>
+              <!-- Testimonial 2 -->
+              <div class="testimonial">
+                  <img src="joel.png" alt="Sam Moir" class="testimonial-img">
+                  <div class="testimonial-content">"The experience gave me an insight into two different cultures and the opportunity to work in a total of four different languages. The year abroad was a testing yet incredibly rewarding experience. I learnt so much, not only about other ways of life, but also about myself. Plus, I made so many new friends along the way!"</div>
+                  <div class="testimonial-name">Joel Lufton</div>
+                  <div class="testimonial-title">Politics and Modern Languages  and Cultures </div>
+ 
+              </div>
+              <!-- Testimonial 3 -->
+              <div class="testimonial">
+                  <img src="jess.png" alt="Daniel Sheridan" class="testimonial-img">
+                  <div class="testimonial-content">"The support from the Disability and Dyslexia Support Service is amazing. When I started at uni, I didn’t have an autism diagnosis and they provided support from a working diagnosis, making it possible for me to thrive at uni. The team is always so welcoming and there’s never a problem too small."</div>
+                  <div class="testimonial-name">Jess Lomas</div>
+                  <div class="testimonial-title">Biochemistry and Genetics</div>
+              </div>
+              <!-- Testimonial 4 -->
+              <div class="testimonial">
+                  <img src="testph.png" alt="Person" class="testimonial-img">
+                  <div class="testimonial-content">"Adipisicing elit ut occaecat elit voluptate deserunt esse aliquip mollit ullamco consectetur. Irure sint tempor ad sunt nisi sunt ad laboris consequat. Enim veniam id esse. Aliqua ut fugiat pariatur quis incididunt sint quis."</div>
+                  <div class="testimonial-name"><a href="/">Lorem Doe</a></div>
+                  <div class="testimonial-title">Lorem ipsum</div>
+                  <div class="testimonial-class">BA Lorem Ipsum</div>
+              </div>
+              <!-- Testimonial 5 -->
+              <div class="testimonial">
+                  <img src="testph.png" alt="Person" class="testimonial-img">
+                  <div class="testimonial-content">"Adipisicing elit ut occaecat elit voluptate deserunt esse aliquip mollit ullamco consectetur. Irure sint tempor ad sunt nisi sunt ad laboris consequat. Enim veniam id esse. Aliqua ut fugiat pariatur quis incididunt sint quis."</div>
+                  <div class="testimonial-name"><a href="/">Lorem Doe</a></div>
+                  <div class="testimonial-title">Lorem ipsum</div>
+                  <div class="testimonial-class">BA Lorem Ipsum</div>
+              </div>
+              <!-- Testimonial 6 -->
+              <div class="testimonial">
+                  <img src="testph.png" alt="Person" class="testimonial-img">
+                  <div class="testimonial-content">"Adipisicing elit ut occaecat elit voluptate deserunt esse aliquip mollit ullamco consectetur. Irure sint tempor ad sunt nisi sunt ad laboris consequat. Enim veniam id esse. Aliqua ut fugiat pariatur quis incididunt sint quis."</div>
+                  <div class="testimonial-name"><a href="/">Lorem Doe</a></div>
+                  <div class="testimonial-title">Lorem ipsum</div>
+                  <div class="testimonial-class">BA Lorem Ipsum</div>
+              </div>
+          </div>
+      </div>
+  
+      <!-- Centered Navigation Arrows Below the Scroll Container -->
+      <div class="slider-nav-container">
+          <div class="slider-nav left" onclick="moveSlide(-1)">&#10094;</div>
+          <div class="slider-nav right" onclick="moveSlide(1)">&#10095;</div>
+      </div>
+      </div>
+   <div class="copy-container">
      <div class="su-container" data-aos="fade-in">
       <div class="su-main-text">
        Further information
@@ -343,5 +435,60 @@
     once: true
   });
   </script>
+  <script>
+        function setSliderView() {
+            const container = document.getElementById('sliderContainer');
+            const navContainer = document.querySelector('.slider-nav-container');
+        
+            container.classList.remove('testimonial-grid');
+            navContainer.classList.remove('hidden'); // Show nav container in slider view
+        }
+        
+        function setGridView() {
+            const container = document.getElementById('sliderContainer');
+            const navContainer = document.querySelector('.slider-nav-container');
+        
+            container.classList.add('testimonial-grid');
+            navContainer.classList.add('hidden'); // Hide nav container in grid view
+        }
+        
+        
+            </script>
+
+            <script>
+        const sliderContainer = document.getElementById('sliderContainer');
+        const testimonials = document.querySelectorAll('.testimonial');
+        let testimonialWidth = testimonials[0].offsetWidth + parseInt(window.getComputedStyle(testimonials[0]).marginRight); // Exact width including gap
+        let currentIndex = 0;
+
+        function updateTestimonialWidth() {
+            testimonialWidth = testimonials[0].offsetWidth + parseInt(window.getComputedStyle(testimonials[0]).marginRight);
+        }
+
+        function moveSlide(direction) {
+            // Update maxIndex based on the screen size (1 testimonial or 2 testimonials per view)
+            const maxIndex = window.innerWidth <= 768 ? testimonials.length - 1 : testimonials.length - 2;
+            currentIndex = Math.max(0, Math.min(currentIndex + direction, maxIndex));
+
+            // Scroll the container to the appropriate position
+            sliderContainer.scrollTo({
+                left: currentIndex * testimonialWidth,
+                behavior: 'smooth'
+            });
+        }
+
+        // Update width and scroll settings on window resize
+        window.addEventListener('resize', () => {
+            updateTestimonialWidth();
+        });
+
+        // Sync `currentIndex` with manual scrolling for smooth behavior with arrows
+        sliderContainer.addEventListener('scroll', () => {
+            currentIndex = Math.round(sliderContainer.scrollLeft / testimonialWidth);
+        });
+
+        // Initialize testimonial width for responsive layout
+        updateTestimonialWidth();
+    </script>
  </body>
 </html>
