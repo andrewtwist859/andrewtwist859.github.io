@@ -1,22 +1,27 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8" />
-    <title>Your community</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link rel="stylesheet" href="menu.css"> 
-    <link rel="stylesheet" href="https://use.typekit.net/jou7rrz.css">
-        <link rel="stylesheet" href="https://use.typekit.net/hvq7yfy.css">
-        <link rel="stylesheet" href="gallery.css">
-        <link rel="stylesheet" href="video.css">
-        <link rel="stylesheet" href="testimonials-wide.css">
-        <link rel="stylesheet" href="footer.css"> 
-        <link rel="stylesheet" href="quotes.css"> 
-        <link rel="stylesheet" href="pg-guide.css"> 
-          <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
-        <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-<style>
-.su-main-text, .su-sub-text, .su-container p {
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <title>
+   Your community
+  </title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <link href="favicon.ico" rel="icon" sizes="any"/>
+  <link href="favicon.svg" rel="icon" type="image/svg+xml"/>
+  <link href="menu.css" rel="stylesheet"/>
+  <link href="https://use.typekit.net/jou7rrz.css" rel="stylesheet"/>
+  <link href="https://use.typekit.net/hvq7yfy.css" rel="stylesheet"/>
+  <link href="gallery.css" rel="stylesheet"/>
+  <link href="video.css" rel="stylesheet"/>
+  <link href="testimonials-wide.css" rel="stylesheet"/>
+  <link href="footer.css" rel="stylesheet"/>
+  <link href="quotes.css" rel="stylesheet"/>
+  <link href="pg-guide.css" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet"/>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js">
+  </script>
+  <style>
+   .su-main-text, .su-sub-text, .su-container p {
     text-align: center;
 }
 
@@ -52,493 +57,409 @@
     font-family: 'source-serif-pro';
     font-weight: 700;
   }
-
-</style>
-    </head>
-<body>
-     <!-- Navbar -->
- <header class="navbar">
-    <div class="container">
-      <a href="pg-home.html"><div class="logo">
-        <img src="logo.png" alt="University of Sheffield">
-      </div></a>
-      <button class="hamburger" id="menuToggle" aria-haspopup="dialog" aria-expanded="false" aria-controls="menu">☰</button>
-    </div>
+  </style>
+ </head>
+ <body>
+  <!-- Navbar -->
+  <header class="navbar">
+   <div class="container">
+    <a href="pg-home.html">
+     <div class="logo">
+      <img alt="University of Sheffield" src="logo.png"/>
+     </div>
+    </a>
+    <button aria-controls="menu" aria-expanded="false" aria-haspopup="dialog" class="hamburger" id="menuToggle">
+     ☰
+    </button>
+   </div>
   </header>
-
   <!-- Fade-in Overlay Menu -->
-  <div class="menu-overlay" id="menu" role="dialog" aria-modal="true" aria-labelledby="menuHeading">
-    <div class="container">
-         <h1><a href="pg-home.html">Postgraduate study guide 2025-26</a></h1>
-      <div class="menu-item">
-        <a href="pg-uni.html">
-          <h2 id="menuHeading">Study at the University of the Year</h2>
-          <p>Why study at Sheffield?</p>
-        </a>
-      </div>
-
-      <div class="menu-item">
-        <a href="pg-learning.html">
-          <h2>Learning patterns designed around you</h2>
-          <p>How you will learn at Sheffield</p>
-        </a>
-      </div>
-
-      <div class="menu-item">
-        <a href="pg-fees.html">
-          <h2>Postgraduate funding</h2>
-          <p>Your finance guide</p>
-        </a>
-      </div>
-
-         <div class="menu-item">
-        <a href="pg-apply.html">
-          <h2>Apply</h2>
-          <p>Steps and key dates</p>
-        </a>
-      </div>
-
-       <div class="menu-item">
-        <a href="pg-visit.html">
-          <h2>Visit</h2>
-          <p>See what it’s like to study at Sheffield</p>
-        </a>
-      </div>
-
-      <div class="menu-item">
-        <a href="pg-cost.html">
-          <h2>Cost of living</h2>
-          <p>A city you can afford to enjoy</p>
-        </a>
-      </div>
-
-        <div class="menu-item">
-        <a href="pg-city.html">
-          <h2>City guide</h2>
-          <p>An extraordinary place to live and study</p>
-        </a>
-      </div>
-
-      <div class="menu-item">
-        <a href="pg-accommodation.html">
-          <h2>Accommodation options</h2>
-          <p>Finding your new home</p>
-        </a>
-      </div>
-
-      <div class="menu-item">
-        <a href="pg-support.html">
-          <h2>Daily support</h2>
-          <p>Your wellbeing matters</p>
-        </a>
-      </div>
-
-      <div class="menu-item">
-        <a href="pg-community.html">
-          <h2>Community</h2>
-          <p>Everyone is welcome</p>
-        </a>
-      </div>
-
-      <div class="menu-item">
-        <a href="pg-careers.html">
-          <h2>Career progression</h2>
-          <p>Focused on your future</p>
-        </a>
-      </div>
+  <div aria-labelledby="menuHeading" aria-modal="true" class="menu-overlay" id="menu" role="dialog">
+   <div class="container">
+    <h1>
+     <a href="pg-home.html">
+      Postgraduate study guide 2025-26
+     </a>
+    </h1>
+    <div class="menu-item">
+     <a href="pg-uni.html">
+      <h2 id="menuHeading">
+       Study at the University of the Year
+      </h2>
+      <p>
+       Why study at Sheffield?
+      </p>
+     </a>
     </div>
+    <div class="menu-item">
+     <a href="pg-learning.html">
+      <h2>
+       Learning patterns designed around you
+      </h2>
+      <p>
+       How you will learn at Sheffield
+      </p>
+     </a>
+    </div>
+    <div class="menu-item">
+     <a href="pg-fees.html">
+      <h2>
+       Postgraduate funding
+      </h2>
+      <p>
+       Your finance guide
+      </p>
+     </a>
+    </div>
+    <div class="menu-item">
+     <a href="pg-apply.html">
+      <h2>
+       Apply
+      </h2>
+      <p>
+       Steps and key dates
+      </p>
+     </a>
+    </div>
+    <div class="menu-item">
+     <a href="pg-visit.html">
+      <h2>
+       Visit
+      </h2>
+      <p>
+       See what it’s like to study at Sheffield
+      </p>
+     </a>
+    </div>
+    <div class="menu-item">
+     <a href="pg-cost.html">
+      <h2>
+       Cost of living
+      </h2>
+      <p>
+       A city you can afford to enjoy
+      </p>
+     </a>
+    </div>
+    <div class="menu-item">
+     <a href="pg-city.html">
+      <h2>
+       City guide
+      </h2>
+      <p>
+       An extraordinary place to live and study
+      </p>
+     </a>
+    </div>
+    <div class="menu-item">
+     <a href="pg-accommodation.html">
+      <h2>
+       Accommodation options
+      </h2>
+      <p>
+       Finding your new home
+      </p>
+     </a>
+    </div>
+    <div class="menu-item">
+     <a href="pg-support.html">
+      <h2>
+       Daily support
+      </h2>
+      <p>
+       Your wellbeing matters
+      </p>
+     </a>
+    </div>
+    <div class="menu-item">
+     <a href="pg-community.html">
+      <h2>
+       Community
+      </h2>
+      <p>
+       Everyone is welcome
+      </p>
+     </a>
+    </div>
+    <div class="menu-item">
+     <a href="pg-careers.html">
+      <h2>
+       Career progression
+      </h2>
+      <p>
+       Focused on your future
+      </p>
+     </a>
+    </div>
+   </div>
   </div>
   <section class="header-banner">
-    <div class="full-width-container">
-        <div class="contents-container">
-            <h2 class="hotmess">Your community</h2>
-      </div>
-      </div>
+   <div class="full-width-container">
+    <div class="contents-container">
+     <h2 class="hotmess">
+      Your community
+     </h2>
+    </div>
+   </div>
   </section>
   <section class="main-content">
-<div class="contents-container">
+   <div class="contents-container">
     <div class="copy-container">
-        <p class="intro">Everyone is welcome</p>
-         <p>Wherever you come from and whatever you are interested in, you will soon find yourself welcomed, supported and connected to a new network of friends.</p></div>
-         <div class="video-container" data-aos="fade-in">
-        <!-- Responsive YouTube Video Embed -->
-        <div class="responsive-iframe-container">
-            <iframe id="videoPlayer" 
-                src="https://www.youtube.com/embed/KTDsdJf21ic?enablejsapi=1"
-                title="YouTube video player" frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
-            </iframe>
-        </div>
-    
-        <!-- Navigation Panel Anchored Directly Below the Video -->
-        <div class="chapter-links" id="chapterLinks">
-            <h3 onclick="toggleChapters()">Explore this video
-                <!-- SVG Icon for dropdown toggle -->
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="#7000FF"><path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/></svg>
-            </h3>
-            <div class="chapters">
-                <div class="chapter"><span class="time" onclick="navigateToTime(0)">00:00</span> - Introduction</div>
-                <div class="chapter"><span class="time" onclick="navigateToTime(32)">00:32</span> - Officers</div>
-                <div class="chapter"><span class="time" onclick="navigateToTime(46)">00:46</span> - Societies</div>
-                <div class="chapter"><span class="time" onclick="navigateToTime(151)">02:31</span> - Support</div>
-                <div class="chapter"><span class="time" onclick="navigateToTime(193)">03:13</span> - Zero Waste</div>
-                <div class="chapter"><span class="time" onclick="navigateToTime(223)">03:43</span> - Student nights</div>
-                <div class="chapter"><span class="time" onclick="navigateToTime(249)">04:09</span> - Cinema</div>
-
-            </div>
-        </div>
+     <p class="intro">
+      Everyone is welcome
+     </p>
+     <p>
+      Wherever you come from and whatever you are interested in, you will soon find yourself welcomed, supported and connected to a new network of friends.
+     </p>
     </div>
-    
+    <div class="video-container" data-aos="fade-in">
+     <!-- Responsive YouTube Video Embed -->
+     <div class="responsive-iframe-container">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" frameborder="0" id="videoPlayer" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/KTDsdJf21ic?enablejsapi=1" title="YouTube video player">
+      </iframe>
+     </div>
+     <!-- Navigation Panel Anchored Directly Below the Video -->
+     <div class="chapter-links" id="chapterLinks">
+      <h3 onclick="toggleChapters()">
+       Explore this video
+       <!-- SVG Icon for dropdown toggle -->
+       <svg fill="#7000FF" viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">
+        <path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z">
+        </path>
+       </svg>
+      </h3>
+      <div class="chapters">
+       <div class="chapter">
+        <span class="time" onclick="navigateToTime(0)">
+         00:00
+        </span>
+        - Introduction
+       </div>
+       <div class="chapter">
+        <span class="time" onclick="navigateToTime(32)">
+         00:32
+        </span>
+        - Officers
+       </div>
+       <div class="chapter">
+        <span class="time" onclick="navigateToTime(46)">
+         00:46
+        </span>
+        - Societies
+       </div>
+       <div class="chapter">
+        <span class="time" onclick="navigateToTime(151)">
+         02:31
+        </span>
+        - Support
+       </div>
+       <div class="chapter">
+        <span class="time" onclick="navigateToTime(193)">
+         03:13
+        </span>
+        - Zero Waste
+       </div>
+       <div class="chapter">
+        <span class="time" onclick="navigateToTime(223)">
+         03:43
+        </span>
+        - Student nights
+       </div>
+       <div class="chapter">
+        <span class="time" onclick="navigateToTime(249)">
+         04:09
+        </span>
+        - Cinema
+       </div>
+      </div>
+     </div>
+    </div>
     <div class="copy-container">
-        <p></p>
- <p>Become part of our 30,000 strong student community, from over 150 countries.</p>
- <p>Choose from 350 clubs and societies, plus hours and hours of volunteering. If that number seems a bit overwhelming, don’t worry — you can try some (or all) of them for free, with our Give it a Go programme.</p>
- 
-</div>
-</div>
-<div class="full-width-container">
+     <p>
+     </p>
+     <p>
+      Become part of our 30,000 strong student community, from over 150 countries.
+     </p>
+     <p>
+      Choose from 350 clubs and societies, plus hours and hours of volunteering. If that number seems a bit overwhelming, don’t worry — you can try some (or all) of them for free, with our Give it a Go programme.
+     </p>
+    </div>
+   </div>
+   <div class="full-width-container">
     <div class="contents-container">
-        <h2 class="hotmess">Our latest postgrad TikToks</h2>
-  <div class="scroll-container">
-    <div class="video-wrapper">
-      <div class="video-inner"  data-aos="zoom-in" data-aos-delay="0">
-        <iframe
-          src="https://cdnapisec.kaltura.com/p/2103181/embedPlaykitJs/uiconf_id/53345422?iframeembed=true&amp;entry_id=1_46zn0a1k"
-          allowfullscreen
-          allow="autoplay *; fullscreen *; encrypted-media *"
-          sandbox="allow-same-origin allow-scripts allow-popups allow-presentation"
-          title="Vertical test">
+     <h2 class="hotmess">
+      Our latest postgrad TikToks
+     </h2>
+     <div class="scroll-container">
+      <div class="video-wrapper">
+       <div class="video-inner" data-aos="zoom-in" data-aos-delay="0">
+        <iframe allow="autoplay *; fullscreen *; encrypted-media *" allowfullscreen="" sandbox="allow-same-origin allow-scripts allow-popups allow-presentation" src="https://cdnapisec.kaltura.com/p/2103181/embedPlaykitJs/uiconf_id/53345422?iframeembed=true&amp;entry_id=1_46zn0a1k" title="Vertical test">
         </iframe>
+       </div>
       </div>
-    </div>
-
-    <div class="video-wrapper">
-      <div class="video-inner"  data-aos="zoom-in" data-aos-delay="300">
-        <iframe
-          src="https://cdnapisec.kaltura.com/p/2103181/embedPlaykitJs/uiconf_id/53345422?iframeembed=true&amp;entry_id=1_ex750ccr&amp;config%5Bprovider%5D=%7B%22widgetId%22%3A%221_cf8wqdzu%22%7D&amp;config%5Bplayback%5D=%7B%22startTime%22%3A0%7D"
-          allowfullscreen
-          allow="autoplay *; fullscreen *; encrypted-media *"
-          sandbox="allow-same-origin allow-scripts allow-popups allow-presentation"
-          title="Vertical test">
+      <div class="video-wrapper">
+       <div class="video-inner" data-aos="zoom-in" data-aos-delay="300">
+        <iframe allow="autoplay *; fullscreen *; encrypted-media *" allowfullscreen="" sandbox="allow-same-origin allow-scripts allow-popups allow-presentation" src="https://cdnapisec.kaltura.com/p/2103181/embedPlaykitJs/uiconf_id/53345422?iframeembed=true&amp;entry_id=1_ex750ccr&amp;config%5Bprovider%5D=%7B%22widgetId%22%3A%221_cf8wqdzu%22%7D&amp;config%5Bplayback%5D=%7B%22startTime%22%3A0%7D" title="Vertical test">
         </iframe>
+       </div>
       </div>
-    </div>
-
-    <div class="video-wrapper">
-      <div class="video-inner"  data-aos="zoom-in" data-aos-delay="600">
-        <iframe
-          src="https://cdnapisec.kaltura.com/p/2103181/embedPlaykitJs/uiconf_id/53345422?iframeembed=true&amp;entry_id=1_wtvvha2u&amp;config%5Bprovider%5D=%7B%22widgetId%22%3A%221_kcj094x4%22%7D&amp;config%5Bplayback%5D=%7B%22startTime%22%3A0%7D"
-          allowfullscreen
-          allow="autoplay *; fullscreen *; encrypted-media *"
-          sandbox="allow-same-origin allow-scripts allow-popups allow-presentation"
-          title="Vertical test">
+      <div class="video-wrapper">
+       <div class="video-inner" data-aos="zoom-in" data-aos-delay="600">
+        <iframe allow="autoplay *; fullscreen *; encrypted-media *" allowfullscreen="" sandbox="allow-same-origin allow-scripts allow-popups allow-presentation" src="https://cdnapisec.kaltura.com/p/2103181/embedPlaykitJs/uiconf_id/53345422?iframeembed=true&amp;entry_id=1_wtvvha2u&amp;config%5Bprovider%5D=%7B%22widgetId%22%3A%221_kcj094x4%22%7D&amp;config%5Bplayback%5D=%7B%22startTime%22%3A0%7D" title="Vertical test">
         </iframe>
+       </div>
       </div>
-    </div>
-
-     <div class="video-wrapper">
-      <div class="video-inner"  data-aos="zoom-in" data-aos-delay="900">
-        <iframe
-          src="https://cdnapisec.kaltura.com/p/2103181/embedPlaykitJs/uiconf_id/53345422?iframeembed=true&amp;entry_id=1_703rxxg1&amp;config%5Bprovider%5D=%7B%22widgetId%22%3A%221_bjkwowit%22%7D&amp;config%5Bplayback%5D=%7B%22startTime%22%3A0%7D"
-          allowfullscreen
-          allow="autoplay *; fullscreen *; encrypted-media *"
-          sandbox="allow-same-origin allow-scripts allow-popups allow-presentation"
-          title="Vertical test">
+      <div class="video-wrapper">
+       <div class="video-inner" data-aos="zoom-in" data-aos-delay="900">
+        <iframe allow="autoplay *; fullscreen *; encrypted-media *" allowfullscreen="" sandbox="allow-same-origin allow-scripts allow-popups allow-presentation" src="https://cdnapisec.kaltura.com/p/2103181/embedPlaykitJs/uiconf_id/53345422?iframeembed=true&amp;entry_id=1_703rxxg1&amp;config%5Bprovider%5D=%7B%22widgetId%22%3A%221_bjkwowit%22%7D&amp;config%5Bplayback%5D=%7B%22startTime%22%3A0%7D" title="Vertical test">
         </iframe>
+       </div>
       </div>
+     </div>
     </div>
-  </div>
-
+   </div>
+   <div class="contents-container">
+    <div class="copy-container">
+     <h3 class="rank">
+      Keeping you safe
+     </h3>
+     <p>
+      SafeZone is a free app for students which provides round-the-clock safety reassurance from your phone. Using the app, you can alert University Security Services if you ever need help while on campus.
+     </p>
+     <hr/>
+     <p class="intro">
+      Sport &amp; Physical Activity at Sheffield
+     </p>
+     <p>
+      We have 60+ clubs, from American football and boxing to mountaineering. Complete beginner, playing for fun or elite athletes — University Sport &amp; Physical Activity Sheffield has you covered.
+     </p>
+     <h3 class="rank">
+      Facilities at a glance
+     </h3>
+     <p>
+      <ul>
+       <li>
+        45 acres of grass pitches
+       </li>
+       <li>
+        Six synthetic pitches
+       </li>
+       <li>
+        Multi-purpose sports hall
+       </li>
+       <li>
+        New 180-piece multi-storey gym
+       </li>
+       <li>
+        Dedicated strength and conditioning room
+       </li>
+       <li>
+        Three squash courts
+       </li>
+       <li>
+        Two fitness studios
+       </li>
+       <li>
+        Indoor cycling studio
+       </li>
+      </ul>
+     </p>
+     <hr/>
+     <p class="intro">
+      Number one Students’ Union in the UK
+     </p>
+     <p>
+      Ethical, sustainable and representing you, Sheffield Students’ Union is powered by students. It gives you a say on everything from the disposable coffee cup levy to the bigger picture of University policy. It’s run by a team of student representatives, including a Postgraduate Committee and a dedicated Postgraduate Students’ Officer.
+     </p>
+     <p>
+      It’s also where you’ll find some of the best gigs, events and nights out in the city — and many of our support services. No wonder students voted it the best SU seven years running.
+     </p>
     </div>
-</div>
-<div class="contents-container">
-  <div class="copy-container">
-    <h3 class="rank">Keeping you safe</h3>
- <p>SafeZone is a free app for students which provides round-the-clock safety reassurance from your phone. Using the app, you can alert University Security Services if you ever need help while on campus.</p>
- <hr />
- <p class="intro">Sport & Physical Activity at Sheffield</p> 
- <p>We have 60+ clubs, from American football and boxing to mountaineering. Complete beginner, playing for fun or elite athletes — University Sport & Physical Activity Sheffield has you covered.</p>
- <h3 class="rank">Facilities at a glance</h3>
- <p>
-  <ul>
-    <li>45 acres of grass pitches</li>
-    <li>Six synthetic pitches</li>
-    <li>Multi-purpose sports hall</li>
-    <li>New 180-piece multi-storey gym</li>
-    <li>Dedicated strength and conditioning room</li>
-    <li>Three squash courts</li>
-    <li>Two fitness studios</li>
-    <li>Indoor cycling studio</li>
-  </ul>
-</p>
-<hr />
-<p class="intro">Number one Students’ Union in the UK</p> 
-<p>Ethical, sustainable and representing you, Sheffield Students’ Union is powered by students. It gives you a say on everything from the disposable coffee cup levy to the bigger picture of University policy. It’s run by a team of student representatives, including a Postgraduate Committee and a dedicated Postgraduate Students’ Officer.</p>
-<p>It’s also where you’ll find some of the best gigs, events and nights out in the city — and many of our support services. No wonder students voted it the best SU seven years running.</p> 
-</div>
-</div>
- <div class="full-width-content-container">
-  <div class="quote-container-green" data-aos="fade-up">
-        <div class="quote-content">
-    <div class="quote-title">Your Students’ Union</div>
-    <div class="quote-text">
-<p>During my time as Postgraduate Officer, I’ve established a Postgraduate Welcome Week, ran the first Postgraduate Ball and trialled the first postgraduate taught student forum.</p>
-<p>Your Students’ Union has a dedicated Postgraduate Officer. They represent and promote the views of postgraduate students across both the Students’ Union and the University.</p>
-<p>Postgraduate Welcome Week is the first week of October, with a range of activities run by the Students’ Union to enable postgraduates to meet one another. Give It A Go also runs activities especially for postgraduates to allow you to meet others.</p>    
-<hr />
-</div>
-     <div class="quote-attribution">
-  <img src="Louise.png" alt="Louise Stevenson" class="avatar" />
-  <div class="text-info">
-    <div class="name">Louise Stevenson</div>
-    <div class="course">Postgraduate Officer</div>
-  </div>
-</div>
-    </div>
-</div>
-</div>
-<div class="contents-container">
-  <div class="copy-container">
-    <div class="pagination-nav">
-  <div class="pagination-item pagination-prev">
-    <span class="pagination-label">← Previous</span>
-    <a href="pg-support.html">Daily support</a>
-  </div>
-  <div class="pagination-item pagination-next">
-    <span class="pagination-label">Next →</span>
-    <a href="pg-careers.html">Career progression</a>
-  </div>
-</div>
-  </div>
-</div>
-
+   </div>
+   <div class="full-width-content-container">
+    <div class="quote-container-green" data-aos="fade-up">
+     <div class="quote-content">
+      <div class="quote-title">
+       Your Students’ Union
+      </div>
+      <div class="quote-text">
+       <p>
+        During my time as Postgraduate Officer, I’ve established a Postgraduate Welcome Week, ran the first Postgraduate Ball and trialled the first postgraduate taught student forum.
+       </p>
+       <p>
+        Your Students’ Union has a dedicated Postgraduate Officer. They represent and promote the views of postgraduate students across both the Students’ Union and the University.
+       </p>
+       <p>
+        Postgraduate Welcome Week is the first week of October, with a range of activities run by the Students’ Union to enable postgraduates to meet one another. Give It A Go also runs activities especially for postgraduates to allow you to meet others.
+       </p>
+       <hr/>
+      </div>
+      <div class="quote-attribution">
+       <img alt="Louise Stevenson" class="avatar" src="louise.png">
+        <div class="text-info">
+         <div class="name">
+          Louise Stevenson
+         </div>
+         <div class="course">
+          Postgraduate Officer
+         </div>
         </div>
-  
-</div>
-
-     
-    
-    
-       
-        </div>
-        
-</div>
+       </img>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="contents-container">
+    <div class="copy-container">
+     <div class="pagination-nav">
+      <div class="pagination-item pagination-prev">
+       <span class="pagination-label">
+        ← Previous
+       </span>
+       <a href="pg-support.html">
+        Daily support
+       </a>
+      </div>
+      <div class="pagination-item pagination-next">
+       <span class="pagination-label">
+        Next →
+       </span>
+       <a href="pg-careers.html">
+        Career progression
+       </a>
+      </div>
+     </div>
+    </div>
+   </div>
   </section>
-    <div class="cta-wrapper">
-  <div class="cta-container">
-    <a href="https://www.sheffield.ac.uk/postgraduate/taught" class="cta-button" data-aos="zoom-in">Search for a course</a>
-    <a href="https://www.sheffield.ac.uk/postgraduate/visit/events" class="cta-button" data-aos="zoom-in" data-aos-delay="300">Book an open day</a>
-    <a href="https://www.sheffield.ac.uk/postgraduate/register-your-interest" class="cta-button" data-aos="zoom-in" data-aos-delay="600">Register your interest</a>
+  <div class="cta-wrapper">
+   <div class="cta-container">
+    <a class="cta-button" data-aos="zoom-in" href="https://www.sheffield.ac.uk/postgraduate/taught">
+     Search for a course
+    </a>
+    <a class="cta-button" data-aos="zoom-in" data-aos-delay="300" href="https://www.sheffield.ac.uk/postgraduate/visit/events">
+     Book an open day
+    </a>
+    <a class="cta-button" data-aos="zoom-in" data-aos-delay="600" href="https://www.sheffield.ac.uk/postgraduate/register-your-interest">
+     Register your interest
+    </a>
+   </div>
   </div>
-</div>
-    <footer class="footer">
-    <div class="footer-content">
-      
-          
-      
-     
-   
+  <footer class="footer">
+   <div class="footer-content">
     <div class="footer-bottom">
-        <div class="footer-awards">
-          <img src="top100.png" alt="World Top 100 University">
-          <img src="russellgroup.png" alt="Russell Group">
-          <img src="uoty.png" alt="University of the Year 2024">
-          <img src="queens.png" alt="Queen's Anniversary Prize">
-        </div>
-        </div>
-      </div>
+     <div class="footer-awards">
+      <img alt="World Top 100 University" src="top100.png"/>
+      <img alt="Russell Group" src="russellgroup.png"/>
+      <img alt="University of the Year 2024" src="uoty.png"/>
+      <img alt="Queen's Anniversary Prize" src="queens.png"/>
+     </div>
     </div>
+   </div>
   </footer>
-   <script>
-
-        // Modify event listener to avoid unintended closing of the modal on touch
-document.querySelector('.prev').addEventListener('touchstart', (e) => {
-    e.stopPropagation(); // Prevent touch from bubbling and triggering modal close
-    changeImage(-1);
-});
-
-document.querySelector('.next').addEventListener('touchstart', (e) => {
-    e.stopPropagation(); // Prevent touch from bubbling and triggering modal close
-    changeImage(1);
-});
-
-// Prevent modal from closing when touching inside it
-document.querySelector('.modal-content-container').addEventListener('touchstart', (e) => {
-    e.stopPropagation();
-});
-
-
- // Array of images for the gallery with titles and descriptions
-const images = [
-    {src: 'steph.jpg', title: 'Steph Massey', description: 'Steph Massey graduated with a degree in Business Management in 2022. She is now working on a HR graduate scheme at TikTok.'},
-    {src: 'aaron.jpeg.jpg', title: 'Aaron Probert', description: 'Since graduating in 2019, Aaron has been hard at work bringing together his social enterprise, Labre’s Hope. He has partnered with leading charitable organisations and won £500,000 of UK Government funding.'},
-    {src: 'helen.jpg', title: 'Helen Monks', description: 'School of English graduate Helen Monks is a writer and actor, known for her roles in Raised by Wolves and Upstart Crow.'},
-    {src: 'yash.jpg', title: 'Yash Bordia', description: 'Computer Science BSc graduate Yash Bordia works at PayPal within their UK Enterprise Integrations Team, assisting large enterprise merchants integrate PayPal solutions into their businesses.'},
-];
-let currentIndex = 0;
-
-
-// Debounce function to prevent rapid calls
-function debounce(func, delay) {
-    let timeout;
-    return function (...args) {
-        clearTimeout(timeout);
-        timeout = setTimeout(() => func.apply(this, args), delay);
-    };
-}
-
-// Debounced changeImage function to avoid double navigation
-const changeImage = debounce((direction) => {
-    currentIndex = (currentIndex + direction + images.length) % images.length;
-    updateModal();
-}, 100); // 100ms debounce delay
-
-// Change the main image on thumbnail click
-function changeMainImage(index) {
-    const image = images[index];
-    document.getElementById("mainImage").src = image.src;
-    document.getElementById("mainImage").setAttribute("onclick", `openModal(${index})`);
-}
-
-// Open the modal with the selected image
-function openModal(index) {
-    currentIndex = index;
-    updateModal();
-    const modal = document.getElementById("imageModal");
-    modal.style.display = "flex";
-    modal.setAttribute("aria-hidden", "false");
-    modal.focus();
-}
-
-// Close the modal and return focus to the main image
-function closeModal() {
-    const modal = document.getElementById("imageModal");
-    modal.style.display = "none";
-    modal.setAttribute("aria-hidden", "true");
-    document.getElementById("mainImage").focus();
-}
-
-// Update modal content based on the current image index
-function updateModal() {
-    const image = images[currentIndex];
-    document.getElementById("modalImage").src = image.src;
-    document.getElementById("imageTitle").innerText = image.title;
-    document.getElementById("imageDescription").innerText = image.description;
-
-    // Update the image counter
-    document.getElementById("imageCounter").innerText = `${currentIndex + 1} of ${images.length}`;
-}
-
-// Handle Enter key to open modal on thumbnails
-function handleKeyOpenModal(event, index) {
-    if (event.key === 'Enter') {
-        openModal(index);
-    }
-}
-
-// Handle Enter key to change main image from thumbnails
-function handleKeyChangeMainImage(event, index) {
-    if (event.key === 'Enter') {
-        changeMainImage(index);
-    }
-}
-
-// Swipe detection for mobile navigation
-let touchStartX = 0;
-let touchEndX = 0;
-
-function handleGesture() {
-    if (touchEndX < touchStartX) {
-        changeImage(1); // Swipe left to move to next image
-    }
-    if (touchEndX > touchStartX) {
-        changeImage(-1); // Swipe right to move to previous image
-    }
-}
-
-document.getElementById("imageModal").addEventListener("touchstart", (e) => {
-    touchStartX = e.changedTouches[0].screenX;
-});
-
-document.getElementById("imageModal").addEventListener("touchend", (e) => {
-    touchEndX = e.changedTouches[0].screenX;
-    handleGesture();
-});
-
-// Prevent modal from closing when clicking inside the content container
-document.querySelector('.modal-content-container').addEventListener('click', (e) => {
-    e.stopPropagation();
-});
-
-// Use pointerdown for reliable navigation button interaction without double events
-document.querySelector('.prev').addEventListener('pointerdown', (e) => {
-    e.stopPropagation();
-    changeImage(-1);
-});
-
-document.querySelector('.next').addEventListener('pointerdown', (e) => {
-    e.stopPropagation();
-    changeImage(1);
-});
-
-// Global function to initialize keyboard accessibility on page load
-function initializeGalleryAccessibility() {
-    // Get all thumbnails and add 'keydown' event listeners for Enter key
-    const thumbnails = document.querySelectorAll('.thumbnail');
-    thumbnails.forEach((thumbnail, index) => {
-        thumbnail.setAttribute('tabindex', '0');
-        thumbnail.addEventListener('keydown', (event) => handleKeyChangeMainImage(event, index));
-        thumbnail.addEventListener('click', () => changeMainImage(index)); // Restore click functionality
-    });
-
-    // Set tabindex and keydown event for the main image to open modal
-    const mainImage = document.getElementById("mainImage");
-    mainImage.setAttribute('tabindex', '0');
-    mainImage.addEventListener('keydown', (event) => handleKeyOpenModal(event, currentIndex));
-}
-
-// Global keyboard event listener for modal navigation
-document.addEventListener('keydown', (event) => {
-    const modal = document.getElementById("imageModal");
-
-    // Only respond to keys if the modal is open
-    if (modal.style.display === "flex") {
-        if (event.key === 'Escape') {
-            closeModal();
-        } else if (event.key === 'ArrowRight') {
-            changeImage(1);
-        } else if (event.key === 'ArrowLeft') {
-            changeImage(-1);
-        }
-    }
-});
-
-// Call initialize function when the page loads
-window.onload = initializeGalleryAccessibility;
-    </script>
-    <script>
-        function setSliderView() {
-            const container = document.getElementById('sliderContainer');
-            const navContainer = document.querySelector('.slider-nav-container');
-        
-            container.classList.remove('testimonial-grid');
-            navContainer.classList.remove('hidden'); // Show nav container in slider view
-        }
-        
-        function setGridView() {
-            const container = document.getElementById('sliderContainer');
-            const navContainer = document.querySelector('.slider-nav-container');
-        
-            container.classList.add('testimonial-grid');
-            navContainer.classList.add('hidden'); // Hide nav container in grid view
-        }
-        
-        
-            </script>
-             <!-- JavaScript -->
+  <!-- JavaScript -->
   <script>
-    const menu = document.getElementById("menu");
+   const menu = document.getElementById("menu");
     const toggleBtn = document.getElementById("menuToggle");
 
     function toggleMenu() {
@@ -583,13 +504,46 @@ window.onload = initializeGalleryAccessibility;
       }
     });
   </script>
-<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-<script>
-  AOS.init({
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js">
+  </script>
+  <script>
+   AOS.init({
     duration: 600,
     once: true
   });
-</script>
-
-</body>
+  </script>
+  <script>
+   // Load the YouTube API
+        let player;
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('videoPlayer', {
+                events: {
+                    'onReady': onPlayerReady
+                }
+            });
+        }
+    
+        function onPlayerReady(event) {
+            console.log("Player is ready");
+        }
+    
+        function navigateToTime(seconds) {
+            if (player && typeof player.seekTo === 'function') {
+                player.seekTo(seconds, true);  // Seek to the specified time and autoplay
+            }
+        }
+    
+        // Toggle the visibility of the chapters on mobile
+        function toggleChapters() {
+            const chapterLinks = document.getElementById('chapterLinks');
+            chapterLinks.classList.toggle('open');
+        }
+    
+        // Add YouTube IFrame API script
+        var tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  </script>
+ </body>
 </html>
