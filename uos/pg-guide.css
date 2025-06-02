@@ -53,11 +53,12 @@ background-repeat: repeat-x;
 }
 
 .image-container img{
-  max-width: 800px;
+  max-width: 100%;
 }
 
 .image-container {
   margin-bottom: 1rem;
+  max-width: 800px;
 }
 
 .copy-container {
