@@ -218,6 +218,13 @@ p.intro {
   scroll-snap-type: x mandatory;
 }
 
+.cta-wrapper h2 {
+  font-family: 'source-serif-pro';
+  font-weight: 700;
+  text-align: center;
+  font-size: 1.6rem;
+}
+
 .video-wrapper {
   flex: 1 1 0;
   scroll-snap-align: start;
