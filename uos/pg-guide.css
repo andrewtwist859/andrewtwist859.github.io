@@ -48,8 +48,16 @@ background-repeat: repeat-x;
     text-align: center;
 }
 
-.gallery-container, .video-container, .copy-container {
+.gallery-container, .video-container, .copy-container, .image-container {
     margin: 0 auto;
+}
+
+.image-container img{
+  max-width: 800px;
+}
+
+.image-container {
+  margin-bottom: 1rem;
 }
 
 .copy-container {
@@ -234,6 +242,8 @@ p.intro {
       height: 100%;
       border: 0;
     }
+
+    
 
 .menu-overlay .container h1 a {
      font-family: 'source-serif-pro';
