@@ -238,10 +238,6 @@ p.intro {
 .menu-overlay .container h1 a {
      font-family: 'source-serif-pro';
      font-weight: 700;
-     color: white;
-     background-color: #24125E;
-     padding: 1rem 2rem;
-     display: inline-block;
     }
 
     .cta-wrapper {

@@ -61,18 +61,13 @@
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1rem;
   padding-bottom: 2rem;
   box-sizing: border-box;
-  padding-top: ;
 }
 
 .menu-overlay .container {
   -webkit-overflow-scrolling: touch;
-}
-
-.menu-item {
-      margin-left: 1rem;
 }
 
     .menu-item a {
