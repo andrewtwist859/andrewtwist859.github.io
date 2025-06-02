@@ -217,8 +217,49 @@
       Where you live can shape your whole postgraduate experience. We’re here to help you find somewhere safe, supported and suited to your life and study goals.
      </p>
      </div>
-        <div class="image-container">
-     <img data-aos="fade-zoom-in" src="accom21.png"/></div>
+     <div class="gallery-container">
+            <div class="main-image-container">
+                <img id="mainImage" src="accom21.png" class="main-image" alt="Main image" onclick="openModal(0)">
+                <!-- SVG Overlay Icon -->
+                <div class="icon-overlay">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                        <path d="M344 0L488 0c13.3 0 24 10.7 24 24l0 144c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-39-39-87 87c-9.4 9.4-24.6 9.4-33.9 0l-32-32c-9.4-9.4-9.4-24.6 0-33.9l87-87L327 41c-6.9-6.9-8.9-17.2-5.2-26.2S334.3 0 344 0zM168 512L24 512c-13.3 0-24-10.7-24-24L0 344c0-9.7 5.8-18.5 14.8-22.2s19.3 1.7 26.2 5.2l39 39 87-87c9.4 9.4 24.6 9.4 33.9 0l32 32c9.4 9.4 9.4 24.6 0 33.9l-87 87 39 39c6.9 6.9 8.9 17.2 5.2 26.2s-12.5 14.8-22.2 14.8z"/>
+                    </svg>
+                </div>
+            </div>
+            <!-- Thumbnail Container -->
+            <div class="thumbnail-container">
+                <img src="accom21.png" class="thumbnail" alt="Thumbnail 1: The Wave" 
+                     tabindex="0" role="button" onclick="changeMainImage(0)"
+                     aria-label="Thumbnail 1" onkeydown="handleKeyChangeMainImage(event, 0)">
+                <img src="accom1.jpg" class="thumbnail" alt="Thumbnail 2: Teaching spaces" 
+                     tabindex="0" role="button" onclick="changeMainImage(1)"
+                     aria-label="Thumbnail 2" onkeydown="handleKeyChangeMainImage(event, 1)">
+                <img src="su3.jpg" class="thumbnail" alt="Thumbnail 3: Edit suites" 
+                     tabindex="0" role="button" onclick="changeMainImage(2)"
+                     aria-label="Thumbnail 3" onkeydown="handleKeyChangeMainImage(event, 2)">
+                <img src="accom4.jpg" class="thumbnail" alt="Thumbnail 4: Research" 
+                     tabindex="0" role="button" onclick="changeMainImage(3)"
+                     aria-label="Thumbnail 4" onkeydown="handleKeyChangeMainImage(event, 3)">
+            </div>
+        </div>    
+        <!-- Modal -->
+        <div id="imageModal" class="modal" tabindex="-1" role="dialog" aria-modal="true" 
+             aria-labelledby="imageTitle" aria-describedby="imageDescription" onclick="closeModal()">
+             <span class="close" onclick="closeModal()" tabindex="0" role="button" aria-label="Close modal">&times;</span>
+     <div class="modal-content-container">
+                <div class="image-counter" id="imageCounter"></div>
+                <span class="prev" onclick="changeImage(-1)" tabindex="0" role="button" aria-label="Previous image"
+                      onkeydown="handleKeyChangeImage(event, -1)">&#10094;</span>
+                <img id="modalImage" class="modal-content" alt="Modal Image">
+                <span class="next" onclick="changeImage(1)" tabindex="0" role="button" aria-label="Next image"
+                      onkeydown="handleKeyChangeImage(event, 1)">&#10095;</span>
+                <div class="description-panel">
+                    <h3 id="imageTitle">Image Title</h3>
+                    <p id="imageDescription">Image Description</p>
+                </div>
+            </div>
+        </div> 
      <div class="copy-container">
      <h3 class="rank">
       You are guaranteed a home
@@ -342,10 +383,10 @@ document.querySelector('.modal-content-container').addEventListener('touchstart'
 
  // Array of images for the gallery with titles and descriptions
 const images = [
-    {src: 'steph.jpg', title: 'Steph Massey', description: 'Steph Massey graduated with a degree in Business Management in 2022. She is now working on a HR graduate scheme at TikTok.'},
-    {src: 'aaron.jpeg.jpg', title: 'Aaron Probert', description: 'Since graduating in 2019, Aaron has been hard at work bringing together his social enterprise, Labre’s Hope. He has partnered with leading charitable organisations and won £500,000 of UK Government funding.'},
-    {src: 'helen.jpg', title: 'Helen Monks', description: 'School of English graduate Helen Monks is a writer and actor, known for her roles in Raised by Wolves and Upstart Crow.'},
-    {src: 'yash.jpg', title: 'Yash Bordia', description: 'Computer Science BSc graduate Yash Bordia works at PayPal within their UK Enterprise Integrations Team, assisting large enterprise merchants integrate PayPal solutions into their businesses.'},
+    {src: 'accom21.png', title: 'Steph Massey', description: 'Steph Massey graduated with a degree in Business Management in 2022. She is now working on a HR graduate scheme at TikTok.'},
+    {src: 'accom1.jpg', title: 'Aaron Probert', description: 'Since graduating in 2019, Aaron has been hard at work bringing together his social enterprise, Labre’s Hope. He has partnered with leading charitable organisations and won £500,000 of UK Government funding.'},
+    {src: 'su3.jpg', title: 'Helen Monks', description: 'School of English graduate Helen Monks is a writer and actor, known for her roles in Raised by Wolves and Upstart Crow.'},
+    {src: 'accom4.jpg', title: 'Yash Bordia', description: 'Computer Science BSc graduate Yash Bordia works at PayPal within their UK Enterprise Integrations Team, assisting large enterprise merchants integrate PayPal solutions into their businesses.'},
 ];
 let currentIndex = 0;
 
