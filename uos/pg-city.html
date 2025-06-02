@@ -1,22 +1,27 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8" />
-    <title>City guide</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link rel="stylesheet" href="menu.css"> 
-    <link rel="stylesheet" href="https://use.typekit.net/jou7rrz.css">
-        <link rel="stylesheet" href="https://use.typekit.net/hvq7yfy.css">
-        <link rel="stylesheet" href="gallery.css">
-        <link rel="stylesheet" href="video.css">
-        <link rel="stylesheet" href="testimonials-wide.css">
-        <link rel="stylesheet" href="footer.css"> 
-        <link rel="stylesheet" href="quotes.css"> 
-        <link rel="stylesheet" href="pg-guide.css"> 
-        <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
-        <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-<style>
-.su-main-text, .su-sub-text, .su-container p {
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <title>
+   City guide
+  </title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <link href="favicon.ico" rel="icon" sizes="any"/>
+  <link href="favicon.svg" rel="icon" type="image/svg+xml"/>
+  <link href="menu.css" rel="stylesheet"/>
+  <link href="https://use.typekit.net/jou7rrz.css" rel="stylesheet"/>
+  <link href="https://use.typekit.net/hvq7yfy.css" rel="stylesheet"/>
+  <link href="gallery.css" rel="stylesheet"/>
+  <link href="video.css" rel="stylesheet"/>
+  <link href="testimonials-wide.css" rel="stylesheet"/>
+  <link href="footer.css" rel="stylesheet"/>
+  <link href="quotes.css" rel="stylesheet"/>
+  <link href="pg-guide.css" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet"/>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js">
+  </script>
+  <style>
+   .su-main-text, .su-sub-text, .su-container p {
     text-align: center;
 }
 
@@ -54,405 +59,345 @@
     font-family: 'source-serif-pro';
     font-weight: 700;
   }
-
-</style>
-    </head>
-<body>
-     <!-- Navbar -->
- <header class="navbar">
-    <div class="container">
-      <a href="pg-home.html"><div class="logo">
-        <img src="logo.png" alt="University of Sheffield">
-      </div></a>
-      <button class="hamburger" id="menuToggle" aria-haspopup="dialog" aria-expanded="false" aria-controls="menu">☰</button>
-    </div>
+  </style>
+ </head>
+ <body>
+  <!-- Navbar -->
+  <header class="navbar">
+   <div class="container">
+    <a href="pg-home.html">
+     <div class="logo">
+      <img alt="University of Sheffield" src="logo.png"/>
+     </div>
+    </a>
+    <button aria-controls="menu" aria-expanded="false" aria-haspopup="dialog" class="hamburger" id="menuToggle">
+     ☰
+    </button>
+   </div>
   </header>
-
   <!-- Fade-in Overlay Menu -->
-  <div class="menu-overlay" id="menu" role="dialog" aria-modal="true" aria-labelledby="menuHeading">
-    <div class="container">
-          <h1><a href="pg-home.html">Postgraduate study guide 2025-26</a></h1>
-      <div class="menu-item">
-        <a href="pg-uni.html">
-          <h2 id="menuHeading">Study at the University of the Year</h2>
-          <p>Why study at Sheffield?</p>
-        </a>
-      </div>
-
-      <div class="menu-item">
-        <a href="pg-learning.html">
-          <h2>Learning patterns designed around you</h2>
-          <p>How you will learn at Sheffield</p>
-        </a>
-      </div>
-
-      <div class="menu-item">
-        <a href="pg-fees.html">
-          <h2>Postgraduate funding</h2>
-          <p>Your finance guide</p>
-        </a>
-      </div>
-
-         <div class="menu-item">
-        <a href="pg-apply.html">
-          <h2>Apply</h2>
-          <p>Steps and key dates</p>
-        </a>
-      </div>
-
-       <div class="menu-item">
-        <a href="pg-visit.html">
-          <h2>Visit</h2>
-          <p>See what it’s like to study at Sheffield</p>
-        </a>
-      </div>
-
-      <div class="menu-item">
-        <a href="pg-cost.html">
-          <h2>Cost of living</h2>
-          <p>A city you can afford to enjoy</p>
-        </a>
-      </div>
-
-        <div class="menu-item">
-        <a href="pg-city.html">
-          <h2>City guide</h2>
-          <p>An extraordinary place to live and study</p>
-        </a>
-      </div>
-
-      <div class="menu-item">
-        <a href="pg-accommodation.html">
-          <h2>Accommodation options</h2>
-          <p>Finding your new home</p>
-        </a>
-      </div>
-
-      <div class="menu-item">
-        <a href="pg-support.html">
-          <h2>Daily support</h2>
-          <p>Your wellbeing matters</p>
-        </a>
-      </div>
-
-      <div class="menu-item">
-        <a href="pg-community.html">
-          <h2>Community</h2>
-          <p>Everyone is welcome</p>
-        </a>
-      </div>
-
-      <div class="menu-item">
-        <a href="pg-careers.html">
-          <h2>Career progression</h2>
-          <p>Focused on your future</p>
-        </a>
-      </div>
+  <div aria-labelledby="menuHeading" aria-modal="true" class="menu-overlay" id="menu" role="dialog">
+   <div class="container">
+    <h1>
+     <a href="pg-home.html">
+      Postgraduate study guide 2025-26
+     </a>
+    </h1>
+    <div class="menu-item">
+     <a href="pg-uni.html">
+      <h2 id="menuHeading">
+       Study at the University of the Year
+      </h2>
+      <p>
+       Why study at Sheffield?
+      </p>
+     </a>
     </div>
+    <div class="menu-item">
+     <a href="pg-learning.html">
+      <h2>
+       Learning patterns designed around you
+      </h2>
+      <p>
+       How you will learn at Sheffield
+      </p>
+     </a>
+    </div>
+    <div class="menu-item">
+     <a href="pg-fees.html">
+      <h2>
+       Postgraduate funding
+      </h2>
+      <p>
+       Your finance guide
+      </p>
+     </a>
+    </div>
+    <div class="menu-item">
+     <a href="pg-apply.html">
+      <h2>
+       Apply
+      </h2>
+      <p>
+       Steps and key dates
+      </p>
+     </a>
+    </div>
+    <div class="menu-item">
+     <a href="pg-visit.html">
+      <h2>
+       Visit
+      </h2>
+      <p>
+       See what it’s like to study at Sheffield
+      </p>
+     </a>
+    </div>
+    <div class="menu-item">
+     <a href="pg-cost.html">
+      <h2>
+       Cost of living
+      </h2>
+      <p>
+       A city you can afford to enjoy
+      </p>
+     </a>
+    </div>
+    <div class="menu-item">
+     <a href="pg-city.html">
+      <h2>
+       City guide
+      </h2>
+      <p>
+       An extraordinary place to live and study
+      </p>
+     </a>
+    </div>
+    <div class="menu-item">
+     <a href="pg-accommodation.html">
+      <h2>
+       Accommodation options
+      </h2>
+      <p>
+       Finding your new home
+      </p>
+     </a>
+    </div>
+    <div class="menu-item">
+     <a href="pg-support.html">
+      <h2>
+       Daily support
+      </h2>
+      <p>
+       Your wellbeing matters
+      </p>
+     </a>
+    </div>
+    <div class="menu-item">
+     <a href="pg-community.html">
+      <h2>
+       Community
+      </h2>
+      <p>
+       Everyone is welcome
+      </p>
+     </a>
+    </div>
+    <div class="menu-item">
+     <a href="pg-careers.html">
+      <h2>
+       Career progression
+      </h2>
+      <p>
+       Focused on your future
+      </p>
+     </a>
+    </div>
+   </div>
   </div>
   <section class="header-banner">
-    <div class="full-width-container">
-        <div class="contents-container">
-            <h2 class="hotmess">City guide</h2>
-      </div>
-      </div>
+   <div class="full-width-container">
+    <div class="contents-container">
+     <h2 class="hotmess">
+      City guide
+     </h2>
+    </div>
+   </div>
   </section>
   <section class="main-content">
-<div class="contents-container">
+   <div class="contents-container">
     <div class="copy-container">
-        <p class="intro">Sheffield is an extraordinary place to live and study</p>
- <p>As one of the major cities in the UK, Sheffield is a safe, affordable, creative and welcoming place.</p>
- </div>
-   <div class="video-container" data-aos="fade-in">
-        <!-- Responsive YouTube Video Embed -->
-        <div class="responsive-iframe-container">
-            <iframe id="videoPlayer" 
-                src="https://www.youtube.com/embed/NRZWX5VDn4I?enablejsapi=1"
-                title="YouTube video player" frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
-            </iframe>
-        </div>
-    
-        <!-- Navigation Panel Anchored Directly Below the Video -->
-        <div class="chapter-links" id="chapterLinks">
-            <h3 onclick="toggleChapters()">Explore this video
-                <!-- SVG Icon for dropdown toggle -->
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="#7000FF"><path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/></svg>
-            </h3>
-            <div class="chapters">
-                <div class="chapter"><span class="time" onclick="navigateToTime(0)">00:00</span> - Introduction</div>
-                <div class="chapter"><span class="time" onclick="navigateToTime(14)">00:14</span> - Reasons to choose Sheffield</div>
-                <div class="chapter"><span class="time" onclick="navigateToTime(75)">01:15</span> - Division Street</div>
-                <div class="chapter"><span class="time" onclick="navigateToTime(123)">02:03</span> - The Moor</div>
-                <div class="chapter"><span class="time" onclick="navigateToTime(192)">03:12</span> - Meadowhall</div>
-                <div class="chapter"><span class="time" onclick="navigateToTime(203)">03:23</span> - Kelham Island</div>
-                <div class="chapter"><span class="time" onclick="navigateToTime(252)">04:12</span> - Sharrow Vale</div>
-                <div class="chapter"><span class="time" onclick="navigateToTime(318)">05:18</span> - London Road</div>
-                <div class="chapter"><span class="time" onclick="navigateToTime(355)">05:55</span> - Broomhill</div>
-                <div class="chapter"><span class="time" onclick="navigateToTime(390)">06:30</span> - Crookes</div>
-                <div class="chapter"><span class="time" onclick="navigateToTime(417)">06:57</span> - Conclusion</div>
-            </div>
-        </div>
+     <p class="intro">
+      Sheffield is an extraordinary place to live and study
+     </p>
+     <p>
+      As one of the major cities in the UK, Sheffield is a safe, affordable, creative and welcoming place.
+     </p>
     </div>
-       <div class="copy-container">
- <h3 class="rank">A student city</h3>
- <p>Almost 60,000 students from all over the world call Sheffield home.</p>
- <h3 class="rank">Culture</h3>
- <p>With major festivals, street art trails and the largest theatre complex outside of London, there’s something for everyone.</p>
- <h3 class="rank">Best student life</h3>
- <p>Whatuni Student Choice Awards 2024</p>
- <h3 class="rank">A foodie capital</h3>
- <p>From thriving independents to Europe’s largest purpose built food hall, Sheffield was named as the UK’s best foodie hotspot in 2023.</p>
-  <h3 class="rank">Get out and about</h3>
- <p>Our compact city is easy to get around and walkable. And because Sheffield is located in the centre of the UK, it’s well connected to other major cities and airports.</p>
-  <h3 class="rank">The outdoor city</h3>
- <p>Hike, climb or ride through one of the greenest cities in Europe with the Peak District National Park on your doorstep.</p>
-
- <div class="su-container" data-aos="fade-in">
-        <div class="su-main-text">Further information</div>
-    <div class="su-sub-text"><p><a href="https://www.sheffield.ac.uk/postgraduate/alumni-discount">Guide to Sheffield</a></p></div>
-    </div>
-    <div class="pagination-nav">
-  <div class="pagination-item pagination-prev">
-    <span class="pagination-label">← Previous</span>
-    <a href="pg-cost.html">Cost of living</a>
-  </div>
-  <div class="pagination-item pagination-next">
-    <span class="pagination-label">Next →</span>
-    <a href="pg-accommodation.html">Accommodation options</a>
-  </div>
-</div>
-</div>
-</div>
-
-
-        </div>
-  
-</div>
-
-     
-    
-    
-       
-        </div>
-        
-</div>
-  </section>
-    <div class="cta-wrapper">
-  <div class="cta-container">
-    <a href="https://www.sheffield.ac.uk/postgraduate/taught" class="cta-button" data-aos="zoom-in">Search for a course</a>
-    <a href="https://www.sheffield.ac.uk/postgraduate/visit/events" class="cta-button" data-aos="zoom-in" data-aos-delay="300">Book an open day</a>
-    <a href="https://www.sheffield.ac.uk/postgraduate/register-your-interest" class="cta-button" data-aos="zoom-in" data-aos-delay="600">Register your interest</a>
-  </div>
-</div>
-    <footer class="footer">
-    <div class="footer-content">
-      
-          
-      
-     
-   
-    <div class="footer-bottom">
-        <div class="footer-awards">
-          <img src="top100.png" alt="World Top 100 University">
-          <img src="russellgroup.png" alt="Russell Group">
-          <img src="uoty.png" alt="University of the Year 2024">
-          <img src="queens.png" alt="Queen's Anniversary Prize">
-        </div>
-        </div>
+    <div class="video-container" data-aos="fade-in">
+     <!-- Responsive YouTube Video Embed -->
+     <div class="responsive-iframe-container">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" frameborder="0" id="videoPlayer" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/NRZWX5VDn4I?enablejsapi=1" title="YouTube video player">
+      </iframe>
+     </div>
+     <!-- Navigation Panel Anchored Directly Below the Video -->
+     <div class="chapter-links" id="chapterLinks">
+      <h3 onclick="toggleChapters()">
+       Explore this video
+       <!-- SVG Icon for dropdown toggle -->
+       <svg fill="#7000FF" viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">
+        <path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z">
+        </path>
+       </svg>
+      </h3>
+      <div class="chapters">
+       <div class="chapter">
+        <span class="time" onclick="navigateToTime(0)">
+         00:00
+        </span>
+        - Introduction
+       </div>
+       <div class="chapter">
+        <span class="time" onclick="navigateToTime(14)">
+         00:14
+        </span>
+        - Reasons to choose Sheffield
+       </div>
+       <div class="chapter">
+        <span class="time" onclick="navigateToTime(75)">
+         01:15
+        </span>
+        - Division Street
+       </div>
+       <div class="chapter">
+        <span class="time" onclick="navigateToTime(123)">
+         02:03
+        </span>
+        - The Moor
+       </div>
+       <div class="chapter">
+        <span class="time" onclick="navigateToTime(192)">
+         03:12
+        </span>
+        - Meadowhall
+       </div>
+       <div class="chapter">
+        <span class="time" onclick="navigateToTime(203)">
+         03:23
+        </span>
+        - Kelham Island
+       </div>
+       <div class="chapter">
+        <span class="time" onclick="navigateToTime(252)">
+         04:12
+        </span>
+        - Sharrow Vale
+       </div>
+       <div class="chapter">
+        <span class="time" onclick="navigateToTime(318)">
+         05:18
+        </span>
+        - London Road
+       </div>
+       <div class="chapter">
+        <span class="time" onclick="navigateToTime(355)">
+         05:55
+        </span>
+        - Broomhill
+       </div>
+       <div class="chapter">
+        <span class="time" onclick="navigateToTime(390)">
+         06:30
+        </span>
+        - Crookes
+       </div>
+       <div class="chapter">
+        <span class="time" onclick="navigateToTime(417)">
+         06:57
+        </span>
+        - Conclusion
+       </div>
       </div>
+     </div>
     </div>
+    <div class="copy-container">
+     <h3 class="rank">
+      A student city
+     </h3>
+     <p>
+      Almost 60,000 students from all over the world call Sheffield home.
+     </p>
+     <h3 class="rank">
+      Culture
+     </h3>
+     <p>
+      With major festivals, street art trails and the largest theatre complex outside of London, there’s something for everyone.
+     </p>
+     <h3 class="rank">
+      Best student life
+     </h3>
+     <p>
+      Whatuni Student Choice Awards 2024
+     </p>
+     <h3 class="rank">
+      A foodie capital
+     </h3>
+     <p>
+      From thriving independents to Europe’s largest purpose built food hall, Sheffield was named as the UK’s best foodie hotspot in 2023.
+     </p>
+     <h3 class="rank">
+      Get out and about
+     </h3>
+     <p>
+      Our compact city is easy to get around and walkable. And because Sheffield is located in the centre of the UK, it’s well connected to other major cities and airports.
+     </p>
+     <h3 class="rank">
+      The outdoor city
+     </h3>
+     <p>
+      Hike, climb or ride through one of the greenest cities in Europe with the Peak District National Park on your doorstep.
+     </p>
+     <div class="su-container" data-aos="fade-in">
+      <div class="su-main-text">
+       Further information
+      </div>
+      <div class="su-sub-text">
+       <p>
+        <a href="https://www.sheffield.ac.uk/postgraduate/alumni-discount">
+         Guide to Sheffield
+        </a>
+       </p>
+      </div>
+     </div>
+     <div class="pagination-nav">
+      <div class="pagination-item pagination-prev">
+       <span class="pagination-label">
+        ← Previous
+       </span>
+       <a href="pg-cost.html">
+        Cost of living
+       </a>
+      </div>
+      <div class="pagination-item pagination-next">
+       <span class="pagination-label">
+        Next →
+       </span>
+       <a href="pg-accommodation.html">
+        Accommodation options
+       </a>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section>
+  <div class="cta-wrapper">
+   <div class="cta-container">
+    <a class="cta-button" data-aos="zoom-in" href="https://www.sheffield.ac.uk/postgraduate/taught">
+     Search for a course
+    </a>
+    <a class="cta-button" data-aos="zoom-in" data-aos-delay="300" href="https://www.sheffield.ac.uk/postgraduate/visit/events">
+     Book an open day
+    </a>
+    <a class="cta-button" data-aos="zoom-in" data-aos-delay="600" href="https://www.sheffield.ac.uk/postgraduate/register-your-interest">
+     Register your interest
+    </a>
+   </div>
+  </div>
+  <footer class="footer">
+   <div class="footer-content">
+    <div class="footer-bottom">
+     <div class="footer-awards">
+      <img alt="World Top 100 University" src="top100.png"/>
+      <img alt="Russell Group" src="russellgroup.png"/>
+      <img alt="University of the Year 2024" src="uoty.png"/>
+      <img alt="Queen's Anniversary Prize" src="queens.png"/>
+     </div>
+    </div>
+   </div>
   </footer>
-   <script>
-
-        // Modify event listener to avoid unintended closing of the modal on touch
-document.querySelector('.prev').addEventListener('touchstart', (e) => {
-    e.stopPropagation(); // Prevent touch from bubbling and triggering modal close
-    changeImage(-1);
-});
-
-document.querySelector('.next').addEventListener('touchstart', (e) => {
-    e.stopPropagation(); // Prevent touch from bubbling and triggering modal close
-    changeImage(1);
-});
-
-// Prevent modal from closing when touching inside it
-document.querySelector('.modal-content-container').addEventListener('touchstart', (e) => {
-    e.stopPropagation();
-});
-
-
- // Array of images for the gallery with titles and descriptions
-const images = [
-    {src: 'steph.jpg', title: 'Steph Massey', description: 'Steph Massey graduated with a degree in Business Management in 2022. She is now working on a HR graduate scheme at TikTok.'},
-    {src: 'aaron.jpeg.jpg', title: 'Aaron Probert', description: 'Since graduating in 2019, Aaron has been hard at work bringing together his social enterprise, Labre’s Hope. He has partnered with leading charitable organisations and won £500,000 of UK Government funding.'},
-    {src: 'helen.jpg', title: 'Helen Monks', description: 'School of English graduate Helen Monks is a writer and actor, known for her roles in Raised by Wolves and Upstart Crow.'},
-    {src: 'yash.jpg', title: 'Yash Bordia', description: 'Computer Science BSc graduate Yash Bordia works at PayPal within their UK Enterprise Integrations Team, assisting large enterprise merchants integrate PayPal solutions into their businesses.'},
-];
-let currentIndex = 0;
-
-
-// Debounce function to prevent rapid calls
-function debounce(func, delay) {
-    let timeout;
-    return function (...args) {
-        clearTimeout(timeout);
-        timeout = setTimeout(() => func.apply(this, args), delay);
-    };
-}
-
-// Debounced changeImage function to avoid double navigation
-const changeImage = debounce((direction) => {
-    currentIndex = (currentIndex + direction + images.length) % images.length;
-    updateModal();
-}, 100); // 100ms debounce delay
-
-// Change the main image on thumbnail click
-function changeMainImage(index) {
-    const image = images[index];
-    document.getElementById("mainImage").src = image.src;
-    document.getElementById("mainImage").setAttribute("onclick", `openModal(${index})`);
-}
-
-// Open the modal with the selected image
-function openModal(index) {
-    currentIndex = index;
-    updateModal();
-    const modal = document.getElementById("imageModal");
-    modal.style.display = "flex";
-    modal.setAttribute("aria-hidden", "false");
-    modal.focus();
-}
-
-// Close the modal and return focus to the main image
-function closeModal() {
-    const modal = document.getElementById("imageModal");
-    modal.style.display = "none";
-    modal.setAttribute("aria-hidden", "true");
-    document.getElementById("mainImage").focus();
-}
-
-// Update modal content based on the current image index
-function updateModal() {
-    const image = images[currentIndex];
-    document.getElementById("modalImage").src = image.src;
-    document.getElementById("imageTitle").innerText = image.title;
-    document.getElementById("imageDescription").innerText = image.description;
-
-    // Update the image counter
-    document.getElementById("imageCounter").innerText = `${currentIndex + 1} of ${images.length}`;
-}
-
-// Handle Enter key to open modal on thumbnails
-function handleKeyOpenModal(event, index) {
-    if (event.key === 'Enter') {
-        openModal(index);
-    }
-}
-
-// Handle Enter key to change main image from thumbnails
-function handleKeyChangeMainImage(event, index) {
-    if (event.key === 'Enter') {
-        changeMainImage(index);
-    }
-}
-
-// Swipe detection for mobile navigation
-let touchStartX = 0;
-let touchEndX = 0;
-
-function handleGesture() {
-    if (touchEndX < touchStartX) {
-        changeImage(1); // Swipe left to move to next image
-    }
-    if (touchEndX > touchStartX) {
-        changeImage(-1); // Swipe right to move to previous image
-    }
-}
-
-document.getElementById("imageModal").addEventListener("touchstart", (e) => {
-    touchStartX = e.changedTouches[0].screenX;
-});
-
-document.getElementById("imageModal").addEventListener("touchend", (e) => {
-    touchEndX = e.changedTouches[0].screenX;
-    handleGesture();
-});
-
-// Prevent modal from closing when clicking inside the content container
-document.querySelector('.modal-content-container').addEventListener('click', (e) => {
-    e.stopPropagation();
-});
-
-// Use pointerdown for reliable navigation button interaction without double events
-document.querySelector('.prev').addEventListener('pointerdown', (e) => {
-    e.stopPropagation();
-    changeImage(-1);
-});
-
-document.querySelector('.next').addEventListener('pointerdown', (e) => {
-    e.stopPropagation();
-    changeImage(1);
-});
-
-// Global function to initialize keyboard accessibility on page load
-function initializeGalleryAccessibility() {
-    // Get all thumbnails and add 'keydown' event listeners for Enter key
-    const thumbnails = document.querySelectorAll('.thumbnail');
-    thumbnails.forEach((thumbnail, index) => {
-        thumbnail.setAttribute('tabindex', '0');
-        thumbnail.addEventListener('keydown', (event) => handleKeyChangeMainImage(event, index));
-        thumbnail.addEventListener('click', () => changeMainImage(index)); // Restore click functionality
-    });
-
-    // Set tabindex and keydown event for the main image to open modal
-    const mainImage = document.getElementById("mainImage");
-    mainImage.setAttribute('tabindex', '0');
-    mainImage.addEventListener('keydown', (event) => handleKeyOpenModal(event, currentIndex));
-}
-
-// Global keyboard event listener for modal navigation
-document.addEventListener('keydown', (event) => {
-    const modal = document.getElementById("imageModal");
-
-    // Only respond to keys if the modal is open
-    if (modal.style.display === "flex") {
-        if (event.key === 'Escape') {
-            closeModal();
-        } else if (event.key === 'ArrowRight') {
-            changeImage(1);
-        } else if (event.key === 'ArrowLeft') {
-            changeImage(-1);
-        }
-    }
-});
-
-// Call initialize function when the page loads
-window.onload = initializeGalleryAccessibility;
-    </script>
-    <script>
-        function setSliderView() {
-            const container = document.getElementById('sliderContainer');
-            const navContainer = document.querySelector('.slider-nav-container');
-        
-            container.classList.remove('testimonial-grid');
-            navContainer.classList.remove('hidden'); // Show nav container in slider view
-        }
-        
-        function setGridView() {
-            const container = document.getElementById('sliderContainer');
-            const navContainer = document.querySelector('.slider-nav-container');
-        
-            container.classList.add('testimonial-grid');
-            navContainer.classList.add('hidden'); // Hide nav container in grid view
-        }
-        
-        
-            </script>
-             <!-- JavaScript -->
+  <!-- JavaScript -->
   <script>
-    const menu = document.getElementById("menu");
+   const menu = document.getElementById("menu");
     const toggleBtn = document.getElementById("menuToggle");
 
     function toggleMenu() {
@@ -497,13 +442,46 @@ window.onload = initializeGalleryAccessibility;
       }
     });
   </script>
-<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-<script>
-  AOS.init({
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js">
+  </script>
+  <script>
+   AOS.init({
     duration: 600,
     once: true
   });
-</script>
-
-</body>
+  </script>
+  <script>
+   // Load the YouTube API
+        let player;
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('videoPlayer', {
+                events: {
+                    'onReady': onPlayerReady
+                }
+            });
+        }
+    
+        function onPlayerReady(event) {
+            console.log("Player is ready");
+        }
+    
+        function navigateToTime(seconds) {
+            if (player && typeof player.seekTo === 'function') {
+                player.seekTo(seconds, true);  // Seek to the specified time and autoplay
+            }
+        }
+    
+        // Toggle the visibility of the chapters on mobile
+        function toggleChapters() {
+            const chapterLinks = document.getElementById('chapterLinks');
+            chapterLinks.classList.toggle('open');
+        }
+    
+        // Add YouTube IFrame API script
+        var tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  </script>
+ </body>
 </html>
