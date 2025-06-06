@@ -347,4 +347,15 @@ h2.hotmess {
 .pub-title a {
   color: #fff;
 }
+
+@media (max-width: 767px) {
+  .info-menu {
+    position: relative;
+    background-color: #440099;
+    bottom: 0;
+    top: unset;
+    max-width: 768px;
+    padding: 1rem;
+  }
+}
   
