@@ -1,0 +1,155 @@
+    .campaign-header {
+  position: relative;
+  margin: 0 auto 10px;
+  max-width: 1500px;
+  margin-bottom: -2rem;
+  padding-top: 5rem;
+
+}
+
+.campaign-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: transparent;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.campaign-holder {
+  position: relative;
+}
+
+.campaign-media,
+.campaign-mobile-media picture,
+.campaign-mobile-media img {
+  display: block;
+  width: 100%;
+}
+
+.campaign-media {
+  display: none;
+}
+
+.campaign-media img {
+  max-width: 100%;
+}
+
+
+@media (min-width: 768px) {
+  .campaign-media {
+    display: block;
+  }
+
+  .campaign-mobile-media {
+    display: none;
+  }
+}
+
+.info {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  color: white;
+  padding: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 930px;
+  margin: 0 auto;
+}
+
+.level {
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  font-weight: 900;
+  background-color: #24135f;
+  display: inline-block;
+  padding: 5px 10px;
+  margin-bottom: 0.75rem;
+}
+
+.text-banner {
+  background-color: #440099;
+  color: white;
+  padding: 25px 30px;
+  width: max-content;
+  display: flex;
+  flex-direction: column;
+  clip-path: polygon(0 0, calc(100% - 30px) 0, 100% 30px, 100% 100%, 30px 100%, 0 calc(100% - 30px));
+  margin-bottom: 2rem;
+}
+
+.text-line-1,
+.text-line-2 {
+  font-size: 3rem;
+  font-family: "source-sans-pro", sans-serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 0.8;
+}
+
+.text-line-3 {
+  font-size: 4rem;
+  font-family: "Hot Mess", cursive;
+  color: #3BD4AE;
+  text-transform: uppercase;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 5% 100%, 0 75%);
+  line-height: 0.8;
+}
+
+.home-banner-link-1 {
+  background-color: #24135f;
+  color: white;
+  padding: 10px 15px;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 1rem;
+}
+
+.home-banner-link-1:hover {
+  background-color: #409;
+}
+
+.home-banner-link-1 svg {
+  width: 16px;
+  margin-left: 0.25rem;
+  transform: translateY(3px);
+}
+
+.pub-title {
+  font-family: 'source-sans-pro';
+  font-weight: 700;
+  background: #25145F;
+  color: white;
+  display: inline-block;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  line-height: 1;
+  align-self: start;
+  width: fit-content;
+}
+
+@media (max-width: 767px) {
+  .info {
+    position: relative;
+    background-color: #440099;
+    bottom: 0;
+    top: unset;
+    max-width: 768px;
+  }
+
+  .text-banner {
+    clip-path: none;
+    padding: 0;
+    margin-bottom: 1.5rem;
+  }
+
+  .text-line-1,
+  .text-line-2 {
+    font-size: 3rem;
+  }
+
+  .text-line-3 {
+    font-size: 4rem;
+  }
+}
