@@ -514,4 +514,36 @@ h2.hotmess {
     font-size: 4rem;
   }
 }
+
+.breadcrumb {
+  font-family: 'source-sans-pro';
+  font-size: 0.9rem;
+  color: #5a6269;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding-bottom: 0.5em;
+  padding-top: 0.5em;
+}
+
+.breadcrumb a {
+  text-decoration: none;
+  color: #5a6269;
+  border-bottom: 2px solid #cbd1d6;
+  padding-bottom: 1px;
+}
+
+.breadcrumb a:hover {
+  border-color: #4a4f54;
+}
+
+.breadcrumb .divider {
+  color: #5a6269;
+}
+
+.breadcrumb .current {
+  font-weight: bold;
+  color: #5a6269;
+}
+
   
