@@ -156,6 +156,24 @@ span.mess {
     margin-bottom: 20px; /* Add some spacing between collapsed boxes */
   }
 }
+
+.info-menu {
+    position: relative;
+    inset: 0;
+    z-index: 3;
+    color: white;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 930px;
+    margin-bottom: 1rem;
+    padding-top: 1rem;
+}
+
+.pub-title a {
+  color: #fff;
+}
    </style>
   </link>
  </head>
@@ -163,7 +181,7 @@ span.mess {
 <!-- Navbar -->
   <header class="navbar">
    <div class="container">
-    <a href="ug-home.html">
+    
      <div class="logo">
       <img alt="University of Sheffield" src="logo.png"/>
      </div>
@@ -176,11 +194,14 @@ span.mess {
   <!-- Fade-in Overlay Menu -->
   <div aria-labelledby="menuHeading" aria-modal="true" class="menu-overlay" id="menu" role="dialog">
    <div class="container">
-    <h1>
-     <a href="ug-home.html">
-      Undergraduate study guide 2025-26
-     </a>
-    </h1>
+    <div class="info-menu">
+      <div class="text-banner">
+        <span class="text-line-1">Made from</span>
+        <span class="text-line-2">every</span>
+        <span class="text-line-3">experience</span>
+      </div>
+  <div class="pub-title"><a href="ug-home.html">Undergraduate study guide 2025-26</a></div>
+    </div>
     <div class="menu-item">
      <a href="ug-getting.html">
       <h2 id="menuHeading">
