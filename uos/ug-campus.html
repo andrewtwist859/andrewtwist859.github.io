@@ -397,5 +397,38 @@
     once: true
   });
   </script>
+    <script>
+   // Load the YouTube API
+        let player;
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('videoPlayer', {
+                events: {
+                    'onReady': onPlayerReady
+                }
+            });
+        }
+    
+        function onPlayerReady(event) {
+            console.log("Player is ready");
+        }
+    
+        function navigateToTime(seconds) {
+            if (player && typeof player.seekTo === 'function') {
+                player.seekTo(seconds, true);  // Seek to the specified time and autoplay
+            }
+        }
+    
+        // Toggle the visibility of the chapters on mobile
+        function toggleChapters() {
+            const chapterLinks = document.getElementById('chapterLinks');
+            chapterLinks.classList.toggle('open');
+        }
+    
+        // Add YouTube IFrame API script
+        var tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  </script>
  </body>
 </html>
