@@ -220,18 +220,87 @@
         <img data-aos="fade-in" src="map.jpg">
     </div>
     <div class="copy-container">
-      <p>Train times from major cities:
-<p>
-    <ul>
-        <li>40 minutes from Leeds</li>
-        <li>50 minutes from Manchester</li>
-        <li>1 hour 15 minutes from Birmingham</li>
-        <li>2 hours from London</li>
-        <li>2 hours from Newcastle</li>
-        <li>2 hours 35 minutes from Bristol</li>
-        <li>3 hours 45 minutes from Edinburgh</li>
-    </ul>
-</p>
+
+<div id="sheffield-train-widget">
+  <style>
+    #sheffield-train-widget * {
+      box-sizing: border-box;
+    }
+    #sheffield-train-widget input {
+      width: 100%;
+      padding: 0.5em;
+      margin-top: 0.5em;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+    #sheffield-train-widget #cityList {
+      list-style: none;
+      padding: 0;
+      margin-top: 0.5em;
+      max-height: 300px;
+      overflow-y: auto;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    #sheffield-train-widget #cityList li {
+      padding: 0.5em;
+      border-bottom: 1px solid #eee;
+    }
+    #sheffield-train-widget #cityList li:hover {
+      background-color: #f0f0f0;
+    }
+  </style>
+
+  <label for="cityInput"><h2>Train times from major cities:</h2></label>
+  <input type="text" id="cityInput" oninput="filterCities()" placeholder="Search for your nearest city (UK-only)" autocomplete="off" />
+
+  <ul id="cityList">
+    <li data-city="leeds"><strong>Leeds</strong>: 42 minutes</li>
+<li data-city="manchester"><strong>Manchester</strong>: 1 hour</li>
+<li data-city="birmingham"><strong>Birmingham</strong>: 1 hour 15 minutes</li>
+<li data-city="london"><strong>London</strong>: 2 hours 5 minutes</li>
+<li data-city="newcastle"><strong>Newcastle</strong>: 1 hour 55 minutes</li>
+<li data-city="bristol"><strong>Bristol</strong>: 3 hours 20 minutes</li>
+<li data-city="edinburgh"><strong>Edinburgh</strong>: 3 hours 30 minutes</li>
+<li data-city="derby"><strong>Derby</strong>: 35 minutes</li>
+<li data-city="nottingham"><strong>Nottingham</strong>: 50 minutes</li>
+<li data-city="york"><strong>York</strong>: 1 hour</li>
+<li data-city="leicester"><strong>Leicester</strong>: 1 hour 5 minutes</li>
+<li data-city="lincoln"><strong>Lincoln</strong>: 1 hour 25 minutes</li>
+<li data-city="hull"><strong>Hull</strong>: 1 hour 30 minutes</li>
+<li data-city="stoke-on-trent"><strong>Stoke-On-Trent</strong>: 1 hour 30 minutes</li>
+<li data-city="coventry"><strong>Coventry</strong>: 1 hour 35 minutes</li>
+<li data-city="wolverhampton"><strong>Wolverhampton</strong>: 1 hour 45 minutes</li>
+<li data-city="liverpool"><strong>Liverpool</strong>: 2 hours</li>
+<li data-city="durham"><strong>Durham</strong>: 2 hours</li>
+<li data-city="preston"><strong>Preston</strong>: 2 hours 10 minutes</li>
+<li data-city="oxford"><strong>Oxford</strong>: 2 hours 40 minutes</li>
+<li data-city="cambridge"><strong>Cambridge</strong>: 2 hours 45 minutes</li>
+<li data-city="reading"><strong>Reading</strong>: 2 hours 45 minutes</li>
+<li data-city="southampton"><strong>Southampton</strong>: 3 hours 10 minutes</li>
+<li data-city="bath"><strong>Bath</strong>: 3 hours 10 minutes</li>
+<li data-city="portsmouth"><strong>Portsmouth</strong>: 3 hours 20 minutes</li>
+<li data-city="norwich"><strong>Norwich</strong>: 3 hours 30 minutes</li>
+<li data-city="cardiff"><strong>Cardiff</strong>: 3 hours 45 minutes</li>
+<li data-city="glasgow"><strong>Glasgow</strong>: 4 hours</li>
+<li data-city="exeter"><strong>Exeter</strong>: 4 hours 45 minutes</li>
+<li data-city="swansea"><strong>Swansea</strong>: 5 hours</li>
+<li data-city="plymouth"><strong>Plymouth</strong>: 5 hours 20 minutes</li>
+  </ul>
+
+  <script>
+    function filterCities() {
+      const input = document.getElementById("cityInput").value.toLowerCase();
+      const items = document.querySelectorAll("#cityList li");
+
+      items.forEach(li => {
+        const city = li.getAttribute("data-city");
+        li.style.display = city.toLowerCase().includes(input) ? "" : "none";
+      });
+    }
+  </script>
+</div>
    <div class="pagination-nav">
       <div class="pagination-item pagination-prev">
        <span class="pagination-label">
