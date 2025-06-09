@@ -155,6 +155,25 @@ span.mess {
   }
 }
 
+.image-wrapper {
+  overflow: hidden;
+  border-radius: inherit;
+}
+
+.image-wrapper img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transform-origin: center center;
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1); /* smoother */
+}
+
+.info-box:hover .image-wrapper img {
+  transform: scale(1.08);
+}
+
+
+
 
    </style>
   </link>
@@ -334,7 +353,8 @@ span.mess {
      <div class="info-container">
       <div class="info-box">
        <a href="ug-getting.html">
-        <img alt="A quick guide to Sheffield" src="map.jpg">
+        <div class="image-wrapper">
+        <img alt="A quick guide to Sheffield" src="map.jpg"></div>
          <h3>
           Getting to Sheffield
          </h3>
@@ -346,7 +366,8 @@ span.mess {
       </div>
       <div class="info-box">
        <a href="ug-support.html">
-        <img alt="A quick guide to Sheffield" src="firth.png"/>
+        <div class="image-wrapper">
+        <img alt="A quick guide to Sheffield" src="firth.png"/></div>
         <h3>
          Support to study at Sheffield
         </h3>
@@ -357,7 +378,8 @@ span.mess {
       </div>
       <div class="info-box">
        <a href="ug-fees.html">
-        <img alt="A quick guide to Sheffield" src="cube1.png"/>
+        <div class="image-wrapper">
+        <img alt="A quick guide to Sheffield" src="cube1.png"/></div>
         <h3>
          Fees and budget friendly living
         </h3>
@@ -372,7 +394,8 @@ span.mess {
      <div class="info-container">
       <div class="info-box" data-aos="fade-in" data-aos-delay="300">
        <a href="ug-accom.html">
-        <img alt="A quick guide to Sheffield" src="accom21.png"/>
+        <div class="image-wrapper">
+        <img alt="A quick guide to Sheffield" src="accom21.png"/></div>
         <h3>
          Guaranteed accommodation
         </h3>
@@ -383,7 +406,8 @@ span.mess {
       </div>
       <div class="info-box" data-aos="fade-in" data-aos-delay="400">
        <a href="ug-careers.html">
-        <img alt="A quick guide to Sheffield" src="careers.jpg"/>
+        <div class="image-wrapper">
+        <img alt="A quick guide to Sheffield" src="careers.jpg"/></div>
         <h3>
          Careers support tailored to you
         </h3>
@@ -394,7 +418,8 @@ span.mess {
       </div>
       <div class="info-box" data-aos="fade-in" data-aos-delay="500">
        <a href="ug-teaching.html">
-        <img alt="A quick guide to Sheffield" src="careers.png"/>
+        <div class="image-wrapper">
+        <img alt="A quick guide to Sheffield" src="careers.png"/></div>
         <h3>
          Expert teaching with flexible options
         </h3>
@@ -409,7 +434,8 @@ span.mess {
      <div class="info-container">
       <div class="info-box" data-aos="fade-in" data-aos-delay="600">
        <a href="ug-campus.html">
-        <img alt="A quick guide to Sheffield" src="citypg.png"/>
+        <div class="image-wrapper">
+        <img alt="A quick guide to Sheffield" src="citypg.png"/></div>
         <h3>
          Your campus
         </h3>
@@ -420,7 +446,8 @@ span.mess {
       </div>
       <div class="info-box" data-aos="fade-in" data-aos-delay="700">
        <a href="ug-sustainability.html">
-        <img alt="A quick guide to Sheffield" src="sustain.jpg"/>
+        <div class="image-wrapper">
+        <img alt="A quick guide to Sheffield" src="sustain.jpg"/></div>
         <h3>
          Sustainability at Sheffield
         </h3>
@@ -431,7 +458,8 @@ span.mess {
       </div>
       <div class="info-box" data-aos="fade-in" data-aos-delay="800">
        <a href="ug-societies.html">
-        <img alt="A quick guide to Sheffield" src="sports.jpg"/>
+        <div class="image-wrapper">
+        <img alt="A quick guide to Sheffield" src="sports.jpg"/></div>
         <h3>
          A club or society for everyone
         </h3>
@@ -446,7 +474,8 @@ span.mess {
      <div class="info-container">
       <div class="info-box" data-aos="fade-in" data-aos-delay="900">
        <a href="ug-su.html">
-        <img alt="A quick guide to Sheffield" src="su21.jpg"/>
+        <div class="image-wrapper">
+        <img alt="A quick guide to Sheffield" src="su21.jpg"/></div>
         <h3>
          Students' Union
         </h3>
@@ -457,7 +486,8 @@ span.mess {
       </div>
       <div class="info-box" data-aos="fade-in" data-aos-delay="1000">
        <a href="ug-city.html">
-        <img alt="A quick guide to Sheffield" src="cityug.jpg"/>
+        <div class="image-wrapper">
+        <img alt="A quick guide to Sheffield" src="cityug.jpg"/></div>
         <h3>
          A student city with plenty to offer
         </h3>
@@ -468,7 +498,8 @@ span.mess {
       </div>
       <div class="info-box" data-aos="fade-in" data-aos-delay="1100">
        <a href="https://www.sheffield.ac.uk/undergraduate/visit/open-days">
-        <img alt="A quick guide to Sheffield" src="od.jpg"/>
+        <div class="image-wrapper">
+        <img alt="A quick guide to Sheffield" src="od.jpg"/></div>
         <h3>
          Open days
         </h3>
