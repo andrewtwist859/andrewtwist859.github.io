@@ -11,6 +11,12 @@ body {
     background-color: #F8F8F9;
 }
 
+.cta-button svg {
+  height: 1rem;
+  margin-right: 5px;
+  transform: translateY(3px);
+}
+
 h2.hotmess {
     font-size: 4rem;
     font-family: 'Hot Mess';
