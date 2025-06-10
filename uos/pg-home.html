@@ -161,6 +161,24 @@ span.mess {
     margin-bottom: 20px; /* Add some spacing between collapsed boxes */
   }
 }
+
+.image-wrapper {
+  overflow: hidden;
+  border-radius: inherit;
+}
+
+.image-wrapper img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transform-origin: center center;
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1); /* smoother */
+}
+
+.info-box:hover .image-wrapper img {
+  transform: scale(1.08);
+}
+
    </style>
   </link>
  </head>
@@ -335,8 +353,8 @@ span.mess {
     <div class="info-section">
      <div class="info-container">
       <div class="info-box">
-       <a href="pg-uni.html">
-        <img alt="A quick guide to Sheffield" src="firth.png">
+       <a href="pg-uni.html"><div class="image-wrapper">
+        <img alt="A quick guide to Sheffield" src="firth.png"></div>
          <h3>
           Study at the University of the Year
          </h3>
@@ -348,7 +366,8 @@ span.mess {
       </div>
       <div class="info-box">
        <a href="pg-learning.html">
-        <img alt="A quick guide to Sheffield" src="pg.jpg"/>
+        <div class="image-wrapper">
+        <img alt="A quick guide to Sheffield" src="pg.jpg"/></div>
         <h3>
          Learning patterns designed around you
         </h3>
@@ -359,7 +378,8 @@ span.mess {
       </div>
       <div class="info-box">
        <a href="pg-fees.html">
-        <img alt="A quick guide to Sheffield" src="cube1.png"/>
+        <div class="image-wrapper">
+        <img alt="A quick guide to Sheffield" src="cube1.png"/></div>
         <h3>
          Fees, funding and scholarships
         </h3>
@@ -374,7 +394,8 @@ span.mess {
      <div class="info-container">
       <div class="info-box" data-aos="fade-in" data-aos-delay="300">
        <a href="pg-apply.html">
-        <img alt="A quick guide to Sheffield" src="lecture.jpg"/>
+        <div class="image-wrapper">
+        <img alt="A quick guide to Sheffield" src="lecture.jpg"/></div>
         <h3>
          Applying to Sheffield
         </h3>
@@ -385,7 +406,8 @@ span.mess {
       </div>
       <div class="info-box" data-aos="fade-in" data-aos-delay="400">
        <a href="pg-visit.html">
-        <img alt="A quick guide to Sheffield" src="od.jpg"/>
+        <div class="image-wrapper">
+        <img alt="A quick guide to Sheffield" src="od.jpg"/></div>
         <h3>
          Visits and virtual experiences
         </h3>
@@ -396,7 +418,8 @@ span.mess {
       </div>
       <div class="info-box" data-aos="fade-in" data-aos-delay="500">
        <a href="pg-cost.html">
-        <img alt="A quick guide to Sheffield" src="cost.png"/>
+        <div class="image-wrapper">
+        <img alt="A quick guide to Sheffield" src="cost.png"/></div>
         <h3>
          Cost of living
         </h3>
@@ -411,7 +434,8 @@ span.mess {
      <div class="info-container">
       <div class="info-box" data-aos="fade-in" data-aos-delay="600">
        <a href="pg-city.html">
-        <img alt="A quick guide to Sheffield" src="citypg.png"/>
+        <div class="image-wrapper">
+        <img alt="A quick guide to Sheffield" src="citypg.png"/></div>
         <h3>
          City guide
         </h3>
@@ -422,7 +446,8 @@ span.mess {
       </div>
       <div class="info-box" data-aos="fade-in" data-aos-delay="700">
        <a href="pg-accommodation.html">
-        <img alt="A quick guide to Sheffield" src="accom21.png"/>
+        <div class="image-wrapper">
+        <img alt="A quick guide to Sheffield" src="accom21.png"/></div>
         <h3>
          Accommodation options
         </h3>
@@ -433,7 +458,8 @@ span.mess {
       </div>
       <div class="info-box" data-aos="fade-in" data-aos-delay="800">
        <a href="pg-support.html">
-        <img alt="A quick guide to Sheffield" src="support.png"/>
+        <div class="image-wrapper">
+        <img alt="A quick guide to Sheffield" src="support.png"/></div>
         <h3>
          Daily support
         </h3>
@@ -448,7 +474,8 @@ span.mess {
      <div class="info-container">
       <div class="info-box" data-aos="fade-in" data-aos-delay="900">
        <a href="pg-community.html">
-        <img alt="A quick guide to Sheffield" src="community.png"/>
+        <div class="image-wrapper">
+        <img alt="A quick guide to Sheffield" src="community.png"/></div>
         <h3>
          Community
         </h3>
@@ -459,7 +486,8 @@ span.mess {
       </div>
       <div class="info-box" data-aos="fade-in" data-aos-delay="1000">
        <a href="pg-careers.html">
-        <img alt="A quick guide to Sheffield" src="careers.png"/>
+        <div class="image-wrapper">
+        <img alt="A quick guide to Sheffield" src="careers.png"/></div>
         <h3>
          Career progression
         </h3>
@@ -470,7 +498,8 @@ span.mess {
       </div>
       <div class="info-box" data-aos="fade-in" data-aos-delay="1100">
        <a href="https://www.sheffield.ac.uk/postgraduate/phd">
-        <img alt="A quick guide to Sheffield" src="phd.jpg"/>
+        <div class="image-wrapper">
+        <img alt="A quick guide to Sheffield" src="phd.jpg"/></div>
         <h3>
          PhD study
         </h3>
