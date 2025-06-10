@@ -257,6 +257,9 @@ p.intro {
 .menu-overlay .container h1 a {
      font-family: 'source-serif-pro';
      font-weight: 700;
+     color: #fff;
+     background-color: #24125E;
+     padding: 1rem 2rem;
     }
 
     .cta-wrapper {
