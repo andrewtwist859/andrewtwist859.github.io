@@ -257,15 +257,80 @@ p.intro {
 .menu-overlay .container h1 a {
      font-family: 'source-serif-pro';
      font-weight: 700;
-     color: #fff;
-     background-color: #24125E;
-     padding: 1rem 2rem;
+     color: #24125E;
+     text-decoration: none;
     }
 
     .cta-wrapper {
     background-color: #fff; /* Light grey background */
     padding: 2rem 1rem;
   }
+
+  .text-banner {
+  background-color: #440099;
+  color: white;
+  padding: 25px 30px;
+  width: max-content;
+  display: flex;
+  flex-direction: column;
+  clip-path: polygon(0 0, calc(100% - 30px) 0, 100% 30px, 100% 100%, 30px 100%, 0 calc(100% - 30px));
+  margin-bottom: 2rem;
+}
+
+.text-line-1,
+.text-line-2 {
+  font-size: 3rem;
+  font-family: "source-sans-pro", sans-serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 0.8;
+}
+
+.text-line-3 {
+  font-size: 4rem;
+  font-family: "Hot Mess", cursive;
+  color: #FF6371;
+  text-transform: uppercase;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 5% 100%, 0 75%);
+  line-height: 0.8;
+}
+
+.home-banner-link-1 {
+  background-color: #24135f;
+  color: white;
+  padding: 10px 15px;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 1rem;
+}
+
+.home-banner-link-1:hover {
+  background-color: #409;
+}
+
+.home-banner-link-1 svg {
+  width: 16px;
+  margin-left: 0.25rem;
+  transform: translateY(3px);
+}
+
+.pub-title {
+  font-family: 'source-sans-pro';
+  font-weight: 700;
+  background: #25145F;
+  color: white;
+  display: inline-block;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  line-height: 1;
+  align-self: start;
+  width: fit-content;
+}
+
+.pub-title a {
+  color: #fff;
+}
+
 
   .cta-container {
     max-width: 1180px;
